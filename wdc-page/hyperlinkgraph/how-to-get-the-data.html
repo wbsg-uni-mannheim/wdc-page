@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html><head><title>Web Graph - Download Instructions</title>
+<link rel="stylesheet" href="../style.css" type="text/css" media="screen"/>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://rawgithub.com/jgallen23/toc/master/dist/jquery.toc.min.js"></script>
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-30248817-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+</head>
+<body> 
+
+  <div id="logo" style="text-align:right; background-color: white;">&nbsp;&nbsp;<a href="http://dws.informatik.uni-mannheim.de"><img src="../images/ma-logo.gif" alt="University of Mannheim - Logo"></a>&nbsp;&nbsp;<br></div>
+
+
+<div id="header">
+<h1 style="font-size: 250%;">Web Graph - Download Instructions</h1>
+</div>
+
+<div id="tagline">Extracting the Hyperlink Graph from the Common Web Crawl</div>
+
+<div id="authors">
+<a href="http://dws.informatik.uni-mannheim.de/en/people/professors/prof-dr-christian-bizer/">Christian Bizer</a><br />
+<a href="">Oliver Lehmberg</a><br />
+<a href="http://dws.informatik.uni-mannheim.de/en/people/researchers/robert-meusel/">Robert Meusel</a><br />
+
+</div>
+
+<div id="content">
+
+<p>
+<p>This document contains instructions on how to access the latest version of aviable aggregation levels of the <a href="index.html">Web Data Commons - Web Graph</a> data set.</p>
+</p>
+
+<h2>Contents</h2>
+<div id="toc" class="toc"></div>
+<div id="toccontent">
+
+<h2 id="about">Index/Arc Files of the Page Graph</h2>
+<p>
+The page graph, which is an unaggregated representation of the hyperlink graph of the used Web crawl is currently hosted using Amazon Simple Storage Service (S3). Due to the large size of the graph, we currently cannot make it completely public, but we offer the graph within a <a href="http://docs.aws.amazon.com/AmazonS3/latest/dev/RequesterPaysBuckets.html">Requester Pays Bucket</a>. In a nutshell you need an AWS account to download the files using <a href="http://s3tools.org/s3cmd">s3cmd</a>. <b>Please note: The costs for downloading will be charged by Amazon to your AWS account.</b> Based on the <a href="http://aws.amazon.com/s3/pricing/">S3 pricing</a> the estimated download costs for index and arc files (45 + 331GB) are around 45 USD. When operating on the data within the same region (US Oregon) is free of charge.<br>
+S3cmd is available as standard package for almost all UNIX systems (e.g. Ubuntu <code>apt-get install s3cmd</code>). You can either request all files at once using the command <code>s3cmd get --recursive s3://wgc-2012-data/indexall/</code> for the index files and <code>s3cmd get --recursive s3://wgc-2012-data/network/distinctOrderedNetwork/</code> for the arc files. Or request the files separately using the following two list:
+<ul>
+<li><a href="data/index.list.txt">Index file list</a></li>
+<li><a href="data/arc.list.txt">Arc file list</a></li>
+</ul>
+
+</p>
+<h2 id="about">WebGraph Format</h2>
+<p>
+We have used the <a href="http://webgraph.di.unimi.it/">WebGraph Framework</a> of Sebastiano Vigna for most of the calculations. The required format of the page graph is also available as download. It consists of 3 files. .graph, .offsets, .properties. The files (together 57GB) can be downloaded from our S3 <a href="http://docs.aws.amazon.com/AmazonS3/latest/dev/RequesterPaysBuckets.html">Requester Pays Bucket</a> using <code>s3cmd get --recursive s3://wgc-2012-data/webgraph/original/</code>. You can also request each file individually using:
+<ul>
+<li>s3cmd get s3://wgc-2012-data/webgraph/original/network.graph</code> (52GB)</li>
+<li><code>s3cmd get s3://wgc-2012-data/webgraph/original/network.offsets</code> (4GB)</li>
+<li><code>s3cmd get s3://wgc-2012-data/webgraph/original/network.properties</code> (1.5MB)</li>
+</ul>
+Using the WebGraph Framework, which can be grabbed from <a href="http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22it.unimi.dsi%22">Maven Central</a> these files can be loaded using the following line of code: 
+<code>BVGraph graph = BVGraph.loadMapped(baseName, new ProgressLogger())</code>.
+</p>
+<h2 id="about">Pajek NET Format</h2>
+<p>
+Most calculations and experiments we did on the PLD Graph where done using <a href="">Pajek</a>. Pajek supports the <a href="https://gephi.org/users/supported-graph-formats/pajek-net-format/">Pajek NET Format</a>. The <a href="http://web.informatik.uni-mannheim.de/wdc/graph/2012/pld-pajek.gz">Pajek PLD Graph</a> (2.3GB) can directly imported into Pajek after unzipping. To process the graph in a feasable time we recommend to grant Pajek around 32GB of RAM.
+</p>
+Most calculations and experiments we did on the PLD Graph where done using <a href="">Pajek</a>. Pajek supports the <a href="https://gephi.org/users/supported-graph-formats/pajek-net-format/">Pajek NET Format</a>. The <a href="http://web.informatik.uni-mannheim.de/wdc/graph/2012/pld-pajek.gz">Pajek PLD Graph</a> (2.3GB) can directly imported into Pajek after unzipping. To process the graph in a feasable time we recommend to grant Pajek around 32GB of RAM.
+<h2 id="about">Popularity Ranks</h2>
+<p>
+Beside the pure graph files, we also calculated for each host in the host graph the <code>harmonic centrality</code>, <code>indegree centrality</code>, <code>Katz's index</code>, and <code>Page Rank</code>. The ranking can be browsed <a href="">here</a>, or the data can be downloaded:
+<ul>
+<li>Harmonic Centrality: <a href="http://zeist.informatik.uni-mannheim.de/wdc-graph/hostgraph-h.tsv.gz">http://zeist.informatik.uni-mannheim.de/wdc-graph/hostgraph-h.tsv.gz</a></li>
+<li>Indegree: <a href="http://zeist.informatik.uni-mannheim.de/wdc-graph/hostgraph-indegree.tsv.gz">http://zeist.informatik.uni-mannheim.de/wdc-graph/hostgraph-indegree.tsv.gz</a></li>
+<li>Katz: <a href="http://zeist.informatik.uni-mannheim.de/wdc-graph/hostgraph-katz.tsv.gz">http://zeist.informatik.uni-mannheim.de/wdc-graph/hostgraph-katz.tsv.gz</a></li>
+<li>PageRank: <a href="http://zeist.informatik.uni-mannheim.de/wdc-graph/hostgraph-pr.tsv.gz">http://zeist.informatik.uni-mannheim.de/wdc-graph/hostgraph-pr.tsv.gz</a></li>
+</ul>
+<ul>
+<li><code>4253d61a54f38a577c1a86fba8fa0a84  hostgraph-h.tsv.gz</code></li>
+<li><code>f8fc1d3f239f64ef5e0b95856fa216e4  hostgraph-indegree.tsv.gz</code></li>
+<li><code>23537ca26d123298b84c24f6298c27f7  hostgraph-katz.tsv.gz</code></li>
+<li><code>1edc26f368022e45689fc1c4ee82a5f8  hostgraph-pr.tsv.gz</code></li>
+</ul>
+
+</p>
+</div>
+
+</div>
+
+<script type="text/javascript">
+$('#toc').toc({
+    'selectors': 'h2', //elements to use as headings
+    'container': '#toccontent', //element to find all selectors in
+    'smoothScrolling': true, //enable or disable smooth scrolling on click
+    'prefix': 'toc', //prefix for anchor tags and class names
+    'highlightOnScroll': true, //add class to heading that is currently in focus
+    'highlightOffset': 100, //offset to trigger the next headline
+    'anchorName': function(i, heading, prefix) { //custom function for anchor name
+        return prefix+i;
+    } 
+});
+</script>
+
+</body>
+</html> 

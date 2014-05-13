@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html><head><title>WDC - RDFa, Microdata, and Microformat Data Sets</title>
+<link rel="stylesheet" href="http://webdatacommons.org/style.css" type="text/css" media="screen"/>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://rawgithub.com/jgallen23/toc/master/dist/jquery.toc.min.js"></script>
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-30248817-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+</head>
+<body> 
+
+  <div id="logo" style="text-align:right; background-color: white;">&nbsp;&nbsp;<a href="http://dws.informatik.uni-mannheim.de"><img src="../images/ma-logo.gif" alt="University of Mannheim - Logo"></a>&nbsp;&nbsp;&nbsp;<a href="http://www.aifb.kit.edu"><img src="../images/kit-logo.gif" alt="Karlsruhe Institute of Technology Logo"></a>&nbsp;&nbsp;<br></div>
+
+
+<div id="header">
+<h1 style="font-size: 250%;">Web Data Commons – RDFa, Microdata, and Microformat Data Sets</h1>
+</div>
+
+<div id="tagline">Extracting Structured Data from the Common Web Crawl</div>
+
+<div id="authors">
+<a href="http://dws.informatik.uni-mannheim.de/en/people/professors/prof-dr-christian-bizer/">Christian Bizer</a><br />
+<a href="http://hannes.muehleisen.org">Hannes Mühleisen</a><br />
+<a href="http://harth.org/andreas/">Andreas Harth</a><br />
+<a href="http://www.aifb.kit.edu/web/Steffen_Stadtm%C3%BCller/en">Steffen Stadtmüller</a><br />
+<a href="http://dws.informatik.uni-mannheim.de/en/people/researchers/robert-meusel/">Robert Meusel</a><br />
+<a href="http://dws.informatik.uni-mannheim.de/en/people/researchers/michael-schuhmacher/">Michael Schuhmacher</a><br />
+<a href="http://dws.informatik.uni-mannheim.de/en/people/researchers/dr-johanna-voelker/">Johanna V&ouml;lker</a><br />
+<a href="http://dws.informatik.uni-mannheim.de/en/people/researchers/dr-kai-eckert/">Kai Eckert</a><br />
+<a href="http://dws.informatik.uni-mannheim.de/en/people/researchers/petar-petrovski/">Petar Petrovski</a>
+</div>
+
+<div id="content">
+
+<p>
+More and more websites have started to embed structured data describing products, people, organizations, places, events into their HTML pages using markup standards such as RDFa, Microdata and Microformats. <br>The Web Data Commons project extracts this data from several billion web pages. The project provides the extracted data for download and publishes statistics about the deployment of the different formats.
+</p>
+
+<h2>Contents</h2>
+<div id="toc" class="toc"></div>
+
+<div id="toccontent">
+
+<h2 id="about">1. About Web Data Commons</h2>
+
+<p>More and more websites embed structured data describing for instance products, people, organizations, places, events, resumes, and cooking recipes into their HTML pages using markup formats such as RDFa, Microdata and Microformats.  The Web Data Commons project extracts all Microformat, Microdata and RDFa data from the <a href="http://www.commoncrawl.org">Common Crawl web corpus</a>, the largest and most up-to-data web corpus that is currently available to the public, and provide the extracted data for download in the form of <a href="http://www.w3.org/TR/n-quads/">RDF-quads</a>. In addition, we calculate and publish statistics about the deployment of the different formats as well as the vocabularies that are used together with each format.</p>
+
+<p>Up till now, we have extracted all RDFa, Microdata and Microformats data from the following releases of the Common Crawl web corpora:</p>
+<ul>
+  <li><a href="#results-2013-1">November 2013</a></li>
+  <li><a href="#results-2012-1">August 2012</a></li>
+  <li><a href="#results-2010">2009/2010</a></li>
+  </ul>
+<p>For the future, we plan to rerun our extraction on a regular basis as new Common Crawl corpora are becoming available.</p>
+
+<h2 id="extractors">2. Extracted Data Formats</h2>
+<p>
+The table below provides an overview of the different structured data formats that we extract from the Common Crawl. The table contains references to the specifications of the formats as well as short descriptions of the formats. Web Data Commons packages the extracted data for each format separately for download. The table also defines the format identifiers that are used in the following.
+</p>
+
+<table style="width:60%">
+<tr><th>Format</th><th>Description</th><th style="width:20%">Identifier</th></tr>
+
+<tr><td><a href="http://www.w3.org/TR/xhtml-rdfa-primer/">RDFa</a></td><td>
+RDFa is a specification for attributes to express structured data in any markup language, e.g HTML. The underlying abstract representation is RDF, which lets publishers build their own vocabulary, extend others, and evolve their vocabulary with maximal interoperability over time.
+</td><td><code>html-rdfa</code></td></tr>
+
+<tr><td><a href="http://www.w3.org/TR/microdata/">HTML&nbsp;Microdata</a></td><td>
+Microdata allows nested groups of name-value pairs to be added to HTML documents, in parallel with the existing content.
+</td><td><code>html-microdata</code></td></tr>
+
+<tr><td><a href="http://microformats.org/wiki/hcalendar">hCalendar&nbsp;Microformat</a></td><td>
+hCalendar is a calendaring and events format, using a 1:1 representation of standard <a href="http://www.ietf.org/rfc/rfc2445.txt">iCalendar (RFC2445)</a> VEVENT properties and values in HTML.
+</td><td><code>html-mf-hcard</code></td></tr>
+
+<tr><td><a href="http://microformats.org/wiki/hcard">hCard&nbsp;Microformat</a></td><td>
+hCard is a format for representing people, companies, organizations, and places, using a 1:1 representation of <a href="http://www.ietf.org/rfc/rfc2426.txt">vCard (RFC2426)</a> properties and values in HTML.
+</td><td><code>html-mf-hcard</code></td></tr>
+
+<tr><td><a href="http://microformats.org/wiki/geo">Geo&nbsp;Microformat</a></td><td>
+Geo a 1:1 representation of the "geo" property from the vCard standard, reusing the geo property and sub-properties as-is from the hCard microformat. It can be used to markup latitude/longitude coordinates in HTML.
+</td><td><code>html-mf-geo</code></td></tr>
+
+<tr><td><a href="http://microformats.org/wiki/hlisting">hListing&nbsp;Microformat</a></td><td>
+hListing is a proposal for a listings (UK English: small-ads; classifieds) format suitable for embedding in HTML.
+</td><td><code>html-mf-hlisting</code></td></tr>
+
+<tr><td><a href="http://microformats.org/wiki/hresume">hResume&nbsp;Microformat</a></td><td>
+The hResume format is based on a set of fields common to numerous resumes published today on the web embedded in HTML.
+</td><td><code>html-mf-hresume</code></td></tr>
+
+<tr><td><a href="http://microformats.org/wiki/hreview">hReview&nbsp;Microformat</a></td><td>
+hReview is a format suitable for embedding reviews (of products, services, businesses, events, etc.) in HTML.
+</td><td><code>html-mf-hreview</code></td></tr>
+
+<tr><td><a href="http://microformats.org/wiki/hrecipe">hRecipe&nbsp;Microformat</a></td><td>
+hRecipe is a format suitable for embedding information about recipes for cooking in HTML.
+</td><td><code>html-mf-recipe</code></td></tr>
+
+<tr><td><a href="http://microformats.org/wiki/species">Species&nbsp;Microformat</a></td><td>
+The Species proposal enables marking up taxonomic names for species in HTML.
+</td><td><code>html-mf-species</code></td></tr>
+
+<tr><td><a href="http://gmpg.org/xfn/">XFN&nbsp;Microformat</a></td><td>
+XFN (XHTML Friends Network) is a simple format to represent human relationships using hyperlinks.
+</td><td><code>html-mf-xfn</code></td></tr>
+</table>
+
+<h2 id="results">3. Extraction Results</h2>
+
+<h3 id="results-2013-1">3.1. Extraction Results from the November 2013 Common Crawl Corpus</h3>
+<p> 
+The November 2013 Common Crawl Corpus is available on <a href="http://aws.amazon.com/s3/">Amazon S3</a> in the bucket <code>aws-publicdatasets</code> under the key prefix <code>/common-crawl/crawl-data/CC-MAIN-2013-48/</code> .
+</p>
+
+<h4>Extraction Statistics</h4>
+<br />
+<table><tbody><tr><th>Crawl Date</th><td>Winter 2013</td><td></td></tr>
+<tr><th>Total Data</th><td>44 Terabyte</td><td>(compressed)</td></tr>
+<tr><th>Parsed HTML URLs</th><td>2,224,829,946</td><td></td></tr>
+<tr><th>URLs with Triples</th><td>585,792,337</td><td></td></tr>
+<tr><th>Domains in Crawl</th><td>12,831,509</td><td></td></tr>
+<tr><th>Domains with Triples</th><td>1,779,935</td><td></td></tr>
+<tr><th>Typed Entities</th><td>4,264,562,758</td><td></td></tr>
+<tr><th>Triples</th><td>17,241,313,916</td><td></td></tr>
+</tbody></table>
+
+<h4>Format Breakdown</h4><br />
+
+<img src="https://chart.googleapis.com/chart?chtt=Domains%20with%20Triples&chs=500x300&chds=a&cht=p&chd=t:471406,463539,23044,20981,995258,2584,262,12880,109,3530,195663&chl=html-rdfa|html-microdata|html-mf-geo|html-mf-hcalendar|html-mf-hcard|html-mf-hlisting|html-mf-hresume|html-mf-hreview|html-mf-species|html-mf-hrecipe|html-mf-xfn" />
+<img src="https://chart.googleapis.com/chart?chtt=URLs%20with%20Triples&chs=500x300&chds=a&cht=p&chd=t:296005115,276348609,14436467,3683002,113402968,528387,52675,3504643,22419,814793,18467168&chl=html-rdfa|html-microdata|html-mf-geo|html-mf-hcalendar|html-mf-hcard|html-mf-hlisting|html-mf-hresume|html-mf-hreview|html-mf-species|html-mf-hrecipe|html-mf-xfn" /><br />
+
+<ul>
+<li><a href="2013-11/stats/stats.html">Detailed Statistics for the November 2013 corpus (HTML)</a></li>
+<li><a href="2013-11/stats/how_to_get_the_data.html">Download Instructions</a></li>
+</ul>
+
+<h3 id="results-2012-1">3.2. Extraction Results from the August 2012 Common Crawl Corpus</h3>
+<p> 
+The August 2012 Common Crawl Corpus is available on <a href="http://aws.amazon.com/s3/">Amazon S3</a> in the bucket <code>aws-publicdatasets</code> under the key prefix <code>/common-crawl/parse-output/segment/</code> .
+</p>
+
+<h4>Extraction Statistics</h4>
+<br />
+<table><tbody><tr><th>Crawl Date</th><td>January-June 2012</td><td></td></tr>
+<tr><th>Total Data</th><td>40.1 Terabyte</td><td>(compressed)</td></tr>
+<tr><th>Parsed HTML URLs</th><td>3,005,629,093</td><td></td></tr>
+<tr><th>URLs with Triples</th><td>369,254,196</td><td></td></tr>
+<tr><th>Domains in Crawl</th><td>40,600,000</td><td></td></tr>
+<tr><th>Domains with Triples</th><td>2,286,277</td><td></td></tr>
+<tr><th>Typed Entities</th><td>1,811,471,956</td><td></td></tr>
+<tr><th>Triples</th><td>7,350,953,995</td><td></td></tr>
+</tbody></table>
+
+<h4>Format Breakdown</h4><br />
+
+<img src="https://chart.googleapis.com/chart?chtt=Domains%20with%20Triples&chs=500x300&chds=a&cht=p&chd=t:519379,140312,48415,37620,1511855,4030,1257,20781,91,3281,490286&chl=html-rdfa|html-microdata|html-mf-geo|html-mf-hcalendar|html-mf-hcard|html-mf-hlisting|html-mf-hresume|html-mf-hreview|html-mf-species|html-mf-hrecipe|html-mf-xfn" />
+<img src="https://chart.googleapis.com/chart?chtt=URLs%20with%20Triples&chs=500x300&chds=a&cht=p&chd=t:168654234,97048329,6602779,3745051,120027602,772402,39412,4959672,37186,1110712,40123185&chl=html-rdfa|html-microdata|html-mf-geo|html-mf-hcalendar|html-mf-hcard|html-mf-hlisting|html-mf-hresume|html-mf-hreview|html-mf-species|html-mf-hrecipe|html-mf-xfn" /><br />
+
+<ul>
+<li><a href="2012-08/stats/stats.html">Detailed Statistics for the August 2012 corpus (HTML)</a></li>
+<li><a href="2012-08/stats/additional_stats.html">Additional Statistics and Analysis for the August 2012 corpus (HTML)</a></li>
+<li><a href="2012-08/stats/how_to_get_the_data.html">Download Instructions</a></li>
+</ul>
+
+<h4>Extraction Costs</h4>
+<p>
+The costs for parsing the 40.1 Terabytes of compressed input data of the August 2012 Common Crawl corpus, extracting the RDF data and storing the extracted data on S3 totaled 398 USD in Amazon EC2 fees. We used 100 spot instances of type <code>c1.xlarge</code> for the extraction which altogether required 5,636 machine hours.
+</p>
+
+
+<h3 id="results-2012-2">3.3. Extraction Results from the February 2012 Common Crawl Corpus</h3>
+<p> 
+Common Crawl did publish a pre-release version of its 2012 corpus in February. The pages contained in the pre-release are a subset of the pages contained in the August 2012 Common Crawl corpus. We also extracted the structured data from this pre-release. The resulting statistics are found <a href="2012-02/index.html">here</a>, but are superseded by the August 2012 statistics.
+</p>
+
+<h3 id="results-2010">3.4. Extraction Results from the 2009/2010 Common Crawl Corpus</h3>
+<p> 
+The 2009/2010 Common Crawl Corpus is available on <a href="http://aws.amazon.com/s3/">Amazon S3</a> in the bucket <code>aws-publicdatasets</code> under the key prefix <code>/common-crawl/crawl-002/</code> .
+</p>
+
+<h4>Extraction Statistics</h4>
+<br />
+<table><tr><th>Crawl Dates</th><td>Sept 2009 (4 TB)<br>Jan 2010 (6.9 TB)<br>Feb 2010 (4.3 TB)<br>Apr 2010 (4.4 TB)<br>Aug 2010 (3.6 TB)<br>Sept 2010 (6 TB)</td><td></td></tr>
+<tr><th>Total Data</th><td>28.9 Terabyte</td><td>(compressed)</td></tr>
+<tr><th>Total URLs</th><td>2,804,054,789</td><td></td></tr>
+<tr><th>Parsed HTML URLs</th><td>2,565,741,671</td><td></td></tr>
+<tr><th>Domains with Triples</th><td>19,113,929</td><td></td></tr>
+<tr><th>URLs with Triples</th><td>147.871.837</td><td></td></tr>
+<tr><th>Typed Entities</th><td>1,546,905,880</td><td></td></tr>
+<tr><th>Triples</th><td>5,193,276,058</td><td></td></tr></table>
+
+<h4>Format Breakdown</h4><br />
+<img src="https://chart.googleapis.com/chart?chtt=Domains%20with%20Triples&amp;chs=500x300&amp;chds=a&amp;cht=p&amp;chd=t:537820,3930,244838,226279,12502500,31871,10419,216331,3244,13362,5323335&amp;chl=html-rdfa|html-microdata|html-mf-geo|html-mf-hcalendar|html-mf-hcard|html-mf-hlisting|html-mf-hresume|html-mf-hreview|html-mf-species|html-mf-hrecipe|html-mf-xfn" alt="">
+
+<img src="https://chart.googleapis.com/chart?chtt=URLs%20with%20Triples&amp;chs=500x300&amp;chds=a&amp;cht=p&amp;chd=t:14314036,56964,5051622,2747276,83583167,1227574,387364,2836701,25158,115345,37526630&amp;chl=html-rdfa|html-microdata|html-mf-geo|html-mf-hcalendar|html-mf-hcard|html-mf-hlisting|html-mf-hresume|html-mf-hreview|html-mf-species|html-mf-hrecipe|html-mf-xfn" alt="">
+
+<ul>
+<li><a href="2010-09/stats/stats.html">Detailed Statistics for the 2009/2010 corpus (HTML)</a></li>
+<li><a href="2010-09/stats/how_to_get_the_data.html">Download Instructions</a></li>
+</ul>
+
+<h4>Extraction Costs</h4>
+<p>
+The costs for parsing the 28.9 Terabytes of compressed input data of the 2009/2010 Common Crawl corpus, extracting the RDF data and storing the extracted data on S3 totaled 576 EUR (excluding VAT) in Amazon EC2 fees. We used 100 spot instances of type <code>c1.xlarge</code> for the extraction which altogether required 3,537 machine hours.
+</p>
+
+<h2 id="examples">4. Example Data</h2>
+<p>
+For each data format, we provide a small subset of the extracted data below for testing purposes. The data is encoded as <a href="http://sw.deri.org/2008/07/n-quads/">N-Quads</a>, with the forth element used to represent the provenance of each triple (the URL of the page the triple was extracted from). Be advised to use a parser which is able to skip invalid lines, since they could present in the data files.
+</p>
+<ul>
+<li><a href="samples/data/ccrdf.html-rdfa.sample.nq ">html-rdfa</a></li>
+<li><a href="samples/data/ccrdf.html-microdata.sample.nq">html-microdata</a></li>
+<li><a href="samples/data/ccrdf.html-mf-hcard.sample.nq">html-mf-hcard</a></li>
+<li><a href="samples/data/ccrdf.html-mf-hcalendar.sample.nq">html-mf-hcalendar</a></li>
+<li><a href="samples/data/ccrdf.html-mf-xfn.sample.nq">html-mf-xfn</a></li>
+<li><a href="samples/data/ccrdf.html-mf-geo.sample.nq">html-mf-geo</a></li>
+<li><a href="samples/data/ccrdf.html-mf-hlisting.sample.nq">html-mf-hlisting</a></li>
+<li><a href="samples/data/ccrdf.html-mf-hrecipe.sample.nq">html-mf-hrecipe</a></li>
+<li><a href="samples/data/ccrdf.html-mf-hresume.sample.nq">html-mf-hresume</a></li>
+<li><a href="samples/data/ccrdf.html-mf-hreview.sample.nq">html-mf-hreview</a></li>
+<li><a href="samples/data/ccrdf.html-mf-species.sample.nq">html-mf-species</a></li>
+</ul>
+
+<h2 id="process">5. Extraction Process</h2>
+<p>
+Since the Common Crawl data sets are stored in the <a href="http://aws.amazon.com/s3/">AWS Simple Storage Service (S3)</a>, it made sense to perform the extraction in the <a href="http://aws.amazon.com/ec2/">Amazon cloud (EC2)</a>. The main criteria here is the cost to achieve a certain task. Instead of using the ubiquitous <a href="http://hadoop.apache.org/">Hadoop framework</a>, we found using the <a href="http://aws.amazon.com/sqs/">Simple Queue Service (SQS)</a> for our extraction process increased efficiency. SQS provides a message queue implementation, which we use to co-ordinate the extraction nodes. The Common Crawl dataset is readily partitioned into compressed files of around 100MB each. We add the identifiers of each of these files as messages to the queue. A number of EC2 nodes monitor this queue, and take file identifiers from it. The corresponding file is then downloaded from S3. Using the <a href="https://github.com/commoncrawl/commoncrawl/blob/master/src/org/commoncrawl/util/shared/ArcFileReader.java">ARC file parser</a> from the Common Crawl codebase, the file is split into individual web pages. On each page, we run our RDF extractor based on the <a href="http://code.google.com/p/any23/">Anything To Triples (Any23)</a> library. The resulting RDF triples are then written back to S3 together with the extraction statistics, which are later collected. The advantage of this queue is that messages have to be explicitly marked as processed, which is done after the entire file has been extracted. Should any error occur, the message is requeued after some time and processed again.
+</p>
+
+<p>
+Any23 parses web pages for structured data by building a <a href="http://www.w3.org/TR/DOM-Level-2-Core/introduction.html">DOM tree</a> and then evaluates <a href="http://www.w3.org/TR/xpath/">XPath expressions</a> to find structured data. While profiling, we found this tree generation to account for much of the parsing cost, and we have thus searched for a way to reduce the number of times this tree is built. Our solution is to run <a href="http://docs.oracle.com/javase/tutorial/essential/regex/">(Java) regular expressions</a> against each webpages prior to extraction, which detect the presence of a microformat in a HTML page, and then only run the Any23 extractor when the regular expression find potentional matches. The formats <a href="http://microformats.org/wiki/hcard">html-mf-hcard</a>, <a href="http://microformats.org/wiki/hcalendar">html-mf-hcalendar</a>, <a href="http://microformats.org/wiki/hlisting">html-mf-hlisting</a>, <a href="http://microformats.org/wiki/hresume">html-mf-hresume</a>, <a href="http://microformats.org/wiki/hreview">html-mf-hreview</a> and <a href="http://microformats.org/wiki/hrecipe">html-mf-recipe</a> define unique enough class names, so that the presence of the class name in the HTML document is ample indication of the Microformat being present. For the remaining formats, the following table shows the used regular expressions.
+</p>
+
+<table>
+<tr><th>Format</th><th>Regular Expression</th></tr>
+
+<tr><td><a href="http://www.w3.org/TR/xhtml-rdfa-primer/">html-rdfa</a></td><td><code>(property|typeof|about|resource)\\s*=</code></td></tr>
+<tr><td><a href="http://www.w3.org/TR/microdata/">html-microdata</a></td><td><code>(itemscope|itemprop\\s*=)</code></td></tr>
+<tr><td><a href="http://gmpg.org/xfn/">html-mf-xfn</a></td><td><code>&lt;a[^&gt;]*rel\\s*=\\s*(\"|')[^\"']*(contact|acquaintance|friend|met|co-worker|colleague|co-resident|neighbor|child|parent|sibling|spouse|kin|muse|crush|date|sweetheart|me)</code></td></tr>
+<tr><td><a href="http://microformats.org/wiki/geo">html-mf-geo</a></td><td><code>class\\s*=\\s*(\"|')[^\"']*geo</code></td></tr>
+<tr><td><a href="http://microformats.org/wiki/species">html-mf-species</a></td><td><code>class\\s*=\\s*(\"|')[^\"']*species</code></td></tr>
+</table>
+
+<h2 id="source">6. Source Code</h2>
+<p>
+The source code can be checked out from our <a href="https://www.assembla.com/code/commondata/subversion/nodes/extractor">Subversion repository</a>. Afterwards, create your own configuration by copying <code>src/main/resources/ccrdf.properties.dist</code> to <code>src/main/resources/ccrdf.properties</code>, then fill in your AWS authentication information and bucket names. Compilation is performed using <a href="http://maven.apache.org/">Maven</a>, thus changing into the source root directory and typing <code>mvn install</code> should be sufficient to create a build. In order to run the extractor on more than 10 EC2 nodes, you will have to request an <a href="http://aws.amazon.com/contact-us/ec2-request/">EC2 instance limit increase</a> for your AWS account. More information about running the extractor is provided in the file <code>readme.txt</code> .
+</p>
+
+
+<h2 id="license">7. License</h2>
+<p>The extracted data is provided according the same <a href="http://commoncrawl.org/about/terms-of-use/full-terms-of-use/">terms of use, disclaimer of warranties and limitation of liabilities</a> that apply to the Common Crawl corpus.</p>
+
+<p>The Web Data Commons extraction framework can be used under the terms of the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache Software License</a>. </p>
+
+<h2 id="feedback">8. Feedback</h2>
+<p>Please send questions and feedback to the <a href="http://groups.google.com/group/web-data-commons">Web Data Commons mailing list</a> or post them in our <a href="https://groups.google.com/forum/?fromgroups#!forum/web-data-commons">Web Data Commons Google Group</a>.<br/><br/>
+More information about Web Data Commons is found <a href="../index.html">here</a>.</p>
+
+<h2 id="acknowledgments">9. Credits</h2>
+<p>Web Data Commons is a joint effort of the <a href="http://dws.informatik.uni-mannheim.de/en/research/">Research Group Data and Web Science</a> at the University of Mannheim (<a href="http://dws.informatik.uni-mannheim.de/en/people/professors/prof-dr-christian-bizer/">Christian Bizer</a>, <a href="http://dws.informatik.uni-mannheim.de/en/people/researchers/robert-meusel/">Robert Meusel</a>, <a href="http://dws.informatik.uni-mannheim.de/en/people/researchers/petar-petrovski/">Petar Petrovski</a><a href="http://dws.informatik.uni-mannheim.de/en/people/researchers/dr-kai-eckert/"></a>) and the <a href="http://www.aifb.kit.edu">Institute AIFB</a> at the Karlsruhe Institute of Technology (<a href="http://harth.org/andreas/">Andreas Harth</a>, <a href="http://www.aifb.kit.edu/web/Steffen_Stadtm%C3%BCller/en">Steffen Stadtmüller</a>). The initial version of the extraction code was written by <a href="http://hannes.muehleisen.org/">Hannes Mühleisen</a>, now working at CWI in Amsterdam.</p>
+<p>Lots of thanks to</p>
+<ul>
+  	<li>the <a href="http://commoncrawl.org/">Common Crawl project</a> for providing their great web crawl and thus  enabling Web Data Commons.</li>
+	<li>the <a href="http://code.google.com/p/any23/">Any23 project</a> for providing their great library of structured data parsers.</li>
+</ul>
+<p>Web Data Commons is supported by the <a href="http://planet-data.eu">PlanetData</a> and <a href="http://lod2.eu">LOD2</a> research projects.
+</p>
+<a href="http://planet-data.eu"><img src="../images/pd.gif" alt="PlanetData Logo"></a>&nbsp;&nbsp;&nbsp;
+<a href="http://lod2.eu"><img src="../images/lod2.gif" alt="LOD2 Logo"></a>
+
+<h2 id="references">10. References</h2>
+
+<ul>
+	<li>Christian Bizer, Kai Eckert, Robert Meusel, Hannes Mühleisen, Michael Schuhmacher, and Johanna Völker: <b><a href="http://dws.informatik.uni-mannheim.de/fileadmin/lehrstuehle/ki/pub/Bizer-etal-DeploymentRDFaMicrodataMicroformats-ISWC-InUse-2013.pdf">Deployment of RDFa, Microdata, and Microformats on the Web - A Quantitative Analysis</a></b>.  In Proceedings of the 12th International Semantic Web Conference, Part II: In-Use Track, pp.17-32 (ISWC2013).</li>
+  	<li>Hannes Mühleisen, Christian Bizer: <a href="http://ceur-ws.org/Vol-937/ldow2012-inv-paper-2.pdf">Web Data Commons - Extracting Structured Data from Two Large Web Corpora</a>. In Proceedings of the WWW2012 Workshop on Linked Data on the Web (LDOW2012).</li>
+<li>Peter Mika, Tim Potter: <a href="http://ceur-ws.org/Vol-937/ldow2012-inv-paper-1.pdf">Metadata Statistics for a Large Web Corpus</a>. In Proceedings of the WWW2012 Workshop on Linked Data on the Web (LDOW2012).</li>
+<li>Peter Mika: <a href="http://tripletalk.wordpress.com/2011/01/25/rdfa-deployment-across-the-web/">Microformats and RDFa deployment across the Web</a>. Blog Post.</li>
+<li><a href="http://sindice.com/stats/direct/basic-class-stats?settings=%7B%22iCreate%22%3A1355143360824%2C%22iStart%22%3A0%2C%22iEnd%22%3A50%2C%22iLength%22%3A50%2C%22sFilter%22%3A%22%22%2C%22sFilterEsc%22%3Atrue%2C%22aaSorting%22%3A%5B%5B4%2C%22desc%22%5D%5D%2C%22aaSearchCols%22%3A%5B%5B%22%22%2Ctrue%5D%2C%5B%22%22%2Ctrue%5D%2C%5B%22%22%2Ctrue%5D%2C%5B%22%22%2Ctrue%5D%2C%5B%22%22%2Ctrue%5D%5D%2C%22abVisCols%22%3A%5Btrue%2Ctrue%2Ctrue%2Ctrue%2Ctrue%5D%2C%22ssDelta%22%3A%22%22%7D">Class Statistics</a> from the Sindice data search engine.</li>
+</ul>
+
+</div>
+
+</div>
+
+<script type="text/javascript">
+$('#toc').toc({
+    'selectors': 'h2', //elements to use as headings
+    'container': '#toccontent', //element to find all selectors in
+    'smoothScrolling': true, //enable or disable smooth scrolling on click
+    'prefix': 'toc', //prefix for anchor tags and class names
+    'highlightOnScroll': true, //add class to heading that is currently in focus
+    'highlightOffset': 100, //offset to trigger the next headline
+    'anchorName': function(i, heading, prefix) { //custom function for anchor name
+        return prefix+i;
+    } 
+});
+</script>
+
+</body>
+</html> 
