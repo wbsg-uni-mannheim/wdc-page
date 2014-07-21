@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html><head><title>WDC - Extraction Framework</title>
+<link rel="stylesheet" href="../style.css" type="text/css" media="screen"/>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="author" content="Robert Meusel, Hannes Mühleisen, Christian Bizer, Oliver Lehmberg">
+<meta name="keywords" content="Distributed Framework, Java, Scalable, Cloud">
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script type="text/javascript" src="/jquery.toc.min.js"></script>
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-30248817-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+</head>
+<body> 
+
+  <div id="logo" style="text-align:right; background-color: white;">&nbsp;&nbsp;<a href="http://dws.informatik.uni-mannheim.de"><img src="../images/ma-logo.gif" alt="University of Mannheim - Logo"></a>&nbsp;&nbsp;<br></div>
+
+
+<div id="header">
+<h1 style="font-size: 250%;">Web Data Commons - Framework</h1>
+</div>
+
+<div id="tagline">Distributed, Parallel Extraction from Web Crawls</div>
+
+<div id="authors">
+<a href="http://dws.informatik.uni-mannheim.de/en/people/researchers/robert-meusel/">Robert Meusel</a><br />
+<a href="http://hannes.muehleisen.org/">Hannes Mühleisen</a><br />
+<a href="http://dws.informatik.uni-mannheim.de/en/people/researchers/oliver-lehmberg/">Oliver Lehmberg</a><br />
+<br/>
+<br/>
+</div>
+
+<div id="content">
+
+<p>
+This page provides an overview about the framework which is used by the Web Data Commons project to extract datasets from the crawls provided by the <a href="http://commoncrawl.org/">Common Crawl Foundation</a>. The framework was first designed by Hannes Mühleisen for the <a href="../structureddata">extraction of Microdata, Microformats and RDFa</a> from the Common Crawl. Later extended to be able to extract the <a href="">hyperlink graph</a> as well as the <a href="">web tables</a>.
+
+<h2>Contents</h2>
+<div id="toc" class="toc"></div>
+<div id="toccontent">
+
+<h2 id="general">1. General Information</h2>
+<p>
+The framework was developed by the WDC to process a large number of files from the Common Crawl in parallel using the cloud services of Amazon. The software is written in Java using Maven as build tool and can be run on any operating system. 
+<br>
+The picture below explains the principle process flow of the framework, which is basically steered by one master node, which can be either a local server or machine, or a cloud instance itself. 
+<br>
+<img src="../images/framework.png" alt="WDC Framework Process Flow">
+<br>
+<ol>
+<li>From the master node the AWS Simple Queue Service is filled with all files which should be processed. Those files represent the task for the later working instances and are basically file references.</li>
+<li>From the master node a number of instances are launched within the EC2 environment of AWS. After the start up, each instances will install automatically the WDC framework and launch it.</li>
+<li>Each instance, after starting the framework will automatically requests a task from the SQS and start processing the file.</li>
+<li>The file will first be downloaded from S3 and will than be processed by the worker.</li>
+<li>After finishing one file the result will be stored in the users own S3 Bucket. And the worker will start again at 3.</li>
+<li>After the queue is empty the master can start collecting the extracted data and statistics.</li>
+</ol>
+</p>
+
+<h2 id="start">2. Getting Started</h2>
+<p>
+Running your own extraction using the WDC Extraction Framework is rather simple and needs just some minutes to set yourself up. Please follow the steps below and make sure you have all requirements in place.
+</p>
+
+<h3 id="req">2.1. Requirements</h2>
+<p>
+In order to run an extraction using the WDC Framework the following is required:
+<ul>
+<li><b>Amazon Web Service Account/User</b>: As the framework is currently tailored to be run using services from Amazon, you will need to have an AWS with sufficient amount of credits. The user needs rights to access the AWS Services: EC2, S3, SQS and Simple DB.</li>
+<li><b>AWS Access Token</b>: In order to make use of the Amazon services through the framework you need have your AWS <code>Access Key Id</code> as well as your <code>Secret Access Key</code>. Both is available through the Web Interface of AWS in the section <a href="http://aws.amazon.com/de/iam/">IAM</a>. In case you do not have access to this section with your user, contact the administrator of your AWS account.</li>
+<li><b>Java</b>: On machine has to serve as master node. This machine, no matter if its your local server/computer or an EC2 instance within AWS needs to have Java 6 or higher installed to run the commands and control the extraction.</li>
+<li><b>Maven</b>: In order to compile your own version of the Framework you need to have <a href="http://maven.apache.org/">Maven</a> in place.</li>
+</ul>
+</p>
+
+<h3 id="build">2.2. Build and Run</h2>
+<p>
+First you have to get the code of the framework from the <a href="https://www.assembla.com/code/commondata/subversion/nodes">WDC Repository</a>. The extraction project is located under <code>Extractor/trunk/extractor</code>. After checking out the latest version of the project, create a copy <code>ccrdf.properties.dist</code> file within the <code>/src/main/resources</code> directory and name it <code>ccrdf.properties</code>. Within this file you need to fill line 2-3 with your Amazon Keys (Id and Secure) and line 6-7 with two (empty) S3 buckets. The first bucket will be used to store your results, the second will be used to push the ready compiled framework library to S3 so it can be downloaded from the starting servers. After setting the properties up, navigate to the root folder of your project and compile/build the project using the Maven command <code>mvn install</code>. After successfully compiling the code your project should include a sub directory named <code>target/</code> including a JAR file named <code>ccrdf-*.jar</code>.
+</br>
+Now you are ready to run your first extraction using the following commands:
+<ul>
+<li><b>Deploy</b> to upload the JAR to S3<br><code>./bin/master deploy --jarfile target/ccrdf-*.jar</code></li>
+<li><b>Queue</b> to fill the extraction queue with the Common Crawl files you want to process<br><code>./bin/master queue --bucket-prefix 2010/08/09/0/</code></li>
+<li><b>Start</b> to launch EC2 extraction instances from the spot market. The command will keep starting instances until it is cancelled, so beware! Also, the price limit has to be given. The current spot prices can be found at http://aws.amazon.com/ec2/spot-instances/#6. A general recommendation is to set this price at about the on-demand instance price. This way, we will benefit from the generally low spot prices without our extraction process being permanently killed. The price limit is given in US$.<br><code>./bin/master start --worker-amount 10 --pricelimit 0.6</code><br>Note: It may take a while (approx. 10 Minutes) for the instances to become available and start taking tasks from the queue. You can observe the process of the spot requests within the AWS Web Dashboard.</li>
+<li><b>Monitor</b> to monitor the process including the number of items in the queue, the approximate time to finish and the number of running/requested instances<br><code>./bin/master monitor</code></li>
+<li><b>Shutdown</b> to kill all worker nodes and terminate the spot instance requests<br><code>./bin/master shutdown</code></li>
+<li><b>Retrieve Data</b> to retrieve all collected data to a local directory<br><code>./bin/master  retrievedata --destination /some/directory</code></li>
+<li><b>Retrieve Stats</b> to retrieve all collected data statistics to a local directory from the Simple DB of AWS<br><code>./bin/master  retrievestats --destination /some/directory</code></li>
+<li><b>Clear Queue</b> to remove all remaining tasks from the queue and delete it<br><code>./bin/master clearqueue</code></li>
+<li><b>Clear Data</b> to remove all collected data from the Simple DB<br><code>./bin/master cleardata</code></li>
+</ul>
+For additional information and parameters which might be useful for your task you can have a look in the documentation of the different commands or have a look in the implementation class <code><a href="https://www.assembla.com/code/commondata/subversion/nodes/80/Extractor/trunk/extractor/src/main/java/org/fuberlin/wbsg/ccrdf/Master.java">Master.java</a></code>.
+</p>
+<!--
+<h3 id="customize">2.3. Build your own Extraction Framework</h2>
+<p>
+</p>
+-->
+<h2 id="costs">3. Costs</h2>
+<p>
+The usage of the WDC framework is free of charge. Nevertheless, as the framework makes use of AWS Services, Amazon will charge you for the usage.
+There are several granting possibilities by Amazon itself, where Amazon supports ideas and projects running within their cloud system with free credits - specially in the education area (see <a href="http://aws.amazon.com/grants/">Amazon Grants</a>).
+</p>
+
+<h2 id="license">4. License</h2>
+
+<p>The Web Data Commons extraction framework can be used under the terms of the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache Software License</a>. </p>
+
+<h2 id="feedback">5. Feedback</h2>
+<p>Please send questions and feedback to the <a href="http://groups.google.com/group/web-data-commons">Web Data Commons mailing list</a> or post them in our <a href="https://groups.google.com/forum/?fromgroups#!forum/web-data-commons">Web Data Commons Google Group</a>.<br/><br/>
+More information about Web Data Commons is found <a href="../index.html">here</a>.</p>
+
+</div>
+
+</div>
+
+<script type="text/javascript">
+$('#toc').toc({
+    'selectors': 'h2,h3', //elements to use as headings
+    'container': '#toccontent', //element to find all selectors in
+    'smoothScrolling': true, //enable or disable smooth scrolling on click
+    'prefix': 'toc', //prefix for anchor tags and class names
+    'highlightOnScroll': true, //add class to heading that is currently in focus
+    'highlightOffset': 100, //offset to trigger the next headline
+    'anchorName': function(i, heading, prefix) { //custom function for anchor name
+        return prefix+i;
+    } 
+});
+</script>
+
+</body>
+</html> 
