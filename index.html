@@ -22,12 +22,12 @@
 <body> 
 
   <div id="logo" style="text-align:right; background-color: white;">&nbsp;&nbsp;<a href="http://dws.informatik.uni-mannheim.de"><img src="images/ma-logo.gif" alt="University of Mannheim - Logo"></a>&nbsp;&nbsp;<br></div>
-
+<div itemscope itemtype="http://schema.org/WebObservatory">
 <div id="header">
-<h1 style="font-size: 250%;">Web Data Commons</h1>
+<h1 style="font-size: 250%;"><span itemprop="name">Web Data Commons</span></h1>
 </div>
-
-<div id="tagline">Extracting Structured Data from the Common Crawl </div>
+<meta itemprop="url" content="http://webdatacommons.org" />
+<div id="tagline"><span itemprop="description">Extracting Structured Data from the Common Crawl</span</div>
 <div id="content">
 
 <p>
@@ -55,19 +55,28 @@ The Web Data Commons project extracts structured data from the  <a href="http://
 </ul>
 
 <h2 id="dataset">Available Data Sets</h2>
-<h3><a href="structureddata/index.html">RDFa, Microdata, and Microformat Data Sets</a></h3>
+<div itemprop="webObservatoryProject" itemscope itemtype="http://schema.org/WebObservatoryProject">
+<meta itemprop="url" content="http://webdatacommons.org/structureddata/index.html"/>
+<h3><a href="structureddata/index.html"><span itemprop="name">RDFa, Microdata, and Microformat Web Deployment</span></a></h3>
 <p>
-More and more websites have started to embed structured data describing products, people, organizations, places, and events into their HTML pages using markup standards such as RDFa, Microdata and Microformats. 
+More and more websites have started to embed structured data describing products, people, organizations, places, and events into their HTML pages using <span itemprop="method">markup standards such as RDFa, Microdata and Microformats</span>. 
 The Web Data Commons project extracts this data from several billion web pages. So far the project provides three different data sets extracted from the Common Crawl 2013, 2012 and 2010 corpus. The project provides the extracted data for download and publishes statistics about the deployment of the different formats.
 </p>
-<h3><a href="webtables/index.html">Web Tables</a></h3>
+</div>
+<div itemprop="webObservatoryProject" itemscope itemtype="http://schema.org/WebObservatoryProject">
+<meta itemprop="url" content="http://webdatacommons.org/webtables/index.html"/>
+<h3><a href="webtables/index.html"><span itemprop="name">Web Tables</span></a></h3>
 <p>
-The Web contains vast amounts of HTML tables. Most of these tables are used for layout purposes, but a fraction of the tables is also quasi-relational, meaning that they contain structured data describing a set of entities, and are thus useful in application contexts such as data search, table augmentation, knowledge base construction, and for various NLP tasks. The WDC Web Tables data set consists of the 147 million relational Web tables that are contained in the overall set of 11 billion HTML tables found in the Common Crawl. 
+The Web contains vast amounts of <span itemprop="method">HTML tables</span>. Most of these tables are used for layout purposes, but a fraction of the tables is also quasi-relational, meaning that they contain structured data describing a set of entities, and are thus useful in application contexts such as data search, table augmentation, knowledge base construction, and for various NLP tasks. The WDC Web Tables data set consists of the 147 million relational Web tables that are contained in the overall set of 11 billion HTML tables found in the Common Crawl. 
 </p>
-<h3><a href="hyperlinkgraph/index.html">Hyperlink Graph</a></h3>
+</div>
+<div itemprop="webObservatoryProject" itemscope itemtype="http://schema.org/WebObservatoryProject">
+<meta itemprop="url" content="http://webdatacommons.org/hyperlinkgraph/index.html"/>
+<h3><a href="hyperlinkgraph/index.html"><span itemprop="name">Hyperlink Graph</span></a></h3>
 <p>
-We offer a large hyperlink graph that we extracted from the 2012 version of the Common Crawl. The WDC Hyperlink Graph covers 3.5 billion web pages and 128 billion hyperlinks between these pages. The graph can help researchers to improve search algorithms, develop spam detection methods and evaluate graph analysis algorithms.  To the best of our knowledge, the graph is the largest hyperlink graph that is available to the public. 
+We offer a large <span itemprop="method">hyperlink graph</span> that we extracted from the 2012 version of the Common Crawl. The WDC Hyperlink Graph covers 3.5 billion web pages and 128 billion hyperlinks between these pages. The graph can help researchers to improve search algorithms, develop spam detection methods and evaluate graph analysis algorithms.  To the best of our knowledge, the graph is the largest hyperlink graph that is available to the public. 
 </p>
+</div>
 
 <h2 id="license">License</h2>
 <p>The extracted data is provided according the same <a href="http://commoncrawl.org/about/terms-of-use/full-terms-of-use/">terms of use, disclaimer of warranties and limitation of liabilities</a> that apply to the Common Crawl corpus.</p>
@@ -80,7 +89,7 @@ We offer a large hyperlink graph that we extracted from the 2012 version of the 
 </p>
 <h2 id="about">About Web Data Commons Project</h2>
 <p>
-The Web Data Commons project was started by researchers  from Freie Universit&auml;t Berlin  and the Karlsruhe Institute of Technology (KIT) in 2012. The goal of the project is to facilitate research and support companies in exploiting the wealth of information on the Web by extracting structured data from web crawls and provide this data for public download. Today the WDC Project is mainly maintained by the <a href="http://dws.informatik.uni-mannheim.de/">Data and Web Science Research Group</a>  at the University of Mannheim. The project is coordinated by <a href="http://dws.informatik.uni-mannheim.de/en/people/professors/prof-dr-christian-bizer/">Christian Bizer</a> who has moved from Berlin to Mannheim.
+The Web Data Commons project was started by researchers  from <span itemprop="contributer" itemscope itemtype="http://schema.org/Organization"><span itemprop="name">Freie Universit&auml;t Berlin</span></span> and the <span itemprop="contributer" itemscope itemtype="http://schema.org/Organization"><span itemprop="name">Karlsruhe Institute of Technology (KIT)</span></span> in 2012. The goal of the project is to facilitate research and support companies in exploiting the wealth of information on the Web by extracting structured data from web crawls and provide this data for public download. Today the WDC Project is mainly maintained by the <span itemprop="contributer" itemscope itemtype="http://schema.org/Organization"><a href="http://dws.informatik.uni-mannheim.de/"><span itemprop="subOrganization" itemscope itemtype="http://schema.org/Organization"><span itemprop="name">Data and Web Science Research Group</a></a> at the <span itemprop="name">University of Mannheim</span></span>. The project is coordinated by <a href="http://dws.informatik.uni-mannheim.de/en/people/professors/prof-dr-christian-bizer/"><span itemprop="accountablePerson">Christian Bizer</span></a> who has moved from Berlin to Mannheim.
 </p>
 <h2 id="credits">Credits</h2>
 <p>
@@ -93,7 +102,7 @@ Web Data Commons is supported by the EU FP7 projects <a href="http://planet-data
 </div>
 
 </div>
-
+</div>
 </body>
 </html> 
 <ul>
