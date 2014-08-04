@@ -57,7 +57,7 @@ pre { speak-punctuation: code; }
 table {border-collapse: collapse; margin-bottom: .75em; border-top: 1px solid #D4DCE8; border-bottom: 1px solid #D4DCE8}
 table th {text-align: left; background: #EAF3FA; padding: .5em .9em; height: 21px; font-weight: bold; font-size: 1em; color: #333}
 table th a {text-decoration: none !important}
-table td {vertical-align: top; text-align: left; padding: .5em 1em; border-bottom: 1px solid #eee}
+table td {vertical-align: top; padding: .5em 1em; border-bottom: 1px solid #eee}
 table tr.even {background-color: #fff}
 table tr.odd {background-color: #f6f6f6}
 
