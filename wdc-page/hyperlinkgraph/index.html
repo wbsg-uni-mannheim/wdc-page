@@ -121,14 +121,14 @@ Please visit the following links for more detailed statistics about the 2014 gra
 <li><a href="2014-04/download.html">Download Instructions</a></li>
 </ul>
 </p>
-<h2 id="examples">2. Data Formats and Download</h2>
+<h2 id="examples">3. Data Formats and Download</h2>
 
 <p>
 We provide the graphs for free download in several formats. All graphs are provided in an index/arc data format. In addition, we provide the page graph in the format used by the <a href="http://webgraph.di.unimi.it/" target="_blank">WebGraph library</a> and the PLD graph in the format used by <a href="http://pajek.imfm.si/doku.php" target="_blank">Pajek</a>. The page graphs are hosted on Amazon S3. The aggregated graphs are provided for download via a server in Mannheim, Germany.
 </p>
 
 
-<h3 id="about">2.1 Index/Arc Format</h3>
+<h3 id="about">3.1. Index/Arc Format</h3>
 
 <p>
 The Index/Arc format represents each graph using two files. Within the index file each line represents one node. The first column states the node name, the second column states the node index. Within the arc file each line represents a directed edge between two nodes, where the first column is the origin node and the second the target node. The files are sorted by index and use tabs as a delimiter.
@@ -153,7 +153,7 @@ In case you experience any problems downloading the files please find additional
 <b>Downloading the page graph:</b> The page graph (arc and indes files) are, due to their size split into in small files of around 500 MB. These files can be downloaded using <code>wget -i http://webdatacommons.org/hyperlinkgraph/data/index.list.txt</code> for the index files and respectively <code>wget -i http://webdatacommons.org/hyperlinkgraph/data/arc.list.txt</code> for the arc files.
 
 </p>
-<h3 id="about">2.2 WebGraph Framework Format</h3>
+<h3 id="about">3.2. WebGraph Framework Format</h3>
 <p>
 We also provide the page graph in the format expected by the <a href="http://webgraph.di.unimi.it/" target="_blank">WebGraph Framework</a> developed by Sebastiano Vigna. The graph is represented using three files: <code>.graph, .offsets, .properties</code>. All three are necessary to load the network into the library.
 <ul>
@@ -164,13 +164,13 @@ We also provide the page graph in the format expected by the <a href="http://web
 Using the WebGraph Framework, which can be downloaded from <a href="http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22it.unimi.dsi%22">Maven Central</a>, these files can be loaded using the following line of code: 
 <code>BVGraph graph = BVGraph.loadMapped(baseName, new ProgressLogger())</code>.
 </p>
-<h3 id="about">2.3 Pajek NET Format</h3>
+<h3 id="about">3.3. Pajek NET Format</h3>
 <p>
 We offer the PLD-aggregation of the page graph also in the <a href="https://gephi.org/users/supported-graph-formats/pajek-net-format/" target="_blank">Pajek NET Format</a> which is understood by various graph analysis tools such as <a href="http://pajek.imfm.si/doku.php" target="_blank">Pajek</a> or <a href="https://gephi.org/" target="_blank">Gephi</a>. The format combines the index and the arc list into a single file (<a href="data/example.net">example file</a>, 106 nodes, 141 arcs).
 
 The PLD graph can be downloaded from <a href="http://data.dws.informatik.uni-mannheim.de/hyperlinkgraph/2012-08/pajek/pld-pajek.gz">Pajek version of PLD Graph</a> (2.3 GB) and can directly be imported into Pajek after unzipping. To process the graph in acceptable time, we recommend to run Pajek with at least 32 GB of RAM.
 </p>
-<h3 id="about">2.4 Ranking Files</h2>
+<h3 id="about">3.4. Ranking Files</h2>
 <p>
 Beside the pure graph files, we also calculated for each host in the host graph the <code>harmonic centrality</code>, <code>indegree centrality</code>, <code>Katz's index</code>, and <code>Page Rank</code>. An interactive version of those ranking is available at <a href="http://wwwranking.webdatacommons.org" target="_blank">wwwranking.webdatacommons.org</a>. The incorporated rating data can also be downloaded using the files listed below. Each line within the files consists of the host and the value for the corresponding measure.
 <ul>
@@ -187,7 +187,7 @@ Beside the pure graph files, we also calculated for each host in the host graph 
 </ul>
 </p>
 
-<h2 id="process">3. Extraction Process and Source Code</h2>
+<h2 id="process">4. Extraction Process and Source Code</h2>
 
 <p>The WDC Hyperlink Graph was extracted from the latest version of the <a href="http://commoncrawl.org/">Common Crawl </a>, which was gathered in the first half of 2012. From this corpus, we extracted all HTML pages (mime-type: <i>text/html</i>) and every hyperlink pointing to another crawled HTML page (link type: <i>a</i> and <i>link</i>). For each re-direct, we include an additional node in the graph which links to the re-direct target. 
 </p>
