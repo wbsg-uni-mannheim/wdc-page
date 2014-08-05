@@ -156,35 +156,13 @@ In case you experience any problems downloading the files please find additional
 <h3 id="about">3.2. WebGraph Framework Format</h3>
 <p>
 We also provide the page graph in the format expected by the <a href="http://webgraph.di.unimi.it/" target="_blank">WebGraph Framework</a> developed by Sebastiano Vigna. The graph is represented using three files: <code>.graph, .offsets, .properties</code>. All three are necessary to load the network into the library.
-<ul>
-<li><a href="http://data.dws.informatik.uni-mannheim.de/hyperlinkgraph/2012-08/webgraph/network.graph">network.graph</a> (52 GB)</li>
-<li><a href="http://data.dws.informatik.uni-mannheim.de/hyperlinkgraph/2012-08/webgraph/network.offsets">network.offsets</a> (4 GB)</li>
-<li><a href="http://data.dws.informatik.uni-mannheim.de/hyperlinkgraph/2012-08/webgraph/network.properties">network.properties</a> (1.5 MB)</li>
-</ul>
+<br/>
 Using the WebGraph Framework, which can be downloaded from <a href="http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22it.unimi.dsi%22">Maven Central</a>, these files can be loaded using the following line of code: 
 <code>BVGraph graph = BVGraph.loadMapped(baseName, new ProgressLogger())</code>.
 </p>
 <h3 id="about">3.3. Pajek NET Format</h3>
 <p>
 We offer the PLD-aggregation of the page graph also in the <a href="https://gephi.org/users/supported-graph-formats/pajek-net-format/" target="_blank">Pajek NET Format</a> which is understood by various graph analysis tools such as <a href="http://pajek.imfm.si/doku.php" target="_blank">Pajek</a> or <a href="https://gephi.org/" target="_blank">Gephi</a>. The format combines the index and the arc list into a single file (<a href="data/example.net">example file</a>, 106 nodes, 141 arcs).
-
-The PLD graph can be downloaded from <a href="http://data.dws.informatik.uni-mannheim.de/hyperlinkgraph/2012-08/pajek/pld-pajek.gz">Pajek version of PLD Graph</a> (2.3 GB) and can directly be imported into Pajek after unzipping. To process the graph in acceptable time, we recommend to run Pajek with at least 32 GB of RAM.
-</p>
-<h3 id="about">3.4. Ranking Files</h2>
-<p>
-Beside the pure graph files, we also calculated for each host in the host graph the <code>harmonic centrality</code>, <code>indegree centrality</code>, <code>Katz's index</code>, and <code>Page Rank</code>. An interactive version of those ranking is available at <a href="http://wwwranking.webdatacommons.org" target="_blank">wwwranking.webdatacommons.org</a>. The incorporated rating data can also be downloaded using the files listed below. Each line within the files consists of the host and the value for the corresponding measure.
-<ul>
-<li>Harmonic Centrality: <a href="http://data.dws.informatik.uni-mannheim.de/hyperlinkgraph/2012-08/ranking/hostgraph-h.tsv.gz">http://data.dws.informatik.uni-mannheim.de/hyperlinkgraph/2012-08/ranking/hostgraph-h.tsv.gz</a></li>
-<li>Indegree: <a href="http://data.dws.informatik.uni-mannheim.de/hyperlinkgraph/2012-08/ranking/hostgraph-indegree.tsv.gz">http://data.dws.informatik.uni-mannheim.de/hyperlinkgraph/2012-08/ranking/hostgraph-indegree.tsv.gz</a></li>
-<li>Katz: <a href="http://data.dws.informatik.uni-mannheim.de/hyperlinkgraph/2012-08/ranking/hostgraph-katz.tsv.gz">http://data.dws.informatik.uni-mannheim.de/hyperlinkgraph/2012-08/ranking/hostgraph-katz.tsv.gz</a></li>
-<li>PageRank: <a href="http://data.dws.informatik.uni-mannheim.de/hyperlinkgraph/2012-08/ranking/hostgraph-pr.tsv.gz">http://data.dws.informatik.uni-mannheim.de/hyperlinkgraph/2012-08/ranking/hostgraph-pr.tsv.gz</a></li>
-</ul>
-<ul>
-<li><code>4253d61a54f38a577c1a86fba8fa0a84  hostgraph-h.tsv.gz</code></li>
-<li><code>f8fc1d3f239f64ef5e0b95856fa216e4  hostgraph-indegree.tsv.gz</code></li>
-<li><code>23537ca26d123298b84c24f6298c27f7  hostgraph-katz.tsv.gz</code></li>
-<li><code>1edc26f368022e45689fc1c4ee82a5f8  hostgraph-pr.tsv.gz</code></li>
-</ul>
 </p>
 
 <h2 id="process">4. Extraction Process and Source Code</h2>
