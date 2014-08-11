@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html><head><title>Anthelion - Crawling for Structured Data</title>
+<link rel="stylesheet" href="http://webdatacommons.org/style.css" type="text/css" media="screen"/>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script type="text/javascript" src="/jquery.toc.min.js"></script>
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-30248817-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+</head>
+<body> 
+
+  <div id="logo" style="text-align:right; background-color: white;">&nbsp;&nbsp;<a href="http://dws.informatik.uni-mannheim.de"><img src="../images/ma-logo.gif" alt="University of Mannheim - Logo"></a>&nbsp;&nbsp;&nbsp;<a href="http://labs.yahoo.com/location/barcelona/"><img src="http://l.yimg.com/rz/d/yahoo_labs_en-US_s_f_p_bestfit_labs_2x.png" alt="Yaho! Labs Barcelona, Spain"></a>&nbsp;&nbsp;<br></div>
+
+
+<div id="header">
+<h1 style="font-size: 250%;">Anthelion</h1>
+</div>
+
+<div id="tagline">Focused Crawling for Structured Data</div>
+
+<div id="authors">
+<a href="http://dws.informatik.uni-mannheim.de/en/people/researchers/robert-meusel/">Robert Meusel</a><br />
+<a href="">Peter Mika</a><br/>
+<a href="">Roi Blanco</a><br/>
+</div>
+
+<div id="content">
+
+<p>
+The Web is rapidly transforming from a pure document collection to the largest connected public data space. Semantic annotations of web pages make it notably easier to extract and reuse data and are increasingly used by both search engines and social media sites to provide better search experiences through rich snippets, faceted search, task completion etc. On this page, we present the results of our study of the novel problem of crawling structured data embedded inside HTML pages. We describe <b>Anthelion</b>, the first focused crawler addressing this task. We propose new methods of focused crawling specifically designed for collecting data-rich pages with greater efficiency. In particular, we propose a novel combination of <b>online learning</b> and <b>bandit-based explore/exploit</b> approaches to predict data-rich web pages based on the context of the page as well as using feedback from the extraction of metadata from previously seen pages. We show that these techniques significantly outperform  state-of-the-art approaches for focused crawling, measured as the ratio of relevant pages and non-relevant pages collected within a given budget.
+</p>
+
+<h2>Contents</h2>
+<div id="toc" class="toc"></div>
+
+<div id="toccontent">
+
+<h2 id="desc">1. Method Description</h2>
+
+<h2 id="arch">2. System Architecture</h2>
+
+<h2 id="code">3. Source Code</h2>
+
+<h2 id="lice">4. License</h2>
+
+<h2 id="ref">5. References</h2>
+
+</div>
+
+</div>
+<script type="text/javascript">
+$('#toc').toc({
+    'selectors': 'h2,h3', //elements to use as headings
+    'container': '#toccontent', //element to find all selectors in
+    'smoothScrolling': true, //enable or disable smooth scrolling on click
+    'prefix': 'toc', //prefix for anchor tags and class names
+    'highlightOnScroll': true, //add class to heading that is currently in focus
+    'highlightOffset': 100, //offset to trigger the next headline
+    'anchorName': function(i, heading, prefix) { //custom function for anchor name
+        return prefix+i;
+    }
+});
+</script>
+</body>
+</html> 
