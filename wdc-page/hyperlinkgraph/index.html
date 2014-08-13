@@ -78,7 +78,7 @@ As described above, we provide three different levels of granularities for each 
 </p>
 <h2 id="graph2012">2.2. Extracted Hyperlink Graph from August 2012 Common Crawl Corpus</h2>
 <p>
-The dataset released in August 2012 by the Common Crawl Foundation, was gathered using a web crawler making use of a breadth-first-search selection strategy. The crawl was seeded with a large number of URLs from former crawls of the foundation. 
+The dataset released in August 2012 by the Common Crawl Foundation, was gathered using a web crawler making use of a breadth-first-search selection strategy and embedding link discovery while crawling. The crawl was seeded with a large number of URLs from former crawls of the foundation. 
 </br>
 The table below gives an overview of the size of the different aggregation levels of the extracted graph which are available as download:
 </p>
@@ -89,9 +89,8 @@ The table below gives an overview of the size of the different aggregation level
 <tr><td>Pay-Level-Domain </td><td align="right">43 million</td><td align="right">623 million</td></tr>
 </table>
 <p>
-Within the extracted graph over 94% of all crawled pages are weakly connected and over 50% are in addition strongly connected. This makes this graph useful for a wide range of graph analysis algorithms and structural analysis.
-Please visit the following links for more detailed statistics about the graph as well as detailed statistics how to download and make use of the graph:
-
+Within the extracted graph over 94% of all crawled pages are connected and in addition the largest <a href="https://en.wikipedia.org/wiki/Strongly_connected_component">strongly connected component</a> consists of over 50% of all nodes in the graph. This makes this graph useful for a wide range of graph analysis algorithms and structural analysis.
+Please visit the following links for more detailed statistics about the graph as well as detailed description how to download and make use of the graph:
 <ul>
 <li><a href="2012-08/topology.html">Basic statistics about the topology of the graphs</a></li>
 <li><a href="2012-08/download.html">Download Instructions</a></li>
@@ -99,7 +98,7 @@ Please visit the following links for more detailed statistics about the graph as
 </p>
 <h2 id="graph2014">2.2. Extracted Hyperlink Graph from Spring 2014 Common Crawl Corpus</h2>
 <p>
-The dataset released in April 2014 by the Common Crawl Foundation, was gathered using a modification of the <a href="http://nutch.apache.org/">Apache Nutch</a> crawler. The crawler was modified to not follow links, but to simply crawl all given seeds. The crawl was seeded with over 6 billion URLs provided by the search engine company <a href="http://blekko.com/">blekko</a> and the crawler was stopped at around 2 billion gathered pages. The Common Crawl Foundation and blekko started a cooperation to increase the quality and popularity of the crawled pages and reduce the number of crawled spam pages and crawler traps.
+The dataset released in April 2014 by the Common Crawl Foundation, was gathered using a modified <a href="http://nutch.apache.org/">Apache Nutch</a> crawler to gather pages from a seed list without discovering links while crawling. The seed list,containing around 6 billion URLs was provided by the search engine company <a href="http://blekko.com/">blekko</a> where the crawl corpus contains around 2 billion of those pages. The Common Crawl Foundation and blekko started a cooperation in 2013 to increase the quality and popularity of the crawled pages and reduce the number of crawled spam pages and crawler traps.
 <br/>
 The table below gives an overview of the size of the different aggregation levels of the graph which are available as download:
 </p>
@@ -110,11 +109,9 @@ The table below gives an overview of the size of the different aggregation level
 <tr><td>Pay-Level-Domain </td><td align="right">13 million</td><td align="right">56 million</td></tr>
 </table>
 <p>
-Within the extracted graph over 91% of all crawled pages are weakly connected, but only around 19% of the crawled pages are strongly connected. This is due to new crawling strategy and the incomplete gathering of the seed URLs. 
+Within the extracted graph over 91% of all crawled pages are connected, and the largest <a href="https://en.wikipedia.org/wiki/Strongly_connected_component">strongly connected component</a> consists of 19% of all nodes in the graph. This means, that in comparison to the 2012 graph, the percentage of connected nodes is almost equal, but the size of the largest strongly connected component is much smaller. This phenomenon results from the different crawling strategies which were used to gather the web corpora. Nevertheless we encourage the usage of both graph datasets but <font color="red">for analysis of the connectivity of the pages within the web and structural studies we recommend to use the 2012 graph dataset, as a BFS based selection strategy including link discovery while crawling most likely results in a more realistic snapshot of the web - structural-wise.</font>
 <br/>
-<font color="red">Due to crawling strategy and the resulting sparse connected graph of the 2014 web crawl, we recommend to use the 2012 graph dataset when analysing structural behaviours of the WWW.</font>
-<br/>
-Please visit the following links for more detailed statistics about the 2014 graph as well as detailed statistics how to download and make use of the graph:
+Please visit the following links for more detailed statistics about the 2014 graph as well as detailed description how to download and make use of the graph:
 
 <ul>
 <li><a href="2014-04/topology.html">Basic statistics about the topology of the graphs</a></li>

@@ -34,14 +34,17 @@
 <div id="authors">
 <a href="http://dws.informatik.uni-mannheim.de/en/people/researchers/robert-meusel/">Robert Meusel
 </a><br />
+<a href="http://vigna.di.unimi.it/">Sebastiano Vigna</a><br />
 <a href="">Oliver Lehmberg</a><br />
 <a href="http://dws.informatik.uni-mannheim.de/en/people/professors/prof-dr-christian-bizer/">Christian Bizer</a><br />
-<a href="http://vigna.di.unimi.it/">Sebastiano Vigna</a><br />
 </div>
 
 <div id="content">
 
-<p> This document provides basic statistics about the topology of the <a href="../index.html">Web Data Commons - Hyperlink Graph</a> extracted from the Common Crawl Corpus released in April 2014, covering 1.7 billion web pages and 64 billion hyperlinks between these pages. 
+<p> This document provides basic statistics about the topology of the <a href="../index.html">Web Data Commons - Hyperlink Graph</a> extracted from the Common Crawl Corpus released in April 2014, covering 1.7 billion web pages and 64 billion hyperlinks between these pages. The graph was extracted from the Spring 2014 web corpus of the Common Crawl Foundation. This corpus was gathered using a modified <a href="http://nutch.apache.org/">Apache Nutch</a> crawler to gather pages from a seed list without discovering links while crawling. The seed list,containing around 6 billion URLs was provided by the search engine company <a href="http://blekko.com/">blekko</a> where the crawl corpus contains around 2 billion of those pages. The Common Crawl Foundation and blekko started a cooperation in 2013 to increase the quality and popularity of the crawled pages and reduce the number of crawled spam pages and crawler traps.
+</br>
+</br>
+The graph of 2014 is well connected (91% of all nodes) the largest <a href="https://en.wikipedia.org/wiki/Strongly_connected_component">strongly connected component</a> consists of only 19% of all nodes, which is most like due to the selected crawling strategy. Nevertheless we encourage the usage of this graph datasets but <font color="red">for analysis of the connectivity of the pages within the web and structural studies we recommend to use the <a href="../2012-08/topology.html">2012 graph dataset</a>, as a BFS based selection strategy including link discovery while crawling most likely results in a more realistic snapshot of the web - structural-wise.</font>
 </p>
 
 <h2>Contents</h2>
@@ -51,10 +54,8 @@
 
 <h2 id="examples">1. Page Graph</h2>
 <p>
-The page graph consists of over 1.7 billion nodes and over 64 billion arcs between those nodes. 
-In the following we will report about the basic findings within the page graph. 
-<font color="red">In comparison to the graph extracted from the 2012 Common Crawl corpus, this graph is sparser and even 91% of all nodes are linked only 19% form a strongly connected component. This is due to the changed crawling strategy, where around 2 billion pages from a seed list of 6 billion where gathered leaving out a large number of pages. The seed list was provided by the search engine <a href="http://blekko.com">blekko</a> to the Common Crawl Foundation. The seed list are the most popular pages from the search index of blekko, which are cleaned from spam pages and crawler traps.
-Unfortunately this crawling strategy leads to an incomplete graph. In case of analysis of the structure of the Web we suggest to use the <a href="../2012-08/topology.html">former graph extracted from the 2012 Common Crawl corpus<a/></font>.
+This graph contains of over 1.7 billion nodes which are connected by over 64 billion arcs which are retrieved from the extracted hyperlinks of a crawled page. 
+In the following we present the analysis of the degree and the components of the graph as well as the sizes of the bow-tie components, which can be found within the graph and was first introduced in the work <a href="http://www9.org/w9cdrom/160/160.html">Graph structure in the web</a> by Broder et al. in 2000.
 </p>
 </p>
 <h3>1.1 Indegree and Outdegree Distribution</h3>
@@ -817,7 +818,6 @@ Both only have a small fraction of intra-TLD-links compared to inter-TLD-links.
 <ul>
   	<li>the <a href="http://commoncrawl.org/">Common Crawl project</a> for providing their great web crawl and thus enabling the creation of the WDC Hyperlink Graph.</li>
 	<li>Sebastiano Vigna for providing and supporting us with his amazing Java <a href="http://webgraph.di.unimi.it/">WebGraph</a> library.</li>
-	<li>Andrej Mrvar for his fast and detailed answers about the usage of specific function in <a href="http://pajek.imfm.si/doku.php">Pajek</a>.</li>
 </ul>
 <p>The creation of the WDC Hyperlink Graph was supported by the EU research project <a href="http://planet-data.eu">PlanetData</a> and by <a href="http://aws.amazon.com/education/">Amazon Web Services</a> through a Machine Learning Research Grant. We thank your sponsors a lot for supporting Web Data Commons. 
 </p>
