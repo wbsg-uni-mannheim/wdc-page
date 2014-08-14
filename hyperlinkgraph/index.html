@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html><head><title>WDC - Hyperlink Graphs</title>
 <link rel="stylesheet" href="../style.css" type="text/css" media="screen"/>
@@ -31,7 +32,7 @@
 <h1 style="font-size: 250%;">Web Data Commons - Hyperlink Graphs</h1>
 </div>
 
-<div id="tagline">Extracting the Hyperlink Graphs from the Common Web Crawl</div>
+<div id="tagline">Extracting the Hyperlink Graphs from the Common Crawl</div>
 
 <div id="authors">
 <a href="http://dws.informatik.uni-mannheim.de/en/people/researchers/robert-meusel/">Robert Meusel</a><br />
@@ -45,15 +46,15 @@
 <div id="content">
 
 <p>
-This page provides an overview about currently two large hyperlink graph for public download. The graphs has been extracted from the <a href="http://commoncrawl.org/">Common Crawl</a> 2012 and 2014 web corpus. The 2012 graph covers <b>3.5 billion web pages and 128 billion hyperlinks</b> between these pages. To the best of our knowledge, the graph is the largest hyperlink graph that is available to the public outside companies such as Google, Yahoo, and Microsoft. The later graph from 2014 consists of <b>1.7 billion web pages connected by 64 billion hyperlinks</b>.
+This page provides  two large hyperlink graph for public download. The graphs have been extracted from the 2012 and 2014 versions of the <a href="http://commoncrawl.org/">Common Crawl</a>  web corpera. The 2012 graph covers <b>3.5 billion web pages and 128 billion hyperlinks</b> between these pages. To the best of our knowledge, the graph is the largest hyperlink graph that is available to the public outside companies such as Google, Yahoo, and Microsoft. The2014 graph covers  <b>1.7 billion web pages connected by 64 billion hyperlinks</b>.
 
-Below we provide instructions on how to download the graph as well as basic statistics about its topology.
+Below we provide instructions on how to download the graphs as well as basic statistics about their topology.
 </p>
-<p>We hope that the graph will be useful for researchers who develop
+<p>We hope that the graphs will be useful for researchers who develop
 <ul>
 <li><b>search algorithms</b> that rank results based on the hyperlinks between pages.</li>
 <li><b>SPAM detection methods</b> which identity networks of web pages that are published in order to trick search engines.</li>
-<li><b>graph analysis algorithms</b> and can use the hyperlink graph for testing the scalability and performance of their tools.</li>
+<li><b>graph analysis algorithms</b> and can use the hyperlink graphs for testing the scalability and performance of their tools.</li>
 <li><b>Web Science researchers</b> who want to analyze the linking patterns within specific topical domains in order to identify the social mechanisms that govern these domains.</li>
 </ul>
 </p>
@@ -65,22 +66,21 @@ Below we provide instructions on how to download the graph as well as basic stat
 
 <h2 id="aggregationlevels">1. Levels of Aggregation</h2>
 <p>
-We provide the hyperlink graphs on four different levels of aggregation:  
-<ul>
-<li><strong>Page-Level Graph</strong> - This version of the graph contains all details with each node representing a single web page (like <code>http://dws.informatik.uni-mannheim.de/en/projects/current-projects/#c13686</code>) and each arc a hyperlink between to two pages.</li>
-<li><strong>Host Graph</strong> - This graph aggregates the page graph by subdomain/host. Each node in the graph represents a specific subdomain/host (like <code>research.dws.uni-mannheim.de</code>) and a arc exists, if at least one hyperlink was found between pages that belong to a pair of subdomains/hosts. Note that subdomains/hosts can be of arbitrary depth.</li>
-<li><strong>Pay-Level-Domain Graph</strong> - Each node represents a pay-level-domain (like <code>uni-mannheim.de</code>). An arc exists if at least one hyperlink was found between pages contained in a pair pay-level-domains.</li>
-</ul>
+We provide the  graphs on three different levels of aggregation:  
+<ol>
+  <li><strong>Page-Level Graph</strong> - This version of the graph contains all details with each node representing a single web page (like <code>http://dws.informatik.uni-mannheim.de/en/projects/current-projects/#c13686</code>) and each arc a hyperlink between to two pages.</li>
+  <li><strong>Host Graph</strong> - This graph aggregates the page graph by subdomain/host. Each node in the graph represents a specific subdomain/host (like <code>research.dws.uni-mannheim.de</code>) and a arc exists, if at least one hyperlink was found between pages that belong to a pair of subdomains/hosts. Note that subdomains/hosts can be of arbitrary depth.</li>
+  <li><strong>Pay-Level-Domain Graph</strong> - Each node represents a pay-level-domain (like <code>uni-mannheim.de</code>). An arc exists if at least one hyperlink was found between pages contained in a pair pay-level-domains.</li>
+</ol>
 <h2 id="availablegraphs">2. Available Web Graphs</h2>
 <p>
-Till today, we have extracted the graph structured from two available Common Crawl Web Crawls. The first was extracted from the crawl gathered in the first half of 2012, released in August 2012. The second, latest graph was extracted from the crawl gathered in the first quarter of 2014, released in April 2014.
-As described above, we provide three different levels of granularities for each graph.
+  Up till now, we have extracted the hyperlink graphs from two releases of the  Common Crawl web corpora. The first graph was extracted from a Web corpus gathered in the first half of 2012 and released in August 2012. The second graph was extracted from a crawl gathered in the first quarter of 2014, released in April 2014.
 </p>
 <h2 id="graph2012">2.2. Extracted Hyperlink Graph from August 2012 Common Crawl Corpus</h2>
 <p>
-The dataset released in August 2012 by the Common Crawl Foundation, was gathered using a web crawler making use of a breadth-first-search selection strategy and embedding link discovery while crawling. The crawl was seeded with a large number of URLs from former crawls of the foundation. 
+The hyperlink graph was extracted from the Web cropus released by the  Common Crawl Foundation in August 2012. The Web cropus was gathered using a web crawler employing a breadth-first-search selection strategy and embedding link discovery while crawling. The crawl was seeded with a large number of URLs from former crawls performed by the Common Crawl Foundation. 
 </br>
-The table below gives an overview of the size of the different aggregation levels of the extracted graph which are available as download:
+The table below gives an overview of the size of the different aggregation levels of the extracted graph which are provided for download:
 </p>
 <table>
 <tr><th>Granularity</th><th>#Nodes</th><th>#Arcs</th></tr>
@@ -89,19 +89,17 @@ The table below gives an overview of the size of the different aggregation level
 <tr><td>Pay-Level-Domain </td><td align="right">43 million</td><td align="right">623 million</td></tr>
 </table>
 <p>
-Within the extracted graph over 94% of all crawled pages are connected and in addition the largest <a href="https://en.wikipedia.org/wiki/Strongly_connected_component">strongly connected component</a> consists of over 50% of all nodes in the graph. This makes this graph useful for a wide range of graph analysis algorithms and structural analysis.
-Please visit the following links for more detailed statistics about the graph as well as detailed description how to download and make use of the graph:
+Within the graph over 94% of all  pages are connected and  the largest <a href="https://en.wikipedia.org/wiki/Strongly_connected_component">strongly connected component</a> consists of over 50% of all pages. Comparing these and other properties to what is known about the structure of the Web graph from earlier research indicates that the graph is a good sample of the overall Web graph.
+Please visit the following links for more detailed statistics about the graph as well as a detailed description of how to download and make use of the graph:
 <ul>
 <li><a href="2012-08/topology.html">Basic statistics about the topology of the graphs</a></li>
 <li><a href="2012-08/download.html">Download Instructions</a></li>
 </ul>
 </p>
-<h2 id="graph2014">2.2. Extracted Hyperlink Graph from Spring 2014 Common Crawl Corpus</h2>
+<h2 id="graph2014">2.3. Extracted Hyperlink Graph from Spring 2014 Common Crawl Corpus</h2>
 <p>
-The dataset released in April 2014 by the Common Crawl Foundation, was gathered using a modified <a href="http://nutch.apache.org/">Apache Nutch</a> crawler to gather pages from a seed list without discovering links while crawling. The seed list,containing around 6 billion URLs was provided by the search engine company <a href="http://blekko.com/">blekko</a> where the crawl corpus contains around 2 billion of those pages. The Common Crawl Foundation and blekko started a cooperation in 2013 to increase the quality and popularity of the crawled pages and reduce the number of crawled spam pages and crawler traps.
-<br/>
-The table below gives an overview of the size of the different aggregation levels of the graph which are available as download:
-</p>
+The hyperlink graph was extracted from the Web cropus released by the  Common Crawl Foundation in April 2014. The Web corpus was gathered using a modified <a href="http://nutch.apache.org/">Apache Nutch</a> crawler to download pages from a large but fixed seed list. The crawler was restricted to URLs contained in this list and did not extract additional URLs from links in the crawled pages.  The seed list contained around 6 billion URLs and was provided by the search engine company <a href="http://blekko.com/">blekko</a>.  The Common Crawl Foundation and blekko started a cooperation in 2013 to increase the quality and popularity of the crawled pages and reduce the number of crawled spam pages and crawler traps.
+The table below gives an overview of the size of the different aggregation levels of the extracted graph which are provided for download:</p>
 <table>
 <tr><th>Granularity</th><th>#Nodes</th><th>#Arcs</th></tr>
 <tr><td>Page </td><td align="right">1,727 million</td><td align="right">64,422 million</td></tr>
@@ -109,7 +107,7 @@ The table below gives an overview of the size of the different aggregation level
 <tr><td>Pay-Level-Domain </td><td align="right">13 million</td><td align="right">56 million</td></tr>
 </table>
 <p>
-Within the extracted graph over 91% of all crawled pages are connected, and the largest <a href="https://en.wikipedia.org/wiki/Strongly_connected_component">strongly connected component</a> consists of 19% of all nodes in the graph. This means, that in comparison to the 2012 graph, the percentage of connected nodes is almost equal, but the size of the largest strongly connected component is much smaller. This phenomenon results from the different crawling strategies which were used to gather the web corpora. Nevertheless we encourage the usage of both graph datasets but <font color="red">for analysis of the connectivity of the pages within the web and structural studies we recommend to use the 2012 graph dataset, as a BFS based selection strategy including link discovery while crawling most likely results in a more realistic sample of the structure of the Web.</font>
+Within the extracted graph over 91% of all crawled pages are connected, and the largest <a href="https://en.wikipedia.org/wiki/Strongly_connected_component">strongly connected component</a> consists of 19% of all nodes in the graph. This means, that in comparison to the 2012 graph, the percentage of connected nodes is almost equal, but the size of the largest strongly connected component is much smaller. This phenomenon results from the different crawling strategies which were used to gather the web corpora. <font color="red">For the analysis of the connectivity of Web pages or the overall analysis of the Web graph,  we thus recommend to use the 2012 graph and not the 2014 graph, as a BFS based selection strategy including URL discovery while crawling more likely results in a  realistic sample of the Web graph.</font>
 <br/>
 Please visit the following links for more detailed statistics about the 2014 graph as well as detailed description how to download and make use of the graph:
 
@@ -121,8 +119,7 @@ Please visit the following links for more detailed statistics about the 2014 gra
 <h2 id="examples">3. Data Formats and Download</h2>
 
 <p>
-We provide the graphs for free download in several formats. All graphs are provided in an index/arc data format. In addition, we provide the page graph in the format used by the <a href="http://webgraph.di.unimi.it/" target="_blank">WebGraph library</a> and the PLD graph in the format used by <a href="http://pajek.imfm.si/doku.php" target="_blank">Pajek</a>. The page graphs are hosted on Amazon S3. The aggregated graphs are provided for download via a server in Mannheim, Germany.
-</p>
+We provide the graphs for free download in several formats. All graphs are provided in an index/arc data format. In addition, we provide the page graphs in the format used by the <a href="http://webgraph.di.unimi.it/" target="_blank">WebGraph library</a> and the PLD graphs in the format used by <a href="http://pajek.imfm.si/doku.php" target="_blank">Pajek</a>. </p>
 
 
 <h3 id="about">3.1. Index/Arc Format</h3>
@@ -153,7 +150,7 @@ We offer the PLD-aggregation of the page graph also in the <a href="https://geph
 
 <h2 id="process">4. Extraction Process and Source Code</h2>
 
-<p>The WDC Hyperlink Graph was extracted from the latest version of the <a href="http://commoncrawl.org/">Common Crawl </a>, which was gathered in the first half of 2012. From this corpus, we extracted all HTML pages (mime-type: <i>text/html</i>) and every hyperlink pointing to another crawled HTML page (link type: <i>a</i> and <i>link</i>). For each re-direct, we include an additional node in the graph which links to the re-direct target. 
+<p>We extracted all HTML pages (mime-type: <i>text/html</i>) and every hyperlink pointing to another crawled HTML page (link type: <i>a</i> and <i>link</i>) from the corpera. For each re-direct, we include an additional node in the graph which links to the re-direct target. 
 </p>
 <p>
 Since the Common Crawl coprus is provided via the <a href="http://aws.amazon.com/s3/">AWS Simple Storage Service (S3)</a>, it made sense to perform the extraction in the <a href="http://aws.amazon.com/ec2/">Amazon cloud (EC2)</a>. The main criterion here is the cost to achieve a certain task. Instead of using the ubiquitous <a href="http://hadoop.apache.org/">Hadoop framework</a>, we found using the <a href="http://aws.amazon.com/sqs/">Simple Queue Service (SQS)</a> for our extraction process increased efficiency. SQS provides a message queue implementation, which we use to coordinate the extraction nodes. The Common Crawl data set is readily partitioned into compressed files of around 100MB each including several thousand webpages. Beside those content files, also <a href="https://commoncrawl.atlassian.net/wiki/display/CRWL/About+the+Data+Set">metadata files</a> are provided. These files include for each page the URL, re-directs, mime-type, hyperlinks, and type of link using a JSON format. As these files contain all information needed to extract the hyperlink graph for the crawled webpages, we used an adapted version of the framework that we already used to extract <a href="../2012-08/stats/stats.html">RDFa, Microformat and Microdata</a> from the crawled pages to parse the URL, redirect, links and link types from the metadata files. We used 100 machines on Amazon EC2 to process the metadata files.
@@ -204,8 +201,8 @@ More information about Web Data Commons is found <a href="../index.html">here</a
 <h2 id="references">9. References</h2>
 
 <ul>
-	<li>Oliver Lehmberg, Robert Meusel, Christian Bizer: <b><a href="http://dws.informatik.uni-mannheim.de/fileadmin/lehrstuehle/ki/pub/Lehmberg-etal-GraphStructureOfTheWebPLD.pdf" target="_blank">The Graph Structure of the Web aggregated by Pay-Level Domain</a></b>. Accepted paper at the <a href="http://www.websci14.org/">ACM Web Science 2014 Conference</a> (WebSci2014), Bloomington, USA, June 2014.</li>
-	<li>Robert Meusel, Sebastiano Vigna, Oliver Lehmberg, Christian Bizer: <b><a href="https://www.wim.uni-mannheim.de/fileadmin/lehrstuehle/ki/pub/Meusel-etal-GraphStructureOfTheWeb.pdf">Graph Structure in the Web - Revisited</a></b>. Accepted paper at the <a href="http://www2014.kr/">23rd International World Wide Web Conference</a> (WWW2014), Web Science Track, Seoul, Korea, April 2014.</li>
+	<li>Oliver Lehmberg, Robert Meusel, Christian Bizer: <b><a href="http://dws.informatik.uni-mannheim.de/fileadmin/lehrstuehle/ki/pub/Lehmberg-etal-GraphStructureOfTheWebPLD.pdf" target="_blank">The Graph Structure of the Web aggregated by Pay-Level Domain</a></b>.  <a href="http://www.websci14.org/">ACM Web Science 2014 Conference</a> (WebSci2014), Bloomington, USA, June 2014.</li>
+	<li>Robert Meusel, Sebastiano Vigna, Oliver Lehmberg, Christian Bizer: <b><a href="https://www.wim.uni-mannheim.de/fileadmin/lehrstuehle/ki/pub/Meusel-etal-GraphStructureOfTheWeb.pdf">Graph Structure in the Web - Revisited</a></b>.  <a href="http://www2014.kr/">23rd International World Wide Web Conference</a> (WWW2014), Web Science Track, Seoul, Korea, April 2014.</li>
 </ul>
 
 </div>
