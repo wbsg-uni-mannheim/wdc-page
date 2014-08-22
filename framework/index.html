@@ -37,6 +37,7 @@
 <a href="http://dws.informatik.uni-mannheim.de/en/people/researchers/robert-meusel/">Robert Meusel</a><br />
 <a href="http://hannes.muehleisen.org/">Hannes Mühleisen</a><br />
 <a href="http://dws.informatik.uni-mannheim.de/en/people/researchers/oliver-lehmberg/">Oliver Lehmberg</a><br />
+Petar Petrovski<br />
 <br/>
 <br/>
 </div>
@@ -78,46 +79,74 @@ Running your own extraction using the WDC Extraction Framework is rather simple 
 In order to run an extraction using the WDC Framework the following is required:
 <ul>
 <li><b>Amazon Web Service Account/User</b>: As the framework is currently tailored to be run using services from Amazon, you will need to have an AWS with sufficient amount of credits. The user needs rights to access the AWS Services: EC2, S3, SQS and Simple DB.</li>
-<li><b>AWS Access Token</b>: In order to make use of the Amazon services through the framework you need have your AWS <code>Access Key Id</code> as well as your <code>Secret Access Key</code>. Both is available through the Web Interface of AWS in the section <a href="http://aws.amazon.com/de/iam/">IAM</a>. In case you do not have access to this section with your user, contact the administrator of your AWS account.</li>
-<li><b>Java</b>: On machine has to serve as master node. This machine, no matter if its your local server/computer or an EC2 instance within AWS needs to have Java 6 or higher installed to run the commands and control the extraction.</li>
-<li><b>Maven</b>: In order to compile your own version of the Framework you need to have <a href="http://maven.apache.org/">Maven</a> in place.</li>
+<li><b>AWS Access Token</b>: In order to make use of the Amazon services through the framework you need have your AWS <code>Access Key Id</code> as well as your <code>Secret Access Key</code>. Both is available through the Web Interface of AWS in the section <a href="http://aws.amazon.com/iam/">IAM</a> (See <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/IAM_Introduction.html">AWS IAM Docs</a>). In case you do not have access to this section with your user, contact the administrator of your AWS account.</li>
+<li><b>Java</b>: On machine has to serve as master node. This machine, no matter if its your local server/computer or an EC2 instance within AWS needs to have Java 6 or higher installed to run the commands and control the extraction, e.g.: <pre><code>apt-get install openjdk-7-jdk</code></pre></li>
+<li><b>Maven</b>: In order to compile your own version of the framework you need to have <a href="http://maven.apache.org/">Maven</a>3 in place. Building the project with Maven2 will not work, as the project makes use of certain plugins, which are unknown to version 2 of Maven: <pre><code>apt-get install maven</code></pre></li>
+<li><b>Subversion</b>: In order to get the code, you need subversion installed: <pre><code>apt-get install subversion</code></pre></li>
 </ul>
 </p>
 
-<h3 id="build">2.2. Build and Run</h2>
+<h3 id="build">2.2. Building the code</h3>
 <p>
-First you have to get the code of the framework from the <a href="https://www.assembla.com/code/commondata/subversion/nodes">WDC Repository</a>. The extraction project is located under <code>Extractor/trunk/extractor</code>. After checking out the latest version of the project, create a copy <code>ccrdf.properties.dist</code> file within the <code>/src/main/resources</code> directory and name it <code>ccrdf.properties</code>. Within this file you need to fill line 2-3 with your Amazon Keys (Id and Secure) and line 6-7 with two (empty) S3 buckets. The first bucket will be used to store your results, the second will be used to push the ready compiled framework library to S3 so it can be downloaded from the starting servers. After setting the properties up, navigate to the root folder of your project and compile/build the project using the Maven command <code>mvn install</code>. After successfully compiling the code your project should include a sub directory named <code>target/</code> including a JAR file named <code>ccrdf-*.jar</code>.
-</br>
-Now you are ready to run your first extraction using the following commands:
+Below you find a very detailed step by step description how to build the WDC Extraction Framework:
+<ol>
+<li>Create a new folder for the repository and navigate to the folder: <pre><code>mkdir ~/framework<br>cd ~/framework</code></pre></li>
+<li>Download the code of the framework from the <a href="https://www.assembla.com/">Assembla.com</a> <a href="https://www.assembla.com/code/commondata/subversion/nodes">WDC Repository</a>. The WDC Extraction Framework code is located under <code>WDCFramework/trunk/</code>: <br><pre><code>svn checkout https://subversion.assembla.com/svn/commondata/WDCFramework/trunk</code></pre></li>
+<li>Create a copy of the <code>dpef.properties.dist</code> file within the <code>/src/main/resources</code> directory and name it <code>dpef.properties</code>. Within this file all needed properties/configurations are stored: <pre><code>cp extractor/src/main/resource/dpef.properties.dist extractor/src/main/resource/dpef.properties</code></pre>
+</li>
+<li>Go through the file carefully and adjust at least all properties marked with <code>TODO</code>. Each property is described in more detail within the file.
+The most important properties are listed below:
 <ul>
-<li><b>Deploy</b> to upload the JAR to S3<br><code>./bin/master deploy --jarfile target/ccrdf-*.jar</code></li>
-<li><b>Queue</b> to fill the extraction queue with the Common Crawl files you want to process<br><code>./bin/master queue --bucket-prefix 2010/08/09/0/</code></li>
-<li><b>Start</b> to launch EC2 extraction instances from the spot market. The command will keep starting instances until it is cancelled, so beware! Also, the price limit has to be given. The current spot prices can be found at http://aws.amazon.com/ec2/spot-instances/#6. A general recommendation is to set this price at about the on-demand instance price. This way, we will benefit from the generally low spot prices without our extraction process being permanently killed. The price limit is given in US$.<br><code>./bin/master start --worker-amount 10 --pricelimit 0.6</code><br>Note: It may take a while (approx. 10 Minutes) for the instances to become available and start taking tasks from the queue. You can observe the process of the spot requests within the AWS Web Dashboard.</li>
-<li><b>Monitor</b> to monitor the process including the number of items in the queue, the approximate time to finish and the number of running/requested instances<br><code>./bin/master monitor</code></li>
-<li><b>Shutdown</b> to kill all worker nodes and terminate the spot instance requests<br><code>./bin/master shutdown</code></li>
-<li><b>Retrieve Data</b> to retrieve all collected data to a local directory<br><code>./bin/master  retrievedata --destination /some/directory</code></li>
-<li><b>Retrieve Stats</b> to retrieve all collected data statistics to a local directory from the Simple DB of AWS<br><code>./bin/master  retrievestats --destination /some/directory</code></li>
-<li><b>Clear Queue</b> to remove all remaining tasks from the queue and delete it<br><code>./bin/master clearqueue</code></li>
-<li><b>Clear Data</b> to remove all collected data from the Simple DB<br><code>./bin/master cleardata</code></li>
+<li><code>awsAccessKey</code> and <code>awsSecretKey</code>: Those keys are mandatory to get access to the AWS API and run any commands.</li>
+<li><code>resultBucket</code> and <code>deployBucket</code>: Those S3 buckets will be used the framework to store the results of the extraction and to store the packages .jar file for later deployment on any launched instance. You can create the buckets either via the Web Interface or using the command line tool <code>s3cmd</code>:
+<pre><code>apt-get install s3cmd<br>s3cmd --configure<br>s3cmd mb s3://[resultbucketname]<br>s3cmd mb s3://[deploybucketname]</code></pre></li>
+<li><code>ec2instancetype</code>: Defines the type of EC2 instances which will be launched. In order to find out which instance type servers your needs best, visit the <a href="https://aws.amazon.com/ec2/instance-types/">ec2 instance type website</a>. Former extractions by the WebDataCommons team where mainly done using <code>c1.xlarge</code> instances.</li>
+<li><code>processorClass</code>: This property defines which class is used for the extraction. So far three classes are implemented, which where used to run the former extractions of the WebDataCommons team:
+<ul>
+<li><code>org.webdatacommons.hyperlinkgraph.processor.WatProcessor</code>, which was used to extract the hyperlink graph from the .wat files of the Spring 2014 Common Crawl dataset.</li>
+<li><code>org.webdatacommons.structureddata.processor.ArcProcessor</code>, which was used to extract the RDFa, Microdata and Microformats from the .arc files of 2012 Common Crawl dataset.</li>
+<li><code>org.webdatacommons.structureddata.processor.WarcProcessor</code>, which was used to extract the RDFa, Microdata and Microformats from the .warc files of the November 2013 Common Crawl dataset.</li>
 </ul>
-For additional information and parameters which might be useful for your task you can have a look in the documentation of the different commands or have a look in the implementation class <code><a href="https://www.assembla.com/code/commondata/subversion/nodes/80/Extractor/trunk/extractor/src/main/java/org/fuberlin/wbsg/ccrdf/Master.java">Master.java</a></code>.
+All these classes implement the <code>org.webdatacommons.framework.processor.FileProcessor</code> interface.
+</li>
+</ul></li>
+<li>Package the WDC Extraction Framework using Maven. Make sure you are using Maven3, as earlier versions will not work. <pre><code>mvn package</code></pre><b>Note</b>: When packaging the project for the first time, a large number of libraries will be downloaded into your .m2 directory, mainly from breda.informatik.uni-mannheim.de, which might take some time.<br>
+After successfully packaging the project, there should be a new directory, named <code>target</code> within your root directory of the project. Besides others, this directory should include the packaged .jar file: <code>dpef-*.jar</code></li>
+</ol>
 </p>
-<!--
-<h3 id="customize">2.3. Build your own Extraction Framework</h2>
+<h3 id="runfirst">2.3 Running your first extraction</h3>
 <p>
+After you have packaged the code you can use the <code>bin/master</code> bash script to start and steer your extraction. This bash scripts calls functions implemented within the <code>org.webdatacommons.framework.cli.Master</a></code> class. To execute the script you need to make it executable:<pre><code>chmod +x bin/master</code></pre>
+By following the commands below, you will first push your the .jar file to S3, than fill you queue with tasks/files which need to be processed and than start a number of EC2 instances which will execute the files. You can monitor the extraction process and after finishing stop all instances again. It also includes commands to collect your results and store it to your local hard drive. <b>Note</b>: Please always take in mind, that the framework will make use of AWS services and that Amazon will charge you for their usage.
+<ol>
+<li><b>Deploy</b> to upload the JAR to S3:<pre><code>./bin/master deploy --jarfile target/dpef-*.jar</code></pre></li>
+<li><b>Queue</b> to fill the extraction queue with the Common Crawl files you want to process: <pre><code>/bin/master queue --bucket-prefix CC-MAIN-2013-48/segments/1386163041297/wet/</code></pre> Please note, that the queue command is just fetching files within one folder. In case you need files located in different folders use the bucket prefix file option of the command. You can also limit the number of files pushed to the queue.</li>
+<li><b>Start</b> to launch EC2 extraction instances from the spot market. The command will keep starting instances until it is cancelled, so beware! Also, the price limit has to be given. The current spot prices can be found at http://aws.amazon.com/ec2/spot-instances/#6. A general recommendation is to set this price at about the on-demand instance price. This way, we will benefit from the generally low spot prices without our extraction process being permanently killed. The price limit is given in US$.<pre><code>./bin/master start --worker-amount 10 --pricelimit 0.6</code></pre><b>Note</b>: It may take a while (approx. 10 Minutes) for the instances to become available and start taking tasks from the queue. You can observe the process of the spot requests within the AWS Web Dashboard.</li>
+<li><b>Monitor</b> to monitor the process including the number of items in the queue, the approximate time to finish and the number of running/requested instances<pre><code>./bin/master monitor</code></pre></li>
+<li><b>Shutdown</b> to kill all worker nodes and terminate the spot instance requests<pre><code>./bin/master shutdown</code></pre></li>
+<li><b>Retrieve Data</b> to retrieve all collected data to a local directory<pre><code>./bin/master  retrievedata --destination /some/directory</code></pre></li>
+<li><b>Retrieve Stats</b> to retrieve all collected data statistics to a local directory from the Simple DB of AWS<pre><code>./bin/master  retrievestats --destination /some/directory</code></pre></li>
+<li><b>Clear Queue</b> to remove all remaining tasks from the queue and delete it<pre><code>./bin/master clearqueue</code></pre></li>
+<li><b>Clear Data</b> to remove all collected data from the Simple DB<pre><code>./bin/master cleardata</code></pre></li>
+</ol>
+For additional information and parameters which might be useful for your task you can have a look in the documentation of the different commands or have a look in the implementation class <code>org.webdatacommons.framework.cli.Master</a></code>.
 </p>
--->
-<h2 id="costs">3. Costs</h2>
+
+<h2 id="customize">3. Customize your extraction</h2>
 <p>
-The usage of the WDC framework is free of charge. Nevertheless, as the framework makes use of AWS Services, Amazon will charge you for the usage.
+.. comming soon.
+</p>
+<h2 id="costs">4. Costs</h2>
+<p>
+The usage of the WDC framework is free of charge. Nevertheless, as the framework makes use of services from AWS, Amazon will charge you for the usage.
 There are several granting possibilities by Amazon itself, where Amazon supports ideas and projects running within their cloud system with free credits - specially in the education area (see <a href="http://aws.amazon.com/grants/">Amazon Grants</a>).
 </p>
 
-<h2 id="license">4. License</h2>
+<h2 id="license">5. License</h2>
 
 <p>The Web Data Commons extraction framework can be used under the terms of the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache Software License</a>. </p>
 
-<h2 id="feedback">5. Feedback</h2>
+<h2 id="feedback">6. Feedback</h2>
 <p>Please send questions and feedback to the <a href="http://groups.google.com/group/web-data-commons">Web Data Commons mailing list</a> or post them in our <a href="https://groups.google.com/forum/?fromgroups#!forum/web-data-commons">Web Data Commons Google Group</a>.<br/><br/>
 More information about Web Data Commons is found <a href="../index.html">here</a>.</p>
 
