@@ -20,7 +20,29 @@
   })();
 
 </script>
-
+<style>
+td.java, td.java-ln {vertical-align:top;}
+tt.java, tt.java-ln, pre.java, pre.java-ln {line-height:1em; margin-bottom:0em;}
+td.java-ln { text-align:right; }
+tt.java-ln, pre.java-ln { color:#888888 }
+/* Background       */ span.java0  { font-size: 10pt; color:#ffffff; }
+/* Line numbers       */ span.java1  { font-size: 10pt; color:#808080; }
+/* Multi-line comments       */ span.java2  { font-size: 10pt; color:#3f7f5f; }
+/* Single-line comments       */ span.java3  { font-size: 10pt; color:#3f7f5f; }
+/* Keywords       */ span.java4  { font-size: 10pt; color:#7f0055; font-weight:bold; }
+/* Strings       */ span.java5  { font-size: 10pt; color:#2a00ff; }
+/* Character constants       */ span.java6  { font-size: 10pt; color:#990000; }
+/* Numeric constants       */ span.java7  { font-size: 10pt; color:#990000; }
+/* Parenthesis       */ span.java8  { font-size: 10pt; color:#000000; }
+/* Primitive Types       */ span.java9  { font-size: 10pt; color:#7f0055; font-weight:bold; }
+/* Others       */ span.java10  { font-size: 10pt; color:#000000; }
+/* Javadoc keywords       */ span.java11  { font-size: 10pt; color:#7f9fbf; }
+/* Javadoc HTML tags       */ span.java12  { font-size: 10pt; color:#7f7f9f; }
+/* Javadoc links       */ span.java13  { font-size: 10pt; color:#3f3fbf; }
+/* Javadoc others       */ span.java14  { font-size: 10pt; color:#3f5fbf; }
+/* Undefined       */ span.java15  { font-size: 10pt; color:#ff6100; }
+/* Annotation       */ span.java16  { font-size: 10pt; color:#646464; }
+</style>
 </head>
 <body> 
 
@@ -134,7 +156,112 @@ For additional information and parameters which might be useful for your task yo
 
 <h2 id="customize">3. Customize your extraction</h2>
 <p>
-.. comming soon.
+In this section we show how to build and run your own extractor. For this task we think about a large number of text files, where each line consists of a number of chars. We are now interested in all lines which only consists of a number. We want to extract those numeric lines and in addition want to have two basic statistics about the each file, namely the total number of lines and the number of lines consisting of only digits.
+</p>
+
+<h3 id="processor_prelim">3.1. Preliminaries</h3>
+<p>
+Building your own extractor is easy. Extractors are called processors within the WDC Extraction Framework and need to implement he <code>FileProcessor.java</code> interface:
+<pre>
+<tt class="java"><span class="java4">package </span><span class="java10">org.webdatacommons.framework.processor;<br />
+</span><span class="java4">import </span><span class="java10">java.nio.channels.ReadableByteChannel;
+</span><span class="java4">import </span><span class="java10">java.util.Map;<br />
+</span><span class="java4">public interface </span><span class="java10">FileProcessor </span><span class="java8">{<br />
+&#xA0; </span><span class="java10">Map&lt;String, String&gt; process</span><span class="java8">(</span><span class="java10">ReadableByteChannel fileChannel,
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; String inputFileKey</span><span class="java8">) </span><span class="java4">throws </span><span class="java10">Exception;<br />
+</span><span class="java8">}</span></tt>
+</pre>
+The interface is fairly simple, as it only contains one method, which receives a <code>ReadableByteChannel</code>, representing the file to process and the files name as input. As result the method returns a <code>Map&lt;String, String&gt;</code> of key value pairs containing statistics of the processed file. The returned key value pairs are written to the AWS Simple DB (see property <code>sdbdatadomain</code> of the <code>dpef.properties</code>). In case you do not need any statistics you can also return an empty <code>Map</code>. 
+<br/><br/>
+In addition the WDC Extraction Framework offers a context class, named <code>ProcessingNode.java</code> which allows the extending class to make use of contextual settings (e.g. AWS Services to store files). In many cases it makes sense to first have a look into this class before thinking about an own solution.
+</p>
+<h3 id="processor_custom">3.2. Building your own extractor</h3>
+<p>
+We create the <code>TextFileProcessor.java</code> which implements the interface and extends the <code>ProcessingNode.java</code> to make use of the context (see line 14).
+The class will process a text file, read each line and check if the line consists only of digits. Lines matching this requirement will be written into a new output file.<br/>
+The code processes the file in the following way:
+<ol>
+<li>Initialization of counts (line 18 - 21)</li>
+<li>Creating a <code>BufferedReader</code> from the <code>ReadableByteChannel</code>, which makes it easy to read the input file line by line (line 22/23)</li>
+<li>Creating a <code>BufferedWriter</code> for a temporal file, which will be deleted as soon as we exit it. This ensures that the hard drive will not be flooded (line 24 - 30)</li>
+<li>Processing the file line by line, counting each line and matching each line, if only digits are included (line 31 - 41)</li>
+<li>Having the file parsed completely, the output needs to be pushed to S3 using the context from <code>ProcessingNode.java</code> (line 44 - 52)</li>
+<li>Finally, we add the statistics of the file (number of lines, number of only digits lines) to the output map, which will be written to AWS Simple DB (line 53 - 56)</li>
+</ol>
+<pre>
+<tt class="java">
+1  <span class="java4">package </span><span class="java10">org.webdatacommons.example.processor;
+
+2  </span><span class="java4">import </span><span class="java10">java.io.BufferedReader;
+3  </span><span class="java4">import </span><span class="java10">java.io.BufferedWriter;
+4  </span><span class="java4">import </span><span class="java10">java.io.File;
+5  </span><span class="java4">import </span><span class="java10">java.io.FileWriter;
+6  </span><span class="java4">import </span><span class="java10">java.io.InputStreamReader;
+7  </span><span class="java4">import </span><span class="java10">java.nio.channels.Channels;
+8  </span><span class="java4">import </span><span class="java10">java.nio.channels.ReadableByteChannel;
+9  </span><span class="java4">import </span><span class="java10">java.util.HashMap;
+10 </span><span class="java4">import </span><span class="java10">java.util.Map;
+
+11 </span><span class="java4">import </span><span class="java10">org.jets3t.service.model.S3Object;
+
+12 </span><span class="java4">import </span><span class="java10">org.webdatacommons.framework.processor.FileProcessor;
+13 </span><span class="java4">import </span><span class="java10">org.webdatacommons.framework.processor.ProcessingNode;
+
+14 </span><span class="java4">public class </span><span class="java10">TextFileProcessor </span><span class="java4">extends </span><span class="java10">ProcessingNode </span><span class="java4">implements </span><span class="java10">FileProcessor </span><span class="java8">{
+<br />
+15 &#xA0; </span><span class="java16">@Override
+16 &#xA0; </span><span class="java4">public </span><span class="java10">Map&lt;String, String&gt; process</span><span class="java8">(</span><span class="java10">ReadableByteChannel fileChannel,
+17 &#xA0;&#xA0;&#xA0;&#xA0;&#xA0; String inputFileKey</span><span class="java8">) </span><span class="java4">throws </span><span class="java10">Exception </span><span class="java8">{
+
+18 &#xA0;&#xA0;&#xA0; </span> <span class="java3">// initialize line count
+19 &#xA0;&#xA0;&#xA0; </span><span class="java9">long </span><span class="java10">lnCnt = </span><span class="java7">0</span><span class="java10">;<br />
+20 &#xA0;&#xA0;&#xA0; </span><span class="java3">// initialize match count
+21 &#xA0;&#xA0;&#xA0; </span><span class="java9">long </span><span class="java10">mCnt = </span><span class="java7">0</span><span class="java10">;<br />
+22 &#xA0;&#xA0;&#xA0; </span><span class="java3">// Creating a buffered reader from the input stream - the channel is not compressed
+23 &#xA0;&#xA0;&#xA0; </span><span class="java10">BufferedReader br = </span><span class="java4">new </span><span class="java10">BufferedReader</span><span class="java8">(</span><span class="java4">new </span><span class="java10">InputStreamReader</span><br/>&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; <span class="java8">(</span><span class="java10">Channels.newInputStream</span><span class="java8">(</span><span class="java10">fileChannel</span><span class="java8">)))</span><span class="java10">;
+24 &#xA0;&#xA0;&#xA0; </span><span class="java3">// Create a temporal file for our output
+25 &#xA0;&#xA0;&#xA0; </span><span class="java10">File tempOutputFile = File.createTempFile</span><span class="java8">(
+26 &#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java5">&#34;tmp_&#34; </span><span class="java10">+ inputFileKey.replace</span><span class="java8">(</span><span class="java5">&#34;/&#34;</span><span class="java10">, </span><span class="java5">&#34;_&#34;</span><span class="java8">)</span><span class="java10">, </span><span class="java5">&#34;.digitsonly.txt&#34;</span><span class="java8">)</span><span class="java10">;
+27 &#xA0;&#xA0;&#xA0; </span><span class="java3">// we delete it on exit - so we do not flood the hard drive
+28 &#xA0;&#xA0;&#xA0; </span><span class="java10">tempOutputFile.deleteOnExit</span><span class="java8">()</span><span class="java10">;
+29 &#xA0;&#xA0;&#xA0; </span><span class="java3">// Create the writer for the output
+30 &#xA0;&#xA0;&#xA0; </span><span class="java10">BufferedWriter bw = </span><span class="java4">new </span><span class="java10">BufferedWriter</span><span class="java8">(</span><span class="java4">new </span><span class="java10">FileWriter</span><span class="java8">(</span><span class="java10">tempOutputFile</span><span class="java8">))</span><span class="java10">;
+
+31 &#xA0;&#xA0;&#xA0; </span><span class="java4">while </span><span class="java8">(</span><span class="java10">br.ready</span><span class="java8">()){
+32 &#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java3">// reading the channel file by file
+33 &#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java10">String line = br.readLine</span><span class="java8">()</span><span class="java10">;
+34 &#xA0;&#xA0;&#xA0;&#xA0;&#xA0; lnCnt++;
+35 &#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java3">// Check if the line match our pattern
+36 &#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java4">if </span><span class="java8">(</span><span class="java10">line != </span><span class="java4">null </span><span class="java10">&amp;&amp; line.matches</span><span class="java8">(</span><span class="java5">&#34;[0-9]+&#34;</span><span class="java8">)){
+37 &#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java10">mCnt++;
+38 &#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java3">// write the line to the output file
+39 &#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java10">bw.write</span><span class="java8">(</span><span class="java10">line</span><span class="java8">)</span><span class="java10">;
+40 &#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java8">}
+41 &#xA0;&#xA0;&#xA0; }
+42 &#xA0;&#xA0;&#xA0; </span><span class="java10">br.close</span><span class="java8">()</span><span class="java10">;
+43 &#xA0;&#xA0;&#xA0; bw.close</span><span class="java8">()</span><span class="java10">;<br />
+44 &#xA0;&#xA0;&#xA0; </span><span class="java3">// Now the file is parsed completely and the output needs to be stored to s3
+45 &#xA0;&#xA0;&#xA0; // create an s3 object
+46 &#xA0;&#xA0;&#xA0; </span><span class="java10">S3Object dataFileObject = </span><span class="java4">new </span><span class="java10">S3Object</span><span class="java8">(</span><span class="java10">tempOutputFile</span><span class="java8">)</span><span class="java10">;
+47 &#xA0;&#xA0;&#xA0; </span><span class="java3">// name the file
+48 &#xA0;&#xA0;&#xA0; </span><span class="java10">String outputFileKey = inputFileKey.replace</span><span class="java8">(</span><span class="java5">&#34;/&#34;</span><span class="java10">, </span><span class="java5">&#34;_&#34;</span><span class="java8">) </span><span class="java10">+ </span><span class="java5">&#34;digitsonly.txt&#34;</span><span class="java10">;
+49 &#xA0;&#xA0;&#xA0; </span><span class="java3">// set the name
+50 &#xA0;&#xA0;&#xA0; </span><span class="java10">dataFileObject.setKey</span><span class="java8">(</span><span class="java10">outputFileKey</span><span class="java8">)</span><span class="java10">;
+51 &#xA0;&#xA0;&#xA0; </span><span class="java3">// put the object to the result bucket
+52 &#xA0;&#xA0;&#xA0; </span><span class="java10">getStorage</span><span class="java8">()</span><span class="java10">.putObject</span><span class="java8">(</span><span class="java10">getOrCry</span><span class="java8">(</span><span class="java5">&#34;resultBucket&#34;</span><span class="java8">)</span><span class="java10">, dataFileObject</span><span class="java8">)</span><span class="java10">;
+
+53 &#xA0;&#xA0;&#xA0; </span><span class="java3">// create the statistic map (key, value) for this file
+54 &#xA0;&#xA0;&#xA0; </span><span class="java10">Map&lt;String, String&gt; map = </span><span class="java4">new </span><span class="java10">HashMap&lt;String, String&gt;</span><span class="java8">()</span><span class="java10">;
+55 &#xA0;&#xA0;&#xA0; map.put</span><span class="java8">(</span><span class="java5">&#34;lines_total&#34;</span><span class="java10">, String.valueOf</span><span class="java8">(</span><span class="java10">lnCnt</span><span class="java8">))</span><span class="java10">;
+56 &#xA0;&#xA0;&#xA0; map.put</span><span class="java8">(</span><span class="java5">&#34;lines_match&#34;</span><span class="java10">, String.valueOf</span><span class="java8">(</span><span class="java10">mCnt</span><span class="java8">))</span><span class="java10">;
+57 &#xA0;&#xA0;&#xA0; </span><span class="java4">return </span><span class="java10">map;
+58 &#xA0; </span><span class="java8">}
+59 }</span></tt>
+</pre>
+</p>
+<h3 id="package_custom">3.3. Packaging your new extractor</h3>
+<p>
+As the extractor is done, you simply need to add the processor into the property <code>processorClass</code> within the <code>dpef.properties</code> file and run <code>mvn package</code>.
 </p>
 <h2 id="costs">4. Costs</h2>
 <p>
