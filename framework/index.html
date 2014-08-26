@@ -50,16 +50,17 @@ tt.java-ln, pre.java-ln { color:#888888 }
 
 
 <div id="header">
-<h1 style="font-size: 250%;">Web Data Commons - Framework</h1>
+<h1 style="font-size: 250%;">Web Data Commons - Extraction Framework</h1>
 </div>
 
-<div id="tagline">Framework for Distributed, Parallel Processing of Web Crawls</div>
+<div id="tagline">A Framework for the Distributed Processing of Large Web Crawls</div>
 
 <div id="authors">
 <a href="http://dws.informatik.uni-mannheim.de/en/people/researchers/robert-meusel/">Robert Meusel</a><br />
 <a href="http://hannes.muehleisen.org/">Hannes Mühleisen</a><br />
 <a href="http://dws.informatik.uni-mannheim.de/en/people/researchers/oliver-lehmberg/">Oliver Lehmberg</a><br />
 Petar Petrovski<br />
+<a href="http://dws.informatik.uni-mannheim.de/en/people/professors/prof-dr-christian-bizer/">Christian Bizer</a><br />
 <br/>
 <br/>
 </div>
@@ -67,7 +68,15 @@ Petar Petrovski<br />
 <div id="content">
 
 <p>
-This page provides an overview about the framework which is used by the Web Data Commons team to extract datasets from the web crawls provided by the <a href="http://commoncrawl.org/">Common Crawl Foundation</a>. The framework was originally designed by Hannes Mühleisen for the <a href="../structureddata">extraction of Microdata, Microformats and RDFa</a> from the 2012 Common Crawl corpus. Later extended to be able to extract the <a href="">hyperlink graph</a> as well as the <a href="">web tables</a>. The current version (described below) is more flexible and allows a straightforward customization for various purposes.
+This page provides an overview of the extraction framework which is used by
+the Web Data Commons project to extract <a href="../structureddata">Microdata, Microformats and RDFa</a>
+data, <a href="../hyperlinkgraph/">Web graphs</a>, as well as <a href="../webtables">HTML tables</a> from the Web crawls provided by the
+<a target= "_blank" href="http://commoncrawl.org/">Common Crawl Foundation</a>. The framework provides for the distributed
+processing of large Web crawls using Amazon EC2 cloud services. The
+framework is published under the terms of the Apache license and can be
+easily customized to perform different data extraction tasks. This
+documentation describes how the extraction framework is setup and how you
+can customize it by implementing your own extractors.
 
 <h2>Contents</h2>
 <div id="toc" class="toc"></div>
@@ -75,7 +84,13 @@ This page provides an overview about the framework which is used by the Web Data
 
 <h2 id="general">1. General Information</h2>
 <p>
-The framework was developed by the WDC to process a large number of files from the Common Crawl in parallel using the cloud services of Amazon. The software is written in Java using Maven as build tool and can be run on any operating system. 
+The framework was developed by the WDC project to process a large number of files from the 
+Common Crawl in parallel using the cloud services of Amazon. The extraction framework was originally designed by Hannes Mühleisen for the
+extraction of Microdata, Microformats and RDFa from the 2012 Common Crawl
+corpus. Later, it was extended to be able to extract hyperlink graphs as
+well as the web tables. The software is written in Java using Maven as build tool and can be run on any operating system. The current version (described in the following) allows a
+straightforward customization for various purposes. 
+
 <br>
 The picture below explains the principle process flow of the framework, which is basically steered by one master node, which can be either a local server or machine, or a cloud instance itself. 
 <br>
