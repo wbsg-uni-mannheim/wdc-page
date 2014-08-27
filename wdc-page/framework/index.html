@@ -70,11 +70,11 @@ Petar Petrovski<br />
 <p>
 This page provides an overview of the extraction framework which is used by
 the Web Data Commons project to extract <a href="../structureddata">Microdata, Microformats and RDFa</a>
-data, <a href="../hyperlinkgraph/">Web graphs</a>, as well as <a href="../webtables">HTML tables</a> from the Web crawls provided by the
-<a target= "_blank" href="http://commoncrawl.org/">Common Crawl Foundation</a>. The framework provides for the distributed
-processing of large Web crawls using Amazon EC2 cloud services. The
+data, <a href="../hyperlinkgraph/">Web graphs</a>, and <a href="../webtables">HTML tables</a> from the web crawls provided by the
+<a target= "_blank" href="http://commoncrawl.org/">Common Crawl Foundation</a>. The framework provides an easy to use basis for the distributed
+processing of large web crawls using Amazon EC2 cloud services. The
 framework is published under the terms of the Apache license and can be
-easily customized to perform different data extraction tasks. This
+straightforward customized to perform different data extraction tasks. This
 documentation describes how the extraction framework is setup and how you
 can customize it by implementing your own extractors.
 
@@ -88,7 +88,7 @@ The framework was developed by the WDC project to process a large number of file
 Common Crawl in parallel using the cloud services of Amazon. The extraction framework was originally designed by Hannes Mühleisen for the
 extraction of Microdata, Microformats and RDFa from the 2012 Common Crawl
 corpus. Later, it was extended to be able to extract hyperlink graphs as
-well as the web tables. The software is written in Java using Maven as build tool and can be run on any operating system. The current version (described in the following) allows a
+well as the web tables. The software is written in Java using Maven as the build tool and can be run on any operating system. The current version (described in the following) allows
 straightforward customization for various purposes. 
 
 <br>
@@ -98,17 +98,17 @@ The picture below explains the principle process flow of the framework, which is
 <br>
 <ol>
 <li>From the master node the AWS Simple Queue Service is filled with all files which should be processed. Those files represent the task for the later working instances and are basically file references.</li>
-<li>From the master node a number of instances are launched within the EC2 environment of AWS. After the start up, each instances will install automatically the WDC framework and launch it.</li>
-<li>Each instance, after starting the framework will automatically requests a task from the SQS and start processing the file.</li>
+<li>From the master node a number of instances are launched within the EC2 environment of AWS. After the start up, each instances will automatically install the WDC framework and launch it.</li>
+<li>Each instance, after starting the framework, will automatically request a task from the SQS and start processing the file.</li>
 <li>The file will first be downloaded from S3 and will then be processed by the worker.</li>
-<li>After finishing one file the result will be stored in the users own S3 Bucket. And the worker will start again at 3.</li>
-<li>After the queue is empty the master can start collecting the extracted data and statistics.</li>
+<li>After finishing one file, the result will be stored in the users own S3 Bucket. And the worker will start again at step 3.</li>
+<li>After the queue is empty, the master can start collecting the extracted data and statistics.</li>
 </ol>
 </p>
 
 <h2 id="start">2. Getting Started</h2>
 <p>
-Running your own extraction using the WDC Extraction Framework is rather simple and needs just some minutes to set yourself up. Please follow the steps below and make sure you have all requirements in place.
+Running your own extraction using the WDC Extraction Framework is rather simple and you only need a few minutes to set yourself up. Please follow the steps below and make sure you have all the requirements in place.
 </p>
 
 <h3 id="req">2.1. Requirements</h2>
@@ -117,7 +117,7 @@ In order to run an extraction using the WDC Framework the following is required:
 <ul>
 <li><b>Amazon Web Service Account/User</b>: As the framework is currently tailored to be run using services from Amazon, you will need to have an AWS with sufficient amount of credits. The user needs rights to access the AWS Services: EC2, S3, SQS and Simple DB.</li>
 <li><b>AWS Access Token</b>: In order to make use of the Amazon services through the framework you need have your AWS <code>Access Key Id</code> as well as your <code>Secret Access Key</code>. Both is available through the Web Interface of AWS in the section <a href="http://aws.amazon.com/iam/">IAM</a> (See <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/IAM_Introduction.html">AWS IAM Docs</a>). In case you do not have access to this section with your user, contact the administrator of your AWS account.</li>
-<li><b>Java</b>: One machine has to serve as master node. This machine, no matter if it is your local server/computer or an EC2 instance within AWS needs to have Java 6 or higher installed to run the commands and control the extraction, e.g.: <pre><code>apt-get install openjdk-7-jdk</code></pre></li>
+<li><b>Java</b>: One machine has to serve as master node. This machine, no matter if it is your local server/computer or an EC2 instance within AWS, needs to have Java 6 or higher installed to run the commands and control the extraction, e.g.: <pre><code>apt-get install openjdk-7-jdk</code></pre></li>
 <li><b>Maven</b>: In order to compile your own version of the framework you need to have <a href="http://maven.apache.org/">Maven</a>3 in place. Building the project with Maven2 will not work, as the project makes use of certain plugins, which are unknown to version 2 of Maven: <pre><code>apt-get install maven</code></pre></li>
 <li><b>Subversion</b>: In order to get the code, you need subversion installed: <pre><code>apt-get install subversion</code></pre></li>
 </ul>
@@ -129,15 +129,15 @@ Below you find a very detailed step by step description how to build the WDC Ext
 <ol>
 <li>Create a new folder for the repository and navigate to the folder: <pre><code>mkdir ~/framework<br>cd ~/framework</code></pre></li>
 <li>Download the code of the framework from the <a href="https://www.assembla.com/">Assembla.com</a> <a href="https://www.assembla.com/code/commondata/subversion/nodes">WDC Repository</a>. The WDC Extraction Framework code is located under <code><a href="https://subversion.assembla.com/svn/commondata/WDCFramework/trunk/">WDCFramework/trunk/</a></code>: <br><pre><code>svn checkout https://subversion.assembla.com/svn/commondata/WDCFramework/trunk</code></pre></li>
-<li>Create a copy of the <code><a href="https://subversion.assembla.com/svn/commondata/WDCFramework/trunk/src/main/resources/dpef.properties.dist">dpef.properties.dist</a></code> file within the <code>/src/main/resources</code> directory and name it <code>dpef.properties</code>. Within this file all needed properties/configurations are stored: <pre><code>cp extractor/src/main/resource/dpef.properties.dist extractor/src/main/resource/dpef.properties</code></pre>
+<li>Create a copy of the <code><a href="https://subversion.assembla.com/svn/commondata/WDCFramework/trunk/src/main/resources/dpef.properties.dist">dpef.properties.dist</a></code> file within the <code>/src/main/resources</code> directory and name it <code>dpef.properties</code>. Within this file, all needed properties/configurations are stored: <pre><code>cp extractor/src/main/resource/dpef.properties.dist extractor/src/main/resource/dpef.properties</code></pre>
 </li>
-<li>Go through the file carefully and adjust at least all properties marked with <code>TODO</code>. Each property is described in more detail within the file.
+<li>Go through the file carefully and at least adjust all properties marked with <code>TODO</code>. Each property is described in more detail within the file.
 The most important properties are listed below:
 <ul>
 <li><code>awsAccessKey</code> and <code>awsSecretKey</code>: Those keys are mandatory to get access to the AWS API and run any commands.</li>
-<li><code>resultBucket</code> and <code>deployBucket</code>: Those S3 buckets will be used the framework to store the results of the extraction and to store the packages .jar file for later deployment on any launched instance. You can create the buckets either via the Web Interface or using the command line tool <code>s3cmd</code>:
+<li><code>resultBucket</code> and <code>deployBucket</code>: Those S3 buckets will be used in the framework to store the results of the extraction and to store the packages .jar file for later deployment on any launched instance. You can create the buckets either via the Web Interface or using the command line tool <code>s3cmd</code>:
 <pre><code>apt-get install s3cmd<br>s3cmd --configure<br>s3cmd mb s3://[resultbucketname]<br>s3cmd mb s3://[deploybucketname]</code></pre></li>
-<li><code>ec2instancetype</code>: Defines the type of EC2 instances which will be launched. In order to find out which instance type servers your needs best, visit the <a href="https://aws.amazon.com/ec2/instance-types/">ec2 instance type website</a>. Former extractions by the WebDataCommons team where mainly done using <code>c1.xlarge</code> instances.</li>
+<li><code>ec2instancetype</code>: Defines the type of EC2 instances which will be launched. In order to find out which instance type suits your needs best, visit the <a href="https://aws.amazon.com/ec2/instance-types/">ec2 instance type website</a>. Former extractions by the WebDataCommons team were mainly done using <code>c1.xlarge</code> instances.</li>
 <li><code>processorClass</code>: This property defines which class is used for the extraction. So far three classes are implemented, which were used to run the former extractions of the WebDataCommons team:
 <ul>
 <li><code><a href="https://subversion.assembla.com/svn/commondata/WDCFramework/trunk/src/main/java/org/webdatacommons/hyperlinkgraph/processor/WatProcessor.java">org.webdatacommons.hyperlinkgraph.processor.WatProcessor</a></code>, which was used to extract the <a href="../hyperlinkgraph/index.html#toc3">hyperlink graph from the .wat files of the Spring 2014 Common Crawl dataset</a>.</li>
@@ -154,16 +154,16 @@ After successfully packaging the project, there should be a new directory, named
 <h3 id="runfirst">2.3 Running your first extraction</h3>
 <p>
 After you have packaged the code you can use the <code>bin/master</code> bash script to start and steer your extraction. This bash scripts calls functions implemented within the <code><a href="https://subversion.assembla.com/svn/commondata/WDCFramework/trunk/src/main/java/org/webdatacommons/framework/cli/Master.java">org.webdatacommons.framework.cli.Master</a></code> class. To execute the script you need to make it executable:<pre><code>chmod +x bin/master</code></pre>
-By following the commands below, you will first push your .jar file to S3. Next, you fill the queue with tasks/files which need to be processed and then start a number of EC2 instances which will execute the files. You can monitor the extraction process and after finishing stop all instances again. It also includes commands to collect your results and store it to your local hard drive. <b>Note</b>: Please always take in mind that the framework will make use of AWS services and that Amazon will charge you for their usage.
+By following the commands below, you will first push your .jar file to S3. Next, you fill the queue with tasks/files which need to be processed and then start a number of EC2 instances which will execute the files. You can monitor the extraction process and after finishing stop all instances again. It also includes commands to collect your results and store it to your local hard drive. <b>Note</b>: Please always keep in mind that the framework will make use of AWS services and that Amazon will charge you for their usage.
 <ol>
 <li><b>Deploy</b> to upload the JAR to S3:<pre><code>./bin/master deploy --jarfile target/dpef-*.jar</code></pre></li>
 <li><b>Queue</b> to fill the extraction queue with the Common Crawl files you want to process: <pre><code>/bin/master queue --bucket-prefix CC-MAIN-2013-48/segments/1386163041297/wet/</code></pre> Please note, that the queue command is just fetching files within one folder. In case you need files located in different folders use the bucket prefix file option of the command. You can also limit the number of files pushed to the queue.</li>
 <li><b>Start</b> to launch EC2 extraction instances from the spot market. The command will keep starting instances until it is cancelled, so beware! Also, the price limit has to be given. The current spot prices can be found at http://aws.amazon.com/ec2/spot-instances/#6. A general recommendation is to set this price at about the on-demand instance price. This way, we will benefit from the generally low spot prices without our extraction process being permanently killed. The price limit is given in US$.<pre><code>./bin/master start --worker-amount 10 --pricelimit 0.6</code></pre><b>Note</b>: It may take a while (approx. 10 Minutes) for the instances to become available and start taking tasks from the queue. You can observe the process of the spot requests within the AWS Web Dashboard.</li>
-<li><b>Monitor</b> to monitor the process including the number of items in the queue, the approximate time to finish and the number of running/requested instances<pre><code>./bin/master monitor</code></pre></li>
+<li><b>Monitor</b> to monitor the process including the number of items in the queue, the approximate time to finish, and the number of running/requested instances<pre><code>./bin/master monitor</code></pre></li>
 <li><b>Shutdown</b> to kill all worker nodes and terminate the spot instance requests<pre><code>./bin/master shutdown</code></pre></li>
 <li><b>Retrieve Data</b> to retrieve all collected data to a local directory<pre><code>./bin/master  retrievedata --destination /some/directory</code></pre></li>
 <li><b>Retrieve Stats</b> to retrieve all collected data statistics to a local directory from the Simple DB of AWS<pre><code>./bin/master  retrievestats --destination /some/directory</code></pre></li>
-<li><b>Clear Queue</b> to remove all remaining tasks from the queue and delete it<pre><code>./bin/master clearqueue</code></pre></li>
+<li><b>Clear Queue</b> to remove all remaining tasks from the queue and delete them<pre><code>./bin/master clearqueue</code></pre></li>
 <li><b>Clear Data</b> to remove all collected data from the Simple DB<pre><code>./bin/master cleardata</code></pre></li>
 </ol>
 For additional information and parameters which might be useful for your task you can have a look in the documentation of the different commands or have a look in the implementation class <code>org.webdatacommons.framework.cli.Master</a></code>.
@@ -171,12 +171,12 @@ For additional information and parameters which might be useful for your task yo
 
 <h2 id="customize">3. Customize your extraction</h2>
 <p>
-In this section we show how to build and run your own extractor. For this task we think about a large number of text files (plain .txt files), where each line consists of a number of chars. We are interested in all lines which only consists of numbers (matching the regex pattern [0-9]+). We want to extract those "numeric" lines to a new file and in addition we want to have two basic statistics about the each file: the total number of lines of the parse file and the number of lines which match our regex within the parsed file.
+In this section we show how to build and run your own extractor. For this task we think about a large number of text files (plain .txt files), where each line consists of a number of chars. We are interested in all lines which only consists of numbers (matching the regex pattern [0-9]+). We want to extract those "numeric" lines to a new file and in addition we want to have two basic statistics about each file: the total number of lines of the parsed file and the number of lines which match our regex within the parsed file.
 </p>
 
 <h3 id="processor_prelim">3.1. Basics</h3>
 <p>
-Building your own extractor is easy. The core of each extractor is a so called processor within the WDC Extraction Framework. The processor in general gets an input file from the queue and process it, storing statistics and handling the output. The framework itself takes care of the parallelization and administrative tasks like orchestrating the tasks. Therefore each processor needs to implement he <code>FileProcessor.java</code> interface:
+Building your own extractor is easy. The core of each extractor is a so called processor within the WDC Extraction Framework. The processor in general gets an input file from the queue and processes it, stores statistics and handles the output. The framework itself takes care of the parallelization and administrative tasks like orchestrating the tasks. Therefore each processor needs to implement he <code>FileProcessor.java</code> interface:
 <pre>
 <tt class="java"><span class="java4">package </span><span class="java10">org.webdatacommons.framework.processor;<br />
 </span><span class="java4">import </span><span class="java10">java.nio.channels.ReadableByteChannel;
@@ -188,12 +188,12 @@ Building your own extractor is easy. The core of each extractor is a so called p
 </pre>
 The interface is fairly simple, as it only contains one method, which receives a <code>ReadableByteChannel</code>, representing the file to process and the files name as input. As result the method returns a <code>Map&lt;String, String&gt;</code> of key value pairs containing statistics of the processed file. The returned key value pairs are written to the AWS Simple DB (see property <code>sdbdatadomain</code> of the <code>dpef.properties</code>). In case you do not need any statistics you can also return an empty <code>Map</code>. 
 <br/><br/>
-In addition the WDC Extraction Framework offers a context class, named <code>ProcessingNode.java</code> which allows the extending class to make use of contextual settings (e.g. AWS Services to store files). In many cases it makes sense to first have a look into this class before thinking about an own solution.
+In addition, the WDC Extraction Framework offers a context class, named <code>ProcessingNode.java</code>, which allows the extending class to make use of contextual settings (e.g. AWS Services to store files). In many cases it makes sense to first have a look into this class before thinking about your own solution.
 </p>
 <h3 id="processor_custom">3.2. Building your own extractor</h3>
 <p>
 We create the <code>TextFileProcessor.java</code> which implements the necessary interface and extends the <code>ProcessingNode.java</code> to make use of the context (see line 14).
-The class will process a text file, read each line and check if the line consists only of digits. Lines matching this requirement will be written into a new output file:<br/>
+The class will process a text file, read each line, and check if the line consists only of digits. Lines matching this requirement will be written into a new output file:<br/>
 
 <pre>
 <tt class="java">
@@ -285,9 +285,9 @@ Having adjust all necessary properties you can package the project and follow th
 </p>
 <h3 id="limits_custom">3.4. Limitations</h3>
 <p>
-Although the current version of the WDC Extraction Framework allows a straightforward customization for various kinds of extractions there are some limitations/restrictions which are not (yet) addressed within this version:
+Although the current version of the WDC Extraction Framework allows a straightforward customization for various kinds of extractions, there are some limitations/restrictions which are not (yet) addressed within this version:
 <ul>
-<li>In general, the framework is tailored to be used with AWS only as it depends on key services provided by AWS, as the SQS and S3.</li>
+<li>In general, the framework is tailored to be used with AWS only as it depends on key services provided by AWS, the SQS and S3.</li>
 <li>Input files, which should be processed need to be stored and available within AWS S3. The framework currently does not allow you to queue and process files stored.</li>
 <li>Statistics, created while processing files will be stored with AWS SimpleDB. At the moment is not possible to switch this option on/off or change the location, e.g. to an own data base.</li>
 </ul>
