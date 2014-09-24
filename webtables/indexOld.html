@@ -751,21 +751,30 @@ Figure 5 shows distribution of column data types.
 </div>
 
 <h2 id="download">4. Data Formats and Download</h2>
-<p>The main corpus of Web tables is divided into 854,083 gzip files, which are then packed in 885 tar archives. Each tar archive in the complete corpus contains 1,000 gzip files, where each gzip file contains Web tables extracted from a couple thousand Web pages. For each Web page that contains at least one content Web table, we provide the corresponding 
+<p>The main corpus of Web tables is divided in 854,083 gzip files. Each gzip file contains Web tables extracted from a couple thousand Web pages. For each Web page that contains at least one content Web table, we provide the corresponding 
 HTML file, the set of extracted Web tables in CSV format, and a JSON file that contains meta data for the extraction of the Web tables. Each JSON file contains the URL of the Web page, 
 a reference to the corresponding HTML file in the gzip file, and information for each of the extracted Web tables. All files that are referring to the same Web page, share the same file name prefix,
 e.g. a JSON file with the name <code>71657325_XXXXXXX.json</code> would referre to the HTML file <code>71657325_YYYYYY</code>, and a list of CSV files: <code>71657325_0_ZZZZZZZ.csv</code>, <code>71657325_1_ZZZZZZZ.csv</code> etc... 
 For each of the extracted Web tables, the JSON file contains the position of the table inside the HTML file, and basic statistics for the data in the Web tables. The complete JSON Schema can be found <a href="data/jsonSchema.json">here</a>.
 </p>
+<p>
+Additionally, we split the main corpus into two smaller corpora, based on the top-level domain. The first corpus contains only Web tables that were extracted from English top-level domains, such as: "com", "org", "net", "eu" and "uk". The second corpus contains the rest of the tables that were extracted from non-English top-level domains. 
+Each of the corpora contains 773,883 tar files, where each tar file contains couple of thousand Web tables in CSV format. The meta data file and the HTML file are not included in these corpora. The statistics for the corpus of English Web tables can be found in a <a href="englishTables.html">separate document</a>
+</p>
+<p>
+The corpora of Web tables are hosted using the Amazon Simple Storage Service (S3). Due to the large size of the corpora and due to the Amazon data transfer fees, we offer the files within a <a href="http://docs.aws.amazon.com/AmazonS3/latest/dev/RequesterPaysBuckets.html" target="_blank">Requester Pays Bucket</a>. In a nutshell, you will need an AWS account to download the files using the <a href="http://s3tools.org/s3cmd-150a1-released" target="_blank">s3cmd</a> command line tool (<b>1.5.0-alpha1</b> as earlier versions do not properly support the additional header information (see <a href="http://permalink.gmane.org/gmane.comp.file-systems.s3.s3tools/405">link</a>)). Please note: The costs for downloading will be charged by Amazon to your AWS account. Based on the <a href="http://aws.amazon.com/s3/pricing/" target="_blank">S3 pricing</a>, the estimated download costs for the complete corpus are around 175 USD. When operating on the data within the same Amazon region (US Oregon) the access is free of charge.<br>
+S3cmd is available as standard package for almost all UNIX systems (e.g. Ubuntu <code>apt-get install s3cmd</code>). You can request all files at once using the command <code>s3cmd get --recursive --add-header=x-amz-request-payer:requester s3://WebTablesExtraction/c*</code>
 
-<p>To download the corpora of Web table use the following links:</p>
+</p><p>The following table contains the S3 paths for downloading the datasets.<p>
 <table>
-<tr><th>Data Set</th><th>Size</th><th>#Files</th></tr>
-<tr><td><a href="http://data.dws.informatik.uni-mannheim.de/webtables/2014-02/completeCorpus/">Complete corpus</a></td><td>1 020 GB</td><td>885 (.tar)</td></tr>
-<tr><td><a href="http://data.dws.informatik.uni-mannheim.de/webtables/2014-02/englishCorpus/">Web Tables providing English content</a></td><td>697 GB</td><td>180 (.tar)</td></tr>
+<tr><th>Data Set</th><th>Amazon S3 Path</th><th>Size</th><th>#Files</th></tr>
+<tr><td>Complete Corpus</td><td><code>s3://WebTablesExtraction/c*</code></td> <td>1019 GB</td><td>854,083 (.gz)</td></tr>
+<tr><td>Web Tables from English TLDs</td><td><code>s3://SearchJoin-tables/englishTar/</code></td><td>29.7 GB</td><td>773,883 (.tar)</td></tr>
+<tr><td>Web Tables from non-English TLDs</td><td><code>s3://SearchJoin-tables/nonEnglishTar/</code></td><td>26.3 GB</td><td>773,883 (.tar)</td></tr>
 </table>
 
-You can download data samples on the following links:
+
+You can download free data samples on the following links:
 <ul>
 <li><a href="data/sample1K.zip">1000 random Web tables</a></li>
 <li><a href="data/sample10.zip">10 Web tables related to countries</a></li>
