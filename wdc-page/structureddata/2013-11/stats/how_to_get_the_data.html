@@ -46,6 +46,63 @@
 
 </table>
 
+<h2>Schema.org Class Specific Subsets</h2>
+<p>
+As working with the whole corpora can be difficult we have created subsets for specific classes. 
+The subsets contain only quads which were extracted from URLs on which we could find at least one quad whose predicate is a type statement and the object is a specific classes. 
+In order to compile those subsets, we first extracted those URLs for the following schema.org classes and than selected only quads which were found on the identified URLs of this specific class and compiled them in one new file. 
+<b>Please note, that the triples within the following files are not disjunct, which means whenever you combine them there might be duplicates, as one URL can include more than one typed quads from different classes.</b>
+</p>
+<table>
+<tr><th>	Class	</th><th>	Size	</th><th>	File Location		File Location	</th></tr>
+<tr><th>	http://schema.org/AdministrativeArea	</th><td>	50M	</td><td>	<a href="http://data.dws.informatik.uni-mannheim.de/structureddata/2013-11/quads/classspecificquads/AdministrativeArea.nq.gz">		AdministrativeArea.nq.gz	</a></td></tr>
+<tr><th>	http://schema.org/Airport	</th><td>	2.1G	</td><td>	<a href="http://data.dws.informatik.uni-mannheim.de/structureddata/2013-11/quads/classspecificquads/Airport.nq.gz">		Airport.nq.gz	</a></td></tr>
+<tr><th>	http://schema.org/BodyOfWater	</th><td>	514K	</td><td>	<a href="http://data.dws.informatik.uni-mannheim.de/structureddata/2013-11/quads/classspecificquads/BodyOfWater.nq.gz">		BodyOfWater.nq.gz	</a></td></tr>
+<tr><th>	http://schema.org/Book	</th><td>	1.6G	</td><td>	<a href="http://data.dws.informatik.uni-mannheim.de/structureddata/2013-11/quads/classspecificquads/Book.nq.gz">		Book.nq.gz	</a></td></tr>
+<tr><th>	http://schema.org/Canal	</th><td>	76K	</td><td>	<a href="http://data.dws.informatik.uni-mannheim.de/structureddata/2013-11/quads/classspecificquads/Canal.nq.gz">		Canal.nq.gz	</a></td></tr>
+<tr><th>	http://schema.org/City	</th><td>	301M	</td><td>	<a href="http://data.dws.informatik.uni-mannheim.de/structureddata/2013-11/quads/classspecificquads/City.nq.gz">		City.nq.gz	</a></td></tr>
+<tr><th>	http://schema.org/CollegeOrUniversity	</th><td>	351M	</td><td>	<a href="http://data.dws.informatik.uni-mannheim.de/structureddata/2013-11/quads/classspecificquads/CollegeOrUniversity.nq.gz">		CollegeOrUniversity.nq.gz	</a></td></tr>
+<tr><th>	http://schema.org/Comment	</th><td>	437M	</td><td>	<a href="http://data.dws.informatik.uni-mannheim.de/structureddata/2013-11/quads/classspecificquads/Comment.nq.gz">		Comment.nq.gz	</a></td></tr>
+<tr><th>	http://schema.org/Continent	</th><td>	38M	</td><td>	<a href="http://data.dws.informatik.uni-mannheim.de/structureddata/2013-11/quads/classspecificquads/Continent.nq.gz">		Continent.nq.gz	</a></td></tr>
+<tr><th>	http://schema.org/Country	</th><td>	2.8G	</td><td>	<a href="http://data.dws.informatik.uni-mannheim.de/structureddata/2013-11/quads/classspecificquads/Country.nq.gz">		Country.nq.gz	</a></td></tr>
+<tr><th>	http://schema.org/CreativeWork	</th><td>	2.9G	</td><td>	<a href="http://data.dws.informatik.uni-mannheim.de/structureddata/2013-11/quads/classspecificquads/CreativeWork.nq.gz">		CreativeWork.nq.gz	</a></td></tr>
+<tr><th>	http://schema.org/EducationalOrganization	</th><td>	59M	</td><td>	<a href="http://data.dws.informatik.uni-mannheim.de/structureddata/2013-11/quads/classspecificquads/EducationalOrganization.nq.gz">		EducationalOrganization.nq.gz	</a></td></tr>
+<tr><th>	http://schema.org/Event	</th><td>	2.9G	</td><td>	<a href="http://data.dws.informatik.uni-mannheim.de/structureddata/2013-11/quads/classspecificquads/Event.nq.gz">		Event.nq.gz	</a></td></tr>
+<tr><th>	http://schema.org/GovernmentOrganization	</th><td>	6.6M	</td><td>	<a href="http://data.dws.informatik.uni-mannheim.de/structureddata/2013-11/quads/classspecificquads/GovernmentOrganization.nq.gz">		GovernmentOrganization.nq.gz	</a></td></tr>
+<tr><th>	http://schema.org/Hospital	</th><td>	17M	</td><td>	<a href="http://data.dws.informatik.uni-mannheim.de/structureddata/2013-11/quads/classspecificquads/Hospital.nq.gz">		Hospital.nq.gz	</a></td></tr>
+<tr><th>	http://schema.org/Hotel	</th><td>	4.1G	</td><td>	<a href="http://data.dws.informatik.uni-mannheim.de/structureddata/2013-11/quads/classspecificquads/Hotel.nq.gz">		Hotel.nq.gz	</a></td></tr>
+<tr><th>	http://schema.org/LakeBodyOfWater	</th><td>	839K	</td><td>	<a href="http://data.dws.informatik.uni-mannheim.de/structureddata/2013-11/quads/classspecificquads/LakeBodyOfWater.nq.gz">		LakeBodyOfWater.nq.gz	</a></td></tr>
+<tr><th>	http://schema.org/LandmarksOrHistoricalBuildings	</th><td>	6.6M	</td><td>	<a href="http://data.dws.informatik.uni-mannheim.de/structureddata/2013-11/quads/classspecificquads/LandmarksOrHistoricalBuildings.nq.gz">		LandmarksOrHistoricalBuildings.nq.gz	</a></td></tr>
+<tr><th>	http://schema.org/Language	</th><td>	1.3M	</td><td>	<a href="http://data.dws.informatik.uni-mannheim.de/structureddata/2013-11/quads/classspecificquads/Language.nq.gz">		Language.nq.gz	</a></td></tr>
+<tr><th>	http://schema.org/Library	</th><td>	2.8M	</td><td>	<a href="http://data.dws.informatik.uni-mannheim.de/structureddata/2013-11/quads/classspecificquads/Library.nq.gz">		Library.nq.gz	</a></td></tr>
+<tr><th>	http://schema.org/Mountain	</th><td>	1.8M	</td><td>	<a href="http://data.dws.informatik.uni-mannheim.de/structureddata/2013-11/quads/classspecificquads/Mountain.nq.gz">		Mountain.nq.gz	</a></td></tr>
+<tr><th>	http://schema.org/Movie	</th><td>	1.7G	</td><td>	<a href="http://data.dws.informatik.uni-mannheim.de/structureddata/2013-11/quads/classspecificquads/Movie.nq.gz">		Movie.nq.gz	</a></td></tr>
+<tr><th>	http://schema.org/Museum	</th><td>	3.1M	</td><td>	<a href="http://data.dws.informatik.uni-mannheim.de/structureddata/2013-11/quads/classspecificquads/Museum.nq.gz">		Museum.nq.gz	</a></td></tr>
+<tr><th>	http://schema.org/MusicAlbum	</th><td>	1.6G	</td><td>	<a href="http://data.dws.informatik.uni-mannheim.de/structureddata/2013-11/quads/classspecificquads/MusicAlbum.nq.gz">		MusicAlbum.nq.gz	</a></td></tr>
+<tr><th>	http://schema.org/MusicRecording	</th><td>	3.1G	</td><td>	<a href="http://data.dws.informatik.uni-mannheim.de/structureddata/2013-11/quads/classspecificquads/MusicRecording.nq.gz">		MusicRecording.nq.gz	</a></td></tr>
+<tr><th>	http://schema.org/Organization	</th><td>	32G	</td><td>	<a href="http://data.dws.informatik.uni-mannheim.de/structureddata/2013-11/quads/classspecificquads/Organization.nq.gz">		Organization.nq.gz	</a></td></tr>
+<tr><th>	http://schema.org/Painting	</th><td>	1.4M	</td><td>	<a href="http://data.dws.informatik.uni-mannheim.de/structureddata/2013-11/quads/classspecificquads/Painting.nq.gz">		Painting.nq.gz	</a></td></tr>
+<tr><th>	http://schema.org/Park	</th><td>	3.6M	</td><td>	<a href="http://data.dws.informatik.uni-mannheim.de/structureddata/2013-11/quads/classspecificquads/Park.nq.gz">		Park.nq.gz	</a></td></tr>
+<tr><th>	http://schema.org/Person	</th><td>	44G	</td><td>	<a href="http://data.dws.informatik.uni-mannheim.de/structureddata/2013-11/quads/classspecificquads/Person.nq.gz">		Person.nq.gz	</a></td></tr>
+<tr><th>	http://schema.org/Place	</th><td>	14G	</td><td>	<a href="http://data.dws.informatik.uni-mannheim.de/structureddata/2013-11/quads/classspecificquads/Place.nq.gz">		Place.nq.gz	</a></td></tr>
+<tr><th>	http://schema.org/RadioStation	</th><td>	17M	</td><td>	<a href="http://data.dws.informatik.uni-mannheim.de/structureddata/2013-11/quads/classspecificquads/RadioStation.nq.gz">		RadioStation.nq.gz	</a></td></tr>
+<tr><th>	http://schema.org/Restaurant	</th><td>	598M	</td><td>	<a href="http://data.dws.informatik.uni-mannheim.de/structureddata/2013-11/quads/classspecificquads/Restaurant.nq.gz">		Restaurant.nq.gz	</a></td></tr>
+<tr><th>	http://schema.org/School	</th><td>	97M	</td><td>	<a href="http://data.dws.informatik.uni-mannheim.de/structureddata/2013-11/quads/classspecificquads/School.nq.gz">		School.nq.gz	</a></td></tr>
+<tr><th>	http://schema.org/Sculpture	</th><td>	106K	</td><td>	<a href="http://data.dws.informatik.uni-mannheim.de/structureddata/2013-11/quads/classspecificquads/Sculpture.nq.gz">		Sculpture.nq.gz	</a></td></tr>
+<tr><th>	http://schema.org/SeaBodyOfWater	</th><td>	49K	</td><td>	<a href="http://data.dws.informatik.uni-mannheim.de/structureddata/2013-11/quads/classspecificquads/SeaBodyOfWater.nq.gz">		SeaBodyOfWater.nq.gz	</a></td></tr>
+<tr><th>	http://schema.org/ShoppingCenter	</th><td>	869K	</td><td>	<a href="http://data.dws.informatik.uni-mannheim.de/structureddata/2013-11/quads/classspecificquads/ShoppingCenter.nq.gz">		ShoppingCenter.nq.gz	</a></td></tr>
+<tr><th>	http://schema.org/SkiResort	</th><td>	249K	</td><td>	<a href="http://data.dws.informatik.uni-mannheim.de/structureddata/2013-11/quads/classspecificquads/SkiResort.nq.gz">		SkiResort.nq.gz	</a></td></tr>
+<tr><th>	http://schema.org/SportsEvent	</th><td>	697M	</td><td>	<a href="http://data.dws.informatik.uni-mannheim.de/structureddata/2013-11/quads/classspecificquads/SportsEvent.nq.gz">		SportsEvent.nq.gz	</a></td></tr>
+<tr><th>	http://schema.org/SportsTeam	</th><td>	35M	</td><td>	<a href="http://data.dws.informatik.uni-mannheim.de/structureddata/2013-11/quads/classspecificquads/SportsTeam.nq.gz">		SportsTeam.nq.gz	</a></td></tr>
+<tr><th>	http://schema.org/StadiumOrArena	</th><td>	2.7M	</td><td>	<a href="http://data.dws.informatik.uni-mannheim.de/structureddata/2013-11/quads/classspecificquads/StadiumOrArena.nq.gz">		StadiumOrArena.nq.gz	</a></td></tr>
+<tr><th>	http://schema.org/TelevisionStation	</th><td>	640K	</td><td>	<a href="http://data.dws.informatik.uni-mannheim.de/structureddata/2013-11/quads/classspecificquads/TelevisionStation.nq.gz">		TelevisionStation.nq.gz	</a></td></tr>
+<tr><th>	http://schema.org/TVEpisode	</th><td>	615M	</td><td>	<a href="http://data.dws.informatik.uni-mannheim.de/structureddata/2013-11/quads/classspecificquads/TVEpisode.nq.gz">		TVEpisode.nq.gz	</a></td></tr>
+<tr><th>	http://schema.org/WebPage	</th><td>	15G	</td><td>	<a href="http://data.dws.informatik.uni-mannheim.de/structureddata/2013-11/quads/classspecificquads/WebPage.nq.gz">		WebPage.nq.gz	</a></td></tr>
+</table>
+<p>
+In case you are interested in a particular class or set of classes which is not listed above, please get in contact with the WebDataCommons team via <a href="http://groups.google.com/group/web-data-commons">Mailing List</a> or our <a href="https://groups.google.com/forum/?fromgroups#!forum/web-data-commons">Google Group</a>.
+</p>
+
 <h2>Get the Code</h2>
 
 <p>
