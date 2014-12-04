@@ -49,11 +49,11 @@
 <h2>Schema.org Class Specific Subsets</h2>
 <p>
 As working with the whole corpora can be difficult we have created subsets for a selection of <i>schema.org</i> classes, which can be partly mapped directly to <a href="http://dbpedia.org/About">DBpedia</a> classes. 
-The subsets contain only quads which were extracted from URLs on which we could find at least one quad whose predicate is a type statement and the object is a specific classes. 
-In order to compile those subsets, we first extracted those URLs for the following schema.org classes and than selected only quads which were found on the identified URLs of this specific class and compiled them in one new file. 
-<b>Please note, that the triples within the following files are not disjunct, which means whenever you combine them there might be duplicates, as one URL can include more than one typed quads from different classes.</b>
+The subsets contain only quads which were extracted from URLs containing at least one quad whose predicate is a type statement and the object is a specific classes. 
+In order to compile those subsets, we first extracted those URLs for the specified schema.org classes and than selected only quads which were found on the identified URLs of this specific class and compiled them in one new file. 
+<b>Please note, that the quads within the following files are not disjunct. This means, whenever you combine this might result in duplicated quads, as one URL can include more than one class (e.g. schema.org/Product and schema.org/Offer).</b>
 </p>
-<table><tr><th width="100px">Class Name</th><th>Total Number of Quads</th><th>Total Number of URLs </th><th>Total Number of Hosts</th><th>Total Number of Specific Class Entities</th><th>Top 5 Other Classes (Entity Count)</th><th>Total File Size (in)</th><th>Quad File</th></tr>
+<table><tr><th>Class Name</th><th>Total Number of Quads</th><th>Total Number of URLs </th><th>Total Number of Hosts</th><th>Total Number of Specific Class Entities</th><th>Top 5 Other Classes (Entity Count)</th><th>Total File Size (in MB)</th><th>Quad File</th></tr>
 <tr><th><a href="http://schema.org/AdministrativeArea">http://schema.org/AdministrativeArea</a></th><td>1,747,834</td><td>96,824</td><td>40</td><td>113,972</td><td>http://schema.org/GeoCoordinates (82,812)<br>
 http://schema.org/Country (82,552)<br>
 http://schema.org/Continent (81,839)<br>
