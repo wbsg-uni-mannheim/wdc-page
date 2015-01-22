@@ -70,13 +70,14 @@ In order to fix most of the common errors mentioned above, we have identified so
 <li>In order to fix the namespaces, leading 'www' should be removed. In addition 'https' should be replaced by 'http' and everything till the third slash should be lower case.</li>
 <li>Whenever missing, the slash behind 'schema.org' needs to be added.</li>
 <li>To increase pay-level domain coverage for types and properties comparisons should only be made on lower cased type and property names.</li>
-<li>For objectproperties with datatypes a set of new triples should be added, which models the missing object and has the original datatype value as <code>http://schema.org/name</code> property.</li>
+<li>For objectproperties with datatypes a set of new triples should be added, which models the missing object and has the original datatype value as <code>http://schema.org/name</code> or <code>http://schema.org/url</code>property. As in some cases, the objectproperties allow different types we recommend to use the the least abstract common supertype of all possible types.</li>
 </ul>
 </p>
 
 <h2>Fixed Version of the Schema.org Microdata Corpus</h2>
 <p>
-Using the heuristics mentioned above, we have created a fixed version of original <a href="how_to_get_the_data.html">Microdata Schema.org corpus</a>. The files of this new corpus are listed <a href="">here</a>.
+Using the heuristics mentioned above, we have created a fixed version of original <a href="how_to_get_the_data.html">Microdata Schema.org corpus</a>. The files of this new fixed corpus are listed in the <a href="http://webdatacommons.org/structureddata/2013-11/files/fixedMDSchemaOrgQuad.list">fixedMDSchemaOrgQuad.list</a> file.<br>
+The corpus can be downloaded using wget with the command <code>wget -i http://webdatacommons.org/structureddata/2013-11/files/fixedMDSchemaOrgQuad.list</code> The quads within this files are sorted by URL and subject.
 </p>
 
 <h2>Statistics of Fixed Corpus</h2>
