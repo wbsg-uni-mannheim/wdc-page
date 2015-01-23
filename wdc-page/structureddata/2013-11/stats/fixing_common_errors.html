@@ -40,7 +40,7 @@ In the following we briefly outline the most common groups of errors which can b
 </p>
 <h3>Wrong Namespaces</h3>
 <p>
-Within the corpus we have found over 360 different namespaces including the two most common: data-vocabulary.org and schema.org. As for our analysis we are only interested in schema.org, we filtered those including at least the substring 'schema.org'. This results in 149 remaning namespaces. 
+Within the corpus we have found over 360 different namespaces including the two most common: <code>data-vocabulary.org</code> and <code>schema.org</code>. As for our analysis we are only interested in schema.org, we filtered those including at least the substring 'schema.org'. This results in 149 remaning namespaces. The files of the resulting corpus can obtained from the <a href="http://webdatacommons.org/structureddata/2013-11/files/MDSchemaOrgQuad.list">MDSchemaOrgQuads.list</a> file.
 </p>
 The most common errors were:
 <ul>
@@ -70,7 +70,7 @@ In order to fix most of the common errors mentioned above, we have identified so
 <li>In order to fix the namespaces, leading 'www' should be removed. In addition 'https' should be replaced by 'http' and everything till the third slash should be lower case.</li>
 <li>Whenever missing, the slash behind 'schema.org' needs to be added.</li>
 <li>To increase pay-level domain coverage for types and properties comparisons should only be made on lower cased type and property names.</li>
-<li>For objectproperties with datatypes a set of new triples should be added, which models the missing object and has the original datatype value as <code>http://schema.org/name</code> or <code>http://schema.org/url</code>property. As in some cases, the objectproperties allow different types we recommend to use the the least abstract common supertype of all possible types.</li>
+<li>For objectproperties with datatypes a set of new triples should be added, which models the missing object and has the original datatype value as <code>http://schema.org/name</code> or <code>http://schema.org/url</code> property. As in some cases, the objectproperties allow different types we recommend to use the the least abstract common supertype of all possible types.</li>
 </ul>
 </p>
 
