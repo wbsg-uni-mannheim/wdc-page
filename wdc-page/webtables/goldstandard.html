@@ -96,9 +96,8 @@
         var optionsE = {
           title: 'Column Data Types'
         };
-
-        var chart1E = new google.visualization.PieChart(document.getElementById('piechartDatatypesEn'));
-        chart1E.draw(dataE, optionsE);
+		var chart1E = new google.visualization.PieChart(document.getElementById('piechartDatatypesEn'));
+        chart1E.draw(dataE, optionsE);		
 		
 		//create histogram for instance table - class distribution
 	   var instanceAllData= new google.visualization.DataTable();
@@ -123,6 +122,41 @@
 			   // Instantiate and draw our chart, passing in some options.
         var chartHeaders2 = new google.visualization.ColumnChart(document.getElementById('instanceAllDiv'));
         chartHeaders2.draw(instanceAllData, optionsHead2);
+		
+		var propertyData= new google.visualization.DataTable();
+        propertyData.addColumn('string', '#Property');
+        propertyData.addColumn('number', 'Number of mappings');
+        propertyData.addRows([
+            ['language',	74],
+			['industry',	61],
+			['country',	60],
+			['currency',	57],
+			['populationTotal',	46],
+			['location',	36],
+			['currencyCode',	34],
+			['releaseDate',	33],
+			['city',	29],
+			['capital',	27],
+			['commonName',	23],
+			['director',	21],
+			['revenue',	21],
+			['address',	18],
+			['elevation',	18],
+			['collectionSize',	17],
+			['assets',	16],
+			['publisher',	16],
+			['sales',	16],
+			['runtime',	16]
+        ]);
+
+        var optionsHead3 = {'title':'Top 20 DBpedia properties',
+                       'width':1500,
+                       'height':400,
+               'colors': ['#e6693e'],
+               'vAxis': {'minValue' :0,  logScale: false}};
+			   // Instantiate and draw our chart, passing in some options.
+        var chartHeaders3 = new google.visualization.ColumnChart(document.getElementById('properties'));
+        chartHeaders3.draw(propertyData, optionsHead3);
 		
       }
     </script>
@@ -218,13 +252,13 @@ All classes which only have the super class "Thing" are assigned to this categoy
 
 <h2 id="column">3. Column Characteristics</h2>
 <p>
-In the large corpus all tables together contain 7983 columns of which 3267 columns orogin from content tables. Since it is again useless to map a column in a layout table to a DBproperty, we only create property matchings for column of content tables. This results in 2018 mappings to DBpedia properties where only properties of the ontology namespace are taken into account. All the mappinsg cover 297 different porperties.
+In the large corpus all tables together contain 7983 columns of which 4100 columns origin from content tables. Since it is again useless to map a column in a layout table to a DBproperty, we only create property matchings for column of content tables. This results in 2084 mappings to DBpedia properties. 750 of these are mappings from the key column to rdfs:label, the other ones are from non-key columns to properties of the ontology namespace. All the mappinsg cover 298 different porperties.
 </p>
-<p>TODO!: Figure 2 shows the top 20 properties.</p>
-<!--<div style="width:720px;">
-    <div id="piechartDatatypesEn" style="width: 900px; height: 500px;"></div>
+<p>Figure 2 shows the top 20 properties (without rdfs:label).</p>
+<div style="width:720px;">
+    <div id="properties" style="width: 900px; height: 500px;"></div>
     <p style="margin:20px auto 20px auto; font-weight:normal; text-align:center; width:500px;">Fig. 2 - Top 20 DBpedia properties</p>
-</div>-->
+</div>
 <p>
 Only having columns of a certain data type could also bias the gold standard and encourage system that focus only on matching this data type. Thus, we took almost the same column data type distribution as it is present in the corpus. While the gold standard covers 65% columns of type string, the whole corpus has 68%, similar holds for the other data types. 
 </p>
