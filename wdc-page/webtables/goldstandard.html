@@ -174,6 +174,11 @@
         }
 
     </style>
+	<style type="text/css">
+		.todo {
+		background-color: yellow; color: red; font-weight: bold;
+		}
+	</style>
 </head>
 <body>
 <div id="logo" style="text-align:right; background-color: white;">&nbsp;&nbsp;<a href="http://dws.informatik.uni-mannheim.de"><img src="../images/ma-logo.gif" alt="University of Mannheim - Logo"></a></div>
@@ -194,7 +199,9 @@
 
 <div id="content">
 <p>
-This page provides basic statistics about a gold standard we created for the relational Web tables in the <a href="http://webdatacommons.org/webtables/englishTables.html">English WDC table corpus</a> that originate from the top-level-domains "com", "org", "net", "eu" and "uk". The web tables have been annotated with DBpedia classes, properties and resources.
+This page provides basic statistics about a gold standard for mapping relational Web tables from the <a href="http://webdatacommons.org/webtables/englishTables.html">English WDC table corpus</a> to DBpedia. 
+These tables originate from the top-level-domains "com", "org", "net", "eu" and "uk". 
+The annotations contain mappings from tables to classes, columns to properties and rows to resources.
 
 </p>
 <h2>Contents</h2>
@@ -203,31 +210,36 @@ This page provides basic statistics about a gold standard we created for the rel
 
 <h2 id="overview">1.Gold Standard Overview</h2>
 <p>
-We developed the gold standard with several goals in mind:
+The design goals of this gold standard were the following:
 <ul>
-  <li>balance</li>
+  <li>balanced sample wrt.</li>
 	<ul>
-		<li>number of rows</li>
-		<li>topics</li>
-		<li>number of property mappings</li>
+		<li>number of rows per table</li>
+		<li>topics covered</li>
+		<li>number of property mappings per table</li>
 	</ul>
-	<li>cover a realistic subset with similar characteristics than the whole web tables corpus</li>
-	<li>high precision mappings</li>
+	<li>cover a realistic subset with characteristics similar to the whole web tables corpus</li>
+	<li>high precision mappings (in case of ambiguous or fuzzy mappings, we decide to exclude it)</li>
 </ul>  
  </p> 
 <p>
-Since on the one hand we like to have a large gold standard covering a certain amount of realisitc web tables but on the other hand to have a gold standard to test instance matching between entities in the web table and resources in DBpedia, our gold standard is divided into 2 parts:<br/> 
+To address the requirements of having a gold standard that is as large as possible and having correspondences on instance-level (between rows in the web table and resources in DBpedia), the gold standard consists of two parts:
+
 <ul>
-  <li>large gold standard: 1748 tables where tables are assigned to DBpedia classes and columns to DBpedia properties</li>
-  <li>instance gold standard (also included in the large gold standard): 233 tables where additionally rows are annotated with DBpedia resources</li>
+  <li>complete gold standard: 1748 tables where tables are mapped to DBpedia classes and columns to DBpedia properties</li>
+  <li>instance-level gold standard (subset of complete gold standard): 233 tables, where rows are mapped to DBpedia resources</li>
 </ul>
 </p>
 <p>
-For the large gold standard, we took a certain amount of random web tables from the English WDC table corpus such that it represents the whole corpus. It contains not only relational tables but also layout tables or tables that cannot be mapped to DBpedia at all. However, these tables can be helpful to distinguish between tables where we can find DBpedia resources and tables where an algorithm should detect that no resources can be mapped. Due to the large amount of tables that cannot be mapped to DBpedia, we decided afterwards to specifially search for tables that potentially map. Therefore, we used the <a href="http://searchjoins.webdatacommons.org/">Mannheim Searchs Join Engine</a> with input tables from different topics. This way, it is more probable to get web tables which really contain content.
+The selection strategy for integrating tables in the gold standard was to first take a random sample from the complete corpus. 
+The majority of tables from this sample is non-relational (i.e. layout tables) or cannot be mapped to DBpedia.
+However, these tables can be helpful to distinguish between tables where we can find DBpedia resources and tables where an algorithm should detect that no resources can be mapped. 
+To increase the amount of actually mappable tables in the gold standard, we also specifically searched for tables that potentially map (i.e. have at least some overlapping values). 
+For this task we used the <a href="http://searchjoins.webdatacommons.org/">Mannheim Search Joins Engine</a> with input tables from DBpedia covering different topics.
 </p>
 
 <h2 id="statistics">2. Table Characteristics</h2>
-<p>The table below provides basic statistics for the tables' size in the large gold standard.</p>
+<p>The table below provides basic statistics for the tables' size in the complete gold standard.</p>
 <table >
 <tr><th>number of rows</th><th>no property mapping</th><th>1 property mapping</th><th>>1 property mapping</th><th>sum</th></tr>
 <tr><th><20</th><td>805</td><td>45</td><td>346</td><td>1196</td></tr>
@@ -236,23 +248,36 @@ For the large gold standard, we took a certain amount of random web tables from 
 <tr><th>sum</th><td>1057</td><td>132</td><td>559</td><td>1748</td></tr>
 </table>
 <p>
-Having the largest amount of tables that have less than 20 columns and no mapping to a DBpedia property at all, is representative for the corpus. Thus, we try to cover a realistic scenario with a lot of non-matchable tables with only few rows. Dividing the gold standard according to the two dimensions can also help to see for which tables a system performs well and where it can be improved.
-
-We call tables content tables if they are not layout tables and thus might contain information that is also available in DBpedia. In the large gold stadnard, we have about 763 of these content tables. These are usually larger than the layout tables (Ø 206.87 rows, Ø 4.7 columns). Since it is not useful to assign DBpedia classes or properties to layout tablea, we only labelled content tables. Altogether, we assigned 91 different DBpedia classes which should ensure the covering of different topics. We summarized the classes based on their super classes (called categories) to get an impression of the most frequent categories. Figure 1 shows the distribution on the categories.
+With the largest amount of tables having less than 20 columns and no mapping to a DBpedia property at all, we address the representativeness requirement. 
+Thus, we try to cover a realistic scenario with a lot of non-matchable tables with only few rows. 
+Dividing the gold standard according to the two dimensions can also help to see for which tables a system performs well and where it can be improved.
+</p>
+<p>
+Concerning the mapping task, we call a table a <i>content table</i> if it contains relational data and has at least one column (i.e. the "key column") that is mappable to DBpedia.
+In the complete gold standard, we have about 763 of these content tables. 
+They are usually larger than the other tables (Ø 206.87 rows, Ø 4.7 columns). 
+Since it is not useful to assign DBpedia classes or properties to non-content tables, only content tables are annotated with this information. 
+</p>
+<p>
+Altogether, the gold standard contains mappings to 91 different DBpedia classes which ensures a broad coverage of different topics. 
+We grouped these classes based on their super classes (called categories) and show their distribution in Figure 1. 
+All classes which only have the super class "Thing" are assigned to this category. 
+One example is the class "Drug". 
+Other classes can be consolidated to a category covering different but related classes, e.g. the category "Organization" contains tables about companies, universities political parties, airlines, schools etc.
 </p>
 
-<p>Figure 1 shows the different categories.</p>
 <div style="width:1000px;">
     <div id="headersDiv" style="width: 1000px; height: 470px;"></div>
     <p style="margin:20px auto 20px auto; font-weight:normal; text-align:center; width:500px;">Fig. 1 - Distribution of the Categories.</p>
 </div>
-<p>
-All classes which only have the super class "Thing" are assigned to this categoy. One example is the class "Drug". Other classes can be consolidated to a category covering different but related classes, e.g. the category "Organization" contains tables about companies, universities political parties, airlines, schools etc.
-</p>
 
 <h2 id="column">3. Column Characteristics</h2>
 <p>
-In the large corpus all tables together contain 7983 columns of which 4100 columns origin from content tables. Since it is again useless to map a column in a layout table to a DBproperty, we only create property matchings for column of content tables. This results in 2084 mappings to DBpedia properties. 750 of these are mappings from the key column to rdfs:label, the other ones are from non-key columns to properties of the ontology namespace. All the mappinsg cover 298 different porperties.
+In the complete gold standard all tables together contain 7983 columns of which 4100 columns originate from content tables. 
+Since it is again useless to map a column in a layout table to a DBproperty, we only create property matchings for column of content tables. 
+This results in 2084 mappings to DBpedia properties. 
+750 of these are mappings from the key column to rdfs:label, the other ones are from non-key columns to properties of the DBpedia ontology namespace. 
+All the mappings together cover 298 different properties.
 </p>
 <p>Figure 2 shows the top 20 properties (without rdfs:label).</p>
 <div style="width:720px;">
@@ -260,7 +285,9 @@ In the large corpus all tables together contain 7983 columns of which 4100 colum
     <p style="margin:20px auto 20px auto; font-weight:normal; text-align:center; width:500px;">Fig. 2 - Top 20 DBpedia properties</p>
 </div>
 <p>
-Only having columns of a certain data type could also bias the gold standard and encourage system that focus only on matching this data type. Thus, we took almost the same column data type distribution as it is present in the corpus. While the gold standard covers 65% columns of type string, the whole corpus has 68%, similar holds for the other data types. 
+Only having columns of a certain data type could also bias the gold standard and encourage system that focus only on matching this data type. 
+Thus, we took almost the same column data type distribution as it is present in the corpus. 
+While the gold standard covers 65% columns of type string, the whole corpus has 68%, similar holds for the other data types. 
 </p>
 
 <p>Figure 3 shows the distribution of column data types.</p>
@@ -270,12 +297,15 @@ Only having columns of a certain data type could also bias the gold standard and
 </div>
 </p>
 <p>
-Including columns with different data types shows the strenghts and weaknesses of systems/algorithms according to the various similarity functions.
+Including columns with different data types shows the strengths and weaknesses of systems/algorithms according to the various similarity functions.
 </p>
 
 <h2 id="instance">4. Instance Gold Standard</h2>
 <p>
-Our smaller corpus, Instance Gold Standard, contains 233 tables that have been annotated with a DBpedia class, DBpedia properties and DBpedia resources. Again, we used the Mannheim Search Joins Engine to obtain tables that are likely to be content tables. This subset of the gold standard covers 33 DBpedia class and 26124 instance correspondences. To get an impression about the ropics, we used the same categories as before.
+The instance-level gold standard contains 233 tables that have been annotated with a DBpedia class, DBpedia properties and DBpedia resources. 
+Again, we used the Mannheim Search Joins Engine to obtain tables that are likely to be content tables. 
+This subset of the complete gold standard covers 33 DBpedia class and 26,124 instance correspondences. 
+To get an impression about the topics, we used the same categories as before.
 </p>
 <p>Figure 4 shows the distribution of tables per categories.</p>
 <div style="width:1000px;">
@@ -283,18 +313,18 @@ Our smaller corpus, Instance Gold Standard, contains 233 tables that have been a
     <p style="margin:20px auto 20px auto; font-weight:normal; text-align:center; width:500px;">Fig. 4 - Distribution of Tables per Category</p>
 </div>
 <p>
-The distribution of tables according to the categories does not seem to be very balanced. This results from the fact that tables of different categories significantly differ in their amount of instance correspondences. Having a look at the amount of correspondence per category (Figure 5), the difference becomes visible.
+The distribution of tables according to the categories does not seem to be very balanced. 
+This results from the fact that tables of different categories significantly differ in their amount of instance correspondences. 
+Having a look at the amount of correspondence per category (Figure 5), the difference becomes visible.
 </p>
 <div style="width:1000px;">
     <div id="instanceAllDiv" style="width: 1000px; height: 470px;"></div>
     <p style="margin:20px auto 20px auto; font-weight:normal; text-align:center; width:500px;">Fig. 5- Distribution of the Correspondences per Category.</p>
 </div>
-<p>
-However, since we started to annotate tables covering the topics "Populated Place" and "Work", the gold standard still contains more tables and correspondences of this category. Especially for the instance gold standard, including various classes plays an important role since they show different matching characteristics.
-</p>
-<p>The table below provides the average mumber of Crrespondences and mapped columns per category.<p>
+
+<p>The table below provides the average number of correspondences and mapped columns per category.<p>
 <table >
-<tr><th>Category</th><th>avg. # of resource corres</th><th>avg. # of mapped columns</th><th>
+<tr><th>Category</th><th>avg. # of resource corresp.</th><th>avg. # of mapped columns</th><th>
 <tr><th>Work</th><td>131</td><td>3.2</td></tr>
 <tr><th>Organization</th><td>65</td><td>2.2</td></tr>
 <tr><th>Architectural Structure</th><td>67</td><td>2.3</td></tr>
@@ -303,7 +333,11 @@ However, since we started to annotate tables covering the topics "Populated Plac
 <tr><th>Natural Place</th><td>83</td><td>2.1</td></tr>
 <tr><th>Populated Place</th><td>130</td><td>4.1</td></tr>
 </table>
-While tables of the category "Species" can be mapped to a lot of resources, tables about "Architectural Strucure" contain tendencially less correspondences. Similar holds for the number of mappings to properties, e.g. tables of the category "Populated Place" can on average be mapped to 4 properties while tables of the category "Person" only to 1.5 properties. Besides other characteristics, these differences significantly influence the simplicity of matching a certain table. Having a lot of porperty mappings can help to find better correspondences for entities in the table since more information is available. The same holds vice versa, with more correspondences to resources, the mappings of properties could be improved. 
+While tables of the category "Species" can be mapped to a lot of resources, tables about "Architectural Structure" have a tendency to contain less correspondences. 
+Similar holds for the number of mappings to properties, e.g. tables of the category "Populated Place" can on average be mapped to 4 properties while tables of the category "Person" only to 1.5 properties. 
+Besides other characteristics, these differences significantly influence the simplicity of matching a certain table. 
+Having a lot of property mappings can help to find better correspondences for entities in the table since more information is available. 
+The same holds vice versa, with more correspondences to resources, the mappings of properties could be improved. 
 <h2 id="download">4. Data Formats and Download</h2>
 
 <p>To download the corpora of Web table use the following links:</p>
