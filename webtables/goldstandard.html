@@ -184,7 +184,8 @@
 <div id="logo" style="text-align:right; background-color: white;">&nbsp;&nbsp;<a href="http://dws.informatik.uni-mannheim.de"><img src="../images/ma-logo.gif" alt="University of Mannheim - Logo"></a></div>
 
 
-<a name='top'></a><div id="header"><h1 style="font-size: 250%;">Web Data Commons - Gold Standard for the English Web Tables Corpus</h1></div>
+<a name='top'></a><div id="header">
+  <h1 style="font-size: 250%;">T2D  Gold Standard for Matching Web Tables to DBpedia</h1></div>
 <div id="tagline">Statistics and Data Analysis</div>
 
 <div id="authors">
@@ -199,18 +200,18 @@
 
 <div id="content">
 <p>
-This page provides basic statistics about a gold standard for mapping relational Web tables from the <a href="http://webdatacommons.org/webtables/englishTables.html">English WDC table corpus</a> to DBpedia. 
-These tables originate from the top-level-domains "com", "org", "net", "eu" and "uk". 
-The annotations contain mappings from tables to classes, columns to properties and rows to resources.
-
-</p>
+This page describes the <strong>T2D Gold Standard</strong> for evaluating matching systems on the task of matching Web tables to the DBpedia knowledge base.</p>
+<p>Many HTML tables on the Web are used for layout purposes, but a small fraction of all tables contains structured data [<a href="#Cafarella2008">Cafarella2008</a>][<a href="#Crestan2011">Crestan2011</a>]. As this data has a wide coverage it could be very valueable for filling missing values and extending cross-domain knowledge bases such as <a href="http://wiki.dbpedia.org/">DBpedia</a>, <a href="http://www.mpi-inf.mpg.de/departments/databases-and-information-systems/research/yago-naga/yago/">YAGO</a> or the <a href="http://www.google.com/insidesearch/features/search/knowledge.html">Google Knowledge Graph</a>. As a prerequisite for being able to use  table data for knowledge base extension, the Web tables need to be matched to the knowledge base in question, meaning that correspondences between the rows of the tables and the entities described in the knowledge base as well as between the columns of the tables and the schema of the knowledge base need to be found. </p>
+<p>Different systems have been developed to solve this matching task [<a href="#Venetis2010">Venetis2010</a>][<a href="#Limaye2010">Limaye 2010</a>][<a href="#Ellis2014">Ellis2014</a>][<a href="#Zhang2014">Zhang2014</a>] . Up till now, it was difficult to compare the performance of these systems as they were evaluated using in part non-public Web tables data as well as different knowledge bases. The T2D Gold Standard tries to fill this gap by providing a large set of human-generated correspondences between a public Web tables corpus and the DBpedia knowledge base. </p>
+<p>T2D Gold Standard contains schema-level correspondences  between 1748 Web tables from the <a href="http://webdatacommons.org/webtables/englishTables.html">English-language subset</a> of the <a href="http://webdatacommons.org/webtables/">Web Data Commons Web Tables Corpus</a> and <a href="http://wiki.dbpedia.org/Downloads2014">DBpedia Version 2014</a>. For 233 out of these tables all rows have been manually mapped to entities in the DBpedia knowledge base (altogether 26,124 corrspondences). </p>
+<p>The T2D Gold standard is provided under the terms of the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache license</a> for public download below.</p>
 <h2>Contents</h2>
 <div id="toc" class="toc"></div>
 <div id="toccontent">
 
-<h2 id="overview">1.Gold Standard Overview</h2>
+<h2 id="overview">1.T2D Gold Standard Overview</h2>
 <p>
-The design goals of this gold standard were the following:
+The design goals of the T2D gold standard were the following:
 <ul>
   <li>balanced sample wrt.</li>
 	<ul>
@@ -221,22 +222,18 @@ The design goals of this gold standard were the following:
 	<li>cover a realistic subset with characteristics similar to the whole web tables corpus</li>
 	<li>high precision mappings (in case of ambiguous or fuzzy mappings, we decide to exclude it)</li>
 </ul>  
- </p> 
-<p>
-To address the requirements of having a gold standard that is as large as possible and having correspondences on instance-level (between rows in the web table and resources in DBpedia), the gold standard consists of two parts:
+ </p> To address the requirements of having a gold standard that is as large as possible and having correspondences on instance-level (between rows in the web table and resources in DBpedia), the gold standard consists of two parts:
 
 <ul>
   <li>complete gold standard: 1748 tables where tables are mapped to DBpedia classes and columns to DBpedia properties</li>
   <li>instance-level gold standard (subset of complete gold standard): 233 tables, where rows are mapped to DBpedia resources</li>
 </ul>
 </p>
-<p>
 The selection strategy for integrating tables in the gold standard was to first take a random sample from the complete corpus. 
 The majority of tables from this sample is non-relational (i.e. layout tables) or cannot be mapped to DBpedia.
 However, these tables can be helpful to distinguish between tables where we can find DBpedia resources and tables where an algorithm should detect that no resources can be mapped. 
 To increase the amount of actually mappable tables in the gold standard, we also specifically searched for tables that potentially map (i.e. have at least some overlapping values). 
 For this task we used the <a href="http://searchjoins.webdatacommons.org/">Mannheim Search Joins Engine</a> with input tables from DBpedia covering different topics.
-</p>
 
 <h2 id="statistics">2. Table Characteristics</h2>
 <p>The table below provides basic statistics for the tables' size in the complete gold standard.</p>
@@ -338,17 +335,42 @@ Similar holds for the number of mappings to properties, e.g. tables of the categ
 Besides other characteristics, these differences significantly influence the simplicity of matching a certain table. 
 Having a lot of property mappings can help to find better correspondences for entities in the table since more information is available. 
 The same holds vice versa, with more correspondences to resources, the mappings of properties could be improved. 
-<h2 id="download">4. Data Formats and Download</h2>
+<h2 id="download">4. Data Format </h2>
+<p><strong>Todo: </strong>Describe data formats in which the correspondences as well as the Web tables and the relevant part of DBpedia are provided for download.</p>
+<h2>5. Download</h2>
 
+<p><strong>Todo:</strong> Refer to Apache License and provide links to all types of download files.</p>
+<p><strong>Todo:</strong> Add a table with version and data information for this and future releases.</p>
 <p>To download the corpora of Web table use the following links:</p>
 <table>
 <tr><th>Data Set</th><th>Size</th><th>#Files</th></tr>
-<tr><td><a href="http://data.dws.informatik.uni-mannheim.de/webtables/2014-02/englishCorpus/">Web Tables providing English content</a></td><td>697 GB</td><td>180 (.tar)</td></tr>
-<tr><td><a href="http://data.dws.informatik.uni-mannheim.de/webtables/2014-02/completeCorpus/">Complete corpus</a></td><td>1 020 GB</td><td>885 (.tar)</td></tr>
+<!--<tr><td><a href="http://data.dws.informatik.uni-mannheim.de/webtables/2014-02/englishCorpus/">Web Tables providing English content</a></td><td>697 GB</td><td>180 (.tar)</td></tr>
+<tr><td><a href="http://data.dws.informatik.uni-mannheim.de/webtables/2014-02/completeCorpus/">Complete corpus</a></td><td>1 020 GB</td><td>885 (.tar)</td></tr>-->
 </table>
 
 </p>
+<p>You can download data samples on the following links:</p>
+<p><strong>Todo:</strong> Provide samples of each file.</p>
+<p>&nbsp;</p>
 </div>
+
+<h2 id="feedback">6. Feedback</h2>
+<p>Please send questions and feedback to direcly to the authors (listed abouve) or  post them in the <a href="https://groups.google.com/forum/?fromgroups#!forum/web-data-commons">Web Data Commons Google Group</a>.<br/>
+</p>
+<h2 id="othercorpera">7. References</h2>
+<ol>
+    <li>[<a name="Cafarella2008">Cafarella2008</a>] Michael J. Cafarella, Eugene Wu, Alon Halevy, Yang Zhang, Daisy Zhe Wang: <a href='http://dl.acm.org/citation.cfm?id=1453916'>WebTables: exploring the power of tables on the web.</a> VLDB 2008.</li>
+<li>[<a name="Crestan2011">Crestan2011</a>] Eric Crestan and Patrick Pantel: <a href="http://dl.acm.org/citation.cfm?id=1935904">Web-scale table census and classification.</a> WSDM 2011.</li>
+<li>[<a name="Cafarella2009">Cafarella2009</a>] Michael J. Cafarella, Alon Halevy, and Nodira Khoussainova: <a href="http://dl.acm.org/citation.cfm?id=1687750">Data integration for the relational web.</a> Proc. VLDB Endow. 2009. </li>
+<li>[<a name="Venetis2010">Venetis2010</a>] Venetis, Petros, Alon Halevy, Jayant Madhavan, Marius Pasca, Warren Shen, Fei Wu, Gengxin Miao, and Chung Wu: <a href="http://grafia.cs.ucsb.edu/gengxin/pdf/tables.pdf">Table Search Using Recovered Semantics.</a> 2010. </li>
+<li>[<a name="Limaye2010">Limaye 2010</a>] Girija Limaye, Sunita Sarawagi, and Soumen Chakrabarti: <a href="http://dl.acm.org/citation.cfm?id=1920841.1921005&coll=DL&dl=GUIDE&CFID=489610762&CFTOKEN=92550669">Annotating and searching web tables using entities, types and relationships</a>. <em>Proc. VLDB Endow.</em> 3, 1-2, 2010.</li>
+<li>[<a name="Zhang2013">Zhang2013</a>] Zhang, Xiaolu, et al.: <a href="http://link.springer.com/chapter/10.1007%2F978-3-642-37450-0_8">Mapping entity-attribute web tables to web-scale knowledge bases.</a> In: Database Systems for Advanced Applications. Springer, 2013.</li>
+<li>[<a name="Wang2012">Wang2012</a>] Jingjing Wang, Haixun Wang, Zhongyuan Wang, and Kenny Q. Zhu: <a href="http://dl.acm.org/citation.cfm?id=2427537">Understanding tables on the web.</a> In Proceedings of the 31st international conference on Conceptual Modeling (ER'12), 2012.</li>
+<li>[<a name ="Ellis2014">Ellis2014</a>]Jason Ellis, Achille Fokoue, Okite Hassanzadeh, Anastasios Kementsietsidis, Kavitha Srinivas, Michael J. Ward:<a href="http://doi.acm.org/10.1145/2737817.2737829">Exploring Big Data with Helix: Finding Needles in a Big Haystack.</a> In ACM SIGMOD Record, Volume 43 Issue 4, 2014.</li> 
+<li>[<a name ="Zhang2014">Zhang2014</a>]Ziqi Zhang:<a href="http://link.springer.com/chapter/10.1007%2F978-3-319-11964-9_31">Towards efficient and effective semantic table interpretation.</a> In Proceedings of the 13th International Semantic Web Conference (ISWC 2014), 2014.</li>
+</ol>
+</div>
+
 
 <script type="text/javascript">
 $('#toc').toc({
