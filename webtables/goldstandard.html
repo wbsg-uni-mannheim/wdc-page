@@ -335,31 +335,102 @@ Similar holds for the number of mappings to properties, e.g. tables of the categ
 Besides other characteristics, these differences significantly influence the simplicity of matching a certain table. 
 Having a lot of property mappings can help to find better correspondences for entities in the table since more information is available. 
 The same holds vice versa, with more correspondences to resources, the mappings of properties could be improved. 
-<h2 id="download">4. Data Format </h2>
-<p><strong>Todo: </strong>Describe data formats in which the correspondences as well as the Web tables and the relevant part of DBpedia are provided for download.</p>
-<h2>5. Download</h2>
 
-<p><strong>Todo:</strong> Refer to Apache License and provide links to all types of download files.</p>
-<p><strong>Todo:</strong> Add a table with version and data information for this and future releases.</p>
-<p>To download the corpora of Web table use the following links:</p>
+<h2 id="download">4. Data Format </h2>
+
+<p>
+The tables and the gold standard are provided as CSV files. Fields are separated by the comma (' , ') character and all values are double quoted (' " ').
+There are three different files types for the gold standard: the class file, the attribute files and the entity files.
+In all files, tables can be uniquely identified by their name, which is the file name without extension.
+The class file contains the class correspondences and the header information for each table. It has the following structure:
+</p>
+
 <table>
-<tr><th>Data Set</th><th>Size</th><th>#Files</th></tr>
-<!--<tr><td><a href="http://data.dws.informatik.uni-mannheim.de/webtables/2014-02/englishCorpus/">Web Tables providing English content</a></td><td>697 GB</td><td>180 (.tar)</td></tr>
-<tr><td><a href="http://data.dws.informatik.uni-mannheim.de/webtables/2014-02/completeCorpus/">Complete corpus</a></td><td>1 020 GB</td><td>885 (.tar)</td></tr>-->
+<tr>
+<td>table name</td>
+<td>DBpedia class name</td>
+<td>DBpedia class URI</td>
+<td>Header row indices (comma-separated list)</td>
+</tr>
 </table>
 
-</p>
-<p>You can download data samples on the following links:</p>
-<p><strong>Todo:</strong> Provide samples of each file.</p>
-<p>&nbsp;</p>
-</div>
+The attributes files contain the attribute correspondences and the key information for the tables. For each table, one attribute file with the same name exists. These files have the following structure:
 
-<h2 id="feedback">6. Feedback</h2>
-<p>Please send questions and feedback to direcly to the authors (listed abouve) or  post them in the <a href="https://groups.google.com/forum/?fromgroups#!forum/web-data-commons">Web Data Commons Google Group</a>.<br/>
+<table>
+<tr>
+<td>DBpedia property URI</td>
+<td>Column header (value from the first row)</td>
+<td>Is key column (boolean)</td>
+<td>Column index</td>
+</tr>
+</table>
+
+The entity files contain the entity correspondences for the tables. For each table, one entity file with the same name exists. These files have the following structure:
+
+<table>
+<tr>
+<td>DBpedia resource URI</td>
+<td>Key value</td>
+<td>Row index</td>
+</tr>
+</table>
+
+<h2>5. Download</h2>
+
+<p>To download the corpora of Web table use the following links:</p>
+
+<table>
+<tr>
+<th>Gold Standard</th>
+<th>Tables</th>
+<th>Classes</th>
+<th>Attributes</th>
+<th>Entities</th>
+</tr>
+<tr>
+<td>Example data</td>
+<td><a href="smaple_table.csv">sample_table.csv</a></td>
+<td><a href="sample_classes.csv">sample_classes.csv</a></td>
+<td><a href="sample_attributes.csv">sample_attributes.csv</a></td>
+<td><a href="sample_entities.csv">sample_entities.csv</a></td>
+</tr>
+<tr>
+<td>Complete gold standard</td>
+<td><a href="tables_complete.tar.gz">tables_complete.tar.gz</a></td>
+<td><a href="classes_complete.csv">classes_complete.csv</a></td>
+<td><a href="attributes_complete.tar.gz">attributes_complete.tar.gz</a></td>
+<td></td>
+</tr>
+<tr>
+<td>Instance-level gold standard</td>
+<td><a href="tables_instance.tar.gz">tables_instance.tar.gz</a></td>
+<td><a href="classes_instance.csv">classes_instance.csv</a></td>
+<td><a href="attributes_instance.tar.gz">attributes_instance.tar.gz</a></td>
+<td><a href="entities_instance.tar.gz">entities_instance.tar.gz</a></td>
+</tr>
+<tr>
+<td>DBpedia subset</td>
+<td><a href="dbpedia_subset.tar.gz">dbpedia_subset.tar.gz</a></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</table>
+
+<h2 id="license">6. License</h2>
+<p>All data is provided according the same <a href="http://commoncrawl.org/about/terms-of-use/full-terms-of-use/">terms of use, disclaimer of warranties and limitation of liabilities</a> that apply to the Common Crawl corpus.</p>
+
+<h2 id="acknowledgments">6. Acknowledgements</h2>
+
+<p>We would like to thank Oktie Hassanzadeh, Mariano Rodriguez, Kavitha Srinivas and Michael J. Ward for their feedback on our gold standard.</p>
+
+<h2 id="feedback">7. Feedback</h2>
+<p>Please send questions and feedback to directly to the authors (listed above) or  post them in the <a href="https://groups.google.com/forum/?fromgroups#!forum/web-data-commons">Web Data Commons Google Group</a>.<br/>
 </p>
-<h2 id="othercorpera">7. References</h2>
+
+<h2 id="othercorpera">8. References</h2>
 <ol>
-    <li>[<a name="Cafarella2008">Cafarella2008</a>] Michael J. Cafarella, Eugene Wu, Alon Halevy, Yang Zhang, Daisy Zhe Wang: <a href='http://dl.acm.org/citation.cfm?id=1453916'>WebTables: exploring the power of tables on the web.</a> VLDB 2008.</li>
+<li>[<a name="Cafarella2008">Cafarella2008</a>] Michael J. Cafarella, Eugene Wu, Alon Halevy, Yang Zhang, Daisy Zhe Wang: <a href='http://dl.acm.org/citation.cfm?id=1453916'>WebTables: exploring the power of tables on the web.</a> VLDB 2008.</li>
 <li>[<a name="Crestan2011">Crestan2011</a>] Eric Crestan and Patrick Pantel: <a href="http://dl.acm.org/citation.cfm?id=1935904">Web-scale table census and classification.</a> WSDM 2011.</li>
 <li>[<a name="Cafarella2009">Cafarella2009</a>] Michael J. Cafarella, Alon Halevy, and Nodira Khoussainova: <a href="http://dl.acm.org/citation.cfm?id=1687750">Data integration for the relational web.</a> Proc. VLDB Endow. 2009. </li>
 <li>[<a name="Venetis2010">Venetis2010</a>] Venetis, Petros, Alon Halevy, Jayant Madhavan, Marius Pasca, Warren Shen, Fei Wu, Gengxin Miao, and Chung Wu: <a href="http://grafia.cs.ucsb.edu/gengxin/pdf/tables.pdf">Table Search Using Recovered Semantics.</a> 2010. </li>
@@ -369,6 +440,8 @@ The same holds vice versa, with more correspondences to resources, the mappings 
 <li>[<a name ="Ellis2014">Ellis2014</a>]Jason Ellis, Achille Fokoue, Okite Hassanzadeh, Anastasios Kementsietsidis, Kavitha Srinivas, Michael J. Ward:<a href="http://doi.acm.org/10.1145/2737817.2737829">Exploring Big Data with Helix: Finding Needles in a Big Haystack.</a> In ACM SIGMOD Record, Volume 43 Issue 4, 2014.</li> 
 <li>[<a name ="Zhang2014">Zhang2014</a>]Ziqi Zhang:<a href="http://link.springer.com/chapter/10.1007%2F978-3-319-11964-9_31">Towards efficient and effective semantic table interpretation.</a> In Proceedings of the 13th International Semantic Web Conference (ISWC 2014), 2014.</li>
 </ol>
+
+</div>
 </div>
 
 
