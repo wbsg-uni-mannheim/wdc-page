@@ -4,179 +4,7 @@
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script type="text/javascript" src="/jquery.toc.min.js"></script>
 
-  <script type="text/javascript" src="https://www.google.com/jsapi"></script>
-  <script type="text/javascript">
   
-	google.load('visualization', '1', {packages: [ 'bar', 'line']});
-
-	google.setOnLoadCallback(drawMaterial3);
-	google.setOnLoadCallback(drawMaterial4);
-	google.setOnLoadCallback(drawMaterial5);
-	google.setOnLoadCallback(drawMaterial6);
-	google.setOnLoadCallback(drawMaterial1);
-	google.setOnLoadCallback(drawMaterial2);
-	
-function drawMaterial1() {
-      var data = google.visualization.arrayToDataTable([
-        ['Crawl', 'RDFa', 'Microdata', 'hCard'],
-        ['2012', 519379, 140312, 1511855],
-        ['2013', 471406, 463539, 995258],
-        ['2014', 571581, 819990, 1095517],
-      ]);
-
-      var options = {
-	  width: 500,
-	  height: 300,
-        chart: {
-          title: 'Number of PLDs Deploying the three Major Markup Formats'
-        },
-        hAxis: {
-          title: '#PLDs',
-          minValue: 0,
-        },
-        vAxis: {
-          title: 'Year of Crawl'
-        },
-        bars: 'vertical',
-        
-      };
-      var material = new google.charts.Bar(document.getElementById('dev_plds'));
-      material.draw(data, options);
-	  }
-	  function drawMaterial2() {
-	  var data2 = google.visualization.arrayToDataTable([
-        ['Crawl', 'RDFa', 'Microdata', 'hCard'],
-        ['2012', 1079175202, 1488063426, 3547824107],
-        ['2013', 2636964693, 8795074538, 4884918863],
-        ['2014', 2566827347, 9438536906, 3850290103],
-      ]);
-
-      var options2 = {
-	  width: 500,
-	  height: 300,
-        chart: {
-          title: 'Number of Triples marked up by the three Major Markup Formats'
-        },
-        hAxis: {
-          title: '#Triples',
-          minValue: 0,
-        },
-        vAxis: {
-          title: 'Year of Crawl'
-        },
-        bars: 'vertical',
-        
-      };
-      var material2 = new google.charts.Bar(document.getElementById('dev_triple'));
-      material2.draw(data2, options2);
-	  }
-	  function drawMaterial3() {
-	  var dataRdf1 = google.visualization.arrayToDataTable([
-        ['Crawl', 'og:website', 'og:article', 'foaf:Document', 'gd:breadcrumb', 'og:product'],
-        ['2012', 56573,183046,49252,9054,19107],
-        ['2013', 71590,167544,45542,39561,13813],
-        ['2014', 164324,141679,51694,49771,14592],
-      ]);
-
-      var options3 = {
-	  width: 500,
-	  height: 300,
-        chart: {
-          title: 'Development of Selected Classes by #PLDs'
-        },
-        hAxis: {
-          title: 'Year of Crawl',
-          minValue: 0,
-        },
-        vAxis: {
-          title: '#PLDs'
-        },
-               
-      };
-      var materia3l = new google.charts.Line(document.getElementById('rdf_pld'));
-      materia3l.draw(dataRdf1, options3);
- }
-	  function drawMaterial4() {
-	
-	var dataRdf2 = google.visualization.arrayToDataTable([
-        ['Crawl', 'og:website', 'og:article', 'foaf:Document', 'gd:breadcrumb', 'og:product'],
-        ['2012', 9197072,35438354,3709728,52521380,7517484],
-        ['2013', 24951292,82882535,31601886,53156451,13199034],
-        ['2014', 23429568,65233945,35991377,56755178,9955913],
-      ]);
-
-      var options4 = {
-	  width: 500,
-	  height: 300,
-        chart: {
-          title: 'Development of Selected Classes by #Triples'
-        },
-        hAxis: {
-          title: 'Year of Crawl',
-          minValue: 0,
-        },
-        vAxis: {
-          title: '#Triples'
-        },
-               
-      };
-      var material3 = new google.charts.Line(document.getElementById('rdf_triple'));
-      material3.draw(dataRdf2, options4);
-	  }
-	  function drawMaterial5() {
-	   var dataMD1 = google.visualization.arrayToDataTable([
-        ['Crawl', 'schema:PostalAddress', 'schema:Product', 'schema:LocalBusiness', 'schema:Review', 'schema:Rating'],
-        ['2012', 19592,16612,16383,2585,7711],
-        ['2013', 52446,56388,35264,13137,8360],
-        ['2014', 101086,89608,62191,20124,12187],
-      ]);
-
-      var options5 = {
-	  width: 500,
-	  height: 300,
-        chart: {
-          title: 'Development of Selected Classes by #PLDs'
-        },
-        hAxis: {
-          title: 'Year of Crawl',
-          minValue: 0,
-        },
-        vAxis: {
-          title: '#PLDs'
-        },
-               
-      };
-      var material5 = new google.charts.Line(document.getElementById('md_pld'));
-      material5.draw(dataMD1, options5);
- }
-	  function drawMaterial6() {
-	
-	var dataMD2 = google.visualization.arrayToDataTable([
-        ['Crawl', 'schema:PostalAddress', 'schema:Product', 'schema:LocalBusiness', 'schema:Review', 'schema:Rating'],
-        ['2012', 9513985,19386194,5089,3114006,1777255],
-        ['2013', 125780525,178334394,76317387,35213270,30887676],
-        ['2014', 48804397,288082823,20194229,42561245,39170723],
-      ]);
-
-      var options6 = {
-	  width: 500,
-	  height: 300,
-        chart: {
-          title: 'Development of Selected Classes by #Triples'
-        },
-        hAxis: {
-          title: 'Year of Crawl',
-          minValue: 0,
-        },
-        vAxis: {
-          title: '#Triples'
-        },
-               
-      };
-      var material6 = new google.charts.Line(document.getElementById('md_triple'));
-      material6.draw(dataMD2, options6);
-    }
-</script>
 
 <script type="text/javascript">
 
@@ -240,10 +68,7 @@ These pages originate from 2.72 million  different pay-level-domains out of the 
 <img src="https://chart.googleapis.com/chart?chtt=Typed%20Entities&chs=500x300&chds=a&cht=p&chd=t:405541283,2209497281,7712041,34595069,1349620300,4473631,82751,16186868,218463,5781217,52187702&chl=html-rdfa|html-microdata|html-mf-geo|html-mf-hcalendar|html-mf-hcard|html-mf-hlisting|html-mf-hresume|html-mf-hreview|html-mf-species|html-mf-hrecipe|html-mf-xfn" />
 <img src="https://chart.googleapis.com/chart?chtt=Triples&chs=500x300&chds=a&cht=p&chd=t:2566827347,9438536906,20348760,169557078,3850290103,18838183,462002,69802632,653111,24756234,219772447&chl=html-rdfa|html-microdata|html-mf-geo|html-mf-hcalendar|html-mf-hcard|html-mf-hlisting|html-mf-hresume|html-mf-hreview|html-mf-species|html-mf-hrecipe|html-mf-xfn" />
 <br/>
-<div>
-<span id="dev_plds" style="width:500px"></span>
-<span id="dev_triple" style="width:500px"></span>
-</div>
+
 
 <h2>Top Domains by Extracted Triples</h2><br /><ol>
 <li> <a href="blogspot.com">blogspot.com</a> (633,878,938 triples) </li>
@@ -423,10 +248,7 @@ These pages originate from 2.72 million  different pay-level-domains out of the 
 </tr>
 </table>
 
-<div>
-<span id="rdf_pld" style="width:500px"></span>
-<span id="rdf_triple" style="width:500px"></span>
-</div>
+
 
 <a name='html-microdata'></a><h3>Extractor html-microdata</h3><br />
 <table><tr><th>Triples Extracted</th><td>9,438,536,906</td></tr>
@@ -558,10 +380,7 @@ These pages originate from 2.72 million  different pay-level-domains out of the 
   <td><a href="html-microdata.xlsx">html-microdata.xlsx</a> (221kb)</td>
 </tr>
 </table>
-<div>
-<span id="md_pld" style="width:500px"></span>
-<span id="md_triple" style="width:500px"></span>
-</div>
+
 
 <a name='html-mf-geo'></a><h3>Extractor html-mf-geo</h3><br />
 <table><tr><th>Triples Extracted</th><td>20,348,760</td></tr>

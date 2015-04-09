@@ -2,6 +2,180 @@
 <html><head><title>WDC - RDFa, Microdata, and Microformat Data Sets</title>
 <link rel="stylesheet" href="http://webdatacommons.org/style.css" type="text/css" media="screen"/>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+  <script type="text/javascript">
+  
+	google.load('visualization', '1', {packages: [ 'bar', 'line']});
+
+	google.setOnLoadCallback(drawMaterial3);
+	google.setOnLoadCallback(drawMaterial4);
+	google.setOnLoadCallback(drawMaterial5);
+	google.setOnLoadCallback(drawMaterial6);
+	google.setOnLoadCallback(drawMaterial1);
+	google.setOnLoadCallback(drawMaterial2);
+	
+function drawMaterial1() {
+      var data = google.visualization.arrayToDataTable([
+        ['Crawl', 'RDFa', 'Microdata', 'hCard'],
+        ['2012', 519379, 140312, 1511855],
+        ['2013', 471406, 463539, 995258],
+        ['2014', 571581, 819990, 1095517],
+      ]);
+
+      var options = {
+	  width: 500,
+	  height: 300,
+        chart: {
+          title: 'Number of PLDs Deploying the three Major Markup Formats'
+        },
+        hAxis: {
+          title: '#PLDs',
+          minValue: 0,
+        },
+        vAxis: {
+          title: 'Year of Crawl'
+        },
+        bars: 'vertical',
+        
+      };
+      var material = new google.charts.Bar(document.getElementById('dev_plds'));
+      material.draw(data, options);
+	  }
+	  function drawMaterial2() {
+	  var data2 = google.visualization.arrayToDataTable([
+        ['Crawl', 'RDFa', 'Microdata', 'hCard'],
+        ['2012', 1079175202, 1488063426, 3547824107],
+        ['2013', 2636964693, 8795074538, 4884918863],
+        ['2014', 2566827347, 9438536906, 3850290103],
+      ]);
+
+      var options2 = {
+	  width: 500,
+	  height: 300,
+        chart: {
+          title: 'Number of Triples marked up by the three Major Markup Formats'
+        },
+        hAxis: {
+          title: '#Triples',
+          minValue: 0,
+        },
+        vAxis: {
+          title: 'Year of Crawl'
+        },
+        bars: 'vertical',
+        
+      };
+      var material2 = new google.charts.Bar(document.getElementById('dev_triple'));
+      material2.draw(data2, options2);
+	  }
+	  function drawMaterial3() {
+	  var dataRdf1 = google.visualization.arrayToDataTable([
+        ['Crawl', 'og:website', 'og:article', 'foaf:Document', 'gd:breadcrumb', 'og:product'],
+        ['2012', 56573,183046,49252,9054,19107],
+        ['2013', 71590,167544,45542,39561,13813],
+        ['2014', 164324,141679,51694,49771,14592],
+      ]);
+
+      var options3 = {
+	  width: 500,
+	  height: 300,
+        chart: {
+          title: 'Development of Selected Classes by #PLDs'
+        },
+        hAxis: {
+          title: 'Year of Crawl',
+          minValue: 0,
+        },
+        vAxis: {
+          title: '#PLDs'
+        },
+               
+      };
+      var materia3l = new google.charts.Line(document.getElementById('rdf_pld'));
+      materia3l.draw(dataRdf1, options3);
+ }
+	  function drawMaterial4() {
+	
+	var dataRdf2 = google.visualization.arrayToDataTable([
+        ['Crawl', 'og:website', 'og:article', 'foaf:Document', 'gd:breadcrumb', 'og:product'],
+        ['2012', 9197072,35438354,3709728,52521380,7517484],
+        ['2013', 24951292,82882535,31601886,53156451,13199034],
+        ['2014', 23429568,65233945,35991377,56755178,9955913],
+      ]);
+
+      var options4 = {
+	  width: 500,
+	  height: 300,
+        chart: {
+          title: 'Development of Selected Classes by #Entities'
+        },
+        hAxis: {
+          title: 'Year of Crawl',
+          minValue: 0,
+        },
+        vAxis: {
+          title: '#Triples'
+        },
+               
+      };
+      var material3 = new google.charts.Line(document.getElementById('rdf_triple'));
+      material3.draw(dataRdf2, options4);
+	  }
+	  function drawMaterial5() {
+	   var dataMD1 = google.visualization.arrayToDataTable([
+        ['Crawl', 'schema:PostalAddress', 'schema:Product', 'schema:LocalBusiness', 'schema:Review', 'schema:Rating'],
+        ['2012', 19592,16612,16383,2585,7711],
+        ['2013', 52446,56388,35264,13137,8360],
+        ['2014', 101086,89608,62191,20124,12187],
+      ]);
+
+      var options5 = {
+	  width: 500,
+	  height: 300,
+        chart: {
+          title: 'Development of Selected Classes by #PLDs'
+        },
+        hAxis: {
+          title: 'Year of Crawl',
+          minValue: 0,
+        },
+        vAxis: {
+          title: '#PLDs'
+        },
+               
+      };
+      var material5 = new google.charts.Line(document.getElementById('md_pld'));
+      material5.draw(dataMD1, options5);
+ }
+	  function drawMaterial6() {
+	
+	var dataMD2 = google.visualization.arrayToDataTable([
+        ['Crawl', 'schema:PostalAddress', 'schema:Product', 'schema:LocalBusiness', 'schema:Review', 'schema:Rating'],
+        ['2012', 9513985,19386194,5089,3114006,1777255],
+        ['2013', 125780525,178334394,76317387,35213270,30887676],
+        ['2014', 48804397,288082823,20194229,42561245,39170723],
+      ]);
+
+      var options6 = {
+	  width: 500,
+	  height: 300,
+        chart: {
+          title: 'Development of Selected Classes by #Entities'
+        },
+        hAxis: {
+          title: 'Year of Crawl',
+          minValue: 0,
+        },
+        vAxis: {
+          title: '#Triples'
+        },
+               
+      };
+      var material6 = new google.charts.Line(document.getElementById('md_triple'));
+      material6.draw(dataMD2, options6);
+    }
+</script>
+
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script type="text/javascript" src="/jquery.toc.min.js"></script>
 
@@ -60,7 +234,9 @@ More and more websites have started to embed structured data describing products
   <li><a href="#results-2010">2009/2010</a></li>
   </ul>
 <p>For the future, we plan to rerun our extraction on a regular basis as new Common Crawl corpora are becoming available.</p>
-
+<p>
+Based on the three last extractions and the corresponding corpora, we have analyzed the overall trend of the deployment of certain formats. In addition we report the trends for a selection of RDFa and Microdata classes. The analysis can be found <a href="#trend-2012-2014">here</a>.
+</p>
 <h2 id="extractors">2. Extracted Data Formats</h2>
 <p>
 The table below provides an overview of the different structured data formats that we extract from the Common Crawl. The table contains references to the specifications of the formats as well as short descriptions of the formats. Web Data Commons packages the extracted data for each format separately for download. The table also defines the format identifiers that are used in the following.
@@ -206,12 +382,12 @@ The costs for parsing the 40.1 Terabytes of compressed input data of the August 
 </p>
 
 
-<h3 id="results-2012-2">3.4. Extraction Results from the February 2012 Common Crawl Corpus</h3>
+<h4 id="results-2012-2">3.3b Extraction Results from the February 2012 Common Crawl Corpus</h4>
 <p> 
 Common Crawl did publish a pre-release version of its 2012 corpus in February. The pages contained in the pre-release are a subset of the pages contained in the August 2012 Common Crawl corpus. We also extracted the structured data from this pre-release. The resulting statistics are found <a href="2012-02/index.html">here</a>, but are superseded by the August 2012 statistics.
 </p>
 
-<h3 id="results-2010">3.5. Extraction Results from the 2009/2010 Common Crawl Corpus</h3>
+<h3 id="results-2010">3.4. Extraction Results from the 2009/2010 Common Crawl Corpus</h3>
 <p> 
 The 2009/2010 Common Crawl Corpus is available on <a href="http://aws.amazon.com/s3/">Amazon S3</a> in the bucket <code>aws-publicdatasets</code> under the key prefix <code>/common-crawl/crawl-002/</code> .
 </p>
@@ -241,7 +417,36 @@ The 2009/2010 Common Crawl Corpus is available on <a href="http://aws.amazon.com
 <p>
 The costs for parsing the 28.9 Terabytes of compressed input data of the 2009/2010 Common Crawl corpus, extracting the RDF data and storing the extracted data on S3 totaled 576 EUR (excluding VAT) in Amazon EC2 fees. We used 100 spot instances of type <code>c1.xlarge</code> for the extraction which altogether required 3,537 machine hours.
 </p>
-
+<h3 id="trend-2012-2014">3.5. Trend 2012/2014</h3>
+<p>
+The presents of the three extractions from the Common Crawl corpora of 2012, 2013 and 2014 allows us to analyze the trend of the deployment over the last 3 years. It is important to mention, that all three crawls contain different pages/URLs and have different sizes, but represent for the given time of extraction the most popular pages within the whole Web. 
+</br>
+</br>
+The following diagrams show first the total number of pay-level domains (PLD) making use of one of the three major markup languages: RDFa, Microdata and Microformat hCard, within the three different crawls. 
+The second displays the total number of triples we could find on the pages of the different domains within the crawls. 
+Although it seems the total number of domains using Microformats hCard has decreased within the last two datasets, one has to keep in mind, that the first crawl includes 50% more pages than the latter two. For Microformats, and especially schema.org we find an increasing deployment since 2012.</br>
+<div>
+<span id="dev_plds" style="width:500px"></span>
+<span id="dev_triple" style="width:500px"></span>
+</div>
+In the following we selected some of the most deployed RDFa classes. Their deployment within the three crawls, by number of deploying PLDs and total number of entities included in the crawl is shown in the next two diagrams.
+We mainly find classes used by Facebook (e.g. og:website and og:article) to identify entities outside of Facebook within the Facebook ecosystem and classes to identify structures and document within websites.
+</br>
+</br>
+<div>
+<span id="rdf_pld" style="width:500px"></span>
+<span id="rdf_triple" style="width:500px"></span>
+</div>
+The second group of classes originates from the <a href="http://schema.org/">schema.org</a> vocabulary and is embedded using Microdata. The two diagramms below show again the deployment of those classes by number of deploying PLDs and number of entities included in the crawls.
+We can see, over the last 3 years a continuous increase in the number of PLDs making use of those classes.
+This is also reflected in the number of available entities within the datasets, where the slight decrease of the two classes PostalAddress and LocalBusiness might originate from the characteristics of the third crawl, which contains a similar number of pages as the second, but has a larger number of PLDs. This might indicate that the crawl is not too deep into the single websites.
+</br>
+</br>
+<div>
+<span id="md_pld" style="width:500px"></span>
+<span id="md_triple" style="width:500px"></span>
+</div>
+</p>
 <h2 id="examples">4. Example Data</h2>
 <p>
 For each data format, we provide a small subset of the extracted data below for testing purposes. The data is encoded as <a href="http://sw.deri.org/2008/07/n-quads/">N-Quads</a>, with the forth element used to represent the provenance of each triple (the URL of the page the triple was extracted from). Be advised to use a parser which is able to skip invalid lines, since they could present in the data files.
