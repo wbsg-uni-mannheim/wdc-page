@@ -235,7 +235,7 @@ More and more websites have started to embed structured data describing products
   </ul>
 <p>For the future, we plan to rerun our extraction on a regular basis as new Common Crawl corpora are becoming available.</p>
 <p>
-Based on the three last extractions and the corresponding corpora, we have analyzed the overall trend of the deployment of certain formats. In addition we report the trends for a selection of RDFa and Microdata classes. The analysis can be found <a href="#trend-2012-2014">here</a>.
+Below, you find information about the extracted data formats and detailed statistics about the extraction results. In addition we have analyzed trends in the deployment of the most widely spread formats as well as in the deployment of selected RDFa and Microdata classes. This analysis can be found <a href="#trend-2012-2014">here</a>.
 </p>
 <h2 id="extractors">2. Extracted Data Formats</h2>
 <p>
@@ -417,31 +417,33 @@ The 2009/2010 Common Crawl Corpus is available on <a href="http://aws.amazon.com
 <p>
 The costs for parsing the 28.9 Terabytes of compressed input data of the 2009/2010 Common Crawl corpus, extracting the RDF data and storing the extracted data on S3 totaled 576 EUR (excluding VAT) in Amazon EC2 fees. We used 100 spot instances of type <code>c1.xlarge</code> for the extraction which altogether required 3,537 machine hours.
 </p>
-<h3 id="trend-2012-2014">3.5. Trend 2012/2014</h3>
+<h3 id="trend-2012-2014">3.5. Trends 2012 to 2014</h3>
 <p>
-The presents of the three extractions from the Common Crawl corpora of 2012, 2013 and 2014 allows us to analyze the trend of the deployment over the last 3 years. It is important to mention, that all three crawls contain different pages/URLs and have different sizes, but represent for the given time of extraction the most popular pages within the whole Web. 
+In the following, we analyze trends in the deployment of the most widely spread formats as well as in the deployment of selected RDFa and Microdata classes based on the 2012, 2013 and 2014 data sets.
 </br>
-</br>
-The following diagrams show first the total number of pay-level domains (PLD) making use of one of the three major markup languages: RDFa, Microdata and Microformat hCard, within the three different crawls. 
-The second displays the total number of triples we could find on the pages of the different domains within the crawls. 
-Although it seems the total number of domains using Microformats hCard has decreased within the last two datasets, one has to keep in mind, that the first crawl includes 50% more pages than the latter two. For Microdata, and especially schema.org we find an increasing deployment since 2012.</br>
+It is important to mention that the three corresponding CommonCrawl web corpora have different sizes (2 billion to 3 billion HTML pages), cover different amounts of websites (12 million PLDs to 40 million PLDs, selection by “importance” of PLD) and also only partly overlap in the covered HTML pages. Thus, the following trends must be interpreted with caution.
+</p>
+<h4>Adoption by Format</h4>
+<p>
+The diagram below shows the total number of pay-level domains (PLD) making use of one of the three most widely spread markup formats (RDFa, Microdata and Microformat hCard) within the three crawls. Although it seems the total number of domains using Microformats hCard has decreased, one has to keep in mind, that the first crawl contains 50% more HTML pages than the latter two. For Microdata and especially <code>schema.org</code>, we find an increase in deployment since 2012. The second diagram shows how the amount of triples that we extracted from the crawls for has developed between 2012 and 2014.
+</p>
 <div>
 <span id="dev_plds" style="width:500px"></span>
 <span id="dev_triple" style="width:500px"></span>
 </div>
-In the following we selected some of the most deployed RDFa classes. Their deployment within the three crawls, by number of deploying PLDs and total number of entities included in the crawl is shown in the next two diagrams.
-We mainly find classes used by Facebook (e.g. og:website and og:article) to identify entities outside of Facebook within the Facebook ecosystem and classes to identify structures and document within websites.
-</br>
-</br>
+<h4>Adoption of Selected RDFa Classes</h4>
+<p>
+n the following we report trends in the adoption of selected RDFa classes. The first diagram shows the number of PLDs using each class. The second diagram shows the total number of entities of each class contained in the WDC RDFa data sets. We see that the number of websites deploying the Facebook Open Graph Protocol classes <code>og:article</code> and <code>og:product</code> as well as <code>foaf:Document</code> stays approximately constant. The deployment of <code>og:website</code> and <code>gd:breadcrumb</code> is increasing.
+</p>
+
 <div>
 <span id="rdf_pld" style="width:500px"></span>
 <span id="rdf_triple" style="width:500px"></span>
 </div>
-The second group of classes originates from the <a href="http://schema.org/">schema.org</a> vocabulary and is embedded using Microdata. The two diagrams below show again the deployment of those classes by number of deploying PLDs and number of entities included in the crawls.
-We can see, over the last 3 years a continuous increase in the number of PLDs making use of those classes.
-This is also reflected in the number of available entities within the datasets, where the slight decrease of the two classes PostalAddress and LocalBusiness might originate from the characteristics of the third crawl, which contains a similar number of pages as the second, but has a larger number of PLDs. This might indicate that the crawl is not too deep into the single websites.
-</br>
-</br>
+<h4>Adoption of Selected Schema.org Classes</h4>
+<p>
+Below, we analyze the development of the adoption of schema.org classes embedded using the Microdata syntax. The two diagrams below show again the deployment of those classes by number of deploying PLDs and number of entities extracted from the crawls. We can see a continuous increase in the number of PLDs adopting the schema.org classes. This is also reflected in the number of entities within the datasets, where the slight decrease of the two classes <code>PostalAddress</code> and <code>LocalBusiness</code> might originate from the characteristics of the third crawl, which contains a similar number of pages as the second crawl, but covers a larger number of PLDs. This has likely resulted in a more shallow coverage of websites that contain schema.org data and thus in a smaller number of extracted entities.
+</p>
 <div>
 <span id="md_pld" style="width:500px"></span>
 <span id="md_triple" style="width:500px"></span>
