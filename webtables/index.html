@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html>
 <html><head><title>WDC - Web Tables</title><link rel='stylesheet' href='http://webdatacommons.org/style.css' type='text/css' media='screen'/>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -240,6 +241,14 @@ Thorsten Andre Knöller</br>
 <p>
 This page provides a large corpus of HTML tables for public download. The corpus has been extracted from the 2012 version of the <a href="http://commoncrawl.org/">Common Crawl</a> and contains <b>147 million relational Web tables</b>. Below we provide instructions on how to download the corpus and provide basic statistics about the tables' content.
 </p>
+<h2>News</h2>
+<ul>
+  <li><strong>2015-04-01: </strong><a href="http://webdatacommons.org/webtables/goldstandard.html">T2D Gold Standard</a> for comparing matching systems on the task of finding correspondences between Web tables and large-scale knowledge bases released.</li>
+  <li><strong>2014-10-27:</strong> Tables corpus is used by <a href="http://dws.informatik.uni-mannheim.de/en/news/detail/news/2014/10/27/search-join-engine-wins-semantic-web-challenge-big-data-track/">Mannheim Search Join Engine</a> which wins prize at Semantic Web Challenge 2014.</li>
+  <li><strong>2014-03-05: </strong><a href="http://webdatacommons.org/webtables/index.html">WDC Web Tables</a> data set consisting of 147 million relational Web tables released.</li>
+
+</ul>
+
 <h2>Contents</h2>
 <div id="toc" class="toc"></div>
 <div id="toccontent">
@@ -248,8 +257,8 @@ This page provides a large corpus of HTML tables for public download. The corpus
 <p>The Web contains vast amounts of HTML tables. Most of these tables are used for layout purposes, but a fraction of the tables is also quasi-relational, meaning that they contain structured data describing a set of entities. Initial studies by Cafarella et al. [<a href="#Cafarella2008">Cafarella2008</a>] showed that out of 14 billion HTML tables in the Google crawl, 154 million tables contained relational data (1.1%). In [<a href="#Crestan2011">Crestan2011</a>], the authors provide a fine-grained classification of the different types of HTML tables that are found on the Web based on the Bing web crawl.</p>
 <p>Recently, a body of interesting research has developed around exploiting relational Web tables for the following applications:</p>
 <ol>
-<li><b>Table Search</b>: A user that is in need for some data is likely to find a table containing the desired data somewhere on the Web. [<a href="#Cafarella2009">Cafarella2009</a>], [<a href="#Venetis2010">Venetis2010</a>], and [<a href="#Pimplikar2012">Pimplikar2012</a>] propose methods for finding matching tables given a set of keywords describing the information need. An example of a table search service is <a href="http://research.google.com/tables">Google Table Search</a> which allows users to search for Web tables as well as public Google Fusion Tables.</li>
-<li><b>Table Extension</b>: [<a href="#Cafarella2009">Cafarella2009</a>], [<a href="#Yakout2012">Yakout2012</a>], [<a href="#Bhagavatula2013">Bhagavatula2013</a>], [<a href="#DasSarma2012">DasSarma2012</a>], and [<a href="#Bizer2014">Bizer2014</a>] propose methods for extending a local table with additional columns based on the corpus of tables that are published on the Web. A user having a local table describing countries could for instance use these methods to have columns containing the population, area total, and the capital of each country added to his table.</li>
+<li><b>Table Search</b>: A user that is in need for some data is likely to find a table containing the desired data somewhere on the Web. [<a href="#Cafarella2009">Cafarella2009</a>], [<a href="#Venetis2010">Venetis2010</a>], and [<a href="#Pimplikar2012">Pimplikar2012</a>] propose methods for finding matching tables given a set of keywords describing the information need. An example of a table search service is <a href="http://research.google.com/tables">Google Table Search</a> which allows users to search for Web tables as well as public Google Fusion Tables [<a href="#Balakrishnan2015">Balakrishnan2015</a>].</li>
+<li><b>Table Extension</b>: [<a href="#Cafarella2009">Cafarella2009</a>], [<a href="#Yakout2012">Yakout2012</a>], [<a href="#Bhagavatula2013">Bhagavatula2013</a>], [<a href="#DasSarma2012">DasSarma2012</a>],  [<a href="#Bizer2014">Bizer2014</a>], and [<a href="#Lehmberg2014">Lehmberg2014</a>] propose methods for extending a local table with additional columns based on the corpus of tables that are published on the Web. A user having a local table describing countries could for instance use these methods to have columns containing the population, area total, and the capital of each country added to his table.</li>
 <li><b>Knowledge Base Augmentation</b>: The data contained in Web tables can also be used to augment and extend general-purpose knowledge bases such as DBpedia, Freebase or YAGO. [<a href="#Zhang2013">Zhang2013</a>] propose a method for extending the DBpedia knowledge base with data from Web tables. [<a href="#Wang2012">Wang2012</a>] propose a method for building a comprehensive knowledge base using linguistic patters to extract a probabilistic taxonomy of classes and entities from Web texts and add facts about the attributes of the entities using Web tables afterwards.</li>
 <li><b>NLP Tasks</b>: The table corpus could also be useful for various natural language processing tasks as the things that appear in the same column are often closely related to each other, which for example can be exploited for disambiguation.</li>
 </ol>
@@ -805,7 +814,11 @@ More information about Web Data Commons is found <a href="../index.html">here</a
 <li>[<a name="Wang2012">Wang2012</a>] Jingjing Wang, Haixun Wang, Zhongyuan Wang, and Kenny Q. Zhu: <a href="http://dl.acm.org/citation.cfm?id=2427537">Understanding tables on the web.</a> In Proceedings of the 31st international conference on Conceptual Modeling (ER'12), 2012.</li>
    <li>[<a name="Wang2002">Wang2002</a>] WANG, Yalin; HU, Jianying: <a href="http://dl.acm.org/citation.cfm?id=736657">Detecting tables in html documents.</a> In: Document Analysis Systems V. Springer Berlin Heidelberg, 2002.</li>
 <li>[<a name="Chen2013">Chen2013</a>] Zhe Chen and Michael Cafarella: <a href="http://dl.acm.org/citation.cfm?id=2509909">Automatic web spreadsheet data extraction.</a> In Proceedings of the 3rd International Workshop on Semantic Search Over the Web. 2013.</li>
-<li>[<a name="Bizer2014">Bizer2014</a>] Christian Bizer: <a href="http://dws.informatik.uni-mannheim.de/fileadmin/lehrstuehle/ki/pub/Bizer-SearchJoinsWithTheWeb-ICDT2014.pdf">Search Joins with the Web.</a> Invited Lecture at the International Conference on Database Theory (ICDT2014). 2014.</li> </ol>
+<li>[<a name="Bizer2014">Bizer2014</a>] Christian Bizer: <a href="http://dws.informatik.uni-mannheim.de/fileadmin/lehrstuehle/ki/pub/Bizer-SearchJoinsWithTheWeb-ICDT2014.pdf">Search Joins with the Web.</a> Invited Lecture at the International Conference on Database Theory (ICDT2014). 2014.</li>
+<li>[<a name="Lehmberg2014">Lehmberg2014</a>] Oliver Lehmberg, Dominique Ritze, Petar Ristoski, Kai Eckert, Heiko Paulheim and Christian Bizer: <a href="http://dws.informatik.uni-mannheim.de/fileadmin/lehrstuehle/ki/pub/Lehmberg-Ritze-Ristoski-Eckert-Paulheim-Bizer-TableExtension-SemanticWebChallenge-ISWC2014-Paper.pdf" target="_blank">Extending Tables with Data from over a Million Websites</a> (<a href="http://de.slideshare.net/bizer/lehmberg-ritzeristoskieckertpaulheimbizertable-extensionsemanticwebchallengeiswc2014slides" target="_blank">Slides</a>, <a href="http://videolectures.net/iswc2014_bizer_extending_tables/" target="_blank">Video</a>). Semantic Web Challenge 2014, Riva del Garda, Italy, October 2014.</li>
+<li>[<a name="Balakrishnan2015">Balakrishnan2015</a>] Sreeram Balakrishnan, Alon Halevy, et al.: <a href="http://www.cidrdb.org/cidr2015/Papers/CIDR15_Paper3.pdf">Applying WebTables in Practice</a>. Conference on Innovative Data Systems Research (CIDR). 2015.</li>
+
+</ol>
 </div>
 
 <script type="text/javascript">
