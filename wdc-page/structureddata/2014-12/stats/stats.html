@@ -1,11 +1,140 @@
 <!DOCTYPE html>
 <html><head><meta name="robots" content="nofollow"/><title>Web Data Commons Extraction Report - December 2014 Corpus</title><link rel='stylesheet' href='http://webdatacommons.org/style.css' type='text/css' media='screen'/>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+  <script type="text/javascript">
+  
+	google.load('visualization', '1', {packages: [ 'bar', 'line', 'corechart']});
+	
+	google.setOnLoadCallback(drawMaterial1);
+	google.setOnLoadCallback(drawMaterial2);
+	google.setOnLoadCallback(drawMaterial3);
+	google.setOnLoadCallback(drawMaterial4);
+	
+	function drawMaterial1() {
+
+        var data2014Plds = google.visualization.arrayToDataTable([
+          ['Annotation type', '#Domains with Triples'],
+          ['html-rdfa',     571581],
+          ['html-microdata',      819990],
+          ['html-geo',  20261],
+          ['html-mf-hcard',    1095517],		  
+          ['html-mf-hcalendar', 24208],
+		  ['html-mf-hlisting',    3167],
+		  ['html-mf-hresume',    155],
+          ['html-mf-hreview',    13772],
+          ['html-mf-species',    96],
+          ['html-mf-hrecipe',    3476],
+          ['html-mf-xfn',    170202]
+        ]);
+
+
+        var options1 = {
+		  width: 550,
+		  height: 400,			
+		  title: 'Domains with Triples',
+		  sliceVisibilityThreshold: 0,
+		  is3D: true,
+		  colors: ['#5E8FD8', '#D11919', '#29A329',  '#FFCC00', '#FFD633','#FFDB4D', '#FFE066', '#FFE680', '#FFEB99' ,'#FFF0B2', '#FFF5CC']
+
+			       
+		};
+
+        var material1 = new google.visualization.PieChart(document.getElementById('d2014Plds'));
+        material1.draw(data2014Plds, options1);
+      }
+	  function drawMaterial2() {
+
+        var data2014Urls = google.visualization.arrayToDataTable([
+          ['Annotation type', '#Urls with Triples'],
+          ['html-rdfa',     257251367],
+          ['html-microdata',      292601824],
+          ['html-geo',  4619664],
+          ['html-mf-hcard',    101606009],          
+		  ['html-mf-hcalendar', 3496061],
+		  ['html-mf-hlisting',    202889],
+		  ['html-mf-hresume',    16343],
+          ['html-mf-hreview',    2496303],
+          ['html-mf-species',    31444],
+          ['html-mf-hrecipe',    630402],
+          ['html-mf-xfn',    17032646]
+        ]);
+
+        var options2 = {
+		  width: 550,
+		  height: 400,sliceVisibilityThreshold: 0,
+		  is3D: true, 
+ 		colors: ['#5E8FD8', '#D11919', '#29A329',  '#FFCC00', '#FFD633','#FFDB4D', '#FFE066', '#FFE680', '#FFEB99' ,'#FFF0B2', '#FFF5CC'],
+		  title: 'URLs with Triples'			       
+		};
+
+        var material2 = new google.visualization.PieChart(document.getElementById('d2014Urls'));
+        material2.draw(data2014Urls, options2);
+      }
+	  	  function drawMaterial3() {
+
+        var data2014Entities = google.visualization.arrayToDataTable([
+          ['Annotation type', '#Entities'],
+          ['html-rdfa',     405541283],
+          ['html-microdata',      2209497281],
+          ['html-geo',  7712041],
+          ['html-mf-hcard',    1349620300],
+          ['html-mf-hcalendar', 34595069],		  
+		  ['html-mf-hlisting',    4473631],
+		  ['html-mf-hresume',   82751],
+          ['html-mf-hreview',    16186868],
+          ['html-mf-species',    218463],
+          ['html-mf-hrecipe',    5781217],
+          ['html-mf-xfn',    52187702]
+        ]);
+
+        var options3 = {
+		  width: 550,
+		  height: 400,
+		  sliceVisibilityThreshold: 0,
+		  is3D: true, 
+ 		colors: ['#5E8FD8', '#D11919', '#29A329',  '#FFCC00', '#FFD633','#FFDB4D', '#FFE066', '#FFE680', '#FFEB99' ,'#FFF0B2', '#FFF5CC'],
+		  title: 'Typed Entities'			       
+		};
+
+        var material3 = new google.visualization.PieChart(document.getElementById('d2014Entities'));
+        material3.draw(data2014Entities, options3);
+      }
+	  	  function drawMaterial4() {
+		  
+        var data2014Triples = google.visualization.arrayToDataTable([
+          ['Annotation type', '#Triples'],
+          ['html-rdfa',     2566827347],
+          ['html-microdata',      9438536906],
+          ['html-geo',  20348760],
+          ['html-mf-hcard',    3850290103],
+          ['html-mf-hcalendar', 169557078],		  
+		  ['html-mf-hlisting',    18838183],
+		  ['html-mf-hresume',   462002],
+          ['html-mf-hreview',    69802632],
+          ['html-mf-species',    653111],
+          ['html-mf-hrecipe',    24756234],
+          ['html-mf-xfn',    219772447]
+        ]);
+
+        var options4 = {
+		  width: 550,
+		  height: 400,
+		  sliceVisibilityThreshold: 0,
+		  is3D: true, 
+ 		colors: ['#5E8FD8', '#D11919', '#29A329',  '#FFCC00', '#FFD633','#FFDB4D', '#FFE066', '#FFE680', '#FFEB99' ,'#FFF0B2', '#FFF5CC'], 
+		  title: 'Triples'			       
+		};
+
+        var material4 = new google.visualization.PieChart(document.getElementById('d2014Triples'));
+        material4.draw(data2014Triples, options4);
+      }
+	
+	  
+</script>
+
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script type="text/javascript" src="/jquery.toc.min.js"></script>
-
-  
-
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -17,12 +146,13 @@
     ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
   })();
-
+  
 </script> 
 
 </head><body><a name='top'></a>
 <h1>Web Data Commons - RDFa, Microdata, and Microformats Data Sets
 - December 2014</h1>
+<span id="test"></span>
 <p>This document provides statistics about the <a href="http://webdatacommons.org/structureddata/">Web Data Commons</a> RDFa, Microdata and Microformats data sets which have been extracted from the December 2014 release of the <a href="http://commoncrawl.org/">Common Crawl</a>.</p>
 <p>In summary, we found structured data within 620 million HTML pages out of the 2.01 billion pages contained in the crawl (30%). 
 These pages originate from 2.72 million  different pay-level-domains out of the 15.68 million pay-level-domains covered by the crawl (17%).
@@ -66,11 +196,18 @@ Instructions on how to download the RDFa, Microdata, and Microformats data sets 
 <tr><th>html-mf-xfn</th><td>170,202</td><td>17,032,646</td><td>52,187,702</td><td>219,772,447</td></tr>
 </tbody>
 </table>
-
+<!--
 <img src="https://chart.googleapis.com/chart?chtt=Domains%20with%20Triples&chs=500x300&chds=a&cht=p&chd=t:571581,819990,20261,24208,1095517,3167,155,13772,96,3476,170202&chl=html-rdfa|html-microdata|html-mf-geo|html-mf-hcalendar|html-mf-hcard|html-mf-hlisting|html-mf-hresume|html-mf-hreview|html-mf-species|html-mf-hrecipe|html-mf-xfn" />
 <img src="https://chart.googleapis.com/chart?chtt=URLs%20with%20Triples&chs=500x300&chds=a&cht=p&chd=t:257251367,292601824,4619664,3496061,101606009,202889,16343,2496303,31444,630402,17032646&chl=html-rdfa|html-microdata|html-mf-geo|html-mf-hcalendar|html-mf-hcard|html-mf-hlisting|html-mf-hresume|html-mf-hreview|html-mf-species|html-mf-hrecipe|html-mf-xfn" /><br />
 <img src="https://chart.googleapis.com/chart?chtt=Typed%20Entities&chs=500x300&chds=a&cht=p&chd=t:405541283,2209497281,7712041,34595069,1349620300,4473631,82751,16186868,218463,5781217,52187702&chl=html-rdfa|html-microdata|html-mf-geo|html-mf-hcalendar|html-mf-hcard|html-mf-hlisting|html-mf-hresume|html-mf-hreview|html-mf-species|html-mf-hrecipe|html-mf-xfn" />
 <img src="https://chart.googleapis.com/chart?chtt=Triples&chs=500x300&chds=a&cht=p&chd=t:2566827347,9438536906,20348760,169557078,3850290103,18838183,462002,69802632,653111,24756234,219772447&chl=html-rdfa|html-microdata|html-mf-geo|html-mf-hcalendar|html-mf-hcard|html-mf-hlisting|html-mf-hresume|html-mf-hreview|html-mf-species|html-mf-hrecipe|html-mf-xfn" />
+-->
+<div>
+<span id="d2014Plds" style="float:left"></span>
+<span id="d2014Urls" style="float:left"></span>
+<span id="d2014Entities" style="float:left"></span>
+<span id="d2014Triples" style="float:left"></span>
+</div>
 <br/>
 
 

@@ -1,6 +1,137 @@
 <!DOCTYPE html>
 <html><head><meta name="robots" content="nofollow"/><title>Web Data Commons Extraction Report - August 2012 Corpus</title><link rel='stylesheet' href='http://webdatacommons.org/style.css' type='text/css' media='screen'/>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+  <script type="text/javascript">
+  
+	google.load('visualization', '1', {packages: [ 'bar', 'line', 'corechart']});
+	
+	google.setOnLoadCallback(drawMaterial1);
+	google.setOnLoadCallback(drawMaterial2);
+	google.setOnLoadCallback(drawMaterial3);
+	google.setOnLoadCallback(drawMaterial4);
+	
+	function drawMaterial1() {
+
+        var data2012Plds = google.visualization.arrayToDataTable([
+          ['Annotation type', '#Domains with Triples'],
+          ['html-rdfa',   519379  ],
+          ['html-microdata',   140312   ],
+          ['html-geo', 48415 ],
+          ['html-mf-hcard', 1511855   ],		  
+          ['html-mf-hcalendar', 37620 ],
+		  ['html-mf-hlisting',  4030  ],
+		  ['html-mf-hresume', 1257   ],
+          ['html-mf-hreview',  20781  ],
+          ['html-mf-species',  91  ],
+          ['html-mf-hrecipe', 3281   ],
+          ['html-mf-xfn',   490286 ]
+        ]);
+
+
+        var options1 = {
+		  width: 550,
+		  height: 400,			
+		  title: 'Domains with Triples',
+		  sliceVisibilityThreshold: 0,
+		  is3D: true, 
+ 		colors: ['#5E8FD8', '#D11919', '#29A329',  '#FFCC00', '#FFD633','#FFDB4D', '#FFE066', '#FFE680', '#FFEB99' ,'#FFF0B2', '#FFF5CC']
+			       
+		};
+
+        var material1 = new google.visualization.PieChart(document.getElementById('d2012Plds'));
+        material1.draw(data2012Plds, options1);
+      }
+	  function drawMaterial2() {
+
+        var data2012Urls = google.visualization.arrayToDataTable([
+          ['Annotation type', '#Urls with Triples'],
+          ['html-rdfa',    168654234 ],
+          ['html-microdata',   97048329   ],
+          ['html-geo', 6602779 ],
+          ['html-mf-hcard',  120027602  ],		  
+          ['html-mf-hcalendar', 3745051],
+		  ['html-mf-hlisting',  772402  ],
+		  ['html-mf-hresume', 39412   ],
+          ['html-mf-hreview',  4959672  ],
+          ['html-mf-species',  37186  ],
+          ['html-mf-hrecipe',  1110712  ],
+          ['html-mf-xfn', 40123185   ]
+        ]);
+
+        var options2 = {
+		  width: 550,
+		  height: 400,sliceVisibilityThreshold: 0,
+		  is3D: true, 
+ 		colors: ['#5E8FD8', '#D11919', '#29A329',  '#FFCC00', '#FFD633','#FFDB4D', '#FFE066', '#FFE680', '#FFEB99' ,'#FFF0B2', '#FFF5CC'],
+		  title: 'URLs with Triples'			       
+		};
+
+        var material2 = new google.visualization.PieChart(document.getElementById('d2012Urls'));
+        material2.draw(data2012Urls, options2);
+      }
+	  	  function drawMaterial3() {
+
+        var data2012Entities = google.visualization.arrayToDataTable([
+          ['Annotation type', '#Entities'],
+          ['html-rdfa',   188243535  ],
+          ['html-microdata',  266169151    ],
+          ['html-geo',13206248 ],
+          ['html-mf-hcard',  1113527360  ],		  
+          ['html-mf-hcalendar', 32630606],
+		  ['html-mf-hlisting', 25220512   ],
+		  ['html-mf-hresume', 43100  ],
+          ['html-mf-hreview', 27781420   ],
+          ['html-mf-species',  274862  ],
+          ['html-mf-hrecipe', 11695280   ],
+          ['html-mf-xfn', 132679882   ]
+        ]);
+
+        var options3 = {
+		  width: 550,
+		  height: 400,
+		  sliceVisibilityThreshold: 0,
+		  is3D: true, 
+ 		colors: ['#5E8FD8', '#D11919', '#29A329',  '#FFCC00', '#FFD633','#FFDB4D', '#FFE066', '#FFE680', '#FFEB99' ,'#FFF0B2', '#FFF5CC'],
+		  title: 'Typed Entities'			       
+		};
+
+        var material3 = new google.visualization.PieChart(document.getElementById('d2012Entities'));
+        material3.draw(data2012Entities, options3);
+      }
+	  	  function drawMaterial4() {
+
+        var data2012Triples = google.visualization.arrayToDataTable([
+          ['Annotation type', '#Triples'],
+          ['html-rdfa',  1079175202   ],
+          ['html-microdata',   1488063426   ],
+          ['html-geo', 32722603 ],
+          ['html-mf-hcard',  3547824107  ],		  
+          ['html-mf-hcalendar', 142975309 ],
+		  ['html-mf-hlisting', 97711757   ],
+		  ['html-mf-hresume',  678097 ],
+          ['html-mf-hreview', 207589518   ],
+          ['html-mf-species',  774671  ],
+          ['html-mf-hrecipe', 50898293   ],
+          ['html-mf-xfn', 703188115   ]
+        ]);
+
+        var options4 = {
+		  width: 550,
+		  height: 400,
+		  sliceVisibilityThreshold: 0,
+		  is3D: true, 
+ 		colors: ['#5E8FD8', '#D11919', '#29A329',  '#FFCC00', '#FFD633','#FFDB4D', '#FFE066', '#FFE680', '#FFEB99' ,'#FFF0B2', '#FFF5CC'],
+		  title: 'Triples'			       
+		};
+
+        var material4 = new google.visualization.PieChart(document.getElementById('d2012Triples'));
+        material4.draw(data2012Triples, options4);
+      }
+	
+	  
+</script>
+
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script type="text/javascript" src="/jquery.toc.min.js"></script>
 
@@ -53,11 +184,18 @@ Please note that term <i>Domains</i> refers to pay-level-domains. Subdomains are
 <tr><th>html-mf-xfn</th><td>490,286</td><td>40,123,185</td><td>132,679,882</td><td>703,188,115</td></tr>
 </tbody>
 </table>
-
+<!--
 <img src="https://chart.googleapis.com/chart?chtt=Domains%20with%20Triples&chs=500x300&chds=a&cht=p&chd=t:519379,140312,48415,37620,1511855,4030,1257,20781,91,3281,490286&chl=html-rdfa|html-microdata|html-mf-geo|html-mf-hcalendar|html-mf-hcard|html-mf-hlisting|html-mf-hresume|html-mf-hreview|html-mf-species|html-mf-hrecipe|html-mf-xfn" />
 <img src="https://chart.googleapis.com/chart?chtt=URLs%20with%20Triples&chs=500x300&chds=a&cht=p&chd=t:168654234,97048329,6602779,3745051,120027602,772402,39412,4959672,37186,1110712,40123185&chl=html-rdfa|html-microdata|html-mf-geo|html-mf-hcalendar|html-mf-hcard|html-mf-hlisting|html-mf-hresume|html-mf-hreview|html-mf-species|html-mf-hrecipe|html-mf-xfn" /><br />
 <img src="https://chart.googleapis.com/chart?chtt=Typed%20Entities&chs=500x300&chds=a&cht=p&chd=t:188243535,266169151,13206248,32630606,1113527360,25220512,43100,27781420,274862,11695280,132679882&chl=html-rdfa|html-microdata|html-mf-geo|html-mf-hcalendar|html-mf-hcard|html-mf-hlisting|html-mf-hresume|html-mf-hreview|html-mf-species|html-mf-hrecipe|html-mf-xfn" />
 <img src="https://chart.googleapis.com/chart?chtt=Triples&chs=500x300&chds=a&cht=p&chd=t:1079175202,1488063426,32722603,142975309,3547824107,97711757,678097,207589,518,774671,50898293,703188115&chl=html-rdfa|html-microdata|html-mf-geo|html-mf-hcalendar|html-mf-hcard|html-mf-hlisting|html-mf-hresume|html-mf-hreview|html-mf-species|html-mf-hrecipe|html-mf-xfn" />
+!-->
+<div>
+<span id="d2012Plds" style="float:left"></span>
+<span id="d2012Urls" style="float:left"></span>
+<span id="d2012Entities" style="float:left"></span>
+<span id="d2012Triples" style="float:left"></span>
+</div>
 <br/>
 <h2>Top Domains by Extracted Triples</h2><br /><ol><li><a href='http://blogspot.com'>blogspot.com</a> (410,845,586 Triples)</li>
 <li><a href='http://youtube.com'>youtube.com</a> (366,504,194 Triples)</li>
