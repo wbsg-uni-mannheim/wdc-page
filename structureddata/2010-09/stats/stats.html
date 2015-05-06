@@ -1,10 +1,176 @@
 <!DOCTYPE html>
-<html><head><meta name="robots" content="nofollow"/><title>Web Data Commons Extraction Report - 2009/2010 Corpus</title><link rel='stylesheet' href='http://webdatacommons.org/style.css' type='text/css' media='screen'/></head><body><a name='top'></a><h1>Web Data Commons Extraction Report - 2009/2010 Corpus</h1>
+<html><head><meta name="robots" content="nofollow"/>
+<title>Web Data Commons Extraction Report - 2009/2010 Corpus</title>
+<link rel='stylesheet' href='http://webdatacommons.org/style.css' type='text/css' media='screen'/>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+  <script type="text/javascript">
+  
+	google.load('visualization', '1', {packages: [ 'bar', 'line', 'corechart']});
+	
+	google.setOnLoadCallback(drawMaterial1);
+	google.setOnLoadCallback(drawMaterial2);
+	google.setOnLoadCallback(drawMaterial3);
+	google.setOnLoadCallback(drawMaterial4);
+	
+	function drawMaterial1() {
+
+        var data2010Plds = google.visualization.arrayToDataTable([
+          ['Annotation type', '#Domains with Triples'],
+          ['html-rdfa',  537820   ],
+          ['html-microdata',   3930   ],
+          ['html-geo',  244838],
+          ['html-mf-hcard', 12502500   ],
+          ['html-mf-hcalendar', 226279  ],		  
+		  ['html-mf-hlisting',  31871  ],
+		  ['html-mf-hresume', 10419   ],
+          ['html-mf-hreview', 216331   ],
+          ['html-mf-species', 3244   ],
+          ['html-mf-hrecipe',  13362  ],
+          ['html-mf-xfn',  5323335  ]
+        ]);
+
+
+        var options1 = {
+		  width: 550,
+		  height: 400,			
+		  title: 'Domains with Triples',
+		  sliceVisibilityThreshold: 0,
+		  is3D: true, 
+ 		colors: ['#5E8FD8', '#D11919', '#29A329',  '#FFCC00', '#FFD633','#FFDB4D', '#FFE066', '#FFE680', '#FFEB99' ,'#FFF0B2', '#FFF5CC']
+			       
+		};
+
+        var material1 = new google.visualization.PieChart(document.getElementById('d2010Plds'));
+        material1.draw(data2010Plds, options1);
+      }
+	  function drawMaterial2() {
+
+        var data2010Urls = google.visualization.arrayToDataTable([
+          ['Annotation type', '#Urls with Triples'],
+          ['html-rdfa', 14314036    ],
+          ['html-microdata',  56964    ],
+          ['html-geo', 5051622 ],
+          ['html-mf-hcard',  83583167  ],		  
+          ['html-mf-hcalendar', 2747276],
+		  ['html-mf-hlisting',   1227574 ],
+		  ['html-mf-hresume', 387364   ],
+          ['html-mf-hreview',  2836701  ],
+          ['html-mf-species',  25158  ],
+          ['html-mf-hrecipe', 115345   ],
+          ['html-mf-xfn',37526630    ]
+        ]);
+
+        var options2 = {
+		  width: 550,
+		  height: 400,sliceVisibilityThreshold: 0,
+		  is3D: true, 
+ 		colors: ['#5E8FD8', '#D11919', '#29A329',  '#FFCC00', '#FFD633','#FFDB4D', '#FFE066', '#FFE680', '#FFEB99' ,'#FFF0B2', '#FFF5CC'],
+		  title: 'URLs with Triples'			       
+		};
+
+        var material2 = new google.visualization.PieChart(document.getElementById('d2010Urls'));
+        material2.draw(data2010Urls, options2);
+      }
+	  	  function drawMaterial3() {
+		  
+        var data2010Entities = google.visualization.arrayToDataTable([
+          ['Annotation type', '#Entities'],
+          ['html-rdfa',  26583558   ],
+          ['html-microdata',    346411  ],
+          ['html-geo', 7326516 ],
+          ['html-mf-hcard',  973170050  ],		  
+          ['html-mf-hcalendar', 21289402 ],
+		  ['html-mf-hlisting', 25660498   ],
+		  ['html-mf-hresume', 1501009  ],
+          ['html-mf-hreview',  8234850  ],
+          ['html-mf-species',  152621  ],
+          ['html-mf-hrecipe', 695838   ],
+          ['html-mf-xfn', 481945127   ]
+        ]);
+
+        var options3 = {
+		  width: 550,
+		  height: 400,
+		  sliceVisibilityThreshold: 0,
+		  is3D: true, 
+ 		colors: ['#5E8FD8', '#D11919', '#29A329',  '#FFCC00', '#FFD633','#FFDB4D', '#FFE066', '#FFE680', '#FFEB99' ,'#FFF0B2', '#FFF5CC'],
+		  title: 'Typed Entities'			       
+		};
+
+        var material3 = new google.visualization.PieChart(document.getElementById('d2010Entities'));
+        material3.draw(data2010Entities, options3);
+      }
+	  	  function drawMaterial4() {
+
+        var data2010Triples = google.visualization.arrayToDataTable([
+          ['Annotation type', '#Triples'],
+          ['html-rdfa', 293542991    ],
+          ['html-microdata',  1197115    ],
+          ['html-geo',  28831795 ],
+          ['html-mf-hcard', 3226066019   ],		  
+          ['html-mf-hcalendar', 65727393 ],
+		  ['html-mf-hlisting',  88146122  ],
+		  ['html-mf-hresume', 12640527  ],
+          ['html-mf-hreview', 84411951   ],
+          ['html-mf-species',  391911  ],
+          ['html-mf-hrecipe', 1228925   ],
+          ['html-mf-xfn',  1391091386  ]
+        ]);
+
+        var options4 = {
+		  width: 550,
+		  height: 400,
+		  sliceVisibilityThreshold: 0,
+		  is3D: true, 
+ 		colors: ['#5E8FD8', '#D11919', '#29A329',  '#FFCC00', '#FFD633','#FFDB4D', '#FFE066', '#FFE680', '#FFEB99' ,'#FFF0B2', '#FFF5CC'],
+		  title: 'Triples'			       
+		};
+
+        var material4 = new google.visualization.PieChart(document.getElementById('d2010Triples'));
+        material4.draw(data2010Triples, options4);
+      }
+	
+	  
+</script>
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script type="text/javascript" src="/jquery.toc.min.js"></script>
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-30248817-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+</head>
+<body><a name='top'>
+</a>
+<h1>Web Data Commons Extraction Report - 2009/2010 Corpus</h1>
 <p>This file contains the extraction report for the <a href="http://webdatacommons.org">Web Data Commons</a> project. Both extraction and data statistics are given overall as well as for each structured data format.</p>
 In the following statistics we count every subdomain as a separate domain. In contrast, we only count pay-level-domains as separate domain in the statistics about the <a href="../../2012-08/stats/stats.html">August 2012 release</a>. Thus the domain counts are not directly compatible between the two releases.  
 </p>
 <h2>Overall</h2><br /><table><tr><th>Total Data</th><td>28.9 Terabyte</td><td>(compressed)</td></tr><tr><th>Total URLs</th><td>2,804,054,789</td><td></td></tr><tr><th>Parsed HTML URLs</th><td>2,565,741,671</td><td></td></tr><tr><th>Domains with Triples</th><td>19,113,929</td><td></td></tr><tr><th>URLs with Triples</th><td>147.871.837</td><td></td></tr><tr><th>Typed Entities</th><td>1,546,905,880</td><td></td></tr><tr><th>Triples</th><td>5,193,276,058</td><td></td></tr></table>
-<h2>Results per Format</h2><br /><table><tr><th>Extractor</th><th>Domains with Triples</th><th>URLs with Triples</th><th>Typed Entities</th><th>Triples</th></tr><tr><td><a href='#html-rdfa'>html-rdfa</a></td><td>537,820</td><td>14,314,036</td><td>26,583,558</td><td>293,542,991</td></tr><tr><td><a href='#html-microdata'>html-microdata</a></td><td>3,930</td><td>56,964</td><td>346,411</td><td>1,197,115</td></tr><tr><td><a href='#html-mf-geo'>html-mf-geo</a></td><td>244,838</td><td>5,051,622</td><td>7,326,516</td><td>28,831,795</td></tr><tr><td><a href='#html-mf-hcalendar'>html-mf-hcalendar</a></td><td>226,279</td><td>2,747,276</td><td>21,289,402</td><td>65,727,393</td></tr><tr><td><a href='#html-mf-hcard'>html-mf-hcard</a></td><td>12,502,500</td><td>83,583,167</td><td>973,170,050</td><td>3,226,066,019</td></tr><tr><td><a href='#html-mf-hlisting'>html-mf-hlisting</a></td><td>31,871</td><td>1,227,574</td><td>25,660,498</td><td>88,146,122</td></tr><tr><td><a href='#html-mf-hresume'>html-mf-hresume</a></td><td>10,419</td><td>387,364</td><td>1,501,009</td><td>12,640,527</td></tr><tr><td><a href='#html-mf-hreview'>html-mf-hreview</a></td><td>216,331</td><td>2,836,701</td><td>8,234,850</td><td>84,411,951</td></tr><tr><td><a href='#html-mf-species'>html-mf-species</a></td><td>3,244</td><td>25,158</td><td>152,621</td><td>391,911</td></tr><tr><td><a href='#html-mf-hrecipe'>html-mf-hrecipe</a></td><td>13,362</td><td>115,345</td><td>695,838</td><td>1,228,925</td></tr><tr><td><a href='#html-mf-xfn'>html-mf-xfn</a></td><td>5,323,335</td><td>37,526,630</td><td>481,945,127</td><td>1,391,091,386</td></tr></table><img src="https://chart.googleapis.com/chart?chtt=Domains%20with%20Triples&chs=500x300&chds=a&cht=p&chd=t:537820,3930,244838,226279,12502500,31871,10419,216331,3244,13362,5323335&chl=html-rdfa|html-microdata|html-mf-geo|html-mf-hcalendar|html-mf-hcard|html-mf-hlisting|html-mf-hresume|html-mf-hreview|html-mf-species|html-mf-hrecipe|html-mf-xfn" /><img src="https://chart.googleapis.com/chart?chtt=URLs%20with%20Triples&chs=500x300&chds=a&cht=p&chd=t:14314036,56964,5051622,2747276,83583167,1227574,387364,2836701,25158,115345,37526630&chl=html-rdfa|html-microdata|html-mf-geo|html-mf-hcalendar|html-mf-hcard|html-mf-hlisting|html-mf-hresume|html-mf-hreview|html-mf-species|html-mf-hrecipe|html-mf-xfn" /><br /><img src="https://chart.googleapis.com/chart?chtt=Typed%20Entities&chs=500x300&chds=a&cht=p&chd=t:26583558,346411,7326516,21289402,973170050,25660498,1501009,8234850,152621,695838,481945127&chl=html-rdfa|html-microdata|html-mf-geo|html-mf-hcalendar|html-mf-hcard|html-mf-hlisting|html-mf-hresume|html-mf-hreview|html-mf-species|html-mf-hrecipe|html-mf-xfn" /><img src="https://chart.googleapis.com/chart?chtt=Triples&chs=500x300&chds=a&cht=p&chd=t:293542991,1197115,28831795,65727393,3226066019,88146122,12640527,84411951,391911,1228925,1391091386&chl=html-rdfa|html-microdata|html-mf-geo|html-mf-hcalendar|html-mf-hcard|html-mf-hlisting|html-mf-hresume|html-mf-hreview|html-mf-species|html-mf-hrecipe|html-mf-xfn" /><h2>Top Domains by Extracted Triples</h2><br /><ol><li><a href='http://www.twitter.com'>twitter.com</a> (305,521,869 Triples)</li><li><a href='http://www.local.yahoo.com'>local.yahoo.com</a> (70,514,751 Triples)</li><li><a href='http://www.www.linkedin.com'>www.linkedin.com</a> (50,111,943 Triples)</li><li><a href='http://www.www.naymz.com'>www.naymz.com</a> (36,849,468 Triples)</li><li><a href='http://www.dbpedia.org'>dbpedia.org</a> (29,669,424 Triples)</li><li><a href='http://www.es.netlog.com'>es.netlog.com</a> (29,091,899 Triples)</li><li><a href='http://www.shopping.kelkoo.co.uk'>shopping.kelkoo.co.uk</a> (22,471,114 Triples)</li><li><a href='http://www.www.facebook.com'>www.facebook.com</a> (22,408,232 Triples)</li><li><a href='http://www.www.threadless.com'>www.threadless.com</a> (22,257,544 Triples)</li><li><a href='http://www.www.tripadvisor.co.uk'>www.tripadvisor.co.uk</a> (22,162,233 Triples)</li><li><a href='http://www.www.mybloglog.com'>www.mybloglog.com</a> (21,825,532 Triples)</li><li><a href='http://www.www.forrent.com'>www.forrent.com</a> (20,846,552 Triples)</li><li><a href='http://www.it.netlog.com'>it.netlog.com</a> (20,729,138 Triples)</li><li><a href='http://www.nl.tripadvisor.com'>nl.tripadvisor.com</a> (20,273,272 Triples)</li><li><a href='http://www.eventful.com'>eventful.com</a> (19,998,126 Triples)</li><li><a href='http://www.de.local.yahoo.com'>de.local.yahoo.com</a> (17,764,458 Triples)</li><li><a href='http://www.www.tripadvisor.com'>www.tripadvisor.com</a> (17,650,950 Triples)</li><li><a href='http://www.nl.netlog.com'>nl.netlog.com</a> (17,538,439 Triples)</li><li><a href='http://www.bitmunk.com'>bitmunk.com</a> (16,791,481 Triples)</li><li><a href='http://www.en.netlog.com'>en.netlog.com</a> (15,756,500 Triples)</li><li><a href="top_domains_by_extracted_triples.html">More</a></li></ol><br /> 
+<h2>Results per Format</h2><br /><table><tr><th>Extractor</th><th>Domains with Triples</th><th>URLs with Triples</th><th>Typed Entities</th><th>Triples</th></tr><tr><td><a href='#html-rdfa'>html-rdfa</a></td><td>537,820</td><td>14,314,036</td><td>26,583,558</td><td>293,542,991</td></tr><tr><td><a href='#html-microdata'>html-microdata</a></td><td>3,930</td><td>56,964</td><td>346,411</td><td>1,197,115</td></tr><tr><td><a href='#html-mf-geo'>html-mf-geo</a></td><td>244,838</td><td>5,051,622</td><td>7,326,516</td><td>28,831,795</td></tr><tr><td><a href='#html-mf-hcalendar'>html-mf-hcalendar</a></td><td>226,279</td><td>2,747,276</td><td>21,289,402</td><td>65,727,393</td></tr><tr><td><a href='#html-mf-hcard'>html-mf-hcard</a></td><td>12,502,500</td><td>83,583,167</td><td>973,170,050</td><td>3,226,066,019</td></tr><tr><td><a href='#html-mf-hlisting'>html-mf-hlisting</a></td><td>31,871</td><td>1,227,574</td><td>25,660,498</td><td>88,146,122</td></tr><tr><td><a href='#html-mf-hresume'>html-mf-hresume</a></td><td>10,419</td><td>387,364</td><td>1,501,009</td><td>12,640,527</td></tr><tr><td><a href='#html-mf-hreview'>html-mf-hreview</a></td><td>216,331</td><td>2,836,701</td><td>8,234,850</td><td>84,411,951</td></tr><tr><td><a href='#html-mf-species'>html-mf-species</a></td><td>3,244</td><td>25,158</td><td>152,621</td><td>391,911</td></tr><tr><td><a href='#html-mf-hrecipe'>html-mf-hrecipe</a></td><td>13,362</td><td>115,345</td><td>695,838</td><td>1,228,925</td></tr><tr><td><a href='#html-mf-xfn'>html-mf-xfn</a></td><td>5,323,335</td><td>37,526,630</td><td>481,945,127</td><td>1,391,091,386</td></tr></table>
+<!--
+<img src="https://chart.googleapis.com/chart?chtt=Domains%20with%20Triples&chs=500x300&chds=a&cht=p&chd=t:537820,3930,244838,226279,12502500,31871,10419,216331,3244,13362,5323335&chl=html-rdfa|html-microdata|html-mf-geo|html-mf-hcalendar|html-mf-hcard|html-mf-hlisting|html-mf-hresume|html-mf-hreview|html-mf-species|html-mf-hrecipe|html-mf-xfn" />
+<img src="https://chart.googleapis.com/chart?chtt=URLs%20with%20Triples&chs=500x300&chds=a&cht=p&chd=t:14314036,56964,5051622,2747276,83583167,1227574,387364,2836701,25158,115345,37526630&chl=html-rdfa|html-microdata|html-mf-geo|html-mf-hcalendar|html-mf-hcard|html-mf-hlisting|html-mf-hresume|html-mf-hreview|html-mf-species|html-mf-hrecipe|html-mf-xfn" /><br />
+<img src="https://chart.googleapis.com/chart?chtt=Typed%20Entities&chs=500x300&chds=a&cht=p&chd=t:26583558,346411,7326516,21289402,973170050,25660498,1501009,8234850,152621,695838,481945127&chl=html-rdfa|html-microdata|html-mf-geo|html-mf-hcalendar|html-mf-hcard|html-mf-hlisting|html-mf-hresume|html-mf-hreview|html-mf-species|html-mf-hrecipe|html-mf-xfn" />
+<img src="https://chart.googleapis.com/chart?chtt=Triples&chs=500x300&chds=a&cht=p&chd=t:293542991,1197115,28831795,65727393,3226066019,88146122,12640527,84411951,391911,1228925,1391091386&chl=html-rdfa|html-microdata|html-mf-geo|html-mf-hcalendar|html-mf-hcard|html-mf-hlisting|html-mf-hresume|html-mf-hreview|html-mf-species|html-mf-hrecipe|html-mf-xfn" /><h2>Top Domains by Extracted Triples</h2><br /><ol><li><a href='http://www.twitter.com'>twitter.com</a> (305,521,869 Triples)</li><li><a href='http://www.local.yahoo.com'>local.yahoo.com</a> (70,514,751 Triples)</li><li><a href='http://www.www.linkedin.com'>www.linkedin.com</a> (50,111,943 Triples)</li><li><a href='http://www.www.naymz.com'>www.naymz.com</a> (36,849,468 Triples)</li><li><a href='http://www.dbpedia.org'>dbpedia.org</a> (29,669,424 Triples)</li><li><a href='http://www.es.netlog.com'>es.netlog.com</a> (29,091,899 Triples)</li><li><a href='http://www.shopping.kelkoo.co.uk'>shopping.kelkoo.co.uk</a> (22,471,114 Triples)</li><li><a href='http://www.www.facebook.com'>www.facebook.com</a> (22,408,232 Triples)</li><li><a href='http://www.www.threadless.com'>www.threadless.com</a> (22,257,544 Triples)</li><li><a href='http://www.www.tripadvisor.co.uk'>www.tripadvisor.co.uk</a> (22,162,233 Triples)</li><li><a href='http://www.www.mybloglog.com'>www.mybloglog.com</a> (21,825,532 Triples)</li><li><a href='http://www.www.forrent.com'>www.forrent.com</a> (20,846,552 Triples)</li><li><a href='http://www.it.netlog.com'>it.netlog.com</a> (20,729,138 Triples)</li><li><a href='http://www.nl.tripadvisor.com'>nl.tripadvisor.com</a> (20,273,272 Triples)</li><li><a href='http://www.eventful.com'>eventful.com</a> (19,998,126 Triples)</li><li><a href='http://www.de.local.yahoo.com'>de.local.yahoo.com</a> (17,764,458 Triples)</li><li><a href='http://www.www.tripadvisor.com'>www.tripadvisor.com</a> (17,650,950 Triples)</li><li><a href='http://www.nl.netlog.com'>nl.netlog.com</a> (17,538,439 Triples)</li><li><a href='http://www.bitmunk.com'>bitmunk.com</a> (16,791,481 Triples)</li><li><a href='http://www.en.netlog.com'>en.netlog.com</a> (15,756,500 Triples)</li><li><a href="top_domains_by_extracted_triples.html">More</a></li></ol><br /> 
+!-->
+<div>
+<span id="d2010Plds" style="float:left"></span>
+<span id="d2010Urls" style="float:left"></span>
+<span id="d2010Entities" style="float:left"></span>
+<span id="d2010Triples" style="float:left"></span>
+</div>
 <h2>Top Domains by URLs with Triples</h2><br /><ol><li><a href='http://www.www.myspace.com'>www.myspace.com</a> (1,586,653 URLs)</li><li><a href='http://www.twitter.com'>twitter.com</a> (834,656 URLs)</li><li><a href='http://www.local.yahoo.com'>local.yahoo.com</a> (798,436 URLs)</li><li><a href='http://www.www.youtube.com'>www.youtube.com</a> (681,046 URLs)</li><li><a href='http://www.www.flickr.com'>www.flickr.com</a> (679,915 URLs)</li><li><a href='http://www.www.slideshare.net'>www.slideshare.net</a> (572,806 URLs)</li><li><a href='http://www.bitmunk.com'>bitmunk.com</a> (518,584 URLs)</li><li><a href='http://www.www.naymz.com'>www.naymz.com</a> (456,555 URLs)</li><li><a href='http://www.eventful.com'>eventful.com</a> (449,609 URLs)</li><li><a href='http://www.upcoming.yahoo.com'>upcoming.yahoo.com</a> (447,862 URLs)</li><li><a href='http://www.dbpedia.org'>dbpedia.org</a> (409,250 URLs)</li><li><a href='http://www.www.threadless.com'>www.threadless.com</a> (392,825 URLs)</li><li><a href='http://www.maps.google.com'>maps.google.com</a> (386,103 URLs)</li><li><a href='http://www.www.backcountry.com'>www.backcountry.com</a> (376,250 URLs)</li><li><a href='http://www.es.netlog.com'>es.netlog.com</a> (376,199 URLs)</li><li><a href='http://www.digg.com'>digg.com</a> (373,790 URLs)</li><li><a href='http://www.www.linkedin.com'>www.linkedin.com</a> (345,838 URLs)</li><li><a href='http://www.www.bookfinder.com'>www.bookfinder.com</a> (345,203 URLs)</li><li><a href='http://www.www.facebook.com'>www.facebook.com</a> (335,008 URLs)</li><li><a href='http://www.www.ncbi.nlm.nih.gov'>www.ncbi.nlm.nih.gov</a> (323,250 URLs)</li><li><a href="top_domains_by_urls_with_triples.html">More</a></li></ol><br /> 
 <p>In the following statistics, the term "Property values" refers to the overall number of properties that describe all typed entities. The term "URL values" refers to the subset of the "Property Values" that have a URL as object. The term "Remote URL Values" refers to the subset of the "URL values" which point at a different websites (meaning that the namespace of the URL differs from the namespace of the described entity). The term "Literal Values" refers to the subset of the "Property values" that are literals and no URLs</p>
 <a name='html-rdfa'></a>
