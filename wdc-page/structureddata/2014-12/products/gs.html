@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html><head><title>Schema.org Product Categorization</title>
 <link rel="stylesheet" href="http://webdatacommons.org/style.css" type="text/css" media="screen"/>
@@ -245,10 +246,10 @@
 
 
 <div id="header">
-<h1 style="font-size: 250%;">Schema.org Products Categorization</h1>
+<h1 style="font-size: 250%;">WDC Product Categorization Goldstandard</h1>
 </div>
 
-<div id="tagline">Creating a Gold Standard for Schema.org Product Descriptions</div>
+<div id="tagline">Categorizing Schema.org Product Descriptions into the GS1 Global Product Catalogue</div>
 
 <div id="authors">
 Anna Primpeli</br>
@@ -262,9 +263,8 @@ A reason for this could be that categorizing the product entity is not obligator
 this is the creation of a gold standard that contains a big number of randomly chosen annotated schema.org/Product entities together with their manually assigned category labels. Those labels derive from specified product catalogues in order to avoid big categorization variances.
 -->
 <p>
-On this page you find a manually annotated dataset, containing over 9,400 product desriptions retrieved from the latest <a href="http://webdatacommons.org/structureddata/index.html#toc3">WDC Microdata extraction</a> of 2014. 
-The descriptions are annotated with the category from the first three hierarchy levels of the GS1 Global Product Catalogue. This means each description has been assigned to three categories, one from each level. 
-The so generated goldstandard can be used to train predictive models in order to assign categories to unseen products.
+This page offers a product categorization gold standard for public download. The gold standard categorizes 9,400 <a href="https://schema.org/Product">schema.org product</a> desriptions into the product taxonomy of <a href="http://www.gs1.org/gpc">GS1 Global Product Catalogue</a>. The schema.org product descriptions originate from the <a href="http://webdatacommons.org/structureddata/index.html#toc3">WebDataCommons 2014 Microdata Corpus</a>. 
+Each product is manually assigned into a category on the third level of the GS1 product taxonomy.  
 </p>
 
 <h2>Contents</h2>
@@ -274,39 +274,27 @@ The so generated goldstandard can be used to train predictive models in order to
 
 <h2 id="motivation">1. Motivation</h2>
 <p>
-A significant number of online stores use mark up languages as RDFa and Microdata to semantically annotate the product descriptions within their HTML. 
-A reason for this is the consumptions of such annotated data by search engine companies as Google and Yandex, which further improve their search results or their knowledge graph
-with such structured data. Using Microdata together with the schema.org vocubulary, in particular the classes <a href="http://schema.org/Product">schema.org/Product</a> and <a href="http://schema.org/Offer">schema.org/Offer</a> 
-is one way to realize this semantic markup. Although the schema for those entities is rather comprehensive, only a few properties are used frequently in the Web. 
-In particular we are interested in the usage of the <a href="http://schema.org/category">category</a> property, which is dedicated to contain a textual description of "A category for the item. Greater signs or slashes can be used to informally indicate a category hierarchy." We observed, that even when this property is present, the sites make use of their own categorization schema. This leads to a strong heterogeneity of the available categories in the product
-descriptions across the Web. Using this information, one is not directly able to gain further insights about the general distribution of categories (e.g. from a given category catalogue) within the data.
-A solution to this would be the selection of a defined product categorization standard and the assignment of a category label to each one of the existing product entities. This could be
-achieved with the implementation of classifiers that could predict the most precise category label based on the existing product attributes. For this reason the creation of a gold standard that
-contains a comprehensive number of randomly chosen annotated schema.org/Product entities together with their manually assigned category labels, is essential. The product related entities
-constructing the gold standard are a subset of the crawled data as extracted by the <a href="http://webdatacommons.org/structureddata/index.html#toc3">Web Data Commons</a> project.
-</p>
+A significant number of e-commerce websites have started to annotate product data within their HTML pages using the schema.org vocabulary in order to be <a href="https://developers.google.com/structured-data/rich-snippets/products">nicely presented within the search results</a> of  search engines such as Google, Bing, Yahoo, and Yandex. The most commonly used classes for representing product data are  <a href="http://schema.org/Product">schema.org/Product</a> and <a href="http://schema.org/Offer">schema.org/Offer</a>. Although schema.org defines a large number of properties for describing products and offers, only a small subset of these properties is used frequently on the Web. We are particularly interested in the usage of the property <a href="http://schema.org/category">category</a>, which is defined to contain a textual description of "A category for the item. Greater signs or slashes can be used to informally indicate a category hierarchy." Analyzing WebDataCommons 2014 product data, we observe that only 2,000 out of the 104,000 that annotate product data also provide categorization information for their products. The product categorization taxonomies used by these 2,000 websites are usually website-specific and the categorization information thus very heterogeneous.  In order to calculate statistics  about which e-shop is selling products from which product category, it is thus be necessary to classify the schema.org product data into a single shared product taxonomy such as the <a href="http://www.gs1.org/gpc">GS1 taxonomy</a>. The WDC Product Categorization Gold Standard has been created to evaluate classifiers for solving this task.</p>
 
-<h2 id="about">2. Description of the gold standard dataset</h2>
+<h2 id="about">2. Description of the Gold Standard</h2>
 
 <p>
-For the creation of the gold standard we chose randomly 9,414 product entities deriving from websites of different commercial purposes and origin. 
-Every product was described by the following properties:
-</p>
+For creating the gold standard, we  randomly chose 9,414 product descriptions from the <a href="http://www.webdatacommons.org/structureddata/2014-12/stats/schema_org_subsets.html">WDC 2014 schema.org Product Data Corpus</a>. The product descriptions originate for 818 different e-commerce websites. Every product is described by the following attributes: </p>
 
 <ul>
-  <li>GeneratedID: A automatic generated identify, unique for each product description.</li>
-  <li>EntityNodeID: The original entity node of the root entity (schema.org/Product). This id is unique in combination with the URL.</li>
-  <li>URL: The URL which embedded the product description.</li>
-  <li>HOST: The host based on the URL. </li>
-  <li>s:name : The <a href="http://schema.org/name">name</a> property as defined by schema.org </li>
-  <li>s:description : The <a href="http://schema.org/description">description</a> property as defined by schema.org </li>
-  <li>s:brand : The <a href="http://schema.org/brand">brand</a> property as defined by schema.org </li>
-  <li>Properties : All the properties describing the current product entity </li>
-  <li>s:category : The <a href="http://schema.org/category">property</a>  as defined by schema.org OR</li>
-  <li>s:breadcrumb : The <a href="https://schema.org/breadcrumb">breadcrumb</a> property as defined by schema.org </li>
+  <li><strong>GeneratedID:</strong> A automatic generated identify, unique for each product description.</li>
+  <li><strong>EntityNodeID:</strong> The original entity node of the root entity (schema.org/Product). This id is unique in combination with the URL.</li>
+  <li><strong>URL: </strong>The URL which embedded the product description.</li>
+  <li><strong>HOST:</strong> The host based on the URL. </li>
+  <li><strong>s:name: </strong>The <a href="http://schema.org/name">name</a> property as defined by schema.org </li>
+  <li><strong>s:description:</strong> The <a href="http://schema.org/description">description</a> property as defined by schema.org </li>
+  <li><strong>s:brand: </strong>The <a href="http://schema.org/brand">brand</a> property as defined by schema.org </li>
+  <li><strong>Properties:</strong> All the properties describing the current product entity </li>
+  <li><strong>s:category:</strong> The <a href="http://schema.org/category">property</a>  as defined by schema.org OR</li>
+  <li><strong>s:breadcrumb: </strong>The <a href="https://schema.org/breadcrumb">breadcrumb</a> property as defined by schema.org </li>
   </ul>
   
- <p> Below two example product entities are presented in the same way like they appear in the dataset. <a href="data/sample_dataset.xlsx">Here</a> you can download a sample of the used product related set.
+ <p> Below two example product entities are presented in the same way like they appear in the data set. <a href="data/sample_dataset.xlsx">Here</a> you can download a sample of the product data set.
 </p> 
 
 <table width="100%" style=" table-layout:fixed; word-wrap: break-word" ><tbody>
@@ -315,7 +303,7 @@ Every product was described by the following properties:
 	<col span="1" style="width:40%;">
 	<col span="1" style="width:40%;">
 </colgroup>
-<tr><th></th><td>Example Entity 1</td><td>Example Entity 2</td></tr>
+<tr><th></th><td><strong>Example Entity 1</strong></td><td><strong>Example Entity 2</strong></td></tr>
 <tr><th>GeneratedID</th><td>-2118249796</td><td>1187072929</td></tr>
 <tr><th>EntityNodeID</th><td>node5d4c67d3df98cb2aee588545d24306e</td><td>node26f6acb8c1c3a928c126c26a99c6782</td></tr>
 <tr><th>URL</th><td>http://www.tekshop247.com/37tm4zbb-componentrgb-p-155916.html</td><td>http://www.tekshop247.com/phoneeasy-331ph-corded-phone-p-176289.html</td></tr>
@@ -351,9 +339,10 @@ Every product was described by the following properties:
 </tbody>
 </table>
 -->
-<p>The table below shows some facts on the used dataset: </p>
+<p>&nbsp;</p>
 
-<h4>Dataset Statistics</h4>
+<h4>Density Statistics</h4>
+<p>The table below contains statistics about the density of the different attributes, meaning for which subset of the 9,414 products the specific attributes are filled.</p>
 <br />
 <table><tbody><tr><th>Total product entries</th><td>9,414</td></tr>
 <tr><th>Distinct PLDs</th><td>818</td></tr>
@@ -395,15 +384,12 @@ depicts the mapping of a milk product in the first four levels.
 
 <h2 id="creation">4. Creation of the Gold Standard based on GS1/GPC</h2>
 <p>
-For the creation of our gold standard we used the three broader classification levels as defined by GS1/GPC namely: <i>segment</i>, <i>family</i> and <i>class</i>. 
-In order to assign a category label to a product entity we first looked at the title of the product. In the case that the title was not sufficient for giving a category label we turned to the description and
-the website in which the product information was published, which most of the times contained a picture of the described product.  
-</p>
+For the creation of our gold standard we used the three broader classification levels as defined by GS1/GPC namely: <strong><i>segment</i>, <i>family</i> and <i>class</i>.</strong> In order to assign a category label to a product entity we first looked at the title of the product. In the case that the title was not sufficient for giving a category label we turned to the description and
+the website in which the product information was published, which most of the times contained a picture of the described product. </p>
 
-Below we present some statistics on the categorized data based on the GS1/GPC specification are presented.
 <!--<div style="float:left; margin-left:0px; width:450px">-->
-<h4>Top 10 GS1/GPC Segments in the created gold standard</h4>
-<p>
+<h4>Top 10 GS1/GPC Segments in the Gold Standard</h4>
+<p>Below we present statistics about the distribution of the 9,414 schema.org product descriptions in the gold standard over the Top 10 GS1/GPC segments.
 	<table><tbody><tr><th></th><td>Entities#</td><td>Entities%</td></tr>
 	<tr><th>Clothing</th><td>4,010</td><td>42.6%</td></tr>
 	<tr><th>Personal Accessories</th><td>492</td><td>5.2%</td></tr>
@@ -425,18 +411,18 @@ In addition to the complete gold standard we also provide a filtered version, wh
 </p>
 
 
-<h2 id="mapping">5. Mapping between GS1/GPC and Google Product Taxonomie</h2>
+<h2 id="mapping">5. Mapping between the GS1/GPC Taxonomy and the Google Product Taxonomy</h2>
 <p>
-During the category labelling process we observed some limitations of the GS1/GPC categorization for products such as house amenities, travelling services and job offers. As a result of these limitations 187 product entities could not be categorized. 
-For this reason, we further made use of the <a href='https://support.google.com/merchants/answer/160081?hl=en'>Google Product Taxonomie</a> for product categorization which is more focused on the Web.
-This categorization includes three classification levels. As a first step unique identifiers were given to the Google Product Taxonomie categories of all the three levels and then a mapping between the first two levels 
+During the labelling process, we observed some limitations of the GS1/GPC taxonomy for products such as house amenities, travelling services and job offers. As a result of these limitations 187 product entities could not be classified. 
+For this reason, we further made use of the <a href='https://support.google.com/merchants/answer/160081?hl=en'>Google Product Taxonomy</a> for product categorization which is more focused on the Web.
+This categorization includes three classification levels. As a first step unique identifiers were given to the Google Product Taxonomy categories of all the three levels and then a mapping between the first two levels 
 and the GS1 categories of the first three levels was attempted. These mappings could be partially implemented as there were no exact equivalences between the two catalogues while in some cases there were 1:n relations between the categories.
 Here is an example of a partial mapping between the two standards for the Baby Care product category:
 <div>
 <img src="images/mapping.png" alt="Mapping example" width="650px" />
 </div>
 <br/>
-The charts below depict the percentage of the GS1/GPC categories of the 3 first levels that could be mapped to at least one Google Product Taxonomie category.
+The charts below depict the percentage of the GS1/GPC categories of the 3 first levels that could be mapped to at least one Google Product Taxonomy category.
 </p>
 <span>
 <div id="GS1_1-Google" style="float:left;  width:330px"  ></div>
@@ -445,9 +431,9 @@ The charts below depict the percentage of the GS1/GPC categories of the 3 first 
 </span>
 
 <h2 id="download">6. Download </h2>
-<p>You can download both the created gold standard and the file that contains the mappings between GS1/GPC and the Google Product Taxonomie as csv files. 
-Due to readability, we concatinated the ID and the label of the respective category (e.g. "67010000_Clothing").
-The Google Product Taxonomie with the generated IDs can be found <a href="data/googleproductcatalogue_taxonomy_withids.csv">here</a>.
+<p>You can download both the created gold standard and the file that contains the mappings between GS1/GPC and the Google Product Taxonomy as csv files. 
+In order to increase the readability, we concatinated the ID and the label of the respective category (e.g. "67010000_Clothing").
+The Google Product Taxonomy with the generated IDs can be found <a href="data/googleproductcatalogue_taxonomy_withids.csv">here</a>.
 </p>
 <colgroup>
 	<col span="1" style="width:5%;">
@@ -456,7 +442,7 @@ The Google Product Taxonomie with the generated IDs can be found <a href="data/g
 </colgroup>
 <table  style=" table-layout:fixed; word-wrap: break-word" ><tbody>
 <tbody>
-	<tr><th>File</th><td><a href="data/goldstandard_v1.csv">Goldstandard</a> (Version 1)<br><a href="data/goldstandard_eng_v1.csv">English Goldstandard</a> (Version 1)</td><td><a href="data/gs1_google_mapping_v1.csv">GS1/GCP <-> Google Product Taxonomie Mapping</a> (Version 1)</td></tr>
+	<tr><th>File</th><td><a href="data/goldstandard_v1.csv">Goldstandard</a> (Version 1)<br><a href="data/goldstandard_eng_v1.csv">English Goldstandard</a> (Version 1)</td><td><a href="data/gs1_google_mapping_v1.csv">GS1/GCP <-> Google Product Taxonomy Mapping</a> (Version 1)</td></tr>
 	<tr><th>Format</th><td>csv (";" as separator)</td><td>csv (";" as separator)</td></tr>
 	<tr><th>Size</th><td>8,856 KB</td><td>109 KB</td></tr>
 	<tr><th>#Rows</th><td>9,415</td><td>786</td></tr>
@@ -465,13 +451,19 @@ The Google Product Taxonomie with the generated IDs can be found <a href="data/g
 
 <h2 id="license">7. License</h2>
 <p>The extracted data is provided according the same <a href="http://commoncrawl.org/about/terms-of-use/full-terms-of-use/">terms of use, disclaimer of warranties and limitation of liabilities</a> that apply to the Common Crawl corpus.</p>
-<p>The data, derived from the GS1 Global Product Catalogue as well as the Google Product Taxonomie (e.g. Google Product Taxonomie with IDs) is provided according the same tersm of use, disclamer of warranties and limitations of liability that apply to the distributors of the original datasets (GS1 and Google).</p>
+<p>The data, derived from the GS1 Global Product Catalogue as well as the Google Product Taxonomy (e.g. Google Product Taxonomy with IDs) is provided according the  terms of use, disclamer of warranties and limitations of liability defined by the original distributors of the data: GS1 and Google.</p>
 
 <h2 id="references">8. References</h2>
 
 <ul>
-	<li>Robert Meusel, Anna Primpeli, Heiko Paulheim, Christian Bizer: Exploiting Microdata Annotations to Consistently Categorize Product Offers at Web Scale</a>, To appear in: 16th International Conference on Electronic Commerce and Web Technologies (EC-Web2015/T2), Valencia, Spain, September 2015.
-	
+	<li>Robert Meusel, Anna Primpeli, Christian Meilicke, Heiko Paulheim, and Christian Bizer: <a href="http://dws.informatik.uni-mannheim.de/fileadmin/lehrstuehle/ki/pub/Meusel-etal-ExploitingMicrodataAnnotations.pdf" target="_blank">Exploiting Microdata Annotations to Consistently Categorize Product Offers at Web Scale</a></a>. 16th International Conference on Electronic Commerce and Web Technologies (EC-Web2015/T2), Valencia, Spain, September 2015.    
+	<li>Robert Meusel, Petar Petrovski and Christian Bizer: <a href="http://dws.informatik.uni-mannheim.de/fileadmin/lehrstuehle/ki/pub/Meusel-etal-TheWDCMicrodataRdfaMicroformatsDataSeries-ISWC2014-rbds.pdf" target="_blank">The WebDataCommons Microdata, RDFa and Microformat Dataset Series</a>. 13th International Semantic Web Conference (ISWC2014), pp. 277-292, Riva del Garda, Italy, October 2014.</li>
+	<li>Petar Petrovski, Volha Bryl, Christian Bizer: <a href="http://dws.informatik.uni-mannheim.de/fileadmin/lehrstuehle/ki/pub/petrovski_bryl_bizer_deos2014.pdf" target="_blank">Integrating Product Data from Websites offering Microdata Markup</a>. 23rd International Conference on World Wide Web (WWW2014 Companion), pp. 1299-1304,  Seoul, Korea, April 2014.</li>
+	</ul>
+<h2 id="datasets">9. Product Datasets</h2>
+<ul>
+  <li><a href="http://www.webdatacommons.org/structureddata/2014-12/stats/schema_org_subsets.html">WebDataCommons schema.org Product Data Corpus</a> containing 287 million product descriptions originating from 104,000 websites. The data set has been extracted from the CommonCrawl web corpus.</li>
+  <li><a href="http://jmcauley.ucsd.edu/data/amazon/">Amazon Product and Review Dataset</a> containing data about 9.4 million products (including categorization information) as well as 147 million product reviews crawled from Amazon.</li>
 </ul>
 
 </div>
