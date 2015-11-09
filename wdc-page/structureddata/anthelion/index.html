@@ -142,9 +142,10 @@ selected and pushed into the Crawler (2). The reordered pages are now ready to b
 After downloading (3) and parsing (4) the page, the newly found links are added into the Sieve after classification (5).
 In addition, the label of the crawled pages is returned as feedback to classifier which updates its classification model (6). 
 </p>
-<h2 id="code">3. Source Code</h2>
+<h2 id="code">3. Code and Data</h2>
 <p>
-The source code is currently being re-factored to improve usability. Please get in contact with <a href="http://robert.dwslab.de">Robert</a> in case you cannot wait.
+For the experiments presented in our work <a href="http://dws.informatik.uni-mannheim.de/fileadmin/lehrstuehle/ki/pub/Meusel-etal-FocusedCrawlingForStructuredData-CIKM14.pdf">Focused Crawling for Structured Data</a> used the 2012 corpus of the Common Crawl foundation. For our experiments we crawled (within the Common Crawl Corpus) over 5 million pages, starting from seeds from <a href="http://www.dmoz.org/">the Open Directory Project</a>. The data files can be found <a href="http://data.dws.informatik.uni-mannheim.de/structureddata/anthelion/data/">here</a>. 
+The code which was used to perform the experiments, as well as a ready-to-run Apache Nutch plugin is provided within the open source project released in <a href="https://github.com/yahoo/anthelion">github</a> under Apache License 2.0. 
 </p>
 <!--
 <h2 id="lice">4. License</h2>
@@ -152,7 +153,7 @@ The source code is currently being re-factored to improve usability. Please get 
 <h2 id="refe">4. References</h2>
 <p>
 <ul>
-<li>Robert Meusel, Peter Mika, Roi Blanco: <a href="http://dws.informatik.uni-mannheim.de/fileadmin/lehrstuehle/ki/pub/Meusel-etal-FocusedCrawlingForStructuredData-CIKM14.pdf">Focused Crawling for Structured Data</a>. To appear in the Proceedings of the 23th ACM International Conference on Information and Knowledge Management (CIKM'14)</li>
+<li>Robert Meusel, Peter Mika, Roi Blanco: <a href="http://dws.informatik.uni-mannheim.de/fileadmin/lehrstuehle/ki/pub/Meusel-etal-FocusedCrawlingForStructuredData-CIKM14.pdf">Focused Crawling for Structured Data</a>. in the proceedings of the 23th ACM International Conference on Information and Knowledge Management (CIKM'14)</li>
 </ul>
 </p>
 
