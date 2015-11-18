@@ -294,6 +294,32 @@
         var chartHeaders = new google.visualization.ColumnChart(document.getElementById('headersDiv'));
         chartHeaders.draw(headerData, optionsHead);
 		
+				// Set chart options
+        var optionsHead = {'title':'Popular Column Headers',
+                       'width':1500,
+                       'height':480,
+               'colors': ['#e6693e']};
+			   // Instantiate and draw our chart, passing in some options.
+        var chartHeaders = new google.visualization.ColumnChart(document.getElementById('headersDiv'));
+        chartHeaders.draw(headerData, optionsHead);
+		
+		//create piechart for column datatypes
+		var data = google.visualization.arrayToDataTable([
+          ['datatype', '#Columns'],
+          ['Numeric', 63689880],
+		  ['String', 571080511],
+		  ['Date', 19873768],
+          ['Link', 3968804],
+          ['Boolean', 30065],
+          ['List', 483]
+        ]);
+
+        var options = {
+          title: 'Column Data Types'
+        };
+
+        var chart1 = new google.visualization.PieChart(document.getElementById('piechartDatatypes'));
+        chart1.draw(data, options);
 		
       }
     </script>
@@ -448,19 +474,18 @@ The key of the key value pair represents the header and the value the number of 
 </p>
 
 <h3 id="statistics">5. Column Data Types Distribution</h3>
-<!--
 <p>
-We used a rough type guessing algorithm to detect the data type of each table column. First, the data type of each column cell is detect by trying to parse it into the according types. We use the following 6 pre-defined data types: string, numeric, date, link, boolean and list. Afterwards, the most frequent data type in the column is chosen as the final data type of the whole column. 
+We used a rough type guessing algorithm to detect the data type of each table column. First, the data type of each column value was detect, using 5 pre-defined data types: string, numeric, date, boolean and list. Afterwards, the most used data type in the column was chosen as the final data type of the column. 
 </p>
 <p>
-Figure 9 shows distribution of column data types. (Other include link, boolean and list because of very less percentage of overall datatypes) 
+Figure 8 shows distribution of column data types.
 </p>
 
 <div style="width:720px;">
     <div id="piechartDatatypes" style="width: 900px; height: 500px;"></div>
-    <p style="margin:20px auto 20px auto; font-weight:normal; text-align:center; width:500px;">Fig. 9 - Column Data Types Distribution</p>
+    <p style="margin:20px auto 20px auto; font-weight:normal; text-align:center; width:500px;">Fig. 8 - Column Data Types Distribution</p>
 </div>
--->
+
 <h3 id="statistics">6. Context Information</h3>
 </p>
 <p>Table 3 provides basic statistics about context related data which we further extracted. For each tables, we extract the 200 words before and after the table. In previous experiments, we found out that without additional context or temporal information, it is difficult to further process the tables, e.g. to match them to a knowledge base [<a href="Zhang2013">Zhang2013</a>]. For almost half of the tables, we can extract a timestamp which is located after the entity table. In many cases, this timestamp is the imprint of the webpage. The last modified date comes from the HTTP header of the HTML page.</p>
@@ -471,15 +496,6 @@ Figure 9 shows distribution of column data types. (Other include link, boolean a
 <tr><th>Last Modified Date</th><td align="right">19,654,944</td></tr>
 <caption>Table 3: Extracted Context Information</caption>
 </table>
-
-</p>
-<h2 id="feedback">7. Feedback</h2>
-<p>Please send questions and feedback to the <a href="http://groups.google.com/group/web-data-commons">Web Data Commons mailing list</a> or post them in our <a href="https://groups.google.com/forum/?fromgroups#!forum/web-data-commons">Web Data Commons Google Group</a>.<br/><br/>
-More information about Web Data Commons is found <a href="../index.html">here</a>.</p>
-
-<h2 id="acknowledgments">8. Credits</h2>
-<p>The extraction of the Web Table Corpus was supported by an <a href="http://aws.amazon.com/education/">Amazon Web Services in Education Grant award</a>.</p>
-<a href="http://aws.amazon.com/education/"><img src="../images/aws.png" alt="AWS Logo"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
 </div>
 
