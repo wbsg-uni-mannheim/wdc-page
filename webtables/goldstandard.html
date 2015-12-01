@@ -330,16 +330,20 @@ Having a look at the amount of correspondences per category (Figure 5), the diff
 <tr><th>Natural Place</th><td>83</td><td>2.1</td></tr>
 <tr><th>Populated Place</th><td>130</td><td>4.1</td></tr>
 </table>
+<p>
 While tables of the category "Species" can be mapped to a lot of resources, tables about "Architectural Structure" have a tendency to contain less correspondences. 
 Similar holds for the number of mappings to properties, e.g. tables of the category "Populated Place" can on average be mapped to 4 properties while tables of the category "Person" only to 1.5 properties. 
 Besides other characteristics, these differences significantly influence the difficulty of matching a certain table. 
 Having a lot of column-to-property correspondences can help to find better row-to-entity correspondences since more property values are exploitable. 
 The same holds vice versa, with more correspondences to entities exist, the easier becomes the task of finding schem-level correspondences. 
-
+</p>
+<p>
+As result from the <a href="http://webdatacommons.org/webtables/#results-2015">WDC Web Table Extraction 2015</a>, we can extract context information for the tables used in the gold standard. Besides the page title, the text before and after the table, 47 timestamps before a table and 97 timestamps after a table have been identified. Further, for 7 tables we can find a caption of the table.
+</p>
 <h2 id="download">4. Data Format </h2>
 
 <p>
-The Web tables and the correspondences are provided as CSV files. Fields are separated by the comma (' , ') character and all values are double quoted (' " ').
+The Web tables and the correspondences are provided as CSV files (except for tables with context information, see the <a href="http://webdatacommons.org/webtables/2015/downloadInstructions.html">download instructions</a>). Fields are separated by the comma (' , ') character and all values are double quoted (' " ').
 There are three different files types for the gold standard: the class correspondence files, the attribute correspondence files, and the entity correspondence files.
 In all files, tables are uniquely identified by their name, which is the  name of the file that contains the table without extension.
 The class file contains the class correspondences and the header information for each table. It has the following structure:
@@ -409,6 +413,13 @@ The entity files contain the entity correspondences for the tables. For each tab
 <td><a href="classes_instance.csv">classes_instance.csv</a></td>
 <td><a href="attributes_instance.tar.gz">attributes_instance.tar.gz</a></td>
 <td><a href="entities_instance.tar.gz">entities_instance.tar.gz</a></td>
+</tr>
+<tr>
+<td>Instance-level goldstandard with context</td>
+<td><a href="tables_instance_context.tar.gz">tables_instance_context.tar.gz</a></td>
+<td></td>
+<td></td>
+<td></td>
 </tr>
 <tr>
 <td>DBpedia subset</td>
