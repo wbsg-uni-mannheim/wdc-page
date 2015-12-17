@@ -1,27 +1,26 @@
-<!DOCTYPE html>
 <html><head><title>WDC - RDFa, Microdata, and Microformat Data Sets</title>
 <link rel="stylesheet" href="http://webdatacommons.org/style.css" type="text/css" media="screen"/>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
   <script type="text/javascript">
-  
-	google.load('visualization', '1', {packages: [ 'bar', 'line', 'corechart']});
-
-	google.setOnLoadCallback(drawMaterial3);
-	google.setOnLoadCallback(drawMaterial4);
-	google.setOnLoadCallback(drawMaterial5);
-	google.setOnLoadCallback(drawMaterial6);
-	google.setOnLoadCallback(drawMaterial1);
-	google.setOnLoadCallback(drawMaterial2);
+  	
+	google.charts.load('43',  {packages: ['bar','line', 'corechart']});
 	
-	google.setOnLoadCallback(drawMaterial7);	
-	google.setOnLoadCallback(drawMaterial8);
-	google.setOnLoadCallback(drawMaterial9);
-	google.setOnLoadCallback(drawMaterial10);
-	google.setOnLoadCallback(drawMaterial11);
-	google.setOnLoadCallback(drawMaterial12);
-	google.setOnLoadCallback(drawMaterial13);
-	google.setOnLoadCallback(drawMaterial14);
+	google.charts.setOnLoadCallback(drawMaterial3);
+	google.charts.setOnLoadCallback(drawMaterial4);
+	google.charts.setOnLoadCallback(drawMaterial5);
+	google.charts.setOnLoadCallback(drawMaterial6);
+	google.charts.setOnLoadCallback(drawMaterial1);
+	google.charts.setOnLoadCallback(drawMaterial2);
+	
+	google.charts.setOnLoadCallback(drawMaterial7);	
+	google.charts.setOnLoadCallback(drawMaterial8);
+	google.charts.setOnLoadCallback(drawMaterial9);
+	google.charts.setOnLoadCallback(drawMaterial10);
+	google.charts.setOnLoadCallback(drawMaterial11);
+	google.charts.setOnLoadCallback(drawMaterial12);
+	google.charts.setOnLoadCallback(drawMaterial13);
+	google.charts.setOnLoadCallback(drawMaterial14);
 
 	
 function drawMaterial1() {
@@ -494,7 +493,7 @@ More and more websites have started to embed structured data describing products
 
 <h2 id="news">News</h2>
 <ul>
-<li><strong>2015-06-20: Paper about <a href="http://dws.informatik.uni-mannheim.de/fileadmin/lehrstuehle/ki/pub/Meusel-etal-Schema-org-Adoption-WIMS2015.pdf">A Web-scale Study of the Adoption and Evolution of the schema.org Vocabulary over Time</a> accpted at <a href="http://easyconferences.eu/?portfolio=wims-2015">WIMS2015</a> conference in Limassol, Cyprus.</strong></li>
+<li><strong>2015-06-20: Paper about <a href="http://dws.informatik.uni-mannheim.de/fileadmin/lehrstuehle/ki/pub/Meusel-etal-Schema-org-Adoption-WIMS2015.pdf">A Web-scale Study of the Adoption and Evolution of the schema.org Vocabulary over Time</a> accepted at <a href="http://easyconferences.eu/?portfolio=wims-2015">WIMS2015</a> conference in Limassol, Cyprus.</strong></li>
 <li><strong>2015-04-02: <a href="#results-2014-1">RDFa, Microdata, and Microformat</a>  data sets extracted from the December 2014 Common Crawl corpus available for download.</strong></li>
 <li><strong>2015-03-30: Paper about <a href="http://dws.informatik.uni-mannheim.de/fileadmin/lehrstuehle/ki/pub/MeuselPaulheim-HeuristicsForFixingCommonErrorsInDeployedSchemaOrgMicrodata-ESWC2015.pdf">Heuristics for Fixing Common Errors in Deployed schema.org Microdata</a> accepted at <a href="http://2015.eswc-conferences.org/">ESWC2015</a> conference in Portoroz, Slovenia.</strong></li>
 <li><strong>2014-12-04: We have created several <a href="structureddata/2013-11/stats/schema_org_subsets.html">Class-Specific Subsets of the Schema.org Data contained in the Winter 2013 Microdata Corpus</a> (e.g. schema.org/Product and schema.org/Offer) in order to make it easier to work with the data.</strong></li>
@@ -747,10 +746,11 @@ The diagram below shows the total number of pay-level domains (PLD) making use o
 n the following we report trends in the adoption of selected RDFa classes. The first diagram shows the number of PLDs using each class. The second diagram shows the total number of entities of each class contained in the WDC RDFa data sets. We see that the number of websites deploying the Facebook Open Graph Protocol classes <code>og:article</code> and <code>og:product</code> as well as <code>foaf:Document</code> stays approximately constant. The deployment of <code>og:website</code> and <code>gd:breadcrumb</code> is increasing.
 </p>
 
-<div>
+<div id=="rdf_pld"></div>
+<div id=="rdf_triple"></div>
+
 <span id="rdf_pld" style="width:500px"></span>
 <span id="rdf_triple" style="width:500px"></span>
-</div>
 <h4>Adoption of Selected Schema.org Classes</h4>
 <p>
 Below, we analyze the development of the adoption of schema.org classes embedded using the Microdata syntax. The two diagrams below show again the deployment of those classes by number of deploying PLDs and number of entities extracted from the crawls. We can see a continuous increase in the number of PLDs adopting the schema.org classes. This is also reflected in the number of entities within the datasets, where the slight decrease of the two classes <code>PostalAddress</code> and <code>LocalBusiness</code> might originate from the characteristics of the third crawl, which contains a similar number of pages as the second crawl, but covers a larger number of PLDs. This has likely resulted in a more shallow coverage of websites that contain schema.org data and thus in a smaller number of extracted entities.
