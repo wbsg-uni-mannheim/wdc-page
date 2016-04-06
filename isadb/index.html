@@ -63,11 +63,11 @@ This collection of relations represents a rich source of knowledge and may be us
 <p>Our approach to "isa" relation extraction can be divided in three main steps:
 
 <div class="rtable"> 
-<h4>Table 1: The list of patterns used for the tuples extraction<br />
-    ($NP_t$ indicates the hyponym and $NP_h$ the hypernym). <br />
-    For each pattern we also report the estimated precision and <br/>
-    the number of resulting matches.</h4><br />
-
+<p>Table 1: The list of patterns used for the tuples extraction<br />
+    (NP<sub>t</sub> indicates the hyponym and NP<sub>h</sub> the hypernym). For<br />
+    each pattern we also report the estimated precision and<br />
+    the number of resulting matches.
+<p>
 
 <div class="table-wrapper">
 <table class="smalltable" width="100%">
@@ -76,64 +76,64 @@ This collection of relations represents a rich source of knowledge and may be us
 <div class="table-scroll">
 <table class="smalltable">
 <tr style="visibility:hidden"><th width="220px">Pattern</th><th width="60px">Precision</th><th># match</th></tr>
-<tr><td>$NP_t$ and any other $NP_h$</td><td class="tar">0.76</td><td class="tar">975,735</td></tr>
-<tr><td>$NP_t$ and other $NP_h$</td><td class="tar">0.7</td><td class="tar">45,900,092</td></tr>
-<tr><td>$NP_t$ or other $NP_h$</td><td class="tar">0.7</td><td class="tar">13,392,348</td></tr>
-<tr><td>$NP_t$ is $adj_{sup}$ $NP_h$</td><td class="tar">0.63</td><td class="tar">6,150,245</td></tr>
-<tr><td>$NP_t$ is $adj_{sup}$ most $NP_h$</td><td class="tar">0.63</td><td class="tar">2,286,478</td></tr>
-<tr><td>$NP_h$ such as $NP_t$</td><td class="tar">0.58</td><td class="tar">70,337,543</td></tr>
-<tr><td>such $NP_h$ as $NP_t$</td><td class="tar">0.58</td><td class="tar">5,755,389</td></tr>
-<tr><td>$NP_t$ are a $NP_h$</td><td class="tar">0.57</td><td class="tar">15,141,131</td></tr>
-<tr><td>$NP_t$ and some other $NP_h$</td><td class="tar">0.54</td><td class="tar">296,524</td></tr>
-<tr><td>$NP_t$ which is called $NP_h$</td><td class="tar">0.5</td><td class="tar">119,317</td></tr>
-<tr><td>$NP_t$ are $adj_{sup}$ most $NP_h$</td><td class="tar">0.49</td><td class="tar">860,770</td></tr>
-<tr><td>examples of $NP_h$ are $NP_t$</td><td class="tar">0.45</td><td class="tar">267,764</td></tr>
-<tr><td>$NP_t$, kinds of $NP_h$</td><td class="tar">0.45</td><td class="tar">4,618,873</td></tr>
-<tr><td>$NP_h$ including $NP_t$</td><td class="tar">0.44</td><td class="tar">80,640,885</td></tr>
-<tr><td>$NP_t$ is a $NP_h$</td><td class="tar">0.44</td><td class="tar">187,644,160</td></tr>
-<tr><td>$NP_h$ other than $NP_t$</td><td class="tar">0.44</td><td class="tar">7,175,087</td></tr>
-<tr><td>$NP_t$ were a $NP_h$</td><td class="tar">0.42</td><td class="tar">3,206,238</td></tr>
-<tr><td>$NP_t$ are $adj_{sup}$ $NP_h$</td><td class="tar">0.41</td><td class="tar">1,393,484</td></tr>
-<tr><td>$NP_t$ was a $NP_h$</td><td class="tar">0.39</td><td class="tar">39,585,428</td></tr>
-<tr><td>$NP_t$, one of the $NP_h$</td><td class="tar">0.38</td><td class="tar">4,200,376</td></tr>
-<tr><td>$NP_t$ is example of $NP_h$</td><td class="tar">0.36</td><td class="tar">292,706</td></tr>
-<tr><td>examples of $NP_h$ is $NP_t$</td><td class="tar">0.33</td><td class="tar">267,021</td></tr>
-<tr><td>$NP_h$ e.g. $NP_t$</td><td class="tar">0.33</td><td class="tar">1,973,022</td></tr>
-<tr><td>$NP_t$, forms of $NP_h$</td><td class="tar">0.33</td><td class="tar">3,326,957</td></tr>
-<tr><td>$NP_t$ like other $NP_h$</td><td class="tar">0.31</td><td class="tar">402,388</td></tr>
-<tr><td>$NP_h$ for example $NP_t$</td><td class="tar">0.31</td><td class="tar">2,356,522</td></tr>
-<tr><td>$adj_{sup}$ most $NP_h$ is $NP_t$</td><td class="tar">0.31</td><td class="tar">2,999,877</td></tr>
-<tr><td>$NP_t$ or the many $NP_h$</td><td class="tar">0.31</td><td class="tar">15,192</td></tr>
-<tr><td>$NP_h$ i.e. $NP_t$</td><td class="tar">0.29</td><td class="tar">2,114,793</td></tr>
-<tr><td>$NP_h$ which is similar to $NP_t$</td><td class="tar">0.29</td><td class="tar">63,713</td></tr>
-<tr><td>$NP_h$ notably $NP_t$</td><td class="tar">0.28</td><td class="tar">1,154,745</td></tr>
-<tr><td>$NP_h$ which are similar to $NP_t$</td><td class="tar">0.28</td><td class="tar">17,304</td></tr>
-<tr><td>$NP_t$ which is named $NP_h$</td><td class="tar">0.26</td><td class="tar">19,122</td></tr>
-<tr><td>$NP_h$ principally $NP_t$</td><td class="tar">0.26</td><td class="tar">455,578</td></tr>
-<tr><td>$adj_{sup}$ $NP_h$ is $NP_t$</td><td class="tar">0.25</td><td class="tar">10,360,953</td></tr>
-<tr><td>$NP_h$ in particular $NP_t$</td><td class="tar">0.25</td><td class="tar">2,354,596</td></tr>
-<tr><td>$NP_h$ example of this is $NP_t$</td><td class="tar">0.25</td><td class="tar">14,237</td></tr>
-<tr><td>$NP_h$ among them $NP_t$</td><td class="tar">0.23</td><td class="tar">524,784</td></tr>
-<tr><td>$NP_h$ mainly $NP_t$</td><td class="tar">0.22</td><td class="tar">4,792,792</td></tr>
-<tr><td>$NP_h$ except $NP_t$</td><td class="tar">0.22</td><td class="tar">9,648,662</td></tr>
-<tr><td>$adj_{sup}$ most $NP_h$ are $NP_t$</td><td class="tar">0.21</td><td class="tar">2,357,968</td></tr>
-<tr><td>$NP_t$ are examples of $NP_h$</td><td class="tar">0.2</td><td class="tar">2,205,089</td></tr>
-<tr><td>$NP_h$ especially $NP_t$</td><td class="tar">0.19</td><td class="tar">20,872,227</td></tr>
-<tr><td>$adj_{sup}$ $NP_h$ are $NP_t$</td><td class="tar">0.19</td><td class="tar">3,755,893</td></tr>
-<tr><td>$NP_h$ particularly $NP_t$</td><td class="tar">0.19</td><td class="tar">11,656,254</td></tr>
-<tr><td>$NP_t$, a kind of $NP_h$</td><td class="tar">0.18</td><td class="tar">1,452,822</td></tr>
-<tr><td>$NP_t$, a form of $NP_h$</td><td class="tar">0.18</td><td class="tar">1,127,173</td></tr>
-<tr><td>$NP_t$ which sound like $NP_h$</td><td class="tar">0.18</td><td class="tar">32,730</td></tr>
-<tr><td>$NP_h$ examples of this are $NP_t$</td><td class="tar">0.18</td><td class="tar">1,515</td></tr>
-<tr><td>$NP_t$ sort of $NP_h$</td><td class="tar">0.18</td><td class="tar">7,884,398</td></tr>
-<tr><td>$NP_h$ types $NP_t$</td><td class="tar">0.17</td><td class="tar">11,080,276</td></tr>
-<tr><td>$NP_h$ compared to $NP_t$ </td><td class="tar">0.17</td><td class="tar">346,525</td></tr>
-<tr><td>$NP_h$ mostly $NP_t$</td><td class="tar">0.16</td><td class="tar">8,383,063</td></tr>
-<tr><td>compare $NP_t$ with $NP_h$ </td><td class="tar">0.16</td><td class="tar">340,636</td></tr>
-<tr><td>$NP_t$, one of those $NP_h$</td><td class="tar">0.15</td><td class="tar">99,241</td></tr>
-<tr><td>$NP_t$, one of these $NP_h$</td><td class="tar">0.13</td><td class="tar">53,235</td></tr>
-<tr><td>$NP_t$ which look like $NP_h$</td><td class="tar">0.13</td><td class="tar">68,945</td></tr>
-<tr><td>$NP_h$ whether $NP_t$ or </td><td class="tar">0.13</td><td class="tar">2,800,349</td></tr>
+<tr><td>NP<sub>t</sub> and any other NP<sub>h</sub></td><td class="tar">0.76</td><td class="tar">975,735</td></tr>
+<tr><td>NP<sub>t</sub> and other NP<sub>h</sub></td><td class="tar">0.7</td><td class="tar">45,900,092</td></tr>
+<tr><td>NP<sub>t</sub> or other NP<sub>h</sub></td><td class="tar">0.7</td><td class="tar">13,392,348</td></tr>
+<tr><td>NP<sub>t</sub> is adj<sub>sup</sub> NP<sub>h</sub></td><td class="tar">0.63</td><td class="tar">6,150,245</td></tr>
+<tr><td>NP<sub>t</sub> is adj<sub>sup</sub> most NP<sub>h</sub></td><td class="tar">0.63</td><td class="tar">2,286,478</td></tr>
+<tr><td>NP<sub>h</sub> such as NP<sub>t</sub></td><td class="tar">0.58</td><td class="tar">70,337,543</td></tr>
+<tr><td>such NP<sub>h</sub> as NP<sub>t</sub></td><td class="tar">0.58</td><td class="tar">5,755,389</td></tr>
+<tr><td>NP<sub>t</sub> are a NP<sub>h</sub></td><td class="tar">0.57</td><td class="tar">15,141,131</td></tr>
+<tr><td>NP<sub>t</sub> and some other NP<sub>h</sub></td><td class="tar">0.54</td><td class="tar">296,524</td></tr>
+<tr><td>NP<sub>t</sub> which is called NP<sub>h</sub></td><td class="tar">0.5</td><td class="tar">119,317</td></tr>
+<tr><td>NP<sub>t</sub> are adj<sub>sup</sub> most NP<sub>h</sub></td><td class="tar">0.49</td><td class="tar">860,770</td></tr>
+<tr><td>examples of NP<sub>h</sub> are NP<sub>t</sub></td><td class="tar">0.45</td><td class="tar">267,764</td></tr>
+<tr><td>NP<sub>t</sub>, kinds of NP<sub>h</sub></td><td class="tar">0.45</td><td class="tar">4,618,873</td></tr>
+<tr><td>NP<sub>h</sub> including NP<sub>t</sub></td><td class="tar">0.44</td><td class="tar">80,640,885</td></tr>
+<tr><td>NP<sub>t</sub> is a NP<sub>h</sub></td><td class="tar">0.44</td><td class="tar">187,644,160</td></tr>
+<tr><td>NP<sub>h</sub> other than NP<sub>t</sub></td><td class="tar">0.44</td><td class="tar">7,175,087</td></tr>
+<tr><td>NP<sub>t</sub> were a NP<sub>h</sub></td><td class="tar">0.42</td><td class="tar">3,206,238</td></tr>
+<tr><td>NP<sub>t</sub> are adj<sub>sup</sub> NP<sub>h</sub></td><td class="tar">0.41</td><td class="tar">1,393,484</td></tr>
+<tr><td>NP<sub>t</sub> was a NP<sub>h</sub></td><td class="tar">0.39</td><td class="tar">39,585,428</td></tr>
+<tr><td>NP<sub>t</sub>, one of the NP<sub>h</sub></td><td class="tar">0.38</td><td class="tar">4,200,376</td></tr>
+<tr><td>NP<sub>t</sub> is example of NP<sub>h</sub></td><td class="tar">0.36</td><td class="tar">292,706</td></tr>
+<tr><td>examples of NP<sub>h</sub> is NP<sub>t</sub></td><td class="tar">0.33</td><td class="tar">267,021</td></tr>
+<tr><td>NP<sub>h</sub> e.g. NP<sub>t</sub></td><td class="tar">0.33</td><td class="tar">1,973,022</td></tr>
+<tr><td>NP<sub>t</sub>, forms of NP<sub>h</sub></td><td class="tar">0.33</td><td class="tar">3,326,957</td></tr>
+<tr><td>NP<sub>t</sub> like other NP<sub>h</sub></td><td class="tar">0.31</td><td class="tar">402,388</td></tr>
+<tr><td>NP<sub>h</sub> for example NP<sub>t</sub></td><td class="tar">0.31</td><td class="tar">2,356,522</td></tr>
+<tr><td>adj<sub>sup</sub> most NP<sub>h</sub> is NP<sub>t</sub></td><td class="tar">0.31</td><td class="tar">2,999,877</td></tr>
+<tr><td>NP<sub>t</sub> or the many NP<sub>h</sub></td><td class="tar">0.31</td><td class="tar">15,192</td></tr>
+<tr><td>NP<sub>h</sub> i.e. NP<sub>t</sub></td><td class="tar">0.29</td><td class="tar">2,114,793</td></tr>
+<tr><td>NP<sub>h</sub> which is similar to NP<sub>t</sub></td><td class="tar">0.29</td><td class="tar">63,713</td></tr>
+<tr><td>NP<sub>h</sub> notably NP<sub>t</sub></td><td class="tar">0.28</td><td class="tar">1,154,745</td></tr>
+<tr><td>NP<sub>h</sub> which are similar to NP<sub>t</sub></td><td class="tar">0.28</td><td class="tar">17,304</td></tr>
+<tr><td>NP<sub>t</sub> which is named NP<sub>h</sub></td><td class="tar">0.26</td><td class="tar">19,122</td></tr>
+<tr><td>NP<sub>h</sub> principally NP<sub>t</sub></td><td class="tar">0.26</td><td class="tar">455,578</td></tr>
+<tr><td>adj<sub>sup</sub> NP<sub>h</sub> is NP<sub>t</sub></td><td class="tar">0.25</td><td class="tar">10,360,953</td></tr>
+<tr><td>NP<sub>h</sub> in particular NP<sub>t</sub></td><td class="tar">0.25</td><td class="tar">2,354,596</td></tr>
+<tr><td>NP<sub>h</sub> example of this is NP<sub>t</sub></td><td class="tar">0.25</td><td class="tar">14,237</td></tr>
+<tr><td>NP<sub>h</sub> among them NP<sub>t</sub></td><td class="tar">0.23</td><td class="tar">524,784</td></tr>
+<tr><td>NP<sub>h</sub> mainly NP<sub>t</sub></td><td class="tar">0.22</td><td class="tar">4,792,792</td></tr>
+<tr><td>NP<sub>h</sub> except NP<sub>t</sub></td><td class="tar">0.22</td><td class="tar">9,648,662</td></tr>
+<tr><td>adj<sub>sup</sub> most NP<sub>h</sub> are NP<sub>t</sub></td><td class="tar">0.21</td><td class="tar">2,357,968</td></tr>
+<tr><td>NP<sub>t</sub> are examples of NP<sub>h</sub></td><td class="tar">0.2</td><td class="tar">2,205,089</td></tr>
+<tr><td>NP<sub>h</sub> especially NP<sub>t</sub></td><td class="tar">0.19</td><td class="tar">20,872,227</td></tr>
+<tr><td>adj<sub>sup</sub> NP<sub>h</sub> are NP<sub>t</sub></td><td class="tar">0.19</td><td class="tar">3,755,893</td></tr>
+<tr><td>NP<sub>h</sub> particularly NP<sub>t</sub></td><td class="tar">0.19</td><td class="tar">11,656,254</td></tr>
+<tr><td>NP<sub>t</sub>, a kind of NP<sub>h</sub></td><td class="tar">0.18</td><td class="tar">1,452,822</td></tr>
+<tr><td>NP<sub>t</sub>, a form of NP<sub>h</sub></td><td class="tar">0.18</td><td class="tar">1,127,173</td></tr>
+<tr><td>NP<sub>t</sub> which sound like NP<sub>h</sub></td><td class="tar">0.18</td><td class="tar">32,730</td></tr>
+<tr><td>NP<sub>h</sub> examples of this are NP<sub>t</sub></td><td class="tar">0.18</td><td class="tar">1,515</td></tr>
+<tr><td>NP<sub>t</sub> sort of NP<sub>h</sub></td><td class="tar">0.18</td><td class="tar">7,884,398</td></tr>
+<tr><td>NP<sub>h</sub> types NP<sub>t</sub></td><td class="tar">0.17</td><td class="tar">11,080,276</td></tr>
+<tr><td>NP<sub>h</sub> compared to NP<sub>t</sub> </td><td class="tar">0.17</td><td class="tar">346,525</td></tr>
+<tr><td>NP<sub>h</sub> mostly NP<sub>t</sub></td><td class="tar">0.16</td><td class="tar">8,383,063</td></tr>
+<tr><td>compare NP<sub>t</sub> with NP<sub>h</sub> </td><td class="tar">0.16</td><td class="tar">340,636</td></tr>
+<tr><td>NP<sub>t</sub>, one of those NP<sub>h</sub></td><td class="tar">0.15</td><td class="tar">99,241</td></tr>
+<tr><td>NP<sub>t</sub>, one of these NP<sub>h</sub></td><td class="tar">0.13</td><td class="tar">53,235</td></tr>
+<tr><td>NP<sub>t</sub> which look like NP<sub>h</sub></td><td class="tar">0.13</td><td class="tar">68,945</td></tr>
+<tr><td>NP<sub>h</sub> whether NP<sub>t</sub> or </td><td class="tar">0.13</td><td class="tar">2,800,349</td></tr>
 </table>
 </div>  
 </div>  
@@ -156,11 +156,43 @@ To store and access all the extracted relations we created a <a href="https://ww
 </ol>
 </p>
 <h2 id="resources">2. Resources</h2>
-<p>Description.</p>
-<a href="https://docs.mongodb.org/manual/tutorial/backup-and-restore-tools">Restore a MongoDB database</a>
+<p>We offer both data and tools to re-generate/access the WebIsADb:</p>
+<ol>
+<li><h3>Data</h3><br />
+The collection of relations can be downloaded in two formats:
+<ol>
+<li><h4>MongoDB database:</h4><br />
+The database consists of two MongoDB database instances: the first collecting the "isa" tuples (but not the metadata corresponding to the extraction contexts) and the second the extraction contexts  (i.e. the pay-level domains and the sentences from where a tuple was extracted).
+the two database can be separately downloaded and instantiated in the same or in two different machines.
+<ul><li>Download the database dumps:<br />
+    <ol>
+	<li>Tuples: <a href="http://data.dws.informatik.uni-mannheim.de/webisadb/repo/tuples-webisadb-april-2016.tar.gz">tuples-webisadb-april-2016.tar.gz</a></li>
+	<li>Contexts: <a href="http://data.dws.informatik.uni-mannheim.de/webisadb/repo/contexts-webisadb-april-2016.tar.gz">contexts-webisadb-april-2016.tar.gz</a></li>
+   </ol>
+</li>
+<li> Install MongoDB and restore the Tuples and Contexts dumps:<br />
+Download and install the MongoDB server on your machine/machines, please follow the instructions reported at the official guide <a href="https://docs.mongodb.org/manual/installation/">Install MongoDB</a>.
+To instanciate our dumps on your target MongoDB servers, please follow the instructions reported at the official guide <a href="https://docs.mongodb.org/manual/tutorial/backup-and-restore-tools">Restore a MongoDB database</a>. Our suggestion is to use the "mongorestore" tools by passing as &lt;path to the backup&gt; argument the path to the folders "tuples-webisadb-april-2016" and "contexts-webisadb-april-2016" of the uncompressed dumps for tuples and contexts respectively.
+</li>
+</ul>
+<li><h4>Tab-separated values files:</h4><br /></li>
+</li>
+will be available on 12 april 2016.
+</ol>
+<li><h3>Java API</h3><br />
+will be available on 12 april 2016.
+</li>
+<li><h3>Relations extractor</h3><br />
+will be available on 12 april 2016.
+</li>
+</ol>
+<h2 id="demo">3. Online Demo</h2>
+<p>To have a direct look at the WebIsA database, a demo Web application is also avaliable <a href="http://webisadb.webdatacommons.org/webisadb/">here</a>.</p>
+
+
 </div>
 <script type="text/javascript">
-$('#toc').toc({
+('#toc').toc({
     'selectors': 'h2,h3', //elements to use as headings
     'container': '#toccontent', //element to find all selectors in
     'smoothScrolling': true, //enable or disable smooth scrolling on click
