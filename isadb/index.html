@@ -50,7 +50,7 @@ font-size:9pt;
 <div id="content">
 <p>
 WebIsADb is a publicly available database containing more than 400 million hypernymy relations we extracted from the CommonCrawl web corpus. 
-This collection of relations represents a rich source of knowledge and may be useful for many researchers. We offer the tuple dataset for public download and an application programming interface (API) to help other researchers programmatically query the database.
+This collection of relations represents a rich source of knowledge and may be useful for many researchers. We offer the tuple dataset for public download and an application programming interface to help other researchers programmatically query the database.
 </p>
 
 <h2 id="news">News</h2>
@@ -79,15 +79,15 @@ Julian Seitner, Christian Bizer, Kai Eckert, Stefano Faralli, Robert Meusel, Hei
 <table class="smalltable">
 <tr style="visibility:hidden"><th width="220px">Pattern</th><th width="60px">Precision</th><th># match</th></tr>
 <tr><td>NP<sub>t</sub> and any other NP<sub>h</sub></td><td class="tar">0.76</td><td class="tar">975,735</td></tr>
-<tr><td>NP<sub>t</sub> and other NP<sub>h</sub></td><td class="tar">0.7</td><td class="tar">45,900,092</td></tr>
-<tr><td>NP<sub>t</sub> or other NP<sub>h</sub></td><td class="tar">0.7</td><td class="tar">13,392,348</td></tr>
+<tr><td>NP<sub>t</sub> and other NP<sub>h</sub></td><td class="tar">0.70</td><td class="tar">45,900,092</td></tr>
+<tr><td>NP<sub>t</sub> or other NP<sub>h</sub></td><td class="tar">0.70</td><td class="tar">13,392,348</td></tr>
 <tr><td>NP<sub>t</sub> is adj<sub>sup</sub> NP<sub>h</sub></td><td class="tar">0.63</td><td class="tar">6,150,245</td></tr>
 <tr><td>NP<sub>t</sub> is adj<sub>sup</sub> most NP<sub>h</sub></td><td class="tar">0.63</td><td class="tar">2,286,478</td></tr>
 <tr><td>NP<sub>h</sub> such as NP<sub>t</sub></td><td class="tar">0.58</td><td class="tar">70,337,543</td></tr>
 <tr><td>such NP<sub>h</sub> as NP<sub>t</sub></td><td class="tar">0.58</td><td class="tar">5,755,389</td></tr>
 <tr><td>NP<sub>t</sub> are a NP<sub>h</sub></td><td class="tar">0.57</td><td class="tar">15,141,131</td></tr>
 <tr><td>NP<sub>t</sub> and some other NP<sub>h</sub></td><td class="tar">0.54</td><td class="tar">296,524</td></tr>
-<tr><td>NP<sub>t</sub> which is called NP<sub>h</sub></td><td class="tar">0.5</td><td class="tar">119,317</td></tr>
+<tr><td>NP<sub>t</sub> which is called NP<sub>h</sub></td><td class="tar">0.50</td><td class="tar">119,317</td></tr>
 <tr><td>NP<sub>t</sub> are adj<sub>sup</sub> most NP<sub>h</sub></td><td class="tar">0.49</td><td class="tar">860,770</td></tr>
 <tr><td>examples of NP<sub>h</sub> are NP<sub>t</sub></td><td class="tar">0.45</td><td class="tar">267,764</td></tr>
 <tr><td>NP<sub>t</sub>, kinds of NP<sub>h</sub></td><td class="tar">0.45</td><td class="tar">4,618,873</td></tr>
@@ -168,8 +168,8 @@ The database consists of two MongoDB database instances: the first collecting th
 The two database can be separately downloaded and instantiated in the same or in two different machines.
 <ul><li>Download the database dumps:<br />
     <ol>
-	<li>Tuples (): <a href="http://data.dws.informatik.uni-mannheim.de/webisadb/repo/tuples-webisadb-april-2016.tar.gz">tuples-webisadb-april-2016.tar.gz</a> (204309024768 byte when un-compressed)</li>
-	<li>Contexts (): <a href="http://data.dws.informatik.uni-mannheim.de/webisadb/repo/contexts-webisadb-april-2016.tar.gz">contexts-webisadb-april-2016.tar.gz</a> (117844946944 byte when un-compressed)</li>
+	<li>Tuples: <a href="http://data.dws.informatik.uni-mannheim.de/webisadb/repo/tuples-webisadb-april-2016.tar.gz">tuples-webisadb-april-2016.tar.gz</a> (204309024768 byte when un-compressed)</li>
+	<li>Contexts: <a href="http://data.dws.informatik.uni-mannheim.de/webisadb/repo/contexts-webisadb-april-2016.tar.gz">contexts-webisadb-april-2016.tar.gz</a> (117844946944 byte when un-compressed)</li>
    </ol>
 </li>
 <li> Install MongoDB and restore the Tuples and Contexts dumps:<br />
