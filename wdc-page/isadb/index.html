@@ -165,7 +165,7 @@ The collection of relations can be downloaded in two formats:
 <ol>
 <li><h4>MongoDB database:</h4><br />
 The database consists of two MongoDB database instances: the first collecting the "isa" tuples (but not the metadata corresponding to the extraction contexts) and the second the extraction contexts  (i.e. the pay-level domains and the sentences from where a tuple was extracted).
-the two database can be separately downloaded and instantiated in the same or in two different machines.
+The two database can be separately downloaded and instantiated in the same or in two different machines.
 <ul><li>Download the database dumps:<br />
     <ol>
 	<li>Tuples (): <a href="http://data.dws.informatik.uni-mannheim.de/webisadb/repo/tuples-webisadb-april-2016.tar.gz">tuples-webisadb-april-2016.tar.gz</a> (204309024768 byte when un-compressed)</li>
@@ -173,7 +173,7 @@ the two database can be separately downloaded and instantiated in the same or in
    </ol>
 </li>
 <li> Install MongoDB and restore the Tuples and Contexts dumps:<br />
-Download and install the MongoDB server on your machine/machines, please follow the instructions reported at the official guide <a href="https://docs.mongodb.org/manual/installation/">Install MongoDB</a>.
+Download and install the MongoDB server (we recommend the installation of the version v3.0.7) on your machine/machines, please follow the instructions reported at the official guide <a href="https://docs.mongodb.org/manual/installation/">Install MongoDB</a>.
 To instanciate our dumps on your target MongoDB servers, please follow the instructions reported at the official guide <a href="https://docs.mongodb.org/manual/tutorial/backup-and-restore-tools">Restore a MongoDB database</a>. Our suggestion is to use the "mongorestore" tools by passing as &lt;path to the backup&gt; argument the path to the folders "tuples-webisadb-april-2016" and "contexts-webisadb-april-2016" of the uncompressed dumps for tuples and contexts respectively.
 </li>
 </ul>
