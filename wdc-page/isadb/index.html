@@ -180,14 +180,49 @@ To instanciate our dumps on your target MongoDB servers, please follow the instr
 <li><h4>Comma-separated values files:</h4><br /></li>
 </li>
 <b>under release</b>
-<table>
-<tr><th></th><th>tuples</th><th>contexts</th></tr>
-<tr><td>part 1</td><td><a href="http://data.dws.informatik.uni-mannheim.de/webisadb/repo/tuplesdb.1.tar.gz">tuplesdb.1.tar.gz</a></td><td><a href="http://data.dws.informatik.uni-mannheim.de/webisadb/repo/contextsdb.1.tar.gz">contextsdb.1.tar.gz</a></td></tr>
-<tr><td>part 2</td><td><a href="http://data.dws.informatik.uni-mannheim.de/webisadb/repo/tuplesdb.2.tar.gz">tuplesdb.2.tar.gz</a></td><td><a href="http://data.dws.informatik.uni-mannheim.de/webisadb/repo/contextsdb.2.tar.gz">contextsdb.2.tar.gz</a></td></tr>
-</table>
 <ul>
-<li>Tuples format:</li>
-<li>Contexts format:</li>
+<li>Tuples CSV files:
+<table>
+<tr><th>link</th><th>description</th></tr>
+<tr><td><a href="http://data.dws.informatik.uni-mannheim.de/webisadb/repo/tuplesdb.1.tar.gz">tuplesdb.1.tar.gz</a></td><td>all the tuples grouped by the instance string value</td></tr>
+<tr><td><a href="http://data.dws.informatik.uni-mannheim.de/webisadb/repo/tuplesdb.2.tar.gz">tuplesdb.2.tar.gz</a></td><td>all the tuples grouped by the class string value</td></tr>
+</table>
+</li>
+The two above archives contains a set of tar file.  Each tar file contains a set of "csv" file with the following format:<br/>
+the first line of the csv files  contains a comma separated list of the fields name i.e <b>id,instance,class,frequency,pidspread,pldspread,modifications</b>.<br>
+The following lines of the files respect the schema of the head line e.g.:
+<b>286980418,aang,character,41,11,32,<i>modification</i></b> where:
+<ul>
+<li>286980418: the tuple "id";</li>
+<li>aang: the "instance" string value;</li>
+<li>character: the "class" string value;</li>
+<li>41: number of matches;</li>
+<li>11: number of matching patterns;</li>
+<li>32: number of matching pay-level domains;</li>
+<li><i>modification</i>: is a JSON representation of the list of all the variants of the tuple  "(aang,character)". Each item of the JSON representation includes:
+<ul>
+   <li><b>ipremod:</b> the pre-modifier of the "instance";</li>
+   <li><b>ipostmod:</b> the post-modifier of the "instance";</li>
+   <li><b>cpremod:</b> the pre-modifier of the "class";</li>
+   <li><b>cpostmod:</b> the post-modifier of the "class";</li>
+   <li><b>frequency:</b> the frequency of the tuple <b>(ipremod +"aang"+ipostmod, cpremod+"character"+cpostmod);</b></li>
+   <li><b>pidspread:</b> the number of matching pattern of the tuple <b>(ipremod +"aang"+ipostmod,cpremod+"character"+cpostmod);</b> </li>
+   <li><b>pldspread:</b> the number of pay level domains where we extracted the tuple <b>(ipremod +"aang"+ipostmod,cpremod+"character"+cpostmod);</b> </li>
+   <li><b>pids:</b> a semicolon separeted list of the correpsonding pay-level domains;</li>
+   <li><b>plds:</b> a semicolon separeted list of the matching pattern labels;</li>
+   <li><b>provids:</b> a semicolon separeted list of contexts id, one can use to retrive te whole context of the extractions.</li><br>
+</ul>
+</li>
+</li>
+</ul>
+
+
+<li>Contexts CSV files:<br/>
+<table>
+<tr><th>link</th><th>description</th></tr>
+<tr><td><a href="http://data.dws.informatik.uni-mannheim.de/webisadb/repo/contextsdb.tar.gz">contextsdb.tar.gz</a></td><td>all the contexts of the extracted tuples</td></tr>
+</table>
+</li>
 </ul>
 </ol>
 <li><h3>Java API</h3><br />
