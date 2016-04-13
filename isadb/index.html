@@ -2,6 +2,25 @@
 <html><head><title>WebIsA Database</title>
 <link rel="stylesheet" href="http://webdatacommons.org/style.css" type="text/css" media="screen"/>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<script type="text/javascript" src="/jquery.toc.min.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-30248817-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
 <style>
 .tar {
 text-align: right;
@@ -26,23 +45,6 @@ font-size:9pt;
 }
 
 </style>
-
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-<script type="text/javascript" src="/jquery.toc.min.js"></script>
-
-<script type="text/javascript">
-
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-30248817-1']);
-  _gaq.push(['_trackPageview']);
-
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-
-</script>
 
 </head>
 <body> 
@@ -78,7 +80,10 @@ Julian Seitner, Christian Bizer, Kai Eckert, Stefano Faralli, Robert Meusel, Hei
 </li>
 </ul>
 <h2>Contents</h2>
+<div id="toc" class="toc"></div>
+
 <div id="toccontent">
+
 <h2 id="about">1. WebIsADb</h2>
 <p>Our approach to "isa" relation extraction can be divided in three main steps:
 
@@ -155,9 +160,9 @@ Julian Seitner, Christian Bizer, Kai Eckert, Stefano Faralli, Robert Meusel, Hei
 <tr><td>NP<sub>t</sub> which look like NP<sub>h</sub></td><td class="tar">0.13</td><td class="tar">68,945</td></tr>
 <tr><td>NP<sub>h</sub> whether NP<sub>t</sub> or </td><td class="tar">0.13</td><td class="tar">2,800,349</td></tr>
 </table>
-</div>  
-</div>  
-</div>  
+	</div>  
+	</div>  
+	</div>  
 <ol>
 <li> <h3> WebDataCommons framework</h3><br />
 To extract a large collection of "isa" relations from the Web, we decided to rely on the largest publicly available Web corpus i.e. the crawl corpora provided by the <a href="http://commoncrawl.org">CommonCrawl Foundation</a>. The original corpus contains over 2.1 billion crawled web pages, consisting of over 38000 Web ARChive, ISO 28500:2009 (WARC) files with a total packed size of 168TB. 
@@ -255,14 +260,16 @@ The following lines of the files respect the schema of the head line e.g.:
 
 <h2 id="ack">Acknowledgements</h2>
 <p>
-This work was partially funded by the Deutsche Forschungsgemeinschaft within the JOIN-T project (research grant PO 1900/1-1). Part of the computational resources used for this work were provide by an Amazon AWS in Education Grant award.</p>
+This work was partially funded by the Deutsche Forschungsgemeinschaft within the JOIN-T project (research grant PO 1900/1-1). Part of the computational resources used for this work were provide by an Amazon AWS in Education Grant award.
+</p>
 <p>
 The WebIsADb and the API are licensed under a <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons Attribution-Non Commercial-Share Alike 3.0 License</a>.
-<p>
+</p>
+
 </div>
 <script type="text/javascript">
 $('#toc').toc({
-    'selectors': 'h2,h3', //elements to use as headings
+    'selectors': 'h2', //elements to use as headings
     'container': '#toccontent', //element to find all selectors in
     'smoothScrolling': true, //enable or disable smooth scrolling on click
     'prefix': 'toc', //prefix for anchor tags and class names
