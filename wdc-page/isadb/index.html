@@ -49,7 +49,7 @@ font-size:9pt;
 </head>
 <body> 
 
-  <div id="logo" style="text-align:right; background-color: white;">&nbsp;&nbsp;<a href="http://dws.informatik.uni-mannheim.de"><img src="../images/ma-logo.gif" alt="University of Mannheim - Logo"></a></div>
+ <div id="logo" style="text-align:right; background-color: white;">&nbsp;&nbsp;<a href="http://dws.informatik.uni-mannheim.de"><img src="../images/ma-logo.gif" alt="University of Mannheim - Logo"></a></div>
 
 
 <div id="header">
@@ -180,7 +180,13 @@ To store and access all the extracted relations we created a <a href="https://ww
 </li>
 </ol>
 </p>
-<h2 id="resources">2. Resources</h2>
+
+<a href="http://webisadb.webdatacommons.org/webisadb/"><img src="demo.png" width=430px/></a>
+
+<h2 id="demo">2. Online Demo</h2>
+<p>To have a direct look at the WebIsA database, a demo Web application is also avaliable <a href="http://webisadb.webdatacommons.org/webisadb/">here</a>.</p>
+
+<h2 id="resources">3. Resources</h2>
 <p>We offer both data and tools to re-generate/access the WebIsADb:</p>
 <ol>
 <li><h3>Data</h3><br />
@@ -196,7 +202,7 @@ The two database can be separately downloaded and instantiated in the same or in
    </ol>
 </li>
 <li> Install MongoDB and restore the Tuples and Contexts dumps:<br />
-Download and install the MongoDB server (we recommend the installation of the version v3.0.7) on your machine/machines, please follow the instructions reported at the official guide <a href="https://docs.mongodb.org/manual/installation/">Install MongoDB</a>.
+Download and install the MongoDB server (we recommend the installation of the version v3.0.7) on your machine/machines please follow the instructions reported at the official guide <a href="https://docs.mongodb.org/manual/installation/">Install MongoDB</a>.
 To instanciate our dumps on your target MongoDB servers, please follow the instructions reported at the official guide <a href="https://docs.mongodb.org/manual/tutorial/backup-and-restore-tools">Restore a MongoDB database</a>. Our suggestion is to use the "mongorestore" tools by passing as &lt;path to the backup&gt; argument the path to the folders "tuples-webisadb-april-2016" and "contexts-webisadb-april-2016" of the uncompressed dumps for tuples and contexts respectively.
 </li>
 </ul>
@@ -255,8 +261,6 @@ The following lines of the files respect the schema of the head line e.g.:
 <b>under release</b>
 </li>
 </ol>
-<h2 id="demo">3. Online Demo</h2>
-<p>To have a direct look at the WebIsA database, a demo Web application is also avaliable <a href="http://webisadb.webdatacommons.org/webisadb/">here</a>.</p>
 
 <h2 id="ack">Acknowledgements</h2>
 <p>
@@ -265,9 +269,9 @@ This work was partially funded by the Deutsche Forschungsgemeinschaft within the
 <p>
 The WebIsADb and the API are licensed under a <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons Attribution-Non Commercial-Share Alike 3.0 License</a>.
 </p>
-
 </div>
-<!<script type="text/javascript">
+</div>
+<script type="text/javascript">
 $('#toc').toc({
     'selectors': 'h2', //elements to use as headings
     'container': '#toccontent', //element to find all selectors in
@@ -279,6 +283,6 @@ $('#toc').toc({
         return prefix+i;
     }
 });
-</script>-->
+</script>
 </body>
 </html> 
