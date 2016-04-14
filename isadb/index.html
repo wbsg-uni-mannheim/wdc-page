@@ -6,6 +6,8 @@
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script type="text/javascript" src="/jquery.toc.min.js"></script>
 
+
+
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -38,7 +40,7 @@ font-size:9pt;
   position:relative;
 }
 .table-scroll {
-  height:180px;
+  height:240px;
   overflow:auto;  
   margin-top:-10px;
 }
@@ -180,14 +182,19 @@ To store and access all the extracted relations we created a <a href="https://ww
 </ol>
 </p>
 
-<a href="http://webisadb.webdatacommons.org/webisadb/"><img src="demo.png" width=430px/></a>
-
 <h2 id="demo">2. Online Demo</h2>
 <p>To have a direct look at the WebIsA database, a demo Web application is also avaliable <a href="http://webisadb.webdatacommons.org/webisadb/">here</a>.</p>
 
 <h2 id="resources">3. Resources</h2>
 <p>We offer both data and tools to re-generate/access the WebIsADb:</p>
 <ol>
+<div class="rtable"> 
+<p>Figure 1: A screenshot of the Web application. 
+<p>
+<div class="table-wrapper">
+<a href="http://webisadb.webdatacommons.org/webisadb/"><img src="demo.png" width=410px/></a>
+</div>
+</div>  
 <li><h3>Data</h3><br />
 The collection of relations can be downloaded in two formats:
 <ol>
@@ -207,7 +214,6 @@ To instanciate our dumps on your target MongoDB servers, please follow the instr
 </ul>
 <li><h4>Comma-separated values files:</h4><br /></li>
 </li>
-<b>under release</b>
 <ul>
 <li>Tuples CSV files:
 <table>
@@ -217,28 +223,29 @@ To instanciate our dumps on your target MongoDB servers, please follow the instr
 </table>
 </li>
 The two above archives contain a set of tar file.  Each tar file contains a set of "csv" file with the following format:<br/>
-the first line of the csv files  contains a comma separated list of the fields name i.e <b>id,instance,class,frequency,pidspread,pldspread,modifications</b>.<br>
-The following lines of the files respect the schema of the head line e.g.:
-<b>286980418,aang,character,41,11,32,<i>modification</i></b> where:
+the first line of the csv files  contains a comma separated list of the fields name i.e "<i>_id,instance,class,frequency,pidspread,pldspread,modifications</i>".<br>
+The following lines of the files respect the schema of the head line e.g.:<br>
+"286980418,aang,character,41,11,32,<i>modification</i>" <br>
+where:
 <ul>
-<li>286980418: the tuple "id";</li>
-<li>aang: the "instance" string value;</li>
-<li>character: the "class" string value;</li>
-<li>41: number of matches;</li>
-<li>11: number of matching patterns;</li>
-<li>32: number of matching pay-level domains;</li>
-<li><i>modification</i>: is a JSON representation of the list of all the variants of the tuple  "(aang,character)". Each item of the JSON representation includes:
+<li>"286980418": the record identifier of the tuple as in the mongodb instance;</li>
+<li>"aang": the instance string value;</li>
+<li>"character": the class string value;</li>
+<li>"41": number of matches;</li>
+<li>"11": number of matching patterns;</li>
+<li>"32": number of matching pay-level domains;</li>
+<li><i>modification</i>: is a JSON representation of the list of all the variants of the relation "(aang,character)". Each item of the JSON representation includes:
 <ul>
-   <li><b>ipremod:</b> the pre-modifier of the "instance";</li>
-   <li><b>ipostmod:</b> the post-modifier of the "instance";</li>
-   <li><b>cpremod:</b> the pre-modifier of the "class";</li>
-   <li><b>cpostmod:</b> the post-modifier of the "class";</li>
-   <li><b>frequency:</b> the frequency of the tuple <b>(ipremod +"aang"+ipostmod, cpremod+"character"+cpostmod);</b></li>
-   <li><b>pidspread:</b> the number of matching pattern of the tuple <b>(ipremod +"aang"+ipostmod,cpremod+"character"+cpostmod);</b> </li>
-   <li><b>pldspread:</b> the number of pay level domains where we extracted the tuple <b>(ipremod +"aang"+ipostmod,cpremod+"character"+cpostmod);</b> </li>
-   <li><b>pids:</b> a semicolon separeted list of the correpsonding pay-level domains;</li>
-   <li><b>plds:</b> a semicolon separeted list of the matching pattern labels;</li>
-   <li><b>provids:</b> a semicolon separeted list of contexts id, one can use to retrive te whole context of the extractions.</li><br>
+   <li><i>ipremod</i>: the pre-modifier of the "instance";</li>
+   <li><i>ipostmod</i>: the post-modifier of the "instance";</li>
+   <li><i>cpremod</i>: the pre-modifier of the "class";</li>
+   <li><i>cpostmod</i>: the post-modifier of the "class";</li>
+   <li><i>frequency</i>: the frequency of the "isa" relation "(ipremod +"aang"+ipostmod, cpremod+"character"+cpostmod)"</li>
+   <li><i>pidspread</i>: the number of matching pattern of the relation "(ipremod +"aang"+ipostmod,cpremod+"character"+cpostmod)"; </li>
+   <li><i>pldspread</i>: the number of pay level domains where we extracted the relation "(ipremod +"aang"+ipostmod,cpremod+"character"+cpostmod)";</b> </li>
+   <li><i>pids</i>: a semicolon separeted list of the correpsonding pay-level domains (e.g. including "appszoom.com");</li>
+   <li><i>plds</i>: a semicolon separeted list of the matching pattern labels (e.g. "p1,p25,p10,p8a,p3a" correponding to the following patterns: "NP<sub>t</sub> and other NP<sub>h</sub>", "NP<sub>h</sub> except NP<sub>t</sub>", "such NP<sub>h</sub> as NP<sub>t</sub>", "NP<sub>t</sub> is a NP<sub>h</sub>" and "NP<sub>h</sub> including NP<sub>t</sub>" respectively); </li>
+   <li><i>provids</i>: a semicolon separeted list of contexts id, one can use to retrive te whole context of the extractions (e.g. including the context identifier "383416952", one can use to serach the corresponding context in the resource described in the next paragraph).</li><br>
 </ul>
 </li>
 </li>
@@ -250,6 +257,18 @@ The following lines of the files respect the schema of the head line e.g.:
 <tr><th>link</th><th>description</th></tr>
 <tr><td><a href="http://data.dws.informatik.uni-mannheim.de/webisadb/repo/contextsdb.tar.gz">contextsdb.tar.gz</a></td><td>all the contexts of the extracted tuples</td></tr>
 </table>
+The above archive contains a set of tar file.  Each tar file contains a set of "csv" file with the following format:<br/>
+the first line of the csv files  contains a comma separated list of the fields name i.e "<i>_id,provid,sentence,pld</i>".<br>
+The following lines of the files respect the schema of the head line e.g.:<br>
+"93459608,383416952,"This application has this option included too. Movie and TV series feature such characters as Aang, Prince Zuko, Katara, Sokka, Uncle Iroh, Commander Zhao, Fire Lord Ozai, Princess Yue, Katara's Grandma, Master Pakku, Monk Gyatso, Azula, Old Man in Temple, Zhao's Assistant, Earthbending Father.",appszoom.com" <br>
+where:
+<ul>
+<li>"93459608": the record identifier of the context as in the mongodb instance;</li>
+<li>"383416952": the context id that may be included in the "provids" filed of a tuple;</li>
+<li>"This application has this option included too. Movie and TV series feature such characters as Aang, Prince Zuko, Katara, Sokka, Uncle Iroh, Commander Zhao, Fire Lord Ozai, Princess Yue, Katara's Grandma, Master Pakku, Monk Gyatso, Azula, Old Man in Temple, Zhao's Assistant, Earthbending Father.": the sentence of the context;</li>
+<li>"appszoom.com": the pay-level domain.;</li>
+</ul>
+
 </li>
 </ul>
 </ol>
