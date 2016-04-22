@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html><head><title>WebIsA Database</title>
+<link rel="stylesheet" href="http://webdatacommons.org/style.css" type="text/css" media="screen"/>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script type="text/javascript" src="/jquery.toc.min.js"></script>
+
+
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-30248817-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+<style>
+.tar {
+text-align: right;
+}
+.rtable 
+{
+    float: right; 
+    padding-left:10px;
+        
+}
+.smalltable, .smalltable TD, .smalltable TH 
+{
+font-size:9pt; 
+}
+.table-wrapper {
+  position:relative;
+}
+.table-scroll {
+  height:240px;
+  overflow:auto;  
+  margin-top:-10px;
+}
+
+</style>
+
+</head>
+<body> 
+
+ <div id="logo" style="text-align:right; background-color: white;">&nbsp;&nbsp;<a href="http://dws.informatik.uni-mannheim.de"><img src="../images/ma-logo.gif" alt="University of Mannheim - Logo"></a></div>
+
+
+<div id="header">
+<h1 style="font-size: 250%;">Web Data Commons - Product Data Corpus and Gold Standard for Product Data Integration</h1>
+</div>
+
+<div id="tagline">Generating a Product Data Catalog out of the Web</div>
+
+<div id="authors">
+<a href="">Petar Petrovski</a><br />
+<a href="">Anna Primpeli</a><br />
+<a href="http://dws.informatik.uni-mannheim.de/en/people/researchers/robert-meusel/">Robert Meusel</a><br />
+<a href="http://dws.informatik.uni-mannheim.de/en/people/professors/prof-dr-christian-bizer/">Christian Bizer</a><br />
+</div>
+
+<div id="content">
+<p>
+The Web Data Commons Product Data Corpus dummy page
+</p>
+
+<h2 id="news">News</h2>
+<ul>
+
+</ul>
+<h2>Contents</h2>
+
+</div>
+<script type="text/javascript">
+$('#toc').toc({
+    'selectors': 'h2', //elements to use as headings
+    'container': '#toccontent', //element to find all selectors in
+    'smoothScrolling': true, //enable or disable smooth scrolling on click
+    'prefix': 'toc', //prefix for anchor tags and class names
+    'highlightOnScroll': true, //add class to heading that is currently in focus
+    'highlightOffset': 100, //offset to trigger the next headline
+    'anchorName': function(i, heading, prefix) { //custom function for anchor name
+        return prefix+i;
+    }
+});
+</script>
+</body>
+</html> 
