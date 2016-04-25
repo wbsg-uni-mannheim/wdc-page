@@ -15,6 +15,8 @@
 	
 	google.charts.setOnLoadCallback(drawMaterial7);	
 	google.charts.setOnLoadCallback(drawMaterial8);
+	google.charts.setOnLoadCallback(drawMaterial71);	
+	google.charts.setOnLoadCallback(drawMaterial81);
 	google.charts.setOnLoadCallback(drawMaterial9);
 	google.charts.setOnLoadCallback(drawMaterial10);
 	google.charts.setOnLoadCallback(drawMaterial11);
@@ -288,7 +290,7 @@ function drawMaterial1() {
       }
 	  function drawMaterial81() {
 
-        var data2014Urls = google.visualization.arrayToDataTable([
+        var data2015Urls = google.visualization.arrayToDataTable([
           ['Annotation type', '#Urls with Triples'],
           ['html-rdfa',     196336975],
           ['html-microdata',      312229919],
@@ -563,6 +565,7 @@ More and more websites have started to embed structured data describing products
 
 <h2 id="news">News</h2>
 <ul>
+<li><strong>2016-04-25: <a href="#results-2015-1">RDFa, Microdata, Microformat, and Embedded JSON-LD</a> data sets extracted from the November 2015 Common Crawl corpus available for download.</strong></li>
 <li><strong>2015-06-20: Paper about <a href="http://dws.informatik.uni-mannheim.de/fileadmin/lehrstuehle/ki/pub/Meusel-etal-Schema-org-Adoption-WIMS2015.pdf">A Web-scale Study of the Adoption and Evolution of the schema.org Vocabulary over Time</a> accepted at <a href="http://easyconferences.eu/?portfolio=wims-2015">WIMS2015</a> conference in Limassol, Cyprus.</strong></li>
 <li><strong>2015-04-02: <a href="#results-2014-1">RDFa, Microdata, and Microformat</a>  data sets extracted from the December 2014 Common Crawl corpus available for download.</strong></li>
 <li><strong>2015-03-30: Paper about <a href="http://dws.informatik.uni-mannheim.de/fileadmin/lehrstuehle/ki/pub/MeuselPaulheim-HeuristicsForFixingCommonErrorsInDeployedSchemaOrgMicrodata-ESWC2015.pdf">Heuristics for Fixing Common Errors in Deployed schema.org Microdata</a> accepted at <a href="http://2015.eswc-conferences.org/">ESWC2015</a> conference in Portoroz, Slovenia.</strong></li>
@@ -645,6 +648,11 @@ The Species proposal enables marking up taxonomic names for species in HTML.
 <tr><td><a href="http://gmpg.org/xfn/">XFN&nbsp;Microformat</a></td><td>
 XFN (XHTML Friends Network) is a simple format to represent human relationships using hyperlinks.
 </td><td><code>html-mf-xfn</code></td></tr>
+
+<tr><td><a href="http://json-ld.org/">Embedded JSON-LD</a></td><td>
+JSON-LD is a lightweight Linked Data format. It is easy for humans to read and write.
+</td><td><code>html-embeddedjsonld</code></td></tr>
+
 </table>
 
 <h2 id="results">3. Extraction Results</h2>
@@ -663,7 +671,7 @@ The November 2015 Common Crawl Corpus is available on <a href="http://aws.amazon
 <tr><th>Domains in Crawl</th><td align="right">14,409,425</td><td></td></tr>
 <tr><th>Domains with Triples</th><td align="right">2,724,591</td><td></td></tr>
 <tr><th>Typed Entities</th><td align="right">6,107,584,968</td><td></td></tr>
-<tr><th>Triples</th><td align="right">19,991,852,141</td><td></td></tr>
+<tr><th>Triples</th><td align="right">24,377,132,352</td><td></td></tr>
 </tbody></table>
 
 <h4>Format Breakdown</h4><br />
