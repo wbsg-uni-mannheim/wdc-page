@@ -20,6 +20,7 @@ ol.toc li a { text-decoration: none; }
 #authors { clear: right; float: right; font-size: 80%; text-align: right; }
 #logo, #authors { min-width: 250px; }
 #content { margin: 2em auto 0 0; text-align: justify }
+#ldiv{float:left; clear:left;}
 #footer { border-top: 1px solid #ccc; color: #aaa; margin: 2em 0 0; }
 #top-container { height: 150px; width: 750px; padding: 20px; }
 #purpose { font-size: 110%; letter-spacing: 0.05em; word-spacing: 0.15em; width: 700px; margin: 0 auto 40px auto; }
