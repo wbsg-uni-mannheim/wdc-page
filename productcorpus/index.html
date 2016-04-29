@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html><head><title>WebIsA Database</title>
+<html><head><title>Product Data Corpus</title>
 <link rel="stylesheet" href="http://webdatacommons.org/style.css" type="text/css" media="screen"/>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
@@ -520,6 +520,8 @@ font-size:9pt;
 
 <div id="content">
 
+In order to support the efforts of a growing number of studies evaluating methods tailored for e-commerce and product purposes, we present a publicly accessible product corpus and a gold standard which can be used to train and evaluate applications focusing on Product identity resolution and fusion and Product feature extraction.
+
 <h2 id="news">News</h2>
 <ul>
 
@@ -552,10 +554,14 @@ Furthermore    the data should include a comprehensive amount of the products an
 </p>
 <h3>Crawled Corpus</h3>
 <p>
+   All statistics and the data from the crawl presented in this section can be downloaded at the following <a href="http://data.dws.informatik.uni-mannheim.de/productcrawl">link</a>.
+</p>
+<p>
 The approach adapted for crawling data while satisfying the previous criteria is the crawling and scraping
  framework, <a href="https://github.com/scrapy/scrapy"><i>scrapy</i></a>. The crawler was forced to retrieve data from 32 different PLDs which were chosen based on their containment of marked up 
  annotations as well as their traffic rankings as reported by <a href="http://alexa.com"><i>Alexa</i></a>. The following table shows the distribution
- of pages included in the crawler per PLD. 
+ of pages included in the crawler per PLD.
+ 
  <h4>Number of Pages per PLD in the Crawled Corpus</h4>
  </br>
  <table id="pagesPerPLD">
@@ -922,11 +928,22 @@ and thus could not be given any property value.
 <h2>3. Baselines for Product Matching</h2>
 <p>
 The data at hand could be used for multiple experiments regarding the topic of product matching.
-Here we define our baselines for the product matching tasks. The experiments conducted follow a four step process: 1.Bag of Words approach, 2.Preprocessing of the data,
+Here we define our baselines for the product matching tasks. The experiments conducted follow a four step process: 1.creating Bag of Words, 2.Preprocessing of the data,
 3.Parametrization and finally 4.Computation of similarities and evaluation.
 </p>
 
-<h3>Preprocessing Steps</h3>
+<h3>Datasets and Preprocessing Steps</h3>
+<p>
+We experiment on two datasets:
+<ul>
+    <li>
+        Preprocessed text from the entire HTML
+    </li>
+    <li>
+        Preprocessed name and description properties from Microdata markup
+    </li>
+</ul>
+</p>
 <p>Common text preprocessing techniques are applied in order to reduce the number of tokens of every textual input and 
 to result in filtered, richer in content unstructured and structured product specifications which will eventually contribute 
 better to the identity resolution task.</p>
@@ -937,11 +954,8 @@ better to the identity resolution task.</p>
  the HTML pages.</p>
  
 <h3>Parametrization</h3>
-<p>The experiments can be parametrized based on five different parameters. Firstly, the <i>content of the unstructured offer</i> to be considered 
-- the user can choose among the full HTML content, the HTML tables and lists of the page and the markup data of the page annotated with the Schema.org/Product vocabulary. 
-The second parameter is the number of <i>ngrams</i> to be considered for the similarity metrics. For the current experiments we used unigrams, bigrams and trigrams. Thirdly, the user can choose between <i>exact matching similarity measures or edit distance ones</i>.
-As a fourth parameter the user can provide <i>maximum and minimum frequency thresholds</i> in order to avoid considering very frequent words or very sparse ones which would not contribute to the matching task. 
-The fifth and last parameter that can be configured is the <i>weighting method</i> implemented when the cosine similarity method is chosen. The two available options are term frequency and tf-idf.
+<p>
+We experiment with 3 different variable parameters. We take all n- grams (n ∈ [1, 2, 3]) and test on them separately. Additionally, we relax to string matching constraints by calculating the Levenshtein distance between potential matches. Lastly, we do maximum and minimum frequency pruning.
 </p>
 <h3>Similarity Methods</h3>
 <p>
@@ -949,7 +963,7 @@ There are three main similarity methods involved in the experiments: exact strin
  similarity measures Levenshtein Distance can be calculated. 
  <ul>
 <li>1. Exact Similarity: Calculation of the percentage of the common unique words in the two inputs.
-</br><pre>i. Vectors are transformed to sets of unique grams
+</br><pre>i. The list of tokens are transformed to sets of unique grams
 </br>ii. The containment of the exact unique words is calculated as </br><b>commonGrams/min{UniqueGramsCatalogEntity, UniqueGramsPage}</b></pre></li>
 
 <li>2. Cosine Similarity: 
