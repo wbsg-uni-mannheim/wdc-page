@@ -26,7 +26,6 @@
 
         var headphonesTitle = google.visualization.arrayToDataTable([
           ['Properties in Title', '#Count'],
-          ['tagline', 338],
 			['model', 248],
 			['product_type', 226],
 			['brand', 157],
@@ -62,7 +61,7 @@
 
         var headphonesDesc = google.visualization.arrayToDataTable([
           ['Properties in Description', '#Count'],
-          ['tagline', 1349],
+          
 			['model', 48],
 			['product_type', 45],
 			['brand', 32],
@@ -170,7 +169,6 @@ function drawMaterial4() {
 
         var phonesTitle = google.visualization.arrayToDataTable([
           ['Properties in Titles', '#Count'],
-          ['tagline', 1589],
 			['phone_type', 543],
 			['condition', 315],
 			['color', 279],
@@ -206,7 +204,6 @@ function drawMaterial6() {
 
         var phonesDesc = google.visualization.arrayToDataTable([
           ['Properties in Descriptions', '#Count'],
-          ['tagline', 3721],
 			['phone_type', 254],
 			['cellular', 106],
 			['network_technology', 94],
@@ -314,7 +311,6 @@ function drawMaterial7() {
 
         var tvsTitles = google.visualization.arrayToDataTable([
           ['Properties in Titles', '#Count'],
-          ['tagline', 501],
 		['product_type', 282],
 		['display_type', 236],
 		['viewable_size', 165],
@@ -350,7 +346,6 @@ function drawMaterial7() {
 
         var tvsDesc = google.visualization.arrayToDataTable([
           ['Properties in Descriptions', '#Count'],
-          ['tagline', 870],
 			['display_type', 81],
 			['video_signal_standard', 75],
 			['input_connectors', 71],
@@ -894,9 +889,9 @@ and in total for further use.
 <tr><td>Televisions</td><td>164</td><td><a target="_blank" href="files/Labeling/entities/tvs_labeled_entities.txt">tvs_labeled_entities.txt</a>(291kb)</td></tr>
 <tr><td>Total</td><td>500</td><td><a target="_blank" href="files/Labeling/entities/all_labeled_entities.txt">all_labeled_entities.txt</a>(1,125kb)</td></tr>
 </table>
-Among the total number of properties we observed some that were used rather frequently and others that were used only from a few
+Among the total number of defined properties we observed some that were used rather frequently and others that were used only from a few
 websites. The charts below present the most frequent properties per product category as found in titles, descriptions, tables and lists.
-Please note that the tagline property is used for the cases where a word in a title or description did not reveal any specification 
+Please note that the presented results do not include the tagline property which is used for the cases where a word in a title or description did not reveal any specification 
 and thus could not be given any property value.
 
 <table >
@@ -922,6 +917,8 @@ and thus could not be given any property value.
 <td><div id="tvs_Lists" style="float:left"></div></td>
 </tr>
 </table>
+Some more detailed statistics on the properties before being mapped can be found in the following <a target="_blank" href="files/UnMappedProps_Statistics.xlsx">file (UnMappedProps_Statistics.xlsx)</a>. The file includes the feature names of tables and lists
+ and their frequency per product category as used by the different commercial websites as well as the distribution of PLDs to the feature names per product category.
 </p>
 
 <span id="toc3"></span>
@@ -962,7 +959,7 @@ We experiment with 3 different variable parameters. We take all n- grams (n ∈ 
 There are three main similarity methods involved in the experiments: exact string matching, Jaccard similarity and Cosine similarity. On top of the implemented
  similarity measures Levenshtein Distance can be calculated. 
  <ul>
-<li>1. Exact Similarity: Calculation of the percentage of the common unique words in the two inputs.
+<li>1. Bag Of Words - Simple Model: Calculation of the percentage of the common unique words in the two inputs (Exact Similarity on ngram level).
 </br><pre>i. The list of tokens are transformed to sets of unique grams
 </br>ii. The containment of the exact unique words is calculated as </br><b>commonGrams/min{UniqueGramsCatalogEntity, UniqueGramsPage}</b></pre></li>
 
