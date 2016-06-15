@@ -5,7 +5,7 @@
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script type="text/javascript" src="scripts/gcharts.js"></script>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-<script type="text/javascript" src="/jquery.toc.min.js"></script>
+<script type="text/javascript" src="../jquery.toc.min.js"></script>
 
 
 
@@ -27,29 +27,37 @@
 .tar {
 text-align: right;
 }
-.rtable 
+.rtable
 {
-    float: right; 
+    float: right;
     padding-left:10px;
-        
+
 }
-.smalltable, .smalltable TD, .smalltable TH 
+.smalltable, .smalltable TD, .smalltable TH
 {
-font-size:9pt; 
+font-size:9pt;
 }
 .table-wrapper {
   position:relative;
 }
 .table-scroll {
   height:240px;
-  overflow:auto;  
+  overflow:auto;
   margin-top:-10px;
+}
+
+.more-charts{
+  display:block;
+}
+
+.less-charts{
+  display:none;
 }
 
 </style>
 
 </head>
-<body> 
+<body>
 
  <div id="logo" style="text-align:right; background-color: white;">&nbsp;&nbsp;<a href="http://dws.informatik.uni-mannheim.de"><img src="files/images/ma-logo.gif" alt="University of Mannheim - Logo"></a></div>
 
@@ -61,7 +69,7 @@ font-size:9pt;
 <div id="tagline">Generating a Product Data Catalog out of the Web</div>
 
 <div id="authors">
-<a href="">Petar Petrovski</a><br />
+<a href="http://dws.informatik.uni-mannheim.de/en/people/researchers/petar-petrovski/">Petar Petrovski</a><br />
 <a href="">Anna Primpeli</a><br />
 <a href="http://dws.informatik.uni-mannheim.de/en/people/researchers/robert-meusel/">Robert Meusel</a><br />
 <a href="http://dws.informatik.uni-mannheim.de/en/people/professors/prof-dr-christian-bizer/">Christian Bizer</a><br />
@@ -80,22 +88,22 @@ In order to support the efforts of a growing number of studies evaluating method
 <div>
 <ul>
 <li class="toc-h2 toc-active">
-<a href="#toc1"> 1.About the WDC Product Data Corpus </a> 
+<a href="#toc1"> 1.About the WDC Product Data Corpus </a>
 </li>
 <li class="toc-h2 toc-active">
-<a href="#toc2"> 2.Product Data Collection </a> 
+<a href="#toc2"> 2.Product Data Collection </a>
 </li>
 <li class="toc-h2 toc-active">
-<a href="#toc3"> 3.Gold Standard Creation </a> 
+<a href="#toc3"> 3.Gold Standard Creation </a>
 </li>
 <li class="toc-h2 toc-active">
-<a href="#toc4"> 5.Baselines for Product Matching </a> 
+<a href="#toc4"> 5.Baselines for Product Matching </a>
 </li>
 <li class="toc-h2 toc-active">
-<a href="#toc5"> 5.Evaluation and Results </a> 
+<a href="#toc5"> 5.Evaluation and Results </a>
 </li>
 <li class="toc-h2 toc-active">
-<a href="#toc6"> 6.References </a> 
+<a href="#toc6"> 6.References </a>
 </li>
 </ul>
 </div>
@@ -104,19 +112,18 @@ In order to support the efforts of a growing number of studies evaluating method
 <span id="toc1"></span>
 <h2>1. About the WDC Product Data Corpus</h2>
 <p>
-The commercial perpective of hopping in the virtual world poses a challenge for continious improvement of technical solutions that enchance the consumer experience. 
-For further improvements of methods and applications within this field public, comprehensive, annotated product corpora contatining real-world data are inevitable. The WDC Product Data Corpus 
+The commercial perpective of hopping in the virtual world poses a challenge for continious improvement of technical solutions that enchance the consumer experience.
+For further improvements of methods and applications within this field public, comprehensive, annotated product corpora contatining real-world data are inevitable. The WDC Product Data Corpus
 provides more than 11 million HTML pages from different e-commerce websites that contain product data. Moreover the corups is acompanied by a gold standard and baselines for product feature extraction and product matching.
- The gold standard and its baselines focus on 3 produc categories: Mobile Phones, Headphones and TVs. 
+ The gold standard and its baselines focus on 3 produc categories: Mobile Phones, Headphones and TVs.
 </p>
 
 <span id="toc2"></span>
 <h2>2. Product Data Crawl</h2>
 <p>
-The two main criteria for creating the product data collection is firstly the diversity of its origin
- and secondly its quantity. This means that the chosen product specifications
-  derive from different websites which use different schemata to express product specifications for the same product category.
-Furthermore    the data should include a comprehensive amount of the products and offers provided by the selected websites.
+The motivation for the product crawl follow two main criteria: the diversity of its origin
+ and its quantity. This means that the chosen product specifications derive from different websites which use different schemata to express product specifications for the same product category.
+Furthermore   the data should include a comprehensive amount of the products and offers provided by the selected websites.
 </p>
 <h3>Crawled Corpus</h3>
 <p>
@@ -124,10 +131,10 @@ Furthermore    the data should include a comprehensive amount of the products an
 </p>
 <p>
 The approach adapted for crawling data while satisfying the previous criteria is the crawling and scraping
- framework, <a href="https://github.com/scrapy/scrapy"><i>scrapy</i></a>. The crawler was forced to retrieve data from 32 different PLDs which were chosen based on their containment of marked up 
+ framework, <a href="https://github.com/scrapy/scrapy"><i>scrapy</i></a>. The crawler was forced to retrieve data from 32 different PLDs which were chosen based on their containment of marked up
  annotations as well as their traffic rankings as reported by <a href="http://alexa.com"><i>Alexa</i></a>. The following table shows the distribution
  of pages included in the crawler per PLD.
- 
+
  <h4>Number of Pages per PLD in the Crawled Corpus</h4>
  </br>
  <table id="pagesPerPLD">
@@ -167,7 +174,7 @@ The approach adapted for crawling data while satisfying the previous criteria is
 
  </table>
  </br>
- In order to restrict the obtained results, product categories and a list of 10 products per category were specified. 
+ In order to restrict the obtained results, product categories and a list of 10 products per category were specified.
  The table shows the distribution of the retrieved pages after the implementation of the above mentioned filters.
   </br>
   <h4>Number of Pages per Product Category</h4>
@@ -181,7 +188,8 @@ The approach adapted for crawling data while satisfying the previous criteria is
 </p>
 <h3>Markup Data of the Crawled Corpus</h3>
 <p>
-The data derived from the crawl were profiled on the basis of markup data. The following table gives an overview about the top domains, classes and properties
+It has been shown that markup data like <a href="../structureddata/index.html">Microdata and RDFa</a> are becoming the standrad for embedding varios semantics of data items.
+For the purpose of exploiting the Microdata markup in this couprus, the data derived from the crawl were profiled on the basis of markup data. The following table gives an overview about the top domains, classes and properties
 as observed in the markup entities of the crawled corpus.
 </p>
 <div>
@@ -273,10 +281,17 @@ as observed in the markup entities of the crawled corpus.
 </div>
 
 <span id="toc3"></span>
-<h2 id="gold"> 3. Gold Standard Creation</h2>
-<h3 id="catalog"> Product Catalog Creation</h3>
+<h2 id="gold"> 3. Gold Standard for product matching and product feature extraction</h2>
 <p>
-For the creation of a gold standard a specific vocabulary describing product specifications needed to be defined.
+The gold standard provides two separate contributions: (1) product matching and (2) product feature extraction.
+Given the product corpus, we create a product catalog  and a labeled subset from the said corpus (both introduced below).
+Additionaly, we provide a set of correspondes between the said catalog and a labeled subset of the product corpus.
+</p>
+
+
+<h3 id="catalog"> Product Catalog</h3>
+<p>
+The product catolg was created to provide: (1) ground truth for various attribute values, (2) a uniqe dataset to be used for matching puposes. Additionaly, the product catalog provides a specific vocabulary describing product specifications needed to be defined. For this we selected the 10 most crawled products from each category.
 To avoid conflicts deriving from multiple schemata of the different vendors, we define the product specification vocabulary as it is provided in the manufacturer's website or by leading online shopping
 services, such as <a href="http://www.google.com/shopping"><i>Google Shopping</i></a>. The table below shows the distribution of properties per product category.
 <h4>Defined Properties per Product Category</h4>
@@ -447,11 +462,12 @@ services, such as <a href="http://www.google.com/shopping"><i>Google Shopping</i
 </p>
 <h3> Labeled Set Creation</h3>
 <p>
-The labeled set comprises out of 500 product entities while the distinct labeled properties are 338 in total. 
-It was created by three different annotators. In order to ensure the validity of the annotaton process, 
-the inter annotator agreement was calculated. Out of 1,500 labeled properties there were found 75 disagreements. Therefore, the inter 
-annotator agreement is estimated to be 95%.The table below shows the distribution of labeled entities per category.
-Additionally, the files containing the labeled entities are provided per category 
+We labed 4 distinct stuctural units from the HTML pages: (1) Microdata title, (2) Microdata description, (3) HTML tables and (4) HTML lists.
+The labeled set comprises out of 500 product entities, while the distinct labeled properties are 338 in total.
+It was created by three different annotators. In order to ensure the validity of the annotaton process,
+the inter annotator agreement was calculated. Out of 1,500 labeled properties there were found 75 disagreements. Therefore, the inter
+annotator agreement is estimated to be 95%. The table below shows the distribution of labeled entities per category.
+Additionally, the files containing the labeled entities are provided per category
 and in total for further use.
 <table>
 <tr><th>Category</th><th>#labeled Products</th><th>File with labeled Products</th><tr>
@@ -460,10 +476,31 @@ and in total for further use.
 <tr><td>Televisions</td><td>164</td><td><a target="_blank" href="files/Labeling/entities/tvs_labeled_entities.txt">tvs_labeled_entities.txt</a>(291kb)</td></tr>
 <tr><td>Total</td><td>500</td><td><a target="_blank" href="files/Labeling/entities/all_labeled_entities.txt">all_labeled_entities.txt</a>(1,125kb)</td></tr>
 </table>
+
+
+<div>
+  The charts below shows the PLD usage for the top 12 most used properties in the gold standard for each product category.
+  Some more detailed statistics on all the properties before being mapped can be found in the following <a target="_blank" href="files/UnMappedProps_Statistics.xlsx">file (UnMappedProps_Statistics.xlsx)</a>. The file includes the feature names of tables and lists
+   and their frequency per product category as used by the different commercial websites as well as the distribution of PLDs to the feature names per product category.
+
+
+<div>
+<div id="headphones_pld" style="display:inline-block"></div>
+<div id="tvs_pld" style="display:inline-block"></div>
+</div>
+
+<div id="less_charts" class="more-charts">
+  For more charts on total number of properties lalbeled click here.
+</div>
+
+
+<div id="additional_charts" class="less-charts">
 Among the total number of defined properties we observed some that were used rather frequently and others that were used only from a few
 websites. The charts below present the most frequent properties per product category as found in titles, descriptions, tables and lists.
-Please note that the presented results do not include the tagline property which is used for the cases where a word in a title or description did not reveal any specification 
+Please note that the presented results do not include the tagline property which is used for the cases where a word in a title or description did not reveal any specification
 and thus could not be given any property value.
+
+
 
 <table >
 
@@ -488,9 +525,9 @@ and thus could not be given any property value.
 <td><div id="tvs_Lists" style="float:left"></div></td>
 </tr>
 </table>
-Some more detailed statistics on the properties before being mapped can be found in the following <a target="_blank" href="files/UnMappedProps_Statistics.xlsx">file (UnMappedProps_Statistics.xlsx)</a>. The file includes the feature names of tables and lists
- and their frequency per product category as used by the different commercial websites as well as the distribution of PLDs to the feature names per product category.
+</div>
 </p>
+
 
 <span id="toc4"></span>
 <h2>4. Baselines for Product Matching</h2>
@@ -512,15 +549,15 @@ We experiment on two datasets:
     </li>
 </ul>
 </p>
-<p>Common text preprocessing techniques are applied in order to reduce the number of tokens of every textual input and 
-to result in filtered, richer in content unstructured and structured product specifications which will eventually contribute 
+<p>Common text preprocessing techniques are applied in order to reduce the number of tokens of every textual input and
+to result in filtered, richer in content unstructured and structured product specifications which will eventually contribute
 better to the identity resolution task.</p>
 <p>The preprocessing starts with the <i>removal of HTML tags</i> which do not contribute to the content of the specification. As a second step,
  <i>tokenization</i> by non-alphanumeric character is realized. Thirdly, the textual characters are converted to <i>lowercase</i> and <i>stemmed</i> using a Porter
  Stemming Filter. Finally, <i>stopwords</i> are removed. It should be mentioned that all the steps are equally implemented  in the unstructured and
  structured product specifications apart from the first step which is only realized for the unstructured specifications contained in
  the HTML pages.</p>
- 
+
 <h3>Parametrization</h3>
 <p>
 We experiment with 3 different variable parameters. We take all n- grams (n ∈ [1, 2, 3]) and test on them separately. Additionally, we relax to string matching constraints by calculating the Levenshtein distance between potential matches. Lastly, we do maximum and minimum frequency pruning.
@@ -528,24 +565,24 @@ We experiment with 3 different variable parameters. We take all n- grams (n ∈ 
 <h3>Similarity Methods</h3>
 <p>
 There are three main similarity methods involved in the experiments: exact string matching, Jaccard similarity and Cosine similarity. On top of the implemented
- similarity measures Levenshtein Distance can be calculated. 
+ similarity measures Levenshtein Distance can be calculated.
  <ul>
 <li>1. Bag Of Words - Simple Model: Calculation of the percentage of the common unique words in the two inputs (Exact Similarity on ngram level).
 </br><pre>i. The list of tokens are transformed to sets of unique grams
 </br>ii. The containment of the exact unique words is calculated as </br><b>commonGrams/min{UniqueGramsCatalogEntity, UniqueGramsPage}</b></pre></li>
 
-<li>2. Cosine Similarity: 
+<li>2. Cosine Similarity:
 </br>
 <pre>i. The unique grams of the two inputs are assigned weights* (see the weighting section)
 </br>ii. Common words between the unique sets are retrieved
-</br>iii. Cosine Similarity is calculated as the dot product of the weights of the common words 
+</br>iii. Cosine Similarity is calculated as the dot product of the weights of the common words
 </br>divided by the normalization factor </pre>
 </li>
 <li>3. Jaccard: Can be applied only for the case of ngrams with n>1. The similarity score is calculated as <b>A&cap;B/A&cup;B</b></li>
-<li> Levenshtein Similarity (on top):  In order to calculate the intersection between vectors 
-(unique common words) the user can define if they want exact matching between the grams or if common grams 
-should be considered those with a Levenshtein similarity above a certain user defined threshold. 
-The Levenshtein similarity for common grams calculation can be implemented on top of all the previously 
+<li> Levenshtein Similarity (on top):  In order to calculate the intersection between vectors
+(unique common words) the user can define if they want exact matching between the grams or if common grams
+should be considered those with a Levenshtein similarity above a certain user defined threshold.
+The Levenshtein similarity for common grams calculation can be implemented on top of all the previously
 mentioned similarity methods.</li>
 </ul>
 
@@ -555,7 +592,7 @@ mentioned similarity methods.</li>
 <p>
 In order to evaluate the implemented similarity methods we measure precision, recall and F1 measure. For this
 we need to first define a threshold. The threshold selection is done by brute-force search for the best F1 score result
- over the set of [0,1] using a step size of 0.001. 
+ over the set of [0,1] using a step size of 0.001.
 </p>
 
 <h3>Results</h3>
@@ -599,12 +636,13 @@ we need to first define a threshold. The threshold selection is done by brute-fo
 </div>
 <span id="toc6"></span>
 <h2>6. References</h2>
-<ul>
+<ol>
 	<li>Petar Petrovski, Anna Primpeli, Robert Meusel, Christian Bizer: <a href="">Product Data Corpus and Gold Standard for Product Feature Extraction and Matching</a>. <a href="http://www.dexa.org/ecweb2016">17th International Conference on Electronic Commerce and Web Technologies</a>, Porto, Portugal, September 2016. (To Appear)</li>
+  <li>Robert Meusel, Anna Primpeli, Christian Meilicke, Heiko Paulheim, Christian Bizer: <a href="">Exploiting Microdata Annotations to Consistently Categorize Product Offers at Web Scale. <a href="http://www.dexa.org/ecweb2015">16th International Conference on Electronic Commerce and Web Technologies</a></li>
 	<li>Disheng Qiu, Luciano Barbosa, Xin Luna Dong, Yanyan Shen, Divesh Srivastava: <a href="http://www.vldb.org/pvldb/vol8/p2194-qiu.pdf" target="_blank">DEXTER: Large-Scale Discovery and Extraction of Product Specifications on the Web</a>, Proceedings of the VLDB Endowment, Vol. 8, No. 13, 2015.</li>
 	<li>Hanna Köpcke, Andreas Thor, Stefan Thomas, Erhard Rahm: <a href="http://dbs.uni-leipzig.de/file/edbt2012_final.pdf" target="_blank"> Tailoring entity resolution for matching product offers</a>. In Proceedings of the 15th Int.Conf. on Extending Database Technology (EDBT), 2012.</li>
 	<li>Hanna Köpcke, Andreas Thor, Erhard Rahm: <a href="http://dbs.uni-leipzig.de/file/edbt2012_final.pdf" target="_blank"> Evaluation of entity resolution approaches on real-world match problems</a>. Proceedings of the VLDB Endowment, Volume 3 Issue 1-2, September 2010 , 2010.</li>
-</ul>
+</ol>
 <script type="text/javascript">
 $('#toc').toc({
     'selectors': 'h2', //elements to use as headings
@@ -617,6 +655,14 @@ $('#toc').toc({
         return prefix+i;
     }
 });
+$('#less_charts').click(function() {
+  $('#less_charts').removeClass("more-charts").addClass("less-charts");
+  $('#additional_charts').removeClass("less-charts").addClass("more-charts");
+});
+$('#additional_charts').click(function() {
+  $('#additional_charts').removeClass("more-charts").addClass("less-charts");
+  $('#less_charts').removeClass("less-charts").addClass("more-charts");
+});
 </script>
 </body>
-</html> 
+</html>
