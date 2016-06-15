@@ -2,7 +2,7 @@
 ******
 ******
 Loads google charts for the labeled properties
-Author: Anna Primpeli
+Author: Anna Primpeli, Petar Petrovski
 ******
 ******
 **/
@@ -16,13 +16,16 @@ google.charts.setOnLoadCallback(drawMaterial6);
 google.charts.setOnLoadCallback(drawMaterial1);
 google.charts.setOnLoadCallback(drawMaterial2);
 
-google.charts.setOnLoadCallback(drawMaterial7);	
+google.charts.setOnLoadCallback(drawMaterial7);
 google.charts.setOnLoadCallback(drawMaterial8);
 google.charts.setOnLoadCallback(drawMaterial9);
 google.charts.setOnLoadCallback(drawMaterial10);
-	google.charts.setOnLoadCallback(drawMaterial11);
+google.charts.setOnLoadCallback(drawMaterial11);
 
 google.charts.setOnLoadCallback(drawMaterial12);
+
+google.charts.setOnLoadCallback(drawBarHeadphonesPlds);
+google.charts.setOnLoadCallback(drawBarTVsPlds);
 
 function drawMaterial1() {
 
@@ -53,17 +56,17 @@ function drawMaterial1() {
 
 	var options1 = {
 	  width: 400,
-	  height: 400,			
-	  title: 'HEADPHONES - Distribution of Properties in Titles',		  
+	  height: 400,
+	  title: 'HEADPHONES - Distribution of Properties in Titles',
 	  chartArea: {'width': '80%', 'height': '80%'},
 		colors:['#00b33c'],
 				  hAxis:{'textPosition': 'none'},
 
 		is3D: true
-	  
+
 	};
-	
-	
+
+
 	var material1 = new google.visualization.ColumnChart(document.getElementById('headphones_Title'));
 	material1.draw(headphonesTitle, options1);
   }
@@ -72,7 +75,7 @@ function drawMaterial2() {
 
 	var headphonesDesc = google.visualization.arrayToDataTable([
 	  ['Properties in Description', '%Percentage Frequency'],
-	  
+
 		['model', 14.24],
 		['product_type', 13.35],
 		['brand', 9.50],
@@ -99,10 +102,10 @@ function drawMaterial2() {
 
 	var options2 = {
 	  width: 400,
-	  height: 400,			
-	  title: 'HEADPHONES - Distribution of Properties in Descriptions',		  
+	  height: 400,
+	  title: 'HEADPHONES - Distribution of Properties in Descriptions',
 	  chartArea: {'width': '80%', 'height': '80%'},
-	  is3D: true, 
+	  is3D: true,
 	  hAxis:{'textPosition': 'none'},
 	  colors:['#00b33c'],
 
@@ -158,11 +161,11 @@ function drawMaterial3() {
 
 	var options3 = {
 	  width: 400,
-	  height: 400,			
-	  title: 'HEADPHONES - Distribution of Properties in Tables',		  
-	  is3D: true, 
+	  height: 400,
+	  title: 'HEADPHONES - Distribution of Properties in Tables',
+	  is3D: true,
 			  hAxis:{'textPosition': 'none'},
-	colors: ['#00b33c'] 
+	colors: ['#00b33c']
 	};
 
 	var material3 = new google.visualization.ColumnChart(document.getElementById('headphones_Tables'));
@@ -228,20 +231,20 @@ function drawMaterial4() {
 
 	var options4 = {
 	  width: 400,
-	  height: 400,			
+	  height: 400,
 	  title: 'HEADPHONES - Distribution of Properties in Lists',
-	  
+
 	  chartArea: {'width': '80%', 'height': '80%'},
 	  is3D: true,
 	  hAxis:{'textPosition': 'none'},
-	  
-	colors: ['#00b33c'] 
+
+	colors: ['#00b33c']
 	};
 
 	var material4 = new google.visualization.ColumnChart(document.getElementById('headphones_Lists'));
 	material4.draw(headphonesLists, options4);
   }
-  
+
  function drawMaterial5() {
 
 	var phonesTitle = google.visualization.arrayToDataTable([
@@ -291,19 +294,19 @@ function drawMaterial4() {
 
 	var options5 = {
 	  width: 400,
-	  height: 400,			
+	  height: 400,
 	  title: 'MOBILE PHONES - Distribution of Properties in Titles',
-	 
+
 	  chartArea: {'width': '80%', 'height': '80%'},
-	  is3D: true, 
+	  is3D: true,
 			  hAxis:{'textPosition': 'none'},
-	colors: ['#7070db'] 
+	colors: ['#7070db']
 	};
 
 	var material5 = new google.visualization.ColumnChart(document.getElementById('phones_Title'));
 	material5.draw(phonesTitle, options5);
-  } 
-  
+  }
+
 function drawMaterial6() {
 
 	var phonesDesc = google.visualization.arrayToDataTable([
@@ -364,18 +367,18 @@ function drawMaterial6() {
 
 	var options6 = {
 	  width: 400,
-	  height: 400,			
+	  height: 400,
 	  title: 'MOBILE PHONES - Distribution of Properties in Descriptions',
 		hAxis:{'textPosition': 'none'},
 
 	  chartArea: {'width': '80%', 'height': '80%'},
-	  is3D: true, 
-	colors: ['#7070db'] 
+	  is3D: true,
+	colors: ['#7070db']
 	};
 
 	var material6 = new google.visualization.ColumnChart(document.getElementById('phones_Desc'));
 	material6.draw(phonesDesc, options6);
-  }	 
+  }
 
 function drawMaterial7() {
 
@@ -499,12 +502,12 @@ function drawMaterial7() {
 
 	var options7 = {
 	  width: 400,
-	  height: 400,			
+	  height: 400,
 	  title: 'MOBILE PHONES - Distribution of Properties in Tables',
 			  hAxis:{'textPosition': 'none'},
 	  chartArea: {'width': '80%', 'height': '80%'},
-	  is3D: true, 
-	colors: ['#7070db'] 
+	  is3D: true,
+	colors: ['#7070db']
 	};
 
 	var material7 = new google.visualization.ColumnChart(document.getElementById('phones_Tables'));
@@ -624,12 +627,12 @@ function drawMaterial7() {
 
 	var options8 = {
 	  width: 400,
-	  height: 400,			
+	  height: 400,
 	  title: 'MOBILE PHONES - Distribution of Properties in Lists',
 			  hAxis:{'textPosition': 'none'},
 	  chartArea: {'width': '80%', 'height': '80%'},
-	  is3D: true, 
-	colors: ['#7070db'] 
+	  is3D: true,
+	colors: ['#7070db']
 	};
 
 	var material8 = new google.visualization.ColumnChart(document.getElementById('phones_Lists'));
@@ -679,12 +682,12 @@ function drawMaterial9() {
 
 	var options9 = {
 	  width: 400,
-	  height: 400,			
+	  height: 400,
 	  title: 'TELEVISIONS - Distribution of Properties in Titles',
 			  hAxis:{'textPosition': 'none'},
 	  chartArea: {'width': '80%', 'height': '80%'},
-	  is3D: true, 
-	colors: ['#ff944d'] 
+	  is3D: true,
+	colors: ['#ff944d']
 	};
 
 	var material9 = new google.visualization.ColumnChart(document.getElementById('tvs_Titles'));
@@ -738,14 +741,14 @@ function drawMaterial10() {
 
 	var options10 = {
 	  width: 400,
-	  height: 400,			
+	  height: 400,
 	  title: 'TELEVISIONS - Distribution of Properties in Descriptions',
 			  hAxis:{'textPosition': 'none'},
 	  chartArea: {'width': '80%', 'height': '80%'},
-	  is3D: true, 
-	colors: ['#ff944d'] 
+	  is3D: true,
+	colors: ['#ff944d']
 	};
-	
+
 	var material10 = new google.visualization.ColumnChart(document.getElementById('tvs_Desc'));
 	material10.draw(tvsDesc, options10);
   }
@@ -880,12 +883,12 @@ function drawMaterial11() {
 
 	var options11 = {
 	  width: 400,
-	  height: 400,			
+	  height: 400,
 	  title: 'TELEVISIONS - Distribution of Properties in Tables',
 			  hAxis:{'textPosition': 'none'},
 	  chartArea: {'width': '80%', 'height': '80%'},
-	  is3D: true, 
-	colors: ['#ff944d'] 
+	  is3D: true,
+	colors: ['#ff944d']
 	};
 
 	var material11 = new google.visualization.ColumnChart(document.getElementById('tvs_Tables'));
@@ -1000,14 +1003,97 @@ function drawMaterial12() {
 
 	var options12 = {
 	  width: 400,
-	  height: 400,			
+	  height: 400,
 	  title: 'TELEVISIONS - Distribution of Properties in Lists',
 			  hAxis:{'textPosition': 'none'},
 	  chartArea: {'width': '80%', 'height': '80%'},
-	  is3D: true, 
-	colors: ['#ff944d'] 
+	  is3D: true,
+	colors: ['#ff944d']
 	};
 
 	var material12 = new google.visualization.ColumnChart(document.getElementById('tvs_Lists'));
 	material12.draw(tvsLists, options12);
   }
+
+
+	function drawBarHeadphonesPlds() {
+
+			var headphonesPld = google.visualization.arrayToDataTable([
+				['Properties Used', 'Number of PLDs'],
+				['Impedance', 3],
+				['Sensitivity', 3],
+				['Color', 3],
+				['Weight', 3],
+				['Contact pressure', 2],
+				['Maximum Input Power', 2],
+				['Fit Design', 2],
+				['Cable Length', 2],
+				['Frequency Response', 2],
+				['THD, total harmonic distortion', 2],
+				['Brand', 2],
+				['Model', 2]
+			]);
+
+
+			var options1 = {
+				width: 500,
+				height: 400,
+				title: 'HeadPhones - Frequent usage of properties per PLD',
+				chartArea: {'width': '50%', 'height': '80%'},
+				colors:['#00b33c'],
+				hAxis:{
+					title: 'Number of PLDs',
+					minValue: 0,
+					maxValue: 5
+				},
+				vAxis:{
+					title: 'Property',
+				},
+				is3D: true
+			};
+
+
+			var headphones_pld = new google.visualization.BarChart(document.getElementById('headphones_pld'));
+			headphones_pld.draw(headphonesPld, options1);
+		}
+
+		function drawBarTVsPlds() {
+
+				var tvsPld = google.visualization.arrayToDataTable([
+					['Properties Used', 'Number of PLDs'],
+					['Refresh Rate', 5],
+					['Width', 5],
+					['Screen Size', 4],
+					['Brand', 4],
+					['UPC', 4],
+					['Resolution', 4],
+					['Aspect Ratio', 4],
+					['Vertical Viewing Angle', 3],
+					['Horizontal Viewing Angle', 3],
+					['Display Type', 3],
+					['3D Technology', 3],
+					['Speaker Output', 3]
+				]);
+
+
+				var options1 = {
+					width: 500,
+					height: 400,
+					title: 'TVs - Frequent usage of properties per PLD',
+					chartArea: {'width': '50%', 'height': '80%'},
+					colors:['#ff944d'],
+					hAxis:{
+						title: 'Number of PLDs',
+						minValue: 0,
+						maxValue: 6
+					},
+					vAxis:{
+						title: 'Property',
+					},
+					is3D: true
+				};
+
+
+				var tvs_pld = new google.visualization.BarChart(document.getElementById('tvs_pld'));
+				tvs_pld.draw(tvsPld, options1);
+			}
