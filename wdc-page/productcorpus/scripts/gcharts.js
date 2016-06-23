@@ -7,30 +7,40 @@ Author: Anna Primpeli, Petar Petrovski
 ******
 **/
 
+//Load libraries and set callbacks for charts
 google.charts.load('43',  {packages: ['bar','line', 'corechart']});
 
-google.charts.setOnLoadCallback(drawMaterial3);
-google.charts.setOnLoadCallback(drawMaterial4);
-google.charts.setOnLoadCallback(drawMaterial5);
-google.charts.setOnLoadCallback(drawMaterial6);
-google.charts.setOnLoadCallback(drawMaterial1);
-google.charts.setOnLoadCallback(drawMaterial2);
+google.charts.setOnLoadCallback(drawHeadphonesTablesLabeled);
+google.charts.setOnLoadCallback(drawHeadphonesListsLabeled);
+google.charts.setOnLoadCallback(drawHeadphonesTitleLabeled);
+google.charts.setOnLoadCallback(drawHeadphonesDescLabeled);
 
-google.charts.setOnLoadCallback(drawMaterial7);
-google.charts.setOnLoadCallback(drawMaterial8);
-google.charts.setOnLoadCallback(drawMaterial9);
-google.charts.setOnLoadCallback(drawMaterial10);
-google.charts.setOnLoadCallback(drawMaterial11);
+google.charts.setOnLoadCallback(drawPhonesTablesLabeled);
+google.charts.setOnLoadCallback(drawPhonesListsLabeled);
+google.charts.setOnLoadCallback(drawPhonesTitleLabeled);
+google.charts.setOnLoadCallback(drawPhoneDescLabeled);
 
-google.charts.setOnLoadCallback(drawMaterial12);
+google.charts.setOnLoadCallback(drawTVsTablesLabeled);
+google.charts.setOnLoadCallback(drawTVsListsLabeled);
+google.charts.setOnLoadCallback(drawTVsTitlesLabeled);
+google.charts.setOnLoadCallback(drawTVsDescLabeled);
 
 google.charts.setOnLoadCallback(drawBarHeadphonesPlds);
 google.charts.setOnLoadCallback(drawBarTVsPlds);
+google.charts.setOnLoadCallback(drawBarPhonesPlds);
 
-function drawMaterial1() {
+google.charts.setOnLoadCallback(drawColumnTVsTables);
+google.charts.setOnLoadCallback(drawColumnPhonesTables);
+google.charts.setOnLoadCallback(drawColumnHeadphonesTables);
+
+
+/*
+* All labeled properties for headphones
+*/
+function drawHeadphonesTitleLabeled() {
 
 	var headphonesTitle = google.visualization.arrayToDataTable([
-	  ['Properties in Title', '%Percentage Frequency'],
+		['Properties in Title', '%Percentage Frequency'],
 		['model', 17.33],
 		['product_type', 15.79],
 		['brand', 10.97],
@@ -49,33 +59,26 @@ function drawMaterial1() {
 		['pick-up_pattern', 0.14],
 		['bluetooth_type', 0.07],
 		['origin_assembly', 0.07]
-
-
 	]);
 
-
-	var options1 = {
-	  width: 400,
-	  height: 400,
-	  title: 'HEADPHONES - Distribution of Properties in Titles',
-	  chartArea: {'width': '80%', 'height': '80%'},
+	var options = {
+		width: 400,
+		height: 400,
+		title: 'HEADPHONES - Distribution of Properties in Titles',
+		chartArea: {'width': '80%', 'height': '80%'},
 		colors:['#00b33c'],
-				  hAxis:{'textPosition': 'none'},
-
+		hAxis:{'textPosition': 'none'},
 		is3D: true
-
 	};
 
-
-	var material1 = new google.visualization.ColumnChart(document.getElementById('headphones_Title'));
-	material1.draw(headphonesTitle, options1);
+	var material = new google.visualization.ColumnChart(document.getElementById('headphones_Title'));
+	material.draw(headphonesTitle, options);
   }
 
-function drawMaterial2() {
+function drawHeadphonesDescLabeled() {
 
 	var headphonesDesc = google.visualization.arrayToDataTable([
-	  ['Properties in Description', '%Percentage Frequency'],
-
+		['Properties in Description', '%Percentage Frequency'],
 		['model', 14.24],
 		['product_type', 13.35],
 		['brand', 9.50],
@@ -99,8 +102,7 @@ function drawMaterial2() {
 
 	]);
 
-
-	var options2 = {
+	var options = {
 	  width: 400,
 	  height: 400,
 	  title: 'HEADPHONES - Distribution of Properties in Descriptions',
@@ -108,75 +110,70 @@ function drawMaterial2() {
 	  is3D: true,
 	  hAxis:{'textPosition': 'none'},
 	  colors:['#00b33c'],
-
 	};
 
-	var material2 = new google.visualization.ColumnChart(document.getElementById('headphones_Desc'));
-	material2.draw(headphonesDesc, options2);
+	var material = new google.visualization.ColumnChart(document.getElementById('headphones_Desc'));
+	material.draw(headphonesDesc, options);
   }
 
-function drawMaterial3() {
+function drawHeadphonesTablesLabeled() {
 
 	var headphonesTables = google.visualization.arrayToDataTable([
-	  ['Properties in Tables', '%Percentage Frequency'],
-	  ['mpn', 13.99],
-	['brand', 12.50],
-	['condition', 11.16],
-	['model', 10.12],
-	['product_gtin', 9.08],
-	['impedance', 5.06],
-	['additional_features', 4.91],
-	['headphones_form_factor', 4.61],
-	['color', 4.46],
-	['headphones_cup_type', 3.72],
-	['sensitivity', 3.42],
-	['compatibility', 2.53],
-	['warranty', 2.23],
-	['connectivity_technology', 1.64],
-	['included_accessories', 1.34],
-	['jack_plug', 1.34],
-	['sound_pressure_level', 1.19],
-	['headphone_use', 1.19],
-	['product_code', 1.04],
-	['height', 0.60],
-	['width', 0.60],
-	['weight', 0.45],
-	['origin_assembly', 0.30],
-	['cable_length', 0.30],
-	['min_frequency', 0.30],
-	['frequency_response', 0.30],
-	['max_frequency', 0.30],
-	['max_input_power', 0.30],
-	['headphones_technology', 0.30],
-	['units', 0.15],
-	['origin_components', 0.15],
-	['has_warranty', 0.15],
-	['package_weight', 0.15],
-	['dimensions', 0.15]
-
-
-
+		['Properties in Tables', '%Percentage Frequency'],
+		['mpn', 13.99],
+		['brand', 12.50],
+		['condition', 11.16],
+		['model', 10.12],
+		['product_gtin', 9.08],
+		['impedance', 5.06],
+		['additional_features', 4.91],
+		['headphones_form_factor', 4.61],
+		['color', 4.46],
+		['headphones_cup_type', 3.72],
+		['sensitivity', 3.42],
+		['compatibility', 2.53],
+		['warranty', 2.23],
+		['connectivity_technology', 1.64],
+		['included_accessories', 1.34],
+		['jack_plug', 1.34],
+		['sound_pressure_level', 1.19],
+		['headphone_use', 1.19],
+		['product_code', 1.04],
+		['height', 0.60],
+		['width', 0.60],
+		['weight', 0.45],
+		['origin_assembly', 0.30],
+		['cable_length', 0.30],
+		['min_frequency', 0.30],
+		['frequency_response', 0.30],
+		['max_frequency', 0.30],
+		['max_input_power', 0.30],
+		['headphones_technology', 0.30],
+		['units', 0.15],
+		['origin_components', 0.15],
+		['has_warranty', 0.15],
+		['package_weight', 0.15],
+		['dimensions', 0.15]
 	]);
 
-
-	var options3 = {
-	  width: 400,
-	  height: 400,
-	  title: 'HEADPHONES - Distribution of Properties in Tables',
-	  is3D: true,
-			  hAxis:{'textPosition': 'none'},
-	colors: ['#00b33c']
+	var options = {
+		width: 400,
+		height: 400,
+		title: 'HEADPHONES - Distribution of Properties in Tables',
+		is3D: true,
+		hAxis:{'textPosition': 'none'},
+		colors: ['#00b33c']
 	};
 
-	var material3 = new google.visualization.ColumnChart(document.getElementById('headphones_Tables'));
-	material3.draw(headphonesTables, options3);
+	var material = new google.visualization.ColumnChart(document.getElementById('headphones_Tables'));
+	material.draw(headphonesTables, options);
   }
 
-function drawMaterial4() {
+function drawHeadphonesListsLabeled() {
 
 	var headphonesLists = google.visualization.arrayToDataTable([
-	  ['Properties in Lists', '%Percentage Frequency'],
-	  ['impedance', 10.87],
+		['Properties in Lists', '%Percentage Frequency'],
+		['impedance', 10.87],
 		['sensitivity', 9.32],
 		['frequency_response', 8.39],
 		['cable_length', 7.14],
@@ -228,27 +225,27 @@ function drawMaterial4() {
 
 	]);
 
-
-	var options4 = {
-	  width: 400,
-	  height: 400,
-	  title: 'HEADPHONES - Distribution of Properties in Lists',
-
-	  chartArea: {'width': '80%', 'height': '80%'},
-	  is3D: true,
-	  hAxis:{'textPosition': 'none'},
-
-	colors: ['#00b33c']
+	var options = {
+		width: 400,
+		height: 400,
+		title: 'HEADPHONES - Distribution of Properties in Lists',
+		chartArea: {'width': '80%', 'height': '80%'},
+		is3D: true,
+		hAxis:{'textPosition': 'none'},
+		colors: ['#00b33c']
 	};
 
-	var material4 = new google.visualization.ColumnChart(document.getElementById('headphones_Lists'));
-	material4.draw(headphonesLists, options4);
+	var material = new google.visualization.ColumnChart(document.getElementById('headphones_Lists'));
+	material.draw(headphonesLists, options);
   }
 
- function drawMaterial5() {
+/*
+* All labeled properties for phones
+*/  
+function drawPhonesTitleLabeled() {
 
 	var phonesTitle = google.visualization.arrayToDataTable([
-	  ['Properties in Titles', '%Percentage Frequency'],
+		['Properties in Titles', '%Percentage Frequency'],
 		['phone_type', 22.97],
 		['condition', 13.32],
 		['color', 11.80],
@@ -287,30 +284,26 @@ function drawMaterial4() {
 		['core_count', 0.04],
 		['additional_features', 0.04],
 		['manufacturer_origin', 0.04]
-
-
 	]);
 
-
-	var options5 = {
-	  width: 400,
-	  height: 400,
-	  title: 'MOBILE PHONES - Distribution of Properties in Titles',
-
-	  chartArea: {'width': '80%', 'height': '80%'},
-	  is3D: true,
-			  hAxis:{'textPosition': 'none'},
-	colors: ['#7070db']
+	var options = {
+		width: 400,
+		height: 400,
+		title: 'MOBILE PHONES - Distribution of Properties in Titles',
+		chartArea: {'width': '80%', 'height': '80%'},
+		is3D: true,
+		hAxis:{'textPosition': 'none'},
+		colors: ['#7070db']
 	};
 
-	var material5 = new google.visualization.ColumnChart(document.getElementById('phones_Title'));
-	material5.draw(phonesTitle, options5);
+	var material = new google.visualization.ColumnChart(document.getElementById('phones_Title'));
+	material.draw(phonesTitle, options);
   }
 
-function drawMaterial6() {
+function drawPhoneDescLabeled() {
 
 	var phonesDesc = google.visualization.arrayToDataTable([
-	  ['Properties in Descriptions', '%Percentage Frequency'],
+		['Properties in Descriptions', '%Percentage Frequency'],
 		['phone_type', 17.71],
 		['cellular', 7.39],
 		['network_technology', 6.56],
@@ -360,31 +353,27 @@ function drawMaterial6() {
 		['display_color', 0.07],
 		['edge', 0.07],
 		['body_form', 0.07]
-
-
 	]);
 
-
-	var options6 = {
-	  width: 400,
-	  height: 400,
-	  title: 'MOBILE PHONES - Distribution of Properties in Descriptions',
+	var options = {
+		width: 400,
+		height: 400,
+		title: 'MOBILE PHONES - Distribution of Properties in Descriptions',
 		hAxis:{'textPosition': 'none'},
-
-	  chartArea: {'width': '80%', 'height': '80%'},
-	  is3D: true,
-	colors: ['#7070db']
+		chartArea: {'width': '80%', 'height': '80%'},
+		is3D: true,
+		colors: ['#7070db']
 	};
 
-	var material6 = new google.visualization.ColumnChart(document.getElementById('phones_Desc'));
-	material6.draw(phonesDesc, options6);
+	var material = new google.visualization.ColumnChart(document.getElementById('phones_Desc'));
+	material.draw(phonesDesc, options);
   }
 
-function drawMaterial7() {
+function drawPhonesTablesLabeled() {
 
 	var phonesTables = google.visualization.arrayToDataTable([
-	  ['Properties in Tables', '%Percentage Frequency'],
-	  ['phone_type', 5.75],
+		['Properties in Tables', '%Percentage Frequency'],
+		['phone_type', 5.75],
 		['memory', 5.09],
 		['brand', 4.94],
 		['phone_carrier', 4.94],
@@ -494,31 +483,27 @@ function drawMaterial7() {
 		['english_firmware', 0.02],
 		['hearing_aid_compatible', 0.02],
 		['gprs', 0.02]
-
-
-
 	]);
 
-
-	var options7 = {
-	  width: 400,
-	  height: 400,
-	  title: 'MOBILE PHONES - Distribution of Properties in Tables',
-			  hAxis:{'textPosition': 'none'},
-	  chartArea: {'width': '80%', 'height': '80%'},
-	  is3D: true,
-	colors: ['#7070db']
+	var options = {
+		width: 400,
+		height: 400,
+		title: 'MOBILE PHONES - Distribution of Properties in Tables',
+		hAxis:{'textPosition': 'none'},
+		chartArea: {'width': '80%', 'height': '80%'},
+		is3D: true,
+		colors: ['#7070db']
 	};
 
-	var material7 = new google.visualization.ColumnChart(document.getElementById('phones_Tables'));
-	material7.draw(phonesTables, options7);
+	var material = new google.visualization.ColumnChart(document.getElementById('phones_Tables'));
+	material.draw(phonesTables, options);
   }
 
-  function drawMaterial8() {
+function drawPhonesListsLabeled() {
 
 	var phonesLists = google.visualization.arrayToDataTable([
-	  ['Properties in Lists', '%Percentage Frequency'],
-	  ['memory', 4.60],
+		['Properties in Lists', '%Percentage Frequency'],
+		['memory', 4.60],
 		['computer_operating_system', 4.26],
 		['processor_type', 4.09],
 		['display_type', 3.92],
@@ -620,30 +605,30 @@ function drawMaterial7() {
 		['gprs', 0.17],
 		['digital_camera', 0.17],
 		['touch_screen', 0.17]
-
-
 	]);
 
-
-	var options8 = {
-	  width: 400,
-	  height: 400,
-	  title: 'MOBILE PHONES - Distribution of Properties in Lists',
-			  hAxis:{'textPosition': 'none'},
-	  chartArea: {'width': '80%', 'height': '80%'},
-	  is3D: true,
-	colors: ['#7070db']
+	var options = {
+		width: 400,
+		height: 400,
+		title: 'MOBILE PHONES - Distribution of Properties in Lists',
+		hAxis:{'textPosition': 'none'},
+		chartArea: {'width': '80%', 'height': '80%'},
+		is3D: true,
+		colors: ['#7070db']
 	};
 
-	var material8 = new google.visualization.ColumnChart(document.getElementById('phones_Lists'));
-	material8.draw(phonesLists, options8);
+	var material = new google.visualization.ColumnChart(document.getElementById('phones_Lists'));
+	material.draw(phonesLists, options);
   }
-
-function drawMaterial9() {
+  
+/*
+* All labeled properties for tvs
+*/  
+function drawTVsTitlesLabeled() {
 
 	var tvsTitles = google.visualization.arrayToDataTable([
-	  ['Properties in Titles', '%Percentage Frequency'],
-	['product_type', 20.22],
+		['Properties in Titles', '%Percentage Frequency'],
+		['product_type', 20.22],
 		['display_type', 16.92],
 		['viewable_size', 11.83],
 		['brand', 9.53],
@@ -674,90 +659,82 @@ function drawMaterial9() {
 		['usb_ports', 0.14],
 		['hdmi', 0.14],
 		['image_contrast', 0.07]
-
-
-
 	]);
 
-
-	var options9 = {
-	  width: 400,
-	  height: 400,
-	  title: 'TELEVISIONS - Distribution of Properties in Titles',
-			  hAxis:{'textPosition': 'none'},
-	  chartArea: {'width': '80%', 'height': '80%'},
-	  is3D: true,
-	colors: ['#ff944d']
+	var options = {
+		width: 400,
+		height: 400,
+		title: 'TELEVISIONS - Distribution of Properties in Titles',
+		hAxis:{'textPosition': 'none'},
+		chartArea: {'width': '80%', 'height': '80%'},
+		is3D: true,
+		colors: ['#ff944d']
 	};
 
-	var material9 = new google.visualization.ColumnChart(document.getElementById('tvs_Titles'));
-	material9.draw(tvsTitles, options9);
+	var material = new google.visualization.ColumnChart(document.getElementById('tvs_Titles'));
+	material.draw(tvsTitles, options);
   }
 
-function drawMaterial10() {
+function drawTVsDescLabeled() {
 
 	var tvsDesc = google.visualization.arrayToDataTable([
-	  ['Properties in Descriptions', '%Percentage Frequency'],
+		['Properties in Descriptions', '%Percentage Frequency'],
 		['display_type', 15.98],
-			['video_signal_standard', 14.79],
-			['input_connectors', 14.00],
-			['product_type', 9.47],
-			['brand', 7.50],
-			['built_ins', 5.33],
-			['display_resolution', 4.34],
-			['model', 3.35],
-			['total_size', 3.35],
-			['smart_capable', 3.16],
-			['digital_audio_output', 2.37],
-			['supported_memory_cards', 1.78],
-			['ports', 1.58],
-			['processor_type', 1.18],
-			['computer_operating_system', 1.18],
-			['series', 1.18],
-			['image_aspect_ratio', 0.99],
-			['curved', 0.79],
-			['wall_mountable', 0.79],
-			['3d', 0.79],
-			['mounting_features', 0.79],
-			['remote_control_model', 0.79],
-			['image_contrast', 0.59],
-			['refresh_rate', 0.59],
-			['headphone_jack', 0.39],
-			['usb', 0.39],
-			['product_code', 0.39],
-			['sleep_wakeup_timer', 0.39],
-			['scan_format', 0.39],
-			['builtin_dvd_player', 0.39],
-			['color', 0.20],
-			['supported_audio_formats', 0.20],
-			['digital_tv_tuner', 0.20],
-			['v_chip_control', 0.20],
-			['hdmi_ports', 0.20]
-
-
-
+		['video_signal_standard', 14.79],
+		['input_connectors', 14.00],
+		['product_type', 9.47],
+		['brand', 7.50],
+		['built_ins', 5.33],
+		['display_resolution', 4.34],
+		['model', 3.35],
+		['total_size', 3.35],
+		['smart_capable', 3.16],
+		['digital_audio_output', 2.37],
+		['supported_memory_cards', 1.78],
+		['ports', 1.58],
+		['processor_type', 1.18],
+		['computer_operating_system', 1.18],
+		['series', 1.18],
+		['image_aspect_ratio', 0.99],
+		['curved', 0.79],
+		['wall_mountable', 0.79],
+		['3d', 0.79],
+		['mounting_features', 0.79],
+		['remote_control_model', 0.79],
+		['image_contrast', 0.59],
+		['refresh_rate', 0.59],
+		['headphone_jack', 0.39],
+		['usb', 0.39],
+		['product_code', 0.39],
+		['sleep_wakeup_timer', 0.39],
+		['scan_format', 0.39],
+		['builtin_dvd_player', 0.39],
+		['color', 0.20],
+		['supported_audio_formats', 0.20],
+		['digital_tv_tuner', 0.20],
+		['v_chip_control', 0.20],
+		['hdmi_ports', 0.20]
 	]);
 
-
-	var options10 = {
-	  width: 400,
-	  height: 400,
-	  title: 'TELEVISIONS - Distribution of Properties in Descriptions',
-			  hAxis:{'textPosition': 'none'},
-	  chartArea: {'width': '80%', 'height': '80%'},
-	  is3D: true,
-	colors: ['#ff944d']
+	var options = {
+		width: 400,
+		height: 400,
+		title: 'TELEVISIONS - Distribution of Properties in Descriptions',
+		hAxis:{'textPosition': 'none'},
+		chartArea: {'width': '80%', 'height': '80%'},
+		is3D: true,
+		colors: ['#ff944d']
 	};
 
-	var material10 = new google.visualization.ColumnChart(document.getElementById('tvs_Desc'));
-	material10.draw(tvsDesc, options10);
+	var material = new google.visualization.ColumnChart(document.getElementById('tvs_Desc'));
+	material.draw(tvsDesc, options);
   }
 
-function drawMaterial11() {
+function drawTVsTablesLabeled() {
 
 	var tvsTables = google.visualization.arrayToDataTable([
-	  ['Properties in Tables', '%Percentage Frequency'],
-	  ['display_type', 7.10],
+		['Properties in Tables', '%Percentage Frequency'],
+		['display_type', 7.10],
 		['brand', 4.08],
 		['viewable_size', 3.91],
 		['warranty', 3.02],
@@ -875,31 +852,27 @@ function drawMaterial11() {
 		['built_ins', 0.06],
 		['widescreen_modes', 0.06],
 		['hdcp_compatability', 0.06]
-
-
-
 	]);
 
-
-	var options11 = {
-	  width: 400,
-	  height: 400,
-	  title: 'TELEVISIONS - Distribution of Properties in Tables',
-			  hAxis:{'textPosition': 'none'},
-	  chartArea: {'width': '80%', 'height': '80%'},
-	  is3D: true,
-	colors: ['#ff944d']
+	var options = {
+		width: 400,
+		height: 400,
+		title: 'TELEVISIONS - Distribution of Properties in Tables',
+		hAxis:{'textPosition': 'none'},
+		chartArea: {'width': '80%', 'height': '80%'},
+		is3D: true,
+		colors: ['#ff944d']
 	};
 
-	var material11 = new google.visualization.ColumnChart(document.getElementById('tvs_Tables'));
-	material11.draw(tvsTables, options11);
+	var material = new google.visualization.ColumnChart(document.getElementById('tvs_Tables'));
+	material.draw(tvsTables, options);
   }
 
-function drawMaterial12() {
+function drawTVsListsLabeled() {
 
 	var tvsLists = google.visualization.arrayToDataTable([
-	  ['Properties in Lists', '%Percentage Frequency'],
-	  ['viewable_size', 2.95],
+		['Properties in Lists', '%Percentage Frequency'],
+		['viewable_size', 2.95],
 		['3d_technology', 2.62],
 		['speakers_type', 2.30],
 		['usb', 2.30],
@@ -996,104 +969,360 @@ function drawMaterial12() {
 		['video_interface', 0.33],
 		['pc_input', 0.33],
 		['epaet_qualified', 0.33]
+	]);
 
+	var options = {
+		width: 400,
+		height: 400,
+		title: 'TELEVISIONS - Distribution of Properties in Lists',
+		hAxis:{'textPosition': 'none'},
+		chartArea: {'width': '80%', 'height': '80%'},
+		is3D: true,
+		colors: ['#ff944d']
+	};
+
+	var material = new google.visualization.ColumnChart(document.getElementById('tvs_Lists'));
+	material.draw(tvsLists, options);
+}
+
+/*
+* All labeled properties per pld per category
+*/ 
+function drawBarHeadphonesPlds() {
+
+	var headphonesPld = google.visualization.arrayToDataTable([
+		['Properties Used', 'Number of PLDs'],
+		['Impedance', 3],
+		['Sensitivity', 3],
+		['Color', 3],
+		['Weight', 3],
+		['Contact pressure', 2],
+		['Maximum Input Power',	2],
+		['Fit Design', 2],
+		['Cable Length', 2],
+		['Frequency Response', 2]
+	]);
+
+	var options = {
+		width: 500,
+		height: 400,
+		title: 'HeadPhones - Frequent usage of properties per PLD',
+		chartArea: {'width': '50%', 'height': '80%'},
+		colors:['#00b33c'],
+		hAxis:{
+			title: 'Number of PLDs',
+			minValue: 0,
+			maxValue: 5
+		},
+		vAxis:{
+			title: 'Property',
+		},
+		is3D: true
+	};
+
+	var material = new google.visualization.BarChart(document.getElementById('headphones_pld'));
+	material.draw(headphonesPld, options);
+}
+
+function drawBarPhonesPlds() {
+
+	var phonesPld = google.visualization.arrayToDataTable([
+		['Properties Used', 'Number of PLDs'],
+		['Color', 8],
+		['Camera', 6],
+		['Weight', 6],
+		['Internal Memory', 6],
+		['Operating System', 6],
+		['Battery Type', 5],
+		['Condition', 5],
+		['Processor', 5],
+		['Battery', 5]
 
 	]);
 
-
-	var options12 = {
-	  width: 400,
-	  height: 400,
-	  title: 'TELEVISIONS - Distribution of Properties in Lists',
-			  hAxis:{'textPosition': 'none'},
-	  chartArea: {'width': '80%', 'height': '80%'},
-	  is3D: true,
-	colors: ['#ff944d']
+	var options = {
+		width: 500,
+		height: 400,
+		title: 'HeadPhones - Frequent usage of properties per PLD',
+		chartArea: {'width': '50%', 'height': '80%'},
+		colors:['#00b56c'],
+		hAxis:{
+			title: 'Number of PLDs',
+			minValue: 0,
+			maxValue: 11
+		},
+		vAxis:{
+			title: 'Property',
+		},
+		is3D: true
 	};
 
-	var material12 = new google.visualization.ColumnChart(document.getElementById('tvs_Lists'));
-	material12.draw(tvsLists, options12);
-  }
+	var material = new google.visualization.BarChart(document.getElementById('phones_pld'));
+	material.draw(phonesPld, options);
+}
 
+function drawBarTVsPlds() {
 
-	function drawBarHeadphonesPlds() {
+	var tvsPld = google.visualization.arrayToDataTable([
+		['Properties Used', 'Number of PLDs'],
+		['Refresh Rate', 5],
+		['Width', 5],
+		['Screen Size', 4],
+		['Brand' ,4],
+		['UPC', 4],
+		['Resolution', 4],
+		['Aspect Ratio', 4],
+		['Vertical Viewing Angle', 3],
+		['Horizontal Viewing Angle', 3]
+	]);
 
-			var headphonesPld = google.visualization.arrayToDataTable([
-				['Properties Used', 'Number of PLDs'],
-				['Impedance', 3],
-				['Sensitivity', 3],
-				['Color', 3],
-				['Weight', 3],
-				['Contact pressure', 2],
-				['Maximum Input Power', 2],
-				['Fit Design', 2],
-				['Cable Length', 2],
-				['Frequency Response', 2],
-				['THD, total harmonic distortion', 2],
-				['Brand', 2],
-				['Model', 2]
-			]);
+	var options = {
+		width: 500,
+		height: 400,
+		title: 'TVs - Frequent usage of properties per PLD',
+		chartArea: {'width': '50%', 'height': '80%'},
+		colors:['#00b88c'],
+		hAxis:{
+			title: 'Number of PLDs',
+			minValue: 0,
+			maxValue: 8
+		},
+		vAxis:{
+			title: 'Property',
+		},
+		is3D: true
+	};
 
+	var material = new google.visualization.BarChart(document.getElementById('tvs_pld'));
+	material.draw(tvsPld, options);
+}
 
-			var options1 = {
-				width: 500,
-				height: 400,
-				title: 'HeadPhones - Frequent usage of properties per PLD',
-				chartArea: {'width': '50%', 'height': '80%'},
-				colors:['#00b33c'],
-				hAxis:{
-					title: 'Number of PLDs',
-					minValue: 0,
-					maxValue: 5
-				},
-				vAxis:{
-					title: 'Property',
-				},
-				is3D: true
-			};
+/*
+* Labeled properties per structural unit - table per category
+*/ 
+function drawColumnTVsTables() {
 
+	var tvsTables = google.visualization.arrayToDataTable([
+		['Properties Used', 'Number of Tables'],
+		['brand', 83],
+		['display_type', 67],
+		['mpn', 66],
+		['viewable_size', 58],
+		['condition', 55],
+		['display_resolution', 40],
+		['model', 38],
+		['product_type', 33],
+		['weight', 33],
+		['color',  33],
+		['warranty', 30],
+		['product_code', 17],
+	]);
 
-			var headphones_pld = new google.visualization.BarChart(document.getElementById('headphones_pld'));
-			headphones_pld.draw(headphonesPld, options1);
-		}
+	var options = {
+		width: 500,
+		height: 400,
+		title: 'TVs - Frequent usage of properties per Table',
+		chartArea: {'width': '50%', 'height': '80%'},
+		colors:['#00b88c'],
+		vAxis:{
+			title: 'Number of Tables',
+			minValue: 0,
+			maxValue: 111
+		},
+		hAxis:{
+			title: 'Property',
+		},
+		is3D: true
+	};
 
-		function drawBarTVsPlds() {
+	var material = new google.visualization.ColumnChart(document.getElementById('tvs_tables'));
+	material.draw(tvsTables, options);
+}
 
-				var tvsPld = google.visualization.arrayToDataTable([
-					['Properties Used', 'Number of PLDs'],
-					['Refresh Rate', 5],
-					['Width', 5],
-					['Screen Size', 4],
-					['Brand', 4],
-					['UPC', 4],
-					['Resolution', 4],
-					['Aspect Ratio', 4],
-					['Vertical Viewing Angle', 3],
-					['Horizontal Viewing Angle', 3],
-					['Display Type', 3],
-					['3D Technology', 3],
-					['Speaker Output', 3]
-				]);
+function drawColumnPhonesTables() {
 
+	var phonesTables = google.visualization.arrayToDataTable([
+		['Properties Used', 'Number of Tables'],
+		['memory',  158],
+		['brand', 156],
+		['phone_type',  154],
+		['color', 144],
+		['display_size', 129],
+		['mpn', 128],
+		['rear_cam_resolution', 127], 
+		['phone_carrier', 126], 
+		['condition', 123],
+		['computer_operating_system', 117]
+	]);
 
-				var options1 = {
-					width: 500,
-					height: 400,
-					title: 'TVs - Frequent usage of properties per PLD',
-					chartArea: {'width': '50%', 'height': '80%'},
-					colors:['#ff944d'],
-					hAxis:{
-						title: 'Number of PLDs',
-						minValue: 0,
-						maxValue: 6
-					},
-					vAxis:{
-						title: 'Property',
-					},
-					is3D: true
-				};
+	var options = {
+		width: 500,
+		height: 400,
+		title: 'Phones - Frequent usage of properties per Table',
+		chartArea: {'width': '50%', 'height': '80%'},
+		colors:['#00b88c'],
+		vAxis:{
+			title: 'Number of Tables',
+			minValue: 0,
+			maxValue: 181
+		},
+		hAxis:{
+			title: 'Property',
+		},
+		is3D: true
+	};
 
+	var material = new google.visualization.ColumnChart(document.getElementById('phones_tables'));
+	material.draw(phonesTables, options);
+}
 
-				var tvs_pld = new google.visualization.BarChart(document.getElementById('tvs_pld'));
-				tvs_pld.draw(tvsPld, options1);
-			}
+function drawColumnHeadphonesTables() {
+
+	var headphonesTables = google.visualization.arrayToDataTable([
+		['Properties Used', 'Number of Lists'],
+		['brand', 103],
+		['condition', 102],
+		['mpn', 91],
+		['product_gtin', 53],
+		['model', 46],
+		['additional_features', 33],
+		['color', 33],
+		['impedance', 25],
+		['headphones_cup_type', 22],
+		['headphones_form_factor', 20]
+	]);
+
+	var options = {
+		width: 500,
+		height: 400,
+		title: 'Headphones - Frequent usage of properties per Table',
+		chartArea: {'width': '50%', 'height': '80%'},
+		colors:['#00b88c'],
+		vAxis:{
+			title: 'Number of Lists',
+			minValue: 0,
+			maxValue: 112
+		},
+		hAxis:{
+			title: 'Property',
+		},
+		is3D: true
+	};
+
+	var material = new google.visualization.ColumnChart(document.getElementById('headphones_tables'));
+	material.draw(headphonesTables, options);
+}
+
+/*
+* Labeled properties per structural unit - list per category
+*/ 
+function drawColumnTVsTLists() {
+
+	var tvsLists = google.visualization.arrayToDataTable([
+		['Properties Used', 'Number of Tables'],
+		['viewable_size', 7],
+		['hdmi_ports', 6],
+		['3d_technology', 5],
+		['computer_operating_system', 5],
+		['usb', 5],
+		['image_aspect_ratio', 5],
+		['speakers_type', 3],
+		['model', 3],
+		['brightness', 3],
+		['additional_features', 2]
+	]);
+
+	var options = {
+		width: 500,
+		height: 400,
+		title: 'TVs - Frequent usage of properties per List',
+		chartArea: {'width': '50%', 'height': '80%'},
+		colors:['#00b88c'],
+		vAxis:{
+			title: 'Number of Lists',
+			minValue: 0,
+			maxValue: 29
+		},
+		hAxis:{
+			title: 'Property',
+		},
+		is3D: true
+	};
+
+	var material = new google.visualization.ColumnChart(document.getElementById('tvs_lists'));
+	material.draw(tvsLists, options);
+}
+
+function drawColumnPhonesLists() {
+
+	var phonesLists = google.visualization.arrayToDataTable([
+		['Properties Used', 'Number of Lists'],
+		['brand', 40],
+		['product_type', 34],
+		['modelnum', 34],
+		['compatible_phones', 33],
+		['function', 32],
+		['retail_package', 32],
+		['material', 30],
+		['memory', 23],
+		['package_weight', 23],
+		['package_size', 22]
+	]);
+
+	var options = {
+		width: 500,
+		height: 400,
+		title: 'Phones - Frequent usage of properties per List',
+		chartArea: {'width': '50%', 'height': '80%'},
+		colors:['#00b88c'],
+		vAxis:{
+			title: 'Number of Lists',
+			minValue: 0,
+			maxValue: 75
+		},
+		hAxis:{
+			title: 'Property',
+		},
+		is3D: true
+	};
+
+	var material = new google.visualization.ColumnChart(document.getElementById('phones_lists'));
+	material.draw(phonesLists, options);
+}
+
+function drawColumnHeadphonesLists() {
+
+	var headphonesLists = google.visualization.arrayToDataTable([
+		['Properties Used', 'Number of Lists'],
+		['impedance', 25],
+		['frequency_response', 24],
+		['sensitivity', 23],
+		['cable_length', 23],
+		['package_weight', 20],
+		['headphones_technology', 17],
+		['weight', 17],
+		['color', 14],
+		['connectivity_technology', 12],
+		['max_input_power', 12]
+	]);
+
+	var options = {
+		width: 500,
+		height: 400,
+		title: 'Headphones - Frequent usage of properties per List',
+		chartArea: {'width': '50%', 'height': '80%'},
+		colors:['#00b88c'],
+		vAxis:{
+			title: 'Number of Lists',
+			minValue: 0,
+			maxValue: 69
+		},
+		hAxis:{
+			title: 'Property',
+		},
+		is3D: true
+	};
+
+	var material = new google.visualization.ColumnChart(document.getElementById('headphones_lists'));
+	material.draw(headphoneslists, options);
+}
