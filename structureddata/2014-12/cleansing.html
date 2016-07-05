@@ -45,7 +45,7 @@ For futher details about the statistical distribution of both issue types as wel
 <ul>
 	<li>Robert Meusel, Christian Bizer, Heiko Paulheim: <a href="http://dws.informatik.uni-mannheim.de/fileadmin/lehrstuehle/ki/pub/Meusel-etal-Schema-org-Adoption-WIMS2015.pdf">A Web-scale Study of the Adoption and Evolution of the schema.org Vocabulary over Time</a>. <a href="http://easyconferences.eu/?portfolio=wims-2015">5th International Conference on Web Intelligence, Mining and Semantics (WIMS2015)</a>, Limassol, Cyprus, July 2015.</li>
 	<li>Robert Meusel and Heiko Paulheim: <a href="http://dws.informatik.uni-mannheim.de/fileadmin/lehrstuehle/ki/pub/MeuselPaulheim-HeuristicsForFixingCommonErrorsInDeployedSchemaOrgMicrodata-ESWC2015.pdf">Heuristics for Fixing Common Errors in Deployed schema.org Microdata</a>,Proceedings of the 12th Extended Semantic Web Conference (ESWC 2015), Portoroz, Slovenia, May 2015.
-	<li>Robert Meusel, Dominique Ritze, Heiko Paulheim: Towards a More Accurate Statistical Profile of Deployed schema.org Microdata, submitted to the Journal of Data and Information Quality (JDIQ)</li>
+	<li>Robert Meusel, Dominique Ritze, Heiko Paulheim: Towards More Accurately Statistical Profiling of Deployed schema.org Microdata, submitted revised Version in 2016 to the Journal of Data and Information Quality (JDIQ)</li>
 </ul>
 </p>
 
@@ -86,8 +86,23 @@ The project can be compiled using <a href="http://maven.apache.org/download.cgi"
 </ul>
 It is important to note, that the current code is designed to be executed on a single machine and cannot scale vertical.
 </p>
-
-<h2 id="references">3. Further References</h2>
+<h2 id="data">3. Data</h2>
+<p>We have already applied the described methodology to the <a href="">WDC 2014 Microdata Corpus</a>, filtering for only <i>schema.org</i> related quads.
+This data was also used in order to perform the experiments described in <a href="">Robert Meusel, Dominique Ritze, Heiko Paulheim: Towards More Accurately Statistical Profiling of Deployed schema.org Microdata</a> (submitted to JDIQ). 
+We therefore stick to the nomenclature (S1 to S5) of the different intermediate coropra used in this publication, which is visualed also in the following diagramm:
+</p>
+<img src="pipeline.jpg" alt="Pipeline" width="1200px"/>
+<p>The data of the different steps within the process are provided for download as <a href="http://www.w3.org/TR/n-quads/">N-Quads</a>. The data generated in each step is provided indifferent files, which are compressed using GZIP and are not larger than 100MB each.</p>
+<p>The files of one step can be downloaded using <a href="http://www.gnu.org/software/wget/">wget</a> with e.g. the command <code>wget -i http://webdatacommons.org/structureddata/2014-12/files/md-schemaorg-cleaned-s1.list</code> to download all files for S1. The file lists, containing quads for a specific steps can be found in the table below, together with more detailed statistics about sizes.</p>
+<table>
+<tr><th>	Step	</th><th>	Total File Size	</th><th>	File List	</th></tr>
+<tr><th>	S1	</th><td align="right">	193 GB	</td><td>	<a href='http://webdatacommons.org/structureddata/2014-12/files/md-schemaorg-cleaned-s1.list'>md-schemaorg-cleaned-s1.list</a>	</td></tr>
+<tr><th>	S2	</th><td align="right">	112 GB	</td><td>	<a href='http://webdatacommons.org/structureddata/2014-12/files/md-schemaorg-cleaned-s2.list'>md-schemaorg-cleaned-s2.list</a>	</td></tr>
+<tr><th>	S3	</th><td align="right">	116 GB	</td><td>	<a href='http://webdatacommons.org/structureddata/2014-12/files/md-schemaorg-cleaned-s3.list'>md-schemaorg-cleaned-s3.list</a>	</td></tr>
+<tr><th>	S4	</th><td align="right">	115 GB	</td><td>	<a href='http://webdatacommons.org/structureddata/2014-12/files/md-schemaorg-cleaned-s4.list'>md-schemaorg-cleaned-s4.list</a>	</td></tr>
+<tr><th>	S5	</th><td align="right">	110 GB	</td><td>	<a href='http://webdatacommons.org/structureddata/2014-12/files/md-schemaorg-cleaned-s5.list'>md-schemaorg-cleaned-s5.list</a>	</td></tr>
+</table>
+<h2 id="references">4. Further References</h2>
 
 <ul>
 	<li>Robert Meusel, Petar Petrovski, Christian Bizer: <a href="http://dws.informatik.uni-mannheim.de/fileadmin/lehrstuehle/ki/pub/Meusel-etal-TheWDCMicrodataRdfaMicroformatsDataSeries-ISWC2014-rbds.pdf" target="_blank"> The WebDataCommons Microdata, RDFa and Microformat Dataset Series</a>. In Proceedings of the 13th International Semantic Web Conference: Replication, Benchmark, Data and Software Track (ISWC2014).</li>
