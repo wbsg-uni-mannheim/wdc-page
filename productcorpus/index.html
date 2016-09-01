@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html><head><title>Product Data Corpus</title>
+<html><head><title>GS for Product Matching and Product Extraction</title>
 <link rel="stylesheet" href="http://webdatacommons.org/style.css" type="text/css" media="screen"/>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
@@ -57,7 +57,7 @@ hr {
 <body>
   <div id="logo" style="text-align:right; background-color: white;">&nbsp;&nbsp;<a href="http://dws.informatik.uni-mannheim.de"><img src="files/images/ma-logo.gif" alt="University of Mannheim - Logo"></a></div>
   <div id="header">
-    <h1 style="font-size: 250%;">Web Data Commons - Product Data Corpus and Gold Standard for Product Feature Extraction and Product Matching</h1>
+    <h1 style="font-size: 250%;">Web Data Commons - Gold Standard for Product Matching and Product Feature Extraction</h1>
   </div>
   <div id="tagline">Generating a Product Data Catalog out of the Web</div>
   <div id="authors">
@@ -71,7 +71,7 @@ hr {
 		     In order to support the efforts of a growing number of studies evaluating methods
          tailored for e-commerce and product purposes,
          we present a publicly accessible product corpus and a gold standard
-         which can be used to train and evaluate applications focusing on Product identity resolution and
+         which can be used to train and evaluate methods focusing on Product identity resolution and
          Product feature extraction.
 	  </p>
 	  <h2 id="news">News</h2>
@@ -80,10 +80,10 @@ hr {
 	  <h2>Contents</h2>
 	  <ul>
 		    <li class="toc-h2 toc-active">
-		        <a href="#toc1"> 1.About the WDC Product Data Corpus </a>
+		        <a href="#toc1"> 1.About the WDC gold standard for product matching and product featrue extraction </a>
 		    </li>
-		    <li class="toc-h2 toc-active">
-		        <a href="#toc2"> 2.Product Catalog </a>
+			<li class="toc-h2 toc-active">
+		        <a href="#toc2"> 2.Product Selection </a>
 		    </li>
 		    <li class="toc-h2 toc-active">
 		        <a href="#toc3"> 3.Gold Standard for Feature Extraction</a>
@@ -103,19 +103,19 @@ hr {
 	  </ul>
 
     <span id="toc1"></span>
-    <h2>1. About the WDC Product Data Corpus</h2>
+    <h2>1. About the WDC Gold Standard for Product Matching and Product Featrue Extraction </h2>
     <p>
-    The commercial perpective of hopping in the virtual world poses a challenge for continious improvement of technical solutions that enchance the consumer experience.
-    For further improvements of methods and applications within this field public, comprehensive, annotated product corpora contatining real-world data are inevitable. The WDC Product Data Corpus
-    provides more than 11 million HTML pages from different e-commerce websites that contain product data. Moreover the corups is acompanied by a gold standard and baselines for product feature extraction and product matching.
-    The gold standard and its baselines focus on 3 product categories: Mobile Phones, Headphones and TVs.
+    The e-commerce business is still on the rise today and the vast potential of the internet has made it easier for organisations to reach out to consumers, eliminating the barriers of geographical location. 
+	Recent initiatives by search engine companies like Google, Yahoo!, Yandex and Microsoft to commercialise integrated product catalogs have made even greater advancements in e-commerce. Specifically, one of the biggest chalenges in building a clean integrated product catalog is product matching.
+	Several studies propose methods for product matching based on: string matching techniques, genetic programing and machine learning. Hovewer, there are only couple of publicly available gold standards to evalueate these methods. 
+	The first publicly available gold standart is the was presented in [5], where the athors evaluated different product matching aproaches based on a Amazon-AbtBuy dataset with four product attributes: name, desctiption, manufacturer and price. 
+	The gold standard has to main shortcommings: (1) The data are gathered from a subset of the Amazon.com website, making it bias towards the product description  and (2) the authors conclude that in order to perform efficient product matching more product attributes are necesary.    
+	The most recent gold standard is presented in [6]. The dgold standard is based on the product data subset of the <a href="../structureddata/index.html">WDC structured data extraction</a>extracted from several PLDs. 
+	However, the product data in the gold standard contain only 2 product attributes: name and description.     	
     </p>
     <p>
-      In order to support development for the tasks of product matching and product feature extraction from the Web, we provide the following artifacts:
+      To overcome above shotcomings we introduce the WDC gold standard for product matching and product featrue extraction, which packages the following artifacts:
       <ul>
-        <li>
-          Product Catalog: containing 150 different products from three different product categories. The products are complemented with product features, retrieved from vendor and shopping service pages.
-        </li>
         <li>
           Goldstandard for Product Feature Extraction: containing over 500 deeply annotated product web pages. On each web page the product-specific features are annotated.
         </li>
@@ -123,18 +123,100 @@ hr {
           Goldstandard for Product Matching: containing over 75,000 correspondences (1,500 positive, and 73,500 negative) between products from the product catalog and products described on web pages.
         </li>
         <li>
-          Product Data Corpus: containing over 13 million product-related web pages retrieved from various shopping web sites, like Ebay and Alibaba.
-        </li>
-        <li>
-          Baselines evaluating: straight-forward approaches from the area of feature extraction and matching, based on the two goldstandard datasets mentioned before.
+          Product Data Corpus: containing over 11.3 million product-related web pages retrieved from various shopping web sites.
         </li>
       </ul>
     </p>
     <span id="toc2"></span>
-    <h2>2. Product Catalog</h2>
-    <p>
-      Product Selection: We have used the 32 most frequently visited shopping web sites based on the ranking provided by Alexa4. We collected first the ten most popular products from the different web sites, for each of the three chosen product categories. We further complemented this list by similar products (based on their name). As example, we found the product Apple iPhone 6 64GB to be one of the most popular amongst all shopping web sites. We therefore included also the products Apple iPhone 6 128GB as well as Apple iPhone 5 into our product catalog. Especially for the product matching task, this methodology introduces a certain level of complexity, as the product names only differ by one or two characters. All in all, for each product category we selected 50 different products.
+    <h2>2. Product Selection</h2>
+	<p>
+     We have used the 32 most frequently visited shopping <a href="#toc5">web sites</a> based on the ranking provided by <a href="http://www.alexa.com" target="_blank">Alexa</a>. We collected first the ten most popular products from the different web sites, for each of the three chosen product categories. We further complemented this list by similar products (based on their name). As example, we found the product Apple iPhone 6 64GB to be one of the most popular amongst all shopping web sites. We therefore included also the products Apple iPhone 6 128GB as well as Apple iPhone 5 into our product catalog. Especially for the product matching task, this methodology introduces a certain level of complexity, as the product names only differ by one or two characters. All in all, for each product category we selected 50 different products.
     </p>
+    <span id="toc3"></span>
+    <h2>3. Gold Standard for Feature Extraction</h2>
+    <p>
+      We labed 4 distinct stuctural units from the HTML pages: (1) Microdata title, (2) Microdata description, (3) HTML tables and (4) HTML lists. The labeled set comprises out of 500 product entities, while the distinct labeled properties are 338 in total. It was created by three different annotators. In order to ensure the validity of the annotaton process, the inter annotator agreement was calculated. Out of 1,500 labeled properties there were found 75 disagreements. Therefore, the inter annotator agreement is estimated to be 95%. The table below shows the distribution of labeled entities per category. Additionally, the files containing the labeled entities are provided per category and in total for further use.
+    </p>
+    <table>
+      <tr><th>Category</th><th>#labeled Products</th><th>File with labeled Products</th><tr>
+      <tr><td>Headphones</td><td>124</td><td><a target="_blank" href="files/Labelling/entities/headphones_labelled_entities.txt">headphones_labeled_entities.txt</a>(230kb)</td></tr>
+      <tr><td>Mobile Phones</td><td>212</td><td><a target="_blank" href="files/Labelling/entities/phones_labelled_entities.txt">phones_labeled_entities.txt</a>(603kb)</td></tr>
+      <tr><td>Televisions</td><td>164</td><td><a target="_blank" href="files/Labelling/entities/tvs_labelled_entities.txt">tvs_labeled_entities.txt</a>(291kb)</td></tr>
+      <tr><td>Total</td><td>500</td><td><a target="_blank" href="files/Labelling/entities/all_labelled_entities.txt">all_labeled_entities.txt</a>(1,125kb)</td></tr>
+    </table>
+    <h4> General statistics per PLD, Sturctural unit and Totals for each category </h4>
+    <hr/>
+    <div id="intro_pld" class="show"> <a id="link_pld" href="">Statistics per PLD are available by clicking here.</a></div>
+    <div id="charts_pld" class="no-show">
+	  <a id="colapse_pld" href="">Colapse...</a> <br />
+      <p>
+        The charts below show the PLD usage for the top 12 most used properties in the gold standard for each product category.
+        Some more detailed statistics on all the properties before being mapped can be found in the following <a target="_blank" href="files/UnMappedProps_Statistics.xlsx">file (UnMappedProps_Statistics.xlsx)</a>. The file includes the feature names of tables and lists
+        and their frequency per product category as used by the different commercial websites as well as the distribution of PLDs to the feature names per product category.
+      </p>
+      <div>
+        <div id="headphones_pld" style="display:inline-block"></div>
+        <div id="phones_pld" style="display:inline-block"></div>
+        <div id="tvs_pld" style="display:inline-block"></div>
+      </div>
+    </div>
+    <hr/>
+    <div id="intro_structure" class="show">
+      <a id="link_structure" href="">Statistics per structural unit are available by clicking here.</a>
+    </div>
+    <div id="charts_structure" class="no-show">
+		<a id="colapse_structure" href="">Colapse...</a> <br />
+	     <p>The charts below show the usage of attributes per product per product category within lists and tables.</p>
+	      <div>
+      		<div id="headphones_tables" style="display:inline-block"></div>
+      		<div id="phones_tables" style="display:inline-block"></div>
+      		<div id="tvs_tables" style="display:inline-block"></div>
+      	</div>
+      	<div>
+      		<div id="headphones_lists" style="display:inline-block"></div>
+      		<div id="phones_lists" style="display:inline-block"></div>
+      		<div id="tvs_lists" style="display:inline-block"></div>
+      	</div>
+    </div>
+    <hr/>
+    <div id="intro_totals" class="show">
+      <a id="link_totals" href="">Statistics on total number of properties lalbeled are available by click here.</a>
+    </div>
+
+    <div id="charts_totals" class="no-show">
+	  <a id="colapse_totals" href="">Colapse...</a> <br />
+      <p>Among the total number of defined properties we observed some that were used rather frequently and others that were used only from a few
+      websites. The charts below present the most frequent properties per product category as found in titles, descriptions, tables and lists.
+      Please note that the presented results do not include the tagline property which is used for the cases where a word in a title or description did not reveal any specification
+      and thus could not be given any property value.</p>
+      <table >
+      <tr>
+      <td><div id="phones_Title" style="float:left"></div></td>
+      <td><div id="headphones_Title" style="float:left"></div></td>
+      <td><div id="tvs_Titles" style="float:left"></div></td>
+      </tr>
+      <tr>
+      <td><div id="phones_Desc" style="float:left"></div></td>
+      <td><div id="headphones_Desc" style="float:left"></div></td>
+      <td><div id="tvs_Desc" style="float:left"></div></td>
+      </tr>
+      <tr>
+      <td><div id="phones_Tables" style="float:left"/></td>
+      <td><div id="headphones_Tables" style="float:left"/></td>
+      <td><div id="tvs_Tables" style="float:left"/></td>
+      </tr>
+      <tr>
+      <td><div id="phones_Lists" style="float:left"></div></td>
+      <td><div id="headphones_Lists" style="float:left"></div></td>
+      <td><div id="tvs_Lists" style="float:left"></div></td>
+      </tr>
+      </table>
+    </div>
+    <hr/>
+    <span id="toc4"></span>
+    <h2>4. Gold Standard for Product Matching</h2>
+	
+	<h3>Product Catalog</h3>
     <p>
       Feature Enrichment: In order to complement the products with features, for each of the 150 products in our product catalog we obtained product-specific features from the manufacturers’ web site or, from shopping service web sites like Google Shopping. We did not extract features from individual vendor web site, like Amazon as we want to focus on product-specific features, rather than on features arising from bundles offered by specific vendors.
     </p>
@@ -149,7 +231,7 @@ hr {
     <p>The table below shows the scraped attributes per product category.</p>
     <h4>Defined Properties per Product Category</h4>
     <table>
-      <tr><th>Category</th><th>#Properties</th><th>List of Properties</th></tr>
+      <tr><th>Category</th><th>#Properties</th><th>List of Properties</th><th>Downloads</th></tr>
       <tr><th>Headphones</th><td>36</td><td><small><a href='' onclick="document.getElementById('headphoneProps').style.display='block';this.style.display='none';return false;">Show Properties for Headphones </a></small>
         <ol id='headphoneProps' style='display:none'>
           <li>description</li>
@@ -188,7 +270,7 @@ hr {
           <li>mpn</li>
           <li>product_gtin</li>
           <li>aditional_features</li>
-        </ol></td>
+        </ol></td><td><a target="_blank" href="files/ProductCatalog/HeadphoneCatalog.json">HeadphoneCatalog.json</a>(22kb)</td>
       </tr>
       <tr><th>Mobile Phones</th><td>32</td><td><small><a href='' onclick="document.getElementById('phoneProps').style.display='block';this.style.display='none';return false;">Show Properties for Mobile Phones </a></small>
         <ol id='phoneProps' style='display:none'>
@@ -224,7 +306,7 @@ hr {
           <li>product_code</li>
           <li>product_gtin</li>
           <li>manufacturer</li>
-        </ol></td>
+        </ol></td><td><a target="_blank" href="files/ProductCatalog/PhoneCatalog.json">PhoneCatalog.json</a>(38kb)</td>
       </tr>
       <tr><th>Televisions</th><td>76</td><td><small><a href='' onclick="document.getElementById('tvProps').style.display='block';this.style.display='none';return false;">Show Properties for Televisions </a></small>
         <ol id='tvProps' style='display:none'>
@@ -304,108 +386,31 @@ hr {
           <li>brand</li>
           <li>mpn</li>
           <li>product_gtin</li>
-        </ol></td>
+        </ol></td><td><a target="_blank" href="files/ProductCatalog/TVCatalog.json">TVCatalog.json</a>(38kb)</td>
       </tr>
     </table>
-    <span id="toc3"></span>
-    <h2>3. Gold Standard for Feature Extraction</h2>
-    <p>
-      We labed 4 distinct stuctural units from the HTML pages: (1) Microdata title, (2) Microdata description, (3) HTML tables and (4) HTML lists. The labeled set comprises out of 500 product entities, while the distinct labeled properties are 338 in total. It was created by three different annotators. In order to ensure the validity of the annotaton process, the inter annotator agreement was calculated. Out of 1,500 labeled properties there were found 75 disagreements. Therefore, the inter annotator agreement is estimated to be 95%. The table below shows the distribution of labeled entities per category. Additionally, the files containing the labeled entities are provided per category and in total for further use.
-    </p>
-    <table>
-      <tr><th>Category</th><th>#labeled Products</th><th>File with labeled Products</th><tr>
-      <tr><td>Headphones</td><td>124</td><td><a target="_blank" href="files/Labeling/entities/headphones_labeled_entities.txt">headphones_labeled_entities.txt</a>(230kb)</td></tr>
-      <tr><td>Mobile Phones</td><td>212</td><td><a target="_blank" href="files/Labeling/entities/phones_labeled_entities.txt">phones_labeled_entities.txt</a>(603kb)</td></tr>
-      <tr><td>Televisions</td><td>164</td><td><a target="_blank" href="files/Labeling/entities/tvs_labeled_entities.txt">tvs_labeled_entities.txt</a>(291kb)</td></tr>
-      <tr><td>Total</td><td>500</td><td><a target="_blank" href="files/Labeling/entities/all_labeled_entities.txt">all_labeled_entities.txt</a>(1,125kb)</td></tr>
-    </table>
-    <h4> General statistics per PLD, Sturctural unit and Totals for each category </h4>
-    <hr/>
-    <div id="intro_pld" class="show"> Statistics per PLD are available by clicking here.</div>
-    <div id="charts_pld" class="no-show">
-      <p>
-        The charts below show the PLD usage for the top 12 most used properties in the gold standard for each product category.
-        Some more detailed statistics on all the properties before being mapped can be found in the following <a target="_blank" href="files/UnMappedProps_Statistics.xlsx">file (UnMappedProps_Statistics.xlsx)</a>. The file includes the feature names of tables and lists
-        and their frequency per product category as used by the different commercial websites as well as the distribution of PLDs to the feature names per product category.
-      </p>
-      <div>
-        <div id="headphones_pld" style="display:inline-block"></div>
-        <div id="phones_pld" style="display:inline-block"></div>
-        <div id="tvs_pld" style="display:inline-block"></div>
-      </div>
-    </div>
-    <hr/>
-    <div id="intro_structure" class="show">
-      Statistics per structural unit are available by clicking here.
-    </div>
-    <div id="charts_structure" class="no-show">
-	     <p>The charts below show the usage of attributes per product per product category within lists and tables.</p>
-	      <div>
-      		<div id="headphones_tables" style="display:inline-block"></div>
-      		<div id="phones_tables" style="display:inline-block"></div>
-      		<div id="tvs_tables" style="display:inline-block"></div>
-      	</div>
-      	<div>
-      		<div id="headphones_lists" style="display:inline-block"></div>
-      		<div id="phones_lists" style="display:inline-block"></div>
-      		<div id="tvs_lists" style="display:inline-block"></div>
-      	</div>
-    </div>
-    <hr/>
-    <div id="intro_totals" class="show">
-      For more charts on total number of properties lalbeled click here.
-    </div>
-
-    <div id="charts_totals" class="no-show">
-      <p>Among the total number of defined properties we observed some that were used rather frequently and others that were used only from a few
-      websites. The charts below present the most frequent properties per product category as found in titles, descriptions, tables and lists.
-      Please note that the presented results do not include the tagline property which is used for the cases where a word in a title or description did not reveal any specification
-      and thus could not be given any property value.</p>
-      <table >
-      <tr>
-      <td><div id="phones_Title" style="float:left"></div></td>
-      <td><div id="headphones_Title" style="float:left"></div></td>
-      <td><div id="tvs_Titles" style="float:left"></div></td>
-      </tr>
-      <tr>
-      <td><div id="phones_Desc" style="float:left"></div></td>
-      <td><div id="headphones_Desc" style="float:left"></div></td>
-      <td><div id="tvs_Desc" style="float:left"></div></td>
-      </tr>
-      <tr>
-      <td><div id="phones_Tables" style="float:left"/></td>
-      <td><div id="headphones_Tables" style="float:left"/></td>
-      <td><div id="tvs_Tables" style="float:left"/></td>
-      </tr>
-      <tr>
-      <td><div id="phones_Lists" style="float:left"></div></td>
-      <td><div id="headphones_Lists" style="float:left"></div></td>
-      <td><div id="tvs_Lists" style="float:left"></div></td>
-      </tr>
-      </table>
-    </div>
-    <hr/>
-    <span id="toc4"></span>
-    <h2>4. Gold Standard for Matching</h2>
+	
+	<h3>Correspondences</h3>
+	
     <p>
       We manually generated 1 500 positive correspondences, 500 for each product category.
       For each product of the product catalog at least one positive corre- spondence is included.
       Additionally, to make the matching task more realistic the annotators also annotate closely
       related products to the once in the product catalog like: phone cases,
       TV wall mounts or headphone cables, ear-buds, etc. Furthermore we created additional
-      negative correspondences exploiting transi- tive closure. As all products in the product catalog are distinct,
+      negative correspondences exploiting transitive closure. As all products in the product catalog are distinct,
       we can generate for all product descriptions contained in web pages,
       where a positive correspon- dence exist to a product in the catalog,
       for all other products in the catalog a negative correspondence to this product on the web page.
       Using the two approaches we ended up with 73 500 negative correspondences.
     </p>
     <p>
-      Figure 2 depicts the accumulated number of positive correspondences
+      Figure 2 depicts the number of positive correspondences
       which are contained for each product from the three different product categories.
     </p>
     <figure>
-      <img src="images/duplicateDistCumulative-1.png" width="600"/>
-      <figcaption>Figure 2: Cumulative distribution of correspondeces per product category
+      <img src="images/duplicateDist.png" width="600"/>
+      <figcaption>Figure 2: Distribution of correspondeces per product category
     </figure>
     <span id="toc5"></span>
     <h2>5. Product Data Corpus</h2>
@@ -476,6 +481,7 @@ hr {
 			<tr><th>Televisions</th><td>556,121</td></tr>
 		</table>
 		<h3>Markup Data of the Crawled Corpus</h3>
+		<p>
 		It has been shown that markup data like <a href="../structureddata/index.html">Microdata and RDFa</a> are becoming the standrad for embedding varios semantics of data items.
 		For the purpose of exploiting the Microdata markup in this couprus, the data derived from the crawl were profiled on the basis of markup data. The following table gives an overview about the top domains, classes and properties
 		as observed in the markup entities of the crawled corpus.
@@ -602,7 +608,7 @@ hr {
    <h3>Baselines for Product Matching</h3>
    <br/>
    <p>
-   We experiment on two datasets:
+   We experiment on 3 datasets:
    <ul>
        <li>
            Preprocessed text from the entire HTML
@@ -610,6 +616,9 @@ hr {
        <li>
            Preprocessed name and description properties from Microdata markup
        </li>
+	   <li>
+			Specification tables and lists
+	   </li>
    </ul>
    </p>
    <p>Common text preprocessing techniques are applied in order to reduce the number of tokens of every textual input and
@@ -630,11 +639,11 @@ hr {
    There are three main similarity methods involved in the experiments: exact string matching, Jaccard similarity and Cosine similarity. On top of the implemented
     similarity measures Levenshtein Distance can be calculated.
     <ul>
-   <li>1. Bag Of Words - Simple Model: Calculation of the percentage of the common unique words in the two inputs (Exact Similarity on ngram level).
+   <li>1. Simple Model: Calculation of the percentage of the common unique words in the two inputs (Exact Similarity on ngram level).
    </br><pre>i. The list of tokens are transformed to sets of unique grams
    </br>ii. The containment of the exact unique words is calculated as </br><b>commonGrams/min{UniqueGramsCatalogEntity, UniqueGramsPage}</b></pre></li>
 
-   <li>2. Cosine Similarity:
+   <li>2. TF-IDF Cosine Similarity:
    </br>
    <pre>i. The unique grams of the two inputs are assigned weights* (see the weighting section)
    </br>ii. Common words between the unique sets are retrieved
@@ -649,6 +658,16 @@ hr {
    mentioned similarity methods.</li>
    </ul>
 
+   <h4>Feature Extraction</h4>
+   <p>
+		We implement 2 feature extraction methods:
+   </p>
+   <ul>
+	<li>Bag-of-Words (BOW): Keeping all tokens from the preprocessing</li>
+	<li>Dictionary method (See the featrue extraction baseline)</li>
+   </ul>
+   
+   
    <p>
    In order to evaluate the implemented similarity methods we measure precision, recall and F1 measure. For this
    we need to first define a threshold. The threshold selection is done by brute-force search for the best F1 score result
@@ -686,6 +705,7 @@ hr {
    	<li>Disheng Qiu, Luciano Barbosa, Xin Luna Dong, Yanyan Shen, Divesh Srivastava: <a href="http://www.vldb.org/pvldb/vol8/p2194-qiu.pdf" target="_blank">DEXTER: Large-Scale Discovery and Extraction of Product Specifications on the Web</a>, Proceedings of the VLDB Endowment, Vol. 8, No. 13, 2015.</li>
    	<li>Hanna Köpcke, Andreas Thor, Stefan Thomas, Erhard Rahm: <a href="http://dbs.uni-leipzig.de/file/edbt2012_final.pdf" target="_blank"> Tailoring entity resolution for matching product offers</a>. In Proceedings of the 15th Int.Conf. on Extending Database Technology (EDBT), 2012.</li>
    	<li>Hanna Köpcke, Andreas Thor, Erhard Rahm: <a href="http://dbs.uni-leipzig.de/file/edbt2012_final.pdf" target="_blank"> Evaluation of entity resolution approaches on real-world match problems</a>. Proceedings of the VLDB Endowment, Volume 3 Issue 1-2, September 2010 , 2010.</li>
+	<li>Petar ristoski, Peter Mika: <a href="http://ub-madoc.bib.uni-mannheim.de/40893/1/Ristoski%20ESWC%20paper.pdf" target="_blank">Enriching product ads with metadata from html annotations.</a> 13th Extendended Semantic Web Conference</li>
    </ol>
     <script type="text/javascript">
     $('#toc').toc({
@@ -699,19 +719,21 @@ hr {
             return prefix+i;
         }
     });
-    $('[id*="intro_"]').each(function(){
+    $('[id*="link_"]').each(function(){
     	var element = $(this);
-    	element.click(function() {
+    	element.click(function(e) {
+			e.preventDefault();
     		var id = element.attr("id").split("_")[1];
-    		element.removeClass("show").addClass("no-show");
+    		element.parent().removeClass("show").addClass("no-show");
     		$('#charts_'+id).removeClass("no-show").addClass("show");
     	});
     });
-    $('[id*="charts_"]').each(function(){
+    $('[id*="colapse_"]').each(function(){
     	var element = $(this);
-    	element.click(function() {
+    	element.click(function(e) {
+			e.preventDefault();
     		var id = element.attr("id").split("_")[1];
-    		element.removeClass("show").addClass("no-show");
+    		element.parent().removeClass("show").addClass("no-show");
     		$('#intro_'+id).removeClass("no-show").addClass("show");
     	});
     });
