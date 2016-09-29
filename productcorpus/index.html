@@ -76,6 +76,9 @@ hr {
 	  </p>
 	  <h2 id="news">News</h2>
 	  <ul>
+      <li>
+        <strong>2014-07-06: Paper about the gold standards accepted at <a href="">EC-WEB'16</a> conference in Porto, Portugal: <a href="paper/WDC-ECCatalog.pdf" target="_blank"> The WDC Gold Standards for Product Feature Extraction and Product Matching</a></strong>
+      </li>
 	  </ul>
 	  <h2>Contents</h2>
 	  <ul>
@@ -105,13 +108,13 @@ hr {
     <span id="toc1"></span>
     <h2>1. About the WDC Gold Standard for Product Matching and Product Featrue Extraction </h2>
     <p>
-    The e-commerce business is still on the rise today and the vast potential of the internet has made it easier for organisations to reach out to consumers, eliminating the barriers of geographical location. 
+    The e-commerce business is still on the rise today and the vast potential of the internet has made it easier for organisations to reach out to consumers, eliminating the barriers of geographical location.
 	Recent initiatives by search engine companies like Google, Yahoo!, Yandex and Microsoft to commercialise integrated product catalogs have made even greater advancements in e-commerce. Specifically, one of the biggest chalenges in building a clean integrated product catalog is product matching.
-	Several studies propose methods for product matching based on: string matching techniques, genetic programing and machine learning. Hovewer, there are only couple of publicly available gold standards to evalueate these methods. 
-	The first publicly available gold standart is the was presented in [5], where the athors evaluated different product matching aproaches based on a Amazon-AbtBuy dataset with four product attributes: name, desctiption, manufacturer and price. 
-	The gold standard has to main shortcommings: (1) The data are gathered from a subset of the Amazon.com website, making it bias towards the product description  and (2) the authors conclude that in order to perform efficient product matching more product attributes are necesary.    
-	The most recent gold standard is presented in [6]. The dgold standard is based on the product data subset of the <a href="../structureddata/index.html">WDC structured data extraction</a>extracted from several PLDs. 
-	However, the product data in the gold standard contain only 2 product attributes: name and description.     	
+	Several studies propose methods for product matching based on: string matching techniques, genetic programing and machine learning. Hovewer, there are only couple of publicly available gold standards to evalueate these methods.
+	The first publicly available gold standart is the was presented in [5], where the athors evaluated different product matching aproaches based on a Amazon-AbtBuy dataset with four product attributes: name, desctiption, manufacturer and price.
+	The gold standard has to main shortcommings: (1) The data are gathered from a subset of the Amazon.com website, making it bias towards the product description  and (2) the authors conclude that in order to perform efficient product matching more product attributes are necesary.
+	The most recent gold standard is presented in [6]. The dgold standard is based on the product data subset of the <a href="../structureddata/index.html">WDC structured data extraction</a>extracted from several PLDs.
+	However, the product data in the gold standard contain only 2 product attributes: name and description.
     </p>
     <p>
       To overcome above shotcomings we introduce the WDC gold standard for product matching and product featrue extraction, which packages the following artifacts:
@@ -215,7 +218,7 @@ hr {
     <hr/>
     <span id="toc4"></span>
     <h2>4. Gold Standard for Product Matching</h2>
-	
+
 	<h3>Product Catalog</h3>
     <p>
       Feature Enrichment: In order to complement the products with features, for each of the 150 products in our product catalog we obtained product-specific features from the manufacturers’ web site or, from shopping service web sites like Google Shopping. We did not extract features from individual vendor web site, like Amazon as we want to focus on product-specific features, rather than on features arising from bundles offered by specific vendors.
@@ -389,9 +392,9 @@ hr {
         </ol></td><td><a target="_blank" href="files/ProductCatalog/TVCatalog.json">TVCatalog.json</a>(38kb)</td>
       </tr>
     </table>
-	
+
 	<h3>Correspondences</h3>
-	
+
     <p>
       We manually generated 1 500 positive correspondences, 500 for each product category.
       For each product of the product catalog at least one positive corre- spondence is included.
@@ -666,8 +669,8 @@ hr {
 	<li>Bag-of-Words (BOW): Keeping all tokens from the preprocessing</li>
 	<li>Dictionary method (See the featrue extraction baseline)</li>
    </ul>
-   
-   
+
+
    <p>
    In order to evaluate the implemented similarity methods we measure precision, recall and F1 measure. For this
    we need to first define a threshold. The threshold selection is done by brute-force search for the best F1 score result
@@ -700,7 +703,7 @@ hr {
    <span id="toc7"></span>
    <h2>7. References</h2>
    <ol>
-   	<li>Petar Petrovski, Anna Primpeli, Robert Meusel, Christian Bizer: <a href="">Product Data Corpus and Gold Standard for Product Feature Extraction and Matching</a>. <a href="http://www.dexa.org/ecweb2016">17th International Conference on Electronic Commerce and Web Technologies</a>, Porto, Portugal, September 2016. (To Appear)</li>
+   	<li>Petar Petrovski, Anna Primpeli, Robert Meusel, Christian Bizer: <a href="paper/WDC-ECCatalog.pdf">Product Data Corpus and Gold Standard for Product Feature Extraction and Matching</a>. <a href="http://www.dexa.org/ecweb2016">17th International Conference on Electronic Commerce and Web Technologies</a>, Porto, Portugal, September 2016. (To Appear)</li>
     <li>Robert Meusel, Anna Primpeli, Christian Meilicke, Heiko Paulheim, Christian Bizer: <a href="">Exploiting Microdata Annotations to Consistently Categorize Product Offers at Web Scale. <a href="http://www.dexa.org/ecweb2015">16th International Conference on Electronic Commerce and Web Technologies</a></li>
    	<li>Disheng Qiu, Luciano Barbosa, Xin Luna Dong, Yanyan Shen, Divesh Srivastava: <a href="http://www.vldb.org/pvldb/vol8/p2194-qiu.pdf" target="_blank">DEXTER: Large-Scale Discovery and Extraction of Product Specifications on the Web</a>, Proceedings of the VLDB Endowment, Vol. 8, No. 13, 2015.</li>
    	<li>Hanna Köpcke, Andreas Thor, Stefan Thomas, Erhard Rahm: <a href="http://dbs.uni-leipzig.de/file/edbt2012_final.pdf" target="_blank"> Tailoring entity resolution for matching product offers</a>. In Proceedings of the 15th Int.Conf. on Extending Database Technology (EDBT), 2012.</li>
