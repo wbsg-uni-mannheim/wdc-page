@@ -1,22 +1,8 @@
 <!DOCTYPE html>
 <html><head><title>GS for Product Matching and Product Extraction</title>
-<link rel="stylesheet" href="http://webdatacommons.org/style.css" type="text/css" media="screen"/>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-<script type="text/javascript" src="scripts/gcharts.js"></script>
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-<script type="text/javascript" src="../jquery.toc.min.js"></script>
-<script type="text/javascript">
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-30248817-1']);
-  _gaq.push(['_trackPageview']);
 
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-</script>
+<link rel="stylesheet" href="http://webdatacommons.org/style.css" type="text/css" media="screen"/>
 <style>
 .tar {
 text-align: right;
@@ -53,6 +39,22 @@ hr {
     margin: 20px 0; /* This leaves 10px margin on left and right. If only right margin is needed try margin-right: 10px; */
 }
 </style>
+
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript" src="scripts/gcharts.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script type="text/javascript" src="../jquery.toc.min.js"></script>
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-30248817-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
 </head>
 <body>
   <div id="logo" style="text-align:right; background-color: white;">&nbsp;&nbsp;<a href="http://dws.informatik.uni-mannheim.de"><img src="files/images/ma-logo.gif" alt="University of Mannheim - Logo"></a></div>
@@ -138,14 +140,14 @@ hr {
     <span id="toc3"></span>
     <h2>3. Gold Standard for Feature Extraction</h2>
     <p>
-      We labed 4 distinct stuctural units from the HTML pages: (1) Microdata title, (2) Microdata description, (3) HTML tables and (4) HTML lists. The labeled set comprises out of 500 product entities, while the distinct labeled properties are 338 in total. It was created by three different annotators. In order to ensure the validity of the annotaton process, the inter annotator agreement was calculated. Out of 1,500 labeled properties there were found 75 disagreements. Therefore, the inter annotator agreement is estimated to be 95%. The table below shows the distribution of labeled entities per category. Additionally, the files containing the labeled entities are provided per category and in total for further use.
+      We labed 4 distinct stuctural units from the HTML pages: (1) Microdata title, (2) Microdata description, (3) HTML tables and (4) HTML lists. The labeled set comprises out of 500 product entities, while the distinct labeled properties are 338 in total. It was created by three different annotators. In order to ensure the validity of the annotaton process, the inter annotator agreement was calculated. Out of 1,500 labeled properties there were found 75 disagreements. Therefore, the inter annotator agreement is estimated to be 95%. The table below shows the distribution of labeled entities per category. The product entities were labeled as JSON objects for which a documentation of propety meaning and usage is available <a href="files/Labelling/example/json_format.json">here.</a> Additionally, the files containing the labeled entities are provided per category and in total for further use.
     </p>
     <table>
       <tr><th>Category</th><th>#labeled Products</th><th>File with labeled Products</th><tr>
-      <tr><td>Headphones</td><td>124</td><td><a target="_blank" href="files/Labelling/entities/headphones_labelled_entities.txt">headphones_labeled_entities.txt</a>(230kb)</td></tr>
-      <tr><td>Mobile Phones</td><td>212</td><td><a target="_blank" href="files/Labelling/entities/phones_labelled_entities.txt">phones_labeled_entities.txt</a>(603kb)</td></tr>
-      <tr><td>Televisions</td><td>164</td><td><a target="_blank" href="files/Labelling/entities/tvs_labelled_entities.txt">tvs_labeled_entities.txt</a>(291kb)</td></tr>
-      <tr><td>Total</td><td>500</td><td><a target="_blank" href="files/Labelling/entities/all_labelled_entities.txt">all_labeled_entities.txt</a>(1,125kb)</td></tr>
+      <tr><td>Headphones</td><td>124</td><td><a target="_blank" href="files/Labelling/entities/headphones_labelled_entities.json">headphones_labeled_entities.json</a>(230kb)</td></tr>
+      <tr><td>Mobile Phones</td><td>212</td><td><a target="_blank" href="files/Labelling/entities/phones_labelled_entities.json">phones_labeled_entities.json</a>(603kb)</td></tr>
+      <tr><td>Televisions</td><td>164</td><td><a target="_blank" href="files/Labelling/entities/tvs_labelled_entities.json">tvs_labeled_entities.json</a>(291kb)</td></tr>
+      <tr><td>Total</td><td>500</td><td><a target="_blank" href="files/Labelling/entities/all_labelled_entities.json">all_labeled_entities.json</a>(1,125kb)</td></tr>
     </table>
     <h4> General statistics per PLD, Sturctural unit and Totals for each category </h4>
     <hr/>
@@ -227,8 +229,8 @@ hr {
       Figure 1 shows two example pages, which we used to manually extract the features for our product catalog. Figure 1left) depicts the page of Google Shopping and Figure 1right) from the manufacturers’ web site.
     </p>
     <figure>
-      <img src="images/shopping.png" width="500"/>
-      <img src="images/vendor.png" width="500"/>
+      <img src="files/images/shopping.png" width="500"/>
+      <img src="files/images/vendor.png" width="500"/>
       <figcaption>Figure 1: left) Features annotated by Google Shopping and right) Features annotated by the Manufacturer
     </figure>
     <p>The table below shows the scraped attributes per product category.</p>
@@ -273,7 +275,7 @@ hr {
           <li>mpn</li>
           <li>product_gtin</li>
           <li>aditional_features</li>
-        </ol></td><td><a target="_blank" href="files/ProductCatalog/HeadphoneCatalog.json">HeadphoneCatalog.json</a>(22kb)</td>
+        </ol></td><td><a target="_blank" href="http://data.dws.informatik.uni-mannheim.de/productcrawl/product-catalog/HeadphoneCatalog.json">HeadphoneCatalog.json</a>(22kb)</td>
       </tr>
       <tr><th>Mobile Phones</th><td>32</td><td><small><a href='' onclick="document.getElementById('phoneProps').style.display='block';this.style.display='none';return false;">Show Properties for Mobile Phones </a></small>
         <ol id='phoneProps' style='display:none'>
@@ -309,7 +311,7 @@ hr {
           <li>product_code</li>
           <li>product_gtin</li>
           <li>manufacturer</li>
-        </ol></td><td><a target="_blank" href="files/ProductCatalog/PhoneCatalog.json">PhoneCatalog.json</a>(38kb)</td>
+        </ol></td><td><a target="_blank" href="http://data.dws.informatik.uni-mannheim.de/productcrawl/product-catalog/PhoneCatalog.json">PhoneCatalog.json</a>(38kb)</td>
       </tr>
       <tr><th>Televisions</th><td>76</td><td><small><a href='' onclick="document.getElementById('tvProps').style.display='block';this.style.display='none';return false;">Show Properties for Televisions </a></small>
         <ol id='tvProps' style='display:none'>
@@ -389,32 +391,39 @@ hr {
           <li>brand</li>
           <li>mpn</li>
           <li>product_gtin</li>
-        </ol></td><td><a target="_blank" href="files/ProductCatalog/TVCatalog.json">TVCatalog.json</a>(38kb)</td>
+        </ol></td><td><a target="_blank" href="http://data.dws.informatik.uni-mannheim.de/productcrawl/product-catalog/TVCatalog.json">TVCatalog.json</a>(38kb)</td>
       </tr>
     </table>
 
 	<h3>Correspondences</h3>
 
     <p>
-      We manually generated 1 500 positive correspondences, 500 for each product category.
-      For each product of the product catalog at least one positive corre- spondence is included.
+      We manually generated 1,500 positive correspondences, 500 for each product category (the data are available <a href="http://data.dws.informatik.uni-mannheim.de/productcrawl/product-matching-gold-standard/">here</a>).
+      For each product of the product catalog at least one positive correspondence is included.
       Additionally, to make the matching task more realistic the annotators also annotate closely
       related products to the once in the product catalog like: phone cases,
       TV wall mounts or headphone cables, ear-buds, etc. Furthermore we created additional
       negative correspondences exploiting transitive closure. As all products in the product catalog are distinct,
       we can generate for all product descriptions contained in web pages,
-      where a positive correspon- dence exist to a product in the catalog,
+      where a positive correspondence exist to a product in the catalog,
       for all other products in the catalog a negative correspondence to this product on the web page.
-      Using the two approaches we ended up with 73 500 negative correspondences.
+      Using the two approaches we ended up with 73,500 negative correspondences. The full list of correspondences can be downloaded <a href="http://data.dws.informatik.uni-mannheim.de/productcrawl/product-matching-gold-standard/correspondences/">here</a>.
     </p>
     <p>
       Figure 2 depicts the number of positive correspondences
       which are contained for each product from the three different product categories.
     </p>
     <figure>
-      <img src="images/duplicateDist.png" width="600"/>
+      <img src="files/images/duplicateDist.png" width="600"/>
       <figcaption>Figure 2: Distribution of correspondeces per product category
     </figure>
+	
+	<h3>Pages Downloads</h3>
+	<p>
+		We also provide the pages icluded in the gold standard for <a href="http://data.dws.informatik.uni-mannheim.de/productcrawl/product-matching-gold-standard/pages/">download.</a> Each page is named by the id of each product given in the data.  
+	</p>
+	
+	
     <span id="toc5"></span>
     <h2>5. Product Data Corpus</h2>
     <p>
@@ -567,7 +576,7 @@ hr {
 						<li><abbr title='http://schema.org/Review/publisher'>schema.org/Review/publisher</abbr>(517,677 Entities)</li>
 						<li><abbr title='http://data-vocabulary.org/Breadcrumb/title'>data-vocabulary.org/Breadcrumb/title</abbr>(513,253 Entities)</li>
 					</ol></td></tr>
-					<tr><th>Detailed Statistics as Excel file</th><td><a target="_blank" href="files/CorpusStatistics.xlsx">CorpusStatistics.xlsx</a> (40kb)</td></tr>
+					<tr><th>Detailed Statistics as Excel file</th><td><a target="_blank" href="http://data.dws.informatik.uni-mannheim.de/productcrawl/CorpusStatistics.xlsx">CorpusStatistics.xlsx</a> (40kb)</td></tr>
 			</table>
 		</div>
     <span id="toc6"></span>
@@ -667,10 +676,11 @@ hr {
    </p>
    <ul>
 	<li>Bag-of-Words (BOW): Keeping all tokens from the preprocessing</li>
-	<li>Dictionary method (See the featrue extraction baseline)</li>
+	<li><a href="http://data.dws.informatik.uni-mannheim.de/productcrawl/product-matching-gold-standard/extracted-data/dictionary/">Dictionary method</a> (See the featrue extraction baseline)</li>
    </ul>
 
-
+   Additionally, we provide extracted product attributes from specification tables and lists with aligned attribute names to the ones in the product catalog (available for download <a href="http://data.dws.informatik.uni-mannheim.de/productcrawl/product-matching-gold-standard/extracted-data/tables-aligned/">here</a>).
+   
    <p>
    In order to evaluate the implemented similarity methods we measure precision, recall and F1 measure. For this
    we need to first define a threshold. The threshold selection is done by brute-force search for the best F1 score result
@@ -682,21 +692,23 @@ hr {
      Below we show the best results for both the BOW and Dictionary approaches.
      All results are available for download in the respective tables.
    </p>
+   
    <h4>BOW results</h4>
    <table>
    <tr><th>Category</th><th>Precision</th><th>Recall</th><th>F1</th></tr>
    <tr><th>Headphones</th><td>0.622</td><td>0.559</td><td>0.588</td></tr>
    <tr><th>Phones</th><td>0.298</td><td>0.668</td><td>0.412</td></tr>
    <tr><th>TVs</th><td>0.661</td><td>0.474</td><td>0.552</td></tr>
-   <tr><td><a target="_blank" href="files/Bow_Baseline_ALL.xlsx">BOW.xlsx</a>(16kb)</td></tr>
+   <tr><td><a target="_blank" href="http://data.dws.informatik.uni-mannheim.de/productcrawl/baselines/Bow_Baseline_ALL.xlsx">BOW.xlsx</a>(16kb)</td></tr>
    </table>
-   <h4>Dictionary Approach results</h4>
+   
+   <h4>Dictionary results</h4>
    <table>
    <tr><th>Category</th><th>Precision</th><th>Recall</th><th>F1</th></tr>
    <tr><th>Headphones</th><td>0.335</td><td>0.556</td><td>0.418</td></tr>
    <tr><th>Phones</th><td>0.617</td><td>0.612</td><td>0.614</td></tr>
    <tr><th>TVs</th><td>0.578</td><td>0.522</td><td>0.553</td></tr>
-   <tr><td><a target="_blank" href="files/Dictionary.xlsx">Dictionary.xlsx</a>(16kb)</td></tr>
+   <tr><td><a target="_blank" href="http://data.dws.informatik.uni-mannheim.de/productcrawl/baselines/Dictionary.xlsx">Dictionary.xlsx</a>(16kb)</td></tr>
    </table>
 
 

@@ -1058,7 +1058,7 @@ function drawBarPhonesPlds() {
 	var options = {
 		width: 550,
 		height: 400,
-		title: 'HeadPhones - Frequent usage of properties per PLD',
+		title: 'Phones - Frequent usage of properties per PLD',
 		chartArea: {'width': '50%', 'height': '80%'},
 		colors:['blue'],
 		hAxis:{
