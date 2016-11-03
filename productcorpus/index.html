@@ -115,7 +115,7 @@ hr {
 	Several studies propose methods for product matching based on: string matching techniques, genetic programing and machine learning. Hovewer, there are only couple of publicly available gold standards to evalueate these methods.
 	The first publicly available gold standart is the was presented in [5], where the athors evaluated different product matching aproaches based on a Amazon-AbtBuy dataset with four product attributes: name, desctiption, manufacturer and price.
 	The gold standard has to main shortcommings: (1) The data are gathered from a subset of the Amazon.com website, making it bias towards the product description  and (2) the authors conclude that in order to perform efficient product matching more product attributes are necesary.
-	The most recent gold standard is presented in [6]. The dgold standard is based on the product data subset of the <a href="../structureddata/index.html">WDC structured data extraction</a>extracted from several PLDs.
+	The most recent gold standard is presented in [6]. The dgold standard is based on the product data subset of the <a href="../structureddata/index.html">WDC structured data extraction</a> extracted from several PLDs.
 	However, the product data in the gold standard contain only 2 product attributes: name and description.
     </p>
     <p>
@@ -140,16 +140,16 @@ hr {
     <span id="toc3"></span>
     <h2>3. Gold Standard for Feature Extraction</h2>
     <p>
-      We labed 4 distinct stuctural units from the HTML pages: (1) Microdata title, (2) Microdata description, (3) HTML tables and (4) HTML lists. The labeled set comprises out of 500 product entities, while the distinct labeled properties are 338 in total. It was created by three different annotators. In order to ensure the validity of the annotaton process, the inter annotator agreement was calculated. Out of 1,500 labeled properties there were found 75 disagreements. Therefore, the inter annotator agreement is estimated to be 95%. The table below shows the distribution of labeled entities per category. The product entities were labeled as JSON objects for which a documentation of propety meaning and usage is available <a href="files/Labelling/example/json_format.json">here.</a> Additionally, the files containing the labeled entities are provided per category and in total for further use.
+      We labed 4 distinct stuctural units from the HTML pages: (1) Microdata title, (2) Microdata description, (3) HTML tables and (4) HTML lists. The labeled set comprises out of 500 product entities, while the distinct labeled properties are 338 in total. It was created by three different annotators. In order to ensure the validity of the annotaton process, the inter annotator agreement was calculated. Out of 1,500 labeled properties there were found 75 disagreements. Therefore, the inter annotator agreement is estimated to be 95%. The table below shows the distribution of labeled entities per category. The product entities were labeled as JSON objects for which a documentation of propety meaning and usage is available <a href="http://data.dws.informatik.uni-mannheim.de/productcrawl/product-fextraction-gold-standard/README">here.</a> Additionally, the files containing the labeled entities are provided per category and in total for further use.
     </p>
     <table>
       <tr><th>Category</th><th>#labeled Products</th><th>File with labeled Products</th><tr>
-      <tr><td>Headphones</td><td>124</td><td><a target="_blank" href="files/Labelling/entities/headphones_labelled_entities.json">headphones_labeled_entities.json</a>(230kb)</td></tr>
-      <tr><td>Mobile Phones</td><td>212</td><td><a target="_blank" href="files/Labelling/entities/phones_labelled_entities.json">phones_labeled_entities.json</a>(603kb)</td></tr>
-      <tr><td>Televisions</td><td>164</td><td><a target="_blank" href="files/Labelling/entities/tvs_labelled_entities.json">tvs_labeled_entities.json</a>(291kb)</td></tr>
-      <tr><td>Total</td><td>500</td><td><a target="_blank" href="files/Labelling/entities/all_labelled_entities.json">all_labeled_entities.json</a>(1,125kb)</td></tr>
+      <tr><td>Headphones</td><td>124</td><td><a target="_blank" href="http://data.dws.informatik.uni-mannheim.de/productcrawl/product-fextraction-gold-standard/data/headphones_labelled_entities.json">headphones_labeled_entities.json</a>(230kb)</td></tr>
+      <tr><td>Mobile Phones</td><td>212</td><td><a target="_blank" href="http://data.dws.informatik.uni-mannheim.de/productcrawl/product-fextraction-gold-standard/data/phones_labelled_entities.json">phones_labeled_entities.json</a>(603kb)</td></tr>
+      <tr><td>Televisions</td><td>164</td><td><a target="_blank" href="http://data.dws.informatik.uni-mannheim.de/productcrawl/product-fextraction-gold-standard/data/tvs_labelled_entities.json">tvs_labeled_entities.json</a>(291kb)</td></tr>
+      <tr><td>Total</td><td>500</td><td><a target="_blank" href="http://data.dws.informatik.uni-mannheim.de/productcrawl/product-fextraction-gold-standard/data/all_labelled_entities.json">all_labeled_entities.json</a>(1,125kb)</td></tr>
     </table>
-    <h4> General statistics per PLD, Sturctural unit and Totals for each category </h4>
+    <h4> General statistics per PLD, Web Page and Totals for each category </h4>
     <hr/>
     <div id="intro_pld" class="show"> <a id="link_pld" href="">Statistics per PLD are available by clicking here.</a></div>
     <div id="charts_pld" class="no-show">
@@ -167,7 +167,7 @@ hr {
     </div>
     <hr/>
     <div id="intro_structure" class="show">
-      <a id="link_structure" href="">Statistics per structural unit are available by clicking here.</a>
+      <a id="link_structure" href="">Statistics about product attributes withing tables and lists per web page are available by clicking here.</a>
     </div>
     <div id="charts_structure" class="no-show">
 		<a id="colapse_structure" href="">Colapse...</a> <br />
@@ -275,7 +275,7 @@ hr {
           <li>mpn</li>
           <li>product_gtin</li>
           <li>aditional_features</li>
-        </ol></td><td><a target="_blank" href="http://data.dws.informatik.uni-mannheim.de/productcrawl/product-catalog/HeadphoneCatalog.json">HeadphoneCatalog.json</a>(22kb)</td>
+        </ol></td><td><a target="_blank" href="http://data.dws.informatik.uni-mannheim.de/productcrawl/product-matching-gold-standard/product-catalog/HeadphoneCatalog.json">HeadphoneCatalog.json</a>(22kb)</td>
       </tr>
       <tr><th>Mobile Phones</th><td>32</td><td><small><a href='' onclick="document.getElementById('phoneProps').style.display='block';this.style.display='none';return false;">Show Properties for Mobile Phones </a></small>
         <ol id='phoneProps' style='display:none'>
@@ -311,7 +311,7 @@ hr {
           <li>product_code</li>
           <li>product_gtin</li>
           <li>manufacturer</li>
-        </ol></td><td><a target="_blank" href="http://data.dws.informatik.uni-mannheim.de/productcrawl/product-catalog/PhoneCatalog.json">PhoneCatalog.json</a>(38kb)</td>
+        </ol></td><td><a target="_blank" href="http://data.dws.informatik.uni-mannheim.de/productcrawl/product-matching-gold-standard/product-catalog/PhoneCatalog.json">PhoneCatalog.json</a>(38kb)</td>
       </tr>
       <tr><th>Televisions</th><td>76</td><td><small><a href='' onclick="document.getElementById('tvProps').style.display='block';this.style.display='none';return false;">Show Properties for Televisions </a></small>
         <ol id='tvProps' style='display:none'>
@@ -391,7 +391,7 @@ hr {
           <li>brand</li>
           <li>mpn</li>
           <li>product_gtin</li>
-        </ol></td><td><a target="_blank" href="http://data.dws.informatik.uni-mannheim.de/productcrawl/product-catalog/TVCatalog.json">TVCatalog.json</a>(38kb)</td>
+        </ol></td><td><a target="_blank" href="http://data.dws.informatik.uni-mannheim.de/productcrawl/product-matching-gold-standard/product-catalog/TVCatalog.json">TVCatalog.json</a>(38kb)</td>
       </tr>
     </table>
 
