@@ -70,11 +70,9 @@ hr {
   </div>
   <div id="content">
 	   <p>
-		     In order to support the efforts of a growing number of studies evaluating methods
-         tailored for e-commerce and product purposes,
-         we present a publicly accessible product corpus and a gold standard
-         which can be used to train and evaluate methods focusing on Product identity resolution and
-         Product feature extraction.
+       In order to support the evaluation and comparison of product feature extraction and product matching methods,
+       we have manually created two public  gold standards
+       for these tasks. The gold standards comprise of several hundreds products from the categories mobile phones, TVs, and headphones.
 	  </p>
 	  <h2 id="news">News</h2>
 	  <ul>
@@ -110,27 +108,28 @@ hr {
     <span id="toc1"></span>
     <h2>1. About the WDC Gold Standard for Product Matching and Product Featrue Extraction </h2>
     <p>
-    The e-commerce business is still on the rise today and the vast potential of the internet has made it easier for organisations to reach out to consumers, eliminating the barriers of geographical location.
-	Recent initiatives by search engine companies like Google, Yahoo!, Yandex and Microsoft to commercialise integrated product catalogs have made even greater advancements in e-commerce. Specifically, one of the biggest chalenges in building a clean integrated product catalog is product matching.
-	Several studies propose methods for product matching based on: string matching techniques, genetic programing and machine learning. Hovewer, there are only couple of publicly available gold standards to evalueate these methods.
-	The first publicly available gold standart is the was presented in [5], where the athors evaluated different product matching aproaches based on a Amazon-AbtBuy dataset with four product attributes: name, desctiption, manufacturer and price.
-	The gold standard has to main shortcommings: (1) The data are gathered from a subset of the Amazon.com website, making it bias towards the product description  and (2) the authors conclude that in order to perform efficient product matching more product attributes are necesary.
-	The most recent gold standard is presented in [6]. The dgold standard is based on the product data subset of the <a href="../structureddata/index.html">WDC structured data extraction</a> extracted from several PLDs.
-	However, the product data in the gold standard contain only 2 product attributes: name and description.
+      Finding out which e-shops offer a specific product is a central challenge for building integrated product catalogs and comparison shopping  portals.
+      Determining whether two offers refer to the same product  involves extracting a set of features (product attributes) from the web pages containing the offers and comparing these features using a matching  function.
+      The existing gold standards [5, 6] for product matching have two shortcomings:
+      (i) they only contain offers from a small number of e-shops  and thus do not properly cover the heterogeneity that is found on the  Web.
+      (ii) they only provide a small number of generic product attributes  and therefore cannot be used to evaluate whether detailed product attributes have been correctly extracted from textual product descriptions.
     </p>
     <p>
       To overcome above shotcomings we introduce the WDC gold standard for product matching and product featrue extraction, which packages the following artifacts:
       <ul>
         <li>
-          Goldstandard for Product Feature Extraction: containing over 500 deeply annotated product web pages. On each web page the product-specific features are annotated.
+          <strong>Goldstandard for Product Feature Extraction:</strong> containing over 500 deeply annotated product web pages. On each web page the product-specific features are annotated.
         </li>
         <li>
-          Goldstandard for Product Matching: containing over 75,000 correspondences (1,500 positive, and 73,500 negative) between products from the product catalog and products described on web pages.
-        </li>
-        <li>
-          Product Data Corpus: containing over 11.3 million product-related web pages retrieved from various shopping web sites.
+          <strong>Goldstandard for Product Matching:</strong> containing over 75,000 correspondences (1,500 positive, and 73,500 negative) between products from the product catalog and products described on web pages.
         </li>
       </ul>
+    </p>
+    <p>
+      In addition, we also provide a <strong>Product Data Corpus</strong> for public download
+      containing over 13 million product-related web pages retrieved from the same 32 websites.
+      This corpus might be useful as background  knowledge for
+      the semi-supervised training of feature extraction and matching methods.
     </p>
     <span id="toc2"></span>
     <h2>2. Product Selection</h2>
