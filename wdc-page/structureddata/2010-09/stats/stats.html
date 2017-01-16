@@ -16,68 +16,58 @@
 	function drawMaterial1() {
 
         var data2010Plds = google.visualization.arrayToDataTable([
-          ['Annotation type', '#Domains with Triples'],
-          ['html-rdfa',  537820   ],
-          ['html-microdata',   3930   ],
-          ['html-geo',  244838],
-          ['html-mf-hcard', 12502500   ],
-          ['html-mf-hcalendar', 226279  ],		  
-		  ['html-mf-hlisting',  31871  ],
-		  ['html-mf-hresume', 10419   ],
-          ['html-mf-hreview', 216331   ],
-          ['html-mf-species', 3244   ],
-          ['html-mf-hrecipe',  13362  ],
-          ['html-mf-xfn',  5323335  ]
+          ['Annotation type', '#Plds with Triples', { role: 'style' }, { role: 'annotation' }],
+		  ['html-mf-hcard',    12502500  , '#FFD633' , 'mf-hcard : 12,502,500'],
+		  ['html-mf-xfn',    5323335  , '#FFF5DD' , 'mf-xfn : 5,323,335'],	  
+		  ['html-rdfa',     537820 , '#5E8FD8' , 'RDFA : 537,820'],
+		  ['html-geo',  244838, '#29A329', 'geo : 244,838'],	  
+	      ['html-mf-hcalendar', 226279 , '#FFDB4D' , 'mf-hcalendar : 226,279'],
+		  ['html-mf-hreview',    216331 , '#FFEB99' , 'mf-hreview : 216,331'],
+		  ['html-microdata',      3930 , '#D11919', 'Microdata : 3,930'],
+		  ['others', 58896 , '#FFE066' , 'others : 58,896' ]
         ]);
 
 
         var options1 = {
-		  width: 550,
-		  height: 400,			
+		   width: 550,
+		  height: 400,			  
 		  title: 'Domains with Triples',
-		  sliceVisibilityThreshold: 0,
-		  pieSliceTextStyle: {
-            color: 'black',
-          },
+		  is3D: true,	
+		  legend: { position: 'none'},		  
           chartArea: {left:0},
-		  is3D: true, 
- 		colors: ['#5E8FD8', '#D11919', '#29A329',  '#FFCC00', '#FFD633','#FFDB4D', '#FFE066', '#FFE680', '#FFEB99' ,'#FFF0B2', '#FFF5CC']
+		  colors: ['#5E8FD8', '#D11919', '#29A329',  '#FFCC00', '#FFD633','#FFDB4D', '#FFE066', '#FFE680', '#FFEB99' ,'#FFF0B2', '#FFF5CC', '#FFF5DD']		                  		       		       
 			       
 		};
 
-        var material1 = new google.visualization.PieChart(document.getElementById('d2010Plds'));
+        var material1 = new google.visualization.BarChart(document.getElementById('d2010Plds'));
         material1.draw(data2010Plds, options1);
       }
 	  function drawMaterial2() {
 
         var data2010Urls = google.visualization.arrayToDataTable([
-          ['Annotation type', '#Urls with Triples'],
-          ['html-rdfa', 14314036    ],
-          ['html-microdata',  56964    ],
-          ['html-geo', 5051622 ],
-          ['html-mf-hcard',  83583167  ],		  
-          ['html-mf-hcalendar', 2747276],
-		  ['html-mf-hlisting',   1227574 ],
-		  ['html-mf-hresume', 387364   ],
-          ['html-mf-hreview',  2836701  ],
-          ['html-mf-species',  25158  ],
-          ['html-mf-hrecipe', 115345   ],
-          ['html-mf-xfn',37526630    ]
+         ['Annotation type', '#Urls with Triples', { role: 'style' }, { role: 'annotation' }],
+		  ['html-mf-hcard',    83583167  , '#FFD633' , 'mf-hcard : 83,583,167'],
+		  ['html-mf-xfn',    37526630  , '#FFF5DD' , 'mf-xfn : 37,526,630'],	  
+		  ['html-rdfa',     14314036 , '#5E8FD8' , 'RDFA : 14,314,036'],
+		  ['html-geo',  5051622, '#29A329', 'geo : 5,051,622'],	  
+		  ['html-mf-hreview',    2836701 , '#FFEB99' , 'mf-hreview : 2,836,701'],
+	      ['html-mf-hcalendar', 2747276 , '#FFDB4D' , 'mf-hcalendar : 2,747,276'],
+		  ['html-microdata',      56964 , '#D11919', 'Microdata : 56,964'],
+		  ['others', 1755441 , '#FFE066' , 'others : 1,755,441' ]
         ]);
 
         var options2 = {
-		  width: 550,
-		  height: 400,sliceVisibilityThreshold: 0,
-		  pieSliceTextStyle: {
-            color: 'black',
-          },
+		   width: 550,
+		  height: 400,			  
+		  title: 'URLs with Triples',
+		  is3D: true,	
+		  legend: { position: 'none'},		  
           chartArea: {left:0},
-		  is3D: true, 
- 		colors: ['#5E8FD8', '#D11919', '#29A329',  '#FFCC00', '#FFD633','#FFDB4D', '#FFE066', '#FFE680', '#FFEB99' ,'#FFF0B2', '#FFF5CC'],
-		  title: 'URLs with Triples'			       
+		  colors: ['#5E8FD8', '#D11919', '#29A329',  '#FFCC00', '#FFD633','#FFDB4D', '#FFE066', '#FFE680', '#FFEB99' ,'#FFF0B2', '#FFF5CC', '#FFF5DD']		                  		       		             
 		};
 
-        var material2 = new google.visualization.PieChart(document.getElementById('d2010Urls'));
+
+        var material2 = new google.visualization.BarChart(document.getElementById('d2010Urls'));
         material2.draw(data2010Urls, options2);
       }
 	  	  function drawMaterial3() {
@@ -182,10 +172,16 @@ In the following statistics we count every subdomain as a separate domain. In co
 <img src="https://chart.googleapis.com/chart?chtt=Triples&chs=500x300&chds=a&cht=p&chd=t:293542991,1197115,28831795,65727393,3226066019,88146122,12640527,84411951,391911,1228925,1391091386&chl=html-rdfa|html-microdata|html-mf-geo|html-mf-hcalendar|html-mf-hcard|html-mf-hlisting|html-mf-hresume|html-mf-hreview|html-mf-species|html-mf-hrecipe|html-mf-xfn" /><h2>Top Domains by Extracted Triples</h2><br /><ol><li><a href='http://www.twitter.com'>twitter.com</a> (305,521,869 Triples)</li><li><a href='http://www.local.yahoo.com'>local.yahoo.com</a> (70,514,751 Triples)</li><li><a href='http://www.www.linkedin.com'>www.linkedin.com</a> (50,111,943 Triples)</li><li><a href='http://www.www.naymz.com'>www.naymz.com</a> (36,849,468 Triples)</li><li><a href='http://www.dbpedia.org'>dbpedia.org</a> (29,669,424 Triples)</li><li><a href='http://www.es.netlog.com'>es.netlog.com</a> (29,091,899 Triples)</li><li><a href='http://www.shopping.kelkoo.co.uk'>shopping.kelkoo.co.uk</a> (22,471,114 Triples)</li><li><a href='http://www.www.facebook.com'>www.facebook.com</a> (22,408,232 Triples)</li><li><a href='http://www.www.threadless.com'>www.threadless.com</a> (22,257,544 Triples)</li><li><a href='http://www.www.tripadvisor.co.uk'>www.tripadvisor.co.uk</a> (22,162,233 Triples)</li><li><a href='http://www.www.mybloglog.com'>www.mybloglog.com</a> (21,825,532 Triples)</li><li><a href='http://www.www.forrent.com'>www.forrent.com</a> (20,846,552 Triples)</li><li><a href='http://www.it.netlog.com'>it.netlog.com</a> (20,729,138 Triples)</li><li><a href='http://www.nl.tripadvisor.com'>nl.tripadvisor.com</a> (20,273,272 Triples)</li><li><a href='http://www.eventful.com'>eventful.com</a> (19,998,126 Triples)</li><li><a href='http://www.de.local.yahoo.com'>de.local.yahoo.com</a> (17,764,458 Triples)</li><li><a href='http://www.www.tripadvisor.com'>www.tripadvisor.com</a> (17,650,950 Triples)</li><li><a href='http://www.nl.netlog.com'>nl.netlog.com</a> (17,538,439 Triples)</li><li><a href='http://www.bitmunk.com'>bitmunk.com</a> (16,791,481 Triples)</li><li><a href='http://www.en.netlog.com'>en.netlog.com</a> (15,756,500 Triples)</li><li><a href="top_domains_by_extracted_triples.html">More</a></li></ol><br /> 
 !-->
 <div>
+<span style="width:2000px;display:inline-block">
 <span id="d2010Plds" style="float:left"></span>
 <span id="d2010Urls" style="float:left"></span>
+</span>
+<span style="width:2000px;display:inline-block">
+
 <span id="d2010Entities" style="float:left"></span>
 <span id="d2010Triples" style="float:left"></span>
+</span>
+
 </div>
 <h2>Top Domains by URLs with Triples</h2><br /><ol><li><a href='http://www.www.myspace.com'>www.myspace.com</a> (1,586,653 URLs)</li><li><a href='http://www.twitter.com'>twitter.com</a> (834,656 URLs)</li><li><a href='http://www.local.yahoo.com'>local.yahoo.com</a> (798,436 URLs)</li><li><a href='http://www.www.youtube.com'>www.youtube.com</a> (681,046 URLs)</li><li><a href='http://www.www.flickr.com'>www.flickr.com</a> (679,915 URLs)</li><li><a href='http://www.www.slideshare.net'>www.slideshare.net</a> (572,806 URLs)</li><li><a href='http://www.bitmunk.com'>bitmunk.com</a> (518,584 URLs)</li><li><a href='http://www.www.naymz.com'>www.naymz.com</a> (456,555 URLs)</li><li><a href='http://www.eventful.com'>eventful.com</a> (449,609 URLs)</li><li><a href='http://www.upcoming.yahoo.com'>upcoming.yahoo.com</a> (447,862 URLs)</li><li><a href='http://www.dbpedia.org'>dbpedia.org</a> (409,250 URLs)</li><li><a href='http://www.www.threadless.com'>www.threadless.com</a> (392,825 URLs)</li><li><a href='http://www.maps.google.com'>maps.google.com</a> (386,103 URLs)</li><li><a href='http://www.www.backcountry.com'>www.backcountry.com</a> (376,250 URLs)</li><li><a href='http://www.es.netlog.com'>es.netlog.com</a> (376,199 URLs)</li><li><a href='http://www.digg.com'>digg.com</a> (373,790 URLs)</li><li><a href='http://www.www.linkedin.com'>www.linkedin.com</a> (345,838 URLs)</li><li><a href='http://www.www.bookfinder.com'>www.bookfinder.com</a> (345,203 URLs)</li><li><a href='http://www.www.facebook.com'>www.facebook.com</a> (335,008 URLs)</li><li><a href='http://www.www.ncbi.nlm.nih.gov'>www.ncbi.nlm.nih.gov</a> (323,250 URLs)</li><li><a href="top_domains_by_urls_with_triples.html">More</a></li></ol><br /> 
 <p>In the following statistics, the term "Property values" refers to the overall number of properties that describe all typed entities. The term "URL values" refers to the subset of the "Property Values" that have a URL as object. The term "Remote URL Values" refers to the subset of the "URL values" which point at a different websites (meaning that the namespace of the URL differs from the namespace of the described entity). The term "Literal Values" refers to the subset of the "Property values" that are literals and no URLs</p>
