@@ -13,20 +13,17 @@
 	
 	function drawMaterial1() {
 
-        var data2014Plds = google.visualization.arrayToDataTable([
-          ['Annotation type', '#Domains with Triples'],
-          ['html-rdfa',     521806],
-          ['html-microdata',      1100783],
-		  ['html-embedded-jsonld',      596229],
-          ['html-geo',  16263],
-          ['html-mf-hcard',    1095517],		  
-          ['html-mf-hcalendar', 25721],
-		  ['html-mf-hlisting',    2484],
-		  ['html-mf-hresume',    115],
-          ['html-mf-hreview',    11469],
-          ['html-mf-species',    88],
-          ['html-mf-hrecipe',    2862],
-          ['html-mf-xfn',    139426]
+        var data2015Plds = google.visualization.arrayToDataTable([
+          ['Annotation type', '#Domains with Triples', { role: 'style' }, { role: 'annotation' }],
+		  ['html-microdata',      1100783 , '#D11919', 'Microdata : 1,100,783'],
+		  ['html-mf-hcard',    1095517  , '#FFD633' , 'mf-hcard : 1,095,517'],
+		  ['html-embedded-jsonld',  596229, '#29A329', 'JSON-LD : 596,229'],	  
+		  ['html-rdfa',     521806 , '#5E8FD8' , 'RDFA : 521,806'],
+          ['html-mf-xfn',    139426  , '#FFF5DD' , 'mf-xfn : 139,426'],
+          ['html-mf-hcalendar', 25721 , '#FFDB4D' , 'mf-hcalendar : 25,721'],
+          ['html-mf-hreview',    11469 , '#FFEB99' , 'mf-hreview : 11,469'],
+		  ['others', 21812 , '#FFE066' , 'others : 21,812' ]
+		  
         ]);
 
 
@@ -34,57 +31,45 @@
 		  width: 550,
 		  height: 400,			  
 		  title: 'Domains with Triples',
-		  sliceVisibilityThreshold: 0,
-		  is3D: true,
-		  pieSliceTextStyle: {
-            color: 'black',
-          },
+		  is3D: true,	
+		  legend: { position: 'none'},		  
           chartArea: {left:0},
 		  colors: ['#5E8FD8', '#D11919', '#29A329',  '#FFCC00', '#FFD633','#FFDB4D', '#FFE066', '#FFE680', '#FFEB99' ,'#FFF0B2', '#FFF5CC', '#FFF5DD']
-
-			       
 		};
 
-        var material1 = new google.visualization.PieChart(document.getElementById('d2014Plds'));
-        material1.draw(data2014Plds, options1);
+        var material1 = new google.visualization.BarChart(document.getElementById('d2015Plds'));
+        material1.draw(data2015Plds, options1);
       }
 	  function drawMaterial2() {
 
-        var data2014Urls = google.visualization.arrayToDataTable([
-          ['Annotation type', '#Urls with Triples'],
-          ['html-rdfa',     196336975],
-          ['html-microdata',      312229919],
-		  ['html-embedded-jsonld',      35486192],
-          ['html-geo',  3802038],
-          ['html-mf-hcard',    104318715],          
-		  ['html-mf-hcalendar', 3007502],
-		  ['html-mf-hlisting',    135780],
-		  ['html-mf-hresume',    2987],
-          ['html-mf-hreview',    1637792],
-          ['html-mf-species',    21370],
-          ['html-mf-hrecipe',    389108],
-          ['html-mf-xfn',    16159224]
+        var data2015Urls = google.visualization.arrayToDataTable([
+           ['Annotation type', '#Urls with Triples', { role: 'style' }, { role: 'annotation' }],
+		  ['html-microdata',      312229919 , '#D11919', 'Microdata : 312,229,919'],
+		  ['html-rdfa',     196336975 , '#5E8FD8' , 'RDFA : 196,336,975'],
+		  ['html-mf-hcard',    104318715  , '#FFD633' , 'mf-hcard : 104,318,715'],
+		  ['html-embedded-jsonld',  35486192, '#29A329', 'JSON-LD : 35,486,192'],	  
+          ['html-mf-xfn',    16159224  , '#FFF5DD' , 'mf-xfn : 16,159,224'],
+          ['html-mf-hcalendar', 3007502 , '#FFDB4D' , 'mf-hcalendar : 3,007,502'],
+          ['html-mf-hreview',    1637792 , '#FFEB99' , 'mf-hreview : 1,637,792'],
+		  ['others', 4351283 , '#FFE066' , 'others : 4,351,283' ]
         ]);
 
         var options2 = {
 		  width: 550,
-		  height: 400,
+		  height: 400,			  
 		  title: 'URLs with Triples',
-		  sliceVisibilityThreshold: 0,
-		  pieSliceTextStyle: {
-            color: 'black',
-          },
+		  is3D: true,	
+		  legend: { position: 'none'},		  
           chartArea: {left:0},
-		  is3D: true, 
-		  colors: ['#5E8FD8', '#D11919', '#29A329',  '#FFCC00', '#FFD633','#FFDB4D', '#FFE066', '#FFE680', '#FFEB99' ,'#FFF0B2', '#FFF5CC', '#FFF5DD']
+		  colors: ['#5E8FD8', '#D11919', '#29A329',  '#FFCC00', '#FFD633','#FFDB4D', '#FFE066', '#FFE680', '#FFEB99' ,'#FFF0B2', '#FFF5CC', '#FFF5DD']		       
 		};
 
-        var material2 = new google.visualization.PieChart(document.getElementById('d2014Urls'));
-        material2.draw(data2014Urls, options2);
+        var material2 = new google.visualization.BarChart(document.getElementById('d2015Urls'));
+        material2.draw(data2015Urls, options2);
       }
 	  	  function drawMaterial3() {
 
-        var data2014Entities = google.visualization.arrayToDataTable([
+        var data2015Entities = google.visualization.arrayToDataTable([
           ['Annotation type', '#Entities'],
           ['html-rdfa',     405541283],
           ['html-microdata',      2209497281],
@@ -113,12 +98,12 @@
 		  colors: ['#5E8FD8', '#D11919', '#29A329',  '#FFCC00', '#FFD633','#FFDB4D', '#FFE066', '#FFE680', '#FFEB99' ,'#FFF0B2', '#FFF5CC', '#FFF5DD']     
 		};
 
-        var material3 = new google.visualization.PieChart(document.getElementById('d2014Entities'));
-        material3.draw(data2014Entities, options3);
+        var material3 = new google.visualization.PieChart(document.getElementById('d2015Entities'));
+        material3.draw(data2015Entities, options3);
       }
 	  	  function drawMaterial4() {
 		  
-        var data2014Triples = google.visualization.arrayToDataTable([
+        var data2015Triples = google.visualization.arrayToDataTable([
           ['Annotation type', '#Triples'],
           ['html-rdfa',     2566827347],
           ['html-microdata',      9438536906],
@@ -147,8 +132,8 @@
 		  colors: ['#5E8FD8', '#D11919', '#29A329',  '#FFCC00', '#FFD633','#FFDB4D', '#FFE066', '#FFE680', '#FFEB99' ,'#FFF0B2', '#FFF5CC', '#FFF5DD'] 
 		};
 
-        var material4 = new google.visualization.PieChart(document.getElementById('d2014Triples'));
-        material4.draw(data2014Triples, options4);
+        var material4 = new google.visualization.PieChart(document.getElementById('d2015Triples'));
+        material4.draw(data2015Triples, options4);
       }
 	
 	  
@@ -218,10 +203,18 @@ Instructions on how to download the RDFa, Microdata, Embedded JSON-LD and Microf
 </tbody>
 </table>
 <div>
-<span id="d2014Plds" style="float:left"></span>
-<span id="d2014Urls" style="float:left"></span>
-<span id="d2014Entities" style="float:left"></span>
-<span id="d2014Triples" style="float:left"></span>
+<span style="width:2000px;display:inline-block">
+
+<span id="d2015Plds" style="float:left"></span>
+<span id="d2015Urls" style="float:left"></span>
+</span>
+
+<span style="width:2000px;display:inline-block">
+
+<span id="d2015Entities" style="float:left"></span>
+<span id="d2015Triples" style="float:left"></span>
+</span>
+
 </div>
 <br/>
 
