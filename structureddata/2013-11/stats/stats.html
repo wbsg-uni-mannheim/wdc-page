@@ -14,68 +14,58 @@
 	function drawMaterial1() {
 
         var data2013Plds = google.visualization.arrayToDataTable([
-          ['Annotation type', '#Domains with Triples'],
-          ['html-rdfa',     471406],
-          ['html-microdata',      463539],
-          ['html-geo',  23044],
-          ['html-mf-hcard',    995258],		  
-          ['html-mf-hcalendar', 20981],
-		  ['html-mf-hlisting',    2584],
-		  ['html-mf-hresume',    262],
-          ['html-mf-hreview',    12880],
-          ['html-mf-species',    109],
-          ['html-mf-hrecipe',    3530],
-          ['html-mf-xfn',    195663]
+          ['Annotation type', '#Domains with Triples', { role: 'style' }, { role: 'annotation' }],
+		  ['html-mf-hcard',    995258  , '#FFD633' , 'mf-hcard : 995,258'],
+		  ['html-rdfa',     471406 , '#5E8FD8' , 'RDFA : 471,406'],
+		  ['html-microdata',      463539 , '#D11919', 'Microdata : 463,539'],
+          ['html-mf-xfn',    195663  , '#FFF5DD' , 'mf-xfn : 195,663'],
+		  ['html-geo',  23044, '#29A329', 'geo : 23,044'],	  
+          ['html-mf-hcalendar', 20981 , '#FFDB4D' , 'mf-hcalendar : 20,981'],
+          ['html-mf-hreview',    12880 , '#FFEB99' , 'mf-hreview : 12,880'],
+		  ['others', 6485 , '#FFE066' , 'others : 6,485' ]
         ]);
+
 
 
         var options1 = {
 		  width: 550,
-		  height: 400,			
+		  height: 400,			  
 		  title: 'Domains with Triples',
-		  sliceVisibilityThreshold: 0,
-		  pieSliceTextStyle: {
-            color: 'black',
-          },
+		  is3D: true,	
+		  legend: { position: 'none'},		  
           chartArea: {left:0},
-		  is3D: true, 
- 		colors: ['#5E8FD8', '#D11919', '#29A329',  '#FFCC00', '#FFD633','#FFDB4D', '#FFE066', '#FFE680', '#FFEB99' ,'#FFF0B2', '#FFF5CC']
-			       
+		  colors: ['#5E8FD8', '#D11919', '#29A329',  '#FFCC00', '#FFD633','#FFDB4D', '#FFE066', '#FFE680', '#FFEB99' ,'#FFF0B2', '#FFF5CC', '#FFF5DD']		              
 		};
 
-        var material1 = new google.visualization.PieChart(document.getElementById('d2013Plds'));
+
+        var material1 = new google.visualization.BarChart(document.getElementById('d2013Plds'));
         material1.draw(data2013Plds, options1);
       }
 	  function drawMaterial2() {
 
         var data2013Urls = google.visualization.arrayToDataTable([
-          ['Annotation type', '#Urls with Triples'],
-          ['html-rdfa',     296005115],
-          ['html-microdata',      276348609],
-          ['html-geo',  14436467],
-          ['html-mf-hcard',    113402968],
-          ['html-mf-hcalendar', 3683002],		  
-		  ['html-mf-hlisting',    528387],
-		  ['html-mf-hresume',    52675],
-          ['html-mf-hreview',    3504643],
-          ['html-mf-species',    22419],
-          ['html-mf-hrecipe',    814793],
-          ['html-mf-xfn',    18467168]
+          ['Annotation type', '#Urls with Triples', { role: 'style' }, { role: 'annotation' }],
+		  ['html-rdfa',     296005115 , '#5E8FD8' , 'RDFA : 296,005,115'],
+		  ['html-microdata',      276348609 , '#D11919', 'Microdata : 276,348,609'],
+		  ['html-mf-hcard',    113402968  , '#FFD633' , 'mf-hcard : 113,402,968'],
+          ['html-mf-xfn',    18467168  , '#FFF5DD' , 'mf-xfn : 18,467,168'],
+		  ['html-geo',  14436467, '#29A329', 'geo : 14,436,467'],	  
+          ['html-mf-hcalendar', 3683002 , '#FFDB4D' , 'mf-hcalendar : 3,683,002'],
+          ['html-mf-hreview',    3504643 , '#FFEB99' , 'mf-hreview : 3,504,643'],
+		  ['others', 1418274 , '#FFE066' , 'others : 1,418,274' ]
         ]);
 
         var options2 = {
 		  width: 550,
-		  height: 400,sliceVisibilityThreshold: 0,
-		  is3D: true, 
-		  pieSliceTextStyle: {
-            color: 'black',
-          },
+		  height: 400,			  
+		  title: 'URLs with Triples',
+		  is3D: true,	
+		  legend: { position: 'none'},		  
           chartArea: {left:0},
- 		colors: ['#5E8FD8', '#D11919', '#29A329',  '#FFCC00', '#FFD633','#FFDB4D', '#FFE066', '#FFE680', '#FFEB99' ,'#FFF0B2', '#FFF5CC'],
-		  title: 'URLs with Triples'			       
+		  colors: ['#5E8FD8', '#D11919', '#29A329',  '#FFCC00', '#FFD633','#FFDB4D', '#FFE066', '#FFE680', '#FFEB99' ,'#FFF0B2', '#FFF5CC', '#FFF5DD']		               		       
 		};
 
-        var material2 = new google.visualization.PieChart(document.getElementById('d2013Urls'));
+        var material2 = new google.visualization.BarChart(document.getElementById('d2013Urls'));
         material2.draw(data2013Urls, options2);
       }
 	  	  function drawMaterial3() {
@@ -211,10 +201,18 @@ These pages originate from 1.7 million  different pay-level-domains out of the 1
 <img src="https://chart.googleapis.com/chart?chtt=Triples&chs=500x300&chds=a&cht=p&chd=t:2636964693,8795074538,222780517,212675776,4884918863,65494465,231573,145692102,373033,34062142,231573,243046214&chl=html-rdfa|html-microdata|html-mf-geo|html-mf-hcalendar|html-mf-hcard|html-mf-hlisting|html-mf-hresume|html-mf-hreview|html-mf-species|html-mf-hrecipe|html-mf-xfn" />
 !-->
 <div>
+<span style="width:2000px;display:inline-block">
+
 <span id="d2013Plds" style="float:left"></span>
 <span id="d2013Urls" style="float:left"></span>
+</span>
+
+<span style="width:2000px;display:inline-block">
+
 <span id="d2013Entities" style="float:left"></span>
 <span id="d2013Triples" style="float:left"></span>
+</span>
+
 </div>
 <br/>
 <h2>Top Domains by Extracted Triples</h2><br /><ol>
