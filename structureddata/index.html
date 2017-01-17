@@ -23,14 +23,17 @@
 	google.charts.setOnLoadCallback(drawMaterial12);
 	google.charts.setOnLoadCallback(drawMaterial13);
 	google.charts.setOnLoadCallback(drawMaterial14);
-
+	google.charts.setOnLoadCallback(drawMaterial15);
+	google.charts.setOnLoadCallback(drawMaterial16);
 	
 function drawMaterial1() {
       var data = google.visualization.arrayToDataTable([
-        ['Crawl', 'RDFa', 'Microdata', 'hCard'],
-        ['2012', 519379, 140312, 1511855],
-        ['2013', 471406, 463539, 995258],
-        ['2014', 571581, 819990, 1095517],
+        ['Crawl', 'RDFa', 'Microdata', 'hCard', 'JSON-LD'],
+        ['2012', 519379, 140312, 1511855, 0],
+        ['2013', 471406, 463539, 995258, 0],
+        ['2014', 571581, 819990, 1095517, 0],
+		['2015' , 521806 , 1100783 , 1095517 , 596229],
+		['2016', 938830, 2537539 , 1668039 , 2116755]
       ]);
 
       var options = {
@@ -54,10 +57,12 @@ function drawMaterial1() {
 	  }
 	  function drawMaterial2() {
 	  var data2 = google.visualization.arrayToDataTable([
-        ['Crawl', 'RDFa', 'Microdata', 'hCard'],
-        ['2012', 1079175202, 1488063426, 3547824107],
-        ['2013', 2636964693, 8795074538, 4884918863],
-        ['2014', 2566827347, 9438536906, 3850290103],
+        ['Crawl', 'RDFa', 'Microdata', 'hCard' , 'JSON-LD'],
+        ['2012', 1079175202, 1488063426, 3547824107, 0],
+        ['2013', 2636964693, 8795074538, 4884918863, 0],
+        ['2014', 2566827347, 9438536906, 3850290103, 0],
+		['2015', 1598114462, 13224134881, 4238311400, 382896204],
+		['2016', 2216933416, 34637805559, 4600477456, 1880721886]
       ]);
 
       var options2 = {
@@ -85,6 +90,8 @@ function drawMaterial1() {
         ['2012', 56573,183046,49252,9054,19107],
         ['2013', 71590,167544,45542,39561,13813],
         ['2014', 164324,141679,51694,49771,14592],
+		['2015', 181693, 97771, 44609, 63021 , 10138],
+		['2016', 406441, 130211, 81345, 92574, 9009  ]
       ]);
 
       var options3 = {
@@ -112,6 +119,8 @@ function drawMaterial1() {
         ['2012', 9197072,35438354,3709728,52521380,7517484],
         ['2013', 24951292,82882535,31601886,53156451,13199034],
         ['2014', 23429568,65233945,35991377,56755178,9955913],
+		['2015', 17478916, 41891111 , 32176784, 48656773 , 5451804 ],
+		['2016', 24081040, 49108112, 21848027, 175035307,9247359 ]
       ]);
 
       var options4 = {
@@ -137,11 +146,13 @@ function drawMaterial1() {
         ['Crawl', 'schema:PostalAddress', 'schema:Product', 'schema:LocalBusiness', 'schema:Review', 'schema:Rating'],
         ['2012', 19592,16612,16383,2585,7711],
         ['2013', 52446,56388,35264,13137,8360],
-        ['2014', 101086,89608,62191,20124,12187],
+        ['2014', 101086, 89608,62191,20124,12187],
+		['2015' , 143229 , 108387 ,77659 ,28356 , 16356],
+		['2016' , 338058 , 249947,192558 , 55189, 31762]
       ]);
 
       var options5 = {
-	  width: 500,
+	  width: 600,
 	  height: 300,
         chart: {
           title: 'Development of Selected Classes by #PLDs'
@@ -165,10 +176,12 @@ function drawMaterial1() {
         ['2012', 9513985,19386194,5089,3114006,1777255],
         ['2013', 125780525,178334394,76317387,35213270,30887676],
         ['2014', 48804397,288082823,20194229,42561245,39170723],
+		['2015', 78194892 ,252233322 , 77659, 43322033 , 36242603 ],
+		['2016', 291970567, 682850010, 99543802,69789534,  56250927   ]
       ]);
 
       var options6 = {
-	  width: 500,
+	  width: 600,
 	  height: 300,
         chart: {
           title: 'Development of Selected Classes by #Entities'
@@ -188,337 +201,341 @@ function drawMaterial1() {
 	function drawMaterial7() {
 
         var data2014Plds = google.visualization.arrayToDataTable([
-          ['Annotation type', '#Domains with Triples'],
-          ['html-rdfa',     571581],
-          ['html-microdata',      819990],
-          ['html-geo',  20261],
-		  ['html-mf-hcard',    1095517],
-          ['html-mf-hcalendar', 24208],
-		  ['html-mf-hlisting',    3167],
-		  ['html-mf-hresume',    155],
-          ['html-mf-hreview',    13772],
-          ['html-mf-species',    96],
-          ['html-mf-hrecipe',    3476],
-          ['html-mf-xfn',    170202]
+          ['Annotation type', '#Domains with Triples' , { role: 'style' }, { role: 'annotation' }],
+          ['html-mf-hcard',    1095517  , '#FFD633' , 'mf-hcard : 1,095,517'],
+		  ['html-microdata',      819990 , '#D11919', 'Microdata : 819,990'],
+		  ['html-rdfa',     571581 , '#5E8FD8' , 'RDFA :571,581'],
+          ['html-mf-xfn',    170202  , '#FFF5DD' , 'mf-xfn : 170,202'],
+          ['html-mf-hcalendar', 24208 , '#FFDB4D' , 'mf-hcalendar : 24,208'],
+          ['html-geo',  20261, '#29A329', 'geo : 20,261'],	  
+          ['html-mf-hreview',    13772 , '#FFEB99' , 'mf-hreview : 13,772'],
+		  ['others', 6894 , '#FFE066' , 'others : 6,894' ]
         ]);
 
 
         var options7 = {
 		  width: 550,
-		  height: 400,			
+		  height: 400,			  
 		  title: 'Domains with Triples',
-		  sliceVisibilityThreshold: 0,
-		  pieSliceTextStyle: {
-            color: 'black',
-          },
+		  is3D: true,	
+		  legend: { position: 'none'},		  
           chartArea: {left:0},
-		  is3D: true, 
- 		colors: ['#5E8FD8', '#D11919', '#29A329',  '#FFCC00', '#FFD633','#FFDB4D', '#FFE066', '#FFE680', '#FFEB99' ,'#FFF0B2', '#FFF5CC'] 
+		  colors: ['#5E8FD8', '#D11919', '#29A329',  '#FFCC00', '#FFD633','#FFDB4D', '#FFE066', '#FFE680', '#FFEB99' ,'#FFF0B2', '#FFF5CC', '#FFF5DD']
 		};
 
-        var material7 = new google.visualization.PieChart(document.getElementById('d2014Plds'));
+        var material7 = new google.visualization.BarChart(document.getElementById('d2014Plds'));
         material7.draw(data2014Plds, options7);
       }
 	  function drawMaterial8() {
 
         var data2014Urls = google.visualization.arrayToDataTable([
-          ['Annotation type', '#Urls with Triples'],
-          ['html-rdfa',     257251367],
-          ['html-microdata',      292601824],
-          ['html-geo',  4619664],
-		  ['html-mf-hcard',    101606009],
-          ['html-mf-hcalendar', 3496061],
-		  ['html-mf-hlisting',    202889],
-		  ['html-mf-hresume',    16343],
-          ['html-mf-hreview',    2496303],
-          ['html-mf-species',    31444],
-          ['html-mf-hrecipe',    630402],
-          ['html-mf-xfn',    17032646]
+          ['Annotation type', '#Urls with Triples' , { role: 'style' }, { role: 'annotation' }],
+		  ['html-microdata',      292601824 , '#D11919', 'Microdata : 292,601,824'],
+		  ['html-rdfa',     257251367 , '#5E8FD8' , 'RDFA : 257,251,367'],
+		  ['html-mf-hcard',    101606009  , '#FFD633' , 'mf-hcard : 101,606,009'],
+          ['html-mf-xfn',    17032646  , '#FFF5DD' , 'mf-xfn : 17,032,646'],
+		  ['html-geo',  4619664, '#29A329', 'geo : 4,619,664'],	  
+          ['html-mf-hcalendar', 3496061 , '#FFDB4D' , 'mf-hcalendar : 3,496,061'],
+          ['html-mf-hreview',    2496303 , '#FFEB99' , 'mf-hreview : 2,496,303'],
+		  ['others', 881078 , '#FFE066' , 'others : 881,078' ]
+
         ]);
 
         var options8 = {
-		  width: 550,
-		  height: 400,
-		  sliceVisibilityThreshold: 0,
-		  pieSliceTextStyle: {
-            color: 'black',
-          },
+		 width: 550,
+		  height: 400,			  
+		  title: 'URLs with Triples',
+		  is3D: true,	
+		  legend: { position: 'none'},		  
           chartArea: {left:0},
-		  is3D: true, 
- 		colors: ['#5E8FD8', '#D11919', '#29A329',  '#FFCC00', '#FFD633','#FFDB4D', '#FFE066', '#FFE680', '#FFEB99' ,'#FFF0B2', '#FFF5CC'], 
-		  title: 'URLs with Triples'			       
+		  colors: ['#5E8FD8', '#D11919', '#29A329',  '#FFCC00', '#FFD633','#FFDB4D', '#FFE066', '#FFE680', '#FFEB99' ,'#FFF0B2', '#FFF5CC', '#FFF5DD']
 		};
 
-        var material8 = new google.visualization.PieChart(document.getElementById('d2014Urls'));
+        var material8 = new google.visualization.BarChart(document.getElementById('d2014Urls'));
         material8.draw(data2014Urls, options8);
       }
 	  
 	  function drawMaterial71() {
 
         var data2015Plds = google.visualization.arrayToDataTable([
-          ['Annotation type', '#Domains with Triples'],
-          ['html-rdfa',     521806],
-          ['html-microdata',      1100783],
-		  ['html-embedded-jsonld',      596229],
-          ['html-geo',  16263],
-          ['html-mf-hcard',    1095517],		  
-          ['html-mf-hcalendar', 25721],
-		  ['html-mf-hlisting',    2484],
-		  ['html-mf-hresume',    115],
-          ['html-mf-hreview',    11469],
-          ['html-mf-species',    88],
-          ['html-mf-hrecipe',    2862],
-          ['html-mf-xfn',    139426]
+          ['Annotation type', '#Domains with Triples', { role: 'style' }, { role: 'annotation' }],
+		  ['html-microdata',      1100783 , '#D11919', 'Microdata : 1,100,783'],
+		  ['html-mf-hcard',    1095517  , '#FFD633' , 'mf-hcard : 1,095,517'],
+		  ['html-embedded-jsonld',  596229, '#29A329', 'JSON-LD : 596,229'],	  
+		  ['html-rdfa',     521806 , '#5E8FD8' , 'RDFA : 521,806'],
+          ['html-mf-xfn',    139426  , '#FFF5DD' , 'mf-xfn : 139,426'],
+          ['html-mf-hcalendar', 25721 , '#FFDB4D' , 'mf-hcalendar : 25,721'],
+          ['html-mf-hreview',    11469 , '#FFEB99' , 'mf-hreview : 11,469'],
+		  ['others', 21812 , '#FFE066' , 'others : 21,812' ]
+		  
+
         ]);
 
 
         var options71 = {
 		  width: 550,
-		  height: 400,			
+		  height: 400,			  
 		  title: 'Domains with Triples',
-		  sliceVisibilityThreshold: 0,
-		  pieSliceTextStyle: {
-            color: 'black',
-          },
+		  is3D: true,	
+		  legend: { position: 'none'},		  
           chartArea: {left:0},
-		  is3D: true, 
- 		colors: ['#5E8FD8', '#D11919', '#29A329',  '#FFCC00', '#FFD633','#FFDB4D', '#FFE066', '#FFE680', '#FFEB99' ,'#FFF0B2', '#FFF5CC', '#FFF5DD'],
+		  colors: ['#5E8FD8', '#D11919', '#29A329',  '#FFCC00', '#FFD633','#FFDB4D', '#FFE066', '#FFE680', '#FFEB99' ,'#FFF0B2', '#FFF5CC', '#FFF5DD']
 		};
 
-        var material71 = new google.visualization.PieChart(document.getElementById('d2015Plds'));
+        var material71 = new google.visualization.BarChart(document.getElementById('d2015Plds'));
         material71.draw(data2015Plds, options71);
       }
 	  function drawMaterial81() {
 
         var data2015Urls = google.visualization.arrayToDataTable([
-          ['Annotation type', '#Urls with Triples'],
-          ['html-rdfa',     196336975],
-          ['html-microdata',      312229919],
-		  ['html-embedded-jsonld',      35486192],
-          ['html-geo',  3802038],
-          ['html-mf-hcard',    104318715],          
-		  ['html-mf-hcalendar', 3007502],
-		  ['html-mf-hlisting',    135780],
-		  ['html-mf-hresume',    2987],
-          ['html-mf-hreview',    1637792],
-          ['html-mf-species',    21370],
-          ['html-mf-hrecipe',    389108],
-          ['html-mf-xfn',    16159224]
+          ['Annotation type', '#Urls with Triples', { role: 'style' }, { role: 'annotation' }],
+		  ['html-microdata',      312229919 , '#D11919', 'Microdata : 312,229,919'],
+		  ['html-rdfa',     196336975 , '#5E8FD8' , 'RDFA : 196,336,975'],
+		  ['html-mf-hcard',    104318715  , '#FFD633' , 'mf-hcard : 104,318,715'],
+		  ['html-embedded-jsonld',  35486192, '#29A329', 'JSON-LD : 35,486,192'],	  
+          ['html-mf-xfn',    16159224  , '#FFF5DD' , 'mf-xfn : 16,159,224'],
+          ['html-mf-hcalendar', 3007502 , '#FFDB4D' , 'mf-hcalendar : 3,007,502'],
+          ['html-mf-hreview',    1637792 , '#FFEB99' , 'mf-hreview : 1,637,792'],
+		  ['others', 4351283 , '#FFE066' , 'others : 4,351,283' ]
         ]);
 
         var options81 = {
 		  width: 550,
-		  height: 400,
-		  sliceVisibilityThreshold: 0,
-		  pieSliceTextStyle: {
-            color: 'black',
-          },
+		  height: 400,			  
+		  title: 'URLs with Triples',
+		  is3D: true,	
+		  legend: { position: 'none'},		  
           chartArea: {left:0},
-		  is3D: true, 
- 		colors: ['#5E8FD8', '#D11919', '#29A329',  '#FFCC00', '#FFD633','#FFDB4D', '#FFE066', '#FFE680', '#FFEB99' ,'#FFF0B2', '#FFF5CC', '#FFF5DD'], 
-		  title: 'URLs with Triples'			       
+		  colors: ['#5E8FD8', '#D11919', '#29A329',  '#FFCC00', '#FFD633','#FFDB4D', '#FFE066', '#FFE680', '#FFEB99' ,'#FFF0B2', '#FFF5CC', '#FFF5DD']		       
 		};
 
-        var material81 = new google.visualization.PieChart(document.getElementById('d2015Urls'));
+        var material81 = new google.visualization.BarChart(document.getElementById('d2015Urls'));
         material81.draw(data2015Urls, options81);
       }
 	  	  function drawMaterial9() {
 
         var data2013Plds = google.visualization.arrayToDataTable([
-          ['Annotation type', '#Plds with Triples'],
-          ['html-rdfa',     471406],
-          ['html-microdata',      463539],
-          ['html-geo',  23044],
-		  ['html-mf-hcard',    995258],
-          ['html-mf-hcalendar', 20981],
-		  ['html-mf-hlisting',    2584],
-		  ['html-mf-hresume',   262],
-          ['html-mf-hreview',    12880],
-          ['html-mf-species',    109],
-          ['html-mf-hrecipe',    3530],
-          ['html-mf-xfn',    195663]
+          ['Annotation type', '#Domains with Triples', { role: 'style' }, { role: 'annotation' }],
+		  ['html-mf-hcard',    995258  , '#FFD633' , 'mf-hcard : 995,258'],
+		  ['html-rdfa',     471406 , '#5E8FD8' , 'RDFA : 471,406'],
+		  ['html-microdata',      463539 , '#D11919', 'Microdata : 463,539'],
+          ['html-mf-xfn',    195663  , '#FFF5DD' , 'mf-xfn : 195,663'],
+		  ['html-geo',  23044, '#29A329', 'geo : 23,044'],	  
+          ['html-mf-hcalendar', 20981 , '#FFDB4D' , 'mf-hcalendar : 20,981'],
+          ['html-mf-hreview',    12880 , '#FFEB99' , 'mf-hreview : 12,880'],
+		  ['others', 6485 , '#FFE066' , 'others : 6,485' ]
         ]);
 
         var options9 = {
 		  width: 550,
-		  height: 400,
-		  sliceVisibilityThreshold: 0,
-		  pieSliceTextStyle: {
-            color: 'black',
-          },
+		  height: 400,			  
+		  title: 'Domains with Triples',
+		  is3D: true,	
+		  legend: { position: 'none'},		  
           chartArea: {left:0},
-		  is3D: true, 
- 		colors: ['#5E8FD8', '#D11919', '#29A329',  '#FFCC00', '#FFD633','#FFDB4D', '#FFE066', '#FFE680', '#FFEB99' ,'#FFF0B2', '#FFF5CC'], 
-		  title: 'Domains with Triples'			       
+		  colors: ['#5E8FD8', '#D11919', '#29A329',  '#FFCC00', '#FFD633','#FFDB4D', '#FFE066', '#FFE680', '#FFEB99' ,'#FFF0B2', '#FFF5CC', '#FFF5DD']		              
 		};
 
-        var material9 = new google.visualization.PieChart(document.getElementById('n2013Plds'));
+        var material9 = new google.visualization.BarChart(document.getElementById('n2013Plds'));
         material9.draw(data2013Plds, options9);
       }
 	  	  function drawMaterial10() {
 
         var data2013Urls = google.visualization.arrayToDataTable([
-          ['Annotation type', '#Urls with Triples'],
-          ['html-rdfa',     296005115],
-          ['html-microdata',      276348609],
-          ['html-geo',  14436467],
-          ['html-mf-hcard',    113402968],		  
-          ['html-mf-hcalendar', 3683002],
-		  ['html-mf-hlisting',    528387],
-		  ['html-mf-hresume',   52675],
-          ['html-mf-hreview',    3504643],
-          ['html-mf-species',    22419],
-          ['html-mf-hrecipe',    814793],
-          ['html-mf-xfn',    18467168]
+          ['Annotation type', '#Urls with Triples', { role: 'style' }, { role: 'annotation' }],
+		  ['html-rdfa',     296005115 , '#5E8FD8' , 'RDFA : 296,005,115'],
+		  ['html-microdata',      276348609 , '#D11919', 'Microdata : 276,348,609'],
+		  ['html-mf-hcard',    113402968  , '#FFD633' , 'mf-hcard : 113,402,968'],
+          ['html-mf-xfn',    18467168  , '#FFF5DD' , 'mf-xfn : 18,467,168'],
+		  ['html-geo',  14436467, '#29A329', 'geo : 14,436,467'],	  
+          ['html-mf-hcalendar', 3683002 , '#FFDB4D' , 'mf-hcalendar : 3,683,002'],
+          ['html-mf-hreview',    3504643 , '#FFEB99' , 'mf-hreview : 3,504,643'],
+		  ['others', 1418274 , '#FFE066' , 'others : 1,418,274' ]
         ]);
 
         var options10 = {
 		  width: 550,
-		  height: 400,
-		  sliceVisibilityThreshold: 0,
-		  pieSliceTextStyle: {
-            color: 'black',
-          },
+		  height: 400,			  
+		  title: 'URLs with Triples',
+		  is3D: true,	
+		  legend: { position: 'none'},		  
           chartArea: {left:0},
-		  is3D: true, 
- 		colors: ['#5E8FD8', '#D11919', '#29A329',  '#FFCC00', '#FFD633','#FFDB4D', '#FFE066', '#FFE680', '#FFEB99' ,'#FFF0B2', '#FFF5CC'], 
-		  title: 'URLs with Triples'			       
+		  colors: ['#5E8FD8', '#D11919', '#29A329',  '#FFCC00', '#FFD633','#FFDB4D', '#FFE066', '#FFE680', '#FFEB99' ,'#FFF0B2', '#FFF5CC', '#FFF5DD']		                  
 		};
 
-        var material10 = new google.visualization.PieChart(document.getElementById('n2013Urls'));
+        var material10 = new google.visualization.BarChart(document.getElementById('n2013Urls'));
         material10.draw(data2013Urls, options10);
       }
 	  	  function drawMaterial11() {
 
         var data2012Plds = google.visualization.arrayToDataTable([
-          ['Annotation type', '#Plds with Triples'],
-          ['html-rdfa',     519379],
-          ['html-microdata',      140312],
-          ['html-geo',  48415],
-          ['html-mf-hcard',    1511855],		  
-          ['html-mf-hcalendar', 37620],
-		  ['html-mf-hlisting',    4030],
-		  ['html-mf-hresume',   1257],
-          ['html-mf-hreview',    20781],
-          ['html-mf-species',    91],
-          ['html-mf-hrecipe',    3281],
-          ['html-mf-xfn',    490286]
+
+		  ['Annotation type', '#Plds with Triples', { role: 'style' }, { role: 'annotation' }],
+		  ['html-mf-hcard',    1511855  , '#FFD633' , 'mf-hcard : 1,511,855'],
+		  ['html-rdfa',     519379 , '#5E8FD8' , 'RDFA : 519,379'],
+		  ['html-mf-xfn',    490286  , '#FFF5DD' , 'mf-xfn : 490,286'],
+		  ['html-microdata',      140312 , '#D11919', 'Microdata : 140,312'],
+		  ['html-geo',  48415, '#29A329', 'geo : 48,415'],	  
+          ['html-mf-hcalendar', 37620 , '#FFDB4D' , 'mf-hcalendar : 37,620'],
+          ['html-mf-hreview',    20781 , '#FFEB99' , 'mf-hreview : 20,781'],
+		  ['others', 8659 , '#FFE066' , 'others : 8,659' ]
         ]);
 
         var options11 = {
-		  width: 550,
-		  height: 400,
-		  sliceVisibilityThreshold: 0,
-		  pieSliceTextStyle: {
-            color: 'black',
-          },
+		   width: 550,
+		  height: 400,			  
+		  title: 'Domains with Triples',
+		  is3D: true,	
+		  legend: { position: 'none'},		  
           chartArea: {left:0},
-		  is3D: true, 
- 		colors: ['#5E8FD8', '#D11919', '#29A329',  '#FFCC00', '#FFD633','#FFDB4D', '#FFE066', '#FFE680', '#FFEB99' ,'#FFF0B2', '#FFF5CC'], 
-		  title: 'Domains with Triples'			       
+		  colors: ['#5E8FD8', '#D11919', '#29A329',  '#FFCC00', '#FFD633','#FFDB4D', '#FFE066', '#FFE680', '#FFEB99' ,'#FFF0B2', '#FFF5CC', '#FFF5DD']		                  
 		};
 
-        var material11 = new google.visualization.PieChart(document.getElementById('n2012Plds'));
+        var material11 = new google.visualization.BarChart(document.getElementById('n2012Plds'));
         material11.draw(data2012Plds, options11);
       }
 	  	  function drawMaterial12() {
 
         var data2012Urls = google.visualization.arrayToDataTable([
-          ['Annotation type', '#Plds with Triples'],
-          ['html-rdfa',     168654234],
-          ['html-microdata',      97048329],
-          ['html-geo',  6602779],
-          ['html-mf-hcard',    120027602],
-		  ['html-mf-hcalendar', 3745051],
-		  ['html-mf-hlisting',    772402],
-		  ['html-mf-hresume',   39412],
-          ['html-mf-hreview',    4959672],
-          ['html-mf-species',    37186],
-          ['html-mf-hrecipe',    1110712],
-          ['html-mf-xfn',    40123185]
+
+		  ['Annotation type', '#Urls with Triples', { role: 'style' }, { role: 'annotation' }],
+		  ['html-rdfa',     168654234 , '#5E8FD8' , 'RDFA : 168,654,234'],
+		  ['html-mf-hcard',    120027602  , '#FFD633' , 'mf-hcard : 120,027,602'],
+		  ['html-microdata',      97048329 , '#D11919', 'Microdata : 97,048,329'],
+		  ['html-mf-xfn',    40123185  , '#FFF5DD' , 'mf-xfn : 40,123,185'],
+		  ['html-geo',  6602779, '#29A329', 'geo : 6,602,779'],	  
+		  ['html-mf-hreview',    4959672 , '#FFEB99' , 'mf-hreview : 4,959,672'],
+          ['html-mf-hcalendar', 3745051 , '#FFDB4D' , 'mf-hcalendar : 3,745,051'],
+		  ['others', 1959712 , '#FFE066' , 'others : 1,959,712' ]
         ]);
 
         var options12 = {
 		  width: 550,
-		  height: 400,
-		  sliceVisibilityThreshold: 0,
-		  pieSliceTextStyle: {
-            color: 'black',
-          },
+		  height: 400,			  
+		  title: 'URLs with Triples',
+		  is3D: true,	
+		  legend: { position: 'none'},		  
           chartArea: {left:0},
-		  is3D: true, 
- 		colors: ['#5E8FD8', '#D11919', '#29A329',  '#FFCC00', '#FFD633','#FFDB4D', '#FFE066', '#FFE680', '#FFEB99' ,'#FFF0B2', '#FFF5CC'], 
-		  title: 'URLs with Triples'			       
+		  colors: ['#5E8FD8', '#D11919', '#29A329',  '#FFCC00', '#FFD633','#FFDB4D', '#FFE066', '#FFE680', '#FFEB99' ,'#FFF0B2', '#FFF5CC', '#FFF5DD']		                  		       
 		};
 
-        var material12 = new google.visualization.PieChart(document.getElementById('n2012Urls'));
+        var material12 = new google.visualization.BarChart(document.getElementById('n2012Urls'));
         material12.draw(data2012Urls, options12);
       }
 	  	  function drawMaterial13() {
 
         var data2010Plds = google.visualization.arrayToDataTable([
-          ['Annotation type', '#Plds with Triples'],
-          ['html-rdfa',     537820],
-          ['html-microdata',      3930],
-          ['html-geo',  244838],
-          ['html-mf-hcard',    12502500],		  
-          ['html-mf-hcalendar', 226279],
-		  ['html-mf-hlisting',    31871],
-		  ['html-mf-hresume',   10419],
-          ['html-mf-hreview',    216331],
-          ['html-mf-species',    3244],
-          ['html-mf-hrecipe',    13362],
-          ['html-mf-xfn',    5323335]
+
+		  ['Annotation type', '#Plds with Triples', { role: 'style' }, { role: 'annotation' }],
+		  ['html-mf-hcard',    12502500  , '#FFD633' , 'mf-hcard : 12,502,500'],
+		  ['html-mf-xfn',    5323335  , '#FFF5DD' , 'mf-xfn : 5,323,335'],	  
+		  ['html-rdfa',     537820 , '#5E8FD8' , 'RDFA : 537,820'],
+		  ['html-geo',  244838, '#29A329', 'geo : 244,838'],	  
+	      ['html-mf-hcalendar', 226279 , '#FFDB4D' , 'mf-hcalendar : 226,279'],
+		  ['html-mf-hreview',    216331 , '#FFEB99' , 'mf-hreview : 216,331'],
+		  ['html-microdata',      3930 , '#D11919', 'Microdata : 3,930'],
+		  ['others', 58896 , '#FFE066' , 'others : 58,896' ]
         ]);
 
         var options13 = {
-		  width: 550,
-		  height: 400,
-		  sliceVisibilityThreshold: 0,
-		  pieSliceTextStyle: {
-            color: 'black',
-          },
+		 width: 550,
+		  height: 400,			  
+		  title: 'Domains with Triples',
+		  is3D: true,	
+		  legend: { position: 'none'},		  
           chartArea: {left:0},
-		  is3D: true, 
- 		colors: ['#5E8FD8', '#D11919', '#29A329',  '#FFCC00', '#FFD633','#FFDB4D', '#FFE066', '#FFE680', '#FFEB99' ,'#FFF0B2', '#FFF5CC'], 
-		  title: 'Domains with Triples'			       
+		  colors: ['#5E8FD8', '#D11919', '#29A329',  '#FFCC00', '#FFD633','#FFDB4D', '#FFE066', '#FFE680', '#FFEB99' ,'#FFF0B2', '#FFF5CC', '#FFF5DD']		                  		       		       
 		};
 
-        var material13 = new google.visualization.PieChart(document.getElementById('2010Plds'));
+        var material13 = new google.visualization.BarChart(document.getElementById('2010Plds'));
         material13.draw(data2010Plds, options13);
       }
 	  	  function drawMaterial14() {
 
         var data2010Urls = google.visualization.arrayToDataTable([
-          ['Annotation type', '#Urls with Triples'],
-          ['html-rdfa',     14314036],
-          ['html-microdata',      56964],
-          ['html-geo',  5051622],
-          ['html-mf-hcard',    83583167],
-          ['html-mf-hcalendar', 2747276],		  
-		  ['html-mf-hlisting',    1227574],
-		  ['html-mf-hresume',   387364],
-          ['html-mf-hreview',    2836701],
-          ['html-mf-species',    25158],
-          ['html-mf-hrecipe',    115345],
-          ['html-mf-xfn',    37526630]
+
+		  ['Annotation type', '#Urls with Triples', { role: 'style' }, { role: 'annotation' }],
+		  ['html-mf-hcard',    83583167  , '#FFD633' , 'mf-hcard : 83,583,167'],
+		  ['html-mf-xfn',    37526630  , '#FFF5DD' , 'mf-xfn : 37,526,630'],	  
+		  ['html-rdfa',     14314036 , '#5E8FD8' , 'RDFA : 14,314,036'],
+		  ['html-geo',  5051622, '#29A329', 'geo : 5,051,622'],	  
+		  ['html-mf-hreview',    2836701 , '#FFEB99' , 'mf-hreview : 2,836,701'],
+	      ['html-mf-hcalendar', 2747276 , '#FFDB4D' , 'mf-hcalendar : 2,747,276'],
+		  ['html-microdata',      56964 , '#D11919', 'Microdata : 56,964'],
+		  ['others', 1755441 , '#FFE066' , 'others : 1,755,441' ]
         ]);
 
         var options14 = {
-		  width: 550,
-		  height: 400,
-		  sliceVisibilityThreshold: 0,
-		  pieSliceTextStyle: {
-            color: 'black',
-          },
+		   width: 550,
+		  height: 400,			  
+		  title: 'URLs with Triples',
+		  is3D: true,	
+		  legend: { position: 'none'},		  
           chartArea: {left:0},
-		  is3D: true, 
- 		colors: ['#5E8FD8', '#D11919', '#29A329',  '#FFCC00', '#FFD633','#FFDB4D', '#FFE066', '#FFE680', '#FFEB99' ,'#FFF0B2', '#FFF5CC'], 
-		  title: 'URLs with Triples'			       
+		  colors: ['#5E8FD8', '#D11919', '#29A329',  '#FFCC00', '#FFD633','#FFDB4D', '#FFE066', '#FFE680', '#FFEB99' ,'#FFF0B2', '#FFF5CC', '#FFF5DD']		                  		       		             
 		};
 
-        var material14 = new google.visualization.PieChart(document.getElementById('2010Urls'));
+        var material14 = new google.visualization.BarChart(document.getElementById('2010Urls'));
         material14.draw(data2010Urls, options14);
+      }
+	  
+	  function drawMaterial15() {
+
+        var data2016Plds = google.visualization.arrayToDataTable([
+          ['Annotation type', '#Domains with Triples', { role: 'style' }, { role: 'annotation' }],
+		  ['html-microdata',   2537539 , '#D11919', 'Microdata : 2,537,539'  ],
+		  ['html-embedded-jsonld', 2116755 , '#29A329' , 'JSON-LD : 2,116,755' ],
+		  ['html-mf-hcard',  1668039 , '#FFD633' , 'mf-hcard : 1,668,039'   ],		  
+          ['html-rdfa', 938830, '#5E8FD8' , 'RDFA : 938,830'],
+		  ['html-mf-xfn',  195595 , '#FFF5DD' , 'mf-xfn : 195,595' ] ,
+          ['html-mf-hcalendar', 22313 , '#FFDB4D' , 'mf-hcalendar : 22,313'],
+          ['html-mf-hreview',  16984 , '#FFEB99' , 'mf-hreview : 16,984' ],
+		  ['others', 9311, '#FFE066' , 'others : 9,311' ]
+
+        ]);
+
+         var options15 = {
+		  width: 550,
+		  height: 400,			  
+		  title: 'Domains with Triples',
+		  is3D: true,	
+		  legend: { position: 'none'},		  
+          chartArea: {left:0},
+		  colors: ['#5E8FD8', '#D11919', '#29A329',  '#FFCC00', '#FFD633','#FFDB4D', '#FFE066', '#FFE680', '#FFEB99' ,'#FFF0B2', '#FFF5CC', '#FFF5DD']
+
+			       
+		};
+
+        var material15 = new google.visualization.BarChart(document.getElementById('d2016Plds'));
+        material15.draw(data2016Plds, options15);
+      }
+	  function drawMaterial16() {
+
+        var data2016Urls = google.visualization.arrayToDataTable([
+          ['Annotation type', '#Urls with Triples' , { role: 'style' },{ role: 'annotation' }],
+		  ['html-microdata',   901118191 , '#D11919', 'Microdata : 901,118,191'  ],
+		  ['html-rdfa', 311533110, '#5E8FD8' , 'RDFA : 311,533,110'],
+		  ['html-mf-hcard',  159748255 , '#FFD633' , 'mf-hcard : 159,748,255'   ],	
+		  ['html-embedded-jsonld', 111411049 , '#29A329' , 'JSON-LD : 111,411,049' ],		  
+		  ['html-mf-xfn',  24242546 , '#FFF5DD' , 'mf-xfn : 24,242,546' ] ,
+		  ['html-mf-hreview',  4551011 , '#FFEB99' , 'mf-hreview : 4,551,011' ],
+          ['html-mf-hcalendar', 3450075 , '#FFDB4D' , 'mf-hcalendar : 3,450,075'],
+		  ['others', 7454214 ,'#FFE066' , 'others :7,454,214']	 
+        ]);
+
+         var options16 = {
+		  width: 650,
+		  height: 400,			  
+		  title: 'URLs with Triples',
+		  is3D: true,	
+		  legend: { position: 'none'},		  
+          chartArea: {left:0},
+		  colors: ['#5E8FD8', '#D11919', '#29A329',  '#FFCC00', '#FFD633','#FFDB4D', '#FFE066', '#FFE680', '#FFEB99' ,'#FFF0B2', '#FFF5CC', '#FFF5DD']
+		  	       
+		};
+
+        var material16 = new google.visualization.BarChart(document.getElementById('d2016Urls'));
+        material16.draw(data2016Urls, options16);
       }
 </script>
 
@@ -554,7 +571,7 @@ function drawMaterial1() {
 <div id="authors">
 <a href="http://dws.informatik.uni-mannheim.de/en/people/professors/prof-dr-christian-bizer/">Christian Bizer</a><br />
 <a href="http://robert.dwslab.de">Robert Meusel</a><br />
-Anna Primpeli</br>
+<a href="http://dws.informatik.uni-mannheim.de/en/people/researchers/anna-primpeli/">Anna Primpeli</a></br>
 </div>
 
 <div id="content">
@@ -565,6 +582,8 @@ More and more websites have started to embed structured data describing products
 
 <h2 id="news">News</h2>
 <ul>
+<li><strong>2017-01-16: <a href="#results-2016-1">RDFa, Microdata, Microformat, and Embedded JSON-LD</a> data sets extracted from the October 2016 Common Crawl corpus available for download.</strong></li>
+<li><strong>2017-01-16: We have created several <a href="structureddata/2016-10/stats/schema_org_subsets.html">Class-Specific Subsets and statistics of the Schema.org Data contained in the 2016 Microdata Corpus</a> (e.g. schema.org/Product and schema.org/Offer) in order to make it easier to work with the data.</strong></li>
 <li><strong>2016-04-25: <a href="#results-2015-1">RDFa, Microdata, Microformat, and Embedded JSON-LD</a> data sets extracted from the November 2015 Common Crawl corpus available for download.</strong></li>
 <li><strong>2015-06-20: Paper about <a href="http://dws.informatik.uni-mannheim.de/fileadmin/lehrstuehle/ki/pub/Meusel-etal-Schema-org-Adoption-WIMS2015.pdf">A Web-scale Study of the Adoption and Evolution of the schema.org Vocabulary over Time</a> accepted at <a href="http://easyconferences.eu/?portfolio=wims-2015">WIMS2015</a> conference in Limassol, Cyprus.</strong></li>
 <li><strong>2015-04-02: <a href="#results-2014-1">RDFa, Microdata, and Microformat</a>  data sets extracted from the December 2014 Common Crawl corpus available for download.</strong></li>
@@ -587,6 +606,7 @@ More and more websites have started to embed structured data describing products
 
 <p>Up till now, we have extracted all RDFa, Microdata and Microformats data from the following releases of the Common Crawl web corpora:</p>
 <ul>
+  <li><a href="#results-2016-1">October 2016</a></li>
   <li><a href="#results-2015-1">November 2015</a></li>
   <li><a href="#results-2014-1">December 2014</a></li>
   <li><a href="#results-2013-1">November 2013</a></li>
@@ -657,7 +677,34 @@ JSON-LD is a lightweight Linked Data format. It is easy for humans to read and w
 
 <h2 id="results">3. Extraction Results</h2>
 
-<h3 id="results-2015-1">3.1. Extraction Results from the November 2015 Common Crawl Corpus</h3>
+<h3 id="results-2016-1">3.1. Extraction Results from the October 2016 Common Crawl Corpus</h3>
+<p> 
+The October 2016 Common Crawl Corpus is available on <a href="http://aws.amazon.com/s3/">Amazon S3</a> in the bucket <code>aws-publicdatasets</code> under the key prefix <code>/common-crawl/crawl-data/CC-MAIN-2016-44/</code> .
+</p>
+
+<h4>Extraction Statistics</h4>
+<br />
+<table><tbody><tr><th>Crawl Date</th><td>October 2016</td><td></td></tr>
+<tr><th>Total Data</th><td  align="right">56 Terabyte</td> <td>(compressed)</td></tr>
+<tr><th>Parsed HTML URLs</th><td align="right">3,181,199,447</td><td></td></tr>
+<tr><th>URLs with Triples</th><td align="right">1,242,727,852</td><td></td></tr>
+<tr><th>Domains in Crawl</th><td align="right">34,076,469</td><td></td></tr>
+<tr><th>Domains with Triples</th><td align="right">5,638,796</td><td></td></tr>
+<tr><th>Typed Entities</th><td align="right">9,590,731,005</td><td></td></tr>
+<tr><th>Triples</th><td align="right">44,242,655,138</td><td></td></tr>
+</tbody></table>
+
+<span style="width:2000px;display:inline-block">
+<span id="d2016Plds" style="float:left"></span>
+<span id="d2016Urls" style="float:left"></span>
+</span>
+
+<ul style="clear: left">
+<li><a href="2016-10/stats/stats.html">Detailed Statistics for the October 2016 corpus (HTML)</a></li>
+<li><a href="2016-10/stats/how_to_get_the_data.html">Download Instructions for the whole corpus</a></li>
+<li><a href="2016-10/stats/schema_org_subsets.html">Schema.org Class Specific Data-Subsets and Statistics</a></li>
+</ul>
+<h3 id="results-2015-1">3.2. Extraction Results from the November 2015 Common Crawl Corpus</h3>
 <p> 
 The November 2015 Common Crawl Corpus is available on <a href="http://aws.amazon.com/s3/">Amazon S3</a> in the bucket <code>aws-publicdatasets</code> under the key prefix <code>/common-crawl/crawl-data/CC-MAIN-2015-48/</code> .
 </p>
@@ -693,7 +740,7 @@ A interesting discussion about the topic can be found in the <a href="https://pl
 </ul>
 
 
-<h3 id="results-2014-1">3.1. Extraction Results from the December 2014 Common Crawl Corpus</h3>
+<h3 id="results-2014-1">3.3. Extraction Results from the December 2014 Common Crawl Corpus</h3>
 <p> 
 The December 2014 Common Crawl Corpus is available on <a href="http://aws.amazon.com/s3/">Amazon S3</a> in the bucket <code>aws-publicdatasets</code> under the key prefix <code>/common-crawl/crawl-data/CC-MAIN-2014-52/</code> .
 </p>
@@ -727,7 +774,7 @@ The December 2014 Common Crawl Corpus is available on <a href="http://aws.amazon
 <li><a href="2014-12/stats/schema_org_subsets.html">Schema.org Class Specific Data-Subsets and Statistics</a></li>
 </ul>
 
-<h3 id="results-2013-1">3.2. Extraction Results from the November 2013 Common Crawl Corpus</h3>
+<h3 id="results-2013-1">3.4. Extraction Results from the November 2013 Common Crawl Corpus</h3>
 <p> 
 The November 2013 Common Crawl Corpus is available on <a href="http://aws.amazon.com/s3/">Amazon S3</a> in the bucket <code>aws-publicdatasets</code> under the key prefix <code>/common-crawl/crawl-data/CC-MAIN-2013-48/</code> .
 </p>
@@ -761,7 +808,7 @@ The November 2013 Common Crawl Corpus is available on <a href="http://aws.amazon
 <li><a href="2013-11/stats/schema_org_subsets.html">Schema.org Class Specific Data-Subsets and Statistics</a></li>
 </ul>
 
-<h3 id="results-2012-1">3.3. Extraction Results from the August 2012 Common Crawl Corpus</h3>
+<h3 id="results-2012-1">3.5. Extraction Results from the August 2012 Common Crawl Corpus</h3>
 <p> 
 The August 2012 Common Crawl Corpus is available on <a href="http://aws.amazon.com/s3/">Amazon S3</a> in the bucket <code>aws-publicdatasets</code> under the key prefix <code>/common-crawl/parse-output/segment/</code> .
 </p>
@@ -842,20 +889,32 @@ The 2009/2010 Common Crawl Corpus is available on <a href="http://aws.amazon.com
 <p>
 The costs for parsing the 28.9 Terabytes of compressed input data of the 2009/2010 Common Crawl corpus, extracting the RDF data and storing the extracted data on S3 totaled 576 EUR (excluding VAT) in Amazon EC2 fees. We used 100 spot instances of type <code>c1.xlarge</code> for the extraction which altogether required 3,537 machine hours.
 </p>
-<h3 id="trend-2012-2014">3.5. Trends 2012 to 2014</h3>
+<h3 id="trend-2012-2014">3.5. Trends</h3>
 <p>
-In the following, we analyze trends in the deployment of the most widely spread formats as well as in the deployment of selected RDFa and Microdata classes based on the 2012, 2013 and 2014 data sets.
+In the following, we analyze trends in the deployment of the most widely spread formats as well as in the deployment of selected RDFa and Microdata classes based on the 2012, 2013, 2014, 2015 and 2016 data sets.
 </br>
-It is important to mention that the three corresponding CommonCrawl web corpora have different sizes (2 billion to 3 billion HTML pages), cover different amounts of websites (12 million PLDs to 40 million PLDs, selection by â€œimportanceâ€� of PLD) and also only partly overlap in the covered HTML pages. Thus, the following trends must be interpreted with caution.
+It is important to mention that the corresponding CommonCrawl web corpora have different sizes (2 billion to 3 billion HTML pages), cover different amounts of websites (12 million PLDs to 40 million PLDs, selection by importance of PLD) and also only partly overlap in the covered HTML pages. Thus, the following trends must be interpreted with caution.
 </p>
 <h4>Adoption by Format</h4>
 <p>
-The diagram below shows the total number of pay-level domains (PLD) making use of one of the three most widely spread markup formats (RDFa, Microdata and Microformat hCard) within the three crawls. Although it seems the total number of domains using Microformats hCard has decreased, one has to keep in mind, that the first crawl contains 50% more HTML pages than the latter two. For Microdata and especially <code>schema.org</code>, we find an increase in deployment since 2012. The second diagram shows how the amount of triples that we extracted from the crawls for has developed between 2012 and 2014.
+The diagram below shows the total number of pay-level domains (PLD) making use of one of the four most widely spread markup formats (RDFa, Microdata, Microformat hCard and Embedded JSON-LD) within the five crawls. Although it seems the total number of domains using Microformats hCard has decreased till 2015 one has to keep in mind, that the first crawl contains 50% more HTML pages than the latter two while the last crawl is almost double the size. For Microdata and especially <code>schema.org</code>, we find an increase in deployment since 2012. The second diagram shows how the amount of triples that we extracted from the crawls for has developed between 2012 and 2016.
 </p>
 <div>
 <span id="dev_plds" style="width:500px"></span>
 <span id="dev_triple" style="width:500px"></span>
 </div>
+
+<h4>Adoption of Selected Schema.org Classes</h4>
+<p>
+Below, we analyze the development of the adoption of schema.org classes embedded using the Microdata syntax. The two diagrams below show again the deployment of those classes by number of deploying PLDs and number of entities extracted from the crawls. We can see a continuous increase in the number of PLDs adopting the schema.org classes. This is also reflected in the number of entities within the datasets, where the slight decrease of the two classes <code>PostalAddress</code> and <code>LocalBusiness</code> might originate from the characteristics of the third crawl, which contains a similar number of pages as the second crawl, but covers a larger number of PLDs. This has likely resulted in a more shallow coverage of websites that contain schema.org data and thus in a smaller number of extracted entities.
+</p>
+<div>
+<span id="md_pld" style="width:500px"></span>
+<span id="md_triple" style="width:500px"></span>
+</div>
+</p>
+
+
 <h4>Adoption of Selected RDFa Classes</h4>
 <p>
 n the following we report trends in the adoption of selected RDFa classes. The first diagram shows the number of PLDs using each class. The second diagram shows the total number of entities of each class contained in the WDC RDFa data sets. We see that the number of websites deploying the Facebook Open Graph Protocol classes <code>og:article</code> and <code>og:product</code> as well as <code>foaf:Document</code> stays approximately constant. The deployment of <code>og:website</code> and <code>gd:breadcrumb</code> is increasing.
@@ -866,15 +925,7 @@ n the following we report trends in the adoption of selected RDFa classes. The f
 
 <span id="rdf_pld" style="width:500px"></span>
 <span id="rdf_triple" style="width:500px"></span>
-<h4>Adoption of Selected Schema.org Classes</h4>
-<p>
-Below, we analyze the development of the adoption of schema.org classes embedded using the Microdata syntax. The two diagrams below show again the deployment of those classes by number of deploying PLDs and number of entities extracted from the crawls. We can see a continuous increase in the number of PLDs adopting the schema.org classes. This is also reflected in the number of entities within the datasets, where the slight decrease of the two classes <code>PostalAddress</code> and <code>LocalBusiness</code> might originate from the characteristics of the third crawl, which contains a similar number of pages as the second crawl, but covers a larger number of PLDs. This has likely resulted in a more shallow coverage of websites that contain schema.org data and thus in a smaller number of extracted entities.
-</p>
-<div>
-<span id="md_pld" style="width:500px"></span>
-<span id="md_triple" style="width:500px"></span>
-</div>
-</p>
+
 <h2 id="examples">4. Example Data</h2>
 <p>
 For each data format, we provide a small subset of the extracted data below for testing purposes. The data is encoded as <a href="http://sw.deri.org/2008/07/n-quads/">N-Quads</a>, with the forth element used to represent the provenance of each triple (the URL of the page the triple was extracted from). Be advised to use a parser which is able to skip invalid lines, since they could present in the data files.
@@ -882,6 +933,7 @@ For each data format, we provide a small subset of the extracted data below for 
 <ul>
 <li><a href="samples/data/ccrdf.html-rdfa.sample.nq ">html-rdfa</a></li>
 <li><a href="samples/data/ccrdf.html-microdata.sample.nq">html-microdata</a></li>
+<li><a href="samples/data/ccrdf.html-jsonld.sample.nq">html-embedded-jsonld</a></li>
 <li><a href="samples/data/ccrdf.html-mf-hcard.sample.nq">html-mf-hcard</a></li>
 <li><a href="samples/data/ccrdf.html-mf-hcalendar.sample.nq">html-mf-hcalendar</a></li>
 <li><a href="samples/data/ccrdf.html-mf-xfn.sample.nq">html-mf-xfn</a></li>
@@ -943,10 +995,11 @@ Now it is mainly maintained by the <a href="http://dws.informatik.uni-mannheim.d
 	<li>the <a href="http://code.google.com/p/any23/">Any23 project</a> for providing their great library of structured data parsers.</li>
 </ul>
 <p>Web Data Commons is supported by the <a href="http://planet-data.eu">PlanetData</a> and <a href="http://lod2.eu">LOD2</a> research projects.
+<p>The extraction and analysis of the October 2016 corpus was supported by the <a href="https://www.alwr-bw.de/kooperationen/vice/">ViCe</a> research project and the <a href="https://mwk.baden-wuerttemberg.de/de/startseite/">Ministry of Economy, Research and Arts of Baden - Württemberg </a>.
 </p>
 <a href="http://planet-data.eu"><img src="../images/pd.gif" alt="PlanetData Logo"></a>&nbsp;&nbsp;&nbsp;
 <a href="http://lod2.eu"><img src="../images/lod2.gif" alt="LOD2 Logo"></a>
-
+<a href="https://mwk.baden-wuerttemberg.de/de/startseite/"><img src="../images/mwk_bw.png" alt="MWK_BW Logo"></a>
 <h2 id="references">10. References</h2>
 
 <ul>
