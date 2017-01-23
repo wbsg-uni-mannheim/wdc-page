@@ -928,7 +928,7 @@ n the following we report trends in the adoption of selected RDFa classes. The f
 
 <h2 id="examples">4. Example Data</h2>
 <p>
-For each data format, we provide a small subset of the extracted data below for testing purposes. The data is encoded as <a href="http://sw.deri.org/2008/07/n-quads/">N-Quads</a>, with the forth element used to represent the provenance of each triple (the URL of the page the triple was extracted from). Be advised to use a parser which is able to skip invalid lines, since they could present in the data files.
+For each data format, we provide a small subset of the extracted data below for testing purposes. The data is encoded as <a href="https://www.w3.org/TR/n-quads/">N-Quads</a>, with the forth element used to represent the provenance of each triple (the URL of the page the triple was extracted from). Be advised to use a parser which is able to skip invalid lines, since they could present in the data files.
 </p>
 <ul>
 <li><a href="samples/data/ccrdf.html-rdfa.sample.nq ">html-rdfa</a></li>
@@ -945,7 +945,55 @@ For each data format, we provide a small subset of the extracted data below for 
 <li><a href="samples/data/ccrdf.html-mf-species.sample.nq">html-mf-species</a></li>
 </ul>
 
-<h2 id="process">5. Extraction Process</h2>
+
+<h2 id="conversionTool">5. Conversion to other formats</h2>
+<p>
+The provided data is encoded as N-Quads. For the case that some of the potential users of the extracted data wish another format we provide the relevant <a href="https://app.assembla.com/spaces/commondata/subversion/source/HEAD/StructuredDataProfiler/trunk">code</a> for conversion.
+The supported formats are <a href="https://en.wikipedia.org/wiki/Comma-separated_values">Comma-Separated-Values (CSV)</a> and <a href="http://www.json.org/">JSON</a> which can be easily 
+processed using standard tools, such as spreadsheet applications, relational databases or data mining tools.
+
+</p>
+
+<h4>Conversion Process</h4>
+<p>
+The first step of the conversion process is to sort the input .nq file by subject and URL. For this purpose a temporary file containing the sorted entities is created and deleted by the end of the conversion. The size of the
+ temporary file is equal to the size of the input .nq file.
+Next, the retrieved entities are written in the converted file. In the case of the CSV file format, all the distinct predicates are stored during parsing for the header row to be filled. In the case of the JSON file format 
+the entities are transformed from Java objects to JSON ones with the help of the <a href="https://github.com/google/gson">Gson library</a>. The provided tool supports parallel execution on the directory level, meaning that multiple
+ files can be converted simultaneously. In addition, the conversion tool provides <i>density</i> and <i>property value</i> filtering. In the case of density filtering the user can set a density threshold in order to filter uncommon properties. Please note that 
+ in the average case the maximum property density is calculated to be 35%, so a relatively high threshold could lead to empty property value results. In the case of property value filtering, the user can choose if the converted file
+  should keep track of all the multiple values of a certain property belonging to a certain subject or if one value is enough for his/ her purposes. The table below contains the parameters that the user needs to pass while running the conversion tool.
+  
+</br>
+</br>
+<table>
+<tr><th>Parameter Name</th><th>Description</th></tr>
+
+<tr><td>out</td><td>Folder where the outputfile(s) are written to</td></tr>
+<tr><td>in</td><td>Folder where the input is read from</td></tr>
+<tr><td>threads</td><td>Number of threads</td></tr>
+<tr><td>convert</td><td>Indicates which format the converted output will have. Supported formats: JSON, CSV</td></tr>
+<tr><td>density</td><td>Indicates the minimum density of properties which should be included in the output file. Range of Values: 0 - 1</td></tr>
+<tr><td>multiplePropValues</td><td>Indicates if the converted result should contain all property values for a certain property of a subject or if one value per property is enough. Range of Values: [true/false] </td></tr>
+
+</table>
+
+Below you can find an example command which transforms the files found in the input directory to JSON files using 5 threads and density as well as property value filtering.
+<pre><code>java -cp  StatsCreator-0.0.2-SNAPSHOT-jar-with-dependencies.jar org.webdatacommons.structureddata.stats.WDCQuadConverter  -out "output_convert"
+</br>-in "input_convert" -threads 5 -tp "http://www.w3.org/1999/02/22-rdf-syntax-ns#type,http://ogp.me/ns#type,http://opengraphprotocol.org/schema/type" 
+</br>-convert "JSON" -density 0.15 -multiplePropValues true</code></pre>
+</p>
+
+<h4>File Structure</h4>
+<h5>CSV file format</h5>
+Each file starts with three fixed headers [graph, subject, type] followed by the property set of headers. Every line after the header represents one entity. 
+You can find a sample CSV file with the structure of the conversion output <a href="samples/conversion/csv_sample.csv">here</a>.
+
+<h5>JSON file format</h5>
+Each file contains a list of JSON objects with three fixed properties [graph, subject, type] followed by the property set describing the concrete entity. Every JSON object in the file represents one entity. 
+You can find a sample JSON file with the structure of the conversion output <a href="samples/conversion/json_sample.json"  download="json_sample.json">here</a>.
+
+<h2 id="process">6. Extraction Process</h2>
 <p>
 Since the Common Crawl data sets are stored in the <a href="http://aws.amazon.com/s3/">AWS Simple Storage Service (S3)</a>, it made sense to perform the extraction in the <a href="http://aws.amazon.com/ec2/">Amazon cloud (EC2)</a>. The main criteria here is the cost to achieve a certain task. Instead of using the ubiquitous <a href="http://hadoop.apache.org/">Hadoop framework</a>, we found using the <a href="http://aws.amazon.com/sqs/">Simple Queue Service (SQS)</a> for our extraction process increased efficiency. SQS provides a message queue implementation, which we use to co-ordinate the extraction nodes. The Common Crawl dataset is readily partitioned into compressed files of around 100MB each. We add the identifiers of each of these files as messages to the queue. A number of EC2 nodes monitor this queue, and take file identifiers from it. The corresponding file is then downloaded from S3. Using the <a href="https://github.com/commoncrawl/commoncrawl/blob/master/src/org/commoncrawl/util/shared/ArcFileReader.java">ARC file parser</a> from the Common Crawl codebase, the file is split into individual web pages. On each page, we run our RDF extractor based on the <a href="http://code.google.com/p/any23/">Anything To Triples (Any23)</a> library. The resulting RDF triples are then written back to S3 together with the extraction statistics, which are later collected. The advantage of this queue is that messages have to be explicitly marked as processed, which is done after the entire file has been extracted. Should any error occur, the message is requeued after some time and processed again.
 </p>
@@ -964,20 +1012,27 @@ Any23 parses web pages for structured data by building a <a href="http://www.w3.
 <tr><td><a href="http://microformats.org/wiki/species">html-mf-species</a></td><td><code>class\\s*=\\s*(\"|')[^\"']*species</code></td></tr>
 </table>
 
-<h2 id="source">6. Source Code</h2>
+<h2 id="source">7. Source Code</h2>
 <p>
 The source code can be checked out from our <a href="https://www.assembla.com/code/commondata/subversion/nodes/extractor">Subversion repository</a>. Afterwards, create your own configuration by copying <code>src/main/resources/ccrdf.properties.dist</code> to <code>src/main/resources/ccrdf.properties</code>, then fill in your AWS authentication information and bucket names. Compilation is performed using <a href="http://maven.apache.org/">Maven</a>, thus changing into the source root directory and typing <code>mvn install</code> should be sufficient to create a build. In order to run the extractor on more than 10 EC2 nodes, you will have to request an <a href="http://aws.amazon.com/contact-us/ec2-request/">EC2 instance limit increase</a> for your AWS account. More information about running the extractor is provided in the file <code>readme.txt</code> .
 </p>
 
 
-<h2 id="license">7. License</h2>
+<h2 id="license">8. License</h2>
 <p>The Web Data Commons extraction framework can be used under the terms of the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache Software License</a>. </p>
 
-<h2 id="feedback">8. Feedback</h2>
+<h2 id="disclaimer">9. Disclaimer</h2>
+<p>
+It is important to clarify that the provided .NQ files containing the extraction results do not conform completely with the <a href="https://www.w3.org/TR/n-quads/#BNodes">N-Quads specification about blank nodes</a>.
+According to the specification "A fresh RDF blank node is allocated for each unique blank node label in a document. Repeated use of the same blank node label identifies the same RDF blank node.". In the provided results 
+the same blank node identifiers may be given to more that one unique blank node which is due to the parallel extraction execution. Nevertheless, the Web Data Commons extraction results in the form of N-Quads are totally reusable
+ as the unique character of blank nodes can be easily retrieved by combining the blank node identifier with the URL which is the fourth part of the quad.
+</p>
+<h2 id="feedback">10. Feedback</h2>
 <p>Please send questions and feedback to the <a href="http://groups.google.com/group/web-data-commons">Web Data Commons mailing list</a> or post them in our <a href="https://groups.google.com/forum/?fromgroups#!forum/web-data-commons">Web Data Commons Google Group</a>.<br/><br/>
 More information about Web Data Commons is found <a href="../index.html">here</a>.</p>
 
-<h2 id="acknowledgments">9. Credits</h2>
+<h2 id="acknowledgments">11. Credits</h2>
 <p>Web Data Commons has started as a joint effort of the <a href="http://www.fu-berlin.de/"> Freie Univerist&auml;t Berlin</a> and the <a href="http://www.aifb.kit.edu">Institute AIFB</a> at the Karlsruhe Institute of Technology in early 2012.
 Now it is mainly maintained by the <a href="http://dws.informatik.uni-mannheim.de/en/research/">Research Group Data and Web Science</a> at the University of Mannheim. 
 </p>
@@ -1000,7 +1055,7 @@ Now it is mainly maintained by the <a href="http://dws.informatik.uni-mannheim.d
 <a href="http://planet-data.eu"><img src="../images/pd.gif" alt="PlanetData Logo"></a>&nbsp;&nbsp;&nbsp;
 <a href="http://lod2.eu"><img src="../images/lod2.gif" alt="LOD2 Logo"></a>
 <a href="https://mwk.baden-wuerttemberg.de/de/startseite/"><img src="../images/mwk.png"  height="130" alt="MWK_BW Logo"></a>
-<h2 id="references">10. References</h2>
+<h2 id="references">12. References</h2>
 
 <ul>
 	<li>Robert Meusel, Christian Bizer, Heiko Paulheim: <a href="http://dws.informatik.uni-mannheim.de/fileadmin/lehrstuehle/ki/pub/Meusel-etal-Schema-org-Adoption-WIMS2015.pdf">A Web-scale Study of the Adoption and Evolution of the schema.org Vocabulary over Time</a>. <a href="http://easyconferences.eu/?portfolio=wims-2015">5th International Conference on Web Intelligence, Mining and Semantics (WIMS2015)</a>, Limassol, Cyprus, July 2015.</li>
