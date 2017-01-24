@@ -7,7 +7,7 @@ h1 { font: 170% sans-serif; margin: 0; }
 h2 { clear: both; font: 140% sans-serif; margin: 1.5em 0 -0.5em 0; }
 h3 { font: 120% sans-serif; margin: 1.5em 0 -0.5em 0; }
 h4 { font: italic 100% sans-serif; margin: 0.9em 0 -0.6em 0; }
-h5 { font: small-caps 100% sans-serif; }
+h5 { font: small-caps 100% sans-serif; margin: 1.5em 0 0.1em 0;}
 pre { background: #fff6bb; font-family: monospace; line-height: 1.2em; padding: 1em 2em; }
 dt { font-weight: bold; margin-top: 0; margin-bottom: 0; }
 dd { margin-top: 0; margin-bottom: 0; }
