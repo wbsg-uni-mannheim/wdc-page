@@ -55,6 +55,58 @@ hr {
     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
   })();
 </script>
+
+
+<script type="application/ld+json">
+{
+  "@context":"http://schema.org/",
+  "@type":"Dataset",
+  "name":"Web Data Commons - Product Corpus",
+  "description":"Generating a Product Data Catalog out of the Web. The crawler was forced to retrieve data from 32 different PLDs which were chosen based on their containment of marked up annotations as well as their traffic rankings as reported by Alexa",
+  "url":"http://webdatacommons.org/productcorpus/index.html",
+  "keywords":[
+     "product corpus"
+  ],
+  "creator":[
+	  {
+		 "@type":"Person",
+		 "url": "http://dws.informatik.uni-mannheim.de/en/people/professors/prof-dr-christian-bizer/",
+		 "name":"Christian Bizer"
+	  },
+	  {
+		 "@type":"Person",
+		 "url": "http://dws.informatik.uni-mannheim.de/en/people/researchers/robert-meusel/",
+		 "name":"Robert Meusel"
+	  },
+	  {
+		 "@type":"Person",
+		 "url": "http://dws.informatik.uni-mannheim.de/en/people/researchers/petar-petrovski/",
+		 "name":"Petar Petrovski"
+	  },
+	  {
+		 "@type":"Person",
+		 "url": "http://dws.informatik.uni-mannheim.de/en/people/researchers/anna-primpeli/",
+		 "name":"Anna Primpeli"
+	  }
+	  
+  ],
+  "distribution":[
+     {
+        "@type":"DataDownload",
+        "fileFormat":[
+			"warc",
+			"n-quads"
+		],
+        "contentUrl":"http://data.dws.informatik.uni-mannheim.de/productcrawl/crawl-data-general/"
+     }
+  ],
+  "citation":[
+	  "Petar Petrovski, Anna Primpeli, Robert Meusel, Christian Bizer: Product Data Corpus and Gold Standard for Product Feature Extraction and Matching. 17th International Conference on Electronic Commerce and Web Technologies, Porto, Portugal, September 2016.",
+	  "Robert Meusel, Anna Primpeli, Christian Meilicke, Heiko Paulheim, Christian Bizer: Exploiting Microdata Annotations to Consistently Categorize Product Offers at Web Scale. 16th International Conference on Electronic Commerce and Web Technologies"
+  ]
+  }
+</script>
+
 </head>
 <body>
   <div id="logo" style="text-align:right; background-color: white;">&nbsp;&nbsp;<a href="http://dws.informatik.uni-mannheim.de"><img src="files/images/ma-logo.gif" alt="University of Mannheim - Logo"></a></div>
