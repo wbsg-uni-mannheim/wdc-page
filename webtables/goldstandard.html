@@ -199,8 +199,17 @@
 <br />
 
 <div id="content">
-<p>
-This page describes the <strong>T2D Gold Standard</strong> for evaluating matching systems on the task of matching Web tables to the DBpedia knowledge base.</p>
+
+<p>This page describes the <strong>T2D Gold Standard</strong> for evaluating matching systems on the task of matching Web tables to the DBpedia knowledge base.</p>
+
+<h2>News</h2>
+<ul>  
+  <li><strong>2017-02-07: </strong>A second version of the T2D gold standard <a href="http://webdatacommons.org/webtables/goldstandardV2.html">T2Dv2</a> has been released.</li>
+  <li><strong>2016-10-15: </strong></strong>Paper about <a href="http://www.wim.uni-mannheim.de/fileadmin/lehrstuehle/ki/pub/Ritze-Bizer-FeatureUtilityStudy.pdf">Matching Web Tables To DBpedia - A Feature Utility Study</a> has been accepted at the <a href="http://edbticdt2017.unive.it/">EDBT'17</a> conference in Venice, Italy.</li>
+  <li><strong>2016-02-01: </strong>Poster about <a href="http://www.wim.uni-mannheim.de/fileadmin/lehrstuehle/ki/pub/Lehmberg-WTCorpus.pdf">A Large Public Corpus of Web Tables containing Time and Context Metadata</a> (<a href="http://www.wim.uni-mannheim.de/fileadmin/lehrstuehle/ki/pub/Lehmberg-WTCorpus-Poster.pdf">poster</a>) has been accepted as poster at the <a href="http://www2016.ca/">WWW'16</a> conference in Montréal, Canada.</li>
+  <li><strong>2015-12-15: </strong>Paper about <a href="http://www.wim.uni-mannheim.de/fileadmin/lehrstuehle/ki/pub/Ritze-etal-ProfilingWebTables.pdf">Profiling the Potential of Web Tables for Augmenting Cross-domain Knowledge Bases</a> has been accepted at the <a href="http://www2016.ca/">WWW'16</a> conference in Montréal, Canada.</li>
+</ul>
+
 <p>Many HTML tables on the Web are used for layout purposes, but a small fraction of all tables contains structured data [<a href="#Cafarella2008">Cafarella2008</a>][<a href="#Crestan2011">Crestan2011</a>]. As  this data has a wide coverage, it could potentially be very valuable for  filling missing values   and extending cross-domain knowledge bases such as <a href="http://wiki.dbpedia.org/">DBpedia</a>, <a href="http://www.mpi-inf.mpg.de/departments/databases-and-information-systems/research/yago-naga/yago/">YAGO</a> or the <a href="http://www.google.com/insidesearch/features/search/knowledge.html">Google Knowledge Graph</a>. As a prerequisite for being able to use  table data for knowledge base extension, the Web tables need to be matched to the knowledge base in question, meaning that correspondences between the rows of the tables and the entities described in the knowledge base as well as between the columns of the tables and the schema of the knowledge base need to be found. </p>
 <p>Different systems have been developed to solve this matching task [<a href="#Venetis2010">Venetis2010</a>][<a href="#Limaye2010">Limaye 2010</a>][<a href="#Ellis2014">Ellis2014</a>][<a href="#Zhang2014">Zhang2014</a>] . Up till now, it was difficult to compare the performance of these systems as they were evaluated using in part non-public Web tables data as well as different knowledge bases. The T2D Gold Standard tries to fill this gap by providing a large set of human-generated correspondences between a public Web table corpus and the DBpedia knowledge base. </p>
 <p>T2D Gold Standard contains schema-level correspondences  between 1748 Web tables from the <a href="http://webdatacommons.org/webtables/englishTables.html">English-language subset</a> of the <a href="http://webdatacommons.org/webtables/">Web Data Commons Web Tables Corpus</a> and <a href="http://wiki.dbpedia.org/Downloads2014">DBpedia Version 2014</a>. For 233 out of these tables, all rows have been manually mapped to entities in the DBpedia knowledge base which resulted in  26,124 entity-level correspondences). All correspondences were generated manually, which resulted in an overall effort of about 6 person weeks.</p>
