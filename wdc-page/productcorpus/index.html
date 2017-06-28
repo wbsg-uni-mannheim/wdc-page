@@ -88,7 +88,7 @@ hr {
 		 "url": "http://dws.informatik.uni-mannheim.de/en/people/researchers/anna-primpeli/",
 		 "name":"Anna Primpeli"
 	  }
-	  
+
   ],
   "distribution":[
      {
@@ -130,7 +130,7 @@ hr {
 	  <ul>
 	  <li>
 		<strong>2017-30-06: Paper about extracting attribute-value pairs from product specifications accepted at at <a href="http://webintelligence2017.com/">WI'17</a> conference in Leipzig, Germany: <a href="paper/attribute_value_pair_extraction_from_specification.pdf" target="_blank"> Extractimg Attribute-Value Pairs from Product Specifications on the Web</a></strong>
-       </li> 
+       </li>
       <li>
 		<strong>2016-01-09: Paper about the gold standards accepted at <a href="http://www.dexa.org/ecweb2016">EC-WEB'16</a> conference in Porto, Portugal: <a href="paper/WDC-EC_GS.pdf" target="_blank"> The WDC Gold Standards for Product Feature Extraction and Product Matching</a></strong>
       </li>
@@ -741,7 +741,7 @@ hr {
 	<li><a href="http://data.dws.informatik.uni-mannheim.de/productcrawl/product-matching-gold-standard/extracted-data/dictionary/">Dictionary method</a> (See the featrue extraction baseline)</li>
    </ul>
 
- 
+
 
    <p>
    In order to evaluate the implemented similarity methods we measure precision, recall and F1 measure. For this
@@ -782,15 +782,15 @@ hr {
    Automatically extracting specifications from HTML pages is not a
 trivial task. Qui et al. have provided an analisys on product specification and concluded that technical specifications can be contained in different
 HTML structures, however they are primarily found in tables
-and lists. 
-Similar to Qui et al., we employ a two step approach: First, we detect
+and lists.
+Similar to Qui et al. [3], we employ a two step approach: First, we detect
 specification tables and list in HTML pages: afterwards, we extract
 attribute-values pairs from the detected product specifications. We
 start by training a model for detection of specification tables and
 lists. Next, we apply that model on the web pages. Subsequently,
 we use a sample of the detected specifications to learn a model
 for column attribute and value detection. Finally, with the learned
-model we extract attribute value pairs from the specifications. 
+model we extract attribute value pairs from the specifications.
 </p>
 <h3>Specification Detection</h3>
 <p>
@@ -801,7 +801,7 @@ fiers for detecting specification tables and lists. The models are
 trained by learning a binary classifier that classifies tables/list into
 specification and non-specification.
 The classifiers use the following features which have also been
-used previously by Qui et al. [21]: Average text length per row, number
+used previously by Qui et al. [3]: Average text length per row, number
 of rows, overall frequency of the word "specification", number
 of links and number of images, standard deviation of text size. In
 addition to these features, we introduce the following new features
@@ -829,7 +829,7 @@ feature sets are used.
     </figure>
 <h3>Specification extraction</h3>
 <p>
-Qui et al. apply straight
+Qui et al. [3] apply straight
 forward heuristics to extract attribute-value pairs from product
 specifications. Specifically, for tables they use a heuristic that, for
 each table row, extracts the first cell as attribute name and the remaining
@@ -852,7 +852,7 @@ consider the common delimiter characters: “:” and “;”. We don’t
 use delimiters like “,”, “-” , “/” and “\” since they might be a part of
 a product identification numbers like MPN. After the conversion
 process is done we are able to train the same model as described
-above. However, like in Qui et al., this approach falls short when the lists
+above. However, like in [3], this approach falls short when the lists
 do not contain any delimiter. Since the percentage of specification
 with out delimiters is less than 8%, we do not pursue a solution of
 this case.
@@ -862,8 +862,9 @@ item, row wise, is considered a pair. The pairing of columns is done
 left to right, that is starting from the most left we pair the first
 attribute and value columns and we continue to the right. In the
 case of consecutive attribute or value columns, we concatenate
-them. Figure 4 shows an example of a table with tagged attribute
-and value columns, where the first and second column constitute
+them. Figure 3 shows an example of a table with tagged attribute
+and value columns, where the first and second column constitute the first attribute-value pairing, while the third and the fourth
+column constitute the second attribute-value pairing.
 </p>
 <figure>
       <img src="files/images/extraction_example.png" width="500"/>
@@ -875,9 +876,9 @@ Details on the methodology and the results are presented in Petrovski and Bizer 
 <p>
 Additionally, we provide the code, models and training data at the following repository: <a href="https://github.com/petrovskip/wstl-extractor">Attribute-Value Pairs Extraction</a>. Moreover, we provide extracted product attributes from specification tables and lists with aligned attribute names to the ones in the product catalog (available for download <a href="http://data.dws.informatik.uni-mannheim.de/productcrawl/product-matching-gold-standard/extracted-data/tables-aligned/">here</a>).
 </p>
-   
+
    <span id="toc8"></span>
-   <h2>7. References</h2>
+   <h2>8. References</h2>
    <ol>
    	<li>Petar Petrovski, Anna Primpeli, Robert Meusel, Christian Bizer: <a href="paper/WDC-ECCatalog.pdf">Product Data Corpus and Gold Standard for Product Feature Extraction and Matching</a>. <a href="http://www.dexa.org/ecweb2016">17th International Conference on Electronic Commerce and Web Technologies</a>, Porto, Portugal, September 2016. (To Appear)</li>
     <li>Robert Meusel, Anna Primpeli, Christian Meilicke, Heiko Paulheim, Christian Bizer: <a href="">Exploiting Microdata Annotations to Consistently Categorize Product Offers at Web Scale. <a href="http://www.dexa.org/ecweb2015">16th International Conference on Electronic Commerce and Web Technologies</a></li>
