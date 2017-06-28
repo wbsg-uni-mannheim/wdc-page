@@ -128,8 +128,11 @@ hr {
 	  </p>
 	  <h2 id="news">News</h2>
 	  <ul>
+	  <li>
+		<strong>2017-30-06: Paper about extracting attribute-value pairs from product specifications accepted at at <a href="http://webintelligence2017.com/">WI'17</a> conference in Leipzig, Germany: <a href="paper/attribute_value_pair_extraction_from_specification.pdf" target="_blank"> Extractimg Attribute-Value Pairs from Product Specifications on the Web</a></strong>
+       </li> 
       <li>
-        <strong>2016-01-09: Paper about the gold standards accepted at <a href="http://www.dexa.org/ecweb2016">EC-WEB'16</a> conference in Porto, Portugal: <a href="paper/WDC-EC_GS.pdf" target="_blank"> The WDC Gold Standards for Product Feature Extraction and Product Matching</a></strong>
+		<strong>2016-01-09: Paper about the gold standards accepted at <a href="http://www.dexa.org/ecweb2016">EC-WEB'16</a> conference in Porto, Portugal: <a href="paper/WDC-EC_GS.pdf" target="_blank"> The WDC Gold Standards for Product Feature Extraction and Product Matching</a></strong>
       </li>
 	  </ul>
 	  <h2>Contents</h2>
@@ -152,8 +155,11 @@ hr {
 		    <li class="toc-h2 toc-active">
 		        <a href="#toc6"> 6.Baselines </a>
 		    </li>
+			<li class="toc-h2 toc-active">
+		        <a href="#toc7"> 7.Extraction of Attribute-Value Pairs from Product Specifications</a>
+		    </li>
 		    <li class="toc-h2 toc-active">
-		        <a href="#toc7"> 7.References </a>
+		        <a href="#toc8"> 8.References </a>
 		    </li>
 	  </ul>
 
@@ -735,7 +741,7 @@ hr {
 	<li><a href="http://data.dws.informatik.uni-mannheim.de/productcrawl/product-matching-gold-standard/extracted-data/dictionary/">Dictionary method</a> (See the featrue extraction baseline)</li>
    </ul>
 
-   Additionally, we provide extracted product attributes from specification tables and lists with aligned attribute names to the ones in the product catalog (available for download <a href="http://data.dws.informatik.uni-mannheim.de/productcrawl/product-matching-gold-standard/extracted-data/tables-aligned/">here</a>).
+ 
 
    <p>
    In order to evaluate the implemented similarity methods we measure precision, recall and F1 measure. For this
@@ -771,6 +777,106 @@ hr {
 
 
    <span id="toc7"></span>
+   <h2>7. Extraction of Attribute-Value Pairs from Product Specifications</h2>
+   <p>
+   Automatically extracting specifications from HTML pages is not a
+trivial task. Qui et al. have provided an analisys on product specification and concluded that technical specifications can be contained in different
+HTML structures, however they are primarily found in tables
+and lists. 
+Similar to Qui et al., we employ a two step approach: First, we detect
+specification tables and list in HTML pages: afterwards, we extract
+attribute-values pairs from the detected product specifications. We
+start by training a model for detection of specification tables and
+lists. Next, we apply that model on the web pages. Subsequently,
+we use a sample of the detected specifications to learn a model
+for column attribute and value detection. Finally, with the learned
+model we extract attribute value pairs from the specifications. 
+</p>
+<h3>Specification Detection</h3>
+<p>
+As stated above product specifications
+are mostly found in tables and list. Considering that HTML tables
+and lists have a different base structure, we train separate classi-
+fiers for detecting specification tables and lists. The models are
+trained by learning a binary classifier that classifies tables/list into
+specification and non-specification.
+The classifiers use the following features which have also been
+used previously by Qui et al. [21]: Average text length per row, number
+of rows, overall frequency of the word "specification", number
+of links and number of images, standard deviation of text size. In
+addition to these features, we introduce the following new features
+in order to improve the detection accuracy: Average DOM node
+depth of the items relative to the root, average number of columns,
+standard deviation of columns, maximum number of columns, number
+of non table/list tags, average ratio between numerical and
+alphabetical characters in a cell, and maximum number of rows.
+In order to illustrate the correlation of these features with the target
+attribute (specification vs. non-specification), the figure below shows
+summary statistics about the evaluation dataset that we use. As it is evident from the figure, there is a clear difference
+between specifications and non-specifications when considering
+these features. For instance, when considering “standard deviation
+of columns”, specification tables hardly deviate from a given layout,
+while non-specification tables deviate form the layout much more.
+Another interesting feature is the “number of non-table\list tags”
+where non-specification structures contain much more tags like
+“&#60;p&#62;, &#60;span&#62;” etc. than the specification ones. With that said, it is
+intuitive that the binary classifier could learn a better model if both
+feature sets are used.
+</p>
+    <figure>
+      <img src="files/images/detection_charts.png" width="500"/>
+      <figcaption>Figure 2: Specification vs. Non-specification table/list features
+    </figure>
+<h3>Specification extraction</h3>
+<p>
+Qui et al. apply straight
+forward heuristics to extract attribute-value pairs from product
+specifications. Specifically, for tables they use a heuristic that, for
+each table row, extracts the first cell as attribute name and the remaining
+ones are extracted as concatenated values. Main limitation
+of this heuristics is that it can not handle tables that have more
+than two attribute name columns. Namely,
+instead yielding a correct result like in Figure 3, this heuristic will
+treat values in the third column as attribute values, which is obviously
+incorrect . To solve this issue we train a model which can
+detect whether a given column is an attribute or a value column.
+Much like the detection model, we train a binary classifier with
+the following features: average text length per cell, average text
+length per column, number of non table tags per column, standard
+deviation of text size per column, ratio between alphabetical and
+numerical characters in a cell.
+Taking into account that lists follow different structure (no
+columns), we convert list items to columns by separating the items
+by a delimiter and organise the separation result into columns. We
+consider the common delimiter characters: “:” and “;”. We don’t
+use delimiters like “,”, “-” , “/” and “\” since they might be a part of
+a product identification numbers like MPN. After the conversion
+process is done we are able to train the same model as described
+above. However, like in Qui et al., this approach falls short when the lists
+do not contain any delimiter. Since the percentage of specification
+with out delimiters is less than 8%, we do not pursue a solution of
+this case.
+After the columns have been classified, we continue with pairing
+attribute with value columns, after which each attribute and value
+item, row wise, is considered a pair. The pairing of columns is done
+left to right, that is starting from the most left we pair the first
+attribute and value columns and we continue to the right. In the
+case of consecutive attribute or value columns, we concatenate
+them. Figure 4 shows an example of a table with tagged attribute
+and value columns, where the first and second column constitute
+</p>
+<figure>
+      <img src="files/images/extraction_example.png" width="500"/>
+      <figcaption>Figure 3: Example of extracted Product Specification Table
+    </figure>
+<p>
+Details on the methodology and the results are presented in Petrovski and Bizer available <a href="paper/attribute_value_pair_extraction_from_specification.pdf">here</a>.
+</p>
+<p>
+Additionally, we provide the code, models and training data at the following repository: <a href="https://github.com/petrovskip/wstl-extractor">Attribute-Value Pairs Extraction</a>. Moreover, we provide extracted product attributes from specification tables and lists with aligned attribute names to the ones in the product catalog (available for download <a href="http://data.dws.informatik.uni-mannheim.de/productcrawl/product-matching-gold-standard/extracted-data/tables-aligned/">here</a>).
+</p>
+   
+   <span id="toc8"></span>
    <h2>7. References</h2>
    <ol>
    	<li>Petar Petrovski, Anna Primpeli, Robert Meusel, Christian Bizer: <a href="paper/WDC-ECCatalog.pdf">Product Data Corpus and Gold Standard for Product Feature Extraction and Matching</a>. <a href="http://www.dexa.org/ecweb2016">17th International Conference on Electronic Commerce and Web Technologies</a>, Porto, Portugal, September 2016. (To Appear)</li>
@@ -778,7 +884,7 @@ hr {
    	<li>Disheng Qiu, Luciano Barbosa, Xin Luna Dong, Yanyan Shen, Divesh Srivastava: <a href="http://www.vldb.org/pvldb/vol8/p2194-qiu.pdf" target="_blank">DEXTER: Large-Scale Discovery and Extraction of Product Specifications on the Web</a>, Proceedings of the VLDB Endowment, Vol. 8, No. 13, 2015.</li>
    	<li>Hanna Köpcke, Andreas Thor, Stefan Thomas, Erhard Rahm: <a href="http://dbs.uni-leipzig.de/file/edbt2012_final.pdf" target="_blank"> Tailoring entity resolution for matching product offers</a>. In Proceedings of the 15th Int.Conf. on Extending Database Technology (EDBT), 2012.</li>
    	<li>Hanna Köpcke, Andreas Thor, Erhard Rahm: <a href="http://dbs.uni-leipzig.de/file/edbt2012_final.pdf" target="_blank"> Evaluation of entity resolution approaches on real-world match problems</a>. Proceedings of the VLDB Endowment, Volume 3 Issue 1-2, September 2010 , 2010.</li>
-	  <li>Petar Ristoski, Peter Mika: <a href="http://ub-madoc.bib.uni-mannheim.de/40893/1/Ristoski%20ESWC%20paper.pdf" target="_blank">Enriching product ads with metadata from html annotations.</a> 13th Extendended Semantic Web Conference</li>
+	 <li>Petar Ristoski, Peter Mika: <a href="http://ub-madoc.bib.uni-mannheim.de/40893/1/Ristoski%20ESWC%20paper.pdf" target="_blank">Enriching product ads with metadata from html annotations.</a> 13th Extendended Semantic Web Conference</li>
    </ol>
     <script type="text/javascript">
     $('#toc').toc({
