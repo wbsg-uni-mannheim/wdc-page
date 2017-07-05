@@ -129,7 +129,7 @@ hr {
 	  <h2 id="news">News</h2>
 	  <ul>
 	  <li>
-		<strong>2017-30-06: Paper about extracting attribute-value pairs from product specifications accepted at at <a href="http://webintelligence2017.com/">WI'17</a> conference in Leipzig, Germany: <a href="paper/attribute_value_pair_extraction_from_specification.pdf" target="_blank"> Extractimg Attribute-Value Pairs from Product Specifications on the Web</a></strong>
+		<strong>2017-30-06: Paper about extracting attribute-value pairs from product specifications accepted at at <a href="http://webintelligence2017.com/">WI'17</a> conference in Leipzig, Germany: <a href="paper/attribute_value_pair_extraction_from_specification.pdf" target="_blank"> Extracting Attribute-Value Pairs from Product Specifications on the Web</a></strong>
        </li>
       <li>
 		<strong>2016-01-09: Paper about the gold standards accepted at <a href="http://www.dexa.org/ecweb2016">EC-WEB'16</a> conference in Porto, Portugal: <a href="paper/WDC-EC_GS.pdf" target="_blank"> The WDC Gold Standards for Product Feature Extraction and Product Matching</a></strong>
@@ -280,10 +280,10 @@ hr {
 
 	<h3>Product Catalog</h3>
     <p>
-      Feature Enrichment: In order to complement the products with features, for each of the 150 products in our product catalog we obtained product-specific features from the manufacturers’ web site or, from shopping service web sites like Google Shopping. We did not extract features from individual vendor web site, like Amazon as we want to focus on product-specific features, rather than on features arising from bundles offered by specific vendors.
+      Feature Enrichment: In order to complement the products with features, for each of the 150 products in our product catalog we obtained product-specific features from the manufacturersâ€™ web site or, from shopping service web sites like Google Shopping. We did not extract features from individual vendor web site, like Amazon as we want to focus on product-specific features, rather than on features arising from bundles offered by specific vendors.
     </p>
     <p>
-      Figure 1 shows two example pages, which we used to manually extract the features for our product catalog. Figure 1left) depicts the page of Google Shopping and Figure 1right) from the manufacturers’ web site.
+      Figure 1 shows two example pages, which we used to manually extract the features for our product catalog. Figure 1left) depicts the page of Google Shopping and Figure 1right) from the manufacturersâ€™ web site.
     </p>
     <figure>
       <img src="files/images/shopping.png" width="500"/>
@@ -706,7 +706,7 @@ hr {
 
    <h4>Parametrization</h4>
    <p>
-   We experiment with 3 different variable parameters. We take all n- grams (n ∈ [1, 2, 3]) and test on them separately. Additionally, we relax to string matching constraints by calculating the Levenshtein distance between potential matches. Lastly, we do maximum and minimum frequency pruning.
+   We experiment with 3 different variable parameters. We take all n- grams (n âˆˆ [1, 2, 3]) and test on them separately. Additionally, we relax to string matching constraints by calculating the Levenshtein distance between potential matches. Lastly, we do maximum and minimum frequency pruning.
    </p>
    <h4>Similarity Methods</h4>
    <p>
@@ -814,12 +814,12 @@ In order to illustrate the correlation of these features with the target
 attribute (specification vs. non-specification), the figure below shows
 summary statistics about the evaluation dataset that we use. As it is evident from the figure, there is a clear difference
 between specifications and non-specifications when considering
-these features. For instance, when considering “standard deviation
-of columns”, specification tables hardly deviate from a given layout,
+these features. For instance, when considering â€œstandard deviation
+of columnsâ€�, specification tables hardly deviate from a given layout,
 while non-specification tables deviate form the layout much more.
-Another interesting feature is the “number of non-table\list tags”
+Another interesting feature is the â€œnumber of non-table\list tagsâ€�
 where non-specification structures contain much more tags like
-“&#60;p&#62;, &#60;span&#62;” etc. than the specification ones. With that said, it is
+â€œ&#60;p&#62;, &#60;span&#62;â€� etc. than the specification ones. With that said, it is
 intuitive that the binary classifier could learn a better model if both
 feature sets are used.
 </p>
@@ -848,8 +848,8 @@ numerical characters in a cell.
 Taking into account that lists follow different structure (no
 columns), we convert list items to columns by separating the items
 by a delimiter and organise the separation result into columns. We
-consider the common delimiter characters: “:” and “;”. We don’t
-use delimiters like “,”, “-” , “/” and “\” since they might be a part of
+consider the common delimiter characters: â€œ:â€� and â€œ;â€�. We donâ€™t
+use delimiters like â€œ,â€�, â€œ-â€� , â€œ/â€� and â€œ\â€� since they might be a part of
 a product identification numbers like MPN. After the conversion
 process is done we are able to train the same model as described
 above. However, like in [3], this approach falls short when the lists
@@ -883,8 +883,8 @@ Additionally, we provide the code, models and training data at the following rep
    	<li>Petar Petrovski, Anna Primpeli, Robert Meusel, Christian Bizer: <a href="paper/WDC-ECCatalog.pdf">Product Data Corpus and Gold Standard for Product Feature Extraction and Matching</a>. <a href="http://www.dexa.org/ecweb2016">17th International Conference on Electronic Commerce and Web Technologies</a>, Porto, Portugal, September 2016. (To Appear)</li>
     <li>Robert Meusel, Anna Primpeli, Christian Meilicke, Heiko Paulheim, Christian Bizer: <a href="">Exploiting Microdata Annotations to Consistently Categorize Product Offers at Web Scale. <a href="http://www.dexa.org/ecweb2015">16th International Conference on Electronic Commerce and Web Technologies</a></li>
    	<li>Disheng Qiu, Luciano Barbosa, Xin Luna Dong, Yanyan Shen, Divesh Srivastava: <a href="http://www.vldb.org/pvldb/vol8/p2194-qiu.pdf" target="_blank">DEXTER: Large-Scale Discovery and Extraction of Product Specifications on the Web</a>, Proceedings of the VLDB Endowment, Vol. 8, No. 13, 2015.</li>
-   	<li>Hanna Köpcke, Andreas Thor, Stefan Thomas, Erhard Rahm: <a href="http://dbs.uni-leipzig.de/file/edbt2012_final.pdf" target="_blank"> Tailoring entity resolution for matching product offers</a>. In Proceedings of the 15th Int.Conf. on Extending Database Technology (EDBT), 2012.</li>
-   	<li>Hanna Köpcke, Andreas Thor, Erhard Rahm: <a href="http://dbs.uni-leipzig.de/file/edbt2012_final.pdf" target="_blank"> Evaluation of entity resolution approaches on real-world match problems</a>. Proceedings of the VLDB Endowment, Volume 3 Issue 1-2, September 2010 , 2010.</li>
+   	<li>Hanna KÃ¶pcke, Andreas Thor, Stefan Thomas, Erhard Rahm: <a href="http://dbs.uni-leipzig.de/file/edbt2012_final.pdf" target="_blank"> Tailoring entity resolution for matching product offers</a>. In Proceedings of the 15th Int.Conf. on Extending Database Technology (EDBT), 2012.</li>
+   	<li>Hanna KÃ¶pcke, Andreas Thor, Erhard Rahm: <a href="http://dbs.uni-leipzig.de/file/edbt2012_final.pdf" target="_blank"> Evaluation of entity resolution approaches on real-world match problems</a>. Proceedings of the VLDB Endowment, Volume 3 Issue 1-2, September 2010 , 2010.</li>
 	 <li>Petar Ristoski, Peter Mika: <a href="http://ub-madoc.bib.uni-mannheim.de/40893/1/Ristoski%20ESWC%20paper.pdf" target="_blank">Enriching product ads with metadata from html annotations.</a> 13th Extendended Semantic Web Conference</li>
    </ol>
     <script type="text/javascript">
