@@ -25,6 +25,8 @@
 	google.charts.setOnLoadCallback(drawMaterial14);
 	google.charts.setOnLoadCallback(drawMaterial15);
 	google.charts.setOnLoadCallback(drawMaterial16);
+	google.charts.setOnLoadCallback(drawMaterial17);
+	google.charts.setOnLoadCallback(drawMaterial18);
 	
 function drawMaterial1() {
       var data = google.visualization.arrayToDataTable([
@@ -33,7 +35,8 @@ function drawMaterial1() {
         ['2013', 471406, 463539, 995258, 0],
         ['2014', 571581, 819990, 1095517, 0],
 		['2015' , 521806 , 1100783 , 1095517 , 596229],
-		['2016', 938830, 2537539 , 1668039 , 2116755]
+		['2016', 938830, 2537539 , 1668039 , 2116755],
+		['2017', 1209430, 3743822, 2758884,  2685738	]
       ]);
 
       var options = {
@@ -62,7 +65,8 @@ function drawMaterial1() {
         ['2013', 2636964693, 8795074538, 4884918863, 0],
         ['2014', 2566827347, 9438536906, 3850290103, 0],
 		['2015', 1598114462, 13224134881, 4238311400, 382896204],
-		['2016', 2216933416, 34637805559, 4600477456, 1880721886]
+		['2016', 2216933416, 34637805559, 4600477456, 1880721886],
+		['2017', 1629581643, 24359443316, 8371745745,  3623025088]
       ]);
 
       var options2 = {
@@ -91,7 +95,8 @@ function drawMaterial1() {
         ['2013', 71590,167544,45542,39561,13813],
         ['2014', 164324,141679,51694,49771,14592],
 		['2015', 181693, 97771, 44609, 63021 , 10138],
-		['2016', 406441, 130211, 81345, 92574, 9009  ]
+		['2016', 406441, 130211, 81345, 92574, 9009  ],
+		['2017', 365470, 105811,85180 ,287356 , 10241  ]
       ]);
 
       var options3 = {
@@ -120,7 +125,8 @@ function drawMaterial1() {
         ['2013', 24951292,82882535,31601886,53156451,13199034],
         ['2014', 23429568,65233945,35991377,56755178,9955913],
 		['2015', 17478916, 41891111 , 32176784, 48656773 , 5451804 ],
-		['2016', 24081040, 49108112, 21848027, 175035307,9247359 ]
+		['2016', 24081040, 49108112, 21848027, 175035307,9247359 ],
+		['2017', 9000298, 14031296, 18171969, 127159418, 2352200 ]
       ]);
 
       var options4 = {
@@ -148,7 +154,8 @@ function drawMaterial1() {
         ['2013', 52446,56388,35264,13137,8360],
         ['2014', 101086, 89608,62191,20124,12187],
 		['2015' , 143229 , 108387 ,77659 ,28356 , 16356],
-		['2016' , 338058 , 249947,192558 , 55189, 31762]
+		['2016' , 338058 , 249947,192558 , 55189, 31762],
+		['2017' , 418807, 581482, 230844, 104576, 77731]
       ]);
 
       var options5 = {
@@ -177,7 +184,8 @@ function drawMaterial1() {
         ['2013', 125780525,178334394,76317387,35213270,30887676],
         ['2014', 48804397,288082823,20194229,42561245,39170723],
 		['2015', 78194892 ,252233322 , 77659, 43322033 , 36242603 ],
-		['2016', 291970567, 682850010, 99543802,69789534,  56250927   ]
+		['2016', 291970567, 682850010, 99543802,69789534,  56250927],
+		['2017', 13713813, 439832806, 66794473, 46319490, 41478065]
       ]);
 
       var options6 = {
@@ -537,6 +545,66 @@ function drawMaterial1() {
         var material16 = new google.visualization.BarChart(document.getElementById('d2016Urls'));
         material16.draw(data2016Urls, options16);
       }
+	  
+	  function drawMaterial17() {
+
+        var data2017Plds = google.visualization.arrayToDataTable([
+          ['Annotation type', '#Domains with Triples' , { role: 'style' }, { role: 'annotation' }],
+          ['html-microdata',  3743822  , '#D11919', 'Microdata : 3,743,822 '  ],
+		  ['html-embedded-jsonld', 2685738  , '#29A329' , 'JSON-LD : 2,685,738' ],
+		  ['html-mf-hcard', 2758884  , '#FFD633' , 'mf-hcard : 2,758,884'   ],		  
+          ['html-rdfa',1209430 , '#5E8FD8' , 'RDFA : 1,209,430 '],
+		  ['html-mf-xfn', 392035  , '#FFF5DD' , 'mf-xfn : 392,035' ] ,
+          ['html-mf-hcalendar', 40257 , '#FFDB4D' , 'mf-hcalendar : 40,257 '],
+          ['html-mf-hreview', 27181  , '#FFEB99' , 'mf-hreview : 27,181' ],
+		  ['others', 244865 , '#FFE066' , 'others : 244,865 ' ]
+        ]);
+
+
+        var options17 = {
+		  width: 550,
+		  height: 400,			  
+		  title: 'Domains with Triples',
+		  sliceVisibilityThreshold: 0,
+		  is3D: true,
+		  legend: {position: 'none'},
+          chartArea: {left:0},
+		  colors: ['#5E8FD8', '#D11919', '#29A329',  '#FFCC00', '#FFD633','#FFDB4D', '#FFE066', '#FFE680', '#FFEB99' ,'#FFF0B2', '#FFF5CC', '#FFF5DD']
+
+			       
+		};
+
+        var material17 = new google.visualization.BarChart(document.getElementById('d2017Plds'));
+        material17.draw(data2017Plds, options17);
+      }
+	  function drawMaterial18() {
+
+        var data2017Urls = google.visualization.arrayToDataTable([
+          ['Annotation type', '#Urls with Triples', { role: 'style' }, { role: 'annotation' }],
+          ['html-microdata',  646409625 , '#D11919', 'Microdata : 646,409,625'  ],
+		  ['html-embedded-jsonld',  190890906  , '#29A329' , 'JSON-LD : 190,890,906' ],
+		    ['html-mf-hcard', 418095860 , '#FFD633' , 'mf-hcard :  418,095,860' ],          
+		  ['html-rdfa', 220889867 , '#5E8FD8' , 'RDFA : 220,889,867'  ],
+          ['html-mf-xfn',  27320114 , '#FFF5DD' , 'mf-xfn : 27,320,114' ],
+		  ['html-mf-hcalendar', 2343185, '#FFDB4D' , 'mf-hcalendar : 2,343,185'],
+          ['html-mf-hreview',  3702554  , '#FFEB99' , 'mf-hreview : 3,702,554'  ],
+		  ['others',  5622284 , '#FFE066' , 'others : 5,622,284' ]
+     
+        ]);
+
+        var options18 = {
+		  width: 550,
+		  height: 400,
+		  title: 'URLs with Triples',
+		  sliceVisibilityThreshold: 0,
+		  is3D: true,
+		  legend: {position: 'none'},
+          chartArea: {left:0}
+		};
+
+        var material18 = new google.visualization.BarChart(document.getElementById('d2017Urls'));
+        material18.draw(data2017Urls, options18);
+      }
 </script>
 
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
@@ -584,6 +652,8 @@ More and more websites have started to embed structured data describing products
 
 <h2 id="news">News</h2>
 <ul>
+<li><strong>2018-01-08: <a href="#results-2017-1">RDFa, Microdata, Microformat, and Embedded JSON-LD</a> data sets extracted from the November 2017 Common Crawl corpus available for download.</strong></li>
+<li><strong>2018-01-08: We have created several <a href="structureddata/2017-12/stats/schema_org_subsets.html">Class-Specific Subsets and statistics of the Schema.org Data contained in the 2017 Microdata Corpus</a> (e.g. schema.org/Product and schema.org/Offer) in order to make it easier to work with the data.</strong></li>
 <li><strong>2017-01-17: <a href="#results-2016-1">RDFa, Microdata, Microformat, and Embedded JSON-LD</a> data sets extracted from the October 2016 Common Crawl corpus available for download.</strong></li>
 <li><strong>2017-01-17: We have created several <a href="structureddata/2016-10/stats/schema_org_subsets.html">Class-Specific Subsets and statistics of the Schema.org Data contained in the 2016 Microdata Corpus</a> (e.g. schema.org/Product and schema.org/Offer) in order to make it easier to work with the data.</strong></li>
 <li><strong>2016-04-25: <a href="#results-2015-1">RDFa, Microdata, Microformat, and Embedded JSON-LD</a> data sets extracted from the November 2015 Common Crawl corpus available for download.</strong></li>
@@ -608,6 +678,7 @@ More and more websites have started to embed structured data describing products
 
 <p>Up till now, we have extracted all RDFa, Microdata and Microformats data from the following releases of the Common Crawl web corpora:</p>
 <ul>
+  <li><a href="#results-2017-1">November 2017</a></li>
   <li><a href="#results-2016-1">October 2016</a></li>
   <li><a href="#results-2015-1">November 2015</a></li>
   <li><a href="#results-2014-1">December 2014</a></li>
@@ -678,6 +749,34 @@ JSON-LD is a lightweight Linked Data format. It is easy for humans to read and w
 </table>
 
 <h2 id="results">3. Extraction Results</h2>
+
+<h3 id="results-2017-1">3.1. Extraction Results from the November 2017 Common Crawl Corpus</h3>
+<p> 
+The November 2017 Common Crawl Corpus is available on <a href="http://aws.amazon.com/s3/">Amazon S3</a> in the bucket <code>aws-publicdatasets</code> under the key prefix <code>/common-crawl/crawl-data/CC-MAIN-2017-47/</code> .
+</p>
+<h4>Extraction Statistics</h4>
+<br />
+<table><tbody><tr><th>Crawl Date</th><td>November 2017</td><td></td></tr>
+<tr><th>Total Data</th><td  align="right">66 Terabyte</td><td>(compressed)</td></tr>
+<tr><th>Parsed HTML URLs</th><td align="right">3,155,601,774</td><td></td></tr>
+<tr><th>URLs with Triples</th><td align="right">1,228,129,002</td><td></td></tr>
+<tr><th>Domains in Crawl</th><td align="right">26,271,491</td><td></td></tr>
+<tr><th>Domains with Triples</th><td align="right">7,422,886</td><td></td></tr>
+<tr><th>Typed Entities</th><td align="right">9,430,164,323</td><td></td></tr>
+<tr><th>Triples</th><td align="right">38,721,044,133</td><td></td></tr>
+</tbody></table>
+
+<span style="width:2000px;display:inline-block">
+<span id="d2017Plds" style="float:left"></span>
+<span id="d2017Urls" style="float:left"></span>
+</span>
+
+<ul style="clear: left">
+<li><a href="2017-12/stats/stats.html">Detailed Statistics for the November 2017 corpus (HTML)</a></li>
+<li><a href="2017-12/stats/how_to_get_the_data.html">Download Instructions for the whole corpus</a></li>
+<li><a href="2017-12/stats/schema_org_subsets.html">Schema.org Class Specific Data-Subsets and Statistics</a></li>
+</ul>
+
 
 <h3 id="results-2016-1">3.1. Extraction Results from the October 2016 Common Crawl Corpus</h3>
 <p> 
