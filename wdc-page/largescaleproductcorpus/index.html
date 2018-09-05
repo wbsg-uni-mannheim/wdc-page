@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html><head><title>Gold Standard for Large Scale Product Matching</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<link rel="stylesheet" href="http://webdatacommons.org/style.css" type="text/css" media="screen"/>
+<style>
+.tar {
+text-align: right;
+}
+.rtable
+{
+    float: right;
+    padding-left:10px;
+
+}
+.smalltable, .smalltable TD, .smalltable TH
+{
+font-size:9pt;
+}
+.table-wrapper {
+  position:relative;
+}
+.table-scroll {
+  height:240px;
+  overflow:auto;
+  margin-top:-10px;
+}
+
+.show{
+  display:block;
+}
+
+.no-show{
+  display:none;
+}
+
+hr {
+    width: 50%;
+    margin: 20px 0; /* This leaves 10px margin on left and right. If only right margin is needed try margin-right: 10px; */
+}
+</style>
+
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript" src="scripts/gcharts.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script type="text/javascript" src="../jquery.toc.min.js"></script>
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-30248817-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+<script type="application/ld+json">
+{
+  "@context":"http://schema.org/",
+  "@type":"Dataset",
+  "name":"Web Data Commons - Gold Standard for Large Scale Product Matching",
+  "description":"Generating a gold standard for large scale product matching. We make use of the annotated product identifiers found on the web to create the large scale product matching gold standard.",
+  "url":"http://webdatacommons.org/largescaleproductcorpus/index.html",
+  "keywords":[
+  	 "gold standard",
+     "product corpus",
+     "large scale",
+     "product matching",
+     "entity matching"
+  ],
+  "creator":[
+	  {
+		 "@type":"Person",
+		 "url": "http://dws.informatik.uni-mannheim.de/en/people/professors/prof-dr-christian-bizer/",
+		 "name":"Christian Bizer"
+	  },
+	  {
+		 "@type":"Person",
+		 "url": "http://dws.informatik.uni-mannheim.de/en/people/researchers/anna-primpeli/",
+		 "name":"Anna Primpeli"
+	  }
+
+  ],
+  "distribution":[
+     {
+        "@type":"DataDownload",
+        "fileFormat":[
+			"tsv"
+		],
+        "contentUrl":"http://data.dws.informatik.uni-mannheim.de/largescaleproductgs/"
+     }
+  ],
+  "citation":[
+	  
+  ]
+  }
+</script>
+
+</head>
+<body>
+  <div id="logo" style="text-align:right; background-color: white;">&nbsp;&nbsp;<a href="http://dws.informatik.uni-mannheim.de"><img src="files/images/ma-logo.gif" alt="University of Mannheim - Logo"></a></div>
+  <div id="header">
+    <h1 style="font-size: 250%;">Web Data Commons - Gold Standard for Large Scale Product Matching</h1>
+  </div>
+  <div id="tagline">Generating a Gold Standard for Large Scale Product Matching</div>
+  <div id="authors">
+    <a href="https://dws.informatik.uni-mannheim.de/en/people/researchers/anna-primpeli/">Anna Primpeli</a><br />
+    <a href="http://dws.informatik.uni-mannheim.de/en/people/professors/prof-dr-christian-bizer/">Christian Bizer</a><br />
+  </div>
+  <div id="content">
+	   <p>
+       In order to support large scale product matching we created a gold standard with 2.2 million product offers describing 132,652 unique product entities.
+       For the gold standard creation we make use of the supervision found on the web as product offers annotated with identifier information.
+       In the following sections, the necessary cleansing steps for the large scale product matching gold standard creation are explained as well as possible use cases and experimental baseline results.  
+	  </p>
+	  <h2 id="news">News</h2>
+	  <ul>
+	  </ul>
+	  <h2>Contents</h2>
+	  <ul>
+		    <li class="toc-h2 toc-active">
+		        <a href="#toc1"> 1.About the WDC Gold Standard for Large Scale Product Matching </a>
+		    </li>
+		    <li class="toc-h2 toc-active">
+		        <a href="#toc2"> 2.Initial Corpus </a>
+		    </li>
+			<li class="toc-h2 toc-active">
+		        <a href="#toc3"> 3.Gold Standard Creation </a>
+		    </li>
+		    <li class="toc-h2 toc-active">
+		        <a href="#toc4"> 4.Gold Standard Profiling</a>
+		    </li>	
+		    <li class="toc-h2 toc-active">
+		        <a href="#toc5"> 5.Gold Standard HTML Pages</a>
+		    </li>	   
+		    <li class="toc-h2 toc-active">
+		        <a href="#toc6"> 6.Baselines </a>
+		    </li>
+		    <li class="toc-h2 toc-active">
+		        <a href="#toc7"> 7.References </a>
+		    </li>
+	  </ul>
+
+    <span id="toc1"></span>
+    <h2>1. About the WDC Gold Standard for Large Scale Product Matching </h2>
+    <p>
+    Matching product offers published on the web to unique product entities is a hard integration task mostly because of the sparse and noisy nature of web data. 
+    Although there exist product data sets which can be used to evaluate product matching methods
+    (e.g. the <a href="http://webdatacommons.org/productcorpus/index.html">WDC Product Corpus </a> and the <a href="https://dbs.uni-leipzig.de/en/research/projects/object_matching/fever/benchmark_datasets_for_entity_resolution">Abt-Buy</a> data set),
+    they contain product offers that either refer to a small group of unique products or deriving from a small number of sources.
+    The availability of large scale product information has been so far restricted to large marketplaces such as ebay and amazon.
+    However, the application of supervised representation learning methods like supervised neural networks require a large annotated corpus.
+    Therefore the need for a gold standard for large scale product matching becomes apparent.
+    </p>
+    <p>
+    Popular annotation vocabularies, like schema.org, propose a set of properties to annotate product identifiers.
+    In addition, google proposes the annotation of product identifiers with properties such as schema.org/Product/sku, gtin8, gtin13, gtin14, and mpn for more enhanced search results.
+    The application of these annotation practices can be considered as inexpensive supervision offered in the web.
+    We profile the adoption of identifier-related schema.org product properties using the Web Data Commons November 2017 schema.org/Product subcorpus, perform a series of cleansing and clustering steps, 
+    and create the WDC Gold Standard for Large Scale Product Matching containing 2.2 million offers describing 132,652 unique products.
+    </p>
+    
+
+    <span id="toc2"></span>
+    <h2>2.Initial Corpus</h2>
+	<p>
+	We use the <a href="http://webdatacommons.org/structureddata/2017-12/stats/schema_org_subsets.html#support"> November 2017 WDC schema.org/Product </a>subcorpus and extract the product offer entities 
+	that have annotated identifier information. We consider the following schema.org/Product and schema.org/Offer properties as annotated identifier information:
+	 <a href="https://schema.org/sku">sku</a>, <a href="https://schema.org/mpn">mpn</a>, <a href="https://schema.org/identifier">identifier</a>, <a href="https://schema.org/productID">productID</a>,
+	 <a href ="https://schema.org/gtin14">gtin14</a>, <a href ="https://schema.org/gtin13">gtin13</a>, <a href ="https://schema.org/gtin12">gtin12</a>, and <a href="https://schema.org/gtin8">gtin8</a>.
+	<h4>November 2017 schema.org/Product corpus statistics</h4>
+	<br />
+	<table><tbody>
+	<tr><th>Data Size</th><td  align="right">135 GB</td><td>(compressed)</td></tr>
+	<tr><th>Quads</th><td align="right"> 6,321,909,578</td><td></td></tr>
+	<tr><th>Entities</th><td align="right"> 444,760,713 </td><td></td></tr>
+	<tr><th>Domains</th><td align="right"> 581,482 </td><td></td></tr>
+	<tr><th>Related Classes</th><td align="left"><ul> <li>schema:Product</li> <li>schema:Offer</li> <li>schema:Review</li> <li>schema:AggregateRating</li> <li>schema:Organization</li></td><td></td></tr>
+	<tr><th>Entities with identifying schema.org properties</th><td align="right">  133,754,586  </td><td></td></tr>
+	</tbody></table>
+    </p>
+    
+    
+    <span id="toc3"></span>
+    <h2>3.Gold Standard Creation</h2>
+    <p>
+    Considering the noisy nature of web data, we perform a series of cleansing steps to ensure the quality of our gold standard. During the cleansing process we identify several false practices 
+    while annotating product offers and develop different cleansing steps to overcome them. Below we provide details about the different false annotation practices as well as the corresponding cleansing steps 
+    and the effect they had on the resulting corpus in terms of size.
+    </p>
+    <h3>Misuse of schema.org vocabulary</h3>
+    <p>
+    A large number of annotated product offers are assigned wrong schema.org vocabulary terms such as <i> schema:IndividualProduct/sku</i> and <i>schema:Product/Offer/sku</i>.
+    Despite the wrong vocabulary usage, these annotated product offers still reveal identifying information. We capture this by applying a number of 
+    regex patterns on the predicates of the product offer entities.
+    
+    <h4> Regex Patterns and resulting offer entities </h4>
+    <br>
+    <table>
+    <tr><th>Pattern</th><th>Resulting Product Offer Entities</th></tr>
+    <tr><td>*/sku</td><td></td></tr>
+    <tr><td>*/productID</td><td></td></tr>
+    <tr><td>*/mpn</td><td></td></tr>
+    <tr><td>*/identifier</td><td></td></tr>
+    <tr><td>*/gtin14</td><td></td></tr>
+    <tr><td>*/gtin13</td><td></td></tr>
+    <tr><td>*/gtin12</td><td></td></tr>
+    <tr><td>*/gtin8</td><td></td></tr>
+    <tr><td>*/gtin8</td><td></td></tr>
+    <tr><td>Offer Entities with ID info </br> (at least one)</td><td></td></tr>
+    </table>
+  
+    </p>
+    
+    
+    <h3>Assignment of erroneous identifier values</h3>
+    <h3>Assignment of one identifier to all the product offers of a web site</h3>
+    <h3>Usage of product taxonomy identifiers as unique product identifiers</h3>
+    <span id="toc4"></span>
+    <h2>4.Gold Standard Profiling</h2>
+    <p>
+    </p>
+    
+
+    <span id="toc5"></span>
+    <h2>5.Baselines</h2>
+    <p>
+      
+    </p>
+    
+    
+   <span id="toc6"></span>
+   <h2>6. References</h2>
+   <ol>
+   </ol>
+    <script type="text/javascript">
+    $('#toc').toc({
+        'selectors': 'h2', //elements to use as headings
+        'container': '#toccontent', //element to find all selectors in
+        'smoothScrolling': true, //enable or disable smooth scrolling on click
+        'prefix': 'toc', //prefix for anchor tags and class names
+        'highlightOnScroll': true, //add class to heading that is currently in focus
+        'highlightOffset': 100, //offset to trigger the next headline
+        'anchorName': function(i, heading, prefix) { //custom function for anchor name
+            return prefix+i;
+        }
+    });
+    $('[id*="link_"]').each(function(){
+    	var element = $(this);
+    	element.click(function(e) {
+			e.preventDefault();
+    		var id = element.attr("id").split("_")[1];
+    		element.parent().removeClass("show").addClass("no-show");
+    		$('#charts_'+id).removeClass("no-show").addClass("show");
+    	});
+    });
+    $('[id*="colapse_"]').each(function(){
+    	var element = $(this);
+    	element.click(function(e) {
+			e.preventDefault();
+    		var id = element.attr("id").split("_")[1];
+    		element.parent().removeClass("show").addClass("no-show");
+    		$('#intro_'+id).removeClass("no-show").addClass("show");
+    	});
+    });
+    </script>
+</body>
+</html>
