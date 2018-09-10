@@ -196,18 +196,22 @@ hr {
     Despite the wrong vocabulary usage, these annotated product offers still reveal identifying information. We capture this by applying a number of 
     regex patterns on the predicates of the product offer entities.
     
-    <h4> Regex Patterns and resulting offer entities </h4>
+    <h4> Resulting data after regex pattern application </h4>
     <br>
     <table>
-    <tr><th>Pattern</th><th>Resulting Product Offer Entities</th></tr>
-    <tr><td>*/sku</td><td>59,905,111</td></tr>
-    <tr><td>*/productID</td><td>53,070,779</td></tr>
-    <tr><td>*/mpn</td><td>15,035,214</td></tr>
-    <tr><td>*/identifier</td><td>456,461</td></tr>
-    <tr><td>*/gtin14</td><td>721,734</td></tr>
-    <tr><td>*/gtin13</td><td>5,296,319</td></tr>
-    <tr><td>*/gtin12</td><td>508,417</td></tr>
-    <tr><td>*/gtin8</td><td>542,174</td></tr>
+    
+    <tr><td>Entity count per property</td><td><small>
+    <a href='' onclick="document.getElementById('57b55b12-32de-4903-aa4b-a1a93c11508a').style.display='block';this.style.display='none';return false;">Show property info</a></small>
+    <ol id='57b55b12-32de-4903-aa4b-a1a93c11508a' style='display:none'>
+    <li>*/sku : 59,905,111</li>
+    <li>*/productID : 53,070,779</li>
+    <li>*/mpn : 15,035,214</li>
+    <li>*/identifier : 456,461</li>
+    <li>*/gtin14 : 721,734</li>
+    <li>*/gtin13 : 5,296,319</li>
+    <li>*/gtin12 : 508,417</li>
+    <li>*/gtin8 : 542,174</li>
+    </ol> </td>
     <tr><td>Distinct identifiers</td><td>38,804,820</td></tr>
     <tr><td>Offer Entities with ID info </br> (at least one)</td><td>121,160,804</td></tr>
     </table>
@@ -218,41 +222,75 @@ hr {
     <h3>Assignment of erroneous identifier values</h3>
     <p>
     The next filtering step is to remove the product offers with invalid identifier values. As we do not possess an extensive list of all valid product identifiers, we consider the 
-    definitions of the relevant identifier properties and apply value normalization. First, all non-alphanumeric characters and initial 0s of the identifier value are removed. 
+    definitions of the relevant identifier properties and apply value normalization. First, all non-alphanumeric characters and initial 0s of the identifier values are removed. 
     Considering the suggested length and structure of the identifying properties, we remove the values that after normalization are shorter than 8 characters or longer than 25 characters.
     Finally, we remove the values that consist only out of alphabetic characters. Another wrong annotation behavior adopted by a considerable amount of web sites is to annotate all the published
     product offers with the same identifier.
 	We detect those cases and remove them from our corpus.
     
-    <h4> Resulting offer entities after erroneous identifier value filtering </h4>
+    <h4> Resulting data after erroneous identifier value filtering </h4>
     <br>
     <table>
-    <tr><th>Pattern</th><th>Resulting Product Offer Entities</th></tr>
-    <tr><td>*/sku</td><td>18,266,852</td></tr>
-    <tr><td>*/productID</td><td>31,226,126</td></tr>
-    <tr><td>*/mpn</td><td>5,762,791</td></tr>
-    <tr><td>*/identifier</td><td>298,029</td></tr>
-    <tr><td>*/gtin14</td><td>629,480</td></tr>
-    <tr><td>*/gtin13</td><td>4,074,626</td></tr>
-    <tr><td>*/gtin12</td><td>354,621</td></tr>
-    <tr><td>*/gtin8</td><td>515,616</td></tr>
-    <tr><td>Distinct identifiers</td><td>29,314,145</td></tr>
-    <tr><td>Offer Entities with ID info </br> (at least one)</td><td>56,234,244</td></tr>
+    
+ 	<tr><td>Entity count per property</td><td><small>
+    <a href='' onclick="document.getElementById('57b55b12-32de-4903-aa4b-a1a93c11508a').style.display='block';this.style.display='none';return false;">Show property info</a></small>
+    <ol id='57b55b12-32de-4903-aa4b-a1a93c11508a' style='display:none'>    
+    <li>*/sku : 18,266,852</li>
+    <li>*/productID : 31,226,126</li>
+    <li>*/mpn : 5,762,791</li>
+    <li>*/identifier : 298,029</li>
+    <li>*/gtin14 : 629,480</li>
+    <li>*/gtin13 : 4,074,626</li>
+    <li>*/gtin12 : 354,621</li>
+    <li>*/gtin8 : 515,616</li>
+    </ol> </td>
+     <tr><td>Distinct identifiers</td><td>29,314,145</td></tr>
+     <tr><td>Offer Entities with ID info </br> (at least one)</td><td>56,234,244</td></tr>
     </table>
     </p>
     
     
-    <h3>Usage of product taxonomy identifiers as unique product identifiers</h3>
+    <h3>Usage of multiple valid identifiers to indicate the same product</h3>
     <p>
-    Another common error is to annotate product taxonomy identifiers, such UNSPSC, as unique product identifiers. To consistently detect and remove those errors we depict our data as a network
-    graph with the distinct identifiers as vertices connected by "sameAs" edges, in the case they appear in the same offer entity. The taxonomy identifiers can be recognized as the nodes with 
-    a high degree and a very small clustering coefficient. The high degree reveals that the taxonomy identifier co-occurs with many unique identifier while the small clustering coefficient 
-    shows that the co-occuring unique identifiers do not appear in the same offers and thus describe different products.
-    
-    
+    Across web sites different valid identifiers might be used to indicate the same product, e.g. one web site might use a gtin13 annotation while another one might use the sku number to identify a product offer.
+    For capturing the different identifying values of a product, we depict our data as a network graph with the distinct identifiers as vertices connected by "sameAs" edges in the case they appear in the same offer entity. The connected components of the graph reveal the unique products of our gold standard. 
+     
+    <h4> Resulting data after clustering </h4>
+    <br>
+    <table>    
+     <tr><td>Distinct identifiers (nodes)</td><td>29,314,145</td></tr>
+     <tr><td>Offer Entities with ID info </br> (at least one)</td><td>56,234,244</td></tr>  
+     <tr><td><b>Distinct products</b> </br> (after clustering)</td><td>26,641,260</td></tr>
+    </table>
     </p>
     
+    <h3>Usage of product taxonomy identifiers as unique product identifiers</h3>
+    <p>
+    Another common error is to annotate product taxonomy identifiers, such UNSPSC, as unique product identifiers. To consistently detect and remove those errors we make use of the network graph structure of our data.
+    The taxonomy identifiers can be recognized as the nodes with a high degree and a very small clustering coefficient. The high degree reveals that the taxonomy identifier co-occurs with many other identifiers while the small clustering coefficient 
+    shows that the co-occuring identifiers do not appear in the same offers and thus describe different products.
     
+    
+    <h4> Resulting data after taxonomy identifiers filtering </h4>
+    <br>
+    <table>    
+     <tr><td>Distinct identifiers (nodes) </td><td>29,312,340</td></tr>
+     <tr><td>Offer Entities with ID info </br> (at least one)</td><td>56,234,244</td></tr>
+     <tr><td><b>Distinct products</b> </br> (after clustering)</td><td>26,824,778</td></tr>
+    </table>
+    </p>
+    
+    <h3>Identifiers with weak support</h3>
+    <p>
+    In the last cleansing step we remove the components with weak pld support. We set the pld support threshold to 5 offers and therefore remove every component that contains offers deriving from less than 5 plds.
+    <br>
+    <table>    
+     <tr><td>Distinct identifiers (nodes) </td><td></td></tr>
+     <tr><td>Offer Entities with ID info </br> (at least one)</td><td></td></tr>
+     <tr><td><b>Distinct products (components)</b> </br> (after clustering)</td><td></td></tr>
+    </table>
+    
+    </p>
     <span id="toc4"></span>
     <h2>4.Gold Standard Profiling</h2>
     <p>
