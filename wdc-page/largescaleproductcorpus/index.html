@@ -54,18 +54,18 @@ hr {
 	function drawIDsPerClassChart() {
 	
       var data = google.visualization.arrayToDataTable([
-	    ["Identifiers Count", "Class Frequency" ],
-		["[12-36]", 66],
-		["11", 55],
-		["10", 158],
-		["9", 135],
-		["8", 318],
-		["7", 506],
-		["6", 1180],
-		["5", 2537],
-		["4", 6541],
-        ["3", 14313],
-        ["2", 20564],
+	    ["Identifier Values Count", "Frequency (#ID-clusters)" ],
+		["[12-50]", 111],
+		["11", 65],
+		["10", 174],
+		["9", 146],
+		["8", 345],
+		["7", 538],
+		["6", 1183],
+		["5", 2546],
+		["4", 6549],
+        ["3", 14170],
+        ["2", 20364],
         ["1", 126390 ],
 
 
@@ -79,17 +79,17 @@ hr {
                          role: "annotation" }]);
       
       var options = {
-        title: "Distribution of identifiers per product class",
+        title: "Distribution of identifier values per ID-cluster",
         width: 400,
         height: 400,
         bar: {groupWidth: "95%"},
         legend: { position: "none" },
 		hAxis: {
-          title: 'Class Frequency',
+          title: 'Frequency (#ID-clusters)',
           minValue: 0
         },
         vAxis: {
-          title: '# Identifiers'
+          title: '# Identifier Values'
         }
       };
       var chart = new google.visualization.BarChart(document.getElementById("IDsPerClass"));
@@ -99,19 +99,23 @@ hr {
   function drawOffersPerClassChart() {
 	
       var data = google.visualization.arrayToDataTable([
-	    ["Offers Count", "Class Frequency" ],
+	    ["Offer Entities Count", "Frequency(#ID-clusters)" ],
+		["[151-2443]", 1512],
+		["[141-150]", 119],
+		["[131-140]", 282],
+		["[121-130]", 253],
 		["[111-120]", 246],
-		["[101-110]", 309],
-		["[91-100]", 332],
-		["[81-90]", 410],
-		["[71-80]", 674],
-		["[61-70]", 1170],
-		["[51-60]", 1955],
-		["[41-50]", 5092],
-		["[31-40]", 8228],
-		["[21-30]", 9531],
-		["[11-20]", 26373],
-		["[5-10]", 116283]
+		["[101-110]", 310],
+		["[91-100]", 340],
+		["[81-90]", 412],
+		["[71-80]", 678],
+		["[61-70]", 1163],
+		["[51-60]", 1956],
+		["[41-50]", 5075],
+		["[31-40]", 8214],
+		["[21-30]", 9512],
+		["[11-20]", 26340],
+		["[5-10]", 116169]
 
       ]);
 	  
@@ -123,17 +127,17 @@ hr {
                          role: "annotation" }]);
       
       var options = {
-        title: "Distribution of offers per product class",
+        title: "Distribution of offer entities per per ID-cluster",
         width: 400,
         height: 400,
         bar: {groupWidth: "95%"},
         legend: { position: "none" },
 		hAxis: {
-          title: 'Class Frequency',
+          title: 'Frequency(#ID-clusters)',
           minValue: 0
         },
         vAxis: {
-          title: '# Offers'
+          title: '# Offer Entities'
         }
       };
       
@@ -144,17 +148,17 @@ hr {
   function drawOffersPerUrlChart() {
 	
       var data = google.visualization.arrayToDataTable([
-	    ["Offers Count", "Url Frequency" ],
-		["[46-288]", 988],
-		["[36-45]", 11291],
-		["[26-35]", 5863],
-		["[16-25]", 17523],
-		["[6-15]", 31969],
-		["5", 8740],
-		["4", 14285],
-		["3", 50639],
-		["2", 297292],
-		["1", 914157]
+	    ["Offers Count", "Frequency(#URLs)" ],
+		["[46-288]", 989],
+		["[36-45]", 11293],
+		["[26-35]", 5865],
+		["[16-25]", 17522],
+		["[6-15]", 32099],
+		["5", 8613],
+		["4", 14294],
+		["3", 50642],
+		["2", 297311],
+		["1", 914843]
 
       ]);
 	  
@@ -166,17 +170,17 @@ hr {
                          role: "annotation" }]);
       
       var options = {
-        title: "Distribution of offers per URL",
+        title: "Distribution of offer entities per URL",
         width: 500,
-        height: 500,
+        height: 420,
         bar: {groupWidth: "95%"},
         legend: { position: "none" },
 		hAxis: {
-          title: 'URL Frequency',
+          title: 'Frequency(#URLs)',
           minValue: 0
         },
         vAxis: {
-          title: '# Offers'
+          title: '# Offer Entities'
         }
       };
       
@@ -187,39 +191,38 @@ hr {
   function drawOffersPerTLDChart() {
 	
       var data = google.visualization.arrayToDataTable([
-	    ["TLD", "Offers Count" ],
-		["com", 1507760],
-		["de", 265437],
-		["net", 116521],
-		["fr", 87850],
-		["co.uk", 70420],
-		["ch", 68425],
-		["cz", 57046],
-		["es", 56430],
-		["pl", 50275],
-		["it", 50037],
-		["nl", 48879],
-		["ca", 46582],
-		["at", 42964],
-		["ru", 31139],
-		["be", 30097],
-		["pt", 27649],
-		["us", 27149],
-		["co.za", 23033],
-		["hu", 22890],
-		["ro", 22067],
-		["se", 21156],
-		["gr", 21023],
-		["bg", 20415],
-		["si", 20328],
-		["others", 393576]
-
+	    ["TLD", "Offer Entities" ],
+		[" com", 1508461],
+		[" de", 265598],
+		[" net", 116569],
+		[" fr", 87916],
+		[" co.uk", 70537],
+		[" ch", 68432],
+		[" cz", 57095],
+		[" es", 56436],
+		[" pl", 50299],
+		[" it", 50063],
+		[" nl", 48922],
+		[" ca", 46607],
+		[" at", 42971],
+		[" ru", 31161],
+		[" be", 30099],
+		[" pt", 27653],
+		[" us", 27149],
+		[" co.za", 23034],
+		[" hu", 22890],
+		[" ro", 22067],
+		[" se", 21157],
+		[" gr", 21078],
+		[" bg", 20418],
+		[" si", 20330],
+		["others", 393671]
 
       ]);
 	  
 	  
       var options = {
-        title: "Distribution of offers per TLD",
+        title: "Distribution of offer entities per TLD",
         width: 400,
         height: 400,
         legend: { position: "none" },
@@ -304,8 +307,8 @@ hr {
   </div>
   <div id="content">
 	   <p>
-       In order to support large scale product matching we created a gold standard with 3.1 million product offers describing 172,763 unique product entities.
-       For the gold standard creation we make use of the supervision found on the web in the form of product offers annotated with identifier information.
+	   We present the WDC Gold Standard for Large Scale Product Matching, a gold standard containing more than 3.1 million entities describing product offers.
+       For the gold standard creation we make use of the supervision found on the web in the form of schema.org offer entities annotated with schema.org identifier information.
        In the following sections, the necessary cleansing steps for creating the large scale product matching gold standard are explained as well as possible use cases and experimental baseline results.  
 	  </p>
 	  <h2 id="news">News</h2>
@@ -326,7 +329,7 @@ hr {
 		        <a href="#toc4"> 4.Gold Standard Profiling</a>
 		    </li>	
 		    <li class="toc-h2 toc-active">
-		        <a href="#toc5"> 5.Gold Standard HTML Pages</a>
+		        <a href="#toc5"> 5.Gold Standard Data</a>
 		    </li>	   
 		    <li class="toc-h2 toc-active">
 		        <a href="#toc6"> 6.Baselines </a>
@@ -338,40 +341,45 @@ hr {
 
     <span id="toc1"></span>
     <h2>1. About the WDC Gold Standard for Large Scale Product Matching </h2>
-    <p>
-    Matching product offers published on the web to unique product entities is a hard integration task mostly because of the sparse and noisy nature of web data. 
+    <p>	
+    Both N:1 and N:M matching scenarios using web data describing product offers are hard intergration tasks mostly because of the sparse and noisy nature of web data. 
     Although there exist product data sets which can be used to evaluate product matching methods
     (e.g. the <a href="http://webdatacommons.org/productcorpus/index.html">WDC Product Corpus </a> and the <a href="https://dbs.uni-leipzig.de/en/research/projects/object_matching/fever/benchmark_datasets_for_entity_resolution">Abt-Buy</a> data set),
-    they contain product offers that either refer to a small group of unique products or derive from a small number of sources.
+    they contain data that either refer to a small group of unique products or derive from a small number of sources.
     The availability of large scale product information has been so far restricted to large marketplaces such as ebay and amazon.
     However, the application of supervised representation learning methods like supervised neural networks require a large annotated corpus.
     Therefore the need for a gold standard for large scale product matching becomes apparent.
     </p>
     <p>
-    Popular annotation vocabularies, like schema.org, propose a set of properties to annotate product identifiers.
-    In addition, google proposes the annotation of product identifiers with properties such as schema.org/Product/sku, gtin8, gtin13, gtin14, and mpn for more enhanced search results.
+    Popular annotation vocabularies, like schema.org, propose a set of properties to annotate identifiers of offer entities.
+    In addition, google encourages the annotation of product identifiers with properties such as schema.org/Product/sku, gtin8, gtin13, gtin14, and mpn for more enhanced search results.
     The application of these annotation practices can be considered as inexpensive supervision offered in the web.
     We profile the adoption of identifier-related schema.org product properties using the Web Data Commons November 2017 schema.org/Product subcorpus, perform a series of cleansing and clustering steps, 
-    and create the WDC Gold Standard for Large Scale Product Matching containing 3.1 million offers describing 172,763 unique products.
+    and create the WDC Gold Standard for Large Scale Product Matching containing 3.1 million entity offers clustered in 172,581 id-groups.
     </p>
-    
+	
+
 
     <span id="toc2"></span>
     <h2>2.Initial Corpus</h2>
 	<p>
-	We use the <a href="http://webdatacommons.org/structureddata/2017-12/stats/schema_org_subsets.html#support"> November 2017 WDC schema.org/Product </a>subcorpus and extract the product offer entities 
-	that have annotated identifier information. We consider the following schema.org/Product and schema.org/Offer properties as annotated identifier information:
+	We use the <a href="http://webdatacommons.org/structureddata/2017-12/stats/schema_org_subsets.html#support"> November 2017 WDC schema.org/Product </a>subcorpus and extract the offer entities 
+	that contain schema.org identifier properties. We consider the following schema.org/Product and schema.org/Offer properties as identifier related properties:
 	 <a href="https://schema.org/sku">sku</a>, <a href="https://schema.org/mpn">mpn</a>, <a href="https://schema.org/identifier">identifier</a>, <a href="https://schema.org/productID">productID</a>,
 	 <a href ="https://schema.org/gtin14">gtin14</a>, <a href ="https://schema.org/gtin13">gtin13</a>, <a href ="https://schema.org/gtin12">gtin12</a>, and <a href="https://schema.org/gtin8">gtin8</a>.
 	<h4>November 2017 schema.org/Product corpus statistics</h4>
 	<br />
-	<table><tbody>
+	<table>
+	<tbody>
 	<tr><th>Data Size</th><td  align="right">135 GB</td><td>(compressed)</td></tr>
 	<tr><th>Quads</th><td align="right"> 6,321,909,578</td><td></td></tr>
 	<tr><th>Entities</th><td align="right"> 444,760,713 </td><td></td></tr>
 	<tr><th>Domains</th><td align="right"> 581,482 </td><td></td></tr>
-	<tr><th>Related Classes</th><td align="left"><ul> <li>schema:Product</li> <li>schema:Offer</li> <li>schema:Review</li> <li>schema:AggregateRating</li> <li>schema:Organization</li></td><td></td></tr>
-	</tbody></table>
+	<tr><th>Related Classes</th><td align="left">
+	<ul> <li>schema:Product</li> <li>schema:Offer</li> <li>schema:Review</li> <li>schema:AggregateRating</li> <li>schema:Organization</li> </ul>
+	</td><td></td></tr>
+	</tbody>
+	</table>
     </p>
     
     
@@ -379,14 +387,15 @@ hr {
     <h2>3.Gold Standard Creation</h2>
     <p>
     Considering the noisy nature of web data, we perform a series of cleansing steps to ensure the quality of our gold standard. During the cleansing process we identify several false practices 
-    while annotating product offers and develop different cleansing steps to overcome them. Below we provide details about the different false annotation practices as well as the corresponding cleansing steps 
+    while annotating offer entities and develop different cleansing steps to overcome them. Below we provide details about the different false annotation practices as well as the corresponding cleansing steps 
     and the effect they had on the resulting corpus in terms of size.
     </p>
     <h3>Misuse of schema.org vocabulary</h3>
     <p>
-    A large number of annotated product offers are assigned wrong schema.org vocabulary terms such as <i> schema:IndividualProduct/sku</i> and <i>schema:Product/Offer/sku</i>.
-    Despite the wrong vocabulary usage, these annotated product offers still reveal identifying information. We capture this by applying a number of 
-    regex patterns on the predicates of the product offer entities.
+    A large number of offer entities are assigned wrong schema.org vocabulary terms such as <i> schema:IndividualProduct/sku</i> and <i>schema:Product/Offer/sku</i>.
+    Despite the wrong vocabulary usage, such terms still reveal identifying information. We capture this by applying a number of 
+    regex patterns on the properties of the offer entities.
+	</p>
     
     <h4> Resulting data after regex pattern application </h4>
     <br>
@@ -404,23 +413,50 @@ hr {
     <li>*/gtin12 : 494,803</li>
     <li>*/gtin8 : 541,710</li>
     </ol> </td>
-    <tr><td>Distinct identifiers</td><td>38,804,820</td></tr>
-    <tr><td>Offer Entities with ID info </br> (at least one)</td><td>115,718,974</td></tr>
+    <tr><td>Distinct identifier values</td><td>38,804,820</td></tr>
+    <tr><td>Offer Entities with ID-related annotations </br> (at least one)</td><td>115,718,974</td></tr>
     </table>
   
-    </p>
+    
     
     
     <h3>Assignment of erroneous identifier values</h3>
+	</br>
+	<h4>Value Normalization</h4>
     <p>
-    The next filtering step is to remove the product offers with invalid identifier values. As we do not possess an extensive list of all valid product identifiers, we consider the 
-    definitions of the relevant identifier properties and apply value normalization. First, all non-alphanumeric characters and initial 0s of the identifier values are removed. 
+    The next filtering step is to remove offer entities which have been annotated with invalid identifier values. As we do not possess an extensive list of all valid product identifiers, we consider the 
+    definitions of the relevant schema.org identifier properties and apply value normalization. First, all non-alphanumeric characters and initial 0s of the identifier values are removed. 
     Considering the suggested length and structure of the identifying properties, we remove the values that after normalization are shorter than 8 characters or longer than 25 characters.
-    Finally, we remove the values that consist only out of alphabetic characters. Another wrong annotation behavior adopted by a considerable amount of web sites is to annotate all the published
-    product offers with the same identifier.
-	We detect those cases and remove them from our corpus.
-    
-    <h4> Resulting data after erroneous identifier value filtering </h4>
+    Finally, we remove the values that consist only out of alphabetic characters. 
+	</p>
+	<h4> Resulting data after value normalization </h4>
+    <br>
+    <table> 
+ 	<tr><td>Entity count per property</td><td><small>
+    <a href='' onclick="document.getElementById('57b55b12-32de-4903-aa4b-a1a93c11508ab').style.display='block';this.style.display='none';return false;">Show property info</a></small>
+    <ol id='57b55b12-32de-4903-aa4b-a1a93c11508ab' style='display:none'>    
+    <li>*/sku : 19,623,297</li>
+    <li>*/productID : 33,585,775</li>
+    <li>*/mpn : 6,938,301</li>
+    <li>*/identifier : 265,060</li>
+    <li>*/gtin14 : 641,891</li>
+    <li>*/gtin13 : 4,253,893</li>
+    <li>*/gtin12 : 347,001</li>
+    <li>*/gtin8 : 528,886</li>
+    </ol> </td>
+     <tr><td>Distinct identifier values</td><td>29,314,295</td></tr>
+     <tr><td>Offer Entities with ID-related annotations </br> (at least one)</td><td>61,149,387</td></tr>
+    </table>
+	
+	
+	
+	
+	<h4>Wrong usage by PLDs</h4>
+	<p>
+	Another wrong annotation behavior adopted by a considerable amount of web sites is to annotate all the
+    offer entities with the same identifier. We detect those cases and remove them from our corpus.    
+	</p>
+   <h4> Resulting data after erroneous PLD removal </h4>
     <br>
     <table> 
  	<tr><td>Entity count per property</td><td><small>
@@ -435,58 +471,56 @@ hr {
     <li>*/gtin12 : 346,910</li>
     <li>*/gtin8 : 528,886</li>
     </ol> </td>
-     <tr><td>Distinct identifiers</td><td>29,314,091</td></tr>
-     <tr><td>Offer Entities with ID info </br> (at least one)</td><td>61,129,664</td></tr>
+     <tr><td>Distinct identifier values</td><td>29,314,091</td></tr>
+     <tr><td>Offer Entities with ID-related annotations </br> (at least one)</td><td>61,129,664</td></tr>
     </table>
-    </p>
     
     
     <h3>Usage of multiple valid identifiers to indicate the same product</h3>
     <p>
-    Across web sites different valid identifiers might be used to indicate the same product, e.g. one web site might use a gtin13 annotation while another one might use the sku number to identify a product offer.
-    For capturing the different identifying values of a product, we depict our data as a network graph with the distinct identifiers as vertices connected by "sameAs" edges in the case they appear in the same offer entity. The connected components of the graph reveal the unique products of our gold standard. 
-     
+    Across web sites different valid identifier values might be used to indicate the same product, e.g. one web site might add a gtin13 annotation while another one might add the mpn number to an schema.org offer entity.
+    For capturing the different identifying values of an offer entity, we depict our data as a network graph with the distinct identifier values as vertices connected by "sameAs" edges in the case they appear in the same schema.org offer entity.
+	The connected components of the graph form the ID-clusters of our gold standard. 
+     </p>
     <h4> Resulting data after clustering </h4>
     <br>
     <table>    
-     <tr><td>Distinct identifiers (nodes)</td><td>29,314,091</td></tr>
-     <tr><td>Offer Entities with ID info </br> (at least one)</td><td>61,129,664</td></tr>  
-     <tr><td><b>Distinct products</b> </br> (connected components)</td><td>26,629,609</td></tr>
+     <tr><td>Distinct identifier values (nodes)</td><td>29,314,091</td></tr>
+     <tr><td>Offer Entities with ID-related annotations </br> (at least one)</td><td>61,129,664</td></tr>  
+     <tr><td><b>ID-clusters</b> </br> (connected components)</td><td>26,629,609</td></tr>
     </table>
-    </p>
     
     <h3>Usage of product taxonomy identifiers as unique product identifiers</h3>
     <p>
-    Another common error is to annotate product taxonomy identifiers, such UNSPSC, as unique product identifiers. To consistently detect and remove those errors we make use of the network graph structure of our data.
-    The taxonomy identifiers can be recognized as the nodes with a high degree and a very small clustering coefficient. The high degree reveals that the taxonomy identifier co-occurs with many other identifiers while the small clustering coefficient 
-    shows that the co-occuring identifiers do not appear in the same offers and thus describe different products.
-    
+    Another common error is to annotate product taxonomy identifiers, such UNSPSC, as product identifiers. To consistently detect and remove those errors we make use of the network graph structure of our data.
+    The taxonomy identifiers can be recognized as the nodes with a high degree and a very small clustering coefficient. The high degree reveals that the taxonomy identifier co-occurs with many other identifier values while the small clustering coefficient 
+    shows that the co-occuring identifier values do not appear in the same offer entities and thus describe different products.
+    </p>
     
     <h4> Resulting data after taxonomy identifiers filtering </h4>
     <br>
     <table>    
-     <tr><td>Distinct identifiers (nodes) </td><td>29,312,255</td></tr>
-     <tr><td>Offer Entities with ID info </br> (at least one)</td><td>61,129,664</td></tr>
-     <tr><td><b>Distinct products</b> </br> (connected components)</td><td>26,824,525</td></tr>
+     <tr><td>Distinct identifier values (nodes) </td><td>29,312,255</td></tr>
+     <tr><td>Offer Entities with ID-related annotations </br> (at least one)</td><td>61,129,664</td></tr>
+     <tr><td><b>ID-clusters</b> </br> (connected components)</td><td>26,823,819</td></tr>
     </table>
-    </p>
     
-    <h3>Identifiers with weak support</h3>
+    <h3>ID-clusters with weak support</h3>
     <p>
-    In the last cleansing step we remove the components with weak pld support. We set the pld support threshold to 5 offers and therefore remove every component that contains offers deriving from less than 5 plds.
-    <br>
+    In the last cleansing step we remove the ID-clusters with weak pld support. We set the pld support threshold to 5 and therefore remove every ID-cluster that contains offer entities deriving from less than 5 plds.
+    </p>
+	<br>
     <table>    
-     <tr><td>Distinct identifiers (nodes) </td><td>266,751</td></tr>
-     <tr><td>Offer Entities with ID info </br> (at least one)</td><td>3,129,188</td></tr>
-     <tr><td><b>Distinct products (connected components)</b> </br> (after clustering)</td><td>172,763</td></tr>
+     <tr><td>Distinct identifier values (nodes) </td><td>267,530</td></tr>
+     <tr><td>Offer Entities with ID info </br> (at least one)</td><td>3,130,613</td></tr>
+     <tr><td><b>ID-clusters</b> </br> (connected components)</td><td>172,581</td></tr>
     </table>
     
-    </p>
     <span id="toc4"></span>
     <h2>4.Gold Standard Profiling</h2>
     <p>
-    After performing a series of cleansing steps described in the previous section we end up with 266,751 distinct identifiers clustered into 172,763 product classes with 3.1 million offers in total.
-    In this section we present different statistics concerning the structure of the created product classes w.r.t. identifiers count, offers count and provenance.
+    After performing a series of cleansing steps described in the previous section we end up with 267,530 distinct identifier values clustered into 172,581 ID-clusters with 3.1 million offers in total.
+    In this section we present different statistics concerning the structure of the created ID-clusters w.r.t. identifier values count, offer entities count and provenance.
     </p>
 	
 	<div>
@@ -500,14 +534,61 @@ hr {
 	</div>
 
     <span id="toc5"></span>
-    <h2>5.Baselines</h2>
+    <h2>5.Gold Standard Data</h2>
+    <p>
+	We offer the WDC gold standard for large-scale product matching of the 3.1M annotated offers as json objects including the following information
+	for every offer: 
+	<ul>
+	<li/> url: The URL where the annotated offer entity was found (considering the November 2017 Common Crawl Corpus)
+	<li/> nodeID: The subject assigned by the WDC Extractor. The combination of url and nodeID can be used as unique keys for every annotated entity.
+	<li/> clusterID: The ID of the cluster where the offer belongs.
+	<li/> identifiers: A list of all annotated identifier values of the offer entity together with their corresponding properties.
+	<li/> schema.org_description: A list of all annotated schema.org product descriptive properties such as name, description, brand etc. and their values.
+    </ul>
+    </p>
+	<p>
+	In addition we offer a English subcorpus of the gold standard by filtering the following public suffixes: <i>com</i>, <i>net</i>, <i>co.uk</i>, <i>us</i>, and <i>org</i>.
+	The English subcorpus of our gold standard contains 1,726,910 annotated offer entities.
+	</p>
+	<p>
+	We provide metadata for the created ID-clusters in the form of json objects containing the following information:
+	<ul>
+	<li/> id: The cluster identifier which can be used as key.
+	<li/> size: The size of the ID-cluster in terms of entity offers count.
+	<li/> id_values: The distinct identifier values of the clustered offers of the ID-cluster.
+	</ul>
+	</p>
+	
+	<p>
+	Finally we provide the html content of the crawled URLs containing the clustered annotated offer entities 
+	in the form of json objects with the following properties.
+	<ul>
+	<li/> url: The URL whose content was fetched by the Common Crawl crawler (November 2017).
+	<li/> fileName: The name of the WARC file of Common Crawl that contains the related HTML response.
+	<li/> offset: The index of the HTML response in the related WARC file.
+	<li/> content: The HTML response to the call given the related URL.
+	</ul>
+	
+	</p>
+	
+	<table>
+	<tbody>
+	<tr><td><b>File</b></td><td><b>Sample</b></td><td><b>Size</b></td><td><b>Download</b></td></tr>
+	<tr><td>Gold Standard (Full)</td><td><a href="samples/sample_offers.json">sample_offers</a></td><td>499MB (compressed)</td><td><a href="http://data.dws.informatik.uni-mannheim.de/largescaledatacorpus/data/offers.json.gz">offers.json.gz</td></tr>
+	<tr><td>Gold Standard (English)</td><td><a href="samples/sample_offersenglish.json">sample_offersenglish</a></td><td>256MB (compressed)</td><td><a href="http://data.dws.informatik.uni-mannheim.de/largescaledatacorpus/data/offers_english.json.gz">offers_english.json.gz</td></tr>
+	<tr><td>ID-Clusters meta</td><td><a href="samples/sample_idclusters.json">sample_idclusters</a></td><td>2.7MB (compressed)</td><td><a href="http://data.dws.informatik.uni-mannheim.de/largescaledatacorpus/data/id-clusters.json.gz">id-clusters.json.gz</a></td></tr>
+	<tr><td>HTML Corpus</td><td><a href="samples/sample_html.json">sample_html</a></td><td>GB (compressed)</td><td><a href="http://data.dws.informatik.uni-mannheim.de/largescaledatacorpus/data/htmlCorpus.gz">htmlCorpus.gz</a></td></tr>
+	</tbody>
+	</table>
+	<span id="toc6"></span>
+    <h2>6.Baselines</h2>
     <p>
       
     </p>
     
     
-   <span id="toc6"></span>
-   <h2>6. References</h2>
+   <span id="toc7"></span>
+   <h2>7. References</h2>
    <ol>
    </ol>
     <script type="text/javascript">
