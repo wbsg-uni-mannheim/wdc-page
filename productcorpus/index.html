@@ -297,6 +297,7 @@ hr {
       <tr><th>Category</th><th>#Properties</th><th>List of Properties</th><th>Downloads</th></tr>
       <tr><th>Headphones</th><td>36</td><td><small><a href='' onclick="document.getElementById('headphoneProps').style.display='block';this.style.display='none';return false;">Show Properties for Headphones </a></small>
         <ol id='headphoneProps' style='display:none'>
+		<li>product_name (key attribute)</li>
           <li>description</li>
           <li>product_type</li>
           <li>width</li>
@@ -337,7 +338,7 @@ hr {
       </tr>
       <tr><th>Mobile Phones</th><td>32</td><td><small><a href='' onclick="document.getElementById('phoneProps').style.display='block';this.style.display='none';return false;">Show Properties for Mobile Phones </a></small>
         <ol id='phoneProps' style='display:none'>
-          <li>Product Name</li>
+		<li>product_name (key attribute)</li>
           <li>description</li>
           <li>ram</li>
           <li>water_resistance</li>
@@ -373,7 +374,7 @@ hr {
       </tr>
       <tr><th>Televisions</th><td>76</td><td><small><a href='' onclick="document.getElementById('tvProps').style.display='block';this.style.display='none';return false;">Show Properties for Televisions </a></small>
         <ol id='tvProps' style='display:none'>
-          <li>Product Name</li>
+		<li>product_name (key attribute)</li>
           <li>description</li>
           <li>compatible_channels</li>
           <li>product_type</li>
@@ -465,7 +466,9 @@ hr {
       we can generate for all product descriptions contained in web pages,
       where a positive correspondence exist to a product in the catalog,
       for all other products in the catalog a negative correspondence to this product on the web page.
-      Using the two approaches we ended up with 73,500 negative correspondences. The full list of correspondences can be downloaded <a href="http://data.dws.informatik.uni-mannheim.de/productcrawl/product-matching-gold-standard/correspondences/">here</a>.
+      Using the two approaches we ended up with 73,500 negative correspondences. Please note that the properties <i> product_name</i> from the product catalogs and <i> normalized product name </i>
+	  can only be used as keys and not as extracted attributes.
+	  The full list of correspondences can be downloaded <a href="http://data.dws.informatik.uni-mannheim.de/productcrawl/product-matching-gold-standard/correspondences/">here</a>.
     </p>
     <p>
       Figure 2 depicts the number of positive correspondences
