@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html><head><meta name="robots" content="nofollow"/><title>The WDC Training Data Corpus for Large-Scale Product Matching</title>
+<html><head><meta name="robots" content="nofollow"/><title>The WDC Data Corpus for Large-Scale Product Matching</title>
 <link rel='stylesheet' href='http://webdatacommons.org/style.css' type='text/css' media='screen'/>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
@@ -49,8 +49,104 @@ hr {
 	google.setOnLoadCallback(drawOffersPerTLDChart);
 	google.setOnLoadCallback(drawCategDistributionGS);
 	google.setOnLoadCallback(drawCategDistributionCorpus);
+	google.setOnLoadCallback(drawTopProdPropsNov);
+	google.setOnLoadCallback(drawIDPropsNov);
 
 
+function drawTopProdPropsNov() {
+	
+      var data = google.visualization.arrayToDataTable([
+	    ["Property", "# PLDs", { role: 'annotation' }  ],
+		["Product/name", 535625, "92%"],
+		["Offer/price", 462444, "80%"],
+		["Product/offers", 462233, "79%"],
+		["Offer/priceCurrency", 430556, "74%"],		
+		["Product/image", 419391, "72%"],
+		["Product/description", 377639, "65%"],
+		["Offer/availability", 337876, "58%"],
+		["Product/url", 263720, "45%"],
+		["AggregateRating/ratingValue", 184004, "32%"],
+		["Product/sku", 126696, "22%"],
+		["AggregateRating/reviewCount", 112408, "19%"],
+		["Product/aggregateRating", 101434, "17%"],
+		["Product/brand", 73934, "13%"],
+		["Product/productID", 35211, "6%"],
+		["Product/manufacturer", 21967, "4%"]
+      ]);
+	  
+	  
+      var view = new google.visualization.DataView(data);
+	  view.setColumns([0, 1,
+                       { calc: "stringify",
+                         sourceColumn: 1,
+                         type: "string",
+                         role: "annotation" }]);
+      
+      var options = {
+        title: "Figure 1: Top product-related properties - WDC Product Corpus November 2017",
+        width: 600,
+        height: 500,
+        bar: {groupWidth: "75%"},
+        legend: { position: "none"},
+		hAxis: {
+          title: '# PLDs',
+          minValue: 0
+        },
+        vAxis: {
+          title: 'schema.org Property',
+		  textStyle: {fontSize:10}
+        }
+      };
+      
+      var chart = new google.visualization.BarChart(document.getElementById("topPropsNov"));
+      chart.draw(data, options);
+  }
+  
+  function drawIDPropsNov() {
+	
+      var data = google.visualization.arrayToDataTable([
+	    ["Property", "# Entities", { role: 'annotation' }  ],
+		["Product/productID", 52173553, "5.71%"],
+		["Product/sku", 40281145, "4.41%"],
+		["Offer/sku", 40281145, "2.07%"],
+		["Product/mpn", 13106410, "1.43%"],
+		["Product/gtin13", 4540417, "0.49%"],
+		["Offer/gtin13", 669844, "0.07%"],
+		["Product/gtin12", 270870, "0.05%"],
+		["Product/gtin8", 538526, "0.05%"],
+		["Product/gtin14", 453722, "0.05%"],
+		["Product/identifier", 411557, "0.04%"],
+		["Offer/gtin14", 270870, "0.03%"]
+
+      ]);
+	  
+	  
+      var view = new google.visualization.DataView(data);
+	  view.setColumns([0, 1,
+                       { calc: "stringify",
+                         sourceColumn: 1,
+                         type: "string",
+                         role: "annotation" }]);
+      
+      var options = {
+        title: "Figure 2: Product id-related properties per # Entities- WDC Product Corpus November 2017",
+        width: 600,
+        height: 500,
+        bar: {groupWidth: "75%"},
+        legend: { position: "none"},
+		hAxis: {
+          title: '# Entities',
+          minValue: 0
+        },
+        vAxis: {
+          title: 'schema.org Property',
+		  textStyle: {fontSize:10}
+        }
+      };
+      
+      var chart = new google.visualization.BarChart(document.getElementById("idPropsNov"));
+      chart.draw(data, options);
+  }
 
 	function drawIDsPerClassChart_obs() {
 	
@@ -352,8 +448,8 @@ hr {
 {
   "@context":"http://schema.org/",
   "@type":"Dataset",
-  "name":"Web Data Commons - The WDC Training Data Corpus for Large-Scale Product Matching",
-  "description":"Generating a training corpus for large scale product matching from annotated product identifiers found on the web.",
+  "name":"Web Data Commons - The WDC Data Corpus for Large-Scale Product Matching",
+  "description":"The training dataset consisting of 45 million pairs of product offers referring to the same products. The offers were extracted from 79 thousand e-shops which provide schema.org annotations including some form of product ID such as a GTIN or MPN. We also created a gold standard by manually verifying 2000 pairs of offers belonging to four different product categories.",
   "url":"http://webdatacommons.org/largescaleproductcorpus/index.html",
   "keywords":[
   	 "training corpus",
@@ -398,7 +494,7 @@ hr {
 <body>
   <div id="logo" style="text-align:right; background-color: white;">&nbsp;&nbsp;<a href="http://dws.informatik.uni-mannheim.de"><img src="../images/ma-logo.gif" alt="University of Mannheim - Logo"></a></div>
   <div id="header">
-    <h1 style="font-size: 250%;">Web Data Commons - Training Data Corpus for Large-Scale Product Matching</h1>
+    <h1 style="font-size: 250%;">Web Data Commons - Data Corpus for Large-Scale Product Matching</h1>
   </div>
   <div id="authors">
     <a href="https://dws.informatik.uni-mannheim.de/en/people/researchers/anna-primpeli/">Anna Primpeli</a><br />
@@ -407,8 +503,8 @@ hr {
   </div>
   <div id="content">
 	   <p>
-	   We present the WDC training data corpus for large-scale product matching, which contains more than 2 million entities describing product offers.
-       For the training corpus creation we make use of the supervision found on the web in the form of schema.org offer entities annotated with schema.org identifier information.
+	   We present the WDC data corpus for large-scale product matching, which contains more than 2 million entities describing product offers.
+       For the corpus creation we make use of the supervision found on the web in the form of schema.org offer entities annotated with schema.org identifier information.
        In the following sections, the necessary cleansing steps for creating the training data corpus for large-scale product matching are explained. In addition we provide the corpus for download as well as experimental baseline results.  
 	  </p>
 	  <h2 id="news">News</h2>
@@ -448,7 +544,7 @@ hr {
     they contain data that either refer to a small group of unique products or derive from a small number of sources.
 	Supervised machine learning methods which learn sub-symbolic data representations such as deep learning, have been shown to work well on large-scale scenarios. However, such methods
 	require large amounts of data for training. So far, such amounts of product related information have been restricted to large marketplaces such as ebay and amazon.
-	By creating the WDC training data corpus for large-scale product matching, we intend to enable the application, evaluation, and comparison of different more or less data hungry integration methods on the product domain.
+	By creating the WDC data corpus for large-scale product matching, we intend to enable the application, evaluation, and comparison of different more or less data hungry integration methods on the product domain.
 	</p>
 	
     <p>
@@ -456,13 +552,13 @@ hr {
     In addition, google motivates the annotation of product identifiers with properties such as <i> schema.org/Product/sku, gtin8, gtin13, gtin14,</i> and <i>mpn</i> for more enhanced search results.
     The application of these annotation practices can be considered as inexpensive supervision offered in the web.
     We profile the adoption of identifier-related schema.org product properties using the Web Data Commons November 2017 schema.org/Product subcorpus, perform a series of cleansing and grouping steps, 
-    and create the <i>WDC Training Corpus for Large-Scale Product Matching</i> containing 2 million entity offers clustered in 163,650 id-groups.
+    and create the <i>WDC Data Corpus for Large-Scale Product Matching</i> containing 2 million entity offers clustered in 163,650 id-groups.
     </p>
 	
 
 
     <span id="toc2"></span>
-    <h2>2.Initial Corpus</h2>
+    <h2>2.Statistics on product related properties in the November 2017 WDC schema:Product subcorpus</h2>
 	<p>
 	We use the <a href="http://webdatacommons.org/structureddata/2017-12/stats/schema_org_subsets.html#support"> November 2017 WDC schema.org/Product </a>subcorpus and extract the offer entities 
 	that contain schema.org identifier properties. We consider the following schema.org/Product and schema.org/Offer properties as identifier related properties:
@@ -481,8 +577,14 @@ hr {
 	</td><td></td></tr>
 	</tbody>
 	</table>
+	
     </p>
     
+	<div>
+	<span id="topPropsNov" style="float:left"></span>
+	<span id="idPropsNov" style="float:left"></span>
+
+	</div>
     
     <span id="toc3"></span>
     <h2>3.Cleansing and Preprocessing</h2>
@@ -491,7 +593,7 @@ hr {
     while annotating offer entities and develop different cleansing steps to overcome them. Below we provide details about the different false annotation practices as well as the corresponding cleansing steps 
     and the effect they had on the resulting corpus in terms of size.
     </p>
-    <h3>Misuse of schema.org vocabulary</h3>
+    <h3>Usage of non-existing schema.org terms</h3>
     <p>
     A large number of offer entities are assigned wrong schema.org vocabulary terms such as <i> schema:IndividualProduct/sku</i> and <i>schema:Product/Offer/sku</i>.
     Despite the wrong vocabulary usage, such terms still reveal identifying information. We capture this by applying a number of 
@@ -521,16 +623,16 @@ hr {
     
     
     
-    <h3>Assignment of erroneous identifier values</h3>
+    <h3>Filtering by identifier value length and occurrence</h3>
 	</br>
-	<h4>Value Normalization</h4>
+	<h4>Value Normalization and filtering by value length</h4>
     <p>
     The next filtering step is to remove offer entities which have been annotated with invalid identifier values. As we do not possess an extensive list of all valid product identifiers, we consider the 
     definitions of the relevant schema.org identifier properties and apply value normalization. First, all non-alphanumeric characters and initial 0s of the identifier values are removed. 
     Considering the suggested length and structure of the identifying properties, we remove the values that after normalization are shorter than 8 characters or longer than 25 characters.
     Finally, we remove the values that consist only out of alphabetic characters. 
 	</p>
-	<h4> Resulting data after value normalization </h4>
+	<h4> Resulting data after value normalization and value length filtering</h4>
     <br>
     <table> 
  	<tr><td>Entity count per property</td><td><small>
@@ -552,12 +654,12 @@ hr {
 	
 	
 	
-	<h4>Wrong usage by PLDs</h4>
+	<h4>Filtering by identifier value occurrence</h4>
 	<p>
 	Another wrong annotation behavior adopted by a considerable amount of web sites is to annotate all the
     offer entities with the same identifier. We detect those cases and remove them from our corpus.    
 	</p>
-   <h4> Resulting data after erroneous PLD removal </h4>
+   <h4> Resulting data after non-unique identifiers per pld </h4>
     <br>
     <table> 
  	<tr><td>Entity count per property</td><td><small>
@@ -583,7 +685,7 @@ hr {
     For capturing the different identifying values of an offer entity, we depict our data as a network graph with the distinct identifier values as vertices connected by "sameAs" edges in the case they appear in the same schema.org offer entity.
 	The connected components of the graph form the ID-clusters of our training data corpus. 
      </p>
-    <h4> Resulting data after clustering </h4>
+    <h4> Resulting data after grouping </h4>
     <br>
     <table>    
      <tr><td>Distinct identifier values (nodes)</td><td>29,314,091</td></tr>
@@ -591,7 +693,7 @@ hr {
      <tr><td><b>ID-clusters</b> </br> (connected components)</td><td>26,629,609</td></tr>
     </table>
     
-    <h3>Usage of product taxonomy identifiers as unique product identifiers</h3>
+    <h3>Detection and removal of taxonomy identifiers</h3>
     <p>
     Another common error is to annotate product taxonomy identifiers, such UNSPSC, as product identifiers. To consistently detect and remove those errors we make use of the network graph structure of our data.
     The taxonomy identifiers can be recognized as the nodes with a high degree and a very small clustering coefficient. The high degree reveals that the taxonomy identifier co-occurs with many other identifier values while the small clustering coefficient 
@@ -606,7 +708,7 @@ hr {
      <tr><td><b>ID-clusters</b> </br> (connected components)</td><td>26,823,819</td></tr>
     </table>
     
-    <h3>ID-clusters with weak support</h3>
+    <h3>ID-clusters with weak support filtering</h3>
     <p>
     In the last cleansing step we remove the ID-clusters with weak pld support. We set the pld support threshold to 5 and therefore remove every ID-cluster that contains offer entities deriving from less than 5 plds.
     </p>
@@ -636,7 +738,7 @@ hr {
      <tr><td><b>ID-clusters</b> </br> (connected components)</td><td>163,650</td></tr>
 	 </table>
 	 
-	 <h3>Wrong placement of identifier information</h3>
+	 <h3>Combination of information from schema:Product and schema:Offer entities</h3>
 	 <p>
 	 We identify that approximately 20% of the offers of our corpus have no schema.org descriptive properties.
 	 This originates in the annotation practice of attaching the identifier information to the embedded schema.org/Offer entity rather than to the parent schema.org/Product entity as proposed by <a href="https://developers.google.com/search/docs/data-types/product"> google on adding structured data to product pages</a>.
@@ -649,6 +751,34 @@ hr {
     </figure>
 
 	 </p>
+	
+	<h3>Offer Categorization</h3>
+	<p>
+	We use distant supervision from amazon product data in order to assign product category labels to the offers of our corpus. Using a publicly available <a href="http://jmcauley.ucsd.edu/data/amazon/">amazon dataset</a> of product reviews and metadata,
+	we build lexica containing terms and their tf-idf scores for 26 product categories. We assign to every offer of our corpus the product category whose terms maximize the sum of the tf-idf scores of the overlapping terms.
+	In the case that the overlap is very minimal we assign to the offer the product category "not found". 
+	For evaluating our categorization strategy, we use a manually annotated set of 985 offers which you can download <a href="http://data.dws.informatik.uni-mannheim.de/largescaleproductcorpus/data/cat_gs_Evaluation.txt">here</a>.
+	Figure 2 shows the distribution of the different categories in our gold standard. 
+	Our categorization strategy reaches 62.3% Precision@1. 
+	<span id="catInGS" ></span>
+	</p>
+
+
+	<h3> Specification Table Detection and Extraction</h3>
+	<p>
+	Based on the work of [Qiu,2015] and [Petrovski,2017] on detecting specification tables in html pages, we apply a table detection heuristic based on the following html table attributes:
+	<ul>
+	<li/>Ratio of alphanumeric characters
+	<li/>Average number of columns per row
+	<li/>Count of table children elements
+	<li/>Count of images
+	<li/>Maximum number of columns
+	<li/>Max number of rows
+	<li/>Average length of text per row
+	</ul>
+	For evaluating this heuristic we manually annotate 455 html tables found in 17 html pages with the labels "specification" and "non-specification" which you can find <a href="http://data.dws.informatik.uni-mannheim.de/largescaleproductcorpus/data/gs_specTables.zip">here</a>.
+	Based on our gold standard the applied heuristic reaches an F1 of 78% on the positive class which is considered the one with label "specification".
+	</p>
 	
     <span id="toc4"></span>
     <h2>4.Corpus Profiling</h2>
@@ -666,37 +796,19 @@ hr {
 	
 	
 	
-	<h2>Offer Categorization</h2>
+	<h2>Product Categories</h2>
 	<p>
-	We use distant supervision from amazon product data in order to assign product category labels to the offers of our corpus. Using a publicly available <a href="http://jmcauley.ucsd.edu/data/amazon/">amazon dataset</a> of product reviews and metadata,
-	we build lexica containing terms and their tf-idf scores for 26 product categories. We assign to every offer of our corpus the product category whose terms maximize the sum of the tf-idf scores of the overlapping terms.
-	In the case that the overlap is very minimal we assign to the offer the product category "not found". 
-	For evaluating our categorization strategy, we use a manually annotated set of 985 offers which you can download <a href="http://data.dws.informatik.uni-mannheim.de/largescaleproductcorpus/data/cat_gs_Evaluation.txt">here</a>.
-	Figure 2 shows the distribution of the different categories in our gold standard. 
-	Our categorization strategy reaches 62.3% Precision@1. Figure 3 shows the distribution of the 26 defined product categories in the english subcorpus after applying our categorization strategy.
+	Figure 3 shows the distribution of the 26 defined product categories in the english subcorpus after applying our categorization strategy.
 	</p>
-	
-	
+
 	<div>
-	<span id="catInGS" style="float:left"></span>
 	<span id="catInCorpus" style="float:left"></span>
 	</div>
 	
 	
-	<h2>Specification Tables Detection and Extraction</h2>
+	<h2>Specification Tables</h2>
 	<p>
-	Based on the work of [Qiu,2015] and [Petrovski,2017] on detecting specification tables in html pages, we apply a table detection heuristic based on the following html table attributes:
-	<ul>
-	<li/>Ratio of alphanumeric characters
-	<li/>Average number of columns per row
-	<li/>Count of table children elements
-	<li/>Count of images
-	<li/>Maximum number of columns
-	<li/>Max number of rows
-	<li/>Average length of text per row
-	</ul>
-	For evaluating this heuristic we manually annotate 455 html tables found in 17 html pages with the labels "specification" and "non-specification" which you can find <a href="http://data.dws.informatik.uni-mannheim.de/largescaleproductcorpus/data/gs_specTables.zip">here</a>.
-	Based on our gold standard the applied heuristic reaches an F1 of 78% on the positive class which is considered the one with label "specification".
+
 	Applying the heuristic to the complete corpus we are able to extract 487K specification tables. TODO: as more stats on spec. tables and key value pairs
 	From the detected specification tables we consider the two-column heuristic of [Qiu, 2015] for extracting key-value pairs from tables with two columns.  
 	</p>
