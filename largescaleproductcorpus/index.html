@@ -1,910 +1,1496 @@
 <!DOCTYPE html>
-<html><head><meta name="robots" content="nofollow"/><title>The WDC Data Corpus for Large-Scale Product Matching</title>
-<link rel='stylesheet' href='http://webdatacommons.org/style.css' type='text/css' media='screen'/>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<html>
 
-<style>
-.tar {
-text-align: right;
-}
-.rtable
-{
-    float: right;
-    padding-left:10px;
-
-}
-.smalltable, .smalltable TD, .smalltable TH
-{
-font-size:9pt;
-}
-.table-wrapper {
-  position:relative;
-}
-.table-scroll {
-  height:240px;
-  overflow:auto;
-  margin-top:-10px;
-}
-
-.show{
-  display:block;
-}
-
-.no-show{
-  display:none;
-}
-
-hr {
-    width: 50%;
-    margin: 20px 0; /* This leaves 10px margin on left and right. If only right margin is needed try margin-right: 10px; */
-}
-</style>
-
-<script type="text/javascript" src="https://www.google.com/jsapi"></script>
-  <script type="text/javascript">
-
-	google.load('visualization', '1', {packages: [ 'bar', 'line', 'corechart']});
-	google.setOnLoadCallback(drawOffersPerClassChart);
-	google.setOnLoadCallback(drawOffersPerUrlChart);
-	google.setOnLoadCallback(drawOffersPerTLDChart);
-	google.setOnLoadCallback(drawCategDistributionGS);
-	google.setOnLoadCallback(drawCategDistributionCorpus);
-	google.setOnLoadCallback(drawTopProdPropsNov);
-	google.setOnLoadCallback(drawIDPropsNov);
-
-
-function drawTopProdPropsNov() {
-	
-      var data = google.visualization.arrayToDataTable([
-	    ["Property", "# PLDs", { role: 'annotation' }  ],
-		["Product/name", 535625, "92%"],
-		["Offer/price", 462444, "80%"],
-		["Product/offers", 462233, "79%"],
-		["Offer/priceCurrency", 430556, "74%"],		
-		["Product/image", 419391, "72%"],
-		["Product/description", 377639, "65%"],
-		["Offer/availability", 337876, "58%"],
-		["Product/url", 263720, "45%"],
-		["AggregateRating/ratingValue", 184004, "32%"],
-		["Product/sku", 126696, "22%"],
-		["AggregateRating/reviewCount", 112408, "19%"],
-		["Product/aggregateRating", 101434, "17%"],
-		["Product/brand", 73934, "13%"],
-		["Product/productID", 35211, "6%"],
-		["Product/manufacturer", 21967, "4%"]
-      ]);
-	  
-	  
-      var view = new google.visualization.DataView(data);
-	  view.setColumns([0, 1,
-                       { calc: "stringify",
-                         sourceColumn: 1,
-                         type: "string",
-                         role: "annotation" }]);
-      
-      var options = {
-        title: "Figure 1: Top product-related properties - WDC Product Corpus November 2017",
-        width: 600,
-        height: 500,
-        bar: {groupWidth: "75%"},
-        legend: { position: "none"},
-		hAxis: {
-          title: '# PLDs',
-          minValue: 0
-        },
-        vAxis: {
-          title: 'schema.org Property',
-		  textStyle: {fontSize:10}
-        }
-      };
-      
-      var chart = new google.visualization.BarChart(document.getElementById("topPropsNov"));
-      chart.draw(data, options);
-  }
-  
-  function drawIDPropsNov() {
-	
-      var data = google.visualization.arrayToDataTable([
-	    ["Property", "# Entities", { role: 'annotation' }  ],
-		["Product/productID", 52173553, "5.71%"],
-		["Product/sku", 40281145, "4.41%"],
-		["Offer/sku", 40281145, "2.07%"],
-		["Product/mpn", 13106410, "1.43%"],
-		["Product/gtin13", 4540417, "0.49%"],
-		["Offer/gtin13", 669844, "0.07%"],
-		["Product/gtin12", 270870, "0.05%"],
-		["Product/gtin8", 538526, "0.05%"],
-		["Product/gtin14", 453722, "0.05%"],
-		["Product/identifier", 411557, "0.04%"],
-		["Offer/gtin14", 270870, "0.03%"]
-
-      ]);
-	  
-	  
-      var view = new google.visualization.DataView(data);
-	  view.setColumns([0, 1,
-                       { calc: "stringify",
-                         sourceColumn: 1,
-                         type: "string",
-                         role: "annotation" }]);
-      
-      var options = {
-        title: "Figure 2: Product id-related properties per # Entities- WDC Product Corpus November 2017",
-        width: 600,
-        height: 500,
-        bar: {groupWidth: "75%"},
-        legend: { position: "none"},
-		hAxis: {
-          title: '# Entities',
-          minValue: 0
-        },
-        vAxis: {
-          title: 'schema.org Property',
-		  textStyle: {fontSize:10}
-        }
-      };
-      
-      var chart = new google.visualization.BarChart(document.getElementById("idPropsNov"));
-      chart.draw(data, options);
-  }
-
-	function drawIDsPerClassChart_obs() {
-	
-      var data = google.visualization.arrayToDataTable([
-	    ["Identifier Values Count", "Frequency (#ID-clusters)" ],
-		["[12-50]", 111],
-		["11", 65],
-		["10", 174],
-		["9", 146],
-		["8", 345],
-		["7", 538],
-		["6", 1183],
-		["5", 2546],
-		["4", 6549],
-        ["3", 14170],
-        ["2", 20364],
-        ["1", 126390 ],
-
-
-      ]);
-	  
-      var view = new google.visualization.DataView(data);
-	  view.setColumns([0, 1,
-                       { calc: "stringify",
-                         sourceColumn: 1,
-                         type: "string",
-                         role: "annotation" }]);
-      
-      var options = {
-        title: "Distribution of identifier values per ID-cluster",
-        width: 400,
-        height: 400,
-        bar: {groupWidth: "95%"},
-        legend: { position: "none" },
-		hAxis: {
-          title: 'Frequency (#ID-clusters)',
-          minValue: 0
-        },
-        vAxis: {
-          title: '# Identifier Values'
-        }
-      };
-      var chart = new google.visualization.BarChart(document.getElementById("IDsPerClass"));
-      chart.draw(view, options);
-  }
-  
-  function drawOffersPerClassChart() {
-	
-      var data = google.visualization.arrayToDataTable([
-	    ["Offer Entities Count", "Frequency(#ID-clusters)" ],
-		["[>100]", 1149],
-		["[91-100]", 251],
-		["[81-90]", 278],
-		["[71-80]", 466],
-		["[61-70]", 524],
-		["[51-60]", 1219],
-		["[41-50]", 4005],
-		["[31-40]", 6280],
-		["[21-30]", 6871],
-		["[11-20]", 20306],
-		["[5-10]", 109850],
-		["[0-4]", 12450]
-
-      ]);
-	  
-	  var view = new google.visualization.DataView(data);
-	  view.setColumns([0, 1,
-                       { calc: "stringify",
-                         sourceColumn: 1,
-                         type: "string",
-                         role: "annotation" }]);
-      
-      var options = {
-        title: "Distribution of offer entities per ID-cluster",
-        width: 400,
-        height: 400,
-        bar: {groupWidth: "95%"},
-        legend: { position: "none" },
-		hAxis: {
-          title: 'Frequency(#ID-clusters)',
-          minValue: 0
-        },
-        vAxis: {
-          title: '# Offer Entities'
-        }
-      };
-      
-      var chart = new google.visualization.BarChart(document.getElementById("offersPerClass"));
-      chart.draw(view, options);
-  }
-
-  function drawOffersPerUrlChart() {
-	
-      var data = google.visualization.arrayToDataTable([
-	    ["Offers Count", "Frequency(#URLs)" ],
-		["[>45]", 720],
-		["[36-45]",  645],
-		["[26-35]",  1325],
-		["[16-25]",  7952],
-		["[6-15]",  10179],
-		["5", 8613],
-		["4", 4849],
-		["3", 8063],
-		["2", 297353],
-		["1", 954821]
-
-      ]);
-	  
-	  var view = new google.visualization.DataView(data);
-	  view.setColumns([0, 1,
-                       { calc: "stringify",
-                         sourceColumn: 1,
-                         type: "string",
-                         role: "annotation" }]);
-      
-      var options = {
-        title: "Distribution of offer entities per URL",
-        width: 500,
-        height: 420,
-        bar: {groupWidth: "95%"},
-        legend: { position: "none" },
-		hAxis: {
-          title: 'Frequency(#URLs)',
-          minValue: 0
-        },
-        vAxis: {
-          title: '# Offer Entities'
-        }
-      };
-      
-      var chart = new google.visualization.BarChart(document.getElementById("urlsPerClass"));
-      chart.draw(view, options);
-  }
-  
-  function drawOffersPerTLDChart() {
-	
-      var data = google.visualization.arrayToDataTable([
-	    ["TLD", "Offer Entities" ],
-		[" com", 795212],
-		[" de", 162721],
-		[" fr", 68994],
-		[" co.uk", 63210],
-		[" net", 55650],	
-		[" ch", 52498],		
-		[" cz", 48975],
-		[" ca", 42476],
-		[" es", 41365],		
-		[" pl", 39155],
-		[" at", 34708],
-		[" nl", 33484],
-		[" it", 32489],
-		[" ru", 26660],
-		["others", 505076]
-		
-      ]);
-	  
-	  
-      var options = {
-        title: "Distribution of offer entities per TLD",
-        width: 400,
-        height: 400,
-        legend: { position: "none" },
-		is3D: true
-		
-      };
-      
-      var chart = new google.visualization.PieChart(document.getElementById("offersPerTLD"));
-      chart.draw(data, options);
-  }
-  
-  function drawCategDistributionGS() {
-	
-      var data = google.visualization.arrayToDataTable([
-	    ["Category", "Offers in Categorization GS" ],
-		["[Clothing]", 296],
-		["[Computers_and_Accessories]", 229],
-		["[Jewelry]", 147],
-		["[Office_Products]", 55],
-		["[not_found_language]", 35],
-		["[Beauty]", 33],
-		["[not_found_meaningless]", 33],
-		["[Other_Electronics]", 23],
-		["[Home_and_Kitchen]", 23],
-		["[Camera_and_Photo]", 16],
-		["[Musical_Instruments]", 15],
-		["[Shoes]", 11],
-		["[Health_and_Personal_Care]", 10],
-		["[Automotive]", 9],
-		["[Toys_and_Games]", 8],
-		["[Cell_Phones_and_Accessories]", 7],
-		["[Books]", 6],
-		["[not_found_nodesc]", 6],
-		["[Tools_and_Home_Improvement]", 6],
-		["[Sports_and_Outdoors]", 6],
-		["[Video_Games]", 4],
-		["[Patio_Lawn_and_Garden]", 3],
-		["[Movies_and_TV]", 3],
-		["[Luggage_and_Travel_Gear]", 3],
-		["[Grocery_and_Gourmet_Food]", 2],
-		["[Pet_Supplies]", 1],
-		["[Baby]", 1]
-      ]);
-	  
-	  
-      var options = {
-        title: "Figure 2: Distribution of offer entities per category in the categorization GS",
-        width: 600,
-        height: 800,
-        legend: { position: "right" },
-		is3D: true
-		
-      };
-      
-      var chart = new google.visualization.PieChart(document.getElementById("catInGS"));
-      chart.draw(data, options);
-  }
-  
-  function drawCategDistributionCorpus() {
-	
-      var data = google.visualization.arrayToDataTable([
-	    ["Category", "Offers in Corpus", { role: 'annotation' }  ],
-		["[Clothing]", 179256, "19.47%"],
-		["[Computers_and_Accessories]", 147067, "15.97%"],
-		["[Jewelry]", 123399, "13.40%"],
-		["[Office_Products]", 81328, "8.83%"],
-		["[Beauty]", 45448, "4.94%"],
-		["[Camera_and_Photo]", 36606, "3.98%"],
-		["[Automotive]", 24787, "2.69%"],
-		["[Luggage_and_Travel_Gear]", 24171, "2.62%"],
-		["[CDs_and_Vinyl]", 24155, "2.62%"],
-		["[Shoes]", 22259, "2.42%"],
-		["[Cell_Phones_and_Accessories]", 21261, "2.31%"],
-		["[Grocery_and_Gourmet_Food]", 21105, "2.29%"],
-		["[Video_Games]", 20866, "2.27%"],
-		["[not_found]", 19384, "2.10%"],
-		["[Other_Electronics]", 18605, "2.02%"],
-		["[Home_and_Kitchen]", 14958, "1.62%"],
-		["[Musical_Instruments]", 14376, "1.56%"],
-		["[Digital_Music]", 13864, "1.51%"],
-		["[Baby]", 12693, "1.38%"],
-		["[Patio_Lawn_and_Garden]", 12650, "1.37%"],
-		["[Tools_and_Home_Improvement]", 11759, "1.28%"],
-		["[Books]", 9427, "1.02%"],
-		["[Pet_Supplies]", 7880, "0.86%"],
-		["[Sports_and_Outdoors]", 3983, "0.43%"],
-		["[Health_and_Personal_Care]", 3572, "0.39%"],
-		["[Toys_and_Games]", 3142, "0.34%"],
-		["[Movies_and_TV]", 2884, "0.31%"]
-		
-      ]);
-	  
-	  
-      var view = new google.visualization.DataView(data);
-	  view.setColumns([0, 1,
-                       { calc: "stringify",
-                         sourceColumn: 1,
-                         type: "string",
-                         role: "annotation" }]);
-      
-      var options = {
-        title: "Figure 3: Distribution of offer entities per category in the corpus",
-        width: 1000,
-        height: 800,
-        bar: {groupWidth: "75%"},
-        legend: { position: "none"},
-		hAxis: {
-          title: '# Offer Entities',
-          minValue: 0
-        },
-        vAxis: {
-          title: 'Product Category',
-		  textStyle: {fontSize:12}
-        }
-      };
-      
-      var chart = new google.visualization.BarChart(document.getElementById("catInCorpus"));
-      chart.draw(data, options);
-  }
-  </script>
-
-
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-<script type="text/javascript" src="../jquery.toc.min.js"></script>
-<script type="text/javascript">
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-30248817-1']);
-  _gaq.push(['_trackPageview']);
-
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-   
-</script>
-
-
-<script type="application/ld+json">
-{
-  "@context":"http://schema.org/",
-  "@type":"Dataset",
-  "name":"Web Data Commons - The WDC Data Corpus for Large-Scale Product Matching",
-  "description":"The training dataset consisting of 45 million pairs of product offers referring to the same products. The offers were extracted from 79 thousand e-shops which provide schema.org annotations including some form of product ID such as a GTIN or MPN. We also created a gold standard by manually verifying 2000 pairs of offers belonging to four different product categories.",
-  "url":"http://webdatacommons.org/largescaleproductcorpus/index.html",
-  "keywords":[
-  	 "training corpus",
-     "product corpus",
-     "large scale",
-     "product matching",
-     "entity matching"
-  ],
-  "creator":[
-	  {
-		 "@type":"Person",
-		 "url": "http://dws.informatik.uni-mannheim.de/en/people/professors/prof-dr-christian-bizer/",
-		 "name":"Christian Bizer"
-	  },
-	  {
-		 "@type":"Person",
-		 "url": "http://dws.informatik.uni-mannheim.de/en/people/researchers/anna-primpeli/",
-		 "name":"Anna Primpeli"
-	  },
-	  {
-		 "@type":"Person",
-		 "name":"Ralph Peeters"
-	  }
-
-  ],
-  "distribution":[
-     {
-        "@type":"DataDownload",
-        "fileFormat":[
-			"tsv"
-		],
-        "contentUrl":"http://data.dws.informatik.uni-mannheim.de/largescaleproductgs/"
-     }
-  ],
-  "citation":[
-	  
-  ]
-  }
-</script>
-
-</head>
-<body>
-  <div id="logo" style="text-align:right; background-color: white;">&nbsp;&nbsp;<a href="http://dws.informatik.uni-mannheim.de"><img src="../images/ma-logo.gif" alt="University of Mannheim - Logo"></a></div>
-  <div id="header">
-    <h1 style="font-size: 250%;">Web Data Commons - Data Corpus for Large-Scale Product Matching</h1>
-  </div>
-  <div id="authors">
-    <a href="https://dws.informatik.uni-mannheim.de/en/people/researchers/anna-primpeli/">Anna Primpeli</a><br />
-    <a href="http://dws.informatik.uni-mannheim.de/en/people/professors/prof-dr-christian-bizer/">Christian Bizer</a><br />
-	Ralph Peeters
-  </div>
-  <div id="content">
-	   <p>
-	   We present the WDC data corpus for large-scale product matching, which contains more than 2 million entities describing product offers.
-       For the corpus creation we make use of the supervision found on the web in the form of schema.org offer entities annotated with schema.org identifier information.
-       In the following sections, the necessary cleansing steps for creating the training data corpus for large-scale product matching are explained. In addition we provide the corpus for download as well as experimental baseline results.  
-	  </p>
-	  <h2 id="news">News</h2>
-	  <ul>
-	  </ul>
-	  <h2>Contents</h2>
-	  <ul>
-		    <li class="toc-h2 toc-active">
-		        <a href="#toc1"> 1.Motivation for the WDC training data corpus for large-scale product matching </a>
-		    </li>
-		    <li class="toc-h2 toc-active">
-		        <a href="#toc2"> 2.Initial Corpus </a>
-		    </li>
-			<li class="toc-h2 toc-active">
-		        <a href="#toc3"> 3.Cleansing and Preprocessing </a>
-		    </li>
-		    <li class="toc-h2 toc-active">
-		        <a href="#toc4"> 4.Corpus Profiling</a>
-		    </li>						
-		    <li class="toc-h2 toc-active">
-		        <a href="#toc5"> 5.Corpus Files - Download</a>
-		    </li>		
-		    <li class="toc-h2 toc-active">
-		        <a href="#toc6"> 6.Baselines </a>
-		    </li>
-		    <li class="toc-h2 toc-active">
-		        <a href="#toc7"> 7.References </a>
-		    </li>
-	  </ul>
-
-    <span id="toc1"></span>
-    <h2>1. Motivation for the WDC training data corpus for large-scale product matching </h2>
-    <p>	
-	The task of integrating product data found on web offers has been studied as a special integration use case whose difficulty lies on the sparse and noisy nature of web data.
-	The difficulty of the web product integration task increases as the number of data sources and product entities increases. Although there exist product data sets which can be used to evaluate product matching methods
-    (e.g. the <a href="http://webdatacommons.org/productcorpus/index.html">WDC Product Corpus </a> and the <a href="https://dbs.uni-leipzig.de/en/research/projects/object_matching/fever/benchmark_datasets_for_entity_resolution">Abt-Buy</a> data set),
-    they contain data that either refer to a small group of unique products or derive from a small number of sources.
-	Supervised machine learning methods which learn sub-symbolic data representations such as deep learning, have been shown to work well on large-scale scenarios. However, such methods
-	require large amounts of data for training. So far, such amounts of product related information have been restricted to large marketplaces such as ebay and amazon.
-	By creating the WDC data corpus for large-scale product matching, we intend to enable the application, evaluation, and comparison of different more or less data hungry integration methods on the product domain.
-	</p>
-	
-    <p>
-    Popular annotation vocabularies, like schema.org, propose a set of properties to annotate identifiers of offer entities on the web.
-    In addition, google motivates the annotation of product identifiers with properties such as <i> schema.org/Product/sku, gtin8, gtin13, gtin14,</i> and <i>mpn</i> for more enhanced search results.
-    The application of these annotation practices can be considered as inexpensive supervision offered in the web.
-    We profile the adoption of identifier-related schema.org product properties using the Web Data Commons November 2017 schema.org/Product subcorpus, perform a series of cleansing and grouping steps, 
-    and create the <i>WDC Data Corpus for Large-Scale Product Matching</i> containing 2 million entity offers clustered in 163,650 id-groups.
-    </p>
-	
-
-
-    <span id="toc2"></span>
-    <h2>2.Statistics on product related properties in the November 2017 WDC schema:Product subcorpus</h2>
-	<p>
-	We use the <a href="http://webdatacommons.org/structureddata/2017-12/stats/schema_org_subsets.html#support"> November 2017 WDC schema.org/Product </a>subcorpus and extract the offer entities 
-	that contain schema.org identifier properties. We consider the following schema.org/Product and schema.org/Offer properties as identifier related properties:
-	 <a href="https://schema.org/sku">sku</a>, <a href="https://schema.org/mpn">mpn</a>, <a href="https://schema.org/identifier">identifier</a>, <a href="https://schema.org/productID">productID</a>,
-	 <a href ="https://schema.org/gtin14">gtin14</a>, <a href ="https://schema.org/gtin13">gtin13</a>, <a href ="https://schema.org/gtin12">gtin12</a>, and <a href="https://schema.org/gtin8">gtin8</a>.
-	<h4>November 2017 schema.org/Product corpus statistics</h4>
-	<br />
-	<table>
-	<tbody>
-	<tr><th>Data Size</th><td  align="right">135 GB</td><td>(compressed)</td></tr>
-	<tr><th>Quads</th><td align="right"> 6,321,909,578</td><td></td></tr>
-	<tr><th>Entities</th><td align="right"> 444,760,713 </td><td></td></tr>
-	<tr><th>Domains</th><td align="right"> 581,482 </td><td></td></tr>
-	<tr><th>Related Classes</th><td align="left">
-	<ul> <li>schema:Product</li> <li>schema:Offer</li> <li>schema:Review</li> <li>schema:AggregateRating</li> <li>schema:Organization</li> </ul>
-	</td><td></td></tr>
-	</tbody>
-	</table>
-	
-    </p>
-    
-	<div>
-	<span id="topPropsNov" style="float:left"></span>
-	<span id="idPropsNov" style="float:left"></span>
-
-	</div>
-    
-    <span id="toc3"></span>
-    <h2>3.Cleansing and Preprocessing</h2>
-    <p>
-    Considering the noisy nature of web data, we perform a series of cleansing steps. During the cleansing process we identify several false practices 
-    while annotating offer entities and develop different cleansing steps to overcome them. Below we provide details about the different false annotation practices as well as the corresponding cleansing steps 
-    and the effect they had on the resulting corpus in terms of size.
-    </p>
-    <h3>Usage of non-existing schema.org terms</h3>
-    <p>
-    A large number of offer entities are assigned wrong schema.org vocabulary terms such as <i> schema:IndividualProduct/sku</i> and <i>schema:Product/Offer/sku</i>.
-    Despite the wrong vocabulary usage, such terms still reveal identifying information. We capture this by applying a number of 
-    regex patterns on the properties of the offer entities.
-	</p>
-    
-    <h4> Resulting data after regex pattern application </h4>
-    <br>
-    <table>
-    
-    <tr><td>Entity count per property</td><td><small>
-    <a href='' onclick="document.getElementById('57b55b12-32de-4903-aa4b-a1a93c11508a').style.display='block';this.style.display='none';return false;">Show property info</a></small>
-    <ol id='57b55b12-32de-4903-aa4b-a1a93c11508a' style='display:none'>
-    <li>*/sku : 57,685,250</li>
-    <li>*/productID : 50,668,120</li>
-    <li>*/mpn : 13,927,665</li>
-    <li>*/identifier : 363,490</li>
-    <li>*/gtin14 : 692,684</li>
-    <li>*/gtin13 : 5,056,492</li>
-    <li>*/gtin12 : 494,803</li>
-    <li>*/gtin8 : 541,710</li>
-    </ol> </td>
-    <tr><td>Distinct identifier values</td><td>38,804,820</td></tr>
-    <tr><td>Offer Entities with ID-related annotations </br> (at least one)</td><td>115,718,974</td></tr>
-    </table>
-  
-    
-    
-    
-    <h3>Filtering by identifier value length and occurrence</h3>
-	</br>
-	<h4>Value Normalization and filtering by value length</h4>
-    <p>
-    The next filtering step is to remove offer entities which have been annotated with invalid identifier values. As we do not possess an extensive list of all valid product identifiers, we consider the 
-    definitions of the relevant schema.org identifier properties and apply value normalization. First, all non-alphanumeric characters and initial 0s of the identifier values are removed. 
-    Considering the suggested length and structure of the identifying properties, we remove the values that after normalization are shorter than 8 characters or longer than 25 characters.
-    Finally, we remove the values that consist only out of alphabetic characters. 
-	</p>
-	<h4> Resulting data after value normalization and value length filtering</h4>
-    <br>
-    <table> 
- 	<tr><td>Entity count per property</td><td><small>
-    <a href='' onclick="document.getElementById('57b55b12-32de-4903-aa4b-a1a93c11508ab').style.display='block';this.style.display='none';return false;">Show property info</a></small>
-    <ol id='57b55b12-32de-4903-aa4b-a1a93c11508ab' style='display:none'>    
-    <li>*/sku : 19,623,297</li>
-    <li>*/productID : 33,585,775</li>
-    <li>*/mpn : 6,938,301</li>
-    <li>*/identifier : 265,060</li>
-    <li>*/gtin14 : 641,891</li>
-    <li>*/gtin13 : 4,253,893</li>
-    <li>*/gtin12 : 347,001</li>
-    <li>*/gtin8 : 528,886</li>
-    </ol> </td>
-     <tr><td>Distinct identifier values</td><td>29,314,295</td></tr>
-     <tr><td>Offer Entities with ID-related annotations </br> (at least one)</td><td>61,149,387</td></tr>
-    </table>
-	
-	
-	
-	
-	<h4>Filtering by identifier value occurrence</h4>
-	<p>
-	Another wrong annotation behavior adopted by a considerable amount of web sites is to annotate all the
-    offer entities with the same identifier. We detect those cases and remove them from our corpus.    
-	</p>
-   <h4> Resulting data after non-unique identifiers per pld </h4>
-    <br>
-    <table> 
- 	<tr><td>Entity count per property</td><td><small>
-    <a href='' onclick="document.getElementById('57b55b12-32de-4903-aa4b-a1a93c11508ac').style.display='block';this.style.display='none';return false;">Show property info</a></small>
-    <ol id='57b55b12-32de-4903-aa4b-a1a93c11508ac' style='display:none'>    
-    <li>*/sku : 19,615,547</li>
-    <li>*/productID : 33,578,647</li>
-    <li>*/mpn : 6,933,114</li>
-    <li>*/identifier : 265,060</li>
-    <li>*/gtin14 : 638,075</li>
-    <li>*/gtin13 : 4,253,100</li>
-    <li>*/gtin12 : 346,910</li>
-    <li>*/gtin8 : 528,886</li>
-    </ol> </td>
-     <tr><td>Distinct identifier values</td><td>29,314,091</td></tr>
-     <tr><td>Offer Entities with ID-related annotations </br> (at least one)</td><td>61,129,664</td></tr>
-    </table>
-    
-    
-    <h3>Usage of multiple valid identifiers to indicate the same product</h3>
-    <p>
-    Across web sites different valid identifier values might be used to indicate the same product, e.g. one web site might add a gtin13 annotation while another one might add the mpn number to an schema.org offer entity.
-    For capturing the different identifying values of an offer entity, we depict our data as a network graph with the distinct identifier values as vertices connected by "sameAs" edges in the case they appear in the same schema.org offer entity.
-	The connected components of the graph form the ID-clusters of our training data corpus. 
-     </p>
-    <h4> Resulting data after grouping </h4>
-    <br>
-    <table>    
-     <tr><td>Distinct identifier values (nodes)</td><td>29,314,091</td></tr>
-     <tr><td>Offer Entities with ID-related annotations </br> (at least one)</td><td>61,129,664</td></tr>  
-     <tr><td><b>ID-clusters</b> </br> (connected components)</td><td>26,629,609</td></tr>
-    </table>
-    
-    <h3>Detection and removal of taxonomy identifiers</h3>
-    <p>
-    Another common error is to annotate product taxonomy identifiers, such UNSPSC, as product identifiers. To consistently detect and remove those errors we make use of the network graph structure of our data.
-    The taxonomy identifiers can be recognized as the nodes with a high degree and a very small clustering coefficient. The high degree reveals that the taxonomy identifier co-occurs with many other identifier values while the small clustering coefficient 
-    shows that the co-occuring identifier values do not appear in the same offer entities and thus describe different products.
-    </p>
-    
-    <h4> Resulting data after taxonomy identifiers filtering </h4>
-    <br>
-    <table>    
-     <tr><td>Distinct identifier values (nodes) </td><td>29,312,255</td></tr>
-     <tr><td>Offer Entities with ID-related annotations </br> (at least one)</td><td>61,129,664</td></tr>
-     <tr><td><b>ID-clusters</b> </br> (connected components)</td><td>26,823,819</td></tr>
-    </table>
-    
-    <h3>ID-clusters with weak support filtering</h3>
-    <p>
-    In the last cleansing step we remove the ID-clusters with weak pld support. We set the pld support threshold to 5 and therefore remove every ID-cluster that contains offer entities deriving from less than 5 plds.
-    </p>
-	<br>
-    <table>    
-     <tr><td>Distinct identifier values (nodes) </td><td>267,530</td></tr>
-     <tr><td>Offer Entities with ID info </br> (at least one)</td><td>3,130,613</td></tr>
-     <tr><td><b>ID-clusters</b> </br> (connected components)</td><td>172,581</td></tr>
-    </table>
-    
-	<h3>Listing pages and advertisement offers detection and removal</h3>
-	<p>
-	In this cleansing step we want to remove the offers of our corpus which are part of listing pages or advertisements. We apply a heuristic for detecting listing pages and advertisements based on:
-	<ul>
-	<li/>Amount of schema:Offer and schema:Product entities per url
-	<li/>Distribution of descriptions' length
-	<li/>Semantic connection to parent entities with properties like schema:RelatedTo and schema:SimilarTo
-	</ul>
-	The applied heuristic achieves an F1 score of 94.8% (on the positive class isListingOrAd). For the evaluation we use a manually annotated set of 80 schema:Offer and schema:Product entities of our corpus,
-	which you can download <a href="http://data.dws.informatik.uni-mannheim.de/largescaleproductcorpus/data/GS_ListingPages.txt">here</a>.
-	
-	</p>
-	<br>
-    <table>    
-     <tr><td>Distinct identifier values (nodes) </td><td>251,926</td></tr>
-     <tr><td>Offer Entities with ID info </br> (at least one)</td><td>2,002,673</td></tr>
-     <tr><td><b>ID-clusters</b> </br> (connected components)</td><td>163,650</td></tr>
-	 </table>
-	 
-	 <h3>Combination of information from schema:Product and schema:Offer entities</h3>
-	 <p>
-	 We identify that approximately 20% of the offers of our corpus have no schema.org descriptive properties.
-	 This originates in the annotation practice of attaching the identifier information to the embedded schema.org/Offer entity rather than to the parent schema.org/Product entity as proposed by <a href="https://developers.google.com/search/docs/data-types/product"> google on adding structured data to product pages</a>.
-	 An example of such an annotation practice is shown in Figure 1. In order to enrich the empty descriptive properties of the training corpus offers we additionally consider the descriptive properties of their parent items. In the example of Figure 1
-	 we would add to the offer with id <i>KZZ99789</i> the name property of its parent product entity with the value <i>"Boys Lace Up Camo High Top Trainers"</i>. This leads to a reduction of offers with empty descriptive properties to less than 3%.
-	
-	<figure>
-      <img src="images/annot_ex.jpg" width="900"/>
-      <figcaption>Figure1: left) Structured data of the html page and right) the content of the html page
-    </figure>
-
-	 </p>
-	
-	<h3>Offer Categorization</h3>
-	<p>
-	We use distant supervision from amazon product data in order to assign product category labels to the offers of our corpus. Using a publicly available <a href="http://jmcauley.ucsd.edu/data/amazon/">amazon dataset</a> of product reviews and metadata,
-	we build lexica containing terms and their tf-idf scores for 26 product categories. We assign to every offer of our corpus the product category whose terms maximize the sum of the tf-idf scores of the overlapping terms.
-	In the case that the overlap is very minimal we assign to the offer the product category "not found". 
-	For evaluating our categorization strategy, we use a manually annotated set of 985 offers which you can download <a href="http://data.dws.informatik.uni-mannheim.de/largescaleproductcorpus/data/cat_gs_Evaluation.txt">here</a>.
-	Figure 2 shows the distribution of the different categories in our gold standard. 
-	Our categorization strategy reaches 62.3% Precision@1. 
-	<span id="catInGS" ></span>
-	</p>
-
-
-	<h3> Specification Table Detection and Extraction</h3>
-	<p>
-	Based on the work of [Qiu,2015] and [Petrovski,2017] on detecting specification tables in html pages, we apply a table detection heuristic based on the following html table attributes:
-	<ul>
-	<li/>Ratio of alphanumeric characters
-	<li/>Average number of columns per row
-	<li/>Count of table children elements
-	<li/>Count of images
-	<li/>Maximum number of columns
-	<li/>Max number of rows
-	<li/>Average length of text per row
-	</ul>
-	For evaluating this heuristic we manually annotate 455 html tables found in 17 html pages with the labels "specification" and "non-specification" which you can find <a href="http://data.dws.informatik.uni-mannheim.de/largescaleproductcorpus/data/gs_specTables.zip">here</a>.
-	Based on our gold standard the applied heuristic reaches an F1 of 78% on the positive class which is considered the one with label "specification".
-	</p>
-	
-    <span id="toc4"></span>
-    <h2>4.Corpus Profiling</h2>
-    <p>
-    After performing a series of cleansing steps described in the previous section we end up with 2 million offers grouped into 163,650 ID-clusters.
-    In this section we present different statistics concerning the structure of the created ID-clusters w.r.t. identifier values count, offer entities count and provenance. In order to recognize the most relevant topics appearing in our corpus we perform a simple word count on the unique words of the offer entities' titles.
-	You can download the word counts txt file <a href="http://data.dws.informatik.uni-mannheim.de/largescaleproductcorpus/data/wordCounts.txt"> here (2MB)</a>.
-    </p>
-	
-	<div>
-	<span id="offersPerClass" style="float:left"></span>
-	<span id="urlsPerClass" style="float:left"></span>
-	<span id="offersPerTLD" style="float:left"></span>
-	</div>
-	
-	
-	
-	<h2>Product Categories</h2>
-	<p>
-	Figure 3 shows the distribution of the 26 defined product categories in the english subcorpus after applying our categorization strategy.
-	</p>
-
-	<div>
-	<span id="catInCorpus" style="float:left"></span>
-	</div>
-	
-	
-	<h2>Specification Tables</h2>
-	<p>
-
-	Applying the heuristic to the complete corpus we are able to extract 487K specification tables. TODO: as more stats on spec. tables and key value pairs
-	From the detected specification tables we consider the two-column heuristic of [Qiu, 2015] for extracting key-value pairs from tables with two columns.  
-	</p>
-	
-   
-	
-	
-	<span id="toc5"></span>
-    <h2>5.Corpus Files - Download</h2>
-    <p>
-	We offer the WDC training data corpus for large-scale product matching of the 2M annotated offers as json objects including the following information
-	for every offer: 
-	<ul>
-	<li/> url: The URL where the annotated offer entity was found (considering the November 2017 Common Crawl Corpus)
-	<li/> nodeID: The subject assigned by the WDC Extractor. The combination of url and nodeID can be used as unique keys for every annotated entity.
-	<li/> clusterID: The ID of the cluster where the offer belongs.
-	<li/> identifiers: A list of all annotated identifier values of the offer entity together with their corresponding properties.
-	<li/> schema.org_description: A list of all annotated schema.org product descriptive properties such as name, description, brand etc. and their values.
-	<li/> parent_NodeID: The node ID of the parent entity of the offer.
-	<li/> relationToParent: The relation that connects the offer to its parent entity.
-	<li/> parent_schema.org_description: A list of all annotated schema.org product descriptive properties of the parent entity of the offer.
-    </ul>
-    </p>
-	<p>
-	In addition we offer an English subcorpus by filtering the following public suffixes: <i>com</i>, <i>net</i>, <i>co.uk</i>, <i>us</i>, and <i>org</i>.
-	The English subcorpus contains 920,885 annotated offer entities.
-	</p>
-	<p>
-	
-	<p>
-	Finally we provide the html content of the crawled URLs containing the clustered annotated offer entities 
-	in the form of json objects with the following properties.
-	<ul>
-	<li/> url: The URL whose content was fetched by the Common Crawl crawler (November 2017).
-	<li/> fileName: The name of the WARC file of Common Crawl that contains the related HTML response.
-	<li/> offset: The index of the HTML response in the related WARC file.
-	<li/> content: The HTML response to the call given the related URL.
-	</ul>
-	
-	</p>
-	
-	<table>
-	<tbody>
-	<tr><td><b>File</b></td><td><b>Sample</b></td><td><b>Size</b></td><td><b>Download</b></td></tr>
-
-	
-	
-	<tr><td>Training Corpus (Full)</td><td><a href="samples/sample_offers.json">sample_offers</a></td><td>349MB (compressed)</td><td><a href="http://data.dws.informatik.uni-mannheim.de/largescaleproductcorpus/data/offers.json.gz">offers.json.gz</td></tr>
-	<tr><td>Training Corpus (English)</td><td><a href="samples/sample_offersenglish.json">sample_offersenglish</a></td><td>150MB (compressed)</td><td><a href="http://data.dws.informatik.uni-mannheim.de/largescaleproductcorpus/data/offers_english.json.gz">offers_english.json.gz</td></tr>
-	<tr><td>Offer Product Categories (English Corpus)</td><td><a href="samples/sample_categories.json">sample_offerscategories</a></td><td>46MB (compressed)</td><td><a href="http://data.dws.informatik.uni-mannheim.de/largescaleproductcorpus/data/offers_categories.json.gz">offers_categories.json.gz</td></tr>
-	<tr><td>HTML Corpus</td><td><a href="samples/sample_html.json">sample_html</a></td><td> 45GB (compressed)</td><td><a href="http://data.dws.informatik.uni-mannheim.de/largescaleproductcorpus/data/htmlCorpus">htmlCorpus</a></td></tr>
-	<tr><td>HTML Specification Tables</td><td><a href="samples/sample_specTables.json">sample_spectables</a></td><td> 134MB (compressed)</td><td><a href="http://data.dws.informatik.uni-mannheim.de/largescaleproductcorpus/data/specificationTables.zip">specificationTables.zip</a></td></tr>
-
-	</tbody>
-	</table>
-	<span id="toc6"></span>
-    <h2>6.Baselines</h2>
-    <p>
-      
-    </p>
-    
-    
-   <span id="toc7"></span>
-   <h2>7. References</h2>
-   <ol>
-   </ol>
+<head>
+    <meta name="robots" content="nofollow" />
+    <title>The WDC Data Corpus for Large-Scale Product Matching</title>
+    <link rel='stylesheet' href='http://webdatacommons.org/style.css' type='text/css' media='screen' />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <style>
+        .tar {
+         text-align: right;
+         }
+        .rtable
+         {
+         float: right;
+         padding-left:10px;
+         }
+        .smalltable, .smalltable TD, .smalltable TH
+         {
+         font-size:9pt;
+         }
+        .table-wrapper {
+         position:relative;
+         }
+        .table-scroll {
+         height:240px;
+         overflow:auto;
+         margin-top:-10px;
+         }
+        .show{
+         display:block;
+         }
+        .no-show{
+         display:none;
+         }
+        caption {
+         caption-side: top;
+         font-style: italic;
+         }
+        td[scope="mergedcol"] {
+             text-align: center;
+         }
+        hr {
+         width: 50%;
+         margin: 20px 0; /* This leaves 10px margin on left and right. If only right margin is needed try margin-right: 10px; */
+         }
+    </style>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
     <script type="text/javascript">
-    $('#toc').toc({
-        'selectors': 'h2', //elements to use as headings
-        'container': '#toccontent', //element to find all selectors in
-        'smoothScrolling': true, //enable or disable smooth scrolling on click
-        'prefix': 'toc', //prefix for anchor tags and class names
-        'highlightOnScroll': true, //add class to heading that is currently in focus
-        'highlightOffset': 100, //offset to trigger the next headline
-        'anchorName': function(i, heading, prefix) { //custom function for anchor name
-            return prefix+i;
+        google.load('visualization', '1', { packages: ['bar', 'line', 'corechart'] });
+        google.setOnLoadCallback(drawOffersPerClassChart);
+        google.setOnLoadCallback(drawOffersPerUrlChart);
+        google.setOnLoadCallback(drawOffersPerTLDChart);
+        google.setOnLoadCallback(drawCategDistributionGS);
+        google.setOnLoadCallback(drawCategDistributionCorpus);
+        google.setOnLoadCallback(drawTopProdPropsNov);
+        google.setOnLoadCallback(drawIDPropsNov);
+        google.setOnLoadCallback(drawStatsGS);
+
+
+        function drawTopProdPropsNov() {
+
+            var data = google.visualization.arrayToDataTable([
+                ["Property", "# PLDs", { role: 'annotation' }],
+                ["Product/name", 535625, "92%"],
+                ["Offer/price", 462444, "80%"],
+                ["Product/offers", 462233, "79%"],
+                ["Offer/priceCurrency", 430556, "74%"],
+                ["Product/image", 419391, "72%"],
+                ["Product/description", 377639, "65%"],
+                ["Offer/availability", 337876, "58%"],
+                ["Product/url", 263720, "45%"],
+                ["AggregateRating/ratingValue", 184004, "32%"],
+                ["Product/sku", 126696, "22%"],
+                ["AggregateRating/reviewCount", 112408, "19%"],
+                ["Product/aggregateRating", 101434, "17%"],
+                ["Product/brand", 73934, "13%"],
+                ["Product/productID", 35211, "6%"],
+                ["Product/manufacturer", 21967, "4%"]
+            ]);
+
+
+            var view = new google.visualization.DataView(data);
+            view.setColumns([0, 1,
+                {
+                    calc: "stringify",
+                    sourceColumn: 1,
+                    type: "string",
+                    role: "annotation"
+                }]);
+
+            var options = {
+                title: "Figure 1: Top product-related properties - WDC Product Corpus November 2017",
+                width: 600,
+                height: 500,
+                bar: { groupWidth: "75%" },
+                legend: { position: "none" },
+                hAxis: {
+                    title: '# PLDs',
+                    minValue: 0
+                },
+                vAxis: {
+                    title: 'schema.org Property',
+                    textStyle: { fontSize: 10 }
+                }
+            };
+
+            var chart = new google.visualization.BarChart(document.getElementById("topPropsNov"));
+            chart.draw(data, options);
         }
-    });
-    $('[id*="link_"]').each(function(){
-    	var element = $(this);
-    	element.click(function(e) {
-			e.preventDefault();
-    		var id = element.attr("id").split("_")[1];
-    		element.parent().removeClass("show").addClass("no-show");
-    		$('#charts_'+id).removeClass("no-show").addClass("show");
-    	});
-    });
-    $('[id*="colapse_"]').each(function(){
-    	var element = $(this);
-    	element.click(function(e) {
-			e.preventDefault();
-    		var id = element.attr("id").split("_")[1];
-    		element.parent().removeClass("show").addClass("no-show");
-    		$('#intro_'+id).removeClass("no-show").addClass("show");
-    	});
-    });
+
+        function drawIDPropsNov() {
+
+            var data = google.visualization.arrayToDataTable([
+                ["Property", "# Entities", { role: 'annotation' }],
+                ["Product/productID", 52173553, "5.71%"],
+                ["Product/sku", 40281145, "4.41%"],
+                ["Offer/sku", 40281145, "2.07%"],
+                ["Product/mpn", 13106410, "1.43%"],
+                ["Product/gtin13", 4540417, "0.49%"],
+                ["Offer/gtin13", 669844, "0.07%"],
+                ["Product/gtin12", 270870, "0.05%"],
+                ["Product/gtin8", 538526, "0.05%"],
+                ["Product/gtin14", 453722, "0.05%"],
+                ["Product/identifier", 411557, "0.04%"],
+                ["Offer/gtin14", 270870, "0.03%"]
+
+            ]);
+
+
+            var view = new google.visualization.DataView(data);
+            view.setColumns([0, 1,
+                {
+                    calc: "stringify",
+                    sourceColumn: 1,
+                    type: "string",
+                    role: "annotation"
+                }]);
+
+            var options = {
+                title: "Figure 2: Product id-related properties per # Entities- WDC Product Corpus November 2017",
+                width: 600,
+                height: 500,
+                bar: { groupWidth: "75%" },
+                legend: { position: "none" },
+                hAxis: {
+                    title: '# Entities',
+                    minValue: 0
+                },
+                vAxis: {
+                    title: 'schema.org Property',
+                    textStyle: { fontSize: 10 }
+                }
+            };
+
+            var chart = new google.visualization.BarChart(document.getElementById("idPropsNov"));
+            chart.draw(data, options);
+        }
+
+        function drawIDsPerClassChart_obs() {
+
+            var data = google.visualization.arrayToDataTable([
+                ["Identifier Values Count", "Frequency (#ID-clusters)"],
+                ["[12-50]", 111],
+                ["11", 65],
+                ["10", 174],
+                ["9", 146],
+                ["8", 345],
+                ["7", 538],
+                ["6", 1183],
+                ["5", 2546],
+                ["4", 6549],
+                ["3", 14170],
+                ["2", 20364],
+                ["1", 126390],
+
+
+            ]);
+
+            var view = new google.visualization.DataView(data);
+            view.setColumns([0, 1,
+                {
+                    calc: "stringify",
+                    sourceColumn: 1,
+                    type: "string",
+                    role: "annotation"
+                }]);
+
+            var options = {
+                title: "Distribution of identifier values per ID-cluster",
+                width: 400,
+                height: 400,
+                bar: { groupWidth: "95%" },
+                legend: { position: "none" },
+                hAxis: {
+                    title: 'Frequency (#ID-clusters)',
+                    minValue: 0
+                },
+                vAxis: {
+                    title: '# Identifier Values'
+                }
+            };
+            var chart = new google.visualization.BarChart(document.getElementById("IDsPerClass"));
+            chart.draw(view, options);
+        }
+
+        function drawOffersPerClassChart() {
+
+            var data = google.visualization.arrayToDataTable([
+                ["Offer Entities Count", "Frequency(#ID-clusters)"],
+                ["[>100]", 1149],
+                ["[91-100]", 251],
+                ["[81-90]", 278],
+                ["[71-80]", 466],
+                ["[61-70]", 524],
+                ["[51-60]", 1219],
+                ["[41-50]", 4005],
+                ["[31-40]", 6280],
+                ["[21-30]", 6871],
+                ["[11-20]", 20306],
+                ["[5-10]", 109850],
+                ["[0-4]", 12450]
+
+            ]);
+
+            var view = new google.visualization.DataView(data);
+            view.setColumns([0, 1,
+                {
+                    calc: "stringify",
+                    sourceColumn: 1,
+                    type: "string",
+                    role: "annotation"
+                }]);
+
+            var options = {
+                title: "Distribution of offer entities per ID-cluster",
+                width: 400,
+                height: 400,
+                bar: { groupWidth: "95%" },
+                legend: { position: "none" },
+                hAxis: {
+                    title: 'Frequency(#ID-clusters)',
+                    minValue: 0
+                },
+                vAxis: {
+                    title: '# Offer Entities'
+                }
+            };
+
+            var chart = new google.visualization.BarChart(document.getElementById("offersPerClass"));
+            chart.draw(view, options);
+        }
+
+        function drawOffersPerUrlChart() {
+
+            var data = google.visualization.arrayToDataTable([
+                ["Offers Count", "Frequency(#URLs)"],
+                ["[>45]", 720],
+                ["[36-45]", 645],
+                ["[26-35]", 1325],
+                ["[16-25]", 7952],
+                ["[6-15]", 10179],
+                ["5", 8613],
+                ["4", 4849],
+                ["3", 8063],
+                ["2", 297353],
+                ["1", 954821]
+
+            ]);
+
+            var view = new google.visualization.DataView(data);
+            view.setColumns([0, 1,
+                {
+                    calc: "stringify",
+                    sourceColumn: 1,
+                    type: "string",
+                    role: "annotation"
+                }]);
+
+            var options = {
+                title: "Distribution of offer entities per URL",
+                width: 500,
+                height: 420,
+                bar: { groupWidth: "95%" },
+                legend: { position: "none" },
+                hAxis: {
+                    title: 'Frequency(#URLs)',
+                    minValue: 0
+                },
+                vAxis: {
+                    title: '# Offer Entities'
+                }
+            };
+
+            var chart = new google.visualization.BarChart(document.getElementById("urlsPerClass"));
+            chart.draw(view, options);
+        }
+
+        function drawOffersPerTLDChart() {
+
+            var data = google.visualization.arrayToDataTable([
+                ["TLD", "Offer Entities"],
+                [" com", 795212],
+                [" de", 162721],
+                [" fr", 68994],
+                [" co.uk", 63210],
+                [" net", 55650],
+                [" ch", 52498],
+                [" cz", 48975],
+                [" ca", 42476],
+                [" es", 41365],
+                [" pl", 39155],
+                [" at", 34708],
+                [" nl", 33484],
+                [" it", 32489],
+                [" ru", 26660],
+                ["others", 505076]
+
+            ]);
+
+
+            var options = {
+                title: "Distribution of offer entities per TLD",
+                width: 400,
+                height: 400,
+                legend: { position: "none" },
+                is3D: true
+
+            };
+
+            var chart = new google.visualization.PieChart(document.getElementById("offersPerTLD"));
+            chart.draw(data, options);
+        }
+
+        function drawCategDistributionGS() {
+
+            var data = google.visualization.arrayToDataTable([
+                ["Category", "Offers in Categorization GS"],
+                ["[Clothing]", 296],
+                ["[Computers_and_Accessories]", 229],
+                ["[Jewelry]", 147],
+                ["[Office_Products]", 55],
+                ["[not_found_language]", 35],
+                ["[Beauty]", 33],
+                ["[not_found_meaningless]", 33],
+                ["[Other_Electronics]", 23],
+                ["[Home_and_Kitchen]", 23],
+                ["[Camera_and_Photo]", 16],
+                ["[Musical_Instruments]", 15],
+                ["[Shoes]", 11],
+                ["[Health_and_Personal_Care]", 10],
+                ["[Automotive]", 9],
+                ["[Toys_and_Games]", 8],
+                ["[Cell_Phones_and_Accessories]", 7],
+                ["[Books]", 6],
+                ["[not_found_nodesc]", 6],
+                ["[Tools_and_Home_Improvement]", 6],
+                ["[Sports_and_Outdoors]", 6],
+                ["[Video_Games]", 4],
+                ["[Patio_Lawn_and_Garden]", 3],
+                ["[Movies_and_TV]", 3],
+                ["[Luggage_and_Travel_Gear]", 3],
+                ["[Grocery_and_Gourmet_Food]", 2],
+                ["[Pet_Supplies]", 1],
+                ["[Baby]", 1]
+            ]);
+
+
+            var options = {
+                title: "Figure 2: Distribution of offer entities per category in the categorization GS",
+                width: 600,
+                height: 800,
+                legend: { position: "right" },
+                is3D: true
+
+            };
+
+            var chart = new google.visualization.PieChart(document.getElementById("catInGS"));
+            chart.draw(data, options);
+        }
+
+        function drawCategDistributionCorpus() {
+
+            var data = google.visualization.arrayToDataTable([
+                ["Category", "Offers in Corpus", { role: 'annotation' }],
+                ["[Clothing]", 179256, "19.47%"],
+                ["[Computers_and_Accessories]", 147067, "15.97%"],
+                ["[Jewelry]", 123399, "13.40%"],
+                ["[Office_Products]", 81328, "8.83%"],
+                ["[Beauty]", 45448, "4.94%"],
+                ["[Camera_and_Photo]", 36606, "3.98%"],
+                ["[Automotive]", 24787, "2.69%"],
+                ["[Luggage_and_Travel_Gear]", 24171, "2.62%"],
+                ["[CDs_and_Vinyl]", 24155, "2.62%"],
+                ["[Shoes]", 22259, "2.42%"],
+                ["[Cell_Phones_and_Accessories]", 21261, "2.31%"],
+                ["[Grocery_and_Gourmet_Food]", 21105, "2.29%"],
+                ["[Video_Games]", 20866, "2.27%"],
+                ["[not_found]", 19384, "2.10%"],
+                ["[Other_Electronics]", 18605, "2.02%"],
+                ["[Home_and_Kitchen]", 14958, "1.62%"],
+                ["[Musical_Instruments]", 14376, "1.56%"],
+                ["[Digital_Music]", 13864, "1.51%"],
+                ["[Baby]", 12693, "1.38%"],
+                ["[Patio_Lawn_and_Garden]", 12650, "1.37%"],
+                ["[Tools_and_Home_Improvement]", 11759, "1.28%"],
+                ["[Books]", 9427, "1.02%"],
+                ["[Pet_Supplies]", 7880, "0.86%"],
+                ["[Sports_and_Outdoors]", 3983, "0.43%"],
+                ["[Health_and_Personal_Care]", 3572, "0.39%"],
+                ["[Toys_and_Games]", 3142, "0.34%"],
+                ["[Movies_and_TV]", 2884, "0.31%"]
+
+            ]);
+
+
+            var view = new google.visualization.DataView(data);
+            view.setColumns([0, 1,
+                {
+                    calc: "stringify",
+                    sourceColumn: 1,
+                    type: "string",
+                    role: "annotation"
+                }]);
+
+            var options = {
+                title: "Figure 3: Distribution of offer entities per category in the corpus",
+                width: 1000,
+                height: 800,
+                bar: { groupWidth: "75%" },
+                legend: { position: "none" },
+                hAxis: {
+                    title: '# Offer Entities',
+                    minValue: 0
+                },
+                vAxis: {
+                    title: 'Product Category',
+                    textStyle: { fontSize: 12 }
+                }
+            };
+
+            var chart = new google.visualization.BarChart(document.getElementById("catInCorpus"));
+            chart.draw(data, options);
+        }
+
+        function drawStatsGS() {
+
+            var data = google.visualization.arrayToDataTable([
+                ["Category", "Property in GS", { role: 'annotation' }],
+                ["s:name", 2095, "99.61%"],
+                ["s:title", 1099, "52.25%"],
+                ["s:description", 1739, "82.69%"],
+                ["s:brand", 701, "33.33%"],
+                ["s:image", 321, "15.26%"],
+                ["s:price", 292, "13.88%"],
+                ["s:priceCurrency", 283, "13.45%"],
+                ["s:availability", 169, "8.03%"],
+                ["s:manufacturer", 285, "13.55%"]
+
+            ]);
+
+
+            var view = new google.visualization.DataView(data);
+            view.setColumns([0, 1,
+                {
+                    calc: "stringify",
+                    sourceColumn: 1,
+                    type: "string",
+                    role: "annotation"
+                }]);
+
+            var options = {
+                title: "Figure 4: schema.org properties in Gold Standard",
+                width: 600,
+                height: 400,
+                bar: { groupWidth: "75%" },
+                legend: { position: "none" },
+                hAxis: {
+                    title: '# Offer Entities',
+                    minValue: 0
+                },
+                vAxis: {
+                    title: 'schema.org property',
+                    textStyle: { fontSize: 12 }
+                }
+            };
+
+            var chart = new google.visualization.BarChart(document.getElementById("schemaPropInGS"));
+            chart.draw(data, options);
+        }
     </script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../jquery.toc.min.js"></script>
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-30248817-1']);
+        _gaq.push(['_trackPageview']);
+
+        (function () {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+
+    </script>
+    <script type="application/ld+json">
+         {
+           "@context":"http://schema.org/",
+           "@type":"Dataset",
+           "name":"Web Data Commons - The WDC Data Corpus for Large-Scale Product Matching",
+           "description":"The training dataset consisting of 45 million pairs of product offers referring to the same products. The offers were extracted from 79 thousand e-shops which provide schema.org annotations including some form of product ID such as a GTIN or MPN. We also created a gold standard by manually verifying 2000 pairs of offers belonging to four different product categories.",
+           "url":"http://webdatacommons.org/largescaleproductcorpus/index.html",
+           "keywords":[
+           	 "training corpus",
+              "product corpus",
+              "large scale",
+              "product matching",
+              "entity matching"
+           ],
+           "creator":[
+         	  {
+         		 "@type":"Person",
+         		 "url": "http://dws.informatik.uni-mannheim.de/en/people/professors/prof-dr-christian-bizer/",
+         		 "name":"Christian Bizer"
+         	  },
+         	  {
+         		 "@type":"Person",
+         		 "url": "http://dws.informatik.uni-mannheim.de/en/people/researchers/anna-primpeli/",
+         		 "name":"Anna Primpeli"
+         	  },
+         	  {
+         		 "@type":"Person",
+         		 "name":"Ralph Peeters"
+         	  }
+         
+           ],
+           "distribution":[
+              {
+                 "@type":"DataDownload",
+                 "fileFormat":[
+         			"tsv"
+         		],
+                 "contentUrl":"http://data.dws.informatik.uni-mannheim.de/largescaleproductgs/"
+              }
+           ],
+           "citation":[
+         	  
+           ]
+           }
+        </script>
+</head>
+
+<body>
+    <div id="logo" style="text-align:right; background-color: white;">&nbsp;&nbsp;<a href="http://dws.informatik.uni-mannheim.de"><img
+                src="../images/ma-logo.gif" alt="University of Mannheim - Logo"></a></div>
+    <div id="header">
+        <h1 style="font-size: 250%;">Web Data Commons - Data Corpus for Large-Scale Product Matching</h1>
+    </div>
+    <div id="authors">
+        <a href="https://dws.informatik.uni-mannheim.de/en/people/researchers/anna-primpeli/">Anna Primpeli</a><br />
+        <a href="http://dws.informatik.uni-mannheim.de/en/people/professors/prof-dr-christian-bizer/">Christian Bizer</a><br />
+        Ralph Peeters
+    </div>
+    <div id="content">
+        <p>
+            We present the WDC data corpus for large-scale product matching, which contains more than 2 million
+            entities describing product offers.
+            For the corpus creation we make use of the supervision found on the web in the form of schema.org offer
+            entities annotated with schema.org identifier information.
+            In the following sections, the necessary cleansing steps for creating the training data corpus for
+            large-scale product matching are explained. In addition we provide the corpus for download as well as
+            experimental baseline results.
+        </p>
+        <h2 id="news">News</h2>
+        <ul>
+        </ul>
+        <h2>Contents</h2>
+        <ul>
+            <li class="toc-h2 toc-active">
+                <a href="#toc1"> 1.Motivation for the WDC training data corpus for large-scale product matching </a>
+            </li>
+            <li class="toc-h2 toc-active">
+                <a href="#toc2"> 2.Initial Corpus </a>
+            </li>
+            <li class="toc-h2 toc-active">
+                <a href="#toc3"> 3.Cleansing and Preprocessing </a>
+            </li>
+            <li class="toc-h2 toc-active">
+                <a href="#toc4"> 4.Corpus Profiling</a>
+            </li>
+            <li class="toc-h2 toc-active">
+                <a href="#toc5"> 5.Gold Standard</a>
+            </li>
+            <li class="toc-h2 toc-active">
+                <a href="#toc6"> 6.Baseline Experiments</a>
+            </li>
+            <li class="toc-h2 toc-active">
+                <a href="#toc7"> 7.Corpus Files - Download </a>
+            </li>
+            <li class="toc-h2 toc-active">
+                <a href="#toc8"> 8.References </a>
+            </li>
+        </ul>
+        <span id="toc1"></span>
+        <h2>1. Motivation for the WDC training data corpus for large-scale product matching </h2>
+        <p>
+            The task of integrating product data found on web offers has been studied as a special integration use case
+            whose difficulty lies on the sparse and noisy nature of web data.
+            The difficulty of the web product integration task increases as the number of data sources and product
+            entities increases. Although there exist product data sets which can be used to evaluate product matching
+            methods
+            (e.g. the <a href="http://webdatacommons.org/productcorpus/index.html">WDC Product Corpus </a> and the <a
+                href="https://dbs.uni-leipzig.de/en/research/projects/object_matching/fever/benchmark_datasets_for_entity_resolution">Abt-Buy</a>
+            data set),
+            they contain data that either refer to a small group of unique products or derive from a small number of
+            sources.
+            Supervised machine learning methods which learn sub-symbolic data representations such as deep learning,
+            have been shown to work well on large-scale scenarios. However, such methods
+            require large amounts of data for training. So far, such amounts of product related information have been
+            restricted to large marketplaces such as ebay and amazon.
+            By creating the WDC data corpus for large-scale product matching, we intend to enable the application,
+            evaluation, and comparison of different more or less data hungry integration methods on the product domain.
+        </p>
+        <p>
+            Popular annotation vocabularies, like schema.org, propose a set of properties to annotate identifiers of
+            offer entities on the web.
+            In addition, google motivates the annotation of product identifiers with properties such as <i>
+                schema.org/Product/sku, gtin8, gtin13, gtin14,</i> and <i>mpn</i> for more enhanced search results.
+            The application of these annotation practices can be considered as inexpensive supervision offered in the
+            web.
+            We profile the adoption of identifier-related schema.org product properties using the Web Data Commons
+            November 2017 schema.org/Product subcorpus, perform a series of cleansing and grouping steps,
+            and create the <i>WDC Data Corpus for Large-Scale Product Matching</i> containing 2 million entity offers
+            clustered in 163,650 id-groups.
+        </p>
+        <span id="toc2"></span>
+        <h2>2.Statistics on product related properties in the November 2017 WDC schema:Product subcorpus</h2>
+        <p>
+            We use the <a href="http://webdatacommons.org/structureddata/2017-12/stats/schema_org_subsets.html#support">
+                November 2017 WDC schema.org/Product </a>subcorpus and extract the offer entities
+            that contain schema.org identifier properties. We consider the following schema.org/Product and
+            schema.org/Offer properties as identifier related properties:
+            <a href="https://schema.org/sku">sku</a>, <a href="https://schema.org/mpn">mpn</a>, <a href="https://schema.org/identifier">identifier</a>,
+            <a href="https://schema.org/productID">productID</a>,
+            <a href="https://schema.org/gtin14">gtin14</a>, <a href="https://schema.org/gtin13">gtin13</a>, <a href="https://schema.org/gtin12">gtin12</a>,
+            and <a href="https://schema.org/gtin8">gtin8</a>.
+            <h4>November 2017 schema.org/Product corpus statistics</h4>
+            <br />
+            <table>
+                <tbody>
+                    <tr>
+                        <th>Data Size</th>
+                        <td align="right">135 GB</td>
+                        <td>(compressed)</td>
+                    </tr>
+                    <tr>
+                        <th>Quads</th>
+                        <td align="right"> 6,321,909,578</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th>Entities</th>
+                        <td align="right"> 444,760,713 </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th>Domains</th>
+                        <td align="right"> 581,482 </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th>Related Classes</th>
+                        <td align="left">
+                            <ul>
+                                <li>schema:Product</li>
+                                <li>schema:Offer</li>
+                                <li>schema:Review</li>
+                                <li>schema:AggregateRating</li>
+                                <li>schema:Organization</li>
+                            </ul>
+                        </td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+        </p>
+        <div>
+            <span id="topPropsNov" style="float:left"></span>
+            <span id="idPropsNov" style="float:left"></span>
+        </div>
+        <span id="toc3"></span>
+        <h2>3.Cleansing and Preprocessing</h2>
+        <p>
+            Considering the noisy nature of web data, we perform a series of cleansing steps. During the cleansing
+            process we identify several false practices
+            while annotating offer entities and develop different cleansing steps to overcome them. Below we provide
+            details about the different false annotation practices as well as the corresponding cleansing steps
+            and the effect they had on the resulting corpus in terms of size.
+        </p>
+        <h3>Usage of non-existing schema.org terms</h3>
+        <p>
+            A large number of offer entities are assigned wrong schema.org vocabulary terms such as <i>
+                schema:IndividualProduct/sku</i> and <i>schema:Product/Offer/sku</i>.
+            Despite the wrong vocabulary usage, such terms still reveal identifying information. We capture this by
+            applying a number of
+            regex patterns on the properties of the offer entities.
+        </p>
+        <h4> Resulting data after regex pattern application </h4>
+        <br>
+        <table>
+            <tr>
+                <td>Entity count per property</td>
+                <td>
+                    <small>
+                        <a href='' onclick="document.getElementById('57b55b12-32de-4903-aa4b-a1a93c11508a').style.display='block';this.style.display='none';return false;">Show
+                            property info</a></small>
+                    <ol id='57b55b12-32de-4903-aa4b-a1a93c11508a' style='display:none'>
+                        <li>*/sku : 57,685,250</li>
+                        <li>*/productID : 50,668,120</li>
+                        <li>*/mpn : 13,927,665</li>
+                        <li>*/identifier : 363,490</li>
+                        <li>*/gtin14 : 692,684</li>
+                        <li>*/gtin13 : 5,056,492</li>
+                        <li>*/gtin12 : 494,803</li>
+                        <li>*/gtin8 : 541,710</li>
+                    </ol>
+                </td>
+            <tr>
+                <td>Distinct identifier values</td>
+                <td>38,804,820</td>
+            </tr>
+            <tr>
+                <td>Offer Entities with ID-related annotations </br> (at least one)</td>
+                <td>115,718,974</td>
+            </tr>
+        </table>
+        <h3>Filtering by identifier value length and occurrence</h3>
+        </br>
+        <h4>Value Normalization and filtering by value length</h4>
+        <p>
+            The next filtering step is to remove offer entities which have been annotated with invalid identifier
+            values. As we do not possess an extensive list of all valid product identifiers, we consider the
+            definitions of the relevant schema.org identifier properties and apply value normalization. First, all
+            non-alphanumeric characters and initial 0s of the identifier values are removed.
+            Considering the suggested length and structure of the identifying properties, we remove the values that
+            after normalization are shorter than 8 characters or longer than 25 characters.
+            Finally, we remove the values that consist only out of alphabetic characters.
+        </p>
+        <h4> Resulting data after value normalization and value length filtering</h4>
+        <br>
+        <table>
+            <tr>
+                <td>Entity count per property</td>
+                <td>
+                    <small>
+                        <a href='' onclick="document.getElementById('57b55b12-32de-4903-aa4b-a1a93c11508ab').style.display='block';this.style.display='none';return false;">Show
+                            property info</a></small>
+                    <ol id='57b55b12-32de-4903-aa4b-a1a93c11508ab' style='display:none'>
+                        <li>*/sku : 19,623,297</li>
+                        <li>*/productID : 33,585,775</li>
+                        <li>*/mpn : 6,938,301</li>
+                        <li>*/identifier : 265,060</li>
+                        <li>*/gtin14 : 641,891</li>
+                        <li>*/gtin13 : 4,253,893</li>
+                        <li>*/gtin12 : 347,001</li>
+                        <li>*/gtin8 : 528,886</li>
+                    </ol>
+                </td>
+            <tr>
+                <td>Distinct identifier values</td>
+                <td>29,314,295</td>
+            </tr>
+            <tr>
+                <td>Offer Entities with ID-related annotations </br> (at least one)</td>
+                <td>61,149,387</td>
+            </tr>
+        </table>
+        <h4>Filtering by identifier value occurrence</h4>
+        <p>
+            Another wrong annotation behavior adopted by a considerable amount of web sites is to annotate all the
+            offer entities with the same identifier. We detect those cases and remove them from our corpus.
+        </p>
+        <h4> Resulting data after non-unique identifiers per pld </h4>
+        <br>
+        <table>
+            <tr>
+                <td>Entity count per property</td>
+                <td>
+                    <small>
+                        <a href='' onclick="document.getElementById('57b55b12-32de-4903-aa4b-a1a93c11508ac').style.display='block';this.style.display='none';return false;">Show
+                            property info</a></small>
+                    <ol id='57b55b12-32de-4903-aa4b-a1a93c11508ac' style='display:none'>
+                        <li>*/sku : 19,615,547</li>
+                        <li>*/productID : 33,578,647</li>
+                        <li>*/mpn : 6,933,114</li>
+                        <li>*/identifier : 265,060</li>
+                        <li>*/gtin14 : 638,075</li>
+                        <li>*/gtin13 : 4,253,100</li>
+                        <li>*/gtin12 : 346,910</li>
+                        <li>*/gtin8 : 528,886</li>
+                    </ol>
+                </td>
+            <tr>
+                <td>Distinct identifier values</td>
+                <td>29,314,091</td>
+            </tr>
+            <tr>
+                <td>Offer Entities with ID-related annotations </br> (at least one)</td>
+                <td>61,129,664</td>
+            </tr>
+        </table>
+        <h3>Usage of multiple valid identifiers to indicate the same product</h3>
+        <p>
+            Across web sites different valid identifier values might be used to indicate the same product, e.g. one web
+            site might add a gtin13 annotation while another one might add the mpn number to an schema.org offer
+            entity.
+            For capturing the different identifying values of an offer entity, we depict our data as a network graph
+            with the distinct identifier values as vertices connected by "sameAs" edges in the case they appear in the
+            same schema.org offer entity.
+            The connected components of the graph form the ID-clusters of our training data corpus.
+        </p>
+        <h4> Resulting data after grouping </h4>
+        <br>
+        <table>
+            <tr>
+                <td>Distinct identifier values (nodes)</td>
+                <td>29,314,091</td>
+            </tr>
+            <tr>
+                <td>Offer Entities with ID-related annotations </br> (at least one)</td>
+                <td>61,129,664</td>
+            </tr>
+            <tr>
+                <td><b>ID-clusters</b> </br> (connected components)</td>
+                <td>26,629,609</td>
+            </tr>
+        </table>
+        <h3>Detection and removal of taxonomy identifiers</h3>
+        <p>
+            Another common error is to annotate product taxonomy identifiers, such UNSPSC, as product identifiers. To
+            consistently detect and remove those errors we make use of the network graph structure of our data.
+            The taxonomy identifiers can be recognized as the nodes with a high degree and a very small clustering
+            coefficient. The high degree reveals that the taxonomy identifier co-occurs with many other identifier
+            values while the small clustering coefficient
+            shows that the co-occuring identifier values do not appear in the same offer entities and thus describe
+            different products.
+        </p>
+        <h4> Resulting data after taxonomy identifiers filtering </h4>
+        <br>
+        <table>
+            <tr>
+                <td>Distinct identifier values (nodes) </td>
+                <td>29,312,255</td>
+            </tr>
+            <tr>
+                <td>Offer Entities with ID-related annotations </br> (at least one)</td>
+                <td>61,129,664</td>
+            </tr>
+            <tr>
+                <td><b>ID-clusters</b> </br> (connected components)</td>
+                <td>26,823,819</td>
+            </tr>
+        </table>
+        <h3>ID-clusters with weak support filtering</h3>
+        <p>
+            In the last cleansing step we remove the ID-clusters with weak pld support. We set the pld support
+            threshold to 5 and therefore remove every ID-cluster that contains offer entities deriving from less than 5
+            plds.
+        </p>
+        <br>
+        <table>
+            <tr>
+                <td>Distinct identifier values (nodes) </td>
+                <td>267,530</td>
+            </tr>
+            <tr>
+                <td>Offer Entities with ID info </br> (at least one)</td>
+                <td>3,130,613</td>
+            </tr>
+            <tr>
+                <td><b>ID-clusters</b> </br> (connected components)</td>
+                <td>172,581</td>
+            </tr>
+        </table>
+        <h3>Listing pages and advertisement offers detection and removal</h3>
+        <p>
+            In this cleansing step we want to remove the offers of our corpus which are part of listing pages or
+            advertisements. We apply a heuristic for detecting listing pages and advertisements based on:
+            <ul>
+                <li />Amount of schema:Offer and schema:Product entities per url
+                <li />Distribution of descriptions' length
+                <li />Semantic connection to parent entities with properties like schema:RelatedTo and schema:SimilarTo
+            </ul>
+            The applied heuristic achieves an F1 score of 94.8% (on the positive class isListingOrAd). For the
+            evaluation we use a manually annotated set of 80 schema:Offer and schema:Product entities of our corpus,
+            which you can download <a href="http://data.dws.informatik.uni-mannheim.de/largescaleproductcorpus/data/GS_ListingPages.txt">here</a>.
+        </p>
+        <br>
+        <table>
+            <tr>
+                <td>Distinct identifier values (nodes) </td>
+                <td>251,926</td>
+            </tr>
+            <tr>
+                <td>Offer Entities with ID info </br> (at least one)</td>
+                <td>2,002,673</td>
+            </tr>
+            <tr>
+                <td><b>ID-clusters</b> </br> (connected components)</td>
+                <td>163,650</td>
+            </tr>
+        </table>
+        <h3>Combination of information from schema:Product and schema:Offer entities</h3>
+        <p>
+            We identify that approximately 20% of the offers of our corpus have no schema.org descriptive properties.
+            This originates in the annotation practice of attaching the identifier information to the embedded
+            schema.org/Offer entity rather than to the parent schema.org/Product entity as proposed by <a href="https://developers.google.com/search/docs/data-types/product">
+                google on adding structured data to product pages</a>.
+            An example of such an annotation practice is shown in Figure 1. In order to enrich the empty descriptive
+            properties of the training corpus offers we additionally consider the descriptive properties of their
+            parent items. In the example of Figure 1
+            we would add to the offer with id <i>KZZ99789</i> the name property of its parent product entity with the
+            value <i>"Boys Lace Up Camo High Top Trainers"</i>. This leads to a reduction of offers with empty
+            descriptive properties to less than 3%.
+            <figure>
+                <img src="images/annot_ex.jpg" width="900" />
+                <figcaption>
+                    Figure1: left) Structured data of the html page and right) the content of the html page
+            </figure>
+        </p>
+        <h3>Offer Categorization</h3>
+        <p>
+            We use distant supervision from amazon product data in order to assign product category labels to the
+            offers of our corpus. Using a publicly available <a href="http://jmcauley.ucsd.edu/data/amazon/">amazon
+                dataset</a> of product reviews and metadata,
+            we build lexica containing terms and their tf-idf scores for 26 product categories. We assign to every
+            offer of our corpus the product category whose terms maximize the sum of the tf-idf scores of the
+            overlapping terms.
+            In the case that the overlap is very minimal we assign to the offer the product category "not found".
+            For evaluating our categorization strategy, we use a manually annotated set of 985 offers which you can
+            download <a href="http://data.dws.informatik.uni-mannheim.de/largescaleproductcorpus/data/cat_gs_Evaluation.txt">here</a>.
+            Figure 2 shows the distribution of the different categories in our gold standard.
+            Our categorization strategy reaches 62.3% Precision@1.
+            <span id="catInGS"></span>
+        </p>
+        <h3> Specification Table Detection and Extraction</h3>
+        <p>
+            Based on the work of [Qiu,2015] and [Petrovski,2017] on detecting specification tables in html pages, we
+            apply a table detection heuristic based on the following html table attributes:
+            <ul>
+                <li />Ratio of alphanumeric characters
+                <li />Average number of columns per row
+                <li />Count of table children elements
+                <li />Count of images
+                <li />Maximum number of columns
+                <li />Max number of rows
+                <li />Average length of text per row
+            </ul>
+            For evaluating this heuristic we manually annotate 455 html tables found in 17 html pages with the labels
+            "specification" and "non-specification" which you can find <a href="http://data.dws.informatik.uni-mannheim.de/largescaleproductcorpus/data/gs_specTables.zip">here</a>.
+            Based on our gold standard the applied heuristic reaches an F1 of 78% on the positive class which is
+            considered the one with label "specification".
+        </p>
+        <span id="toc4"></span>
+        <h2>4.Corpus Profiling</h2>
+        <p>
+            After performing a series of cleansing steps described in the previous section we end up with 2 million
+            offers grouped into 163,650 ID-clusters.
+            In this section we present different statistics concerning the structure of the created ID-clusters w.r.t.
+            identifier values count, offer entities count and provenance. In order to recognize the most relevant
+            topics appearing in our corpus we perform a simple word count on the unique words of the offer entities'
+            titles.
+            You can download the word counts txt file <a href="http://data.dws.informatik.uni-mannheim.de/largescaleproductcorpus/data/wordCounts.txt">
+                here (2MB)</a>.
+        </p>
+        <div>
+            <span id="offersPerClass" style="float:left"></span>
+            <span id="urlsPerClass" style="float:left"></span>
+            <span id="offersPerTLD" style="float:left"></span>
+        </div>
+        <h2>Product Categories</h2>
+        <p>
+            Figure 3 shows the distribution of the 26 defined product categories in the english subcorpus after
+            applying our categorization strategy.
+        </p>
+        <div>
+            <span id="catInCorpus" style="float:left"></span>
+        </div>
+        <h2>Specification Tables</h2>
+        <p>
+            Applying the heuristic to the complete corpus we are able to extract 487K specification tables. TODO: as
+            more stats on spec. tables and key value pairs
+            From the detected specification tables we consider the two-column heuristic of [Qiu, 2015] for extracting
+            key-value pairs from tables with two columns.
+        </p>
+        <span id="toc5"></span>
+        <h2>5.Gold Standard</h2>
+        <p>
+            The gold standard we create for public use, as well as evaluation set for our baseline experiments,
+            consists of offers taken from the English Training
+            corpus and can be attributed to the 4 categories <em>Computers & Accessories</em>, <em>Camera & Photo</em>,
+            <em>Watches</em> and <em>Shoes</em>. Each of the category Gold Standards
+            offers 500 manually reviewed pairs with a match or non-match label. For specifics about the creation of the
+            Gold Standard, please refer
+            to our paper. We offer the Gold Standards for public <a href="#toc7">download</a> at the bottom of the page. Figure 4 shows the
+            distribution of schema.org properties across all Gold Standards. Table 1 shows the percentage of pairs per
+            category where both offers have the respective main attribute.
+            "title" refers to the concatenation of s:name and s:title properties.
+        </p>
+        <div>
+            <span id="schemaPropInGS" style="float:left"></span>
+
+            <table class="smalltable">
+                <caption style="margin-top: 3em">
+                    <p>
+                        Table 1: Gold Standard Statistics per category
+                    </p>
+                </caption>
+                <thead>
+                    <tr>
+                        <th>Category</th>
+                        <th>#Positive</th>
+                        <th>#Negative</th>
+                        <th>title</th>
+                        <th>s:description</th>
+                        <th>spec Table</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Computers</td>
+                        <td>150</td>
+                        <td>350</td>
+                        <td>100%</td>
+                        <td>90%</td>
+                        <td>22%</td>
+                    </tr>
+                    <tr>
+                        <td>Cameras</td>
+                        <td>150</td>
+                        <td>350</td>
+                        <td>100%</td>
+                        <td>78%</td>
+                        <td>5%</td>
+                    </tr>
+                    <tr>
+                        <td>Watches</td>
+                        <td>150</td>
+                        <td>350</td>
+                        <td>100%</td>
+                        <td>77%</td>
+                        <td>4%</td>
+                    </tr>
+                    <tr>
+                        <td>Shoes</td>
+                        <td>150</td>
+                        <td>350</td>
+                        <td>100%</td>
+                        <td>72%</td>
+                        <td>3%</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <span id="toc6"></span>
+        <h2>6.Baseline Experiments</h2>
+        <p>
+            We perform a set of Baseline Experiments to showcase the difficulty of the Gold Standards as well as the
+            suitability of the WDC Training set as training data for supervision. These are:
+        </p>
+        <ol>
+            <li>an unsupervised experiment using TFIDF and cosine similarity using different feature combinations.</li>
+            <li>a supervised experiment using word co-occurrence between product features as classifier input.</li>
+            <li>a supervised experiment using the <a href="https://sites.google.com/site/anhaidgroup/projects/magellan">Magellan</a> framework with auto generated features based on string
+                similarity.
+            </li>
+            <li>a supervised experiment using the <a href="https://github.com/anhaidgroup/deepmatcher">deepmatcher</a> framework which offers multiple Deep Learning models for
+                product matching.
+            </li>
+        </ol>
+        <p>
+            For our supervised Baseline Experiments we use a subset of the English Training set as training data for the algorithms. It is built by creating positive
+            pairs between offers in the same clusters and negative pairs between offers in different but textually
+            similar clusters (Jaccard similarity of titles).
+            The clusters we use for this are those that have offers in the Gold Standards. For more specific
+            information about the build process please refer to the paper.
+        </p>
+        <p>
+            All of the supervised experiments apart from deepmatcher use the <a href="https://scikit-learn.org/stable/">scikit-learn</a> library implementations of
+            Logistic Regression, Naive Bayes, LinearSVC, Decision Tree and Random Forest. Deepmatcher is built upon
+            PyTorch.
+            In preparation for the experiments we remove non-alphanumeric characters, stopwords (using <a href="https://www.nltk.org/">NLTK</a>), and
+            lowercase everything in the Gold Standards as well as the Training sets.
+        </p>
+        <p>
+            For all experiments using sci-kit learn, we use Gridsearch or RandomizedSearch with 5-fold cross-validation
+            to optimize model
+            parameters. Once optimal parameters are found, the models are retrained on the full training sets before
+            evaluating on the gold standard.
+        </p>
+        <p>
+            The deepmatcher experiments are conducted using pre-trained character-based <a href="https://fasttext.cc/docs/en/pretrained-vectors.html">fastText</a> embeddings (on english
+            wikipedia) as well as fastText embeddings trained on the English Training Set.
+            The self-trained embeddings are 300-dimensional, trained for 50 epochs on all words that occur at least
+            twice as well as n-grams up to 3-grams, using the skip-gram model.
+            The deepmatcher models themselves are trained using the default settings, apart from mini-batch size and
+            pos-neg ratio which is manually set per dataset. All models are trained for 15 epochs.
+            Furthermore the deepmatcher implementation requires the training set to be split into training and test
+            set. This test set is used to avoid overfitting to the training set. We split our Training sets with a
+            ratio of 4:1 for this purpose.
+            Note that this essentially reduces the amount of training data available to the deep learning methods
+            compared to the other supervised experiments.
+        </p>
+        <div>
+            <table class="smalltable" style="float: left;margin-right:5.0em">
+                <caption>
+                    <p>Table 2: Training Sets for Baseline Experiments</p>
+                </caption>
+                <thead>
+                    <tr>
+                        <th>Category</th>
+                        <th># positive</th>
+                        <th># negative</th>
+                        <th># combined</th>
+                        <th>clusters involved</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Computers</td>
+                        <td>20559</td>
+                        <td>21226</td>
+                        <td>41785</td>
+                        <td>338</td>
+                    </tr>
+                    <tr>
+                        <td>Cameras</td>
+                        <td>10580</td>
+                        <td>10902</td>
+                        <td>21482</td>
+                        <td>231</td>
+                    </tr>
+                    <tr>
+                        <td>Watches</td>
+                        <td>6289</td>
+                        <td>9153</td>
+                        <td>15442</td>
+                        <td>269</td>
+                    </tr>
+                    <tr>
+                        <td>Shoes</td>
+                        <td>3709</td>
+                        <td>6060</td>
+                        <td>9769</td>
+                        <td>186</td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="smalltable" style="float: left">
+                <caption>
+                    <p>Table 3: deepmatcher parameters</p>
+                </caption>
+                <thead>
+                    <tr>
+                        <th>Category</th>
+                        <th>batch size</th>
+                        <th>pos-neg ratio</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Computers</td>
+                        <td>16</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td>Cameras</td>
+                        <td>16</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td>Watches</td>
+                        <td>32</td>
+                        <td>2</td>
+                    </tr>
+                    <tr>
+                        <td>Shoes</td>
+                        <td>32</td>
+                        <td>2</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <!-- <table class="smalltable">
+            <tr>
+                <td>Category</td>
+                <td>Classifier</td>
+                <td>Features</td>
+                <td>P</td>
+                <td>R</td>
+                <td>F1</td>
+            </tr>
+            <tr>
+                <td scope="mergedcol" colspan="6">Unsupervised Matching</td>
+            </tr>
+            <tr>
+                <td>Computers</td>
+                <td>Cosine, TF-IDF, thr:0.25</td>
+                <td>title</td>
+                <td>0.50</td>
+                <td>0.89</td>
+                <td>0.64</td>
+            </tr>
+            <tr>
+                <td>Cameras</td>
+                <td>Cosine, TF-IDF, thr:0.3</td>
+                <td>title+desc</td>
+                <td>0.59</td>
+                <td>0.71</td>
+                <td>0.64</td>
+            </tr>
+            <tr>
+                <td>Watches</td>
+                <td>Cosine, TF-IDF, thr:0.35</td>
+                <td>title</td>
+                <td>0.48</td>
+                <td>0.91</td>
+                <td>0.63</td>
+            </tr>
+            <tr>
+                <td>Shoes</td>
+                <td>Cosine, TF-IDF, thr:0.4</td>
+                <td>title</td>
+                <td>0.57</td>
+                <td>0.80</td>
+                <td>0.66</td>
+            </tr>
+            <tr>
+                <td scope="mergedcol" colspan="6">Supervised Matching - Symbolic Feature Repr. - Value Co-Occurrence</td>
+            </tr>
+            <tr>
+                <td>Computers</td>
+                <td>LinearSVM</td>
+                <td>title+desc+brand+spec</td>
+                <td>0.78</td>
+                <td>0.90</td>
+                <td>0.83</td>
+            </tr>
+            <tr>
+                <td>Cameras</td>
+                <td>LinearSVM</td>
+                <td>title+desc+brand</td>
+                <td>0.74</td>
+                <td>0.87</td>
+                <td>0.80</td>
+            </tr>
+            <tr>
+                <td>Watches</td>
+                <td>LinearSVM</td>
+                <td>title+desc+brand+spec</td>
+                <td>0.80</td>
+                <td>0.90</td>
+                <td>0.85</td>
+            </tr>
+            <tr>
+                <td>Shoes</td>
+                <td>LinearSVM</td>
+                <td>title+desc+brand</td>
+                <td>0.68</td>
+                <td>0.95</td>
+                <td>0.80</td>
+            </tr>
+            <tr>
+                <td>Computers</td>
+                <td>RandomForest</td>
+                <td>title+desc+brand+spec</td>
+                <td>0.76</td>
+                <td>0.88</td>
+                <td>0.81</td>
+            </tr>
+            <tr>
+                <td>Cameras</td>
+                <td>RandomForest</td>
+                <td>title+desc</td>
+                <td>0.80</td>
+                <td>0.83</td>
+                <td>0.82</td>
+            </tr>
+            <tr>
+                <td>Watches</td>
+                <td>RandomForest</td>
+                <td>title</td>
+                <td>0.77</td>
+                <td>0.87</td>
+                <td>0.83</td>
+            </tr>
+            <tr>
+                <td>Shoes</td>
+                <td>RandomForest</td>
+                <td>title+desc+brand+spec</td>
+                <td>0.70</td>
+                <td>0.88</td>
+                <td>0.78</td>
+            </tr>
+            <tr>
+                <td scope="mergedcol" colspan="6">Supervised Matching - Symbolic Feature Repr. - Magellan Feature
+                    Generation</td>
+            </tr>
+            <tr>
+                <td>Computers</td>
+                <td>RandomForest</td>
+                <td>title+desc+brand+spec</td>
+                <td>0.65</td>
+                <td>0.85</td>
+                <td>0.74</td>
+            </tr>
+            <tr>
+                <td>Cameras</td>
+                <td>RandomForest</td>
+                <td>title+desc+brand+spec</td>
+                <td>0.61</td>
+                <td>0.83</td>
+                <td>0.70</td>
+            </tr>
+            <tr>
+                <td>Watches</td>
+                <td>RandomForest</td>
+                <td>title+desc+brand+spec</td>
+                <td>0.80</td>
+                <td>0.85</td>
+                <td>0.82</td>
+            </tr>
+            <tr>
+                <td>Shoes</td>
+                <td>RandomForest</td>
+                <td>title+desc+brand+spec</td>
+                <td>0.77</td>
+                <td>0.83</td>
+                <td>0.80</td>
+            </tr>
+            <tr>
+                <td scope="mergedcol" colspan="6">Supervised Matching - Distributed Feature Repr. - Deepmatcher</td>
+            </tr>
+            <tr>
+                <td>Computers</td>
+                <td>RNN</td>
+                <td>title+desc+brand+spec</td>
+                <td>0.89</td>
+                <td>0.95</td>
+                <td>0.92</td>
+            </tr>
+            <tr>
+                <td>Cameras</td>
+                <td>RNN</td>
+                <td>title+desc+brand+spec</td>
+                <td>0.90</td>
+                <td>0.95</td>
+                <td>0.92</td>
+            </tr>
+            <tr>
+                <td>Watches</td>
+                <td>RNN</td>
+                <td>title+desc+brand+spec</td>
+                <td>0.89</td>
+                <td>0.94</td>
+                <td>0.91</td>
+            </tr>
+            <tr>
+                <td>Shoes</td>
+                <td>RNN</td>
+                <td>title+desc+brand+spec</td>
+                <td>0.83</td>
+                <td>0.94</td>
+                <td>0.88</td>
+            </tr>
+        </table> -->
+        <span id="toc7"></span>
+        <h2>7.Corpus Files - Download</h2>
+        <p>
+            We offer the WDC training data corpus for large-scale product matching of the 2M annotated offers as json
+            objects including the following information
+            for every offer:
+            <ul>
+                <li /> url: The URL where the annotated offer entity was found (considering the November 2017 Common
+                Crawl Corpus)
+                <li /> nodeID: The subject assigned by the WDC Extractor. The combination of url and nodeID can be used
+                as unique keys for every annotated entity.
+                <li /> clusterID: The ID of the cluster where the offer belongs.
+                <li /> identifiers: A list of all annotated identifier values of the offer entity together with their
+                corresponding properties.
+                <li /> schema.org_description: A list of all annotated schema.org product descriptive properties such
+                as name, description, brand etc. and their values.
+                <li /> parent_NodeID: The node ID of the parent entity of the offer.
+                <li /> relationToParent: The relation that connects the offer to its parent entity.
+                <li /> parent_schema.org_description: A list of all annotated schema.org product descriptive properties
+                of the parent entity of the offer.
+            </ul>
+        </p>
+        <p>
+            In addition we offer an English subcorpus by filtering the following public suffixes: <i>com</i>, <i>net</i>,
+            <i>co.uk</i>, <i>us</i>, and <i>org</i>.
+            The English subcorpus contains 920,885 annotated offer entities.
+        </p>
+        <p>
+            <p>
+                Finally we provide the html content of the crawled URLs containing the clustered annotated offer
+                entities
+                in the form of json objects with the following properties.
+                <ul>
+                    <li /> url: The URL whose content was fetched by the Common Crawl crawler (November 2017).
+                    <li /> fileName: The name of the WARC file of Common Crawl that contains the related HTML response.
+                    <li /> offset: The index of the HTML response in the related WARC file.
+                    <li /> content: The HTML response to the call given the related URL.
+                </ul>
+            </p>
+            <table>
+                <tbody>
+                    <tr>
+                        <td><b>File</b></td>
+                        <td><b>Sample</b></td>
+                        <td><b>Size</b></td>
+                        <td><b>Download</b></td>
+                    </tr>
+                    <tr>
+                        <td>Training Corpus (Full)</td>
+                        <td><a href="samples/sample_offers.json">sample_offers</a></td>
+                        <td>349MB (compressed)</td>
+                        <td>
+                            <a href="http://data.dws.informatik.uni-mannheim.de/largescaleproductcorpus/data/offers.json.gz">
+                                offers.json.gz
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Training Corpus (English)</td>
+                        <td><a href="samples/sample_offersenglish.json">sample_offersenglish</a></td>
+                        <td>150MB (compressed)</td>
+                        <td><a href="http://data.dws.informatik.uni-mannheim.de/largescaleproductcorpus/data/offers_english.json.gz">offers_english.json.gz</td>
+                    </tr>
+                    <tr>
+                        <td>Offer Product Categories (English Corpus)</td>
+                        <td><a href="samples/sample_categories.json">sample_offerscategories</a></td>
+                        <td>46MB (compressed)</td>
+                        <td><a href="http://data.dws.informatik.uni-mannheim.de/largescaleproductcorpus/data/offers_categories.json.gz">offers_categories.json.gz</td>
+                    </tr>
+                    <tr>
+                        <td>HTML Corpus</td>
+                        <td><a href="samples/sample_html.json">sample_html</a></td>
+                        <td> 45GB (compressed)</td>
+                        <td><a href="http://data.dws.informatik.uni-mannheim.de/largescaleproductcorpus/data/htmlCorpus">htmlCorpus</a></td>
+                    </tr>
+                    <tr>
+                        <td>HTML Specification Tables</td>
+                        <td><a href="samples/sample_specTables.json">sample_spectables</a></td>
+                        <td> 134MB (compressed)</td>
+                        <td><a href="http://data.dws.informatik.uni-mannheim.de/largescaleproductcorpus/data/specificationTables.zip">specificationTables.zip</a></td>
+                    </tr>
+                </tbody>
+            </table>
+            <span id="toc8"></span>
+            <h2>8. References</h2>
+            <ol>
+            </ol>
+            <script type="text/javascript">
+                $('#toc').toc({
+                    'selectors': 'h2', //elements to use as headings
+                    'container': '#toccontent', //element to find all selectors in
+                    'smoothScrolling': true, //enable or disable smooth scrolling on click
+                    'prefix': 'toc', //prefix for anchor tags and class names
+                    'highlightOnScroll': true, //add class to heading that is currently in focus
+                    'highlightOffset': 100, //offset to trigger the next headline
+                    'anchorName': function (i, heading, prefix) { //custom function for anchor name
+                        return prefix + i;
+                    }
+                });
+                $('[id*="link_"]').each(function () {
+                    var element = $(this);
+                    element.click(function (e) {
+                        e.preventDefault();
+                        var id = element.attr("id").split("_")[1];
+                        element.parent().removeClass("show").addClass("no-show");
+                        $('#charts_' + id).removeClass("no-show").addClass("show");
+                    });
+                });
+                $('[id*="colapse_"]').each(function () {
+                    var element = $(this);
+                    element.click(function (e) {
+                        e.preventDefault();
+                        var id = element.attr("id").split("_")[1];
+                        element.parent().removeClass("show").addClass("no-show");
+                        $('#intro_' + id).removeClass("no-show").addClass("show");
+                    });
+                });
+            </script>
 </body>
+
 </html>
