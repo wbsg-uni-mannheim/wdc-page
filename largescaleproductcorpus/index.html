@@ -445,7 +445,7 @@
             ]);
 
 
-            var view = new google.visualization.DataView(data);
+             var view = new google.visualization.DataView(data);
             view.setColumns([0, 1,
                 {
                     calc: "stringify",
@@ -453,6 +453,27 @@
                     type: "string",
                     role: "annotation"
                 }]);
+
+            var options = {
+                title: "Figure 4: schema.org properties in Gold Standard",
+                width: 600,
+                height: 400,
+                bar: { groupWidth: "75%" },
+                legend: { position: "none" },
+                hAxis: {
+                    title: '# Offer Entities',
+                    minValue: 0
+                },
+                vAxis: {
+                    title: 'schema.org property',
+                    textStyle: { fontSize: 12 }
+                }
+            };
+
+            var chart = new google.visualization.BarChart(document.getElementById("schemaPropInGS"));
+            chart.draw(data, options);
+				
+				
 		}
 	</script>
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
@@ -980,6 +1001,7 @@
         </p>
         <div>
             <span id="schemaPropInGS" style="float:left"></span>
+			
 
             <table class="smalltable">
                 <caption style="margin-top: 3em">
@@ -1352,7 +1374,7 @@
 				<span id="toc7"></span>
 				<h2>7.Corpus Files - Download</h2>
 				<p>
-					We offer the WDC training data corpus for large-scale product matching of the 2M annotated offers as json objects
+					We offer the WDC training data corpus for large-scale product matching of the 26M annotated offers as json objects
 					including the following information
 					for every offer:
 					<ul>
@@ -1362,7 +1384,7 @@
 						keys for every annotated entity.
 						<li /> clusterID: The ID of the cluster where the offer belongs.
 						<li /> identifiers: A list of all annotated identifier values of the offer entity together with their
-						corresponding properties.
+						corresponding schema.org properties.
 						<li /> schema.org_properties: A list of all annotated schema.org product descriptive properties such as name,
 						description, brand etc. and their values.
 						<li /> parent_NodeID: The node ID of the parent entity of the offer.
@@ -1374,10 +1396,10 @@
 				<p>
 					In addition we offer an English subcorpus by filtering the following public suffixes: <i>com</i>, <i>net</i>, <i>co.uk</i>,
 					<i>us</i>, and <i>org</i>.
-					The English subcorpus contains 920,885 annotated offer entities.
+					The English subcorpus contains 16M annotated offer entities.
 				</p>
 				<p>
-
+					<!--
 					<p>
 						Finally we provide the html content of the crawled URLs containing the clustered annotated offer entities
 						in the form of json objects with the following properties.
@@ -1389,7 +1411,7 @@
 						</ul>
 
 					</p>
-
+					-->
 					<table>
 						<tbody>
 							<tr>
@@ -1404,21 +1426,46 @@
 							<tr>
 								<td>Training Corpus (Full)</td>
 								<td><a href="samples/sample_offers.json">sample_offers</a></td>
-								<td>349MB (compressed)</td>
+								<td>6.4GB (compressed)</td>
 								<td><a href="http://data.dws.informatik.uni-mannheim.de/largescaleproductcorpus/data/offers.json.gz">offers.json.gz</td>
 							</tr>
 							<tr>
 								<td>Training Corpus (English)</td>
 								<td><a href="samples/sample_offersenglish.json">sample_offersenglish</a></td>
-								<td>150MB (compressed)</td>
+								<td>3.9GB (compressed)</td>
 								<td><a href="http://data.dws.informatik.uni-mannheim.de/largescaleproductcorpus/data/offers_english.json.gz">offers_english.json.gz</td>
 							</tr>
 							<tr>
-								<td>Offer Product Categories (English Corpus)</td>
-								<td><a href="samples/sample_categories.json">sample_offerscategories</a></td>
-								<td>46MB (compressed)</td>
-								<td><a href="http://data.dws.informatik.uni-mannheim.de/largescaleproductcorpus/data/offers_categories.json.gz">offers_categories.json.gz</td>
+								<td>ID-Clusters Product Categories (English Corpus)</td>
+								<td><a href="samples/sample_categories.json">sample_clusterscategories</a></td>
+								<td>140MB (compressed)</td>
+								<td><a href="http://data.dws.informatik.uni-mannheim.de/largescaleproductcorpus/data/idclusters.json.gz">idclusters.json.gz</td>
 							</tr>
+							<tr>
+								<td>Gold Standard (Watches)</td>
+								<td></td>
+								<td></td>
+								<td><a href="http://data.dws.informatik.uni-mannheim.de/largescaleproductcorpus/data/gs_watches">gs_watches</td>
+							</tr>
+							<tr>
+								<td>Gold Standard (Sneakers)</td>
+								<td></td>
+								<td></td>
+								<td><a href="http://data.dws.informatik.uni-mannheim.de/largescaleproductcorpus/data/gs_sneakers">gs_sneakers</td>
+							</tr>
+							<tr>
+								<td>Gold Standard (Cameras)</td>
+								<td></td>
+								<td></td>
+								<td><a href="http://data.dws.informatik.uni-mannheim.de/largescaleproductcorpus/data/gs_cameras">gs_cameras</td>
+							</tr>
+							<tr>
+								<td>Gold Standard (Phones)</td>
+								<td></td>
+								<td></td>
+								<td><a href="http://data.dws.informatik.uni-mannheim.de/largescaleproductcorpus/data/gs_phones">gs_phones</td>
+							</tr>
+							<!--
 							<tr>
 								<td>HTML Corpus</td>
 								<td><a href="samples/sample_html.json">sample_html</a></td>
@@ -1431,7 +1478,7 @@
 								<td> 134MB (compressed)</td>
 								<td><a href="http://data.dws.informatik.uni-mannheim.de/largescaleproductcorpus/data/specificationTables.zip">specificationTables.zip</a></td>
 							</tr>
-
+						-->
 						</tbody>
 					</table>
 
