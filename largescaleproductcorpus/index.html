@@ -55,6 +55,7 @@
 		google.setOnLoadCallback(drawCategDistributionCorpus);
 		google.setOnLoadCallback(drawTopProdPropsNov);
 		google.setOnLoadCallback(drawIDPropsNov);
+		google.setOnLoadCallback(drawStatsGS);
 
 		function drawTopProdPropsNov() {
 
@@ -427,6 +428,32 @@
 			var chart = new google.visualization.BarChart(document.getElementById("catInCorpus"));
 			chart.draw(data, options);
 		}
+
+		function drawStatsGS() {
+            var data = google.visualization.arrayToDataTable([
+                ["Category", "Property in GS", { role: 'annotation' }],
+                ["s:name", 2095, "99.61%"],
+                ["s:title", 1099, "52.25%"],
+                ["s:description", 1739, "82.69%"],
+                ["s:brand", 701, "33.33%"],
+                ["s:image", 321, "15.26%"],
+                ["s:price", 292, "13.88%"],
+                ["s:priceCurrency", 283, "13.45%"],
+                ["s:availability", 169, "8.03%"],
+                ["s:manufacturer", 285, "13.55%"]
+
+            ]);
+
+
+            var view = new google.visualization.DataView(data);
+            view.setColumns([0, 1,
+                {
+                    calc: "stringify",
+                    sourceColumn: 1,
+                    type: "string",
+                    role: "annotation"
+                }]);
+		}
 	</script>
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 	<script type="text/javascript" src="../jquery.toc.min.js"></script>
@@ -525,28 +552,31 @@
 		</ul>
 		<h2>Contents</h2>
 		<ul>
-			<li class="toc-h2 toc-active">
-				<a href="#toc1"> 1.Motivation for the WDC training data corpus for large-scale product matching </a>
-			</li>
-			<li class="toc-h2 toc-active">
-				<a href="#toc2"> 2.Initial Corpus </a>
-			</li>
-			<li class="toc-h2 toc-active">
-				<a href="#toc3"> 3.Cleansing and Preprocessing </a>
-			</li>
-			<li class="toc-h2 toc-active">
-				<a href="#toc4"> 4.Corpus Profiling</a>
-			</li>
-			<li class="toc-h2 toc-active">
-				<a href="#toc5"> 5.Corpus Files - Download</a>
-			</li>
-			<li class="toc-h2 toc-active">
-				<a href="#toc6"> 6.Baselines </a>
-			</li>
-			<li class="toc-h2 toc-active">
-				<a href="#toc7"> 7.References </a>
-			</li>
-		</ul>
+            <li class="toc-h2 toc-active">
+                <a href="#toc1"> 1.Motivation for the WDC training data corpus for large-scale product matching </a>
+            </li>
+            <li class="toc-h2 toc-active">
+                <a href="#toc2"> 2.Initial Corpus </a>
+            </li>
+            <li class="toc-h2 toc-active">
+                <a href="#toc3"> 3.Cleansing and Preprocessing </a>
+            </li>
+            <li class="toc-h2 toc-active">
+                <a href="#toc4"> 4.Corpus Profiling</a>
+            </li>
+            <li class="toc-h2 toc-active">
+                <a href="#toc5"> 5.Gold Standard</a>
+            </li>
+            <li class="toc-h2 toc-active">
+                <a href="#toc6"> 6.Baseline Experiments</a>
+            </li>
+            <li class="toc-h2 toc-active">
+                <a href="#toc7"> 7.Corpus Files - Download </a>
+            </li>
+            <li class="toc-h2 toc-active">
+                <a href="#toc8"> 8.References </a>
+            </li>
+        </ul>
 
 		<span id="toc1"></span>
 		<h2>1. Motivation for the WDC training data corpus for large-scale product matching </h2>
@@ -934,11 +964,393 @@
 					key-value pairs from tables with two columns.
 				</p>
 
+		<span id="toc5"></span>
+        <h2>5.Gold Standard</h2>
+        <p>
+            The gold standard we create for public use, as well as evaluation set for our baseline experiments,
+            consists of offers taken from the English Training
+            corpus and can be attributed to the 4 categories <em>Computers & Accessories</em>, <em>Camera & Photo</em>,
+            <em>Watches</em> and <em>Shoes</em>. Each of the category Gold Standards
+            offers 500 manually reviewed pairs with a match or non-match label. For specifics about the creation of the
+            Gold Standard, please refer
+            to our paper. We offer the Gold Standards for public <a href="#toc7">download</a> at the bottom of the page. Figure 4 shows the
+            distribution of schema.org properties across all Gold Standards. Table 1 shows the percentage of pairs per
+            category where both offers have the respective main attribute.
+            "title" refers to the concatenation of s:name and s:title properties.
+        </p>
+        <div>
+            <span id="schemaPropInGS" style="float:left"></span>
+
+            <table class="smalltable">
+                <caption style="margin-top: 3em">
+                    <p>
+                        Table 1: Gold Standard Statistics per category
+                    </p>
+                </caption>
+                <thead>
+                    <tr>
+                        <th>Category</th>
+                        <th>#Positive</th>
+                        <th>#Negative</th>
+                        <th>title</th>
+                        <th>s:description</th>
+                        <th>spec Table</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Computers</td>
+                        <td>150</td>
+                        <td>350</td>
+                        <td>100%</td>
+                        <td>90%</td>
+                        <td>22%</td>
+                    </tr>
+                    <tr>
+                        <td>Cameras</td>
+                        <td>150</td>
+                        <td>350</td>
+                        <td>100%</td>
+                        <td>78%</td>
+                        <td>5%</td>
+                    </tr>
+                    <tr>
+                        <td>Watches</td>
+                        <td>150</td>
+                        <td>350</td>
+                        <td>100%</td>
+                        <td>77%</td>
+                        <td>4%</td>
+                    </tr>
+                    <tr>
+                        <td>Shoes</td>
+                        <td>150</td>
+                        <td>350</td>
+                        <td>100%</td>
+                        <td>72%</td>
+                        <td>3%</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
 
 
+				
+					<span id="toc6"></span>
+					<h2>6.Baseline Experiments</h2>
+        <p>
+            We perform a set of Baseline Experiments to showcase the difficulty of the Gold Standards as well as the
+            suitability of the WDC Training set as training data for supervision. These are:
+        </p>
+        <ol>
+            <li>an unsupervised experiment using TFIDF and cosine similarity using different feature combinations.</li>
+            <li>a supervised experiment using word co-occurrence between product features as classifier input.</li>
+            <li>a supervised experiment using the <a href="https://sites.google.com/site/anhaidgroup/projects/magellan">Magellan</a> framework with auto generated features based on string
+                similarity.
+            </li>
+            <li>a supervised experiment using the <a href="https://github.com/anhaidgroup/deepmatcher">deepmatcher</a> framework which offers multiple Deep Learning models for
+                product matching.
+            </li>
+        </ol>
+        <p>
+            For our supervised Baseline Experiments we use a subset of the English Training set as training data for the algorithms. It is built by creating positive
+            pairs between offers in the same clusters and negative pairs between offers in different but textually
+            similar clusters (Jaccard similarity of titles).
+            The clusters we use for this are those that have offers in the Gold Standards. For more specific
+            information about the build process please refer to the paper.
+        </p>
+        <p>
+            All of the supervised experiments apart from deepmatcher use the <a href="https://scikit-learn.org/stable/">scikit-learn</a> library implementations of
+            Logistic Regression, Naive Bayes, LinearSVC, Decision Tree and Random Forest. Deepmatcher is built upon
+            PyTorch.
+            In preparation for the experiments we remove non-alphanumeric characters, stopwords (using <a href="https://www.nltk.org/">NLTK</a>), and
+            lowercase everything in the Gold Standards as well as the Training sets.
+        </p>
+        <p>
+            For all experiments using sci-kit learn, we use Gridsearch or RandomizedSearch with 5-fold cross-validation
+            to optimize model
+            parameters. Once optimal parameters are found, the models are retrained on the full training sets before
+            evaluating on the gold standard.
+        </p>
+        <p>
+            The deepmatcher experiments are conducted using pre-trained character-based <a href="https://fasttext.cc/docs/en/pretrained-vectors.html">fastText</a> embeddings (on english
+            wikipedia) as well as fastText embeddings trained on the English Training Set.
+            The self-trained embeddings are 300-dimensional, trained for 50 epochs on all words that occur at least
+            twice as well as n-grams up to 3-grams, using the skip-gram model.
+            The deepmatcher models themselves are trained using the default settings, apart from mini-batch size and
+            pos-neg ratio which is manually set per dataset. All models are trained for 15 epochs.
+            Furthermore the deepmatcher implementation requires the training set to be split into training and test
+            set. This test set is used to avoid overfitting to the training set. We split our Training sets with a
+            ratio of 4:1 for this purpose.
+            Note that this essentially reduces the amount of training data available to the deep learning methods
+            compared to the other supervised experiments.
+        </p>
+        <div>
+            <table class="smalltable" style="float: left;margin-right:5.0em">
+                <caption>
+                    <p>Table 2: Training Sets for Baseline Experiments</p>
+                </caption>
+                <thead>
+                    <tr>
+                        <th>Category</th>
+                        <th># positive</th>
+                        <th># negative</th>
+                        <th># combined</th>
+                        <th>clusters involved</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Computers</td>
+                        <td>20559</td>
+                        <td>21226</td>
+                        <td>41785</td>
+                        <td>338</td>
+                    </tr>
+                    <tr>
+                        <td>Cameras</td>
+                        <td>10580</td>
+                        <td>10902</td>
+                        <td>21482</td>
+                        <td>231</td>
+                    </tr>
+                    <tr>
+                        <td>Watches</td>
+                        <td>6289</td>
+                        <td>9153</td>
+                        <td>15442</td>
+                        <td>269</td>
+                    </tr>
+                    <tr>
+                        <td>Shoes</td>
+                        <td>3709</td>
+                        <td>6060</td>
+                        <td>9769</td>
+                        <td>186</td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="smalltable" style="float: left">
+                <caption>
+                    <p>Table 3: deepmatcher parameters</p>
+                </caption>
+                <thead>
+                    <tr>
+                        <th>Category</th>
+                        <th>batch size</th>
+                        <th>pos-neg ratio</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Computers</td>
+                        <td>16</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td>Cameras</td>
+                        <td>16</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td>Watches</td>
+                        <td>32</td>
+                        <td>2</td>
+                    </tr>
+                    <tr>
+                        <td>Shoes</td>
+                        <td>32</td>
+                        <td>2</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <!-- <table class="smalltable">
+            <tr>
+                <td>Category</td>
+                <td>Classifier</td>
+                <td>Features</td>
+                <td>P</td>
+                <td>R</td>
+                <td>F1</td>
+            </tr>
+            <tr>
+                <td scope="mergedcol" colspan="6">Unsupervised Matching</td>
+            </tr>
+            <tr>
+                <td>Computers</td>
+                <td>Cosine, TF-IDF, thr:0.25</td>
+                <td>title</td>
+                <td>0.50</td>
+                <td>0.89</td>
+                <td>0.64</td>
+            </tr>
+            <tr>
+                <td>Cameras</td>
+                <td>Cosine, TF-IDF, thr:0.3</td>
+                <td>title+desc</td>
+                <td>0.59</td>
+                <td>0.71</td>
+                <td>0.64</td>
+            </tr>
+            <tr>
+                <td>Watches</td>
+                <td>Cosine, TF-IDF, thr:0.35</td>
+                <td>title</td>
+                <td>0.48</td>
+                <td>0.91</td>
+                <td>0.63</td>
+            </tr>
+            <tr>
+                <td>Shoes</td>
+                <td>Cosine, TF-IDF, thr:0.4</td>
+                <td>title</td>
+                <td>0.57</td>
+                <td>0.80</td>
+                <td>0.66</td>
+            </tr>
+            <tr>
+                <td scope="mergedcol" colspan="6">Supervised Matching - Symbolic Feature Repr. - Value Co-Occurrence</td>
+            </tr>
+            <tr>
+                <td>Computers</td>
+                <td>LinearSVM</td>
+                <td>title+desc+brand+spec</td>
+                <td>0.78</td>
+                <td>0.90</td>
+                <td>0.83</td>
+            </tr>
+            <tr>
+                <td>Cameras</td>
+                <td>LinearSVM</td>
+                <td>title+desc+brand</td>
+                <td>0.74</td>
+                <td>0.87</td>
+                <td>0.80</td>
+            </tr>
+            <tr>
+                <td>Watches</td>
+                <td>LinearSVM</td>
+                <td>title+desc+brand+spec</td>
+                <td>0.80</td>
+                <td>0.90</td>
+                <td>0.85</td>
+            </tr>
+            <tr>
+                <td>Shoes</td>
+                <td>LinearSVM</td>
+                <td>title+desc+brand</td>
+                <td>0.68</td>
+                <td>0.95</td>
+                <td>0.80</td>
+            </tr>
+            <tr>
+                <td>Computers</td>
+                <td>RandomForest</td>
+                <td>title+desc+brand+spec</td>
+                <td>0.76</td>
+                <td>0.88</td>
+                <td>0.81</td>
+            </tr>
+            <tr>
+                <td>Cameras</td>
+                <td>RandomForest</td>
+                <td>title+desc</td>
+                <td>0.80</td>
+                <td>0.83</td>
+                <td>0.82</td>
+            </tr>
+            <tr>
+                <td>Watches</td>
+                <td>RandomForest</td>
+                <td>title</td>
+                <td>0.77</td>
+                <td>0.87</td>
+                <td>0.83</td>
+            </tr>
+            <tr>
+                <td>Shoes</td>
+                <td>RandomForest</td>
+                <td>title+desc+brand+spec</td>
+                <td>0.70</td>
+                <td>0.88</td>
+                <td>0.78</td>
+            </tr>
+            <tr>
+                <td scope="mergedcol" colspan="6">Supervised Matching - Symbolic Feature Repr. - Magellan Feature
+                    Generation</td>
+            </tr>
+            <tr>
+                <td>Computers</td>
+                <td>RandomForest</td>
+                <td>title+desc+brand+spec</td>
+                <td>0.65</td>
+                <td>0.85</td>
+                <td>0.74</td>
+            </tr>
+            <tr>
+                <td>Cameras</td>
+                <td>RandomForest</td>
+                <td>title+desc+brand+spec</td>
+                <td>0.61</td>
+                <td>0.83</td>
+                <td>0.70</td>
+            </tr>
+            <tr>
+                <td>Watches</td>
+                <td>RandomForest</td>
+                <td>title+desc+brand+spec</td>
+                <td>0.80</td>
+                <td>0.85</td>
+                <td>0.82</td>
+            </tr>
+            <tr>
+                <td>Shoes</td>
+                <td>RandomForest</td>
+                <td>title+desc+brand+spec</td>
+                <td>0.77</td>
+                <td>0.83</td>
+                <td>0.80</td>
+            </tr>
+            <tr>
+                <td scope="mergedcol" colspan="6">Supervised Matching - Distributed Feature Repr. - Deepmatcher</td>
+            </tr>
+            <tr>
+                <td>Computers</td>
+                <td>RNN</td>
+                <td>title+desc+brand+spec</td>
+                <td>0.89</td>
+                <td>0.95</td>
+                <td>0.92</td>
+            </tr>
+            <tr>
+                <td>Cameras</td>
+                <td>RNN</td>
+                <td>title+desc+brand+spec</td>
+                <td>0.90</td>
+                <td>0.95</td>
+                <td>0.92</td>
+            </tr>
+            <tr>
+                <td>Watches</td>
+                <td>RNN</td>
+                <td>title+desc+brand+spec</td>
+                <td>0.89</td>
+                <td>0.94</td>
+                <td>0.91</td>
+            </tr>
+            <tr>
+                <td>Shoes</td>
+                <td>RNN</td>
+                <td>title+desc+brand+spec</td>
+                <td>0.83</td>
+                <td>0.94</td>
+                <td>0.88</td>
+            </tr>
+        </table> -->
 
-				<span id="toc5"></span>
-				<h2>5.Corpus Files - Download</h2>
+				<span id="toc7"></span>
+				<h2>7.Corpus Files - Download</h2>
 				<p>
 					We offer the WDC training data corpus for large-scale product matching of the 2M annotated offers as json objects
 					including the following information
@@ -1022,15 +1434,9 @@
 
 						</tbody>
 					</table>
-					<span id="toc6"></span>
-					<h2>6.Baselines</h2>
-					<p>
 
-					</p>
-
-
-					<span id="toc7"></span>
-					<h2>7. References</h2>
+					<span id="toc8"></span>
+					<h2>8. References</h2>
 					<ol>
 					</ol>
 					<script type="text/javascript">
