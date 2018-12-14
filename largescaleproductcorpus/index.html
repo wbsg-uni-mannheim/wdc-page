@@ -19,6 +19,35 @@
 		{
 		font-size:9pt;
 		}
+		.tab {
+		overflow: hidden;
+		border: 1px solid #ccc;
+		background-color: #eaf3fa;
+		clear:both;
+		width:471px
+		}
+		.tab button {
+		background-color: inherit;
+		float: left;
+		border: none;
+		outline: none;
+		cursor: pointer;
+		padding: 14px 16px;
+		transition: 0.3s;
+		}
+		.tab button:hover {
+  		background-color: #ddd;
+		}
+		.tab button.active {
+  		background-color: #ccc;
+		}
+		.tabcontent {
+		display: none;
+		padding: 6px 12px;
+		border-top: none;
+		animation: fadeEffect 1s;
+		width:480px
+		}
 		.table-wrapper {
 		position:relative;
 		}
@@ -34,7 +63,7 @@
 		display:none;
 		}
 		caption {
-		caption-side: top;
+		caption-side: bottom;
 		font-style: italic;
 		}
 		td[scope="mergedcol"] {
@@ -43,6 +72,10 @@
 		hr {
 		width: 50%;
 		margin: 20px 0; /* This leaves 10px margin on left and right. If only right margin is needed try margin-right: 10px; */
+		}
+		@keyframes fadeEffect {
+			from {opacity: 0;}
+			to {opacity: 1;}
 		}
 	</style>
 	<script type="text/javascript" src="https://www.google.com/jsapi"></script>
@@ -56,6 +89,8 @@
 		google.setOnLoadCallback(drawTopProdPropsNov);
 		google.setOnLoadCallback(drawIDPropsNov);
 		google.setOnLoadCallback(drawStatsGS);
+
+		
 
 		function drawTopProdPropsNov() {
 
@@ -474,6 +509,26 @@
             chart.draw(data, options);
 				
 				
+		}
+		function openExpResult(evt, expName) {
+		// Declare all variables
+		var i, tabcontent, tablinks;
+
+		// Get all elements with class="tabcontent" and hide them
+		tabcontent = document.getElementsByClassName("tabcontent");
+		for (i = 0; i < tabcontent.length; i++) {
+			tabcontent[i].style.display = "none";
+		}
+
+		// Get all elements with class="tablinks" and remove the class "active"
+		tablinks = document.getElementsByClassName("tablinks");
+		for (i = 0; i < tablinks.length; i++) {
+			tablinks[i].className = tablinks[i].className.replace(" active", "");
+		}
+
+		// Show the current tab, and add an "active" class to the button that opened the tab
+		document.getElementById(expName).style.display = "block";
+		evt.currentTarget.className += " active";
 		}
 	</script>
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
@@ -1001,15 +1056,15 @@
         </p>
         <div>
             <span id="schemaPropInGS" style="float:left"></span>
-			
+		</div>
 
-            <table class="smalltable">
-                <caption style="margin-top: 3em">
+            <table class="smalltable" style="margin-top:11em">
+                <caption>
                     <p>
                         Table 1: Gold Standard Statistics per category
                     </p>
                 </caption>
-                <thead>
+                <thead >
                     <tr>
                         <th>Category</th>
                         <th>#Positive</th>
@@ -1053,8 +1108,7 @@
                         <td>3%</td>
                     </tr>
                 </tbody>
-            </table>
-        </div>
+			</table>
 
 
 				
@@ -1079,16 +1133,13 @@
             pairs between offers in the same clusters and negative pairs between offers in different but textually
             similar clusters (Jaccard similarity of titles).
             The clusters we use for this are those that have offers in the Gold Standards. For more specific
-            information about the build process please refer to the paper.
+            information about the build process please refer to the paper. Table 3 shows the statistics of the Training set.
         </p>
         <p>
             All of the supervised experiments apart from deepmatcher use the <a href="https://scikit-learn.org/stable/">scikit-learn</a> library implementations of
-            Logistic Regression, Naive Bayes, LinearSVC, Decision Tree and Random Forest. Deepmatcher is built upon
-            PyTorch.
+            Logistic Regression, Naive Bayes, LinearSVC, Decision Tree and Random Forest.
             In preparation for the experiments we remove non-alphanumeric characters, stopwords (using <a href="https://www.nltk.org/">NLTK</a>), and
             lowercase everything in the Gold Standards as well as the Training sets.
-        </p>
-        <p>
             For all experiments using sci-kit learn, we use Gridsearch or RandomizedSearch with 5-fold cross-validation
             to optimize model
             parameters. Once optimal parameters are found, the models are retrained on the full training sets before
@@ -1100,17 +1151,237 @@
             The self-trained embeddings are 300-dimensional, trained for 50 epochs on all words that occur at least
             twice as well as n-grams up to 3-grams, using the skip-gram model.
             The deepmatcher models themselves are trained using the default settings, apart from mini-batch size and
-            pos-neg ratio which is manually set per dataset. All models are trained for 15 epochs.
+            pos-neg ratio which is manually set per dataset (Table 4). All models are trained for 15 epochs.
             Furthermore the deepmatcher implementation requires the training set to be split into training and test
             set. This test set is used to avoid overfitting to the training set. We split our Training sets with a
             ratio of 4:1 for this purpose.
             Note that this essentially reduces the amount of training data available to the deep learning methods
-            compared to the other supervised experiments.
+            compared to the other supervised experiments. Table 2 shows the results of the experiments.
         </p>
-        <div>
+		<div style="margin-top:2em;">
+			<div style="float: left;margin-right: 2.5em">
+				<div class="tab">
+						<button class="tablinks" onclick="openExpResult(event, 'unsup')" id="defaultOpen">TFIDF Cosine</button>
+						<button class="tablinks" onclick="openExpResult(event, 'supwc')">Word Co-Occurrence</button>
+						<button class="tablinks" onclick="openExpResult(event, 'supmg')">Magellan</button>
+						<button class="tablinks" onclick="openExpResult(event, 'supdm')">Deepmatcher</button>
+					</div>
+					<div id="unsup" class="tabcontent">
+							<table class="smalltable">
+								<caption style="margin-top: 1em">Table 2: Experimental results</caption>
+									<tr>
+										<td>Category</td>
+										<td>Classifier</td>
+										<td>Features</td>
+										<td>P</td>
+										<td>R</td>
+										<td>F1</td>
+									</tr>
+									<tr>
+										<td>Computers</td>
+										<td>Cosine, TF-IDF, thr:0.25</td>
+										<td>title</td>
+										<td>0.50</td>
+										<td>0.89</td>
+										<td>0.64</td>
+									</tr>
+									<tr>
+										<td>Cameras</td>
+										<td>Cosine, TF-IDF, thr:0.3</td>
+										<td>title+desc</td>
+										<td>0.59</td>
+										<td>0.71</td>
+										<td>0.64</td>
+									</tr>
+									<tr>
+										<td>Watches</td>
+										<td>Cosine, TF-IDF, thr:0.35</td>
+										<td>title</td>
+										<td>0.48</td>
+										<td>0.91</td>
+										<td>0.63</td>
+									</tr>
+									<tr>
+										<td>Shoes</td>
+										<td>Cosine, TF-IDF, thr:0.4</td>
+										<td>title</td>
+										<td>0.57</td>
+										<td>0.80</td>
+										<td>0.66</td>
+									</tr>
+							</table>
+					</div>
+					<div id="supwc" class="tabcontent">
+							<table class="smalltable">
+									<caption style="margin-top: 1em">Table 2: Experimental results</caption>
+									<tr>
+										<td>Category</td>
+										<td>Classifier</td>
+										<td>Features</td>
+										<td>P</td>
+										<td>R</td>
+										<td>F1</td>
+									</tr>
+									<tr>
+										<td>Computers</td>
+										<td>LinearSVM</td>
+										<td>title+desc+brand+spec</td>
+										<td>0.78</td>
+										<td>0.90</td>
+										<td>0.83</td>
+									</tr>
+									<tr>
+										<td>Cameras</td>
+										<td>LinearSVM</td>
+										<td>title+desc+brand</td>
+										<td>0.74</td>
+										<td>0.87</td>
+										<td>0.80</td>
+									</tr>
+									<tr>
+										<td>Watches</td>
+										<td>LinearSVM</td>
+										<td>title+desc+brand+spec</td>
+										<td>0.80</td>
+										<td>0.90</td>
+										<td>0.85</td>
+									</tr>
+									<tr>
+										<td>Shoes</td>
+										<td>LinearSVM</td>
+										<td>title+desc+brand</td>
+										<td>0.68</td>
+										<td>0.95</td>
+										<td>0.80</td>
+									</tr>
+									<tr>
+										<td>Computers</td>
+										<td>RandomForest</td>
+										<td>title+desc+brand+spec</td>
+										<td>0.76</td>
+										<td>0.88</td>
+										<td>0.81</td>
+									</tr>
+									<tr>
+										<td>Cameras</td>
+										<td>RandomForest</td>
+										<td>title+desc</td>
+										<td>0.80</td>
+										<td>0.83</td>
+										<td>0.82</td>
+									</tr>
+									<tr>
+										<td>Watches</td>
+										<td>RandomForest</td>
+										<td>title</td>
+										<td>0.77</td>
+										<td>0.87</td>
+										<td>0.83</td>
+									</tr>
+									<tr>
+										<td>Shoes</td>
+										<td>RandomForest</td>
+										<td>title+desc+brand+spec</td>
+										<td>0.70</td>
+										<td>0.88</td>
+										<td>0.78</td>
+									</tr>
+							</table>
+					</div>
+					<div id="supmg" class="tabcontent">
+							<table class="smalltable">
+									<caption style="margin-top: 1em">Table 2: Experimental results</caption>
+									<tr>
+										<td>Category</td>
+										<td>Classifier</td>
+										<td>Features</td>
+										<td>P</td>
+										<td>R</td>
+										<td>F1</td>
+									</tr>
+									<tr>
+										<td>Computers</td>
+										<td>RandomForest</td>
+										<td>title+desc+brand+spec</td>
+										<td>0.65</td>
+										<td>0.85</td>
+										<td>0.74</td>
+									</tr>
+									<tr>
+										<td>Cameras</td>
+										<td>RandomForest</td>
+										<td>title+desc+brand+spec</td>
+										<td>0.61</td>
+										<td>0.83</td>
+										<td>0.70</td>
+									</tr>
+									<tr>
+										<td>Watches</td>
+										<td>RandomForest</td>
+										<td>title+desc+brand+spec</td>
+										<td>0.80</td>
+										<td>0.85</td>
+										<td>0.82</td>
+									</tr>
+									<tr>
+										<td>Shoes</td>
+										<td>RandomForest</td>
+										<td>title+desc+brand+spec</td>
+										<td>0.77</td>
+										<td>0.83</td>
+										<td>0.80</td>
+									</tr>
+							</table>
+					</div>
+					<div id="supdm" class="tabcontent">
+							<table class="smalltable">
+									<caption style="margin-top: 1em">Table 2: Experimental results</caption>
+									<tr>
+										<td>Category</td>
+										<td>Classifier</td>
+										<td>Features</td>
+										<td>P</td>
+										<td>R</td>
+										<td>F1</td>
+									</tr>
+									<tr>
+										<td>Computers</td>
+										<td>RNN</td>
+										<td>title+desc+brand+spec</td>
+										<td>0.89</td>
+										<td>0.95</td>
+										<td>0.92</td>
+									</tr>
+									<tr>
+										<td>Cameras</td>
+										<td>RNN</td>
+										<td>title+desc+brand+spec</td>
+										<td>0.90</td>
+										<td>0.95</td>
+										<td>0.92</td>
+									</tr>
+									<tr>
+										<td>Watches</td>
+										<td>RNN</td>
+										<td>title+desc+brand+spec</td>
+										<td>0.89</td>
+										<td>0.94</td>
+										<td>0.91</td>
+									</tr>
+									<tr>
+										<td>Shoes</td>
+										<td>RNN</td>
+										<td>title+desc+brand+spec</td>
+										<td>0.83</td>
+										<td>0.94</td>
+										<td>0.88</td>
+									</tr>
+							</table>
+					</div>
+				</div>
             <table class="smalltable" style="float: left;margin-right:5.0em">
                 <caption>
-                    <p>Table 2: Training Sets for Baseline Experiments</p>
+                    <p>Table 3: Training Sets for Baseline Experiments</p>
                 </caption>
                 <thead>
                     <tr>
@@ -1154,7 +1425,7 @@
             </table>
             <table class="smalltable" style="float: left">
                 <caption>
-                    <p>Table 3: deepmatcher parameters</p>
+                    <p>Table 4: deepmatcher parameters</p>
                 </caption>
                 <thead>
                     <tr>
@@ -1186,190 +1457,8 @@
                     </tr>
                 </tbody>
             </table>
-        </div>
-        <!-- <table class="smalltable">
-            <tr>
-                <td>Category</td>
-                <td>Classifier</td>
-                <td>Features</td>
-                <td>P</td>
-                <td>R</td>
-                <td>F1</td>
-            </tr>
-            <tr>
-                <td scope="mergedcol" colspan="6">Unsupervised Matching</td>
-            </tr>
-            <tr>
-                <td>Computers</td>
-                <td>Cosine, TF-IDF, thr:0.25</td>
-                <td>title</td>
-                <td>0.50</td>
-                <td>0.89</td>
-                <td>0.64</td>
-            </tr>
-            <tr>
-                <td>Cameras</td>
-                <td>Cosine, TF-IDF, thr:0.3</td>
-                <td>title+desc</td>
-                <td>0.59</td>
-                <td>0.71</td>
-                <td>0.64</td>
-            </tr>
-            <tr>
-                <td>Watches</td>
-                <td>Cosine, TF-IDF, thr:0.35</td>
-                <td>title</td>
-                <td>0.48</td>
-                <td>0.91</td>
-                <td>0.63</td>
-            </tr>
-            <tr>
-                <td>Shoes</td>
-                <td>Cosine, TF-IDF, thr:0.4</td>
-                <td>title</td>
-                <td>0.57</td>
-                <td>0.80</td>
-                <td>0.66</td>
-            </tr>
-            <tr>
-                <td scope="mergedcol" colspan="6">Supervised Matching - Symbolic Feature Repr. - Value Co-Occurrence</td>
-            </tr>
-            <tr>
-                <td>Computers</td>
-                <td>LinearSVM</td>
-                <td>title+desc+brand+spec</td>
-                <td>0.78</td>
-                <td>0.90</td>
-                <td>0.83</td>
-            </tr>
-            <tr>
-                <td>Cameras</td>
-                <td>LinearSVM</td>
-                <td>title+desc+brand</td>
-                <td>0.74</td>
-                <td>0.87</td>
-                <td>0.80</td>
-            </tr>
-            <tr>
-                <td>Watches</td>
-                <td>LinearSVM</td>
-                <td>title+desc+brand+spec</td>
-                <td>0.80</td>
-                <td>0.90</td>
-                <td>0.85</td>
-            </tr>
-            <tr>
-                <td>Shoes</td>
-                <td>LinearSVM</td>
-                <td>title+desc+brand</td>
-                <td>0.68</td>
-                <td>0.95</td>
-                <td>0.80</td>
-            </tr>
-            <tr>
-                <td>Computers</td>
-                <td>RandomForest</td>
-                <td>title+desc+brand+spec</td>
-                <td>0.76</td>
-                <td>0.88</td>
-                <td>0.81</td>
-            </tr>
-            <tr>
-                <td>Cameras</td>
-                <td>RandomForest</td>
-                <td>title+desc</td>
-                <td>0.80</td>
-                <td>0.83</td>
-                <td>0.82</td>
-            </tr>
-            <tr>
-                <td>Watches</td>
-                <td>RandomForest</td>
-                <td>title</td>
-                <td>0.77</td>
-                <td>0.87</td>
-                <td>0.83</td>
-            </tr>
-            <tr>
-                <td>Shoes</td>
-                <td>RandomForest</td>
-                <td>title+desc+brand+spec</td>
-                <td>0.70</td>
-                <td>0.88</td>
-                <td>0.78</td>
-            </tr>
-            <tr>
-                <td scope="mergedcol" colspan="6">Supervised Matching - Symbolic Feature Repr. - Magellan Feature
-                    Generation</td>
-            </tr>
-            <tr>
-                <td>Computers</td>
-                <td>RandomForest</td>
-                <td>title+desc+brand+spec</td>
-                <td>0.65</td>
-                <td>0.85</td>
-                <td>0.74</td>
-            </tr>
-            <tr>
-                <td>Cameras</td>
-                <td>RandomForest</td>
-                <td>title+desc+brand+spec</td>
-                <td>0.61</td>
-                <td>0.83</td>
-                <td>0.70</td>
-            </tr>
-            <tr>
-                <td>Watches</td>
-                <td>RandomForest</td>
-                <td>title+desc+brand+spec</td>
-                <td>0.80</td>
-                <td>0.85</td>
-                <td>0.82</td>
-            </tr>
-            <tr>
-                <td>Shoes</td>
-                <td>RandomForest</td>
-                <td>title+desc+brand+spec</td>
-                <td>0.77</td>
-                <td>0.83</td>
-                <td>0.80</td>
-            </tr>
-            <tr>
-                <td scope="mergedcol" colspan="6">Supervised Matching - Distributed Feature Repr. - Deepmatcher</td>
-            </tr>
-            <tr>
-                <td>Computers</td>
-                <td>RNN</td>
-                <td>title+desc+brand+spec</td>
-                <td>0.89</td>
-                <td>0.95</td>
-                <td>0.92</td>
-            </tr>
-            <tr>
-                <td>Cameras</td>
-                <td>RNN</td>
-                <td>title+desc+brand+spec</td>
-                <td>0.90</td>
-                <td>0.95</td>
-                <td>0.92</td>
-            </tr>
-            <tr>
-                <td>Watches</td>
-                <td>RNN</td>
-                <td>title+desc+brand+spec</td>
-                <td>0.89</td>
-                <td>0.94</td>
-                <td>0.91</td>
-            </tr>
-            <tr>
-                <td>Shoes</td>
-                <td>RNN</td>
-                <td>title+desc+brand+spec</td>
-                <td>0.83</td>
-                <td>0.94</td>
-                <td>0.88</td>
-            </tr>
-        </table> -->
+		</div>
+		
 
 				<span id="toc7"></span>
 				<h2>7.Corpus Files - Download</h2>
@@ -1445,25 +1534,25 @@
 								<td>Gold Standard (Watches)</td>
 								<td></td>
 								<td></td>
-								<td><a href="http://data.dws.informatik.uni-mannheim.de/largescaleproductcorpus/data/gs_watches">gs_watches</td>
+								<td><a href="http://data.dws.informatik.uni-mannheim.de/largescaleproductcorpus/data/gs_watches.txt">gs_watches.txt</td>
 							</tr>
 							<tr>
 								<td>Gold Standard (Sneakers)</td>
 								<td></td>
 								<td></td>
-								<td><a href="http://data.dws.informatik.uni-mannheim.de/largescaleproductcorpus/data/gs_sneakers">gs_sneakers</td>
+								<td><a href="http://data.dws.informatik.uni-mannheim.de/largescaleproductcorpus/data/gs_shoes.txt">gs_shoes.txt</td>
 							</tr>
 							<tr>
 								<td>Gold Standard (Cameras)</td>
 								<td></td>
 								<td></td>
-								<td><a href="http://data.dws.informatik.uni-mannheim.de/largescaleproductcorpus/data/gs_cameras">gs_cameras</td>
+								<td><a href="http://data.dws.informatik.uni-mannheim.de/largescaleproductcorpus/data/gs_cameras.txt">gs_cameras.txt</td>
 							</tr>
 							<tr>
-								<td>Gold Standard (Phones)</td>
+								<td>Gold Standard (Computers)</td>
 								<td></td>
 								<td></td>
-								<td><a href="http://data.dws.informatik.uni-mannheim.de/largescaleproductcorpus/data/gs_phones">gs_phones</td>
+								<td><a href="http://data.dws.informatik.uni-mannheim.de/largescaleproductcorpus/data/gs_computers.txt">gs_computers.txt</td>
 							</tr>
 							<!--
 							<tr>
@@ -1516,6 +1605,7 @@
 								$('#intro_' + id).removeClass("no-show").addClass("show");
 							});
 						});
+						document.getElementById("defaultOpen").click();
 					</script>
 </body>
 
