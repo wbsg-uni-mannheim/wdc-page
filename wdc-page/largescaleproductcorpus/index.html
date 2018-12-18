@@ -258,7 +258,7 @@
 
 
 			var options = {
-				title: "Figure 1: Distribution of offer entities (bar label: #positive pairs) per ID-cluster - Full Training Set",
+				title: "Figure 5: Distribution of offer entities (bar label: #positive pairs) per ID-cluster - Full Training Set",
 				width: 400,
 				height: 400,
 				bar: { groupWidth: "95%" },
@@ -298,7 +298,7 @@
 
 
 			var options = {
-				title: "Figure 2: Distribution of offer entities (bar label: #positive pairs) per ID-cluster - English Training Set",
+				title: "Figure 6: Distribution of offer entities (bar label: #positive pairs) per ID-cluster - English Training Set",
 				width: 400,
 				height: 400,
 				bar: { groupWidth: "95%" },
@@ -341,7 +341,7 @@
 
 
 			var options = {
-				title: "Distribution of offer entities per TLD",
+				title: "Figure 7: Distribution of offer entities per TLD",
 				width: 400,
 				height: 400,
 				legend: { position: "none" },
@@ -388,7 +388,7 @@
 
 
 			var options = {
-				title: "Figure 2: Distribution of offer entities per category in the categorization GS",
+				title: "Figure 4: Distribution of offer entities per category in the categorization GS",
 				width: 600,
 				height: 800,
 				legend: { position: "right" },
@@ -445,7 +445,7 @@
 				}]);
 
 			var options = {
-				title: "Figure 3: Distribution of offer entities per category in the English Training Set",
+				title: "Figure 8: Distribution of offer entities per category in the English Training Set",
 				width: 1000,
 				height: 800,
 				bar: { groupWidth: "75%" },
@@ -490,7 +490,7 @@
                 }]);
 
             var options = {
-                title: "Figure 4: schema.org properties in Gold Standard",
+                title: "Figure 9: schema.org properties in Gold Standard",
                 width: 600,
                 height: 400,
                 bar: { groupWidth: "75%" },
@@ -608,7 +608,7 @@
 		<p>
 			We present the WDC Training Dataset and Gold Standard for large-scale product matching. The Full Training Set
 			contains more than 26 million entities describing product offers deriving from 79 thousand websites.
-			We also offer the English subset of the Training Set containing 16 milion offers from 43 thousand websites. Using
+			We also offer the English subset of the Training Set containing 16 million offers from 43 thousand websites. Using
 			annotated product identifier information we group the offers of the Full Training Set into 16 million clusters and
 			the offers
 			of the English subset into 10 million clusters. In addition we build a gold standard for evaluating existing
@@ -632,10 +632,10 @@
                 <a href="#toc1"> 1.Motivation for the WDC training data corpus for large-scale product matching </a>
             </li>
             <li class="toc-h2 toc-active">
-                <a href="#toc2"> 2.Initial Corpus </a>
+                <a href="#toc2"> 2.Statistics on product related properties in the November 2017 WDC schema:Product subcorpus </a>
             </li>
             <li class="toc-h2 toc-active">
-                <a href="#toc3"> 3.Cleansing and Preprocessing </a>
+                <a href="#toc3"> 3.Training Dataset Creation </a>
             </li>
             <li class="toc-h2 toc-active">
                 <a href="#toc4"> 4.Corpus Profiling</a>
@@ -789,7 +789,7 @@
 
 			<figure>
 				<img src="images/annot_ex.jpg" width="900" />
-				<figcaption>Figure1: left) Structured data of the html page and right) the content of the html page
+				<figcaption>Figure3: left) Structured data of the html page and right) the content of the html page
 			</figure>
 
 		</p>
@@ -925,12 +925,12 @@
 			in 16,193,300 ID-Clusters.
 			We also note that some websites include identifiers refering to product categories, such as UNSPSC number in
 			addition to single product identifiers.
-			For detecting these cases we examing the structure of the identifier co.occurrence graph within each ID-Cluster. We
+			For detecting these cases we examine the structure of the identifier co.occurrence graph within each ID-Cluster. We
 			discover that vertices having a high degree (>10)
-			and a low clustering coefficient (<0.2) tend to represent product categories rather thsn single products. Therefore
-			 we split these clusters by removing the product category identifiers. This removes 90,073 pffer entities and
+			and a low clustering coefficient (<0.2) tend to represent product categories rather than single products. Therefore
+			 we split these clusters by removing the product category identifiers. This removes 90,073 offer entities and
 			 results into the creation of 199,139 additional ID-Clusters. In addition we create the English Training Set by
-			 filtering from the ID-Clusters the offers from pages having the suffixes: com, net, co.uk, and org. ID-Clusters. </p>
+			 filtering from the ID-Clusters the offers from pages having the suffixes: com, net, co.uk, and org. </p>
 			 <h4> Resulting data after grouping </h4>
 				<br>
 				<table>
@@ -981,7 +981,7 @@
 						<li />Average length of text per row
 					</ul>
 					For evaluating this heuristic we manually annotate 455 html tables found in 17 html pages with the labels
-					"specification" and "non-specification" which you can find <a href="http://data.dws.informatik.uni-mannheim.de/largescaleproductcorpus/data/gs_specTables.zip">here</a>.
+					"specification" and "non-specification" which you can download <a href="http://data.dws.informatik.uni-mannheim.de/largescaleproductcorpus/data/gs_specTables.zip">here</a>.
 					Based on our gold standard the applied heuristic reaches an F1 of 78% on the positive class which is considered
 					the one with label "specification".
 				</p>
@@ -1005,8 +1005,8 @@
 				<h2>4.Corpus Profiling</h2>
 				<p>
 					After performing the cleansing steps described in the previous section we form the Training Set and its English
-					Training subset. The Full Training corpus contains 26 milion offer entities, deriving
-					from 43 thousand websites, grouped into 16 miion ID-clusters. the English training subset contains 16 million
+					Training subset. The Full Training corpus contains 26 million offer entities, deriving
+					from 79 thousand websites, grouped into 16 million ID-clusters. The English training subset contains 16 million
 					offer entities, deriving from 43 thousand websites, grouped into 10 million ID-clusters.
 					In this section we present different statistics concerning the structure of the created ID-clusters w.r.t.
 					identifier values count, offer entities count and provenance.
@@ -1022,7 +1022,7 @@
 
 				<h2>Product Categories</h2>
 				<p>
-					Figure 3 shows the distribution of the 26 defined product categories in the english subcorpus after applying our
+					Figure 8 shows the distribution of the 26 defined product categories in the english subcorpus after applying our
 					categorization strategy.
 				</p>
 
@@ -1030,7 +1030,7 @@
 					<span id="catInCorpus" style="float:left"></span>
 				</div>
 
-
+				<!--
 				<h2>Specification Tables</h2>
 				<p>
 
@@ -1039,7 +1039,7 @@
 					From the detected specification tables we consider the two-column heuristic of [Qiu, 2015] for extracting
 					key-value pairs from tables with two columns.
 				</p>
-
+				-->
 		<span id="toc5"></span>
         <h2>5.Gold Standard</h2>
         <p>
@@ -1049,7 +1049,7 @@
             <em>Watches</em> and <em>Shoes</em>. Each of the category Gold Standards
             offers 500 manually reviewed pairs with a match or non-match label. For specifics about the creation of the
             Gold Standard, please refer
-            to our paper. We offer the Gold Standards for public <a href="#toc7">download</a> at the bottom of the page. Figure 4 shows the
+            to our paper. We offer the Gold Standards for public <a href="#toc7">download</a> at the bottom of the page. Figure 9 shows the
             distribution of schema.org properties across all Gold Standards. Table 1 shows the percentage of pairs per
             category where both offers have the respective main attribute.
             "title" refers to the concatenation of s:name and s:title properties.
@@ -1514,45 +1514,50 @@
 
 							<tr>
 								<td>Training Corpus (Full)</td>
-								<td><a href="samples/sample_offers.json">sample_offers</a></td>
+								<td><a href="http://data.dws.informatik.uni-mannheim.de/largescaleproductcorpus/samples/sample_offers.json">sample_offers</a></td>
 								<td>6.4GB (compressed)</td>
 								<td><a href="http://data.dws.informatik.uni-mannheim.de/largescaleproductcorpus/data/offers.json.gz">offers.json.gz</td>
 							</tr>
 							<tr>
 								<td>Training Corpus (English)</td>
-								<td><a href="samples/sample_offersenglish.json">sample_offersenglish</a></td>
+								<td><a href="http://data.dws.informatik.uni-mannheim.de/largescaleproductcorpus/samples/sample_offersenglish.json">sample_offersenglish</a></td>
 								<td>3.9GB (compressed)</td>
 								<td><a href="http://data.dws.informatik.uni-mannheim.de/largescaleproductcorpus/data/offers_english.json.gz">offers_english.json.gz</td>
 							</tr>
 							<tr>
 								<td>ID-Clusters Product Categories (English Corpus)</td>
-								<td><a href="samples/sample_categories.json">sample_clusterscategories</a></td>
+								<td><a href="http://data.dws.informatik.uni-mannheim.de/largescaleproductcorpus/samples/sample_categories.json">sample_clusterscategories</a></td>
 								<td>140MB (compressed)</td>
 								<td><a href="http://data.dws.informatik.uni-mannheim.de/largescaleproductcorpus/data/idclusters.json.gz">idclusters.json.gz</td>
 							</tr>
 							<tr>
 								<td>Gold Standard (Watches)</td>
 								<td></td>
-								<td></td>
+								<td>133KB</td>
 								<td><a href="http://data.dws.informatik.uni-mannheim.de/largescaleproductcorpus/data/gs_watches.txt">gs_watches.txt</td>
+
 							</tr>
 							<tr>
-								<td>Gold Standard (Sneakers)</td>
+								<td>Gold Standard (Shoes)</td>
 								<td></td>
-								<td></td>
+								<td>139KB</td>
 								<td><a href="http://data.dws.informatik.uni-mannheim.de/largescaleproductcorpus/data/gs_shoes.txt">gs_shoes.txt</td>
+
 							</tr>
 							<tr>
 								<td>Gold Standard (Cameras)</td>
 								<td></td>
-								<td></td>
+								<td>122KB</td>
 								<td><a href="http://data.dws.informatik.uni-mannheim.de/largescaleproductcorpus/data/gs_cameras.txt">gs_cameras.txt</td>
+
 							</tr>
 							<tr>
 								<td>Gold Standard (Computers)</td>
 								<td></td>
-								<td></td>
+
+								<td>132KB</td>
 								<td><a href="http://data.dws.informatik.uni-mannheim.de/largescaleproductcorpus/data/gs_computers.txt">gs_computers.txt</td>
+
 							</tr>
 							<!--
 							<tr>
@@ -1574,6 +1579,12 @@
 					<span id="toc8"></span>
 					<h2>8. References</h2>
 					<ol>
+					1.Mudgal, S. et al.: Deep Learning for Entity Matching: A Design Space Exploration. In: Proceedings of the 2018 International Conference on Management of Data. pp. 19–34 ACM (2018).
+					2.Qiu, D. et al.: Dexter: large-scale discovery and extraction of product specifications on the web. Proceedings of the VLDB Endowment. 8, 13, 2194–2205 (2015).
+					3.Köpcke, H. et al.: Evaluation of entity resolution approaches on real-world match problems. Proceedings of the VLDB Endowment. 3, 1–2, 484–493 (2010).
+					4.Petrovski, P., Bizer, C.: Extracting attribute-value pairs from product specifications on the web. In: Proceedings of the International Conference on Web Intelligence. pp. 558–565 ACM (2017).
+
+
 					</ol>
 					<script type="text/javascript">
 						$('#toc').toc({
