@@ -2,8 +2,7 @@
 <html>
 
 <head>
-	<meta name="robots" content="nofollow" />
-	<title>The WDC Data Corpus for Large-Scale Product Matching</title>
+	<title>WDC Training Set and Gold Standard for Large-Scale Product Matching</title>
 	<link rel='stylesheet' href='http://webdatacommons.org/style.css' type='text/css' media='screen' />
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<style>
@@ -80,7 +79,9 @@
 	</style>
 	<script type="text/javascript" src="https://www.google.com/jsapi"></script>
 	<script type="text/javascript">
-		google.load('visualization', '1', { packages: ['bar', 'line', 'corechart'] });
+		google.load('visualization', '1', {
+			packages: ['bar', 'line', 'corechart']
+		});
 		google.setOnLoadCallback(drawOffersPerClassChart);
 		google.setOnLoadCallback(drawOffersPerClassChartEnglish);
 		google.setOnLoadCallback(drawOffersPerTLDChart);
@@ -90,12 +91,14 @@
 		google.setOnLoadCallback(drawIDPropsNov);
 		google.setOnLoadCallback(drawStatsGS);
 
-		
+
 
 		function drawTopProdPropsNov() {
 
 			var data = google.visualization.arrayToDataTable([
-				["Property", "# PLDs", { role: 'annotation' }],
+				["Property", "# PLDs", {
+					role: 'annotation'
+				}],
 				["Product/name", 535625, "92%"],
 				["Offer/price", 462444, "80%"],
 				["Product/offers", 462233, "79%"],
@@ -121,21 +124,28 @@
 					sourceColumn: 1,
 					type: "string",
 					role: "annotation"
-				}]);
+				}
+			]);
 
 			var options = {
 				title: "Figure 1: Top product-related properties - WDC Product Corpus November 2017",
 				width: 600,
 				height: 500,
-				bar: { groupWidth: "75%" },
-				legend: { position: "none" },
+				bar: {
+					groupWidth: "75%"
+				},
+				legend: {
+					position: "none"
+				},
 				hAxis: {
 					title: '# PLDs',
 					minValue: 0
 				},
 				vAxis: {
 					title: 'schema.org Property',
-					textStyle: { fontSize: 10 }
+					textStyle: {
+						fontSize: 10
+					}
 				}
 			};
 
@@ -146,7 +156,9 @@
 		function drawIDPropsNov() {
 
 			var data = google.visualization.arrayToDataTable([
-				["Property", "# Entities", { role: 'annotation' }],
+				["Property", "# Entities", {
+					role: 'annotation'
+				}],
 				["Product/productID", 52173553, "6.44%"],
 				["Product/sku", 40281145, "4.97%"],
 				["Offer/sku", 18982354, "2.34%"],
@@ -169,21 +181,28 @@
 					sourceColumn: 1,
 					type: "string",
 					role: "annotation"
-				}]);
+				}
+			]);
 
 			var options = {
 				title: "Figure 2: Product id-related properties per # (schema:Offer & schema:Product) Entities- WDC Product Corpus November 2017",
 				width: 600,
 				height: 500,
-				bar: { groupWidth: "75%" },
-				legend: { position: "none" },
+				bar: {
+					groupWidth: "75%"
+				},
+				legend: {
+					position: "none"
+				},
 				hAxis: {
 					title: '# Entities',
 					minValue: 0
 				},
 				vAxis: {
 					title: 'schema.org Property',
-					textStyle: { fontSize: 10 }
+					textStyle: {
+						fontSize: 10
+					}
 				}
 			};
 
@@ -216,14 +235,19 @@
 					sourceColumn: 1,
 					type: "string",
 					role: "annotation"
-				}]);
+				}
+			]);
 
 			var options = {
 				title: "Distribution of identifier values per ID-cluster",
 				width: 400,
 				height: 400,
-				bar: { groupWidth: "95%" },
-				legend: { position: "none" },
+				bar: {
+					groupWidth: "95%"
+				},
+				legend: {
+					position: "none"
+				},
 				hAxis: {
 					title: 'Frequency (#ID-clusters)',
 					minValue: 0
@@ -239,7 +263,9 @@
 		function drawOffersPerClassChart() {
 
 			var data = google.visualization.arrayToDataTable([
-				["Offer Entities Count", "Frequency(#ID-clusters)", { role: 'annotation' }],
+				["Offer Entities Count", "Frequency(#ID-clusters)", {
+					role: 'annotation'
+				}],
 				["[>80]", 4978, 137488518],
 				["[71-80]", 1058, 2960532],
 				["[61-70]", 1378, 2891198],
@@ -261,8 +287,12 @@
 				title: "Figure 5: Distribution of offer entities (bar label: #positive pairs) per ID-cluster - Full Training Set",
 				width: 400,
 				height: 400,
-				bar: { groupWidth: "95%" },
-				legend: { position: "none" },
+				bar: {
+					groupWidth: "95%"
+				},
+				legend: {
+					position: "none"
+				},
 				hAxis: {
 					title: 'Frequency(#ID-clusters)',
 					minValue: 0
@@ -279,7 +309,9 @@
 		function drawOffersPerClassChartEnglish() {
 
 			var data = google.visualization.arrayToDataTable([
-				["Offer Entities Count", "Frequency(#ID-clusters)", { role: 'annotation' }],
+				["Offer Entities Count", "Frequency(#ID-clusters)", {
+					role: 'annotation'
+				}],
 				["[>80]", 3999, 113935797],
 				["[71-80]", 682, 1899880],
 				["[61-70]", 832, 1750014],
@@ -301,8 +333,12 @@
 				title: "Figure 6: Distribution of offer entities (bar label: #positive pairs) per ID-cluster - English Training Set",
 				width: 400,
 				height: 400,
-				bar: { groupWidth: "95%" },
-				legend: { position: "none" },
+				bar: {
+					groupWidth: "95%"
+				},
+				legend: {
+					position: "none"
+				},
 				hAxis: {
 					title: 'Frequency(#ID-clusters)',
 					minValue: 0
@@ -344,7 +380,9 @@
 				title: "Figure 7: Distribution of offer entities per TLD",
 				width: 400,
 				height: 400,
-				legend: { position: "none" },
+				legend: {
+					position: "none"
+				},
 				is3D: true
 
 			};
@@ -391,7 +429,9 @@
 				title: "Figure 4: Distribution of offer entities per category in the categorization GS",
 				width: 600,
 				height: 800,
-				legend: { position: "right" },
+				legend: {
+					position: "right"
+				},
 				is3D: true
 
 			};
@@ -403,7 +443,9 @@
 		function drawCategDistributionCorpus() {
 
 			var data = google.visualization.arrayToDataTable([
-				["Category", "Offers in Corpus", { role: 'annotation' }],
+				["Category", "Offers in Corpus", {
+					role: 'annotation'
+				}],
 				["[Office_Products]", 1977002, "12.02%"],
 				["[Jewelry]", 1298942, "7.9%"],
 				["[Clothing]", 1237667, "7.52%"],
@@ -442,21 +484,28 @@
 					sourceColumn: 1,
 					type: "string",
 					role: "annotation"
-				}]);
+				}
+			]);
 
 			var options = {
 				title: "Figure 8: Distribution of offer entities per category in the English Training Set",
 				width: 1000,
 				height: 800,
-				bar: { groupWidth: "75%" },
-				legend: { position: "none" },
+				bar: {
+					groupWidth: "75%"
+				},
+				legend: {
+					position: "none"
+				},
 				hAxis: {
 					title: '# Offer Entities',
 					minValue: 0
 				},
 				vAxis: {
 					title: 'Product Category',
-					textStyle: { fontSize: 12 }
+					textStyle: {
+						fontSize: 12
+					}
 				}
 			};
 
@@ -465,70 +514,80 @@
 		}
 
 		function drawStatsGS() {
-            var data = google.visualization.arrayToDataTable([
-                ["Category", "Property in GS", { role: 'annotation' }],
-                ["s:name", 2095, "99.61%"],
-                ["s:title", 1099, "52.25%"],
-                ["s:description", 1739, "82.69%"],
-                ["s:brand", 701, "33.33%"],
-                ["s:image", 321, "15.26%"],
-                ["s:price", 292, "13.88%"],
-                ["s:priceCurrency", 283, "13.45%"],
-                ["s:availability", 169, "8.03%"],
-                ["s:manufacturer", 285, "13.55%"]
+			var data = google.visualization.arrayToDataTable([
+				["Category", "Property in GS", {
+					role: 'annotation'
+				}],
+				["s:name", 2095, "99.61%"],
+				["s:title", 1099, "52.25%"],
+				["s:description", 1739, "82.69%"],
+				["s:brand", 701, "33.33%"],
+				["s:image", 321, "15.26%"],
+				["s:price", 292, "13.88%"],
+				["s:priceCurrency", 283, "13.45%"],
+				["s:availability", 169, "8.03%"],
+				["s:manufacturer", 285, "13.55%"]
 
-            ]);
+			]);
 
 
-             var view = new google.visualization.DataView(data);
-            view.setColumns([0, 1,
-                {
-                    calc: "stringify",
-                    sourceColumn: 1,
-                    type: "string",
-                    role: "annotation"
-                }]);
+			var view = new google.visualization.DataView(data);
+			view.setColumns([0, 1,
+				{
+					calc: "stringify",
+					sourceColumn: 1,
+					type: "string",
+					role: "annotation"
+				}
+			]);
 
-            var options = {
-                title: "Figure 9: schema.org properties in Gold Standard",
-                width: 600,
-                height: 400,
-                bar: { groupWidth: "75%" },
-                legend: { position: "none" },
-                hAxis: {
-                    title: '# Offer Entities',
-                    minValue: 0
-                },
-                vAxis: {
-                    title: 'schema.org property',
-                    textStyle: { fontSize: 12 }
-                }
-            };
+			var options = {
+				title: "Figure 9: schema.org properties in Gold Standard",
+				width: 600,
+				height: 400,
+				bar: {
+					groupWidth: "75%"
+				},
+				legend: {
+					position: "none"
+				},
+				hAxis: {
+					title: '# Offer Entities',
+					minValue: 0
+				},
+				vAxis: {
+					title: 'schema.org property',
+					textStyle: {
+						fontSize: 12
+					}
+				}
+			};
 
-            var chart = new google.visualization.BarChart(document.getElementById("schemaPropInGS"));
-            chart.draw(data, options);
-				
-				
+			var chart = new google.visualization.BarChart(document.getElementById("schemaPropInGS"));
+			chart.draw(data, options);
+
+
 		}
+
 		function openExpResult(evt, expName) {
-		// Declare all variables
-		var i, tabcontent, tablinks;
+			// Declare all variables
+			var i, tabcontent, tablinks;
 
-		// Get all elements with class="tabcontent" and hide them
-		tabcontent = document.getElementsByClassName("tabcontent");
-		for (i = 0; i < tabcontent.length; i++) {
-			tabcontent[i].style.display = "none";
-		}
+			// Get all elements with class="tabcontent" and hide them
+			tabcontent = document.getElementsByClassName("tabcontent");
+			for (i = 0; i < tabcontent.length; i++) {
+				tabcontent[i].style.display = "none";
+			}
 
-		// Get all elements with class="tablinks" and remove the class "active"
-		tablinks = document.getElementsByClassName("tablinks");
-		for (i = 0; i < tablinks.length; i++) {
-			tablinks[i].className = tablinks[i].className.replace(" active", "");
-		}
+			// Get all elements with class="tablinks" and remove the class "active"
+			tablinks = document.getElementsByClassName("tablinks");
+			for (i = 0; i < tablinks.length; i++) {
+				tablinks[i].className = tablinks[i].className.replace(" active", "");
+			}
 
-		// Show the current tab, and add an "active" class to the button that opened the tab
-		document.getElementById(expName).style.display = "block";
-		evt.currentTarget.className += " active";
+			// Show the current tab, and add an "active" class to the button that opened the tab
+			document.getElementById(expName).style.display = "block";
+			evt.currentTarget.className += " active";
 		}
 	</script>
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
@@ -539,55 +598,54 @@
 		_gaq.push(['_trackPageview']);
 
 		(function () {
-			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			var ga = document.createElement('script');
+			ga.type = 'text/javascript';
+			ga.async = true;
 			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+			var s = document.getElementsByTagName('script')[0];
+			s.parentNode.insertBefore(ga, s);
 		})();
-
 	</script>
 	<script type="application/ld+json">
 		{
-		"@context":"http://schema.org/",
-		"@type":"Dataset",
-		"name":"Web Data Commons - The WDC Data Training Dataset and Gold Standard for Large-Scale Product Matching",
-		"description":"The training dataset consisting of 20 million pairs of product offers referring to the same products. The offers were extracted from 43 thousand e-shops which provide schema.org annotations including some form of product ID such as a GTIN or MPN. We also created a gold standard by manually verifying 2000 pairs of offers belonging to four different product categories.",
-		"url":"http://webdatacommons.org/largescaleproductcorpus/index.html",
-		"keywords":[
-			"training corpus",
-			"product corpus",
-			"large scale",
-			"product matching",
-			"entity matching"
-		],
-		"creator":[
-			{
-				"@type":"Person",
-				"url": "http://dws.informatik.uni-mannheim.de/en/people/professors/prof-dr-christian-bizer/",
-				"name":"Christian Bizer"
-			},
-			{
-				"@type":"Person",
-				"url": "http://dws.informatik.uni-mannheim.de/en/people/researchers/anna-primpeli/",
-				"name":"Anna Primpeli"
-			},
-			{
-				"@type":"Person",
-				"name":"Ralph Peeters"
-			}
-
-		],
-		"distribution":[
-			{
-				"@type":"DataDownload",
-				"fileFormat":[
-				"json"
+			"@context": "http://schema.org/",
+			"@type": "Dataset",
+			"name": "Web Data Commons - The WDC Data Training Dataset and Gold Standard for Large-Scale Product Matching",
+			"description": "The training dataset consisting of 20 million pairs of product offers referring to the same products. The offers were extracted from 43 thousand e-shops which provide schema.org annotations including some form of product ID such as a GTIN or MPN. We also created a gold standard by manually verifying 2000 pairs of offers belonging to four different product categories.",
+			"url": "http://webdatacommons.org/largescaleproductcorpus/index.html",
+			"keywords": [
+				"training corpus",
+				"product corpus",
+				"large scale",
+				"product matching",
+				"entity matching"
 			],
-			"contentUrl":"http://data.dws.informatik.uni-mannheim.de/largescaleproductcorpus/data/offers.json.gz"
-			}
-		],
-		"citation":[
+			"creator": [{
+					"@type": "Person",
+					"url": "http://dws.informatik.uni-mannheim.de/en/people/professors/prof-dr-christian-bizer/",
+					"name": "Christian Bizer"
+				},
+				{
+					"@type": "Person",
+					"url": "http://dws.informatik.uni-mannheim.de/en/people/researchers/anna-primpeli/",
+					"name": "Anna Primpeli"
+				},
+				{
+					"@type": "Person",
+					"name": "Ralph Peeters"
+				}
 
-		]
+			],
+			"distribution": [{
+				"@type": "DataDownload",
+				"fileFormat": [
+					"json"
+				],
+				"contentUrl": "http://data.dws.informatik.uni-mannheim.de/largescaleproductcorpus/data/offers.json.gz"
+			}],
+			"citation": [
+
+			]
 		}
 	</script>
 
@@ -606,84 +664,93 @@
 	</div>
 	<div id="content">
 		<p>
-			We present the WDC Training Dataset and Gold Standard for large-scale product matching. The Full Training Set
-			contains more than 26 million entities describing product offers deriving from 79 thousand websites.
-			We also offer the English subset of the Training Set containing 16 million offers from 43 thousand websites. Using
-			annotated product identifier information we group the offers of the Full Training Set into 16 million clusters and
-			the offers
-			of the English subset into 10 million clusters. In addition we build a gold standard for evaluating existing
-			matching methods by manually verifying the labels of 2000 pairs of offers. Using a subset of the training corpus and
-			the gold standard we
-			are able to reproduce the results of Mugdal et al. [1] showing that embeddings and deep learning methods outperform
-			traditional symbolic matching methods.
-			In the following sections, we describe the data cleansing procedure for the creation of the Training Set and give
-			profiling information.
-			In addition we describe the creation of the gold standard and provide experimental results using existing matching
-			methods. In the last section of this webpage you can find all the relevant files
-			(Training Corpus, English Subset, and Gold Standard) for public download.
+			This page provides the WDC Training Dataset and Gold Standard for Large-scale Product Matching for public download.
+			The training dataset consists of more than 26 million product offers originating from 79 thousand websites. The
+			offers are grouped into 16 million clusters of offers referring to the same product using product identifiers, such
+			as GTINs or MPNs. The gold standard for evaluating matching methods consists of 2000 pairs of offers from the
+			dataset which were manually verified as matches or non-matches.
 
 		</p>
 		<h2 id="news">News</h2>
 		<ul>
+			<li><strong>2018-19-12:</strong> Initial version of the training dataset and gold standard published.</li>
 		</ul>
 		<h2>Contents</h2>
 		<ul>
-            <li class="toc-h2 toc-active">
-                <a href="#toc1"> 1.Motivation for the WDC training data corpus for large-scale product matching </a>
-            </li>
-            <li class="toc-h2 toc-active">
-                <a href="#toc2"> 2.Statistics on product related properties in the November 2017 WDC schema:Product subcorpus </a>
-            </li>
-            <li class="toc-h2 toc-active">
-                <a href="#toc3"> 3.Training Dataset Creation </a>
-            </li>
-            <li class="toc-h2 toc-active">
-                <a href="#toc4"> 4.Corpus Profiling</a>
-            </li>
-            <li class="toc-h2 toc-active">
-                <a href="#toc5"> 5.Gold Standard</a>
-            </li>
-            <li class="toc-h2 toc-active">
-                <a href="#toc6"> 6.Baseline Experiments</a>
-            </li>
-            <li class="toc-h2 toc-active">
-                <a href="#toc7"> 7.Corpus Files - Download </a>
-            </li>
-            <li class="toc-h2 toc-active">
-                <a href="#toc8"> 8.References </a>
-            </li>
-        </ul>
+			<li class="toc-h2 toc-active">
+				<a href="#toc1"> 1. Motivation</a>
+			</li>
+			<li class="toc-h2 toc-active">
+				<a href="#toc2"> 2. Adoption of schema.org Annotations by E-Shops</a>
+			</li>
+			<li class="toc-h2 toc-active">
+				<a href="#toc3"> 3. Training Dataset Creation</a>
+			</li>
+			<li class="toc-h2 toc-active">
+				<a href="#toc4"> 4. Training Dataset Profiling</a>
+			</li>
+			<li class="toc-h2 toc-active">
+				<a href="#toc5"> 5. Gold Standard Creation</a>
+			</li>
+			<li class="toc-h2 toc-active">
+				<a href="#toc6"> 6. Baseline Experiments</a>
+			</li>
+			<li class="toc-h2 toc-active">
+				<a href="#toc7"> 7. Download </a>
+			</li>
+			<li class="toc-h2 toc-active">
+				<a href="#toc8"> 8. Feedback </a>
+			<li class="toc-h2 toc-active">
+				<a href="#toc9"> 9. References </a>
+			</li>
+		</ul>
 
 		<span id="toc1"></span>
-		<h2>1. Motivation for the WDC training data corpus for large-scale product matching </h2>
-		<p>
-			As the research focus in the area of entity resolution moves from symbolic matching methods to deep neural network
-			methods, large amounts of training data are needed to verify if this family of data-hungry, subsymbolic methods
-			outperforms traditional ones. Existing training corpora contain data that either refer to a small group of unique
-			products or derive from a small number of sources.
-			In addition, large amounts of training data used to evaluate existing subsymbolic matching methods are proprietary
-			and cannot be publicly used.
-			By creating the WDC data corpus for large-scale product matching, we intend to enable the application, evaluation,
-			and comparison of different more or less data hungry integration methods on the product domain.
-		</p>
+		<h2>1. Motivation</h2>
+		<p>The research focus in the field of entity resolution (aka link discovery or duplicate detection) is moving from
+			traditional symbolic matching methods towards embeddings and deep neural network based matching. The problem with
+			evaluating deep learning based matchers is that they require large amounts of training data. The benchmark datasets
+			that have been used for comparing matching methods so far are often too small to properly evaluate this new family
+			of methods. Another problem with existing benchmark datasets is that they are mostly based on data from a small set
+			of data sources and thus do not properly reflect the heterogeneity that is found in large-scale integration
+			scenarios. The <em>WDC Training Dataset and Gold Standard for Large-scale Product Matching</em> tries to tackle both
+			challenges by being large (26 million product offers altogether, 16 million English language offers) and by
+			originating from many sources (altogether 79 thousand websites, English ). By making the training dataset and gold
+			standard publicly accessible, we hope to contribute to improving the evaluation and comparison of deep learning
+			based matchers. </p>
 
 		<p>
-			Popular annotation vocabularies, like schema.org, propose a set of properties to annotate identifiers of offer
-			entities on the web.
-			In addition, google motivates the annotation of product identifiers with properties such as <i>
-				schema.org/Product/sku, gtin8, gtin13, gtin14,</i> and <i>mpn</i> for more enhanced search results.
-			The application of these annotation practices can be considered as inexpensive supervision offered in the web.
-			We profile the adoption of identifier-related schema.org product properties using the Web Data Commons November 2017
-			schema.org/Product subcorpus, perform a series of cleansing and grouping steps,
-			and create the <i>WDC Data Corpus for Large-Scale Product Matching</i> containing 26 million entity offers grouped
-			into 16 million clusters.
+			Many e-shops have started to mark-up offers within HTML pages using <a href="https://schema.org/" target="_blank">schema.org</a>
+			annotations. In recent years, many of these e-shops have also started to annotate product identifiers within their
+			pages such as <i><a href="https://schema.org/Product" target="_blank">schema.org/Product/</a>sku, gtin8, gtin13,
+				gtin14,</i> and <i>mpn</i>.
+			These identifiers allow offers for the same product from multiple e-shops to be grouped into clusters and can thus
+			be considered as an inexpensive form of supervision for matching methods offered on the Web. We exploit this source
+			of supervision for building the training set.</p>
+		<p>Using the identifiers and a specific cleansing workflow, the offers are grouped into 16 million clusters of offers
+			referring to the same product. 1.1 million of these clusters have a size larger than three, 413 thousand have a size
+			larger than five. The English language subset of this dataset consists of 16 million offers which are grouped into
+			10 million clusters. Out of these clusters, 625.7 thousand have a size larger than three and 225 thousand have a
+			size larger than five. Only considering clusters of English offers having a size larger than five and excluding
+			clusters of sizes bigger than 80 offers which may introduce noise, <strong>20.7 million positive training examples</strong>
+			(pairs of matching product offers) and a maximum of 2.6 trillion negative training examples can be derived from the
+			dataset.</p>
+		<p>
+			In the following, we first provide some statistics about the adoption of schema.org annotations in the domain of
+			e-commerce. Afterwards, we describe the data cleaning steps that were applied to derive the training set from the
+			WDC
+			schema.org/Product subcorpus (November 2017). Finally, we present some statistics about the training set and gold
+			standard, as well as the results of performing some baseline matching experiments using embeddings and deep neural
+			network based matching methods.
 		</p>
 		<span id="toc2"></span>
-		<h2>2.Statistics on product related properties in the November 2017 WDC schema:Product subcorpus</h2>
+		<h2>2. Adoption of Schema.org Annotations by E-Shops</h2>
 		<p>
 			We use the <a href="http://webdatacommons.org/structureddata/2017-12/stats/schema_org_subsets.html#support">
-				November 2017 WDC schema.org/Product </a>subcorpus and extract the offer entities
-			that contain schema.org identifier properties. We consider the following schema.org/Product and schema.org/Offer
+				November 2017 WDC schema.org/Product </a>subcorpus as starting point for building the training set. The table below
+			provides general statistics about the corpus. The Figure 1 shows the number of websites that use specific schema.org
+			properties for describing their offers. Figure 2 shows the number of offers/product in the corpus that contain
+			identifiers. We consider the following schema.org/Product and schema.org/Offer
 			properties as identifier related properties:
 			<a href="https://schema.org/sku">sku</a>, <a href="https://schema.org/mpn">mpn</a>, <a href="https://schema.org/identifier">identifier</a>,
 			<a href="https://schema.org/productID">productID</a>,
@@ -731,14 +798,14 @@
 		<span id="toc3"></span>
 		<h2>3.Training Dataset Creation</h2>
 		<p>
-			Considering the noisy nature of web data, we perform a series of cleansing steps upon creating the Training Set.
-			During the cleansing process we identify several false annotation practices
-			and develop different strategies to overcome them. Below we provide details about each cleansing step
-			and the effect they had on the resulting corpus in terms of size.
+			Considering the noisy nature of web data, we perform a series of cleansing steps upon creating the training set.
+			During the cleansing process we identify different types of common errors in the annotations and develop strategies
+			to overcome them. Below we provide details about each cleansing step
+			and the effect they had on the size of the training set.
 		</p>
 		<h3>Usage of non-existing schema.org terms</h3>
 		<p>
-			A large number of offer entities are assigned wrong schema.org vocabulary terms such as <i>
+			A large number of offer entities are assigned non-existing schema.org vocabulary terms such as <i>
 				schema:IndividualProduct/sku</i> and <i>schema:Product/Offer/sku</i>.
 			Despite the wrong vocabulary usage, such terms still reveal identifying information. We capture this by applying the
 			following regex pattern on the properties of the offer entities:
@@ -789,7 +856,8 @@
 
 			<figure>
 				<img src="images/annot_ex.jpg" width="900" />
-				<figcaption>Figure3: left) Structured data of the html page and right) the content of the html page
+				<figcaption>
+					<strong>Figure1: left) Structured data of the html page and right) the content of the html page</strong></figcaption>
 			</figure>
 
 		</p>
@@ -799,10 +867,14 @@
 			In this cleansing step we want to remove the offers of our corpus which are part of listing pages or advertisements.
 			We apply a heuristic for detecting listing pages and advertisements based on:
 			<ul>
-				<li />Amount of schema:Offer and schema:Product entities per url
-				<li />Distribution of descriptions' length
-				<li />Semantic connection to parent entities with properties like schema:RelatedTo and schema:SimilarTo
-				<li />Number of identifier values
+				<li>Amount of schema:Offer and schema:Product entities per url
+				</li>
+				<li>Distribution of descriptions' length
+				</li>
+				<li>Semantic connection to parent entities with properties like schema:RelatedTo and schema:SimilarTo
+				</li>
+				<li>Number of identifier values
+				</li>
 			</ul>
 			The applied heuristic achieves an F1 score of 94.8% (on the positive class isListingOrAd). For the evaluation we use
 			a manually annotated set of 80 schema:Offer and schema:Product entities of our corpus,
@@ -925,13 +997,14 @@
 			in 16,193,300 ID-Clusters.
 			We also note that some websites include identifiers refering to product categories, such as UNSPSC number in
 			addition to single product identifiers.
+
 			For detecting these cases we examine the structure of the identifier co.occurrence graph within each ID-Cluster. We
 			discover that vertices having a high degree (>10)
 			and a low clustering coefficient (<0.2) tend to represent product categories rather than single products. Therefore
 			 we split these clusters by removing the product category identifiers. This removes 90,073 offer entities and
 			 results into the creation of 199,139 additional ID-Clusters. In addition we create the English Training Set by
-			 filtering from the ID-Clusters the offers from pages having the suffixes: com, net, co.uk, and org. </p>
-			 <h4> Resulting data after grouping </h4>
+			 filtering from the ID-Clusters the offers from pages having the suffixes: com, net, co.uk, and org. </p> <h4>
+				Resulting data after grouping </h4>
 				<br>
 				<table>
 					<tr>
@@ -972,13 +1045,19 @@
 					Based on the work of [Qiu,2015] and [Petrovski,2017] on detecting specification tables in html pages, we apply a
 					table detection heuristic based on the following html table attributes:
 					<ul>
-						<li />Ratio of alphanumeric characters
-						<li />Average number of columns per row
-						<li />Count of table children elements
-						<li />Count of images
-						<li />Maximum number of columns
-						<li />Max number of rows
-						<li />Average length of text per row
+						<li>Ratio of alphanumeric characters
+						</li>
+						<li>Average number of columns per row
+						</li>
+						<li>Count of table children elements
+						</li>
+						<li>Count of images
+						</li>
+						<li>Maximum number of columns
+						</li>
+						<li>Max number of rows
+						</li>
+						<li>Average length of text per row </li>
 					</ul>
 					For evaluating this heuristic we manually annotate 455 html tables found in 17 html pages with the labels
 					"specification" and "non-specification" which you can download <a href="http://data.dws.informatik.uni-mannheim.de/largescaleproductcorpus/data/gs_specTables.zip">here</a>.
@@ -1000,6 +1079,7 @@
 					Our categorization strategy reaches 62.3% Precision@1.
 					<span id="catInGS"></span>
 				</p>
+				<p>&nbsp; </p>
 
 				<span id="toc4"></span>
 				<h2>4.Corpus Profiling</h2>
@@ -1040,425 +1120,432 @@
 					key-value pairs from tables with two columns.
 				</p>
 				-->
-		<span id="toc5"></span>
-        <h2>5.Gold Standard</h2>
-        <p>
-            The gold standard we create for public use, as well as evaluation set for our baseline experiments,
-            consists of offers taken from the English Training
-            corpus and can be attributed to the 4 categories <em>Computers & Accessories</em>, <em>Camera & Photo</em>,
-            <em>Watches</em> and <em>Shoes</em>. Each of the category Gold Standards
-            offers 500 manually reviewed pairs with a match or non-match label. For specifics about the creation of the
-            Gold Standard, please refer
-            to our paper. We offer the Gold Standards for public <a href="#toc7">download</a> at the bottom of the page. Figure 9 shows the
-            distribution of schema.org properties across all Gold Standards. Table 1 shows the percentage of pairs per
-            category where both offers have the respective main attribute.
-            "title" refers to the concatenation of s:name and s:title properties.
-        </p>
-        <div>
-            <span id="schemaPropInGS" style="float:left"></span>
-		</div>
+				<span id="toc5"></span>
+				<h2>5.Gold Standard</h2>
+				<p>
+					The gold standard we create for public use, as well as evaluation set for our baseline experiments,
+					consists of offers taken from the English Training
+					corpus and can be attributed to the 4 categories <em>Computers & Accessories</em>, <em>Camera & Photo</em>,
+					<em>Watches</em> and <em>Shoes</em>. Each of the category Gold Standards
+					offers 500 manually reviewed pairs with a match or non-match label. For specifics about the creation of the
+					Gold Standard, please refer
+					to our paper. We offer the Gold Standards for public <a href="#toc7">download</a> at the bottom of the page.
+					Figure 9 shows the
+					distribution of schema.org properties across all Gold Standards. Table 1 shows the percentage of pairs per
+					category where both offers have the respective main attribute.
+					"title" refers to the concatenation of s:name and s:title properties.
+				</p>
+				<div>
+					<span id="schemaPropInGS" style="float:left"></span>
+				</div>
 
-            <table class="smalltable" style="margin-top:11em">
-                <caption>
-                    <p>
-                        Table 1: Gold Standard Statistics per category
-                    </p>
-                </caption>
-                <thead >
-                    <tr>
-                        <th>Category</th>
-                        <th>#Positive</th>
-                        <th>#Negative</th>
-                        <th>title</th>
-                        <th>s:description</th>
-                        <th>spec Table</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Computers</td>
-                        <td>150</td>
-                        <td>350</td>
-                        <td>100%</td>
-                        <td>90%</td>
-                        <td>22%</td>
-                    </tr>
-                    <tr>
-                        <td>Cameras</td>
-                        <td>150</td>
-                        <td>350</td>
-                        <td>100%</td>
-                        <td>78%</td>
-                        <td>5%</td>
-                    </tr>
-                    <tr>
-                        <td>Watches</td>
-                        <td>150</td>
-                        <td>350</td>
-                        <td>100%</td>
-                        <td>77%</td>
-                        <td>4%</td>
-                    </tr>
-                    <tr>
-                        <td>Shoes</td>
-                        <td>150</td>
-                        <td>350</td>
-                        <td>100%</td>
-                        <td>72%</td>
-                        <td>3%</td>
-                    </tr>
-                </tbody>
-			</table>
+				<table class="smalltable" style="margin-top:11em">
+					<caption>
+						<p>
+							Table 1: Gold Standard Statistics per category
+						</p>
+					</caption>
+					<thead>
+						<tr>
+							<th>Category</th>
+							<th>#Positive</th>
+							<th>#Negative</th>
+							<th>title</th>
+							<th>s:description</th>
+							<th>spec Table</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>Computers</td>
+							<td>150</td>
+							<td>350</td>
+							<td>100%</td>
+							<td>90%</td>
+							<td>22%</td>
+						</tr>
+						<tr>
+							<td>Cameras</td>
+							<td>150</td>
+							<td>350</td>
+							<td>100%</td>
+							<td>78%</td>
+							<td>5%</td>
+						</tr>
+						<tr>
+							<td>Watches</td>
+							<td>150</td>
+							<td>350</td>
+							<td>100%</td>
+							<td>77%</td>
+							<td>4%</td>
+						</tr>
+						<tr>
+							<td>Shoes</td>
+							<td>150</td>
+							<td>350</td>
+							<td>100%</td>
+							<td>72%</td>
+							<td>3%</td>
+						</tr>
+					</tbody>
+				</table>
 
 
-				
-					<span id="toc6"></span>
-					<h2>6.Baseline Experiments</h2>
-        <p>
-            We perform a set of Baseline Experiments to showcase the difficulty of the Gold Standards as well as the
-            suitability of the WDC Training set as training data for supervision. These are:
-        </p>
-        <ol>
-            <li>an unsupervised experiment using TFIDF and cosine similarity using different feature combinations.</li>
-            <li>a supervised experiment using word co-occurrence between product features as classifier input.</li>
-            <li>a supervised experiment using the <a href="https://sites.google.com/site/anhaidgroup/projects/magellan">Magellan</a> framework with auto generated features based on string
-                similarity.
-            </li>
-            <li>a supervised experiment using the <a href="https://github.com/anhaidgroup/deepmatcher">deepmatcher</a> framework which offers multiple Deep Learning models for
-                product matching.
-            </li>
-        </ol>
-        <p>
-            For our supervised Baseline Experiments we use a subset of the English Training set as training data for the algorithms. It is built by creating positive
-            pairs between offers in the same clusters and negative pairs between offers in different but textually
-            similar clusters (Jaccard similarity of titles).
-            The clusters we use for this are those that have offers in the Gold Standards. For more specific
-            information about the build process please refer to the paper. Table 3 shows the statistics of the Training set.
-        </p>
-        <p>
-            All of the supervised experiments apart from deepmatcher use the <a href="https://scikit-learn.org/stable/">scikit-learn</a> library implementations of
-            Logistic Regression, Naive Bayes, LinearSVC, Decision Tree and Random Forest.
-            In preparation for the experiments we remove non-alphanumeric characters, stopwords (using <a href="https://www.nltk.org/">NLTK</a>), and
-            lowercase everything in the Gold Standards as well as the Training sets.
-            For all experiments using sci-kit learn, we use Gridsearch or RandomizedSearch with 5-fold cross-validation
-            to optimize model
-            parameters. Once optimal parameters are found, the models are retrained on the full training sets before
-            evaluating on the gold standard.
-        </p>
-        <p>
-            The deepmatcher experiments are conducted using pre-trained character-based <a href="https://fasttext.cc/docs/en/pretrained-vectors.html">fastText</a> embeddings (on english
-            wikipedia) as well as fastText embeddings trained on the English Training Set.
-            The self-trained embeddings are 300-dimensional, trained for 50 epochs on all words that occur at least
-            twice as well as n-grams up to 3-grams, using the skip-gram model.
-            The deepmatcher models themselves are trained using the default settings, apart from mini-batch size and
-            pos-neg ratio which is manually set per dataset (Table 4). All models are trained for 15 epochs.
-            Furthermore the deepmatcher implementation requires the training set to be split into training and test
-            set. This test set is used to avoid overfitting to the training set. We split our Training sets with a
-            ratio of 4:1 for this purpose.
-            Note that this essentially reduces the amount of training data available to the deep learning methods
-            compared to the other supervised experiments. Table 2 shows the results of the experiments.
-        </p>
-		<div style="margin-top:2em;">
-			<div style="float: left;margin-right: 2.5em">
-				<div class="tab">
-						<button class="tablinks" onclick="openExpResult(event, 'unsup')" id="defaultOpen">TFIDF Cosine</button>
-						<button class="tablinks" onclick="openExpResult(event, 'supwc')">Word Co-Occurrence</button>
-						<button class="tablinks" onclick="openExpResult(event, 'supmg')">Magellan</button>
-						<button class="tablinks" onclick="openExpResult(event, 'supdm')">Deepmatcher</button>
-					</div>
-					<div id="unsup" class="tabcontent">
+
+				<span id="toc6"></span>
+				<h2>6.Baseline Experiments</h2>
+				<p>
+					We perform a set of Baseline Experiments to showcase the difficulty of the Gold Standards as well as the
+					suitability of the WDC Training set as training data for supervision. These are:
+				</p>
+				<ol>
+					<li>an unsupervised experiment using TFIDF and cosine similarity using different feature combinations.</li>
+					<li>a supervised experiment using word co-occurrence between product features as classifier input.</li>
+					<li>a supervised experiment using the <a href="https://sites.google.com/site/anhaidgroup/projects/magellan">Magellan</a>
+						framework with auto generated features based on string
+						similarity.
+					</li>
+					<li>a supervised experiment using the <a href="https://github.com/anhaidgroup/deepmatcher">deepmatcher</a>
+						framework which offers multiple Deep Learning models for
+						product matching.
+					</li>
+				</ol>
+				<p>
+					For our supervised Baseline Experiments we use a subset of the English Training set as training data for the
+					algorithms. It is built by creating positive
+					pairs between offers in the same clusters and negative pairs between offers in different but textually
+					similar clusters (Jaccard similarity of titles).
+					The clusters we use for this are those that have offers in the Gold Standards. For more specific
+					information about the build process please refer to the paper. Table 3 shows the statistics of the Training set.
+				</p>
+				<p>
+					All of the supervised experiments apart from deepmatcher use the <a href="https://scikit-learn.org/stable/">scikit-learn</a>
+					library implementations of
+					Logistic Regression, Naive Bayes, LinearSVC, Decision Tree and Random Forest.
+					In preparation for the experiments we remove non-alphanumeric characters, stopwords (using <a href="https://www.nltk.org/">NLTK</a>),
+					and
+					lowercase everything in the Gold Standards as well as the Training sets.
+					For all experiments using sci-kit learn, we use Gridsearch or RandomizedSearch with 5-fold cross-validation
+					to optimize model
+					parameters. Once optimal parameters are found, the models are retrained on the full training sets before
+					evaluating on the gold standard.
+				</p>
+				<p>
+					The deepmatcher experiments are conducted using pre-trained character-based <a href="https://fasttext.cc/docs/en/pretrained-vectors.html">fastText</a>
+					embeddings (on english
+					wikipedia) as well as fastText embeddings trained on the English Training Set.
+					The self-trained embeddings are 300-dimensional, trained for 50 epochs on all words that occur at least
+					twice as well as n-grams up to 3-grams, using the skip-gram model.
+					The deepmatcher models themselves are trained using the default settings, apart from mini-batch size and
+					pos-neg ratio which is manually set per dataset (Table 4). All models are trained for 15 epochs.
+					Furthermore the deepmatcher implementation requires the training set to be split into training and test
+					set. This test set is used to avoid overfitting to the training set. We split our Training sets with a
+					ratio of 4:1 for this purpose.
+					Note that this essentially reduces the amount of training data available to the deep learning methods
+					compared to the other supervised experiments. Table 2 shows the results of the experiments.
+				</p>
+				<div style="margin-top:2em;">
+					<div style="float: left;margin-right: 2.5em">
+						<div class="tab">
+							<button class="tablinks" onclick="openExpResult(event, 'unsup')" id="defaultOpen">TFIDF Cosine</button>
+							<button class="tablinks" onclick="openExpResult(event, 'supwc')">Word Co-Occurrence</button>
+							<button class="tablinks" onclick="openExpResult(event, 'supmg')">Magellan</button>
+							<button class="tablinks" onclick="openExpResult(event, 'supdm')">Deepmatcher</button>
+						</div>
+						<div id="unsup" class="tabcontent">
 							<table class="smalltable">
 								<caption style="margin-top: 1em">Table 2: Experimental results</caption>
-									<tr>
-										<td>Category</td>
-										<td>Classifier</td>
-										<td>Features</td>
-										<td>P</td>
-										<td>R</td>
-										<td>F1</td>
-									</tr>
-									<tr>
-										<td>Computers</td>
-										<td>Cosine, TF-IDF, thr:0.25</td>
-										<td>title</td>
-										<td>0.50</td>
-										<td>0.89</td>
-										<td>0.64</td>
-									</tr>
-									<tr>
-										<td>Cameras</td>
-										<td>Cosine, TF-IDF, thr:0.3</td>
-										<td>title+desc</td>
-										<td>0.59</td>
-										<td>0.71</td>
-										<td>0.64</td>
-									</tr>
-									<tr>
-										<td>Watches</td>
-										<td>Cosine, TF-IDF, thr:0.35</td>
-										<td>title</td>
-										<td>0.48</td>
-										<td>0.91</td>
-										<td>0.63</td>
-									</tr>
-									<tr>
-										<td>Shoes</td>
-										<td>Cosine, TF-IDF, thr:0.4</td>
-										<td>title</td>
-										<td>0.57</td>
-										<td>0.80</td>
-										<td>0.66</td>
-									</tr>
+								<tr>
+									<td>Category</td>
+									<td>Classifier</td>
+									<td>Features</td>
+									<td>P</td>
+									<td>R</td>
+									<td>F1</td>
+								</tr>
+								<tr>
+									<td>Computers</td>
+									<td>Cosine, TF-IDF, thr:0.25</td>
+									<td>title</td>
+									<td>0.50</td>
+									<td>0.89</td>
+									<td>0.64</td>
+								</tr>
+								<tr>
+									<td>Cameras</td>
+									<td>Cosine, TF-IDF, thr:0.3</td>
+									<td>title+desc</td>
+									<td>0.59</td>
+									<td>0.71</td>
+									<td>0.64</td>
+								</tr>
+								<tr>
+									<td>Watches</td>
+									<td>Cosine, TF-IDF, thr:0.35</td>
+									<td>title</td>
+									<td>0.48</td>
+									<td>0.91</td>
+									<td>0.63</td>
+								</tr>
+								<tr>
+									<td>Shoes</td>
+									<td>Cosine, TF-IDF, thr:0.4</td>
+									<td>title</td>
+									<td>0.57</td>
+									<td>0.80</td>
+									<td>0.66</td>
+								</tr>
 							</table>
-					</div>
-					<div id="supwc" class="tabcontent">
+						</div>
+						<div id="supwc" class="tabcontent">
 							<table class="smalltable">
-									<caption style="margin-top: 1em">Table 2: Experimental results</caption>
-									<tr>
-										<td>Category</td>
-										<td>Classifier</td>
-										<td>Features</td>
-										<td>P</td>
-										<td>R</td>
-										<td>F1</td>
-									</tr>
-									<tr>
-										<td>Computers</td>
-										<td>LinearSVM</td>
-										<td>title+desc+brand+spec</td>
-										<td>0.78</td>
-										<td>0.90</td>
-										<td>0.83</td>
-									</tr>
-									<tr>
-										<td>Cameras</td>
-										<td>LinearSVM</td>
-										<td>title+desc+brand</td>
-										<td>0.74</td>
-										<td>0.87</td>
-										<td>0.80</td>
-									</tr>
-									<tr>
-										<td>Watches</td>
-										<td>LinearSVM</td>
-										<td>title+desc+brand+spec</td>
-										<td>0.80</td>
-										<td>0.90</td>
-										<td>0.85</td>
-									</tr>
-									<tr>
-										<td>Shoes</td>
-										<td>LinearSVM</td>
-										<td>title+desc+brand</td>
-										<td>0.68</td>
-										<td>0.95</td>
-										<td>0.80</td>
-									</tr>
-									<tr>
-										<td>Computers</td>
-										<td>RandomForest</td>
-										<td>title+desc+brand+spec</td>
-										<td>0.76</td>
-										<td>0.88</td>
-										<td>0.81</td>
-									</tr>
-									<tr>
-										<td>Cameras</td>
-										<td>RandomForest</td>
-										<td>title+desc</td>
-										<td>0.80</td>
-										<td>0.83</td>
-										<td>0.82</td>
-									</tr>
-									<tr>
-										<td>Watches</td>
-										<td>RandomForest</td>
-										<td>title</td>
-										<td>0.77</td>
-										<td>0.87</td>
-										<td>0.83</td>
-									</tr>
-									<tr>
-										<td>Shoes</td>
-										<td>RandomForest</td>
-										<td>title+desc+brand+spec</td>
-										<td>0.70</td>
-										<td>0.88</td>
-										<td>0.78</td>
-									</tr>
+								<caption style="margin-top: 1em">Table 2: Experimental results</caption>
+								<tr>
+									<td>Category</td>
+									<td>Classifier</td>
+									<td>Features</td>
+									<td>P</td>
+									<td>R</td>
+									<td>F1</td>
+								</tr>
+								<tr>
+									<td>Computers</td>
+									<td>LinearSVM</td>
+									<td>title+desc+brand+spec</td>
+									<td>0.78</td>
+									<td>0.90</td>
+									<td>0.83</td>
+								</tr>
+								<tr>
+									<td>Cameras</td>
+									<td>LinearSVM</td>
+									<td>title+desc+brand</td>
+									<td>0.74</td>
+									<td>0.87</td>
+									<td>0.80</td>
+								</tr>
+								<tr>
+									<td>Watches</td>
+									<td>LinearSVM</td>
+									<td>title+desc+brand+spec</td>
+									<td>0.80</td>
+									<td>0.90</td>
+									<td>0.85</td>
+								</tr>
+								<tr>
+									<td>Shoes</td>
+									<td>LinearSVM</td>
+									<td>title+desc+brand</td>
+									<td>0.68</td>
+									<td>0.95</td>
+									<td>0.80</td>
+								</tr>
+								<tr>
+									<td>Computers</td>
+									<td>RandomForest</td>
+									<td>title+desc+brand+spec</td>
+									<td>0.76</td>
+									<td>0.88</td>
+									<td>0.81</td>
+								</tr>
+								<tr>
+									<td>Cameras</td>
+									<td>RandomForest</td>
+									<td>title+desc</td>
+									<td>0.80</td>
+									<td>0.83</td>
+									<td>0.82</td>
+								</tr>
+								<tr>
+									<td>Watches</td>
+									<td>RandomForest</td>
+									<td>title</td>
+									<td>0.77</td>
+									<td>0.87</td>
+									<td>0.83</td>
+								</tr>
+								<tr>
+									<td>Shoes</td>
+									<td>RandomForest</td>
+									<td>title+desc+brand+spec</td>
+									<td>0.70</td>
+									<td>0.88</td>
+									<td>0.78</td>
+								</tr>
 							</table>
-					</div>
-					<div id="supmg" class="tabcontent">
+						</div>
+						<div id="supmg" class="tabcontent">
 							<table class="smalltable">
-									<caption style="margin-top: 1em">Table 2: Experimental results</caption>
-									<tr>
-										<td>Category</td>
-										<td>Classifier</td>
-										<td>Features</td>
-										<td>P</td>
-										<td>R</td>
-										<td>F1</td>
-									</tr>
-									<tr>
-										<td>Computers</td>
-										<td>RandomForest</td>
-										<td>title+desc+brand+spec</td>
-										<td>0.65</td>
-										<td>0.85</td>
-										<td>0.74</td>
-									</tr>
-									<tr>
-										<td>Cameras</td>
-										<td>RandomForest</td>
-										<td>title+desc+brand+spec</td>
-										<td>0.61</td>
-										<td>0.83</td>
-										<td>0.70</td>
-									</tr>
-									<tr>
-										<td>Watches</td>
-										<td>RandomForest</td>
-										<td>title+desc+brand+spec</td>
-										<td>0.80</td>
-										<td>0.85</td>
-										<td>0.82</td>
-									</tr>
-									<tr>
-										<td>Shoes</td>
-										<td>RandomForest</td>
-										<td>title+desc+brand+spec</td>
-										<td>0.77</td>
-										<td>0.83</td>
-										<td>0.80</td>
-									</tr>
+								<caption style="margin-top: 1em">Table 2: Experimental results</caption>
+								<tr>
+									<td>Category</td>
+									<td>Classifier</td>
+									<td>Features</td>
+									<td>P</td>
+									<td>R</td>
+									<td>F1</td>
+								</tr>
+								<tr>
+									<td>Computers</td>
+									<td>RandomForest</td>
+									<td>title+desc+brand+spec</td>
+									<td>0.65</td>
+									<td>0.85</td>
+									<td>0.74</td>
+								</tr>
+								<tr>
+									<td>Cameras</td>
+									<td>RandomForest</td>
+									<td>title+desc+brand+spec</td>
+									<td>0.61</td>
+									<td>0.83</td>
+									<td>0.70</td>
+								</tr>
+								<tr>
+									<td>Watches</td>
+									<td>RandomForest</td>
+									<td>title+desc+brand+spec</td>
+									<td>0.80</td>
+									<td>0.85</td>
+									<td>0.82</td>
+								</tr>
+								<tr>
+									<td>Shoes</td>
+									<td>RandomForest</td>
+									<td>title+desc+brand+spec</td>
+									<td>0.77</td>
+									<td>0.83</td>
+									<td>0.80</td>
+								</tr>
 							</table>
-					</div>
-					<div id="supdm" class="tabcontent">
+						</div>
+						<div id="supdm" class="tabcontent">
 							<table class="smalltable">
-									<caption style="margin-top: 1em">Table 2: Experimental results</caption>
-									<tr>
-										<td>Category</td>
-										<td>Classifier</td>
-										<td>Features</td>
-										<td>P</td>
-										<td>R</td>
-										<td>F1</td>
-									</tr>
-									<tr>
-										<td>Computers</td>
-										<td>RNN</td>
-										<td>title+desc+brand+spec</td>
-										<td>0.89</td>
-										<td>0.95</td>
-										<td>0.92</td>
-									</tr>
-									<tr>
-										<td>Cameras</td>
-										<td>RNN</td>
-										<td>title+desc+brand+spec</td>
-										<td>0.90</td>
-										<td>0.95</td>
-										<td>0.92</td>
-									</tr>
-									<tr>
-										<td>Watches</td>
-										<td>RNN</td>
-										<td>title+desc+brand+spec</td>
-										<td>0.89</td>
-										<td>0.94</td>
-										<td>0.91</td>
-									</tr>
-									<tr>
-										<td>Shoes</td>
-										<td>RNN</td>
-										<td>title+desc+brand+spec</td>
-										<td>0.83</td>
-										<td>0.94</td>
-										<td>0.88</td>
-									</tr>
+								<caption style="margin-top: 1em">Table 2: Experimental results</caption>
+								<tr>
+									<td>Category</td>
+									<td>Classifier</td>
+									<td>Features</td>
+									<td>P</td>
+									<td>R</td>
+									<td>F1</td>
+								</tr>
+								<tr>
+									<td>Computers</td>
+									<td>RNN</td>
+									<td>title+desc+brand+spec</td>
+									<td>0.89</td>
+									<td>0.95</td>
+									<td>0.92</td>
+								</tr>
+								<tr>
+									<td>Cameras</td>
+									<td>RNN</td>
+									<td>title+desc+brand+spec</td>
+									<td>0.90</td>
+									<td>0.95</td>
+									<td>0.92</td>
+								</tr>
+								<tr>
+									<td>Watches</td>
+									<td>RNN</td>
+									<td>title+desc+brand+spec</td>
+									<td>0.89</td>
+									<td>0.94</td>
+									<td>0.91</td>
+								</tr>
+								<tr>
+									<td>Shoes</td>
+									<td>RNN</td>
+									<td>title+desc+brand+spec</td>
+									<td>0.83</td>
+									<td>0.94</td>
+									<td>0.88</td>
+								</tr>
 							</table>
+						</div>
 					</div>
+					<table class="smalltable" style="float: left;margin-right:5.0em">
+						<caption>
+							<p>Table 3: Training Sets for Baseline Experiments</p>
+						</caption>
+						<thead>
+							<tr>
+								<th>Category</th>
+								<th># positive</th>
+								<th># negative</th>
+								<th># combined</th>
+								<th>clusters involved</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>Computers</td>
+								<td>20559</td>
+								<td>21226</td>
+								<td>41785</td>
+								<td>338</td>
+							</tr>
+							<tr>
+								<td>Cameras</td>
+								<td>10580</td>
+								<td>10902</td>
+								<td>21482</td>
+								<td>231</td>
+							</tr>
+							<tr>
+								<td>Watches</td>
+								<td>6289</td>
+								<td>9153</td>
+								<td>15442</td>
+								<td>269</td>
+							</tr>
+							<tr>
+								<td>Shoes</td>
+								<td>3709</td>
+								<td>6060</td>
+								<td>9769</td>
+								<td>186</td>
+							</tr>
+						</tbody>
+					</table>
+					<table class="smalltable" style="float: left">
+						<caption>
+							<p>Table 4: deepmatcher parameters</p>
+						</caption>
+						<thead>
+							<tr>
+								<th>Category</th>
+								<th>batch size</th>
+								<th>pos-neg ratio</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>Computers</td>
+								<td>16</td>
+								<td>1</td>
+							</tr>
+							<tr>
+								<td>Cameras</td>
+								<td>16</td>
+								<td>1</td>
+							</tr>
+							<tr>
+								<td>Watches</td>
+								<td>32</td>
+								<td>2</td>
+							</tr>
+							<tr>
+								<td>Shoes</td>
+								<td>32</td>
+								<td>2</td>
+							</tr>
+						</tbody>
+					</table>
 				</div>
-            <table class="smalltable" style="float: left;margin-right:5.0em">
-                <caption>
-                    <p>Table 3: Training Sets for Baseline Experiments</p>
-                </caption>
-                <thead>
-                    <tr>
-                        <th>Category</th>
-                        <th># positive</th>
-                        <th># negative</th>
-                        <th># combined</th>
-                        <th>clusters involved</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Computers</td>
-                        <td>20559</td>
-                        <td>21226</td>
-                        <td>41785</td>
-                        <td>338</td>
-                    </tr>
-                    <tr>
-                        <td>Cameras</td>
-                        <td>10580</td>
-                        <td>10902</td>
-                        <td>21482</td>
-                        <td>231</td>
-                    </tr>
-                    <tr>
-                        <td>Watches</td>
-                        <td>6289</td>
-                        <td>9153</td>
-                        <td>15442</td>
-                        <td>269</td>
-                    </tr>
-                    <tr>
-                        <td>Shoes</td>
-                        <td>3709</td>
-                        <td>6060</td>
-                        <td>9769</td>
-                        <td>186</td>
-                    </tr>
-                </tbody>
-            </table>
-            <table class="smalltable" style="float: left">
-                <caption>
-                    <p>Table 4: deepmatcher parameters</p>
-                </caption>
-                <thead>
-                    <tr>
-                        <th>Category</th>
-                        <th>batch size</th>
-                        <th>pos-neg ratio</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Computers</td>
-                        <td>16</td>
-                        <td>1</td>
-                    </tr>
-                    <tr>
-                        <td>Cameras</td>
-                        <td>16</td>
-                        <td>1</td>
-                    </tr>
-                    <tr>
-                        <td>Watches</td>
-                        <td>32</td>
-                        <td>2</td>
-                    </tr>
-                    <tr>
-                        <td>Shoes</td>
-                        <td>32</td>
-                        <td>2</td>
-                    </tr>
-                </tbody>
-            </table>
-		</div>
-		
+
 
 				<span id="toc7"></span>
 				<h2>7.Corpus Files - Download</h2>
@@ -1466,21 +1553,31 @@
 					We offer the WDC training data corpus for large-scale product matching of the 26M annotated offers as json objects
 					including the following information
 					for every offer:
+
 					<ul>
-						<li /> url: The URL where the annotated offer entity was found (considering the November 2017 Common Crawl
-						Corpus)
-						<li /> nodeID: The subject assigned by the WDC Extractor. The combination of url and nodeID can be used as unique
-						keys for every annotated entity.
-						<li /> clusterID: The ID of the cluster where the offer belongs.
-						<li /> identifiers: A list of all annotated identifier values of the offer entity together with their
-						corresponding schema.org properties.
-						<li /> schema.org_properties: A list of all annotated schema.org product descriptive properties such as name,
-						description, brand etc. and their values.
-						<li /> parent_NodeID: The node ID of the parent entity of the offer.
-						<li /> relationToParent: The relation that connects the offer to its parent entity.
-						<li /> parent_schema.org_properties: A list of all annotated schema.org product descriptive properties of the
-						parent entity of the offer.
+						<li> url: The URL where the annotated offer entity was found (considering the November 2017 Common Crawl
+							Corpus)
+						</li>
+						<li> nodeID: The subject assigned by the WDC Extractor. The combination of url and nodeID can be used as unique
+							keys for every annotated entity.
+						</li>
+						<li> clusterID: The ID of the cluster where the offer belongs.
+						</li>
+						<li> identifiers: A list of all annotated identifier values of the offer entity together with their
+							corresponding schema.org properties.
+						</li>
+						<li> schema.org_properties: A list of all annotated schema.org product descriptive properties such as name,
+							description, brand etc. and their values.
+						</li>
+						<li> parent_NodeID: The node ID of the parent entity of the offer.
+						</li>
+						<li> relationToParent: The relation that connects the offer to its parent entity.
+						</li>
+						<li> parent_schema.org_properties: A list of all annotated schema.org product descriptive properties of the
+							parent entity of the offer.
+						</li>
 					</ul>
+
 				</p>
 				<p>
 					In addition we offer an English subcorpus by filtering the following public suffixes: <i>com</i>, <i>net</i>, <i>co.uk</i>,
@@ -1575,14 +1672,43 @@
 						-->
 						</tbody>
 					</table>
-
 					<span id="toc8"></span>
-					<h2>8. References</h2>
+					<h2>8. Feedback</h2>
+					<p>Please send questions and feedback to the <a href="http://groups.google.com/group/web-data-commons">Web Data
+							Commons Google Group</a>.<br /><br />
+						More information about Web Data Commons is found <a href="../index.html">here</a>.</p>
+
+					<span id="toc9"></span>
+					<h2>9. References</h2>
 					<ol>
-						<li>Mudgal, S. et al.: Deep Learning for Entity Matching: A Design Space Exploration. In: Proceedings of the 2018 International Conference on Management of Data. pp. 19–34 ACM (2018).</li>
-						<li>Qiu, D. et al.: Dexter: large-scale discovery and extraction of product specifications on the web. Proceedings of the VLDB Endowment. 8, 13, 2194–2205 (2015).</li>
-						<li>Köpcke, H. et al.: Evaluation of entity resolution approaches on real-world match problems. Proceedings of the VLDB Endowment. 3, 1–2, 484–493 (2010).</li>
-						<li>Petrovski, P., Bizer, C.: Extracting attribute-value pairs from product specifications on the web. In: Proceedings of the International Conference on Web Intelligence. pp. 558–565 ACM (2017).</li>
+						<li>Mudgal, S. et al.: <a href="http://pages.cs.wisc.edu/~anhai/papers1/deepmatcher-sigmod18.pdf" target="_blank">Deep
+								Learning for Entity Matching: A Design Space Exploration</a>. In: Proceedings of the 2018 International
+							Conference on Management of Data. pp. 19–34 ACM (2018).</li>
+						<li>Qiu, D. et al.: <a href="http://www.vldb.org/pvldb/vol8/p2194-qiu.pdf" target="_blank">Dexter: large-scale
+								discovery and extraction of product specifications on the web</a>. Proceedings of the VLDB Endowment. 8, 13,
+							2194–2205 (2015).</li>
+						<li>Köpcke, H. et al.: <a href="http://www.vldb.org/pvldb/vldb2010/papers/E04.pdf" target="_blank">Evaluation of
+								entity resolution approaches on real-world match problems</a>. Proceedings of the VLDB Endowment. 3, 1–2,
+							484–493 (2010).</li>
+						<li>Petrovski, P., Bizer, C.: <a href="http://webdatacommons.org/productcorpus/paper/attribute_value_pair_extraction_from_specification.pdf"
+							 target="_blank">Extracting attribute-value pairs from product specifications on the web</a>. In: Proceedings of
+							the International Conference on Web Intelligence. pp. 558–565 ACM (2017).</li>
+						<li>Ebraheem, M., Thirumuruganathan, S., Joty, S., Ouzzani, M., Tang, N.: <a href="http://www.vldb.org/pvldb/vol11/p1454-ebraheem.pdf"
+							 target="_blank">Distributed representations of tuples for entity resolution</a>. Proceedings of the VLDB
+							Endowment.<br>
+							11, 11, 14541467 (2018).</li>
+						<li>Petrovski, P., Bryl, V., Bizer, C.: <a href="http://wwwconference.org/proceedings/www2014/companion/p1299.pdf"
+							 target="_blank">Integrating product data from websites offering microdata markup</a>. In: Proceedings of the
+							23rd International Conference on World<br>
+							Wide Web - WWW 14 Companion. pp. 12991304 (2014).</li>
+						<li>Shah, K., Kopru, S., Ruvini, J.D.: <a href="http://aclweb.org/anthology/N18-3002" target="_blank">Neural
+								Network based Extreme Classifcation and Similarity Models for Product Matching</a>. In: Proceedings of the 2018
+							Conference<br>
+							of the North American Chapter of the Association for Computational Linguistics: Human Language Technologies,
+							Volume 3. pp. 815 (2018).</li>
+						<li>Luciano Barbosa: <a href="https://www.emeraldinsight.com/doi/full/10.1108/IJWIS-07-2018-0059" target="_blank">Learning
+								representations of Web entities for entity resolution</a>. International Journal of Web Information Systems,
+							https://doi.org/10.1108/IJWIS-07-2018-0059 (2018)</li>
 					</ol>
 					<script type="text/javascript">
 						$('#toc').toc({
