@@ -284,7 +284,7 @@
 
 
 			var options = {
-				title: "Figure 5: Distribution of offer entities (bar label: #positive pairs) per ID-cluster - Full Training Set",
+				title: "Figure 5: Distribution of offers (bar label: #positive pairs) per ID-cluster - Full Training Set",
 				width: 400,
 				height: 400,
 				bar: {
@@ -298,7 +298,7 @@
 					minValue: 0
 				},
 				vAxis: {
-					title: '# Offer Entities'
+					title: '# Offers'
 				}
 			};
 
@@ -309,7 +309,7 @@
 		function drawOffersPerClassChartEnglish() {
 
 			var data = google.visualization.arrayToDataTable([
-				["Offer Entities Count", "Frequency(#ID-clusters)", {
+				["Offer Count", "Frequency(#ID-clusters)", {
 					role: 'annotation'
 				}],
 				["[>80]", 3999, 113935797],
@@ -330,7 +330,7 @@
 
 
 			var options = {
-				title: "Figure 6: Distribution of offer entities (bar label: #positive pairs) per ID-cluster - English Training Set",
+				title: "Figure 6: Distribution of offers (bar label: #positive pairs) per ID-cluster - English Training Set",
 				width: 400,
 				height: 400,
 				bar: {
@@ -344,7 +344,7 @@
 					minValue: 0
 				},
 				vAxis: {
-					title: '# Offer Entities'
+					title: '# Offers'
 				}
 			};
 
@@ -377,7 +377,7 @@
 
 
 			var options = {
-				title: "Figure 7: Distribution of offer entities per TLD",
+				title: "Figure 7: Distribution of offers per top-level domain (TLD)",
 				width: 400,
 				height: 400,
 				legend: {
@@ -394,7 +394,7 @@
 		function drawCategDistributionGS() {
 
 			var data = google.visualization.arrayToDataTable([
-				["Category", "Offers in Categorization GS"],
+				["Category", "Offers in Categorization Gold Standard"],
 				["[Clothing]", 296],
 				["[Computers_and_Accessories]", 229],
 				["[Jewelry]", 147],
@@ -713,9 +713,10 @@
 			that have been used for comparing matching methods so far are often too small to properly evaluate this new family
 			of methods. Another problem with existing benchmark datasets is that they are mostly based on data from a small set
 			of data sources and thus do not properly reflect the heterogeneity that is found in large-scale integration
-			scenarios. The <em>WDC Training Dataset and Gold Standard for Large-scale Product Matching</em> tries to tackle both
+			scenarios. The WDC Training Dataset and Gold Standard for Large-scale Product Matching tries to tackle both
 			challenges by being large (26 million product offers altogether, 16 million English language offers) and by
-			originating from many sources (altogether 79 thousand websites, English ). By making the training dataset and gold
+			originating from many sources (altogether 79 thousand websites out of which 43 thousand are English language sites).
+			By making the training dataset and gold
 			standard publicly accessible, we hope to contribute to improving the evaluation and comparison of deep learning
 			based matchers. </p>
 
@@ -724,35 +725,38 @@
 			annotations. In recent years, many of these e-shops have also started to annotate product identifiers within their
 			pages such as <i><a href="https://schema.org/Product" target="_blank">schema.org/Product/</a>sku, gtin8, gtin13,
 				gtin14,</i> and <i>mpn</i>.
-			These identifiers allow offers for the same product from multiple e-shops to be grouped into clusters and can thus
-			be considered as an inexpensive form of supervision for matching methods offered on the Web. We exploit this source
-			of supervision for building the training set.</p>
+			These identifiers allow offers for the same product from different e-shops to be grouped into clusters and can thus
+			be considered as supervision for training matching methods. We exploit this source
+			of supervision for building the WDC training set.</p>
 		<p>Using the identifiers and a specific cleansing workflow, the offers are grouped into 16 million clusters of offers
 			referring to the same product. 1.1 million of these clusters have a size larger than three, 413 thousand have a size
-			larger than five. The English language subset of this dataset consists of 16 million offers which are grouped into
-			10 million clusters. Out of these clusters, 625.7 thousand have a size larger than three and 225 thousand have a
+			larger than five. The English language subset of the dataset consists of 16 million offers which are grouped into
+			10 million clusters. Out of the English clusters, 625.7 thousand have a size larger than three and 225 thousand have
+			a
 			size larger than five. Only considering clusters of English offers having a size larger than five and excluding
-			clusters of sizes bigger than 80 offers which may introduce noise, <strong>20.7 million positive training examples</strong>
+			clusters of sizes bigger than 80 offers which may introduce noise, 20.7 million positive training examples
 			(pairs of matching product offers) and a maximum of 2.6 trillion negative training examples can be derived from the
 			dataset.</p>
 		<p>
 			In the following, we first provide some statistics about the adoption of schema.org annotations in the domain of
 			e-commerce. Afterwards, we describe the data cleaning steps that were applied to derive the training set from the
-			WDC
-			schema.org/Product subcorpus (November 2017). Finally, we present some statistics about the training set and gold
-			standard, as well as the results of performing some baseline matching experiments using embeddings and deep neural
+			November 2017 version of the WDC
+			schema.org/Product corpus. Finally, we present some statistics about the training set and gold
+			standard, as well as the results of performing some baseline matching experiments comparing traditional matching
+			methods to embeddings and deep neural
 			network based matching methods.
 		</p>
 		<span id="toc2"></span>
 		<h2>2. Adoption of Schema.org Annotations by E-Shops</h2>
 		<p>
 			We use the <a href="http://webdatacommons.org/structureddata/2017-12/stats/schema_org_subsets.html#support">
-				November 2017 WDC schema.org/Product </a>subcorpus as starting point for building the training set. The table below
-			provides general statistics about the corpus. The Figure 1 shows the number of websites that use specific schema.org
-			properties for describing their offers. Figure 2 shows the number of offers/product in the corpus that contain
+				November 2017 WDC schema.org/Product corpus</a> as starting point for building the training set. The table below
+			provides general statistics about the corpus. Figure 1 shows the number of websites (PLDs) in the corpus that use
+			specific schema.org
+			properties for describing product offers. Figure 2 shows the number of offers in the corpus that contain
 			identifiers. We consider the following schema.org/Product and schema.org/Offer
-			properties as identifier related properties:
-			<a href="https://schema.org/sku">sku</a>, <a href="https://schema.org/mpn">mpn</a>, <a href="https://schema.org/identifier">identifier</a>,
+			properties as identifier related properties: <a href="https://schema.org/sku">sku</a>, <a href="https://schema.org/mpn">mpn</a>,
+			<a href="https://schema.org/identifier">identifier</a>,
 			<a href="https://schema.org/productID">productID</a>,
 			<a href="https://schema.org/gtin14">gtin14</a>, <a href="https://schema.org/gtin13">gtin13</a>, <a href="https://schema.org/gtin12">gtin12</a>,
 			and <a href="https://schema.org/gtin8">gtin8</a>.
@@ -800,8 +804,8 @@
 		<p>
 			Considering the noisy nature of web data, we perform a series of cleansing steps upon creating the training set.
 			During the cleansing process we identify different types of common errors in the annotations and develop strategies
-			to overcome them. Below we provide details about each cleansing step
-			and the effect they had on the size of the training set.
+			to overcome them. Below, we provide details about each cleansing step
+			and the amount of offers that are filtered out in each step.
 		</p>
 		<h3>Usage of non-existing schema.org terms</h3>
 		<p>
@@ -1076,10 +1080,9 @@
 					For evaluating our categorization strategy, we use a manually annotated set of 985 offers which you can download
 					<a href="http://data.dws.informatik.uni-mannheim.de/largescaleproductcorpus/data/cat_gs_Evaluation.txt">here</a>.
 					Figure 2 shows the distribution of the different categories in our gold standard.
-					Our categorization strategy reaches 62.3% Precision@1.
+					Our categorization approach reaches 62.3% Precision@1 when being evaluated using the gold standard.
 					<span id="catInGS"></span>
 				</p>
-				<p>&nbsp; </p>
 
 				<span id="toc4"></span>
 				<h2>4.Corpus Profiling</h2>
@@ -1088,8 +1091,8 @@
 					Training subset. The Full Training corpus contains 26 million offer entities, deriving
 					from 79 thousand websites, grouped into 16 million ID-clusters. The English training subset contains 16 million
 					offer entities, deriving from 43 thousand websites, grouped into 10 million ID-clusters.
-					In this section we present different statistics concerning the structure of the created ID-clusters w.r.t.
-					identifier values count, offer entities count and provenance.
+					The charts below show the distribution of the size of the ID-clusters in the overall dataset as well as in the
+					English subset, and the distribition of offers by top-level domain (TLD).
 				</p>
 
 				<div>
@@ -1098,14 +1101,11 @@
 					<span id="offersPerTLD" style="float:left"></span>
 				</div>
 
-
-
-				<h2>Product Categories</h2>
 				<p>
-					Figure 8 shows the distribution of the 26 defined product categories in the english subcorpus after applying our
-					categorization strategy.
+					Figure 8 shows the distribution of the 26 defined product categories in the English dataset. The offers were
+					asigned to categoris using
+					the categorization approach described abouve.
 				</p>
-
 				<div>
 					<span id="catInCorpus" style="float:left"></span>
 				</div>
@@ -1216,7 +1216,8 @@
 					algorithms. It is built by creating positive
 					pairs between offers in the same clusters and negative pairs between offers in different but textually
 					similar clusters (Jaccard similarity of titles).
-					The clusters we use for this are those that have offers in the Gold Standards. Table 3 shows the statistics of the Training set.
+					The clusters we use for this are those that have offers in the Gold Standards. Table 3 shows the statistics of the
+					Training set.
 				</p>
 				<p>
 					All of the supervised experiments apart from deepmatcher use the <a href="https://scikit-learn.org/stable/">scikit-learn</a>
@@ -1547,39 +1548,35 @@
 
 
 				<span id="toc7"></span>
-				<h2>7.Corpus Files - Download</h2>
+				<h2>7. Download</h2>
 				<p>
-					We offer the WDC training data corpus for large-scale product matching of the 26M annotated offers as json objects
-					including the following information
-					for every offer:
+					We offer the WDC Training Dataset for Large-scale Product Matching for public download in JSON format. The JSON
+					file contains the following fields for each offer:
 
 					<ul>
-						<li> url: The URL where the annotated offer entity was found (considering the November 2017 Common Crawl
-							Corpus)
-						</li>
-						<li> nodeID: The subject assigned by the WDC Extractor. The combination of url and nodeID can be used as unique
-							keys for every annotated entity.
-						</li>
-						<li> clusterID: The ID of the cluster where the offer belongs.
-						</li>
-						<li> identifiers: A list of all annotated identifier values of the offer entity together with their
-							corresponding schema.org properties.
-						</li>
-						<li> schema.org_properties: A list of all annotated schema.org product descriptive properties such as name,
-							description, brand etc. and their values.
-						</li>
-						<li> parent_NodeID: The node ID of the parent entity of the offer.
-						</li>
-						<li> relationToParent: The relation that connects the offer to its parent entity.
-						</li>
-						<li> parent_schema.org_properties: A list of all annotated schema.org product descriptive properties of the
-							parent entity of the offer.
-						</li>
+						<li><strong> url:</strong> The URL of the webpage from which an offer was extracted. All pages originate from the
+							November 2017 version of Common Crawl
+							corpus. </li>
+						<li><strong> nodeID:</strong> ID assigned by the WDC extraction framework. Please note that the combination of
+							url and nodeID uniquely identifies an offer, not the nodeID alone! </li>
+						<li><strong> clusterID:</strong> The ID of the cluster to which an offer belongs. </li>
+						<li><strong> identifiers:</strong> A list of all identifier values that were assigned to an offer together with
+							the schema.org terms that were used to annotate the values. </li>
+						<li><strong> schema.org_properties:</strong> A list of all schema.org properties such as name,
+							description, brand etc. together with their values that were used to annotate an offer. </li>
+						<li><strong> parent_NodeID:</strong> The node ID of the parent entity of the offer. Parent entities are usually
+							schema.org/product entities as information about an offer is often represented using the combination of a
+							product and an offer entity.</li>
+						<li><strong> relationToParent:</strong> The relation that connects the offer to its parent entity (e.g the
+							product entity). </li>
+						<li><strong> parent_schema.org_properties:</strong> A list of all schema.org product properties of the
+							parent entity of the offer. </li>
 					</ul>
 
 				</p>
 				<p>
-					In addition we offer an English subcorpus by filtering the following public suffixes: <i>com</i>, <i>net</i>, <i>co.uk</i>,
+					In addition we offer an English subcorpus. This subcorpus only contains offers from pages haveing following
+					suffixes: <i>com</i>, <i>net</i>, <i>co.uk</i>,
 					<i>us</i>, and <i>org</i>.
 					The English subcorpus contains 16M annotated offer entities.
 				</p>
@@ -1718,14 +1715,14 @@
 							the International Conference on Web Intelligence. pp. 558–565 ACM (2017).</li>
 						<li>Ebraheem, M., Thirumuruganathan, S., Joty, S., Ouzzani, M., Tang, N.: <a href="http://www.vldb.org/pvldb/vol11/p1454-ebraheem.pdf"
 							 target="_blank">Distributed representations of tuples for entity resolution</a>. Proceedings of the VLDB
-							Endowment. 11, 11, 1454-1467 (2018).</li> 
+							Endowment. 11, 11, 1454-1467 (2018).</li>
 						<li>Petrovski, P., Bryl, V., Bizer, C.: <a href="http://wwwconference.org/proceedings/www2014/companion/p1299.pdf"
 							 target="_blank">Integrating product data from websites offering microdata markup</a>. In: Proceedings of the
 							23rd International Conference on World Wide Web - WWW 14 Companion. pp. 1299-1304 (2014).</li>
 						<li>Shah, K., Kopru, S., Ruvini, J.D.: <a href="http://aclweb.org/anthology/N18-3002" target="_blank">Neural
 								Network based Extreme Classifcation and Similarity Models for Product Matching</a>. In: Proceedings of the 2018
-							Conference<br>
-							of the North American Chapter of the Association for Computational Linguistics: Human Language Technologies,
+							Conference of the North American Chapter of the Association for Computational Linguistics: Human Language
+							Technologies,
 							Volume 3. pp. 815 (2018).</li>
 						<li>Luciano Barbosa: <a href="https://www.emeraldinsight.com/doi/full/10.1108/IJWIS-07-2018-0059" target="_blank">Learning
 								representations of Web entities for entity resolution</a>. International Journal of Web Information Systems,
