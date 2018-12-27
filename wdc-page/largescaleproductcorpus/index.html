@@ -90,7 +90,7 @@
 		google.setOnLoadCallback(drawTopProdPropsNov);
 		google.setOnLoadCallback(drawIDPropsNov);
 		google.setOnLoadCallback(drawStatsGS);
-
+		google.setOnLoadCallback(drawKVpairPerSpecTable);
 
 
 		function drawTopProdPropsNov() {
@@ -542,7 +542,7 @@
 			]);
 
 			var options = {
-				title: "Figure 9: schema.org properties in Gold Standard",
+				title: "Figure 10: schema.org properties in Gold Standard",
 				width: 600,
 				height: 400,
 				bar: {
@@ -567,6 +567,109 @@
 			chart.draw(data, options);
 
 
+		}
+
+		function drawOffersPerClassChartEnglish() {
+
+			var data = google.visualization.arrayToDataTable([
+				["Offer Count", "Frequency(#ID-clusters)", {
+					role: 'annotation'
+				}],
+				["[>80]", 3999, 113935797],
+				["[71-80]", 682, 1899880],
+				["[61-70]", 832, 1750014],
+				["[51-60]", 1300, 1972822],
+				["[41-50]", 2504, 2502691],
+				["[31-40]", 4461, 2646306],
+				["[21-30]", 10567, 3185935],
+				["[11-20]", 37562, 3751124],
+				["[5-10]", 163356, 3064532],
+				["[3-4]", 400522, 1552680],
+				["[2]", 1012220, 1012220]
+
+			]);
+
+			var view = new google.visualization.DataView(data);
+
+
+			var options = {
+				title: "Figure 6: Distribution of offers (bar label: #positive pairs) per ID-cluster - English Training Set",
+				width: 400,
+				height: 400,
+				bar: {
+					groupWidth: "95%"
+				},
+				legend: {
+					position: "none"
+				},
+				hAxis: {
+					title: 'Frequency(#ID-clusters)',
+					minValue: 0
+				},
+				vAxis: {
+					title: '# Offers'
+				}
+			};
+
+			var chart = new google.visualization.BarChart(document.getElementById("offersPerClass_english"));
+			chart.draw(view, options);
+		}
+
+		function drawKVpairPerSpecTable() {
+
+			var data = google.visualization.arrayToDataTable([
+				["Key-Value Pairs Count", "Frequency(#Specification Tables)", {
+					role: 'annotation'
+				}],
+				["[>30]", 9626, "0.3%"],
+				["[27-30]", 9950, "0.3%"],
+				["[24-26]", 26972, "0.8%"],
+				["[21-23]", 88747, "2.7%"],
+				["[18-20]", 112732, "3.4%"],
+				["[14-17]", 198421, "6.1%"],
+				["[11-13]", 402249, "12.4%"],
+				["[7-10]", 514938, "15.9%"],
+				["[4-6]", 659511, "20.3%"],
+				["[1-3]", 47967, "1.4%"]
+			]);
+
+
+			var view = new google.visualization.DataView(data);
+			
+			view.setColumns([0, 1,
+				{
+					calc: "stringify",
+					sourceColumn: 2,
+					type: "string",
+					role: "annotation"
+				}
+			]);
+
+			var options = {
+				title: "Figure 9: Distribution of key-value pairs per Specification Table",
+				width: 600,
+				height: 400,
+				bar: {
+					groupWidth: "75%"
+				},
+				legend: {
+					position: "none"
+				},
+				hAxis: {
+					title: 'Frequency(#Specification Tables)',
+					minValue: 0
+				},
+				vAxis: {
+					title: '# Key Value Pairs',
+					textStyle: {
+						fontSize: 12
+					}
+				}
+			};
+			
+
+			var chart = new google.visualization.BarChart(document.getElementById("keyvaluespairs"));
+			chart.draw(view, options);
 		}
 
 		function openExpResult(evt, expName) {
@@ -1092,26 +1195,31 @@
 					from 79 thousand websites, grouped into 16 million ID-clusters. The English training subset contains 16 million
 					offer entities, deriving from 43 thousand websites, grouped into 10 million ID-clusters.
 					The charts below show the distribution of the size of the ID-clusters in the overall dataset as well as in the
-					English subset, and the distribition of offers by top-level domain (TLD).
+					English subset, and the distribution of offers by top-level domain (TLD).
 				</p>
 
 				<div>
 					<span id="offersPerClass" style="float:left"></span>
-					<span id="offersPerClass_english"style="float:left"></span>
+					<span id="offersPerClass_english" style="float:left"></span>
 					<span id="offersPerTLD" style="float:left"></span>
 				</div>
-				
-				
+
+
 				<p style="clear:both">
-				Figure 8 shows the distribution of the 26 defined product categories in the English dataset. The offers were
-				asigned to categoris using
-				the categorization approach described abouve.
+					Figure 8 shows the distribution of the 26 defined product categories in the English dataset. The offers were
+					assigned to categories using
+					the categorization approach described above.
+					Using the specification table detection and extraction approach described above
+					we were able to extract specification tables from 3.2 million webpages which accounts for
+					17% of the total pages of the Full Training corpus. Figure 9 shows the distribution of key-value pairs
+					which were extracted from the specification tables.
 				</p>
-				
+
 				<div>
 					<span id="catInCorpus" style="float:left"></span>
+					<span id="keyvaluespairs" style="float:left"></span>
 				</div>
-				
+
 
 				<!--
 				<h2>Specification Tables</h2>
@@ -1130,8 +1238,9 @@
 					consists of offers taken from the English Training
 					corpus and can be attributed to the 4 categories <em>Computers & Accessories</em>, <em>Camera & Photo</em>,
 					<em>Watches</em> and <em>Shoes</em>. Each of the category Gold Standards
-					offers 500 manually reviewed pairs with a match or non-match label. We offer the Gold Standards for public <a href="#toc7">download</a> at the bottom of the page.
-					Figure 9 shows the
+					offers 500 manually reviewed pairs with a match or non-match label. We offer the Gold Standards for public <a href="#toc7">download</a>
+					at the bottom of the page.
+					Figure 10 shows the
 					distribution of schema.org properties across all Gold Standards. Table 1 shows the percentage of pairs per
 					category where both offers have the respective main attribute.
 					"title" refers to the concatenation of s:name and s:title properties.
