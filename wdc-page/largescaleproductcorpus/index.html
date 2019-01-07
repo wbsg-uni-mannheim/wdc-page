@@ -424,19 +424,39 @@
 				["[Baby]", 1]
 			]);
 
+		var view = new google.visualization.DataView(data);
+			view.setColumns([0, 1,
+				{
+					calc: "stringify",
+					sourceColumn: 1,
+					type: "string",
+					role: "annotation"
+				}
+			]);
 
 			var options = {
-				title: "Figure 4: Distribution of offer entities per category in the categorization GS",
-				width: 600,
+				title: "Figure 4: Distribution of offer entities per category in the manually annotated categorization Gold Standard (985 offers)",
+				width: 1000,
 				height: 800,
-				legend: {
-					position: "right"
+				bar: {
+					groupWidth: "75%"
 				},
-				is3D: true
-
+				legend: {
+					position: "none"
+				},
+				hAxis: {
+					title: '# Offer Entities',
+					minValue: 0
+				},
+				vAxis: {
+					title: 'Product Category',
+					textStyle: {
+						fontSize: 12
+					}
+				}
 			};
-
-			var chart = new google.visualization.PieChart(document.getElementById("catInGS"));
+			
+			var chart = new google.visualization.BarChart(document.getElementById("catInGS"));
 			chart.draw(data, options);
 		}
 
