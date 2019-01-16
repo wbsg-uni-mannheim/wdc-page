@@ -202,9 +202,13 @@
     Altogether, the extracted data sets consist of 31.5 billion <a target="_blank" href="http://www.w3.org/TR/n-quads/">RDF
       quads</a>.
   </p>
+  
   <p>
     Instructions on how to download the RDFa, Microdata, Embedded JSON-LD and Microformats data sets are given on the
     page <a href="how_to_get_the_data.html">how to get the data</a>.
+  </p>
+  <p>
+    In addition we have extracted <a href="schema_org_subsets.html">schema.org class-specific datasets</a> from the Microdata and JSON-LD corpora.  
   </p>
   <p>
     Please note that in the following term <i>Domains</i> refers to pay-level-domains. Subdomains are not counted as
@@ -379,6 +383,17 @@
 	  
     </tbody>
   </table>
+
+  <h2>Short Discussion</h2>
+  <div>
+    <p>
+      As a first observation we see that the common crawl corpus used for this extraction is more shallow but wider in comparison to the November 2017 corpus, as it covers less webpages (URLs) of more websites (PLDs).
+      Concerning the annotation formats, Microdata and JSON-LD are the most prominent ones followed by Microformats h-card and RDFa.
+      We observe that even though Microdata is the most dominant mark-up format, JSON-LD is prefered for annotating data of certain domains such as Organization, Person and location information.
+      In addition we analyze the adoption of new vocabulary terms introduced by the schema.org vocabulary during last two years and see that they are well adopted despite their recent release. 
+      We present a comparison of the two prominent formats, Microdata and JSON-LD in terms of #PLDs for some selected classes and coverage of new terms in the <a href="md-jsonld-comparison.xlsx">Formats Comparison File</a> (md-jsonld-comparison.xlsx (14kB)).
+    </p>
+  </div>
   <div>
     <span id="d2018Plds" style="float:left, width:50%"></span>
     <span id="d2018Urls" style="float:left,width:50%"></span>
