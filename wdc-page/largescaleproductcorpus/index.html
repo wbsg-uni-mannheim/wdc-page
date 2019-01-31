@@ -1392,7 +1392,7 @@
 					For the unsupervised TFIDF and supervised word co-occurrence experiments, different combinations of features are concatenated
 					and converted either into TFIDF or binary wordcount vectors. In case of the unsupervised experiment, the TFIDF vectors for a pair are 
 					compared using cosine similarity with thresholds from 0 to 1 in steps of 0.05. The wordcount vectors for the first supervised experiment are
-					combined into binary word co-occurence vectors for each pair, whose elements serve as input features for the classifiers. 
+					combined into binary word co-occurrence vectors for each pair, whose elements serve as input features for the classifiers. 
 					For the Magellan experiment, we use the automatic feature generation functionality
 					of the framework and use all of the created features as input for the classifiers.
 				</p>
@@ -1420,7 +1420,7 @@
 					ratio of 4:1 for this purpose.
 					Note that this essentially reduces the amount of training data available to the deep learning methods
 					compared to the other supervised experiments. Table 2 shows the results of the experiments.
-					A file containing experiment results as well as model parameter settings can furthermore be found in the <a href="#toc7">Download</a> section (TBD).
+					A file containing all experiment results as well as model parameter settings can be found in the <a href="#toc7">Download</a> section (TBD).
 				</p>
 				<div style="margin-top:2em;">
 					<div style="float: left;margin-right: 2.5em">
@@ -1756,6 +1756,11 @@
 					suffixes: <i>com</i>, <i>net</i>, <i>co.uk</i>,
 					<i>us</i>, and <i>org</i>.
 					The English subcorpus contains 16M annotated offer entities.
+				</p>
+				<p>
+					The Gold Standard and Training Subset Files contain product offer pairs in the format id1#####id2#####label, 
+					where the id of an offer is made up of the combination of its nodeID and its url with one whitespace in between (nodeID+' '+url).
+					Finally the binary label signifies if two product offers refer to the same product or not.
 				</p>
 				<p>
 					<!--
