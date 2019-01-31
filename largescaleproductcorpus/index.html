@@ -1265,6 +1265,34 @@
 					category where both offers have the respective main attribute.
 					"title" refers to the concatenation of s:name and s:title properties.
 				</p>
+			</p>
+					For the creation of the Gold Standard we identify the ID-Clusters belonging to
+					the selected product categories. We make a selection of 75 related ID-Clusters
+					preferring the ones with a large diversity among the offers’ textual content and
+					a minimum size of 5 offers. Large diversity in this context refers to offers for
+					the same product that vary on the Jaccard string similarity of their titles and descriptions,
+					thus leading to a selection of ID-Clusters that contain textually
+					similar as well as less similar offers. This ensures the possibility of selecting
+					interesting positive pairs. From every selected ID-Cluster we pick one offer and exploit the title,
+					description, and specification table content to build pairs for the gold standard.
+					We exploit similarity between the offers’ textual content, calculate the decision boundary and select pairs in the positive area, in the negative
+					area as well as pairs close to the decision boundary. The similarity measures we
+					use for this process are Jaccard similarity of the titles, Jaccard similarity of the
+					descriptions, as well as the average of both. More specifically, we select one 
+					inter-cluster positive pair with high similarity, one inter-cluster positive pair with low
+					similarity, one to three intra-cluster negative pairs with a high similarity, and
+					three intra-cluster negative pairs with a lower similarity, while varying between
+					the use of the mentioned similarities to create diverse pairs. We manually verify
+					that the selected pairs are really matches or non-matches by reading the titles
+					and descriptions of the offers. If we discover that a pair is incorrectly labeled,
+					we correct the label.
+				</p>
+				<p>
+					The resulting gold standard datasets consist of 150 positive and 350 negative
+					pairs for each category. The offers contained in the gold standard datasets derive
+					from the following numbers of ID-Clusters for each category: 338 for Computers
+					& Accessories, 231 for Camera & Photo, 269 for Watches and 186 for Shoes.
+				</p>
 				<div>
 					<span id="schemaPropInGS" style="float:left"></span>
 				</div>
@@ -1341,21 +1369,39 @@
 						product matching.
 					</li>
 				</ol>
+				<p>In preparation for the experiments we remove non-alphanumeric characters, stopwords (using <a href="https://www.nltk.org/">NLTK</a>),
+					and
+					lowercase everything in the Gold Standards as well as the Training sets.</p>
 				<p>
 					For our supervised Baseline Experiments we use a subset of the English Training set as training data for the
-					algorithms. It is built by creating positive
-					pairs between offers in the same clusters and negative pairs between offers in different but textually
-					similar clusters (Jaccard similarity of titles).
-					The clusters we use for this are those that have offers in the Gold Standards. Table 3 shows the statistics of the
+					algorithms. To build positive
+					pairs, we iterate over all clusters which have offers in the gold standard and build
+					for all combinations of offers inside one cluster, one positive pair. If a cluster has
+					more than 15 offers, 15 are randomly sampled before the procedure is applied. To
+					build negative pairs, in a first step, the title similarity of each pair of clusters from
+					the gold standard is calculated using Jaccard similarity over the concatenated
+					titles. In a second step, for each cluster the top ten most similar clusters based
+					on this similarity are chosen. For each of the resulting cluster pairs up to 15
+					offers are sampled from each of the two clusters and combined into 15 negative
+					pairs. This number depends on the size of the smaller cluster. This procedure
+					for sampling negative pairs ensures that the pairs are not too different and allow
+					the classifiers to learn useful patterns for differentiating highly similar products. Table 3 shows the statistics of the
 					Training set.
 				</p>
+				<p>All experiments use various combinations of the features title, description, brand and additionally specification table content.
+					For the unsupervised TFIDF and supervised word co-occurrence experiments, different combinations of features are concatenated
+					and converted either into TFIDF or binary wordcount vectors. In case of the unsupervised experiment, the TFIDF vectors for a pair are 
+					compared using cosine similarity with thresholds from 0 to 1 in steps of 0.05. The wordcount vectors for the first supervised experiment are
+					combined into binary word co-occurence vectors for each pair, whose elements serve as input features for the classifiers. 
+					For the Magellan experiment, we use the automatic feature generation functionality
+					of the framework and use all of the created features as input for the classifiers.
+				</p>
+				
 				<p>
 					All of the supervised experiments apart from deepmatcher use the <a href="https://scikit-learn.org/stable/">scikit-learn</a>
 					library implementations of
 					Logistic Regression, Naive Bayes, LinearSVC, Decision Tree and Random Forest.
-					In preparation for the experiments we remove non-alphanumeric characters, stopwords (using <a href="https://www.nltk.org/">NLTK</a>),
-					and
-					lowercase everything in the Gold Standards as well as the Training sets.
+					
 					For all experiments using sci-kit learn, we use Gridsearch or RandomizedSearch with 5-fold cross-validation
 					to optimize model
 					parameters. Once optimal parameters are found, the models are retrained on the full training sets before
@@ -1374,6 +1420,7 @@
 					ratio of 4:1 for this purpose.
 					Note that this essentially reduces the amount of training data available to the deep learning methods
 					compared to the other supervised experiments. Table 2 shows the results of the experiments.
+					A file containing experiment results as well as model parameter settings can furthermore be found in the <a href="#toc7">Download</a> section (TBD).
 				</p>
 				<div style="margin-top:2em;">
 					<div style="float: left;margin-right: 2.5em">
