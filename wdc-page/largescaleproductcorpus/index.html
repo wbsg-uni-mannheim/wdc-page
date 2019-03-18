@@ -23,7 +23,8 @@
 		border: 1px solid #ccc;
 		background-color: #eaf3fa;
 		clear:both;
-		width:471px
+		padding-left: 37px;
+		width:500px
 		}
 		.tab button {
 		background-color: inherit;
@@ -31,7 +32,7 @@
 		border: none;
 		outline: none;
 		cursor: pointer;
-		padding: 14px 16px;
+		padding: 15px 15px;
 		transition: 0.3s;
 		}
 		.tab button:hover {
@@ -45,7 +46,7 @@
 		padding: 6px 12px;
 		border-top: none;
 		animation: fadeEffect 1s;
-		width:480px
+		width:500px
 		}
 		.table-wrapper {
 		position:relative;
@@ -1258,7 +1259,7 @@
 					consists of offers taken from the English Training
 					corpus and can be attributed to the 4 categories <em>Computers & Accessories</em>, <em>Camera & Photo</em>,
 					<em>Watches</em> and <em>Shoes</em>. Each of the category Gold Standards
-					offers 500 manually reviewed pairs with a match or non-match label. We offer the Gold Standards for public <a href="#toc7">download</a>
+					offers 550 manually reviewed pairs with a match or non-match label. We offer the Gold Standards for public <a href="#toc7">download</a>
 					at the bottom of the page.
 					Figure 10 shows the
 					distribution of schema.org properties across all Gold Standards. Table 1 shows the percentage of pairs per
@@ -1279,16 +1280,16 @@
 					area as well as pairs close to the decision boundary. The similarity measures we
 					use for this process are Jaccard similarity of the titles, Jaccard similarity of the
 					descriptions, as well as the average of both. More specifically, we select one 
-					inter-cluster positive pair with high similarity, one inter-cluster positive pair with low
-					similarity, one to three intra-cluster negative pairs with a high similarity, and
-					three intra-cluster negative pairs with a lower similarity, while varying between
+					intra-cluster positive pair with high similarity, one intra-cluster positive pair with low
+					similarity, one to three inter-cluster negative pairs with a high similarity, and
+					three randomly chosen inter-cluster negative pairs, while varying between
 					the use of the mentioned similarities to create diverse pairs. We manually verify
 					that the selected pairs are really matches or non-matches by reading the titles
 					and descriptions of the offers. If we discover that a pair is incorrectly labeled,
 					we correct the label.
 				</p>
 				<p>
-					The resulting gold standard datasets consist of 150 positive and 350 negative
+					The resulting gold standard datasets consist of 150 positive and 400 negative
 					pairs for each category. The offers contained in the gold standard datasets derive
 					from the following numbers of ID-Clusters for each category: 338 for Computers
 					& Accessories, 231 for Camera & Photo, 269 for Watches and 186 for Shoes.
@@ -1306,8 +1307,9 @@
 					<thead>
 						<tr>
 							<th>Category</th>
-							<th>#Positive</th>
-							<th>#Negative</th>
+							<th># positive</th>
+							<th># negative</th>
+							<th># combined</th>
 							<th>title</th>
 							<th>s:description</th>
 							<th>spec Table</th>
@@ -1317,33 +1319,37 @@
 						<tr>
 							<td>Computers</td>
 							<td>150</td>
-							<td>350</td>
+							<td>400</td>
+							<td>550</td>
 							<td>100%</td>
-							<td>90%</td>
-							<td>22%</td>
+							<td>88%</td>
+							<td>21%</td>
 						</tr>
 						<tr>
 							<td>Cameras</td>
 							<td>150</td>
-							<td>350</td>
+							<td>400</td>
+							<td>550</td>
 							<td>100%</td>
-							<td>78%</td>
+							<td>79%</td>
 							<td>5%</td>
 						</tr>
 						<tr>
 							<td>Watches</td>
 							<td>150</td>
-							<td>350</td>
+							<td>400</td>
+							<td>550</td>
 							<td>100%</td>
 							<td>77%</td>
-							<td>4%</td>
+							<td>5%</td>
 						</tr>
 						<tr>
 							<td>Shoes</td>
 							<td>150</td>
-							<td>350</td>
+							<td>400</td>
+							<td>550</td>
 							<td>100%</td>
-							<td>72%</td>
+							<td>71%</td>
 							<td>3%</td>
 						</tr>
 					</tbody>
@@ -1391,7 +1397,7 @@
 				<p>All experiments use various combinations of the features title, description, brand and additionally specification table content.
 					For the unsupervised TFIDF and supervised word co-occurrence experiments, different combinations of features are concatenated
 					and converted either into TFIDF or binary wordcount vectors. In case of the unsupervised experiment, the TFIDF vectors for a pair are 
-					compared using cosine similarity with thresholds from 0 to 1 in steps of 0.05. The wordcount vectors for the first supervised experiment are
+					compared using cosine similarity with thresholds from 0 to 1 in steps of 0.01. The wordcount vectors for the first supervised experiment are
 					combined into binary word co-occurrence vectors for each pair, whose elements serve as input features for the classifiers. 
 					For the Magellan experiment, we use the automatic feature generation functionality
 					of the framework and use all of the created features as input for the classifiers.
@@ -1410,17 +1416,15 @@
 				<p>
 					The deepmatcher experiments are conducted using pre-trained character-based <a href="https://fasttext.cc/docs/en/pretrained-vectors.html">fastText</a>
 					embeddings (on english
-					wikipedia) as well as fastText embeddings trained on the English Training Set.
-					The self-trained embeddings are 300-dimensional, trained for 50 epochs on all words that occur at least
-					twice as well as n-grams up to 3-grams, using the skip-gram model.
-					The deepmatcher models themselves are trained using the default settings, apart from mini-batch size and
-					pos-neg ratio which is manually set per dataset (Table 4). All models are trained for 15 epochs.
+					wikipedia) as well as fastText embeddings trained on the English Training Set. 
+					The self-trained embeddings are 300-dimensional and trained using the skip-gram model with default settings using the brand, title and description properties.
+					The deepmatcher models are trained for 15 epochs each.
 					Furthermore the deepmatcher implementation requires the training set to be split into training and test
-					set. This test set is used to avoid overfitting to the training set. We split our Training sets with a
+					set. This test set is used to avoid overfitting to the training set by only selecting the resulting model of an epoch if it has a higher validation score than any model from a prior epoch. We split our Training sets with a
 					ratio of 4:1 for this purpose.
 					Note that this essentially reduces the amount of training data available to the deep learning methods
 					compared to the other supervised experiments. Table 2 shows the results of the experiments.
-					We provide extented experimental results of multiple configurations <a href="http://data.dws.informatik.uni-mannheim.de/largescaleproductcorpus/ExtResults.xlsx">here (Excel File 16 KB)</a> (in process).
+					We provide extended experimental results of multiple configurations <a href="http://data.dws.informatik.uni-mannheim.de/largescaleproductcorpus/ExtResults.xlsx">here (Excel File 16 KB)</a> (in process).
 				</p>
 				<div style="margin-top:2em;">
 					<div style="float: left;margin-right: 2.5em">
@@ -1443,35 +1447,35 @@
 								</tr>
 								<tr>
 									<td>Computers</td>
-									<td>Cosine, TF-IDF, thr:0.25</td>
-									<td>title</td>
-									<td>0.50</td>
-									<td>0.89</td>
-									<td>0.64</td>
+									<td>TFIDF-cosine, thr:0.44</td>
+									<td>title+desc+brand</td>
+									<td>0.52</td>
+									<td>0.70</td>
+									<td>0.60</td>
 								</tr>
 								<tr>
 									<td>Cameras</td>
-									<td>Cosine, TF-IDF, thr:0.3</td>
-									<td>title+desc</td>
-									<td>0.59</td>
-									<td>0.71</td>
+									<td>TFIDF-cosine, thr:0.29</td>
+									<td>title+desc+brand</td>
+									<td>0.52</td>
+									<td>0.83</td>
 									<td>0.64</td>
 								</tr>
 								<tr>
 									<td>Watches</td>
-									<td>Cosine, TF-IDF, thr:0.35</td>
+									<td>TFIDF-cosine, thr:0.39</td>
 									<td>title</td>
-									<td>0.48</td>
-									<td>0.91</td>
-									<td>0.63</td>
+									<td>0.45</td>
+									<td>0.89</td>
+									<td>0.60</td>
 								</tr>
 								<tr>
 									<td>Shoes</td>
-									<td>Cosine, TF-IDF, thr:0.4</td>
+									<td>TFIDF-cosine, thr:0.54</td>
 									<td>title</td>
-									<td>0.57</td>
-									<td>0.80</td>
-									<td>0.66</td>
+									<td>0.61</td>
+									<td>0.76</td>
+									<td>0.67</td>
 								</tr>
 							</table>
 						</div>
@@ -1489,66 +1493,66 @@
 								<tr>
 									<td>Computers</td>
 									<td>LinearSVM</td>
-									<td>title+desc+brand+spec</td>
-									<td>0.78</td>
-									<td>0.90</td>
-									<td>0.83</td>
+									<td>title+desc</td>
+									<td>0.75</td>
+									<td>0.94</td>
+									<td>0.84</td>
 								</tr>
 								<tr>
 									<td>Cameras</td>
 									<td>LinearSVM</td>
-									<td>title+desc+brand</td>
-									<td>0.74</td>
+									<td>title+desc+brand+spec</td>
+									<td>0.70</td>
 									<td>0.87</td>
-									<td>0.80</td>
+									<td>0.78</td>
 								</tr>
 								<tr>
 									<td>Watches</td>
 									<td>LinearSVM</td>
 									<td>title+desc+brand+spec</td>
-									<td>0.80</td>
-									<td>0.90</td>
-									<td>0.85</td>
+									<td>0.74</td>
+									<td>0.91</td>
+									<td>0.81</td>
 								</tr>
 								<tr>
 									<td>Shoes</td>
 									<td>LinearSVM</td>
-									<td>title+desc+brand</td>
-									<td>0.68</td>
+									<td>title+desc+brand+spec</td>
+									<td>0.72</td>
 									<td>0.95</td>
-									<td>0.80</td>
+									<td>0.82</td>
 								</tr>
 								<tr>
 									<td>Computers</td>
 									<td>RandomForest</td>
-									<td>title+desc+brand+spec</td>
-									<td>0.76</td>
-									<td>0.88</td>
+									<td>title</td>
+									<td>0.72</td>
+									<td>0.92</td>
 									<td>0.81</td>
 								</tr>
 								<tr>
 									<td>Cameras</td>
 									<td>RandomForest</td>
-									<td>title+desc</td>
-									<td>0.80</td>
-									<td>0.83</td>
-									<td>0.82</td>
+									<td>title+desc+brand+spec</td>
+									<td>0.75</td>
+									<td>0.87</td>
+									<td>0.81</td>
 								</tr>
 								<tr>
 									<td>Watches</td>
 									<td>RandomForest</td>
-									<td>title</td>
+									<td>title+desc+brand</td>
+									<td>0.66</td>
+									<td>0.91</td>
 									<td>0.77</td>
-									<td>0.87</td>
-									<td>0.83</td>
 								</tr>
 								<tr>
 									<td>Shoes</td>
 									<td>RandomForest</td>
 									<td>title+desc+brand+spec</td>
-									<td>0.70</td>
-									<td>0.88</td>
-									<td>0.78</td>
+									<td>0.67</td>
+									<td>0.95</td>
+									<td>0.79</td>
 								</tr>
 							</table>
 						</div>
@@ -1566,34 +1570,34 @@
 								<tr>
 									<td>Computers</td>
 									<td>RandomForest</td>
-									<td>title+desc+brand+spec</td>
-									<td>0.65</td>
-									<td>0.85</td>
-									<td>0.74</td>
+									<td>title+desc</td>
+									<td>0.59</td>
+									<td>0.79</td>
+									<td>0.67</td>
 								</tr>
 								<tr>
 									<td>Cameras</td>
 									<td>RandomForest</td>
 									<td>title+desc+brand+spec</td>
-									<td>0.61</td>
-									<td>0.83</td>
-									<td>0.70</td>
+									<td>0.53</td>
+									<td>0.85</td>
+									<td>0.65</td>
 								</tr>
 								<tr>
 									<td>Watches</td>
 									<td>RandomForest</td>
 									<td>title+desc+brand+spec</td>
-									<td>0.80</td>
+									<td>0.71</td>
 									<td>0.85</td>
-									<td>0.82</td>
+									<td>0.78</td>
 								</tr>
 								<tr>
 									<td>Shoes</td>
 									<td>RandomForest</td>
 									<td>title+desc+brand+spec</td>
-									<td>0.77</td>
-									<td>0.83</td>
-									<td>0.80</td>
+									<td>0.71</td>
+									<td>0.95</td>
+									<td>0.81</td>
 								</tr>
 							</table>
 						</div>
@@ -1612,33 +1616,33 @@
 									<td>Computers</td>
 									<td>RNN</td>
 									<td>title+desc+brand+spec</td>
+									<td>0.84</td>
+									<td>0.96</td>
 									<td>0.89</td>
-									<td>0.95</td>
-									<td>0.92</td>
 								</tr>
 								<tr>
 									<td>Cameras</td>
 									<td>RNN</td>
 									<td>title+desc+brand+spec</td>
+									<td>0.88</td>
+									<td>0.93</td>
 									<td>0.90</td>
-									<td>0.95</td>
-									<td>0.92</td>
 								</tr>
 								<tr>
 									<td>Watches</td>
 									<td>RNN</td>
 									<td>title+desc+brand+spec</td>
-									<td>0.89</td>
-									<td>0.94</td>
-									<td>0.91</td>
+									<td>0.88</td>
+									<td>0.97</td>
+									<td>0.92</td>
 								</tr>
 								<tr>
 									<td>Shoes</td>
 									<td>RNN</td>
 									<td>title+desc+brand+spec</td>
-									<td>0.83</td>
-									<td>0.94</td>
 									<td>0.88</td>
+									<td>0.97</td>
+									<td>0.92</td>
 								</tr>
 							</table>
 						</div>
@@ -1653,74 +1657,56 @@
 								<th># positive</th>
 								<th># negative</th>
 								<th># combined</th>
+								<th>title</th>
+								<th>s:description</th>
+								<th>spec Table</th>
 								<th>clusters involved</th>
 							</tr>
 						</thead>
 						<tbody>
 							<tr>
 								<td>Computers</td>
-								<td>20559</td>
-								<td>21226</td>
-								<td>41785</td>
+								<td>20444</td>
+								<td>21676</td>
+								<td>42120</td>
+								<td>100</td>
+								<td>82</td>
+								<td>55</td>
 								<td>338</td>
 							</tr>
 							<tr>
 								<td>Cameras</td>
-								<td>10580</td>
-								<td>10902</td>
-								<td>21482</td>
+								<td>7539</td>
+								<td>9093</td>
+								<td>16632</td>
+								<td>100</td>
+								<td>61</td>
+								<td>4</td>
 								<td>231</td>
 							</tr>
 							<tr>
 								<td>Watches</td>
-								<td>6289</td>
-								<td>9153</td>
-								<td>15442</td>
+								<td>5449</td>
+								<td>8819</td>
+								<td>14268</td>
+								<td>100</td>
+								<td>48</td>
+								<td>4</td>
 								<td>269</td>
 							</tr>
 							<tr>
 								<td>Shoes</td>
-								<td>3709</td>
-								<td>6060</td>
-								<td>9769</td>
+								<td>3476</td>
+								<td>5924</td>
+								<td>9400</td>
+								<td>99</td>
+								<td>36</td>
+								<td>1</td>
 								<td>186</td>
 							</tr>
 						</tbody>
 					</table>
-					<table class="smalltable" style="float: left">
-						<caption>
-							<p>Table 4: deepmatcher parameters</p>
-						</caption>
-						<thead>
-							<tr>
-								<th>Category</th>
-								<th>batch size</th>
-								<th>pos-neg ratio</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td>Computers</td>
-								<td>16</td>
-								<td>1</td>
-							</tr>
-							<tr>
-								<td>Cameras</td>
-								<td>16</td>
-								<td>1</td>
-							</tr>
-							<tr>
-								<td>Watches</td>
-								<td>32</td>
-								<td>2</td>
-							</tr>
-							<tr>
-								<td>Shoes</td>
-								<td>32</td>
-								<td>2</td>
-							</tr>
-						</tbody>
-					</table>
+			
 				</div>
 
 
