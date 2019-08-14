@@ -1,0 +1,1902 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
+    <title>T4LTE - Web Tables for Long-Tail Entity Extraction</title>
+    <link rel="Stylesheet" href="http://webdatacommons.org/style.css">
+    <style>
+      body {
+       /*	max-width: 1240px; 
+        margin-left: auto;
+        margin-right: auto; */
+      }
+        .table-section-row {
+            border-bottom: 2px dashed #D4DCE8;
+            
+        }
+        
+        .toc-h3 {
+            margin-left: 20px;
+        }
+        
+        .toc-h4 {
+            margin-left: 40px;
+        }
+      
+        table p {
+          	margin-top:0px;
+          	margin-bottom:0px;
+        }
+        
+        #entities tr td:nth-child(4), #entities tr th:nth-child(4){
+            text-align: center;
+            
+        }
+        
+        
+         #entities tr td:nth-child(3), #entities tr th:nth-child(3){
+            text-align: right;
+            
+        }
+        
+         #entities tr td:nth-child(5), #entities tr th:nth-child(5){
+            text-align: right;
+            
+        }
+        
+        
+ 
+        
+         #properties tr td:nth-child(6), #properties tr th:nth-child(6){
+            text-align: right;
+            
+        }
+      
+      .annotation-table td, .annotation-table th{
+      	vertical-align:top;
+      }
+      @media only screen and (min-width: 700px)  {
+      	.annotation-column {
+          
+          min-width: 180px;
+        }
+      
+      }
+      
+        @media only screen and (min-width: 800px)  {
+      	.annotation-column {
+          
+          min-width: 240px;
+        }
+      
+      }
+      	
+    </style>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="http://webdatacommons.org/jquery.toc.min.js"></script>
+  </head>
+  <body>&nbsp;
+    <div id="logo" style="text-align: right; background-color: white;">&nbsp;&nbsp;<a
+
+        href="http://dws.informatik.uni-mannheim.de"><img src="http://webdatacommons.org/images/ma-logo.gif"
+
+          alt="University of Mannheim - Logo"></a></div>
+    <a name="top"></a>
+    <div id="header">
+      <h1 style="font-size: 250%;">T4LTE - Web Tables for Long-Tail Entity
+        Extraction</h1>
+    </div>
+    <div id="tagline">Dataset Design, Statistics, and Download</div>
+    <div id="authors"><a href="http://www.yaseroulabi.de">Yaser Oulabi</a><br>
+      <a href="https://www.uni-mannheim.de/dws/people/professors/prof-dr-christian-bizer/">Christian
+        Bizer</a><br>
+      <br>
+      <br>
+    </div>
+    <div id="content">
+      <p>This page describes the T4LTE dataset, a gold standard for the task of
+        long-tail entity extraction from web tables. </p>
+      <p>Knowledge Bases, like DBpedia, Wikidata or Yago, all rely on data that
+        has been extracted from Wikipedia and as a result cover mostly head
+        instances that fulfill the Wikipedia notability criteria [<a href="#Oulabi2019">Oulabi2019</a>].
+        Their coverage of less well known instances from the long tail is rather
+        low [<a href="#Dong2014">Dong2014</a>]. As the usefulness of a knowledge
+        base increases with its completeness, adding long-tail instances to a
+        knowledge base is an important task. Web tables [<a href="#Cafarella2008">Cafarella2008</a>],
+        which are relational HTML tables extracted from the Web, contain large
+        amounts of structured information, covering a wide range of topics, and
+        describe very specific long tail instances. Web tables are thus a
+        promising source of information for the task of augmenting cross-domain
+        knowledge bases.</p>
+      <p>This dataset provides annotations for a selection of web tables for the
+        task of augmenting the DBpedia knowledge base with new long-tail
+        entities from those web tables. It includes annotations for the unique
+        number of entities that can be derived from these web tables, and which
+        of these entities are new, given the instances that are already covered
+        in DBpedia. Additionally, there are annotations for values and facts
+        that can be generated from web table data, allowing the evaluation of
+        how well descriptions of new entities were created.</p>
+      <p>This dataset was used to develop and evaluate a method for augmenting a
+        knowledge base with long-tail entities from web tables [<a href="#Oulabi2019">Oulabi2019</a>].
+        Using this dataset for training we were able to add 187 thousand new
+        Song entities with 394 thousand facts, and 14 thousand new
+        GridironFootballPlayer entities, with 44 thousand new facts to DBpeida.
+        In regards to the number of instances this was an increase of 356 % and
+        67 % for Song and GridironFootballPlayer respectively [<a href="#Oulabi2019">Oulabi2019</a>].</p>
+      <h2>Contents</h2>
+      <div id="toc" class="toc"></div>
+      <div id="toccontent">
+        <h2>1. Dataset Purpose</h2>
+        <p>The purpose of this dataset is to act as a gold standard for
+          evaluating the extraction of long-tail entities from web tables. It
+          fulfills three tasks:</p>
+        <ul>
+          <li>Allow the measuring the performance of long-tail entity
+            extraction, including recall. By focusing on recall we can ensure
+            that methods retrieve a large number potential new entities from web
+            tables. </li>
+          <li>Allow the automatic evaluation of implemented methods. </li>
+          <li>Allow us to train long-tail entity extraction methods.</li>
+        </ul>
+        <h2>2. Knowledge Base and Class Selection</h2>
+        <p>We employ DBpedia [<a href="#Lehmann2015">Lehmann2015</a>] as the
+          target knowledge base to be extended. It is extracted from Wikipedia
+          and especially Wikipedia infoboxes. As a result, the covered instances
+          are limited to those identified as notable by the Wikipedia community
+          [<a href="#Oulabi2019">Oulabi2019</a>]. We use the 2014 release of
+          DBpedia, as this release has been used in related work [<a href="#Ritze2015">Ritze2015</a>,
+          <a href="#Ritze2016">Ritze2016</a>, <a href="#Oulabi2016">Oulabi2016</a>,
+          <a href="#Oulabi2017">Oulabi2017</a>], and its release date is also
+          closer to the extraction of the web table corpus from which we created
+          this dataset.</p>
+        <p>From DBpedia we selected three classes for which built the dataset.
+          This selection was done based on four criteria:</p>
+        <ul>
+          <li><strong>Versatility: </strong>the three chosen classes must be
+            from three different first-level classes. The first level classes in
+            DBpedia are Species, Work, Agent and Place.</li>
+          <li><strong>Specificity:</strong> we preferred classes further down in
+            the DBpedia set hierarchy.</li>
+          <li><strong>Potential:</strong> using a baseline set expansion
+            approach we measured how many new instances and facts can
+            potentially be added to the knowledge base. Classes with higher
+            numbers were preferred.</li>
+          <li><strong>Name conflict likelihood:</strong> we utilize the labels
+            of instances in the knowledge base to measure the potential for
+            homonyms given a certain class. Classes with a higher relative
+            occurrence of homonyms were preferred, as those represent classes
+            for which this task is more difficult.</li>
+        </ul>
+        <p>Based on this approach we chose the following three classes:<strong>
+            (1) GridironFootballPlayer (GF-Player), (2) Song and (3) Settlement,</strong>
+          where the class Song also includes all instances of the class Single.</p>
+        <p>Given those three classes we will profile the existing entities
+          within the knowledge base. The first table provides the number of
+          instances and facts per class, while the second profiles the
+          properties and their densities. The first table shows that DBpedia
+          already covers tens of thousands of instances for the profiled
+          classes. This could indicate that most of the well-known instances are
+          already covered, so that we are especially interested in finding
+          instances from the long tail. </p>
+        <p> </p>
+        <table>
+          <colgroup><col> </colgroup>
+          <tbody>
+            <tr>
+              <th>Class</th>
+              <th style="text-align: right;">Instances</th>
+              <th style="text-align: right;">Facts</th>
+            </tr>
+            <tr>
+              <th>GF-Player</th>
+              <td style="text-align: right;">20751</td>
+              <td style="text-align: right;">137319</td>
+            </tr>
+            <tr>
+              <th>Song</th>
+              <td style="text-align: right;">52,533</td>
+              <td style="text-align: right;">315,414</td>
+            </tr>
+            <tr>
+              <th>Settlement</th>
+              <td style="text-align: right;">468,986</td>
+              <td style=" text-align: right;">1,444,316</td>
+            </tr>
+          </tbody>
+        </table>
+        <p>The following table reveals that the density differs significantly
+          from property to property. We only consider head properties that have
+          a density of at least 30 %.</p>
+        <p>Only the properties of class Song have consistently high densities
+          larger than 60 %. The football player class has many properties, but
+          half of them have a density below 50 %. The class Settlement suffers
+          from both, a small number of properties, and low densities for some of
+          them. </p>
+        <table border="0">
+          <tbody>
+            <tr>
+              <th>
+                <p>Class</p>
+              </th>
+              <th>
+                <p>Property</p>
+              </th>
+              <th>
+                <p>Facts</p>
+              </th>
+              <th>
+                <p>Density</p>
+              </th>
+            </tr>
+            <tr>
+              <th>
+                <p>GF-Player</p>
+              </th>
+              <th>
+                <p>birthDate</p>
+              </th>
+              <td>
+                <p>20,218</p>
+              </td>
+              <td>
+                <p>97.43 %</p>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <p>GF-Player</p>
+              </th>
+              <th>
+                <p>college</p>
+              </th>
+              <td>
+                <p>19,281</p>
+              </td>
+              <td>
+                <p>92.92 %</p>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <p>GF-Player</p>
+              </th>
+              <th>
+                <p>birthPlace</p>
+              </th>
+              <td>
+                <p>17,912</p>
+              </td>
+              <td>
+                <p>86.32 %</p>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <p>GF-Player</p>
+              </th>
+              <th>
+                <p>team</p>
+              </th>
+              <td>
+                <p>13,349</p>
+              </td>
+              <td>
+                <p>64.33 %</p>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <p>GF-Player</p>
+              </th>
+              <th>
+                <p>number</p>
+              </th>
+              <td>
+                <p>11,430</p>
+              </td>
+              <td>
+                <p>55.08 %</p>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <p>GF-Player</p>
+              </th>
+              <th>
+                <p>position</p>
+              </th>
+              <td>
+                <p>11,240</p>
+              </td>
+              <td>
+                <p>54.17 %</p>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <p>GF-Player</p>
+              </th>
+              <th>
+                <p>height</p>
+              </th>
+              <td>
+                <p>10,059</p>
+              </td>
+              <td>
+                <p>48.47 %</p>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <p>GF-Player</p>
+              </th>
+              <th>
+                <p>weight</p>
+              </th>
+              <td>
+                <p>10,027</p>
+              </td>
+              <td>
+                <p>48.32 %</p>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <p>GF-Player</p>
+              </th>
+              <th>
+                <p>draftYear</p>
+              </th>
+              <td>
+                <p>7,947</p>
+              </td>
+              <td>
+                <p>38.30 %</p>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <p>GF-Player</p>
+              </th>
+              <th>
+                <p>draftRound</p>
+              </th>
+              <td>
+                <p>7,932</p>
+              </td>
+              <td>
+                <p>38.22 %</p>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <p>GF-Player</p>
+              </th>
+              <th>
+                <p>draftPick</p>
+              </th>
+              <td>
+                <p>7,924</p>
+              </td>
+              <td>
+                <p>38.19 %</p>
+              </td>
+            </tr>
+            <tr>
+              <th><br>
+              </th>
+              <th><br>
+              </th>
+              <td><br>
+              </td>
+              <td><br>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <p>Song</p>
+              </th>
+              <th>
+                <p>genre</p>
+              </th>
+              <td>
+                <p>47,040</p>
+              </td>
+              <td>
+                <p>89.54 %</p>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <p>Song</p>
+              </th>
+              <th>
+                <p>musicalArtist</p>
+              </th>
+              <td>
+                <p>45,097</p>
+              </td>
+              <td>
+                <p>85.85 %</p>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <p>Song</p>
+              </th>
+              <th>
+                <p>recordLabel</p>
+              </th>
+              <td>
+                <p>43,053</p>
+              </td>
+              <td>
+                <p>81.95 %</p>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <p>Song</p>
+              </th>
+              <th>
+                <p>runtime</p>
+              </th>
+              <td>
+                <p>42,035</p>
+              </td>
+              <td>
+                <p>80.02 %</p>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <p>Song</p>
+              </th>
+              <th>
+                <p>album</p>
+              </th>
+              <td>
+                <p>40,666</p>
+              </td>
+              <td>
+                <p>77.41 %</p>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <p>Song</p>
+              </th>
+              <th>
+                <p>writer</p>
+              </th>
+              <td>
+                <p>33,942</p>
+              </td>
+              <td>
+                <p>64.61 %</p>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <p>Song</p>
+              </th>
+              <th>
+                <p>releaseDate</p>
+              </th>
+              <td>
+                <p>31,696</p>
+              </td>
+              <td>
+                <p>60.34 %</p>
+              </td>
+            </tr>
+            <tr>
+              <th><br>
+              </th>
+              <th><br>
+              </th>
+              <td><br>
+              </td>
+              <td><br>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <p>Settlement</p>
+              </th>
+              <th>
+                <p>country</p>
+              </th>
+              <td>
+                <p>433,838</p>
+              </td>
+              <td>
+                <p>92.51 %</p>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <p>Settlement</p>
+              </th>
+              <th>
+                <p>isPartOf</p>
+              </th>
+              <td>
+                <p>416,454</p>
+              </td>
+              <td>
+                <p>88.80 %</p>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <p>Settlement</p>
+              </th>
+              <th>
+                <p>populationTotal</p>
+              </th>
+              <td>
+                <p>292,831</p>
+              </td>
+              <td>
+                <p>62.44 %</p>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <p>Settlement</p>
+              </th>
+              <th>
+                <p>postalCode</p>
+              </th>
+              <td>
+                <p>154,575</p>
+              </td>
+              <td>
+                <p>32.96 %</p>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <p>Settlement</p>
+              </th>
+              <th>
+                <p>elevation</p>
+              </th>
+              <td>
+                <p>146,618</p>
+              </td>
+              <td>
+                <p>31.26 %</p>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <h2>3. Web Table Corpus</h2>
+        <p>We extract this dataset from the english-language relational tables
+          set of the <a href="http://webdatacommons.org/webtables/#toc3">Web
+            Data Commons 2012 Web Table Corpus</a>. The set consists of 91.8
+          million tables. The Table below gives an overview of the general
+          characteristics of tables in the corpus. We can see that the majority
+          of tables are rather short, with an average of 10.4 rows and a median
+          of 2, whereas the average and median number of columns are 3.5 and 3.
+          As a result, a table on average describes 10 instances with 30 values,
+          which likely is a sufficient size and potentially useful for finding
+          new instances and their descriptions. In [<a href="#Ritze2016">Ritze2016</a>]
+          we have profiled the potential of the same corpus for the task of slot
+          filling, meaning to find missing values for existing DBpedia
+          instances.<br>
+        </p>
+        <table>
+          <tbody>
+            <tr>
+              <th>&nbsp;</th>
+              <th style="text-align: right;">
+                <p>Average</p>
+              </th>
+              <th style="text-align: right;">
+                <p>Median</p>
+              </th>
+              <th style="text-align: right;">
+                <p>Min</p>
+              </th>
+              <th style="text-align: right;">
+                <p>Max</p>
+              </th>
+            </tr>
+            <tr>
+              <th>
+                <p>Rows</p>
+              </th>
+              <td style="text-align: right;">
+                <p>10.37</p>
+              </td>
+              <td style="text-align: right;">
+                <p>2</p>
+              </td>
+              <td style="text-align: right;">
+                <p>1</p>
+              </td>
+              <td style="text-align: right;">
+                <p>35,640</p>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <p>Columns</p>
+              </th>
+              <td style="text-align: right;">
+                <p>3.48</p>
+              </td>
+              <td style="text-align: right;">
+                <p>3</p>
+              </td>
+              <td style="text-align: right;">
+                <p>2</p>
+              </td>
+              <td style="text-align: right;">
+                <p>713</p>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <p>For every table we assume that there is one attribute that contains
+          the labels of the instances described by the rows. The remaining
+          columns contain values, which potentially can be used to generate
+          descriptions according to the knowledge base schema.</p>
+        <p>For the three evaluated classes, the following table shows the result
+          of matching the web table corpus to existing instances and properties
+          in DBpedia, using the T2K Matching Framework [<a href="#Ritze2015">Ritze2015</a>,
+          <a href="#Ritze2016">Ritze2016</a>]. The first column shows the number
+          of matched tables that have at least one matched attribute column.
+          Rows of those tables were matched directly to existing instances of
+          DBpedia. From the second and third columns we see how many values were
+          matched to existing instances and how many values remained unmatched.
+          While more values were matched, the number of unmatched values is
+          still large, especially for the songs class.</p>
+        <table>
+          <tbody>
+            <tr>
+              <th>
+                <p>Class</p>
+              </th>
+              <th style="text-align: right;">
+                <p>Tables</p>
+              </th>
+              <th style="text-align: right;">
+                <p><em>V</em><sub>Matched</sub></p>
+              </th>
+              <th style="text-align: right;">
+                <p><em>V</em><sub>Unmatched</sub></p>
+              </th>
+            </tr>
+            <tr>
+              <th>
+                <p>GF-Player</p>
+              </th>
+              <td style="text-align: right;">
+                <p>10,432</p>
+              </td>
+              <td style="text-align: right;">
+                <p>206,847</p>
+              </td>
+              <td style="text-align: right;">
+                <p>35,968</p>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <p>Song</p>
+              </th>
+              <td style="text-align: right;">
+                <p>58,594</p>
+              </td>
+              <td style="text-align: right;">
+                <p>1,315,381</p>
+              </td>
+              <td style="text-align: right;">
+                <p>443,194</p>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <p>Settlement</p>
+              </th>
+              <td style="text-align: right;">
+                <p>11,757</p>
+              </td>
+              <td style="text-align: right;">
+                <p>82,816</p>
+              </td>
+              <td style="text-align: right;">
+                <p>13,735</p>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <h2>3. Dataset Creation</h2>
+        <p>In this section we will outline the creation of the dataset. This
+          includes how we selected tables from the corpus, what the labeling
+          process is, and what annotations are included in the dataset. <br>
+        </p>
+        <h3>3.1 Web Tables Selection</h3>
+        <p>For the gold standard we had to select a certain number of tables per
+          class to annotate. We first matched tables to classes in the knowledge
+          base using the T2K framework [<a href="#Ritze2015">Ritze2015</a>]. We
+          then select the tables per class separately. To do this we first
+          divided the instances in the knowledge base into quartiles of
+          popularity using the indegree count based on a dataset of Wikipedia
+          page-links [<a href="https://wiki.dbpedia.org/Downloads2014#owikipedia-pagelinks">1</a>,
+          <a href="http://data.dws.informatik.uni-mannheim.de/dbpedia/2014/en/page_links_en.nt.bz2">2</a>].
+          We then select three instances per quartile, overall 12 per class. We
+          then look in the table corpus to find which labels in the corpus, for
+          which we can not find a match in the knowledge base, co-occur most
+          often with the label of the selected instance, as we select one label
+          without a match for each of the 12 instances selected from the
+          knowledge base. For both, the labels of the 12 knowledge base
+          instances and the additional 12 "new" labels, we extract up to 15
+          tables per label, ensuring that few tables are chosen from the same
+          PLD and that tables have a variety in their types of attributes.</p>
+        <h3>3.2 Labeling Process</h3>
+        <p>Using the method for table selection described above we ended up with
+          280, 217, 620 tables for the classes GridironFootballPlayer, Song and
+          Settlement respectively. We did not label all tables and especially
+          not all rows of these tables, but we looked for potentially new
+          entities and entities with potentially conflicting names (homonyms).
+          For those we then created clusters, by identifying the rows within the
+          tables that describe the same real-world entitiy. From these row
+          clusters entities can be created and added to the knowledge base. For
+          each cluster we then identified whether the entity already exists in
+          DBpedia or is a new entity, that can be added to DBpedia. For existing
+          entities, we also added a correspondence to the URI of the entity in
+          DBpedia.</p>
+        <p>For all web tables from which we created row clusters, we matched the
+          table columns to the properties of the knowledge base. These property
+          correspondences allow us to identify how many candidate values exist
+          for a certain combination of entity and property. Finally, we also
+          annotated for all clusters facts, i.e. the correct values given
+          certain properties. We only annotated facts for properties for which a
+          candidate value exists among the data in the table. I.e. for a row
+          cluster, there is a row within a table that described within one
+          column a certain property, only then did we annotate the correct fact.
+          We also annotated whether the value of the correct fact was present
+          among the values in the web tables. </p>
+        <p>When labeling rows, we aimed for labeling interesting row clusters
+          first. As a result, most tables only have a small number rows in them
+          labeled. This does not apply to columns. Whenever we label one row in
+          a table, we always ensure to label all of its columns. </p>
+        <p>Finally, for the class Song, we include additional row cluster for
+          existing entities for learning purposes only. These clusters are not
+          fully labeled, as they are missing the fact annotations. <br>
+        </p>
+        <h3>3.2. Annotation Types</h3>
+        <p>The dataset contains various annotation types, which are all
+          described in the table below.</p>
+        <table style="text-align: left;" class="annotation-table">
+          <tbody>
+            <tr>
+              <th class="annotation-column">Annotation Type</th>
+              <th>Description</th>
+              <th>Format</th>
+            </tr>
+            <tr>
+              <th>Table-To-Class Annotation</th>
+              <td>All tables included in the dataset are matched to one of the
+                three classes we chose to evaluate.</td>
+              <td>The tables are placed in separate folders per class.</td>
+            </tr>
+            <tr>
+              <th>Row-To-Instance Annotation</th>
+              <td>For a selection of row tables, we annotate if they belong to
+                an instance, existing or new. If the instance described by the
+                row already exists in DBpedia, the instance corresponds to the
+                entity URI of that instance in DBpedia. Otherwise we generate a
+                new random URI, but keep the prefix of DBpedia entity URIs. All
+                rows matched to same instance form a row cluster.</td>
+              <td>CSV file format (see&nbsp;7.3)</td>
+            </tr>
+            <tr>
+              <th>New Instance Annotation</th>
+              <td>We provide the list of entity URIs that we crated to describe
+                new instances, that do not yet exist in DBpedia.</td>
+              <td>LST file format (see&nbsp;7.6)</td>
+            </tr>
+            <tr>
+              <th>Attribute-To-Property Annotation</th>
+              <td>Given the columns of a web table, we annotate which of these
+                columns describe information that corresponds to a property in
+                the schema of the knowledge base.</td>
+              <td>CSV file format (see&nbsp;7.2)</td>
+            </tr>
+            <tr>
+              <th>Fact Annotations</th>
+              <td>Given row clusters and attribute-to-property correspondences,
+                we can determine for each entity, existing or new, described in
+                the dataset, for which triples we have candidate values in the
+                web tables. For these triples, we annotate the correct facts to
+                allow for evaluation. We additionally annotate, whether the
+                correct fact is present among the candidate values within the
+                web table data.</td>
+              <td>CSV file format (see&nbsp;7.5)</td>
+            </tr>
+          </tbody>
+        </table>
+        <h2>5 Dataset Statistics </h2>
+        <p>The following table provides an overview of the number of annotations
+          in the dataset. In the first three columns we see the number of table,
+          attribute and row annotations. On average, we have 1.85 attribute
+          annotations per table, not counting the label attribute. The two
+          following columns show the number of annotated clusters, followed by
+          the number of values within those clusters that match a knowledge base
+          property. We overall annotated 266 clusters, of which 103 are new, and
+          where each cluster has on average 3.63 rows and 7.85 matched values.
+          The last two columns show the number of unique facts that can be
+          derived for those clusters, and the number of facts for which a
+          correct value is present. Per cluster we can derive on average 3.17
+          facts, for 92 % of which, the correct value is present. </p>
+        <p> </p>
+        <table>
+          <colgroup><col> </colgroup>
+          <tbody>
+            <tr>
+              <th>Class</th>
+              <th style="text-align: right;">Tables</th>
+              <th style="text-align: right;">Attributes</th>
+              <th style="text-align: right;">Rows</th>
+              <th style="text-align: right;">Existing<br>
+                Clusters</th>
+              <th style="text-align: right;">New<br>
+                Clusters</th>
+              <th style="text-align: right;">Matched <br>
+                Values</th>
+              <th style="text-align: right;">Facts</th>
+              <th style="text-align: right;">Correct <br>
+                Value Present</th>
+            </tr>
+            <tr>
+              <th>GF-Player</th>
+              <td style="text-align: right;">192</td>
+              <td style="text-align: right;">572</td>
+              <td style="text-align: right;">358</td>
+              <td style="text-align: right;">80</td>
+              <td style="text-align: right;">17</td>
+              <td style="text-align: right;">1,177</td>
+              <td style="text-align: right;">460</td>
+              <td style="text-align: right;">436</td>
+            </tr>
+            <tr>
+              <th>Song</th>
+              <td style="text-align: right;">152</td>
+              <td style="text-align: right;">248</td>
+              <td style="text-align: right;">195</td>
+              <td style="text-align: right;">34</td>
+              <td style="text-align: right;">63</td>
+              <td style="text-align: right;">428</td>
+              <td style="text-align: right;">231</td>
+              <td style="text-align: right;">212</td>
+            </tr>
+            <tr>
+              <th>Settlement</th>
+              <td style="text-align: right;">188</td>
+              <td style="text-align: right;">162</td>
+              <td style="text-align: right;">413</td>
+              <td style="text-align: right;">51</td>
+              <td style="text-align: right;">23</td>
+              <td style="text-align: right;">487</td>
+              <td style="text-align: right;">152</td>
+              <td style="text-align: right;">124</td>
+            </tr>
+            <tr>
+              <th>Sum</th>
+              <th style="text-align: right;">532</th>
+              <th style="text-align: right;">982</th>
+              <th style="text-align: right;">966</th>
+              <th style="text-align: right;">165</th>
+              <th style="text-align: right;">103</th>
+              <th style="text-align: right;">2,092</th>
+              <th style="text-align: right;">843</th>
+              <th style="text-align: right;">772</th>
+            </tr>
+          </tbody>
+        </table>
+        <p>The number of row clusters describing existing entities is low for
+          Song, especially when compared to the number of those clusters
+          describing new entities. This is not relevant for evaluation purposes,
+          but for learning, more training examples for existing entities might
+          be required. We therefore additionally include 15 existing entities
+          for learning purposes only. Unlike the other existing entities, we did
+          not annotate any facts for those entities. For these entities we also
+          include 17 additional tables for the class Song, so that we have 169
+          overall tables for the class Song included in the dataset.</p>
+        <p><br>
+        </p>
+        <p>The following three tables show the distribution of properties among
+          the matched values annotated and facts annotated in the dataset per
+          Class. We notice that for all three classes there are clear head
+          properties, for which much more values were matched than for the
+          remaining properties. We also find that for some properties, we have
+          barely any matched values. This number is especially high for the
+          class Settlement. </p>
+        <p> </p>
+        <table>
+          <colgroup><col> <col> </colgroup>
+          <tbody>
+            <tr>
+              <th>GridironFootballPlayer</th>
+              <th style="text-align: right;">Matched<br>
+                Values</th>
+              <th style="text-align: right;">Facts</th>
+              <th style="text-align: right;">Correct<br>
+                Value Present</th>
+            </tr>
+            <tr>
+              <th>http://dbpedia.org/ontology/birthDate</th>
+              <td style="text-align: right;">50</td>
+              <td style="text-align: right;">37</td>
+              <td style="text-align: right;">33</td>
+            </tr>
+            <tr>
+              <th>http://dbpedia.org/ontology/birthPlace</th>
+              <td style="text-align: right;">5</td>
+              <td style="text-align: right;">5</td>
+              <td style="text-align: right;">3</td>
+            </tr>
+            <tr>
+              <th>http://dbpedia.org/ontology/college</th>
+              <td style="text-align: right;">246</td>
+              <td style="text-align: right;">82</td>
+              <td style="text-align: right;">81</td>
+            </tr>
+            <tr>
+              <th>http://dbpedia.org/ontology/draftPick</th>
+              <td style="text-align: right;">48</td>
+              <td style="text-align: right;">20</td>
+              <td style="text-align: right;">20</td>
+            </tr>
+            <tr>
+              <th>http://dbpedia.org/ontology/draftRound</th>
+              <td style="text-align: right;">10</td>
+              <td style="text-align: right;">10</td>
+              <td style="text-align: right;">10</td>
+            </tr>
+            <tr>
+              <th>http://dbpedia.org/ontology/draftYear</th>
+              <td style="text-align: right;">20</td>
+              <td style="text-align: right;">10</td>
+              <td style="text-align: right;">10</td>
+            </tr>
+            <tr>
+              <th>http://dbpedia.org/ontology/height</th>
+              <td style="text-align: right;">134</td>
+              <td style="text-align: right;">61</td>
+              <td style="text-align: right;">58</td>
+            </tr>
+            <tr>
+              <th>http://dbpedia.org/ontology/highschool</th>
+              <td style="text-align: right;">4</td>
+              <td style="text-align: right;">4</td>
+              <td style="text-align: right;">4</td>
+            </tr>
+            <tr>
+              <th>http://dbpedia.org/ontology/number</th>
+              <td style="text-align: right;">72</td>
+              <td style="text-align: right;">40</td>
+              <td style="text-align: right;">37</td>
+            </tr>
+            <tr>
+              <th>http://dbpedia.org/ontology/Person/weight</th>
+              <td style="text-align: right;">141</td>
+              <td style="text-align: right;">63</td>
+              <td style="text-align: right;">56</td>
+            </tr>
+            <tr>
+              <th>http://dbpedia.org/ontology/position</th>
+              <td style="text-align: right;">269</td>
+              <td style="text-align: right;">78</td>
+              <td style="text-align: right;">74</td>
+            </tr>
+            <tr>
+              <th>http://dbpedia.org/ontology/team</th>
+              <td style="text-align: right;">178</td>
+              <td style="text-align: right;">50</td>
+              <td style="text-align: right;">50</td>
+            </tr>
+          </tbody>
+        </table>
+        <p> </p>
+        <p> </p>
+        <p> </p>
+        <p><strong><br>
+          </strong></p>
+        <p> </p>
+        <table>
+          <colgroup><col> <col> </colgroup>
+          <tbody>
+            <tr>
+              <th>Song</th>
+              <th style="text-align: right;">Matched<br>
+                Values</th>
+              <th style="text-align: right;">Facts</th>
+              <th style="text-align: right;">Correct<br>
+                Value Present</th>
+            </tr>
+            <tr>
+              <th>http://dbpedia.org/ontology/album</th>
+              <td style="text-align: right;">98</td>
+              <td style="text-align: right;">54</td>
+              <td style="text-align: right;">50</td>
+            </tr>
+            <tr>
+              <th>http://dbpedia.org/ontology/bSide</th>
+              <td style="text-align: right;">1</td>
+              <td style="text-align: right;">1</td>
+              <td style="text-align: right;">1</td>
+            </tr>
+            <tr>
+              <th>http://dbpedia.org/ontology/genre</th>
+              <td style="text-align: right;">9</td>
+              <td style="text-align: right;">7</td>
+              <td style="text-align: right;">6</td>
+            </tr>
+            <tr>
+              <th>http://dbpedia.org/ontology/musicalArtist</th>
+              <td style="text-align: right;">167</td>
+              <td style="text-align: right;">64</td>
+              <td style="text-align: right;">64</td>
+            </tr>
+            <tr>
+              <th>http://dbpedia.org/ontology/producer</th>
+              <td style="text-align: right;">1</td>
+              <td style="text-align: right;">1</td>
+              <td style="text-align: right;">1</td>
+            </tr>
+            <tr>
+              <th>http://dbpedia.org/ontology/recordLabel</th>
+              <td style="text-align: right;">16</td>
+              <td style="text-align: right;">10</td>
+              <td style="text-align: right;">8</td>
+            </tr>
+            <tr>
+              <th>http://dbpedia.org/ontology/releaseDate</th>
+              <td style="text-align: right;">53</td>
+              <td style="text-align: right;">38</td>
+              <td style="text-align: right;">33</td>
+            </tr>
+            <tr>
+              <th>http://dbpedia.org/ontology/runtime</th>
+              <td style="text-align: right;">78</td>
+              <td style="text-align: right;">52</td>
+              <td style="text-align: right;">45</td>
+            </tr>
+            <tr>
+              <th>http://dbpedia.org/ontology/writer</th>
+              <td style="text-align: right;">5</td>
+              <td style="text-align: right;">4</td>
+              <td style="text-align: right;">4</td>
+            </tr>
+          </tbody>
+        </table>
+        <p> </p>
+        <p><strong><br>
+          </strong></p>
+        <p> </p>
+        <table>
+          <colgroup><col> <col> </colgroup>
+          <tbody>
+            <tr>
+              <th>Settlement</th>
+              <th style="text-align: right;">Matched<br>
+                Values</th>
+              <th style="text-align: right;">Facts</th>
+              <th style="text-align: right;">Correct<br>
+                Value Present</th>
+            </tr>
+            <tr>
+              <th>http://dbpedia.org/ontology/area</th>
+              <td style="text-align: right;">3</td>
+              <td style="text-align: right;">3</td>
+              <td style="text-align: right;">0</td>
+            </tr>
+            <tr>
+              <th>http://dbpedia.org/ontology/continent</th>
+              <td style="text-align: right;">2</td>
+              <td style="text-align: right;">2</td>
+              <td style="text-align: right;">2</td>
+            </tr>
+            <tr>
+              <th>http://dbpedia.org/ontology/country</th>
+              <td style="text-align: right;">156</td>
+              <td style="text-align: right;">22</td>
+              <td style="text-align: right;">22</td>
+            </tr>
+            <tr>
+              <th>http://dbpedia.org/ontology/elevation</th>
+              <td style="text-align: right;">4</td>
+              <td style="text-align: right;">2</td>
+              <td style="text-align: right;">0</td>
+            </tr>
+            <tr>
+              <th>http://dbpedia.org/ontology/isPartOf</th>
+              <td style="text-align: right;">158</td>
+              <td style="text-align: right;">50</td>
+              <td style="text-align: right;">50</td>
+            </tr>
+            <tr>
+              <th>http://dbpedia.org/ontology/populationDensity</th>
+              <td style="text-align: right;">3</td>
+              <td style="text-align: right;">3</td>
+              <td style="text-align: right;">0</td>
+            </tr>
+            <tr>
+              <th>http://dbpedia.org/ontology/populationMetro</th>
+              <td style="text-align: right;">8</td>
+              <td style="text-align: right;">7</td>
+              <td style="text-align: right;">0</td>
+            </tr>
+            <tr>
+              <th>http://dbpedia.org/ontology/populationTotal</th>
+              <td style="text-align: right;">30</td>
+              <td style="text-align: right;">21</td>
+              <td style="text-align: right;">10</td>
+            </tr>
+            <tr>
+              <th>http://dbpedia.org/ontology/postalCode</th>
+              <td style="text-align: right;">100</td>
+              <td style="text-align: right;">22</td>
+              <td style="text-align: right;">22</td>
+            </tr>
+            <tr>
+              <th>http://dbpedia.org/ontology/utcOffset</th>
+              <td style="text-align: right;">5</td>
+              <td style="text-align: right;">4</td>
+              <td style="text-align: right;">4</td>
+            </tr>
+            <tr>
+              <th>http://www.w3.org/2003/01/geo/wgs84_pos#long</th>
+              <td style="text-align: right;">9</td>
+              <td style="text-align: right;">8</td>
+              <td style="text-align: right;">6</td>
+            </tr>
+            <tr>
+              <th>http://www.w3.org/2003/01/geo/wgs84_pos#lat</th>
+              <td style="text-align: right;">9</td>
+              <td style="text-align: right;">8</td>
+              <td style="text-align: right;">8</td>
+            </tr>
+          </tbody>
+        </table>
+        <p> </p>
+        <p> </p>
+        <p> </p>
+        <h2>6. Cross-Validation Splits</h2>
+        <p>We use the gold standard for learning and testing. For this, we split
+          the data into three folds and performed cross-validation in our
+          research [<a href="#Oulabi2019">Oulabi2019</a>]. To allow for
+          comparable results, we provide the exact folds used in our work.</p>
+        <p>We split by cluster, so that the rows of one cluster are always fully
+          included in one fold. We ensured that we evenly split both new
+          clusters and homonym groups. A homonym group, is a group of clusters
+          with highly similar labels. All clusters of a homonym group were
+          always placed in one fold. </p>
+        <p> </p>
+        <table>
+          <colgroup><col> <col> <col> </colgroup>
+          <tbody>
+            <tr>
+              <th>Class</th>
+              <th>Fold</th>
+              <th>Clusters</th>
+              <th>New</th>
+              <th>Homonym Groups</th>
+              <th>Clusters in Homonym Groups</th>
+              <th>Rows</th>
+            </tr>
+            <tr>
+              <th>GridironFootballPlayer</th>
+              <th>All</th>
+              <td>97</td>
+              <td>17</td>
+              <td>10</td>
+              <td>21</td>
+              <td>358</td>
+            </tr>
+            <tr>
+              <th>GridironFootballPlayer</th>
+              <th>0</th>
+              <td>31</td>
+              <td>5</td>
+              <td>3</td>
+              <td>6</td>
+              <td>126</td>
+            </tr>
+            <tr>
+              <th>GridironFootballPlayer</th>
+              <th>1</th>
+              <td>33</td>
+              <td>5</td>
+              <td>4</td>
+              <td>8</td>
+              <td>118</td>
+            </tr>
+            <tr>
+              <th>GridironFootballPlayer</th>
+              <th>2</th>
+              <td>33</td>
+              <td>7</td>
+              <td>3</td>
+              <td>7</td>
+              <td>114</td>
+            </tr>
+            <tr>
+              <th>&nbsp;</th>
+              <th>&nbsp;</th>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+            </tr>
+            <tr>
+              <th>Song</th>
+              <th>All</th>
+              <td>97</td>
+              <td>63</td>
+              <td>20</td>
+              <td>65</td>
+              <td>195</td>
+            </tr>
+            <tr>
+              <th>Song</th>
+              <th>0</th>
+              <td>32</td>
+              <td>18</td>
+              <td>6</td>
+              <td>21</td>
+              <td>51</td>
+            </tr>
+            <tr>
+              <th>Song</th>
+              <th>1</th>
+              <td>34</td>
+              <td>24</td>
+              <td>7</td>
+              <td>27</td>
+              <td>86</td>
+            </tr>
+            <tr>
+              <th>Song</th>
+              <th>2</th>
+              <td>31</td>
+              <td>21</td>
+              <td>7</td>
+              <td>17</td>
+              <td>58</td>
+            </tr>
+            <tr>
+              <th>&nbsp;</th>
+              <th>&nbsp;</th>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+            </tr>
+            <tr>
+              <th>Settlement</th>
+              <th>All</th>
+              <td>74</td>
+              <td>23</td>
+              <td>14</td>
+              <td>31</td>
+              <td>413</td>
+            </tr>
+            <tr>
+              <th>Settlement</th>
+              <th>0</th>
+              <td>26</td>
+              <td>7</td>
+              <td>5</td>
+              <td>11</td>
+              <td>150</td>
+            </tr>
+            <tr>
+              <th>Settlement</th>
+              <th>1</th>
+              <td>24</td>
+              <td>9</td>
+              <td>4</td>
+              <td>9</td>
+              <td>106</td>
+            </tr>
+            <tr>
+              <th>Settlement</th>
+              <th>2</th>
+              <td>24</td>
+              <td>7</td>
+              <td>5</td>
+              <td>11</td>
+              <td>157</td>
+            </tr>
+          </tbody>
+        </table>
+        <h2>7. Structure and File Formats</h2>
+        <p>The dataset contains broadly three different file formats:</p>
+        <ul>
+          <li><strong>CSV:</strong> used for row mappings, attribute mappings,
+            facts and referenced entities</li>
+          <li><strong>LST:</strong> used to list e.g. tables and entities</li>
+          <li><strong>JSON:</strong> used to describe the whole table</li>
+        </ul>
+        <p>All files are encoded using UTF-8. All CSV files have no headers, use
+          comma as separators and and double quotation marks as quotation
+          characters. In LST files each new line corresponds to an entry in the
+          list. No quotation or separation characters are used in LST files. </p>
+        <h3>7.1 Dataset Directory Structure</h3>
+        <p>The gold standard is split into three separate folder by each
+          knowledge base class. These folders have the following structure:</p>
+        <pre>CLASS_NAME (GridironFootballPlayer, Song, Settlement)<br>&#9474;<br>&#9500;&#9472; attributeMapping<br>&#9474;  &#9500;&#9472; table1.csv<br>&#9474;  &#9500;&#9472; table2.csv<br>&#9474;  &#9500;&#9472; table3.csv<br>&#9474;  &#9500;&#9472; ...<br>&#9474;  &#9492;&#9472; ...<br>&#9474;<br>&#9500;&#9472; rowMapping<br>&#9474;  &#9500;&#9472; table1.csv<br>&#9474;  &#9500;&#9472; table2.csv<br>&#9474;  &#9500;&#9472; table3.csv<br>&#9474;  &#9500;&#9472; ...<br>&#9474;  &#9492;&#9472; ...<br>&#9474;<br>&#9500;&#9472; tables<br>&#9474;  &#9500;&#9472; table1.json<br>&#9474;  &#9500;&#9472; table2.json<br>&#9474;  &#9500;&#9472; table3.json<br>&#9474;  &#9500;&#9472; ...<br>&#9474;  &#9492;&#9472; ...<br>&#9474;<br>&#9500;&#9472; facts.csv<br>&#9500;&#9472; fold0.lst<br>&#9500;&#9472; fold1.lst<br>&#9500;&#9472; fold2.lst<br>&#9500;&#9472; forLearning.lst (Song only)<br>&#9500;&#9472; newInstances.lst<br>&#9500;&#9472; referencedEntities.csv (Song only)<br>&#9492;&#9472; tableList.lst</pre>
+        <h3>7.2 Attribute Mapping CSV Format</h3>
+        <p>The attribute mapping consists of files that describe correspondences
+          between columns of tables included in the dataset and properties of
+          the knowledge base. For each table we include one CSV file, where the
+          name of the table corresponds to the name of the file without the
+          ".csv" extension. </p>
+        <p>Each row of this file describes two values. The first value contains
+          the web table column number, while the second contains the mapped
+          DBpedia property. The first column of a table has the number 0.</p>
+        <p><strong>Example: </strong>Song/attributeMapping/1346981172250_1346981783559_593.arc5217493555668914181#52592088_6_1764789873557608114.csv</p>
+        <pre>"0","http://dbpedia.org/ontology/musicalArtist"
+"3","http://dbpedia.org/ontology/releaseDate"
+"4","http://dbpedia.org/ontology/recordLabel"
+"6","http://dbpedia.org/ontology/genre"</pre>
+        <h3>7.3 Row Mappings CSV Format</h3>
+        <p>The row mapping consists of files that describe which table rows
+          correspond to which entity URI. For each table we include one CSV
+          file, where the name of the table corresponds to the name of the file
+          without the ".csv" extension.</p>
+      </div>
+      <div>
+        <p>Each row of this file describes two values. The first value contains
+          the web table row number, while the second contains the full URI of
+          the entity. The first row of the table, which is very often the header
+          row, has the number 0.</p>
+      </div>
+      <div>
+        <p><strong>Example: </strong>GridironFootballPlayer/rowMapping/1346876860779_1346961276986_5601.arc3719795019286941883#45451800_0_7520172109909715831.csv</p>
+      </div>
+      <div>
+        <pre>"28","http://dbpedia.org/resource/Andrew_Sweat"
+"32","http://dbpedia.org/resource/Ameet_Pall"
+"46","http://dbpedia.org/resource/Jerrell_Wedge-00869aeb-d468-46fc-8a33-e11e6b771730"
+"50","http://dbpedia.org/resource/Chris Donald-248fa1b2-6061-4e39-b394-4b0717de75b4"
+"35","http://dbpedia.org/resource/shelly_lyons-c026bb63-4fa2-11e8-9b01-1d14cf16e545"
+"24","http://dbpedia.org/resource/Brandon_Marshall_(linebacker)"
+"23","http://dbpedia.org/resource/Jerrell_Harris"</pre>
+        <h3><span style="color: #880000;">7.4 Table JSON Format</span></h3>
+        <p>The JSON files within the tables folder describe the individual
+          tables included in the dataset fully, including rows that were not
+          annotated as part of the dataset. The JSON Format is described further
+          below using the example.These tables can also be found in the web
+          table corpus linked above.</p>
+        <p>Two properties are important. First the <strong>relation</strong>
+          property describes the actual content of the table. It is an array of
+          arrays, where the outer array contains the columns of the table, and
+          each inner array describes all rows of that column. The second
+          important property is the <strong>keyColumnIndex, </strong>which is
+          the property that sets which column is the key column of the table and
+          is therefore linked to the Label property of the knowledge base.</p>
+        <p><strong>Example: </strong>GridironFootballPlayer\tables\1346823846150_1346837956103_5045.arc6474871151262925852#91994528_4_1071800122125102457.json
+          </p>
+        <pre>{
+   "hasKeyColumn":true,
+   "headerRowIndex":0,
+   "keyColumnIndex":0,
+   "pld":"draftboardinsider.com",
+   "url":"http://www.draftboardinsider.com/ncaateams/sec/auburn.shtml",
+   "relation":[
+      [
+         "player",
+         "ben grubbs",
+         "kenny irons",
+         "will herring",
+         "david irons",
+         "courtney taylor"
+      ],
+      [
+         "pos",
+         "og",
+         "rb",
+         "olb",
+         "cb",
+         "wr"
+      ],
+      [
+         "pick",
+         "29",
+         "49",
+         "161",
+         "194",
+         "197"
+      ],
+      [
+         "nfl team",
+         "baltimore ravens",
+         "cincinnati bengals",
+         "seattle seahawks",
+         "atlanta falcons",
+         "seattle seahawks"
+      ]
+   ]
+}</pre>
+        <h3>7.5 Facts CSV Format</h3>
+        <p>Each line in the facts file describes one individual annotated fact.
+          Per line, there are four values. The first contains the URI of the
+          entity, while the second contains the URI of the property. The third
+          contains the annotated fact, while the last is a boolean flag, on
+          whether the correct value of a fact is present among the values found
+          in the web table data, where the values "true" and "false" correspond
+          to present and not present respectively. </p>
+        <p>While for most facts, there is only one correct value present, for
+          some there can be <strong>multiple correct values</strong>. Multiple
+          values are separated by a simple <strong>|</strong>, and values need
+          to be split accordingly when using the dataset. </p>
+        <p>Parsing the first two and the last values is simple, for the actual
+          fact annotation, the parsing depends on the fact data-type. The table
+          below provides parsing instructions:</p>
+        <table>
+          <tbody>
+            <tr>
+              <th>Data-Type</th>
+              <th>Description</th>
+              <th>Format</th>
+              <th>Example</th>
+            </tr>
+            <tr>
+              <th>Date</th>
+              <td>A format describing date, either with a year or day
+                granularity</td>
+              <td>yyyy OR<br>
+                yyyy-mm-dd</td>
+              <td>2000<br>
+                2012-04-20</td>
+            </tr>
+            <tr>
+              <th>Reference</th>
+              <td>DBpedia URI (needs to prefixed with
+                http://dbpedia.org/resource/)</td>
+              <td>No parsing required</td>
+              <td>Nina_Simone</td>
+            </tr>
+            <tr>
+              <th>String</th>
+              <td>Literal string</td>
+              <td>No parsing required</td>
+              <td>FH3312</td>
+            </tr>
+            <tr>
+              <th>Integer</th>
+              <td>Integer numbers</td>
+              <td>No parsing required</td>
+              <td>21</td>
+            </tr>
+            <tr>
+              <th>Decimal</th>
+              <td>Mixed decimal number. Some numbers might not be be mixed and
+                simple integers</td>
+              <td>I.F<br>
+                I</td>
+              <td>187.96<br>
+                88.45051<br>
+                4144</td>
+            </tr>
+            <tr>
+              <th>Signed Decimal</th>
+              <td>Mixed decimal number with a sign</td>
+              <td>±I.F</td>
+              <td>+1.0<br>
+                -4.5333333</td>
+            </tr>
+            <tr>
+              <th>Runtime</th>
+              <td>A format describing runtime in minutes and seconds</td>
+              <td>h:ss</td>
+              <td>4:01<br>
+                5:13</td>
+            </tr>
+          </tbody>
+        </table>
+        <p><br>
+        </p>
+        <p>This table provides a mapping between the properties and the
+          data-types above. Additionally we provide some notes per property if
+          applicable.</p>
+        <table>
+          <colgroup><col> <col> <col> <col> </colgroup>
+          <tbody>
+            <tr>
+              <th>Class</th>
+              <th>Property</th>
+              <th>Data-Type</th>
+              <th>Note</th>
+            </tr>
+            <tr>
+              <th>GridironFootballPlayer</th>
+              <th>birthDate</th>
+              <td>Date</td>
+              <td>&nbsp;</td>
+            </tr>
+            <tr>
+              <th>GridironFootballPlayer</th>
+              <th>birthPlace</th>
+              <td>Reference</td>
+              <td>&nbsp;</td>
+            </tr>
+            <tr>
+              <th>GridironFootballPlayer</th>
+              <th>college</th>
+              <td>Reference</td>
+              <td>&nbsp;</td>
+            </tr>
+            <tr>
+              <th>GridironFootballPlayer</th>
+              <th>draftPick</th>
+              <td>Integer</td>
+              <td>&nbsp;</td>
+            </tr>
+            <tr>
+              <th>GridironFootballPlayer</th>
+              <th>draftRound</th>
+              <td>Integer</td>
+              <td>&nbsp;</td>
+            </tr>
+            <tr>
+              <th>GridironFootballPlayer</th>
+              <th>draftYear</th>
+              <td>Date</td>
+              <td>&nbsp;</td>
+            </tr>
+            <tr>
+              <th>GridironFootballPlayer</th>
+              <th>height</th>
+              <td>Decimal</td>
+              <td>We record height in centimeters, while DBpedia records height
+                in meters, so that a conversion is necessary. Also, all tables
+                exclusively record height in foot and inches.</td>
+            </tr>
+            <tr>
+              <th>GridironFootballPlayer</th>
+              <th>highschool</th>
+              <td>Reference</td>
+              <td>&nbsp;</td>
+            </tr>
+            <tr>
+              <th>GridironFootballPlayer</th>
+              <th>number</th>
+              <td>Integer</td>
+              <td>&nbsp;</td>
+            </tr>
+            <tr>
+              <th>GridironFootballPlayer</th>
+              <th>Person/weight</th>
+              <td>Decimal</td>
+              <td>We record weight in kg, and so does DBpedia. All tables
+                exclusively record weight in pounds. </td>
+            </tr>
+            <tr>
+              <th>GridironFootballPlayer</th>
+              <th>position</th>
+              <td>Reference</td>
+              <td>&nbsp;</td>
+            </tr>
+            <tr>
+              <th>GridironFootballPlayer</th>
+              <th>team</th>
+              <td>Reference</td>
+              <td>&nbsp;</td>
+            </tr>
+            <tr>
+              <th>&nbsp;</th>
+              <th>&nbsp;</th>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+            </tr>
+            <tr>
+              <th>Song</th>
+              <th>album</th>
+              <td>Reference</td>
+              <td>&nbsp;</td>
+            </tr>
+            <tr>
+              <th>Song</th>
+              <th>bSide</th>
+              <td>Reference</td>
+              <td>&nbsp;</td>
+            </tr>
+            <tr>
+              <th>Song</th>
+              <th>genre</th>
+              <td>Reference</td>
+              <td>&nbsp;</td>
+            </tr>
+            <tr>
+              <th>Song</th>
+              <th>musicalArtist</th>
+              <td>Reference</td>
+              <td>&nbsp;</td>
+            </tr>
+            <tr>
+              <th>Song</th>
+              <th>producer</th>
+              <td>Reference</td>
+              <td>&nbsp;</td>
+            </tr>
+            <tr>
+              <th>Song</th>
+              <th>recordLabel</th>
+              <td>Reference</td>
+              <td>&nbsp;</td>
+            </tr>
+            <tr>
+              <th>Song</th>
+              <th>releaseDate</th>
+              <td>Date</td>
+              <td>&nbsp;</td>
+            </tr>
+            <tr>
+              <th>Song</th>
+              <th>runtime</th>
+              <td>Time</td>
+              <td>DBpedia records runtime in seconds as a simple numeric
+                property, while we record it as time in minutes and seconds. As
+                a result, a conversion is necessary.</td>
+            </tr>
+            <tr>
+              <th>Song</th>
+              <th>writer</th>
+              <td>Reference</td>
+              <td>&nbsp;</td>
+            </tr>
+            <tr>
+              <th>&nbsp;</th>
+              <th>&nbsp;</th>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+            </tr>
+            <tr>
+              <th>Settlement</th>
+              <th>area</th>
+              <td>Decimal</td>
+              <td>&nbsp;</td>
+            </tr>
+            <tr>
+              <th>Settlement</th>
+              <th>continent</th>
+              <td>Reference</td>
+              <td>&nbsp;</td>
+            </tr>
+            <tr>
+              <th>Settlement</th>
+              <th>country</th>
+              <td>Reference</td>
+              <td>&nbsp;</td>
+            </tr>
+            <tr>
+              <th>Settlement</th>
+              <th>elevation</th>
+              <td>Decimal</td>
+              <td>&nbsp;</td>
+            </tr>
+            <tr>
+              <th>Settlement</th>
+              <th>isPartOf</th>
+              <td>Reference</td>
+              <td>&nbsp;</td>
+            </tr>
+            <tr>
+              <th>Settlement</th>
+              <th>populationDensity</th>
+              <td>Decimal</td>
+              <td>&nbsp;</td>
+            </tr>
+            <tr>
+              <th>Settlement</th>
+              <th>populationMetro</th>
+              <td>Decimal</td>
+              <td>&nbsp;</td>
+            </tr>
+            <tr>
+              <th>Settlement</th>
+              <th>populationTotal</th>
+              <td>Decimal</td>
+              <td>&nbsp;</td>
+            </tr>
+            <tr>
+              <th>Settlement</th>
+              <th>postalCode</th>
+              <td>String</td>
+              <td>&nbsp;</td>
+            </tr>
+            <tr>
+              <th>Settlement</th>
+              <th>utcOffset</th>
+              <td>Signed Decimal</td>
+              <td>&nbsp;</td>
+            </tr>
+            <tr>
+              <th>Settlement</th>
+              <th>wgs84_pos#long</th>
+              <td>Signed Decimal</td>
+              <td>&nbsp;</td>
+            </tr>
+            <tr>
+              <th>Settlement</th>
+              <th>wgs84_pos#lat</th>
+              <td>Signed Decimal</td>
+              <td>&nbsp;</td>
+            </tr>
+          </tbody>
+        </table>
+        <p><br>
+        </p>
+        <p>Below you will find some examples of the facts CSV file for all three
+          classes. </p>
+        <p><strong>Example: </strong>GridironFootballPlayer/facts.csv</p>
+        <pre>"http://dbpedia.org/resource/Al_Harris_(defensive_lineman)","http://dbpedia.org/ontology/position","Defensive_end|Linebacker","true"
+"http://dbpedia.org/resource/Allen_Reisner","http://dbpedia.org/ontology/birthDate","1988-09-29","true"
+"http://dbpedia.org/resource/Mike_Bell_(defensive_lineman)","http://dbpedia.org/ontology/college","Colorado_State_Rams","true"
+"http://dbpedia.org/resource/Andre_Roberts_(American_football)","http://dbpedia.org/ontology/Person/weight","88.45051","true"
+"http://dbpedia.org/resource/louis_nzegwu-90617f1a-1dbf-48c0-ae52-dfb4cb5043ab","http://dbpedia.org/ontology/team","Atlanta_Falcons","true"
+"http://dbpedia.org/resource/Donald_Jones_(American_football)","http://dbpedia.org/ontology/birthDate","1987-12-17","true"
+"http://dbpedia.org/resource/Mike_Williams_(wide_receiver,_born_1987)","http://dbpedia.org/ontology/height","187.96","true"
+"http://dbpedia.org/resource/Anquan_Boldin","http://dbpedia.org/ontology/team","Arizona_Cardinals|Baltimore_Ravens|San_Francisco_49ers|Detroit_Lions|Buffalo_Bills","true"
+"http://dbpedia.org/resource/Al_Harris_(defensive_lineman)","http://dbpedia.org/ontology/team","Chicago_Bears","true"
+"http://dbpedia.org/resource/Mike_Williams_(wide_receiver,_born_1984)","http://dbpedia.org/ontology/draftPick","10","true"<strong><br>... <br></strong></pre>
+        <p><strong>Example: </strong>Song/facts.csv</p>
+        <pre>"http://dbpedia.org/resource/rhythm_of_life-17f821d8-8424-49b9-ad35-aae0094d475c","http://dbpedia.org/ontology/musicalArtist","U96","true"
+"http://dbpedia.org/resource/Men's_Needs","http://dbpedia.org/ontology/musicalArtist","The_Cribs","true"
+"http://dbpedia.org/resource/The_Lemon_Song","http://dbpedia.org/ontology/runtime","6:19","true"
+"http://dbpedia.org/resource/lemon_tree-c4ef5525-b118-4ed9-8206-2d64b91a0b89","http://dbpedia.org/ontology/album","The_Very_Best_of_Peter,_Paul_and_Mary-f3c362a9-764f-45b2-a3b4-dc32f71c8902","true"
+"http://dbpedia.org/resource/Seek_&amp;_Destroy","http://dbpedia.org/ontology/album","Kill_%27Em_All","true"
+"http://dbpedia.org/resource/I'm_Ready_for_Love","http://dbpedia.org/ontology/musicalArtist","Martha_and_the_Vandellas","true"
+"http://dbpedia.org/resource/Something_About_You-646ffccf-6fb9-4279-9b84-eb582b959388","http://dbpedia.org/ontology/album","Aliens_&amp;_Rainbows","true"
+"http://dbpedia.org/resource/Beautiful_(Mai_Kuraki_song)","http://dbpedia.org/ontology/releaseDate","2009-06-10","true"
+"http://dbpedia.org/resource/Lemon_(song)","http://dbpedia.org/ontology/releaseDate","1993","true"<strong>
+...<br></strong></pre>
+        <p><strong>Example: </strong>Settlement/facts.csv</p>
+        <pre>"http://dbpedia.org/resource/Beijing","http://www.w3.org/2003/01/geo/wgs84_pos#long","116.383333","true"
+"http://dbpedia.org/resource/Rome","http://dbpedia.org/ontology/area","1285","false"
+"http://dbpedia.org/resource/Bakar","http://dbpedia.org/ontology/country","Croatia","true"
+"http://dbpedia.org/resource/Rome","http://dbpedia.org/ontology/utcOffset","+1.0","true"
+"http://dbpedia.org/resource/arriondas-a4a0fc90-8a84-11e8-82e1-3fad23f94135","http://dbpedia.org/ontology/country","Spain","true"
+"http://dbpedia.org/resource/Bwaga_Cheti","http://www.w3.org/2003/01/geo/wgs84_pos#lat","-4.5333333","true"
+"http://dbpedia.org/resource/belec-a4a20efb-8a84-11e8-82e1-55488444b4bb","http://dbpedia.org/ontology/postalCode","49254","true"
+"http://dbpedia.org/resource/Bakarac","http://dbpedia.org/ontology/isPartOf","Primorje-Gorski_Kotar_County","true"
+...</pre>
+        <h3>7.6 Table, New Instance, Folds and for Learning Lists</h3>
+        <p>We use the list format for a different number of types:</p>
+        <ul>
+          <li>For the cross-validation folds, providing a listing of the
+            entities for each fold.</li>
+          <li> We provide a list of all tables per class. </li>
+          <li>We provide a list of entity URIs of new entities.</li>
+          <li>For the class Song we additionally list the 15 existing entities
+            which are to be used for learning purposes only.</li>
+        </ul>
+        <p>These list files have the extension .lst. Each line of the file is
+          another entry in the list. There are no quoting characters. </p>
+        <p><strong>Example: </strong>Settlement/fold0.lst</p>
+        <pre>http://dbpedia.org/resource/Aurel,_Vaucluse
+http://dbpedia.org/resource/Stamford,_Lincolnshire
+http://dbpedia.org/resource/Bwaga_Cheti
+http://dbpedia.org/resource/kalakho-f889b410-4fa2-11e8-9b01-4b7e9cb868f5
+http://dbpedia.org/resource/Belica,_Me%C4%91imurje_County
+http://dbpedia.org/resource/burgo_ranero_(el)-a4a1e6e3-8a84-11e8-82e1-f765c0073ff5
+http://dbpedia.org/resource/Parys
+http://dbpedia.org/resource/Bakar
+http://dbpedia.org/resource/Beli_Manastir
+http://dbpedia.org/resource/Chaville
+http://dbpedia.org/resource/Bonyunyu
+...</pre>
+        <p><strong>Example: </strong>Song/tableList.lst</p>
+        <pre>1346981172231_1347009637666_1623.arc2035420803784423551#8157737_1_7371407078293434892
+1346981172137_1346990327917_1687.arc8790234217643537183#29324093_0_4104648016207008655
+1350433107059_1350464532277_262.arc3274150641837087721#45894422_0_4048022465851316720
+1346876860798_1346941853400_2953.arc2527404313287902461#59379225_0_6616355908335718299
+1346876860596_1346938127566_2223.arc3753870089959127664#66546593_0_554336699268001312
+1346876860493_1346903186037_233.arc7106100585551357027#48571984_0_6773473850340800215
+1350433107058_1350501694041_732.arc1602187029723264891#37777045_0_5887313017136165099
+1346981172186_1346995420474_2788.arc8792188372387791527#96007354_0_5596511497072590105
+1346876860840_1346953273866_1315.arc7476207801019051251#90975928_0_7687754714967118394
+1346981172231_1347010609872_3515.arc2403866143077224377#1524220_0_7599368370767966283
+1346876860596_1346938903566_3154.arc4273244386981436402#87484324_1_1397156714755041772
+1346876860611_1346928074552_1536.arc941312314634454173#7668872_0_4460134851750954295
+1346876860807_1346934722734_147.arc4322826721152635511#74438125_0_3796119154304144126
+1346981172155_1347002310061_2451.arc2996742124595566891#69073711_0_6127538729831462210
+1346981172239_1346995950584_63.arc1630314548530234317#65396150_0_5145880845606151839
+...</pre>
+        <p><strong>Example: </strong>GridironFootballPlayer/newInstances.lst</p>
+        <pre>http://dbpedia.org/resource/shelly_lyons-c026bb63-4fa2-11e8-9b01-1d14cf16e545<br>http://dbpedia.org/resource/mike_ball-86931519-f533-4e99-b1be-b45fb805e7e5<br>http://dbpedia.org/resource/michael_vandermeulen-c020ef8f-4fa2-11e8-9b01-c3c34fe696e5<br>http://dbpedia.org/resource/Chris Donald-248fa1b2-6061-4e39-b394-4b0717de75b4<br>http://dbpedia.org/resource/james_carmon-c02869e4-4fa2-11e8-9b01-81f205eb29eb<br>http://dbpedia.org/resource/alvin_mitchell-33d17a8e-ed7d-433e-9728-3e1c26658a6a<br>http://dbpedia.org/resource/ben_buchanan-c0289116-4fa2-11e8-9b01-fdd98ba7cc66<br>http://dbpedia.org/resource/merritt_kersey-c025d110-4fa2-11e8-9b01-65117e7d5512<br>http://dbpedia.org/resource/aderious_simmoms-c023ae8d-4fa2-11e8-9b01-89f1d0e15a08<br>...</pre>
+        <h3>7.7 Referenced Entities</h3>
+        <p>For the class Song there exist reference facts that reference
+          entities, that do not exist in DBpedia, i.e. they are long-tail
+          entities themselves. We provide these additional entities in a
+          seperate file. The file is especially useful, as it provides both
+          labels and the class of those referenced entities. </p>
+        <p>For this file we again use the CSV file format, with three values.
+          The first is the URI of the referenced entity, the second its label,
+          and the third, its class alignment. </p>
+        <p><strong>Example:</strong> Song/referencedEntities.csv</p>
+        <pre>"http://dbpedia.org/resource/Shelley_Laine-8ee3f06c-a68a-495b-a788-5a4473e39384","Shelley Laine","MusicalArtist"
+"http://dbpedia.org/resource/Skipping_Stones-b3ff0194-6a65-4835-8635-f02ba6d58e3d","Skipping Stones","Album"
+"http://dbpedia.org/resource/Best_Of_1991-2001-ab96f5ab-730a-48a2-a0b9-e3275993bf07","Best Of 1991-2001","Album"
+"http://dbpedia.org/resource/Terry_Steele-67a5c337-4b29-497e-9852-28ae222c7bfd","Terry Steele","Writer"
+"http://dbpedia.org/resource/David_L._Elliott-b11a4b31-8e01-4c06-8847-af359577525a","David L. Elliott","Writer"
+"http://dbpedia.org/resource/Anthology:_1965-1972-013145ea-382f-448e-ae7f-dfd3d959a2e0","Anthology: 1965-1972","Album"
+"http://dbpedia.org/resource/Bangarang_(EP)-b3bf5bc8-454a-47b6-9b4a-8b8b1b53f728","Bangarang_(EP)","Album"
+"http://dbpedia.org/resource/Old_School_New Rules-34473575-5c29-4048-8435-f96717404db7","Old School New Rules","Album"
+"http://dbpedia.org/resource/Wanna-d7a7259b-da78-41cd-bcac-bcd51ff040f2","Wanna","MusicalWork"<br>...<span
+
+style="color: #880000;"><span style="font-family: sans-serif;"><br></span></span></pre>
+        <h2><span style="color: black;"></span></h2>
+        <h2>8. Download</h2>
+        <p>You can download the dataset here:<span style="color: black;"> </span><a
+
+            href="http://data.dws.informatik.uni-mannheim.de/expansion/downloads/T4LTE.zip">T4LTE.zip</a></p>
+        <h2 id="feedback">9. Feedback</h2>
+        <p>Please send questions and feedback to directly to the authors (listed
+          above) or post them in the <a href="https://groups.google.com/forum/?fromgroups#%21forum/web-data-commons">Web
+            Data Commons Google Group</a>.<br>
+        </p>
+        <h2>10. References</h2>
+        <ol>
+          <li><a name="Cafarella2008"></a>[Cafarella2008] Cafarella, Michael J.
+            and Halevy, Alon Y. and Zhang, Yang and Wang, Daisy Zhe and Wu,
+            Eugene (2008), "Uncovering the Relational Web", In WebDB '08.</li>
+          <li><a name="Dong2014"></a>[Dong2014] Dong, Xin and Gabrilovich,
+            Evgeniy and Heitz, Geremy and Horn, Wilko and Lao, Ni and Murphy,
+            Kevin and Strohmann, Thomas and Sun, Shaohua and Zhang, Wei (2014),
+            "Knowledge Vault: A Web-scale Approach to Probabilistic Knowledge
+            Fusion", In KDD '14.</li>
+          <li><a name="Lehmann2015"></a>[Lehmann2015] Lehmann, Jens and Isele,
+            Robert and Jakob, Max and Jentzsch, Anja and Kontokostas, Dimitris
+            and Mendes, Pablo N and Hellmann, Sebastian and Morsey, Mohamed and
+            Van Kleef, Patrick and Auer, Sören and others (2015), "DBpedia - A
+            Large-scale, Multilingual Knowledge Base Extracted from Wikipedia",
+            Semantic Web. Vol. 6(2), pp. 167-195. IOS Press.</li>
+          <li><a name="Oulabi2016"></a>[Oulabi2016] Oulabi, Yaser and Meusel,
+            Robert and Bizer, Christian (2016), "Fusing Time-dependent Web Table
+            Data", In WebDB '16.</li>
+          <li><a name="Oulabi2017"></a>[Oulabi2017] Oulabi, Yaser and Bizer,
+            Christian (2017), "Estimating missing temporal meta-information
+            using Knowledge-Based-Trust", In KDWeb '17.</li>
+          <li><a name="Oulabi2019"></a>[Oulabi2019] Oulabi, Yaser and Bizer,
+            Christian (2019), "Extending Cross-Domain Knowledge Bases with Long
+            Tail Entities using Web Table Data", In EDBT '19.</li>
+          <li><a name="Ritze2015"></a>[Ritze2015] Ritze, Dominique and Lehmberg,
+            Oliver and Bizer, Christian (2015), "Matching HTML Tables to
+            DBpedia", In WIMS '15.</li>
+          <li><a name="Ritze2016"></a>[Ritze2016] Ritze, Dominique and Lehmberg,
+            Oliver and Oulabi, Yaser and Bizer, Christian (2016), "Profiling the
+            Potential of Web Tables for Augmenting Cross-domain Knowledge
+            Bases", In WWW '16.</li>
+        </ol>
+        <hr>
+        <p><em>Released: 15.07.19</em></p>
+        <ol>
+        </ol>
+      </div>
+    </div>
+    <script type="text/javascript">
+$('#toc').toc({
+'selectors': 'h2,h3,h4', //elements to use as headings
+'container': '#toccontent', //element to find all selectors in
+'smoothScrolling': true, //enable or disable smooth scrolling on click
+'prefix': 'toc', //prefix for anchor tags and class names
+'highlightOnScroll': true, //add class to heading that is currently in focus
+'highlightOffset': 100, //offset to trigger the next headline
+'anchorName': function(i, heading, prefix) { //custom function for anchor name
+return prefix+i;
+}
+});
+</script> </body>
+</html>
