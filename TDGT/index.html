@@ -1,0 +1,482 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en" xml:lang="en">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
+    <title>TDGT - Time-Dependent Ground-Truth Dataset</title>
+    <link rel="Stylesheet" href="http://webdatacommons.org/style.css">
+    <style>
+        .table-section-row {
+            border-bottom: 2px dashed #D4DCE8;
+            
+        }
+        
+        .toc-h3 {
+            margin-left: 20px;
+        }
+        
+        .toc-h4 {
+            margin-left: 40px;
+        }
+        
+        #entities tr td:nth-child(4), #entities tr th:nth-child(4){
+            text-align: center;
+            
+        }
+        
+        
+         #entities tr td:nth-child(3), #entities tr th:nth-child(3){
+            text-align: right;
+            
+        }
+        
+         #entities tr td:nth-child(5), #entities tr th:nth-child(5){
+            text-align: right;
+            
+        }
+        
+        
+ 
+        
+         #properties tr td:nth-child(6), #properties tr th:nth-child(6){
+            text-align: right;
+            
+        }
+    </style>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="http://webdatacommons.org/jquery.toc.min.js"></script>
+  </head>
+  <body>
+    <div id="logo" style="text-align: right; background-color: white;">&nbsp;&nbsp;<a
+
+        href="http://dws.informatik.uni-mannheim.de"><img src="http://webdatacommons.org/images/ma-logo.gif"
+
+          alt="University of Mannheim - Logo"></a></div>
+    <a name="top"></a>
+    <div id="header">
+      <h1 style="font-size: 250%;">TDGT - Time-Dependent Ground-Truth Dataset</h1>
+    </div>
+    <div id="tagline">Dataset Design, Statistics, and Download</div>
+    <div id="authors"><a href="http://www.yaseroulabi.de">Yaser Oulabi</a><br>
+      <a href="https://www.uni-mannheim.de/dws/people/professors/prof-dr-christian-bizer/">Christian
+        Bizer</a><br>
+      <br>
+      <br>
+    </div>
+    <div id="content">
+      <p>This page describes the TDGT Dataset of time-dependent data, useful for
+        evaluating tasks that make use of the time-aspect of data.</p>
+      <p>The dataset was built to evaluate fusion methods for slot filling
+        time-dependent attributes of a knowledge base from web table data. Data
+        fusion methods, also called Truth Discovery methods, try to select the
+        correct value given a set of alternative input values [<a href="#Bleiholder:2009">Bleiholder2009</a>].
+        In time-dependent data, also called long-data [<a href="#Dong2016">Dong2016</a>],
+        the correctness of a value depends on a certain point in time or a time
+        range. For any given combination of Entity and Property multiple values
+        can be considered correct, as they reflect a different period or point
+        in time [<a href="#Oulabi2016">Oulabi2016</a>]. For evaluating the
+        performance of data fusion methods for time-dependent data, it is
+        necessary to know the correct values of a property at different points
+        in time. The TDGT - Time-Dependent Ground-Truth Dataset consists of
+        high-quality data describing countries, cities, athletes, companies,
+        politicians and officeholders. All ground-truth data is annotated with
+        temporal meta-information and can thus be used to evaluate data fusion
+        methods for time-dependent data.</p>
+      <h2>Contents</h2>
+      <div id="toc" class="toc"></div>
+      <div id="toccontent">
+        <h2>1. Dataset Overview</h2>
+        <p>This dataset provides data for a selection of different
+          time-dependent attributes in a uniform format. We built this dataset
+          in the context of knowledge base augmentation from web table data. Web
+          tables, which are relational HTML tables extracted from the Web,
+          contain large amounts of valuable information describing temporal data
+          [<a href="#Lehmberg2016">Lehmberg2016</a>, <a href="#Zhang2013">Zhang2013</a>].
+          We employ this dataset to evaluate fusion methods for augmenting from
+          this web table data a temporal knowledge base [<a href="#Oulabi2017">Oulabi2017</a>]
+          with new facts. Unlike snapshot-based knowledge bases, like DBpedia,
+          which try to reflect only the most recent facts, temporal knowledge
+          bases, like Wikidata, store time-dependent data as series of timed
+          facts. Similarly, this ground truth provides a variety of
+          time-dependent data as a series of timed facts. In previous work [<a href="#Oulabi2016">Oulabi2016</a>]
+          we have presented and evaluated a method for slot filling
+          snapshot-based knowledge bases. </p>
+        The data was consolidated from different sources and covers the
+        following domains:
+        <ol>
+          <li>Countries and Cities</li>
+          <li>Athletes</li>
+          <li>Companies</li>
+          <li>Politicians and Officeholders</li>
+        </ol>
+        <p>During the creation of this dataset, we ensured that all entities
+          part of the dataset are matched to a comprehensive knowledge-base, in
+          our case <a href="https://www.wikidata.org/">Wikidata</a>. In
+          addition we aimed at completeness of values per entity, so that one
+          can assume that all possible values of a certain time-dependent
+          attributes for a given entity are available.</p>
+        <h2>2. Entity Classes Statistics</h2>
+        <p>There are overall seven entity classes present in this dataset. The
+          table below provides an overview of those classes, including the
+          number of instances, properties and values per class. Additionally the
+          name of the JSON file of the entity is provided in the table.</p>
+        <table id="entities">
+          <tbody>
+            <tr>
+              <th>Class</th>
+              <th>JSON file name</th>
+              <th># of Instances</th>
+              <th># of Properties</th>
+              <th># of Values</th>
+              <th style="text-align: left;">Source</th>
+            </tr>
+            <tr>
+              <th>Basketball Athlete (mostly NBA)</th>
+              <td>basketballAthlete.json</td>
+              <td>3781</td>
+              <td>1</td>
+              <td>10,625</td>
+              <td>www.basketball-reference.com </td>
+            </tr>
+            <tr>
+              <th>City</th>
+              <td>city.json</td>
+              <td>11372</td>
+              <td>2</td>
+              <td>40,666</td>
+              <td>Wikidata </td>
+            </tr>
+            <tr>
+              <th>Country</th>
+              <td>country.json</td>
+              <td>197</td>
+              <td>7</td>
+              <td>44,013</td>
+              <td>WorldBank (World Development Indicators)<br>
+              </td>
+            </tr>
+            <tr>
+              <th>NFL Athlete</th>
+              <td>nflAthlete.json</td>
+              <td>12756</td>
+              <td>2</td>
+              <td>96,711</td>
+              <td>www.footballdb.com<br>
+              </td>
+            </tr>
+            <tr>
+              <th>Politician / Holder of a political office</th>
+              <td>politician.json</td>
+              <td>22062</td>
+              <td>1</td>
+              <td>36,816</td>
+              <td>Wikidata </td>
+            </tr>
+            <tr>
+              <th>Soccer Athlete</th>
+              <td>soccerAthlete.json</td>
+              <td>134617</td>
+              <td>1</td>
+              <td>778,602</td>
+              <td>Wikidata </td>
+            </tr>
+            <tr>
+              <th>Traded Company (NYSE and NASDAQ)</th>
+              <td>tradedCompany.json</td>
+              <td>1646</td>
+              <td>5</td>
+              <td>73,806</td>
+              <td>www.stockrow.com </td>
+            </tr>
+          </tbody>
+        </table>
+        <h2>3. Time-dependent Properties Overview</h2>
+        <p>There are overall 19 time-dependent attributes in this dataset. The
+          following table provides an overview of those attributes including
+          their type, datatype and number of values. Additionally the JSON name
+          of the property is included.</p>
+        <table id="properties">
+          <tbody>
+            <tr class="table-section-row">
+              <th>Class</th>
+              <th>Property</th>
+              <th>Name in JSON file</th>
+              <th>Type</th>
+              <th>Datatype</th>
+              <th># of Values</th>
+            </tr>
+            <tr class="table-section-row">
+              <th>Basketball Athlete</th>
+              <th>Team</th>
+              <td>team</td>
+              <td>Time Range</td>
+              <td>Reference</td>
+              <td>10,625</td>
+            </tr>
+            <tr>
+              <th>City</th>
+              <th>Mayor</th>
+              <td>mayor</td>
+              <td>Time Range</td>
+              <td>Reference</td>
+              <td>1,742</td>
+            </tr>
+            <tr class="table-section-row">
+              <th>City</th>
+              <th>Population</th>
+              <td>population</td>
+              <td>Point in Time</td>
+              <td>Number</td>
+              <td>38,924</td>
+            </tr>
+            <tr>
+              <th>Country</th>
+              <th>Head of Government</th>
+              <td>headOfGovernment</td>
+              <td>Time Range</td>
+              <td>Reference</td>
+              <td>1,641</td>
+            </tr>
+            <tr>
+              <th>Country</th>
+              <th>Head of State</th>
+              <td>headOfState</td>
+              <td>Time Range</td>
+              <td>Reference</td>
+              <td>2,727</td>
+            </tr>
+            <tr>
+              <th>Country</th>
+              <th>Memberships</th>
+              <td>memberOf</td>
+              <td>Time Range</td>
+              <td>Reference</td>
+              <td>1,540</td>
+            </tr>
+            <tr>
+              <th>Country</th>
+              <th>Nominal GDP</th>
+              <td>gdp</td>
+              <td>Point in Time</td>
+              <td>Number</td>
+              <td>8,417</td>
+            </tr>
+            <tr>
+              <th>Country</th>
+              <th>Nominal GDP per Capita</th>
+              <td>gdpPerCapita</td>
+              <td>Point in Time</td>
+              <td>Number</td>
+              <td>8,414</td>
+            </tr>
+            <tr>
+              <th>Country</th>
+              <th>Population</th>
+              <td>population</td>
+              <td>Point in Time</td>
+              <td>Number</td>
+              <td>10,845</td>
+            </tr>
+            <tr class="table-section-row">
+              <th>Country</th>
+              <th>Population Density</th>
+              <td>populationDensity</td>
+              <td>Point in Time</td>
+              <td>Number</td>
+              <td>10,429</td>
+            </tr>
+            <tr>
+              <th>NFL Athlete</th>
+              <th>Sports Number</th>
+              <td>sportsNumber</td>
+              <td>Point in Time</td>
+              <td>Number</td>
+              <td>28,379</td>
+            </tr>
+            <tr class="table-section-row">
+              <th>NFL Athlete</th>
+              <th>Team</th>
+              <td>team</td>
+              <td>Point in Time</td>
+              <td>Reference</td>
+              <td>68,332</td>
+            </tr>
+            <tr class="table-section-row">
+              <th>Politician</th>
+              <th>Position Held</th>
+              <td>positionHeld</td>
+              <td>Time Range</td>
+              <td>Reference</td>
+              <td>36,816</td>
+            </tr>
+            <tr class="table-section-row">
+              <th>Soccer Athlete</th>
+              <th>Team</th>
+              <td>team</td>
+              <td>Time Range</td>
+              <td>Reference</td>
+              <td>778,602</td>
+            </tr>
+            <tr>
+              <th>Traded Company</th>
+              <th>Earnings before interests and taxes</th>
+              <td>ebit</td>
+              <td>Point in Time</td>
+              <td>Number</td>
+              <td>14,945</td>
+            </tr>
+            <tr>
+              <th>Traded Company</th>
+              <th>Net Income</th>
+              <td>netIncome</td>
+              <td>Point in Time</td>
+              <td>Number</td>
+              <td>14,948</td>
+            </tr>
+            <tr>
+              <th>Traded Company</th>
+              <th>Total Assets</th>
+              <td>totalAssets</td>
+              <td>Point in Time</td>
+              <td>Number</td>
+              <td>14,585</td>
+            </tr>
+            <tr>
+              <th>Traded Company</th>
+              <th>Total Equity</th>
+              <td>totalEquity</td>
+              <td>Point in Time</td>
+              <td>Number</td>
+              <td>14,527</td>
+            </tr>
+            <tr class="table-section-row">
+              <th>Traded Company</th>
+              <th>Total Revenue</th>
+              <td>totalRevenue</td>
+              <td>Point in Time</td>
+              <td>Number</td>
+              <td>14,801</td>
+            </tr>
+          </tbody>
+        </table>
+        <h2>4. Data Format</h2>
+        <p>The dataset is provided in a JSON Format, where every entity class is
+          stored in a seperate file.</p>
+        <h3>4.1. JSON File Format</h3>
+        <p>Every JSON file is an array of JSON Objects with the format described
+          below. The JSON file has the following format: </p>
+        <pre>[<br>    {ENTITY_OBJECT_1},<br>    {ENTITY_OBJECT_2},<br>    {ENTITY_OBJECT_3},<br>    {ENTITY_OBJECT_4},<br>    {ENTITY_OBJECT_5},<br>    ......<br>    {ENTITY_OBJECT_97},<br>    {ENTITY_OBJECT_98},<br>    {ENTITY_OBJECT_99}<br>]</pre>
+        <p>Any <code>{ENTITY_OBJECT_XX}</code> is a JSON Object as described in
+          Section 4.2 below.</p>
+        <h3>4.2. Entity Object JSON Format</h3>
+        <p>Entity Objects have the following Formats:</p>
+        <pre>{<br>    "name": "{ENTITY_NAME}",<br>    "wikidataId": "{WIKIDATA_ID}",<br>    "values": [<br>        {VALUE_OBJECT_1},<br>        {VALUE_OBJECT_2},<br>        {VALUE_OBJECT_3},<br>        {VALUE_OBJECT_4},<br>        {VALUE_OBJECT_5},<br>        ......<br>        {VALUE_OBJECT_97},<br>        {VALUE_OBJECT_98},<br>        {VALUE_OBJECT_99}<br>    ]<br>}</pre>
+        <p><code>{ENTITY_NAME}</code>, <code>{WIKIDATA_ID}</code>, <code>{PROPERTY_NAME}</code>
+          are string values. <code>{ENTITY_NAME}</code> is a label of the
+          entity, while <code>{WIKIDATA_ID}</code> is the ID of the entity in
+          Wikidata.</p>
+        <p>Any <code>{VALUE_OBJECT_XX}</code> is a JSON Object as described in
+          Section 4.3 below.</p>
+        <h3>4.3. Value Object JSON Format</h3>
+        <p>The JSON format of the value object has two variations. Both
+          variations have a string property <code>type</code>, that determines
+          the type, and a string property <code>property</code> (<code>{PROPERTY_NAME}</code>),
+          which is the name of the property as shown in the table in Section 3
+          above.</p>
+        <h4>4.3.1. Point-in-Time value</h4>
+        <p>The point in time value reflects values that are valid for a given
+          point in time. The <code>type</code> property has the value "point".</p>
+        <pre>{<br>    "propertyName" : "{PROPERTY_NAME}"<br>    "point": "{POINT_DATE}", <br>    "type": "point",<br>    "value": {VALUE_TYPE_OBJECT}<br>}</pre>
+        <p><code>{POINT_DATE}</code> is a string value and needs to be parsed. <code>{POINT_DATE}</code>
+          can be of the following formats: <code>yyyy-mm-dd</code> or <code>yyyy</code>.
+          It is in the format of a string and needs to be parsed. </p>
+        <h4>4.3.2. Time-Range value</h4>
+        <p>The point in time value reflects values that are valid for a given
+          time range. The <code>type</code> property has the value "range".</p>
+        <pre>{<br>    "propertyName" : "{PROPERTY_NAME}"<br>    "from": "{FROM_DATE}",<br>    "to": "{TO_DATE}",<br>    "type": "range",<br>    "value": {VALUE_TYPE_OBJECT}<br>}</pre>
+        <p><code>{FROM_DATE}</code> and <code>{TO_DATE}</code> are both string
+          values and need to be parsed. They can both be of the following
+          formats: <code>yyyy-mm-dd</code> or <code>yyyy</code>. The <code>to</code>
+          property is optional.</p>
+        <h3>4.4. Value Type Object</h3>
+        <p>The value type objects are JSON Objects that describe the actual
+          value. They include a string property <code>type</code> that
+          describes the type of the value.</p>
+        <h4>4.4.1 Reference</h4>
+        <p>For the reference type the value of the <code>type</code> property
+          is simply <code>reference</code>. The reference type has two
+          additional properties. First there is a <code>label</code> property,
+          that provides a name for the referenced entitity. There is also <code>wikidataId</code>,
+          which provides the ID of the referenced entity in the Wikidata
+          Knowledge-Base. Both properties are string values.</p>
+        <pre>{<br>    "wikidataId": "{WIKIDATA_ID}",<br>    "label": "{LABEL}",<br>    "type": "reference"<br>}</pre>
+        <h4>4.4.2. Number</h4>
+        <p>For the number type the value of the <code>type</code> property is
+          simply <code>number</code>. There is an additional property <code>amount</code>,
+          which incluedes the actual number. The <code>amount</code> property
+          is of type string, and needs to parsed.</p>
+        <pre>{<br>    "amount": "{AMOUNT}",<br>    "type": "number"<br>}</pre>
+        <h2>5. Sample Entity Object</h2>
+        <p><b>You can download this sample <a href="#downloadSample">below.</a></b></p>
+        <pre>{<br>   "name":"Mannheim",<br>   "wikidataId":"Q2119",<br>   "values":[<br>      {<br>         "from":"2007",<br>         "propertyName":"mayor",<br>         "type":"range",<br>         "value":{<br>            "wikidataId":"Q2076493",<br>            "label":"Peter Kurz",<br>            "type":"reference"<br>         }<br>      },<br>      {<br>         "from":"1983",<br>         "to":"2007",<br>         "propertyName":"mayor",<br>         "type":"range",<br>         "value":{<br>            "wikidataId":"Q1512753",<br>            "label":"Gerhard Widder",<br>            "type":"reference"<br>         }<br>      },<br>      {<br>         "from":"1980",<br>         "to":"1983",<br>         "propertyName":"mayor",<br>         "type":"range",<br>         "value":{<br>            "wikidataId":"Q2575485",<br>            "label":"Wilhelm Varnholt",<br>            "type":"reference"<br>         }<br>      },<br>      {<br>         "point":"2013-12-31",<br>         "propertyName":"population",<br>         "type":"point",<br>         "value":{<br>            "amount":"296690",<br>            "type":"number"<br>         }<br>      },<br>      {<br>         "point":"2012-12-31",<br>         "propertyName":"population",<br>         "type":"point",<br>         "value":{<br>            "amount":"294627",<br>            "type":"number"<br>         }<br>      },<br>      {<br>         "point":"1961",<br>         "propertyName":"population",<br>         "type":"point",<br>         "value":{<br>            "amount":"313890",<br>            "type":"number"<br>         }<br>      },<br>      {<br>         "point":"1962",<br>         "propertyName":"population",<br>         "type":"point",<br>         "value":{<br>            "amount":"318919",<br>            "type":"number"<br>         }<br>      },<br>      {<br>         "point":"1963",<br>         "propertyName":"population",<br>         "type":"point",<br>         "value":{<br>            "amount":"321075",<br>            "type":"number"<br>         }<br>      },<br>      {<br>         "point":"1964",<br>         "propertyName":"population",<br>         "type":"point",<br>         "value":{<br>            "amount":"323444",<br>            "type":"number"<br>         }<br>      },<br>      {<br>         "point":"1965",<br>         "propertyName":"population",<br>         "type":"point",<br>         "value":{<br>            "amount":"328156",<br>            "type":"number"<br>         }<br>      },<br>      {<br>         "point":"1966",<br>         "propertyName":"population",<br>         "type":"point",<br>         "value":{<br>            "amount":"329301",<br>            "type":"number"<br>         }<br>      },<br>      {<br>         "point":"1967",<br>         "propertyName":"population",<br>         "type":"point",<br>         "value":{<br>            "amount":"323744",<br>            "type":"number"<br>         }<br>      },<br>      {<br>         "point":"1968",<br>         "propertyName":"population",<br>         "type":"point",<br>         "value":{<br>            "amount":"326302",<br>            "type":"number"<br>         }<br>      },<br>      {<br>         "point":"1969",<br>         "propertyName":"population",<br>         "type":"point",<br>         "value":{<br>            "amount":"330920",<br>            "type":"number"<br>         }<br>      },<br>      {<br>         "point":"1970",<br>         "propertyName":"population",<br>         "type":"point",<br>         "value":{<br>            "amount":"332163",<br>            "type":"number"<br>         }<br>      },<br>      {<br>         "point":"1971",<br>         "propertyName":"population",<br>         "type":"point",<br>         "value":{<br>            "amount":"330635",<br>            "type":"number"<br>         }<br>      },<br>      {<br>         "point":"1972",<br>         "propertyName":"population",<br>         "type":"point",<br>         "value":{<br>            "amount":"328411",<br>            "type":"number"<br>         }<br>      },<br>      {<br>         "point":"1973",<br>         "propertyName":"population",<br>         "type":"point",<br>         "value":{<br>            "amount":"325386",<br>            "type":"number"<br>         }<br>      },<br>      {<br>         "point":"1974",<br>         "propertyName":"population",<br>         "type":"point",<br>         "value":{<br>            "amount":"320508",<br>            "type":"number"<br>         }<br>      },<br>      {<br>         "point":"1975",<br>         "propertyName":"population",<br>         "type":"point",<br>         "value":{<br>            "amount":"314086",<br>            "type":"number"<br>         }<br>      },<br>      {<br>         "point":"1976",<br>         "propertyName":"population",<br>         "type":"point",<br>         "value":{<br>            "amount":"309059",<br>            "type":"number"<br>         }<br>      },<br>      {<br>         "point":"1977",<br>         "propertyName":"population",<br>         "type":"point",<br>         "value":{<br>            "amount":"305741",<br>            "type":"number"<br>         }<br>      },<br>      {<br>         "point":"1978",<br>         "propertyName":"population",<br>         "type":"point",<br>         "value":{<br>            "amount":"302794",<br>            "type":"number"<br>         }<br>      },<br>      {<br>         "point":"1979",<br>         "propertyName":"population",<br>         "type":"point",<br>         "value":{<br>            "amount":"303247",<br>            "type":"number"<br>         }<br>      },<br>      {<br>         "point":"1980",<br>         "propertyName":"population",<br>         "type":"point",<br>         "value":{<br>            "amount":"304303",<br>            "type":"number"<br>         }<br>      },<br>      {<br>         "point":"1981",<br>         "propertyName":"population",<br>         "type":"point",<br>         "value":{<br>            "amount":"304219",<br>            "type":"number"<br>         }<br>      },<br>      {<br>         "point":"1982",<br>         "propertyName":"population",<br>         "type":"point",<br>         "value":{<br>            "amount":"302621",<br>            "type":"number"<br>         }<br>      },<br>      {<br>         "point":"1983",<br>         "propertyName":"population",<br>         "type":"point",<br>         "value":{<br>            "amount":"298042",<br>            "type":"number"<br>         }<br>      },<br>      {<br>         "point":"1984",<br>         "propertyName":"population",<br>         "type":"point",<br>         "value":{<br>            "amount":"295178",<br>            "type":"number"<br>         }<br>      },<br>      {<br>         "point":"1985",<br>         "propertyName":"population",<br>         "type":"point",<br>         "value":{<br>            "amount":"294984",<br>            "type":"number"<br>         }<br>      },<br>      {<br>         "point":"1986",<br>         "propertyName":"population",<br>         "type":"point",<br>         "value":{<br>            "amount":"294648",<br>            "type":"number"<br>         }<br>      },<br>      {<br>         "point":"1987",<br>         "propertyName":"population",<br>         "type":"point",<br>         "value":{<br>            "amount":"295191",<br>            "type":"number"<br>         }<br>      },<br>      {<br>         "point":"1988",<br>         "propertyName":"population",<br>         "type":"point",<br>         "value":{<br>            "amount":"300468",<br>            "type":"number"<br>         }<br>      },<br>      {<br>         "point":"1989",<br>         "propertyName":"population",<br>         "type":"point",<br>         "value":{<br>            "amount":"305974",<br>            "type":"number"<br>         }<br>      },<br>      {<br>         "point":"1990",<br>         "propertyName":"population",<br>         "type":"point",<br>         "value":{<br>            "amount":"310411",<br>            "type":"number"<br>         }<br>      },<br>      {<br>         "point":"1991",<br>         "propertyName":"population",<br>         "type":"point",<br>         "value":{<br>            "amount":"314685",<br>            "type":"number"<br>         }<br>      },<br>      {<br>         "point":"1992",<br>         "propertyName":"population",<br>         "type":"point",<br>         "value":{<br>            "amount":"318446",<br>            "type":"number"<br>         }<br>      },<br>      {<br>         "point":"1993",<br>         "propertyName":"population",<br>         "type":"point",<br>         "value":{<br>            "amount":"318025",<br>            "type":"number"<br>         }<br>      },<br>      {<br>         "point":"1994",<br>         "propertyName":"population",<br>         "type":"point",<br>         "value":{<br>            "amount":"316223",<br>            "type":"number"<br>         }<br>      },<br>      {<br>         "point":"1995",<br>         "propertyName":"population",<br>         "type":"point",<br>         "value":{<br>            "amount":"311292",<br>            "type":"number"<br>         }<br>      },<br>      {<br>         "point":"1996",<br>         "propertyName":"population",<br>         "type":"point",<br>         "value":{<br>            "amount":"312216",<br>            "type":"number"<br>         }<br>      },<br>      {<br>         "point":"1997",<br>         "propertyName":"population",<br>         "type":"point",<br>         "value":{<br>            "amount":"310475",<br>            "type":"number"<br>         }<br>      },<br>      {<br>         "point":"1998",<br>         "propertyName":"population",<br>         "type":"point",<br>         "value":{<br>            "amount":"308903",<br>            "type":"number"<br>         }<br>      },<br>      {<br>         "point":"1999",<br>         "propertyName":"population",<br>         "type":"point",<br>         "value":{<br>            "amount":"307730",<br>            "type":"number"<br>         }<br>      },<br>      {<br>         "point":"2000",<br>         "propertyName":"population",<br>         "type":"point",<br>         "value":{<br>            "amount":"306729",<br>            "type":"number"<br>         }<br>      },<br>      {<br>         "point":"2001",<br>         "propertyName":"population",<br>         "type":"point",<br>         "value":{<br>            "amount":"308385",<br>            "type":"number"<br>         }<br>      },<br>      {<br>         "point":"2002",<br>         "propertyName":"population",<br>         "type":"point",<br>         "value":{<br>            "amount":"308759",<br>            "type":"number"<br>         }<br>      },<br>      {<br>         "point":"2003",<br>         "propertyName":"population",<br>         "type":"point",<br>         "value":{<br>            "amount":"308353",<br>            "type":"number"<br>         }<br>      },<br>      {<br>         "point":"2004",<br>         "propertyName":"population",<br>         "type":"point",<br>         "value":{<br>            "amount":"307499",<br>            "type":"number"<br>         }<br>      },<br>      {<br>         "point":"2005",<br>         "propertyName":"population",<br>         "type":"point",<br>         "value":{<br>            "amount":"307900",<br>            "type":"number"<br>         }<br>      },<br>      {<br>         "point":"2006",<br>         "propertyName":"population",<br>         "type":"point",<br>         "value":{<br>            "amount":"307914",<br>            "type":"number"<br>         }<br>      },<br>      {<br>         "point":"2007",<br>         "propertyName":"population",<br>         "type":"point",<br>         "value":{<br>            "amount":"309795",<br>            "type":"number"<br>         }<br>      },<br>      {<br>         "point":"2008",<br>         "propertyName":"population",<br>         "type":"point",<br>         "value":{<br>            "amount":"311342",<br>            "type":"number"<br>         }<br>      },<br>      {<br>         "point":"2009",<br>         "propertyName":"population",<br>         "type":"point",<br>         "value":{<br>            "amount":"311969",<br>            "type":"number"<br>         }<br>      },<br>      {<br>         "point":"2010",<br>         "propertyName":"population",<br>         "type":"point",<br>         "value":{<br>            "amount":"313174",<br>            "type":"number"<br>         }<br>      },<br>      {<br>         "point":"2011",<br>         "propertyName":"population",<br>         "type":"point",<br>         "value":{<br>            "amount":"291458",<br>            "type":"number"<br>         }<br>      },<br>      {<br>         "point":"2014",<br>         "propertyName":"population",<br>         "type":"point",<br>         "value":{<br>            "amount":"299844",<br>            "type":"number"<br>         }<br>      }<br>   ]<br>}</pre>
+        <h2>6. Download</h2>
+        <p>You can download the dataset here:</p>
+        <ol>
+          <li><a href="http://data.dws.informatik.uni-mannheim.de/expansion/downloads/TDGT.zip">Download
+              full dataset</a></li>
+          <li><a href="./sample.json" id="downloadSample">Download sample entity
+              object</a></li>
+        </ol>
+        <h2 id="feedback">7. Feedback</h2>
+        <p>Please send questions and feedback to directly to the authors (listed
+          above) or post them in the <a href="https://groups.google.com/forum/?fromgroups#%21forum/web-data-commons">Web
+            Data Commons Google Group</a>.<br>
+        </p>
+        <h2>8. References</h2>
+        <ol>
+          <li>[Bleiholder2009] Jens Bleiholder, and Felix Naumann. 2009. Data
+            Fusion. ACM Computing Surveys, ACM, 2009, 41, 1:1-1:41 (January
+            2009).</li>
+          <li><a>[Dong2016]</a> Xin Luna Dong, Anastasios Kementsietsidis, and
+            Wang-Chiew Tan. 2016. A Time Machine for Information: Looking Back
+            to Look Forward. SIGMOD Rec. 45, 2 (September 2016).</li>
+          <li><a id="Oulabi2016">[Oulabi2016]</a> Yaser Oulabi, Robert Meusel,
+            and Christian Bizer. 2016. Fusing time-dependent web table data. In
+            Proceedings of the 19th International Workshop on Web and Databases
+            (WebDB '16). ACM, New York, NY, USA, , Article 3 , 7 pages.</li>
+          <li><a id="Oulabi2017">[Oulabi2017]</a> Yaser Oulabi, and Christian
+            Bizer. 2017. Estimating Missing Temporal Meta-Information using
+            Knowledge-Based-Trust. In Proceedings of the 3rd International
+            Workshop on Knowledge Discovery on the WEB (KDWeb '16). CEUR
+            Workshop Proceedings, RWTH: Aachen.</li>
+          <li><a id="Lehmberg2016">[Lehmberg2016]</a> Oliver Lehmberg, Dominique
+            Ritze, Robert Meusel, and Christian Bizer. 2016. A Large Public
+            Corpus of Web Tables containing Time and Context Metadata. In
+            Proceedings of the 25th International Conference Companion on World
+            Wide Web (WWW '16 Companion). International World Wide Web
+            Conferences Steering Committee, Republic and Canton of Geneva,
+            Switzerland, 75-76.</li>
+          <li><a id="Zhang2013">[Zhang2013]</a> Meihui Zhang and Kaushik
+            Chakrabarti. 2013. InfoGather+: semantic matching and annotation of
+            numeric and time-varying attributes in web tables. In Proceedings of
+            the 2013 ACM SIGMOD International Conference on Management of Data
+            (SIGMOD '13). ACM, New York, NY, USA, 145-156.</li>
+        </ol>
+        <hr><em>Released: 15.07.19</em>
+        <ol>
+        </ol>
+      </div>
+    </div>
+    <script type="text/javascript">
+$('#toc').toc({
+'selectors': 'h2,h3,h4', //elements to use as headings
+'container': '#toccontent', //element to find all selectors in
+'smoothScrolling': true, //enable or disable smooth scrolling on click
+'prefix': 'toc', //prefix for anchor tags and class names
+'highlightOnScroll': true, //add class to heading that is currently in focus
+'highlightOffset': 100, //offset to trigger the next headline
+'anchorName': function(i, heading, prefix) { //custom function for anchor name
+return prefix+i;
+}
+});
+</script> </body>
+</html>
