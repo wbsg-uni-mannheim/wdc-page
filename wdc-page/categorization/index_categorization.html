@@ -1,0 +1,1178 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>WDC - Categorization Gold Standard</title>
+	<link rel='stylesheet' href='http://webdatacommons.org/style.css' type='text/css' media='screen' />
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<style>
+		.tar {
+		text-align: right;
+		}
+		.rtable
+		{
+		float: right;
+		padding-left:10px;
+		}
+		.smalltable, .smalltable TD, .smalltable TH
+		{
+		font-size:9pt;
+		}
+		.tab {
+		overflow: hidden;
+		border: 1px solid #ccc;
+		background-color: #eaf3fa;
+		clear:both;
+		padding-left: 37px;
+		width:500px
+		}
+		.tab button {
+		background-color: inherit;
+		float: left;
+		border: none;
+		outline: none;
+		cursor: pointer;
+		padding: 15px 15px;
+		transition: 0.3s;
+		}
+		.tab button:hover {
+  		background-color: #ddd;
+		}
+		.tab button.active {
+  		background-color: #ccc;
+		}
+		.tabcontent {
+		display: none;
+		padding: 6px 12px;
+		border-top: none;
+		animation: fadeEffect 1s;
+		width:500px
+		}
+		.table-wrapper {
+		position:relative;
+		}
+		.table-scroll {
+		height:240px;
+		overflow:auto;
+		margin-top:-10px;
+		}
+		.show{
+		display:block;
+		}
+		.no-show{
+		display:none;
+		}
+		caption {
+		caption-side: bottom;
+		font-style: italic;
+		}
+		td[scope="mergedcol"] {
+		text-align: center;
+		}
+		hr {
+		width: 50%;
+		margin: 20px 0; /* This leaves 10px margin on left and right. If only right margin is needed try margin-right: 10px; */
+		}
+		@keyframes fadeEffect {
+			from {opacity: 0;}
+			to {opacity: 1;}
+		}
+	</style>
+	<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+	<script type="text/javascript">
+		google.load('visualization', '1', {
+			packages: ['bar', 'line', 'corechart']
+		});
+		
+		google.setOnLoadCallback(drawStatsGS);
+        google.setOnLoadCallback(drawClusterSizes);
+        google.setOnLoadCallback(drawCategDistributionCorpusOffers);
+        google.setOnLoadCallback(drawCategDistributionCorpusClusters);
+        google.setOnLoadCallback(drawCategResultsCorpusOffers);  
+		
+
+
+		
+        function drawStatsGS() {
+			var data = google.visualization.arrayToDataTable([
+				["Category", "Property in GS", {
+					role: 'annotation'
+				}],
+				["title", 24586, "99.58%"],
+				["description", 16166, "65.48%"],
+				["brand", 10563, "42.78%"],
+				["manufacturer", 1201, "4.87%"]
+
+			]);
+
+
+			var view = new google.visualization.DataView(data);
+			view.setColumns([0, 1,
+				{
+					calc: "stringify",
+					sourceColumn: 1,
+					type: "string",
+					role: "annotation"
+				}
+			]);
+
+			var options = {
+				title: "Figure 1: Coverage of schema.org properties in the Gold Standard",
+				width: 600,
+				height: 400,
+				bar: {
+					groupWidth: "65%"
+				},
+				legend: {
+					position: "none"
+				},
+				hAxis: {
+					title: '# Offer Entities',
+					minValue: 0
+				},
+				vAxis: {
+					title: 'schema.org property',
+					textStyle: {
+						fontSize: 12
+					}
+				}
+			};
+
+			var chart = new google.visualization.BarChart(document.getElementById("schemaPropInGS"));
+			chart.draw(data, options);
+
+
+		}
+        
+        function drawClusterSizes() {
+			var data = google.visualization.arrayToDataTable([
+				["# Offers", "# Clusters", {
+					role: 'annotation'
+				}],
+				["[71-80]", 21, "0.99%"],
+				["[61-70]", 10, "0.47%"],
+				["[51-60]", 27, "1.28%"],
+				["[41-50]", 45, "2.31%"],
+				["[31-40]", 79, "3.74%"],
+				["[21-30]", 124, "5.86%"],
+				["[11-20]", 600, "28.37%"],
+				["[5-10]", 403, "19.05%"],
+				["[2-4]", 221, "10.45%"],
+				["[1]", 585, "27.66%"]
+
+			]);
+
+
+			var view = new google.visualization.DataView(data);
+			view.setColumns([0, 1,
+				{
+					calc: "stringify",
+					sourceColumn: 1,
+					type: "string",
+					role: "annotation"
+				}
+			]);
+
+			var options = {
+				title: "Figure 2: Distribution of cluster sizes in the Gold Standard",
+				width: 600,
+				height: 400,
+				bar: {
+					groupWidth: "75%"
+				},
+				legend: {
+					position: "none"
+				},
+				hAxis: {
+					title: '# Clusters',
+					minValue: 0
+				},
+				vAxis: {
+					title: '# Offers',
+					textStyle: {
+						fontSize: 12
+					}
+				}
+			};
+
+			var chart = new google.visualization.BarChart(document.getElementById("clusterSizesInGS"));
+			chart.draw(data, options);
+
+
+		}
+        function drawCategDistributionCorpusOffers() {
+
+			var data = google.visualization.arrayToDataTable([
+				["Category", "Offers in Corpus", {
+					role: 'annotation'
+				}],
+				["[Office_Products]", 2160426, "13.13%"],
+				["[Tools_and_Home_Improvement]", 1547329, "9.41%"],	
+				["[Home_and_Garden]", 1461979, "8.89%"],
+				["[Automotive]", 1376228, "8.37%"],
+				["[Clothing]", 1096607, "6.67%"],
+				["[Sports_and_Outdoors]", 896801, "5.45%"],
+				["[Other_Electronics]", 867129, "5.27%"],
+				["[Jewelry]", 813983, "4.95%"],                
+				["[Books]", 693707, "4.22%"],                
+				["[Shoes]", 683036, "4.15%"],                
+				["[Computers_and_Accessories]", 664978, "4.04%"],                
+				["[Health_and_Beauty]", 646004, "3.93%"],                
+				["[Toys_and_Games]", 528218, "3.21%"],                
+				["[Grocery_and_Gourmet_Food]", 495283, "3.01%"],                
+				["[Luggage_and_Travel_Gear]", 440361, "2.68%"],                
+				["[Musical_Instruments]", 331015, "2.01%"],                
+				["[Camera_and_Photo]", 323403, "1.97%"],
+				["[CDs_and_Vinyl]", 295729, "1,80%"],                
+				["[Cellphones_and_Accessories]", 250861, "1.52%"],                
+				["[Baby]", 240037, "1.46%"],
+				["[not found]", 203570, "1.24%"],
+				["[Movies_and_TV]", 158197, "0.96%"],
+				["[Video_Games]", 150170, "0.91%"],
+				["[Pet_Supplies]", 103677, "0.63%"],
+				["[Others]", 22771, "0.14%"]
+			]);
+            	
+	
+			var view = new google.visualization.DataView(data);
+			view.setColumns([0, 1,
+				{
+					calc: "stringify",
+					sourceColumn: 1,
+					type: "string",
+					role: "annotation"
+				}
+			]);
+
+			var options = {
+				title: "Figure 3: Distribution of offer entities per category in the English Training Set",
+				width: 1000,
+				height: 800,
+				bar: {
+					groupWidth: "75%"
+				},
+				legend: {
+					position: "none"
+				},
+				hAxis: {
+					title: '# Offer Entities',
+					minValue: 0
+				},
+				vAxis: {
+					title: 'Product Category',
+					textStyle: {
+						fontSize: 12
+					}
+				}
+			};
+
+			var chart = new google.visualization.BarChart(document.getElementById("catInCorpusOffers"));
+			chart.draw(data, options);
+		}
+        
+        function drawCategDistributionCorpusClusters() {
+
+			var data = google.visualization.arrayToDataTable([
+				["Category", "Offers in Corpus", {
+					role: 'annotation'
+				}],
+				["[Tools_and_Home_Improvement]", 1245633, "12.37%"],		
+				["[Home_and_Garden]", 1066353, "10.59%"],		
+				["[Automotive]", 901490, "8.95%"],		
+				["[Other_Electronics]", 679232, "6.74%"],		
+				["[Clothing]", 597478, "5.93%"],                		
+				["[Books]", 539605, "5.36%"],                		
+				["[Jewelry]", 497173, "4.94%"],                		
+				["[Shoes]", 445458, "4.42%"],       
+                ["[Health_and_Beauty]", 425758, "4.23%"],                 		
+				["[Toys_and_Games]", 403823, "4.01%"],                		
+				["[Office_Products]", 403771, "4.01%"],                
+				["[Sports_and_Outdoors]", 386771, "3.84%"],               		
+				["[Grocery_and_Gourmet_Food]", 353921, "3.51%"],                 		
+				["[Computers_and_Accessories]", 304842, "3.03%"],                		
+				["[Luggage_and_Travel_Gear]", 264826, "2.63%"],    		
+				["[CDs_and_Vinyl]", 250867, "2.49%"],                		
+				["[Camera_and_Photo]", 239948, "2.38%"],                		
+				["[Musical_Instruments]", 227885, "2.26%"],                		
+				["[Cellphones_and_Accessories]", 204832, "2.03%"],                		
+				["[Baby]", 190006, "1.89%"],                		
+				["[Movies_and_TV]", 126017, "1.25%"],                		
+				["[Video_Games]", 116882, "1.16%"],                		
+				["[not found]", 100927, "1,00%"],                		
+				["[Pet_Supplies]", 76713, "0.76%"],		
+				["[Others]", 22186, "0.22%"]
+			]);
+            	
+	
+			var view = new google.visualization.DataView(data);
+			view.setColumns([0, 1,
+				{
+					calc: "stringify",
+					sourceColumn: 1,
+					type: "string",
+					role: "annotation"
+				}
+			]);
+
+			var options = {
+				title: "Figure 4: Distribution of product clusters per category in the English Training Set",
+				width: 1000,
+				height: 800,
+				bar: {
+					groupWidth: "75%"
+				},
+				legend: {
+					position: "none"
+				},
+				hAxis: {
+					title: '# Clusters',
+					minValue: 0
+				},
+				vAxis: {
+					title: 'Product Category',
+					textStyle: {
+						fontSize: 12
+					}
+				}
+			};
+
+			var chart = new google.visualization.BarChart(document.getElementById("catInCorpusClusters"));
+			chart.draw(data, options);
+		}
+          
+        
+         function drawCategResultsCorpusOffers() {
+
+			var data = google.visualization.arrayToDataTable([
+				["Category", "Accuracy", {
+					role: 'style'},{role: 'annotation'}],
+				["[Office_Products]", 100, "#001133", "13.13%"],
+                ["[Jewelry]", 100, "#004de6","4.95%"],
+                ["[Musical_Instruments]", 100, "#4d88ff","2.01%"],
+                ["[not found]", 100, "#80aaff","1.24%"],
+                ["[Automotive]", 90, "#002b80","8.37%"],
+                ["[Clothing]", 90, "#003cb3", "6.67%"],
+                ["[Other_Electronics]", 88, "#0044cc","5.27%"],
+                ["[Books]", 88, "#004de6", "4.22%"], 
+                ["[Health_and_Beauty]", 88, "#0055ff","3.93%"],
+                ["[Shoes]", 86, "#004de6","4.15%"],
+				["[Tools_and_Home_Improvement]", 78, "#002266","9.41%"],	
+				["[Home_and_Garden]", 80, "#002b80","8.89%"],
+                ["[Camera_and_Photo]", 80, "#80aaff","1.97%"],
+                ["[Movies_and_TV]", 80, "#b3ccff","0.96%"],
+                ["[Computers_and_Accessories]", 78, "#004de6","4.04%"],
+                ["[Pet_Supplies]", 70, "#b3ccff","0.63%"],
+                ["[Grocery_and_Gourmet_Food]", 57, "#0055ff","3.01%"],
+                ["[Cellphones_and_Accessories]", 57, "#80aaff","1.52%"], 
+				["[Luggage_and_Travel_Gear]", 56, "#4d88ff","2.68%"], 
+				["[Video_Games]", 50, "#b3ccff","0.91%"],
+				["[Sports_and_Outdoors]", 44, "#0044cc","5.45%"],    
+				["[Toys_and_Games]", 38, "#0055ff","3.21%"],                
+				["[CDs_and_Vinyl]", 20, "#80aaff","1.80%"],                
+				["[Baby]", 17, "#80aaff","1.46%"],
+				["[Others]", 0, "#b3ccff","0.14%"]
+			]);
+            	
+	
+			var view = new google.visualization.DataView(data);
+			view.setColumns([0, 1,
+				{
+					calc: "stringify",
+					sourceColumn: 1,
+					type: "string",
+					role: "annotation"
+				}
+			]);
+
+			var options = {
+				title: "Figure 5: Sample Categorization Results from the Corpus",
+				width: 1500,
+				height: 800,
+				bar: {
+					groupWidth: "75%"
+				},
+				legend: {
+					position: "none"
+				},
+				hAxis: {
+					title: 'Product Category',
+					minValue: 0
+				},
+				vAxis: {
+					title: 'Accuracy',
+					textStyle: {
+						fontSize: 12
+					}
+				}
+			};
+
+			var chart = new google.visualization.ColumnChart(document.getElementById("resultsCorpusOffers"));
+			chart.draw(data, options);
+		}  
+  
+
+	
+	</script>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+	<script type="text/javascript" src="../jquery.toc.min.js"></script>
+	<script type="text/javascript">
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-30248817-1']);
+		_gaq.push(['_trackPageview']);
+
+		(function () {
+			var ga = document.createElement('script');
+			ga.type = 'text/javascript';
+			ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0];
+			s.parentNode.insertBefore(ga, s);
+		})();
+	</script>
+	<script type="application/ld+json">
+		{
+			"@context": "http://schema.org/",
+			"@type": "Dataset",
+			"name": "Web Data Commons - Categorization Gold Standard",
+			"description": "The training dataset consisting of 20 million pairs of product offers referring to the same products categorized into 25 product categories. We also created a categorization gold standard by manually verifying more than 2000 clusters of offers belonging to 25 different product categories.",
+			"url": "http://webdatacommons.org/largescaleproductcorpus/index.html",
+			"keywords": [
+				"training corpus",
+				"product corpus",
+				"large scale",
+				"product matching",
+				"entity matching",
+                "product classification"
+			],
+			"creator": [{
+					"@type": "Person",
+					"url": "http://dws.informatik.uni-mannheim.de/en/people/professors/prof-dr-christian-bizer/",
+					"name": "Christian Bizer"
+				},
+				{
+					"@type": "Person",
+					"url": "http://dws.informatik.uni-mannheim.de/en/people/researchers/anna-primpeli/",
+					"name": "Anna Primpeli"
+				},
+				{
+					"@type": "Person",
+					"name": "Helene Bechtold"
+				}
+
+			],
+			"distribution": [{
+				"@type": "DataDownload",
+				"fileFormat": [
+					"json"
+				],
+				"contentUrl": "http://data.dws.informatik.uni-mannheim.de/largescaleproductcorpus/data/offers.json.gz"
+			}],
+			"citation": [
+
+			]
+		}
+	</script>
+
+</head>
+
+<body>
+	<div id="logo" style="text-align:right; background-color: white;">&nbsp;&nbsp;<a href="http://dws.informatik.uni-mannheim.de"><img
+			 src="../images/ma-logo.gif" alt="University of Mannheim - Logo"></a></div>
+	<div id="header">
+		<h1 style="font-size: 250%;">Web Data Commons - Categorization Gold Standard</h1>
+	</div>
+	<div id="authors">
+		<a href="https://dws.informatik.uni-mannheim.de/en/people/researchers/anna-primpeli/">Anna Primpeli</a><br />
+		<a href="http://dws.informatik.uni-mannheim.de/en/people/professors/prof-dr-christian-bizer/">Christian Bizer</a><br />
+		Helene Bechtold
+	</div>
+	<div id="content">
+		<p>
+		This page provides the WDC Categorization Gold Standard for public download. The gold standard consists of more than 24,000 manually labelled product offers from different e-shops. The offers are  assigned to a flat catagorization schema consisting of 25 product categories. We also present the results of a baseline cagegorization experiment in which we train  and evaluate an ensemble of one-vs-rest classifiers. We apply the learned classifier to the the WDC Training Dataset for Large-scale Product Matching in order to obtain a consistent categorization of all 26 million product offers contained in the dataset, which we also provide for download. </p>
+		
+		<h2>Contents</h2>
+		<ul>
+			<li class="toc-h2 toc-active">
+				<a href="#toc1"> 1. Motivation</a>
+			</li>
+			<li class="toc-h2 toc-active">
+				<a href="#toc2"> 2. Gold Standard Creation</a>
+			</li>
+			<li class="toc-h2 toc-active">
+				<a href="#toc3"> 3. Gold Standard Profiling</a>
+			</li>
+            <li class="toc-h2 toc-active">
+				<a href="#toc4"> 4. Baseline Experiments</a>
+			</li>
+            <li class="toc-h2 toc-active">
+				<a href="#toc5"> 5. Corpus Categorization</a>
+			</li>
+			<li class="toc-h2 toc-active">
+				<a href="#toc6"> 6. Download </a>
+			</li>
+			<li class="toc-h2 toc-active">
+				<a href="#toc7"> 7. Feedback </a>
+		</ul>
+
+		<span id="toc1"></span>
+		<h2>1. Motivation</h2>
+		<p> Categorizing product offers from different e-shops into a single categorization schema is a task faced by many aggregators in e-commerce. The WDC Categorization Gold Standard allows the comparison of  learning-based categorization methods on this task. The gold standard is based on the <a href="http://webdatacommons.org/largescaleproductcorpus/">WDC Training Set for Large-scale Product Matching</a> which contains offers from 79 thousand websites. The offers are marked up on the websites using the <a href="https://schema.org/Product">schema.org product vocabulary</a>. We created the WDC Categorization Gold Standard by manually categorizing  a subset of the offers in the training set into a flat, non-overlapping schema of 25 top-level product categories. We labelled at least 500 offers for each category.   </p>
+        
+        <p>
+            In the following, we describe the methodology that was used to create the categorization gold standard, as well as statistics about the dataset and baseline experiments. Finally, we present statistics about the results of applying the learned classifer to the whole WDC product data corpus.		</p>
+		<span id="toc2"></span>
+		<h2>2. Gold Standard Creation</h2>
+		<p>To create a gold standard that contains a sufficient amount of offers per category to train and evaluate a classification model that performs effectively on all categories, we manually labelled  offers from the <a href="http://webdatacommons.org/largescaleproductcorpus/index.html#toc7">English Training Corpus</a>. </p>
+        <p>
+            First, we defined a set of categories with the goal of creating a taxonomy that is comparable to other relevant e-commerce category taxonomies. In order to create such a category set, the <a href="http://jmcauley.ucsd.edu/data/amazon/">Amazon</a>, <a href="https://www.google.com/basepages/producttype/taxonomy.en-GB.txt">Google</a> and <a href="https://wwwcfprd.doa.louisiana.gov/osp/lapac/vendor/commodityTree.cfm">UNSPSC</a> taxonomies were compared and the overlapping first-level categories were identified. Additionally, some second-level categories were used in the electronics and clothing domains to create a categorization that is not too broad, resulting in a set of 25 representative categories. </p>
+        <p>
+            To find an equal number of different offers for each category, the results from the transfer learning categorization, which was used as a first categorization experiment on the initial gold standard, were manually verified (for details about the transfer learning approach please refer to the WDC Product Matching website). More specifically, for each category, the offers assigned to that category by the transfer learning approach, as well as the offers in the same cluster, were reviewed and, if they were correctly classified, all offers in the cluster were annotated with the class label. The schema.org properties name, title, description, brand and manufacturer were used in order to identify the correct category. Offers that did not fit into any of the defined categories were labelled with 'Others' and offers, for which the category was unclear due to too less information or non-English attributes, were labelled with 'not found'. For some categories, only a few offers were labelled by the transfer learning approach. In order to obtain more offers belonging to these categories, a keyword search was applied using words specific for the respective domain. Only clusters that contain less than 80 offers were selected to reduce noise. Furthermore, clusters containing more than one offer were preferred and it was ensured that each offer contained at least a title or a name. Finally, the categories in the categorization gold standard that was created for first experiments were adapted to the defined set of categories and was added to the labelled data. It contains 985 offers, categorized into 24 categories and a very imbalanced distribution of categories. Details about the distribution of the offers on the categories in the initial gold standard can be found on the WDC Product Matching website.
+        
+		
+		      <span id="toc3"></span>		</p>
+        <h2>3.Gold Standard Statistics</h2>
+		<p>
+			The final categorization gold standard contains at least 50 clusters for each category and 2115 clusters in total. The clusters consist of 24,689 product offers. Table 1 shows the number of offers and clusters per category, as well as the average cluster size. Further, the coverage of the schema.org properties per category and in total (Figure 1) is given. The title property refers to the concatenated name and title for each offer. The distribution of the cluster sizes (number of offers per cluster) is depicted in Figure 2.</p>
+        
+        <table class="smalltable" style="margin-top:3em">
+					<caption>
+						<p>
+							Table 1: Gold Standard Statistics per category
+						</p>
+					</caption>
+					<thead>
+						<tr>
+							<th>Category</th>
+							<th># offers</th>
+							<th># clusters</th>
+							<th>Average size of clusters</th>
+							<th>title</th>
+							<th>description</th>
+							<th>brand</th>
+                            <th>manufacturer</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>Automotive</td>
+							<td>1446</td>
+							<td>78</td>
+							<td>18.5</td>
+							<td>100%</td>
+							<td>66%</td>
+                            <td>63%</td>
+                            <td>5%</td>
+						</tr>
+						<tr>
+							<td>Baby</td>
+							<td>918</td>
+							<td>89</td>
+							<td>10.3</td>
+							<td>100%</td>
+							<td>69%</td>
+                            <td>47%</td>
+                            <td>12%</td>
+						</tr>
+						<tr>
+							<td>Books</td>
+							<td>656</td>
+							<td>89</td>
+							<td>7.4</td>
+							<td>100%</td>
+							<td>35%</td>
+                            <td>62%</td>
+                            <td>7%</td>
+						</tr>
+						<tr>
+							<td>CDs_and_Vinyl</td>
+							<td>604</td>
+							<td>90</td>
+							<td>6.7</td>
+							<td>95%</td>
+							<td>36%</td>
+                            <td>19%</td>
+                            <td>5%</td>
+						</tr>
+                        <tr>
+							<td>Camera_and_Photo</td>
+							<td>968</td>
+							<td>91</td>
+							<td>10.6</td>
+							<td>100%</td>
+							<td>86%</td>
+                            <td>35%</td>
+                            <td>19%</td>
+						</tr>
+                        <tr>
+							<td>Cellphones_and_Accessories</td>
+							<td>1377</td>
+							<td>90</td>
+							<td>15.3</td>
+							<td>100%</td>
+							<td>67%</td>
+                            <td>70%</td>
+                            <td>2%</td>
+						</tr>
+                        <tr>
+							<td>Clothing</td>
+							<td>3242</td>
+							<td>232</td>
+							<td>14.0</td>
+							<td>100%</td>
+							<td>14%</td>
+                            <td>1%</td>
+                            <td>0%</td>
+						</tr>
+                        <tr>
+							<td>Computers_and_Accessories</td>
+							<td>4753</td>
+							<td>162</td>
+							<td>29.3</td>
+							<td>100%</td>
+							<td>97%</td>
+                            <td>94%</td>
+                            <td>1%</td>
+						</tr>
+                        <tr>
+							<td>Grocery_and_Gourmet_Food</td>
+							<td>561</td>
+							<td>76</td>
+							<td>7.6</td>
+							<td>100%</td>
+							<td>80%</td>
+                            <td>20%</td>
+                            <td>7%</td>
+						</tr>
+                        <tr>
+							<td>Health_and_Beauty</td>
+							<td>506</td>
+							<td>73</td>
+							<td>6.9</td>
+							<td>99%</td>
+							<td>52%</td>
+                            <td>23%</td>
+                            <td>10%</td>
+						</tr>
+                        <tr>
+							<td>Home_and_Garden</td>
+							<td>554</td>
+							<td>78</td>
+							<td>7.1</td>
+							<td>100%</td>
+							<td>69%</td>
+                            <td>25%</td>
+                            <td>4%</td>
+						</tr>
+                         <tr>
+							<td>Jewelry</td>
+							<td>767</td>
+							<td>56</td>
+							<td>13.7</td>
+							<td>100%</td>
+							<td>79%</td>
+                            <td>3%</td>
+                            <td>1%</td>
+						</tr>
+                        <tr>
+							<td>Luggage_and_Travel_Gear</td>
+							<td>812</td>
+							<td>72</td>
+							<td>11.3</td>
+							<td>99%</td>
+							<td>68%</td>
+                            <td>31%</td>
+                            <td>6%</td>
+						</tr>
+                        <tr>
+							<td>Movies_and_TV</td>
+							<td>643</td>
+							<td>75</td>
+							<td>8.6</td>
+							<td>98%</td>
+							<td>91%</td>
+                            <td>11%</td>
+                            <td>9%</td>
+						</tr>
+                        <tr>
+							<td>Musical_Instruments</td>
+							<td>570</td>
+							<td>83</td>
+							<td>6.9</td>
+							<td>99%</td>
+							<td>94%</td>
+                            <td>35%</td>
+                            <td>11%</td>
+						</tr>
+                        <tr>
+							<td>Office_Products</td>
+							<td>659</td>
+							<td>57</td>
+							<td>11.6</td>
+							<td>100%</td>
+							<td>51%</td>
+                            <td>6%</td>
+                            <td>7%</td>
+						</tr>
+                         <tr>
+							<td>Other_Electronics</td>
+							<td>687</td>
+							<td>87</td>
+							<td>7.9</td>
+							<td>100%</td>
+							<td>81%</td>
+                            <td>33%</td>
+                            <td>8%</td>
+						</tr>
+                         <tr>
+							<td>Others</td>
+							<td>10</td>
+							<td>7</td>
+							<td>1.4</td>
+							<td>100%</td>
+							<td>70%</td>
+                            <td>40%</td>
+                            <td>10%</td>
+						</tr>
+                        <tr>
+							<td>Pet_Supplies</td>
+							<td>610</td>
+							<td>77</td>
+							<td>7.9</td>
+							<td>100%</td>
+							<td>97%</td>
+                            <td>3%</td>
+                            <td>6%</td>
+						</tr>
+                        <tr>
+							<td>Shoes</td>
+							<td>555</td>
+							<td>68</td>
+							<td>8.2</td>
+							<td>100%</td>
+							<td>48%</td>
+                            <td>23%</td>
+                            <td>2%</td>
+						</tr>
+                         <tr>
+							<td>Sports_and_Outdoors</td>
+							<td>818</td>
+							<td>71</td>
+							<td>11.5</td>
+							<td>100%</td>
+							<td>85%</td>
+                            <td>86%</td>
+                            <td>1%</td>
+						</tr>
+                        <tr>
+							<td>Tools_and_Home_Improvement</td>
+							<td>783</td>
+							<td>85</td>
+							<td>9.2</td>
+							<td>100%</td>
+							<td>68%</td>
+                            <td>57%</td>
+                            <td>17%</td>
+						</tr>
+                        <tr>
+							<td>Toys_and_Games</td>
+							<td>586</td>
+							<td>89</td>
+							<td>6.6</td>
+							<td>100%</td>
+							<td>34%</td>
+                            <td>21%</td>
+                            <td>9%</td>
+						</tr>
+                         <tr>
+							<td>Video_Games</td>
+							<td>584</td>
+							<td>82</td>
+							<td>7.1</td>
+							<td>100%</td>
+							<td>86%</td>
+                            <td>48%</td>
+                            <td>7%</td>
+						</tr>
+                         <tr>
+							<td>not found</td>
+							<td>1020</td>
+							<td>58</td>
+							<td>17.6</td>
+							<td>97%</td>
+							<td>26%</td>
+                            <td>3%</td>
+                            <td>3%</td>
+                        </tr>
+                         <tr>
+							<td>Total</td>
+							<td>24689</td>
+							<td>2115</td>
+							<td>11.7</td>
+							<td>99.58%</td>
+							<td>65.48%</td>
+                            <td>42.78%</td>
+                            <td>4.87%</td>
+                             
+						</tr>
+            </tbody>
+				</table>
+		
+
+				<div>
+					<span id="schemaPropInGS" style="float:left"></span>
+					<span id="clusterSizesInGS" style="float:left"></span>
+				</div>
+				
+
+
+				<span id="toc4"></span>
+				<h2>4. Baseline Experiments</h2>
+				 <p>In order to set a baseline for the comparison of different categorization algorithms, we split the Gold Standard into train and test dataset and train a one-vs-rest ensemble of logistic regression classifiers. This ensemble reaches a F1 score of 85% on the test set. In the following we provide details about the experiment. </p>
+
+                 <p><strong>Experimental Setup</strong></p>
+                 <p>First, a set of features was created from each offer. The schema.org properties name, title, description, brand and manufacturer were used. The title and name attribute was concatenated to a final title attribute. For each offer that did not have one of the schema.org properties itself, the respective parent schema.org property was used. So if an offer did not have an own manufacturer, the parent entity's manufacturer was assigned to it. Specification table keys and values, if available, were added as a further attribute. In order to extract useful information from the specification table values, only the values belonging to the keys Model, Type, Category, Sub-Category, Manufacturer were used. Additionally, the content of the html pages of each offer was extracted by removing all html tags and code. The specification tables and html pages for the offers in the corpus can be <a href="http://webdatacommons.org/largescaleproductcorpus/index.html#toc7">downloaded</a> from the WDC Product Matching website.</p>
+        
+                 </p>
+                 <p> The terms of each attribute were lowercased and all punctuation characters and single letters or numbers were removed. Stop words were removed from the descriptions and html content using the stop words list from the Python Natural Language Toolkit <a href="https://www.nltk.org/">NLTK</a>.</p>
+
+                <p>The training set was built by grouping the offers in the manually labelled gold standard by their ID clusters, concatenating the values of each attribute in a cluster. The resulting dataset was split into a training and test set, by assigning all clusters containing only one offer to the training set and splitting the remaining clusters by stratified sampling into 80% training and 20% test data. The training set was highly imbalanced regarding the class distribution. The clusters of each category were up-and downsampled to the median amount of 72 clusters per category. </p>
+                <p>In addition to the training set derived from the WDC Categorization Gold Standarad, we also use a subset of the <a href="http://jmcauley.ucsd.edu/data/amazon/">UCSD Amazon Product Dataset</a> for training. This subset was created by randomly sampling 1000 offers per category that contain a title and description. We also provide <a href="#toc6">this subset for download</a> at the end of the page.</p>
+
+                <p>The classification experiments were done using <a href="https://scikit-learn.org/stable/">scikit-learn</a>. We created feature vectors by computing tf-idf vectors for each attribute separately in the training set and the corpus. The parameters for the vector creation were optimized using the training set and grid search with 5-fold cross-validation. For the title attribute bigrams were used to create the tf-idf vectors, for the remaining attributes unigrams were used. The number of features was restricted to 10,000 for the manufacturer and specification tables attributes. </p>
+
+                <p> For classification a Logistic Regression Classifier was optimized with grid search and 5-fold cross-validation on the training set. The resulting logistic regression model uses stochastic average gradient descent with a one-vs-rest approach. Thus, the multi-class classification problem was reduced to 25 binary classification problems. The model was applied to the offers in the corpus grouped in their ID clusters. Thus, all offers in a cluster were assigned to one category.</p>
+
+                <p><strong>Results of the Experiments</strong></p>
+                <p>The classifier achieves a micro-averaged F1 score of 85% on the test set when trained using the training set derived from the WDC Categorization Gold Standard as well as the Amazon training data. The classifier achieves a micro-averaged F1 score of 82% when trained without the Amazon data. Table 2 shows the category-specific performance of the classifier trained on the WDC and Amazon data.</p>
+				
+                <table class="smalltable" style="margin-top:3em">
+					<caption>
+						<p>
+							Table 2: Results  per category 
+						</p>
+					</caption>
+					<thead>
+						<tr>
+							<th>Category</th>
+							<th>Precision</th>
+							<th>Recall</th>
+							<th>F1</th>
+							<th># clusters</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>Automotive</td>
+							<td>1.0</td>
+							<td>1.0</td>
+							<td>1.0</td>
+							<td>10</td>
+						</tr>
+						<tr>
+							<td>Baby</td>
+							<td>1.0</td>
+							<td>1.0</td>
+							<td>1.0</td>
+							<td>10</td>
+						</tr>
+						<tr>
+							<td>Books</td>
+							<td>0.90</td>
+							<td>0.90</td>
+							<td>0.90</td>
+							<td>10</td>
+						</tr>
+						<tr>
+							<td>CDs_and_Vinyl</td>
+							<td>1.0</td>
+							<td>1.0</td>
+							<td>1.0</td>
+							<td>10</td>
+						</tr>
+                        <tr>
+							<td>Camera_and_Photo</td>
+							<td>0.79</td>
+							<td>0.92</td>
+							<td>0.85</td>
+							<td>12</td>
+						</tr>
+                        <tr>
+							<td>Cellphones_and_Accessories</td>
+							<td>0.90</td>
+							<td>0.90</td>
+							<td>0.90</td>
+							<td>10</td>
+						</tr>
+                        <tr>
+							<td>Clothing</td>
+							<td>0.96</td>
+							<td>0.91</td>
+							<td>0.93</td>
+							<td>47</td>
+						</tr>
+                        <tr>
+							<td>Computers_and_Accessories</td>
+							<td>0.94</td>
+							<td>0.91</td>
+							<td>0.92</td>
+							<td>32</td>
+
+                        <tr>
+							<td>Grocery_and_Gourmet_Food</td>
+							<td>0.82</td>
+							<td>0.90</td>
+							<td>0.86</td>
+							<td>10</td>
+						</tr>
+                        <tr>
+							<td>Health_and_Beauty</td>
+							<td>0.73</td>
+							<td>0.80</td>
+							<td>0.76</td>
+							<td>10</td>
+						</tr>
+                        <tr>
+							<td>Home_and_Garden</td>
+							<td>0.73</td>
+							<td>0.73</td>
+							<td>0.73</td>
+							<td>11</td>
+						</tr>
+                         <tr>
+							<td>Jewelry</td>
+							<td>0.83</td>
+							<td>1.0</td>
+							<td>0.91</td>
+							<td>10</td>
+						</tr>
+                        <tr>
+							<td>Luggage_and_Travel_Gear</td>
+							<td>0.80</td>
+							<td>0.80</td>
+							<td>0.80</td>
+							<td>10</td>
+
+						</tr>
+                        <tr>
+							<td>Movies_and_TV</td>
+							<td>0.60</td>
+							<td>0.30</td>
+							<td>0.40</td>
+							<td>10</td>
+						</tr>
+                        <tr>
+							<td>Musical_Instruments</td>
+							<td>1.0</td>
+							<td>0.90</td>
+							<td>0.95</td>
+							<td>10</td>
+			
+						</tr>
+                        <tr>
+							<td>Office_Products</td>
+							<td>0.77</td>
+							<td>1.0</td>
+							<td>0.87</td>
+							<td>10</td>
+						</tr>
+                         <tr>
+							<td>Other_Electronics</td>
+							<td>0.47</td>
+							<td>0.64</td>
+							<td>0.54</td>
+							<td>11</td>
+						</tr>
+                         <tr>
+							<td>Others</td>
+							<td>0.0</td>
+							<td>0.0</td>
+							<td>0.0</td>
+							<td>1</td>
+						</tr>
+                        <tr>
+							<td>Pet_Supplies</td>
+							<td>1.0</td>
+							<td>0.90</td>
+							<td>0.95</td>
+							<td>10</td>
+						</tr>
+                        <tr>
+							<td>Shoes</td>
+							<td>0.82</td>
+							<td>0.82</td>
+							<td>0.82</td>
+							<td>11</td>
+						</tr>
+                         <tr>
+							<td>Sports_and_Outdoors</td>
+							<td>0.67</td>
+							<td>0.80</td>
+							<td>0.73</td>
+							<td>10</td>
+						</tr>
+                        <tr>
+							<td>Tools_and_Home_Improvement</td>
+							<td>0.78</td>
+							<td>0.70</td>
+							<td>0.74</td>
+							<td>10</td>
+						</tr>
+                        <tr>
+							<td>Toys_and_Games</td>
+							<td>0.69</td>
+							<td>0.90</td>
+							<td>0.78</td>
+							<td>10</td>
+						</tr>
+                         <tr>
+							<td>Video_Games</td>
+							<td>1.0</td>
+							<td>0.90</td>
+							<td>0.95</td>
+							<td>100</td>
+						</tr>
+                         <tr>
+							<td>not found</td>
+							<td>0.83</td>
+							<td>0.45</td>
+							<td>0.59</td>
+							<td>11</td>
+                        </tr>
+                         <tr>
+							<th>Micro Avg</th>
+							<td>0.85</td>
+							<td>0.85</td>
+							<td>0.85</td>
+							<td>306</td>                             
+						</tr>
+                        
+                        
+                         <tr>
+							<th>Macro Avg</th>
+							<td>0.80</td>
+							<td>0.80</td>
+							<td>0.79</td>
+							<td></td>                             
+						</tr>
+                        </tbody>
+            
+				</table>
+                <p>In addition to the test set that we derived from the WDC Categorization Gold Standard, we also evaluate the classifer that we learned using the training set and the Amazon data using the initial WDC Gold Standard (consisting of 985 offers) as test set. The classifier achieves 84% micro-averaged F1 on the initial gold standard.
+			     
+                </p>
+                <p><span id="toc4"></span>
+                </p>
+                <h2>5. Corpus Categorization</h2>
+                 <p> 
+               In order to obtain a consistent categorization for all 26 million product offers contained in the <a href="http://webdatacommons.org/largescaleproductcorpus/">WDC product data corpus</a>, we apply the classifier that we learned using the WDC and Amazon data to all offers in the corpus.  The categorization resulted in the following distribution of categories on the individual offers (Figure 3) and on the clusters (Figure 4) in the corpus: </p>        
+        
+                <div>
+					<span id="catInCorpusOffers" style="float:left"></span>
+                    <span id="catInCorpusClusters" style="float:left"></span>
+                </div>
+        
+                <p style="clear:both">
+                    In order to verify the performance of the classifier on the whole corpus, we manually checked a sample of 10 offers per category, excluding non-English offers as well as offers without any information. The results per category are shown in Figure 5. The percentages and colors indicate the number of category offers in the corpus, dark blue representing a high number of offers and light blue a low number in the corpus.
+                </p>
+				
+		        <div>
+					<span id="resultsCorpusOffers" style="float:left"></span>
+                </div>   
+				
+
+
+				<span id="toc5"></span>
+				<h2>5. Download</h2>
+                <p>
+					Below, we offer the WDC Categorization Gold Standard for public download. The Gold Standard is a subset of the english training corpus and contains the same properties for each offer as described <a href="http://webdatacommons.org/largescaleproductcorpus/index.html#toc7">here</a>. We further provide the subsets of the gold standard that were used for training and testing aggregated in clusters, as well as the Amazon sample that was used as additional training data. The training and test set contain the schema.org, as well as the parent schema.org properties name, title, description, brand and manufacturer. Additionally specification table keys and values and HTML content are contained. Each attribute is concatenated within a cluster. The Amazon training offers contain a title, brand and description along with a category label and an identifier (asin). Finally, we offer the Categorized Training Dataset for Large-scale Product Matching for download. It contains cluster ids and category labels in a csv format.
+                </p>
+                <table>
+						<tbody>
+							<tr>
+								<td><b>File</b></td>
+                                <td><b>Sample</b></td>
+								<td><b>Size</b></td>
+								<td><b>Download</b></td>
+							</tr>
+
+							<tr>
+								<td>Categorization Gold Standard</td>
+                                <td><a href="categories_gold_standard_offers_sample.json">categories_gold_standard_offers_sample.json</a> </td>
+								<td>26MB</td>
+								<td><a href="http://data.dws.informatik.uni-mannheim.de/largescaleproductcorpus/data/categories_gold_standard_offers.json.gzip">categories_gold_standard_offers.json.gzip</a></td>
+							</tr>
+                            <tr>
+								<td>Categorization Training Set</td>
+                                <td><a href="categories_clusters_training_sample.json">categories_clusters_training_sample.json</a> </td>
+								<td>303.4MB</td>
+								<td><a href="http://data.dws.informatik.uni-mannheim.de/largescaleproductcorpus/data/categories_clusters_training.json.gzip">categories_clusters_training.json.gzip</td>
+							</tr>
+                            <tr>
+								<td>Categorization Test Set</td>
+                                <td><a href="categories_clusters_testing_sample.json">categories_clusters_testing_sample.json</a> </td>
+								<td>68.3MB</td>
+								<td><a href="http://data.dws.informatik.uni-mannheim.de/largescaleproductcorpus/data/categories_clusters_testing.json.gzip">categories_clusters_testing.json.gzip</td>
+							</tr>
+                            <tr>
+								<td>Amazon Training Data</td>
+                                <td><a href="amazon_training_sample.json">amazon_training_sample.json</a> </td>
+								<td>25.4MB</td>
+								<td><a href="http://data.dws.informatik.uni-mannheim.de/largescaleproductcorpus/data/amazon_training.json.gzip">amazon_training.json.gzip</td>
+							</tr>
+							<tr>
+								<td>Categorized Matching Corpus (English)</td>
+                                <td><a href="categories_offers_en_clusters_sample.csv">categorized_clusters_english_sample.csv</a></td>
+								<td> 247MB </td>
+								<td><a href="http://data.dws.informatik.uni-mannheim.de/largescaleproductcorpus/data/categories_offers_en_clusters.csv.gzip">categories_offers_en_clusters.csv.gzip</td>
+							</tr>
+                        </tbody>
+				</table>
+        
+                <span id="toc6"></span>
+				<h2>6. References</h2>
+			    <ol>
+				<li>Primpeli, A., Peeters, R., & Bizer, C.:
+				<a href="https://dl.acm.org/citation.cfm?id=3316609">The WDC training dataset and gold standard for large-scale product matching</a>.
+				In: Companion Proceedings of the 2019 World Wide Web Conference. pp. 381-386 ACM (2019).</li>
+                </ol>
+                
+				<span id="toc7"></span>
+				<h2>7. Feedback</h2>
+				<p>Please send questions and feedback to the <a href="http://groups.google.com/group/web-data-commons">Web Data Commons Google Group</a>.<br /><br />
+				More information about Web Data Commons is found <a href="../index.html">here</a>.</p>
+
+					<script type="text/javascript">
+						$('#toc').toc({
+							'selectors': 'h2', //elements to use as headings
+							'container': '#toccontent', //element to find all selectors in
+							'smoothScrolling': true, //enable or disable smooth scrolling on click
+							'prefix': 'toc', //prefix for anchor tags and class names
+							'highlightOnScroll': true, //add class to heading that is currently in focus
+							'highlightOffset': 100, //offset to trigger the next headline
+							'anchorName': function (i, heading, prefix) { //custom function for anchor name
+								return prefix + i;
+							}
+						});
+						$('[id*="link_"]').each(function () {
+							var element = $(this);
+							element.click(function (e) {
+								e.preventDefault();
+								var id = element.attr("id").split("_")[1];
+								element.parent().removeClass("show").addClass("no-show");
+								$('#charts_' + id).removeClass("no-show").addClass("show");
+							});
+						});
+						$('[id*="colapse_"]').each(function () {
+							var element = $(this);
+							element.click(function (e) {
+								e.preventDefault();
+								var id = element.attr("id").split("_")[1];
+								element.parent().removeClass("show").addClass("no-show");
+								$('#intro_' + id).removeClass("no-show").addClass("show");
+							});
+						});
+						document.getElementById("defaultOpen").click();
+					</script>
+</body>
+
+</html>
