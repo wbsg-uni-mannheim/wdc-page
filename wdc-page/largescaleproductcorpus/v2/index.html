@@ -413,7 +413,7 @@
 			]);
 
 			var options = {
-				title: "Figure 4: Distribution of offer entities per category in the English Training Set",
+				title: "Figure 4: Distribution of offer entities per category in the English product data corpus",
 				width: 1000,
 				height: 800,
 				bar: {
@@ -648,7 +648,7 @@
 			offers are grouped into 16 million clusters of offers referring to the same product using product
 			identifiers, such
 			as GTINs or MPNs. The gold standard consists of 4,400 pairs of offers that were manually verified as matches
-			or non-matches. For easing the comparision of supervised matching methods, we also provide several
+			or non-matches. For easing the comparison of supervised matching methods, we also provide several
 			pre-assembled training and validation sets for download (ranging from 9,000 and 214,000 pairs of
 			offers).<br>
 		</p>
@@ -658,7 +658,7 @@
 				sets released.</li>
 			<li><strong>2019-19-08:</strong> We have <a
 					href="http://webdatacommons.org/categorization/index.html">updated the product categorization</a>
-				within the english subset of the WDC product data corpus.</li>
+				within the English subset of the WDC product data corpus.</li>
 			<li><strong>2019-04-05:</strong> A paper about the <a href="https://dl.acm.org/citation.cfm?id=3316609"> WDC
 					Training Dataset and Gold Standard for Large-Scale Product Matching</a> was presented at <a
 					href="https://sites.google.com/view/ecnlp/home">ECNLP2019</a> workshop in San Francisco.</li>
@@ -716,7 +716,7 @@
 			traditional symbolic matching methods towards embeddings and deep neural network based matching methods. The
 			problem with
 			evaluating deep learning based matchers is that they require large amounts of training data for playing
-			their strenghts. The benchmark datasets
+			their strengths. The benchmark datasets
 			that have been used so far for comparing matching methods are often too small to properly evaluate this new
 			family
 			of methods. Another problem with existing benchmark datasets is that they are mostly based on data from a
@@ -732,7 +732,7 @@
 				href="https://schema.org/" target="_blank">schema.org</a>
 			vocabulary. In recent years, many e-shops have also started to annotate product identifiers such as
 			<i>gtin8, gtin13,
-				gtin14,</i> <i>mpn</i> and sku.
+				gtin14,</i> <i>mpn</i> and <i>sku</i>.
 			These identifiers allow offers for the same product from different e-shops to be grouped into clusters and
 			can thus
 			be used as supervision for training product matching methods. </p>
@@ -748,7 +748,7 @@
 		<h3>2.1 Corpus Profiling</h3>
 		<p>The resulting Full Product Corpus consists of 26 million offers originating
 			from 79 thousand websites. Using the product identifiers, the offers are grouped into 16 million clusters.
-			We also assemble a English subset of the product data corpus which only includes offers from English-related
+			We also assemble an English subset of the product data corpus which only includes offers from English-related
 			top-level domains (TLDs): <i>com</i>, <i>net</i>, <i>co.uk</i>, <i>us</i>, and <i>org</i>. The English
 			subset contains 16 million
 			offers originating from 43 thousand websites. The offers are grouped into 10 million ID-clusters.
@@ -774,18 +774,15 @@
 
 		<div>
 			<span id="catInCorpusOffers" style="float:left"></span>
-			<span id="keyvaluespairs" style="float:left"></span>
 		</div>
-
-
+		<h2></h2>
 		<span id="toc2.2"></span>
 		<h3 style="clear:both">2.2. Schema of the Corpus</h3>
+		
 		<p>
-			For the release of version 2.0 of the product corpus, the following attributes are contained: title, description, brand, price, specTableContent and
-			keyValuePairs in addition to identifier information
-			(for product identifiers and resulting clusters) and category information for the english corpus subset.
+			The offers in version 2.0 of the product data corpus is described by the attributes listed below. Please note that compared to  <a href="http://webdatacommons.org/largescaleproductcorpus/index.html">version 1.0</a> of the corpus, the identification schema was simplified while the actual content stayed exactly the same.
 		</p>
-		<p>More specifically the attributes (with examples) are
+		<p>
 				<ul>
 						<li><strong> id:</strong> Unique integer identifier of an offer </li>
 						<li><strong> cluster_id:</strong> The integer ID of the cluster to which an offer belongs. </li>
@@ -830,7 +827,7 @@
 									<li>'mfg model amd yd1400bbaebox mfg part yd1400bbaebox upc 730143308427 description ryzen 5 1400 3 2g 8mb 65w with wraith stealth cooler price 169 80 essential information blt item b8q6824 manufacturer part yd1400bbaebox manufacturer amd description ryzen 5 1400 3 2g 8mb 65w with wraith stealth cooler weight 1 1 lbs manufacturer s website http www amd com dimensions 5 4 x 5 4 x 5 3 upc 730143308427 return policy standard blt return policy'</li>
 									<li>'memory type ddr4 pc4 21300 capacity 16gb 2 x 8gb tested speed 2666mhz tested latency 16 18 18 35 tested voltage 1 20v registered unbuffered unbuffered error checking non ecc memory features red led xmp 2 0'</li>
 								</ul>
-						<li><strong> keyValuePairs: </strong>Extracted key-value pairs using the method described above</li>
+						<li><strong> keyValuePairs: </strong>The key-value pairs that were extracted from the specification tables using the method described above</li>
 						<ul>
 								<li>'{'mfg model': 'amd yd1400bbaebox',
 										'mfg part': 'yd1400bbaebox',
@@ -932,7 +929,7 @@
 		<p>The resulting gold standard datasets consist of 300 positive and 800 negative
 			pairs of offers from each category. The title attribute
 			of all of these offers is filled. The other attributes describing the offers might contain NULL values and
-			thus have a lower densities. Table 1 shows the percentage of pairs per
+			thus have a lower density. Table 1 shows the percentage of pairs per
 			category where both offers contain a value for the respective attribute.</p>
 		<table class="smalltable" style="margin-top:2em">
 			<caption>
@@ -1006,7 +1003,7 @@
 			</tbody>
 		</table>
 
-		<p>Alltogether the gold standard consists of offers for 2318 products (ID-clusters). These offers are
+		<p>Altogether the gold standard consists of offers for 2318 products (ID-clusters). These offers are
 			distributed as follows over the product categories: 722 for Computers
 			& Accessories, 486 for Camera & Photo, 580 for Watches and 530 for Shoes. Positive pairs exist for 150 of
 			these products per category. The remaining products are used to build negative pairs (see sampling process
@@ -1015,12 +1012,13 @@
 		<h2>4 Training Sets </h2>
 		<p>
 			The offers in the WDC product data corpus that share identifiers (ID-clusters) can be used as weak
-			supervision for training product matching methods. There are manyfold possibilities on how to derive training sets of different
+			supervision for training product matching methods. There are manifold possibilities on how to derive training sets of different
 			size from the WDC product data corpus. In order to allow the comparison of supervised matching
 			methods using the same training and validation sets, we offer pre-assembled training and validation sets of
 			4 sizes for <a href="#toc7">download</a>. The training sets were derived from the same 2318 ID-clusters that
 			are also used by the gold standard. In the following, we describe how we selected pairs of offers from the
 			clusters into the training sets. Afterwards, we provide statistics about the training sets.<br>
+			<h3></h3>
 			<span id="toc4.1"></span>
 			<h3>4.1 Pair Selection</h3>
 			<p>Before selecting pairs, we perform the following cleaning steps in order to allow the selection of varied
@@ -1055,14 +1053,14 @@
 					standard. If during the selection of the ten most similar clusters
 					negative pairs between these clusters already exist due to prior sampling for the other cluster,
 					this cluster combination does not contribute further pairs to the pool.
-					This procedure for sampling negative pairs ensures that the offers withn a negative pair are rather
+					This procedure for sampling negative pairs ensures that the offers within a negative pair are rather
 					similar and thus likely interesting for learning good classifiers. <br>
 					<br>
 				</p>
 				<span id="toc4.2"></span>
 				<h3>4.2 Profile of the Training Sets</h3>
 				<p>By varying the scaling factors x and y it is possible to create training sets of different sizes. We
-					decide on a fixed postives/negatives ratio of 1:3 for x:y and build four training sets of increasing
+					decide on a fixed positives/negatives ratio of 1:3 for x:y and build four training sets of increasing
 					size for the values: 1:3, 3:9, 15:45 and 50:150.
 					Table 2 shows the statistics about the size and attribute density of the resulting training sets.
 					Figure 5 shows the distributions of training examples over the clusters for positives, negatives and
@@ -1400,7 +1398,7 @@
 			</table>
 			<div>
 				<figure style='float:left;margin-top:3em'>
-					<figcaption><strong>Figure 5: Distribution of training samples over clusters for the xlarge training set</strong></figcaption>
+					<figcaption><strong>Figure 5: Distribution of training examples over all 2318 products (ID-clusters) in the xlarge training set</strong></figcaption>
 					
 						<img src="images/xlarge.png" width="1750" height="700">
 					
@@ -1409,15 +1407,16 @@
 
 			<div>
 				<figure style='float:left;margin-top:3em'>
-					<figcaption><strong>Figure 6: Distribution of training samples over 150 clusters with positives in xlarge training set</strong></figcaption>
+					<figcaption><strong>Distribution of training samples in xlarge training set over the 150 products (ID-clusters) that have positives in the gold standard.</strong></figcaption>
 					
 						<img src="images/150selection.png" width="1750" height="700">
 					
 					</figure>
 			</div>
-			
-			<h2>5 Baseline Experiments</h2>
+			<h2></h2>
 			<span id="toc5"></span>
+			<h2>5 Baseline Experiments</h2>
+			
 			<p>
 				We have performed a set of experiments in order to showcase the
 				suitability of the WDC product corpus as training data as well as the difficulty of the gold standard.
@@ -1438,8 +1437,7 @@
 					matching textual data.
 				</li>
 			</ol>
-			<p>These experiments are performed for each of the four training sets to explore the learning curve of the
-				different algorithms families</p>
+			<p>These experiments are performed for each of the four training sets to explore the learning curve for the different families of algorithms. </p>
 				<span id="toc5.1"></span>
 			<h3>5.1 Experimental Setup</h3>
 			<p>The experiments use various combinations of the features title, description, brand and additionally
@@ -1450,7 +1448,7 @@
 				lowercase all values.</p>
 			<p> For the unsupervised TF/IDF and supervised word co-occurrence experiments, different combinations of
 				features are concatenated
-				and converted either into TF/IDF or binary wordcount vectors. In case of the unsupervised experiment,
+				and converted either into TF/IDF or binary word occurrence vectors. In case of the unsupervised experiment,
 				the TF/IDF vectors for a pair are
 				compared using cosine similarity with thresholds from 0 to 1 in steps of 0.01. The wordcount vectors for
 				the first supervised experiment are
@@ -1492,7 +1490,7 @@
 				library implementations of
 				Logistic Regression, Naive Bayes, LinearSVC, Decision Tree and Random Forest.
 
-				For all experiments using sci-kit learn, we use Gridsearch or RandomizedSearch with holdout validation
+				For all experiments using scikit-learn, we use Gridsearch or RandomizedSearch with holdout validation
 				to optimize model
 				parameters. </p>
 				<span id="toc5.2"></span>
@@ -1525,45 +1523,45 @@
 								<td>Computers</td>
 								<td>TFIDF-cosine</td>
 								<td>title+desc+brand</td>
-								<td>0.42</td>
-								<td>0.89</td>
-								<td>0.57</td>
+								<td>42</td>
+								<td>89</td>
+								<td>57</td>
 							</tr>
 							<tr>
 								<td></td>
 								<td>Cameras</td>
 								<td>TFIDF-cosine</td>
 								<td>title+desc</td>
-								<td>0.53</td>
-								<td>0.80</td>
-								<td>0.64</td>
+								<td>53</td>
+								<td>80</td>
+								<td>64</td>
 							</tr>
 							<tr>
 								<td></td>
 								<td>Watches</td>
 								<td>TFIDF-cosine</td>
 								<td>title</td>
-								<td>0.51</td>
-								<td>0.82</td>
-								<td>0.63</td>
+								<td>51</td>
+								<td>82</td>
+								<td>63</td>
 							</tr>
 							<tr>
 								<td></td>
 								<td>Shoes</td>
 								<td>TFIDF-cosine</td>
 								<td>title</td>
-								<td>0.45</td>
-								<td>0.77</td>
-								<td>0.57</td>
+								<td>45</td>
+								<td>77</td>
+								<td>57</td>
 							</tr>
 							<tr>
 								<td></td>
 								<td>All</td>
 								<td>TFIDF-cosine</td>
 								<td>title</td>
-								<td>0.46</td>
-								<td>0.74</td>
-								<td>0.57</td>
+								<td>46</td>
+								<td>74</td>
+								<td>57</td>
 							</tr>
 							<tr>
 								<td>magellan</td>
@@ -1779,50 +1777,50 @@
 								<td>F1</td>
 							</tr>
 							<tr>
-									<td>TFIDF-cosine</td>
-									<td>Computers</td>
-									<td>TFIDF-cosine</td>
-									<td>title+desc+brand</td>
-									<td>0.42</td>
-									<td>0.89</td>
-									<td>0.57</td>
-								</tr>
-								<tr>
-									<td></td>
-									<td>Cameras</td>
-									<td>TFIDF-cosine</td>
-									<td>title+desc</td>
-									<td>0.53</td>
-									<td>0.80</td>
-									<td>0.64</td>
-								</tr>
-								<tr>
-									<td></td>
-									<td>Watches</td>
-									<td>TFIDF-cosine</td>
-									<td>title</td>
-									<td>0.51</td>
-									<td>0.82</td>
-									<td>0.63</td>
-								</tr>
-								<tr>
-									<td></td>
-									<td>Shoes</td>
-									<td>TFIDF-cosine</td>
-									<td>title</td>
-									<td>0.45</td>
-									<td>0.77</td>
-									<td>0.57</td>
-								</tr>
-								<tr>
-									<td></td>
-									<td>All</td>
-									<td>TFIDF-cosine</td>
-									<td>title</td>
-									<td>0.46</td>
-									<td>0.74</td>
-									<td>0.57</td>
-								</tr>
+								<td>TFIDF-cosine</td>
+								<td>Computers</td>
+								<td>TFIDF-cosine</td>
+								<td>title+desc+brand</td>
+								<td>42</td>
+								<td>89</td>
+								<td>57</td>
+							</tr>
+							<tr>
+								<td></td>
+								<td>Cameras</td>
+								<td>TFIDF-cosine</td>
+								<td>title+desc</td>
+								<td>53</td>
+								<td>80</td>
+								<td>64</td>
+							</tr>
+							<tr>
+								<td></td>
+								<td>Watches</td>
+								<td>TFIDF-cosine</td>
+								<td>title</td>
+								<td>51</td>
+								<td>82</td>
+								<td>63</td>
+							</tr>
+							<tr>
+								<td></td>
+								<td>Shoes</td>
+								<td>TFIDF-cosine</td>
+								<td>title</td>
+								<td>45</td>
+								<td>77</td>
+								<td>57</td>
+							</tr>
+							<tr>
+								<td></td>
+								<td>All</td>
+								<td>TFIDF-cosine</td>
+								<td>title</td>
+								<td>46</td>
+								<td>74</td>
+								<td>57</td>
+							</tr>
 							<tr>
 								<td>magellan</td>
 								<td>Computers</td>
@@ -2052,50 +2050,50 @@
 								<td>F1</td>
 							</tr>
 							<tr>
-									<td>TFIDF-cosine</td>
-									<td>Computers</td>
-									<td>TFIDF-cosine</td>
-									<td>title+desc+brand</td>
-									<td>0.42</td>
-									<td>0.89</td>
-									<td>0.57</td>
-								</tr>
-								<tr>
-									<td></td>
-									<td>Cameras</td>
-									<td>TFIDF-cosine</td>
-									<td>title+desc</td>
-									<td>0.53</td>
-									<td>0.80</td>
-									<td>0.64</td>
-								</tr>
-								<tr>
-									<td></td>
-									<td>Watches</td>
-									<td>TFIDF-cosine</td>
-									<td>title</td>
-									<td>0.51</td>
-									<td>0.82</td>
-									<td>0.63</td>
-								</tr>
-								<tr>
-									<td></td>
-									<td>Shoes</td>
-									<td>TFIDF-cosine</td>
-									<td>title</td>
-									<td>0.45</td>
-									<td>0.77</td>
-									<td>0.57</td>
-								</tr>
-								<tr>
-									<td></td>
-									<td>All</td>
-									<td>TFIDF-cosine</td>
-									<td>title</td>
-									<td>0.46</td>
-									<td>0.74</td>
-									<td>0.57</td>
-								</tr>
+								<td>TFIDF-cosine</td>
+								<td>Computers</td>
+								<td>TFIDF-cosine</td>
+								<td>title+desc+brand</td>
+								<td>42</td>
+								<td>89</td>
+								<td>57</td>
+							</tr>
+							<tr>
+								<td></td>
+								<td>Cameras</td>
+								<td>TFIDF-cosine</td>
+								<td>title+desc</td>
+								<td>53</td>
+								<td>80</td>
+								<td>64</td>
+							</tr>
+							<tr>
+								<td></td>
+								<td>Watches</td>
+								<td>TFIDF-cosine</td>
+								<td>title</td>
+								<td>51</td>
+								<td>82</td>
+								<td>63</td>
+							</tr>
+							<tr>
+								<td></td>
+								<td>Shoes</td>
+								<td>TFIDF-cosine</td>
+								<td>title</td>
+								<td>45</td>
+								<td>77</td>
+								<td>57</td>
+							</tr>
+							<tr>
+								<td></td>
+								<td>All</td>
+								<td>TFIDF-cosine</td>
+								<td>title</td>
+								<td>46</td>
+								<td>74</td>
+								<td>57</td>
+							</tr>
 							<tr>
 								<td>magellan</td>
 								<td>Computers</td>
@@ -2334,45 +2332,45 @@
 									<td>Computers</td>
 									<td>TFIDF-cosine</td>
 									<td>title+desc+brand</td>
-									<td>0.42</td>
-									<td>0.89</td>
-									<td>0.57</td>
+									<td>42</td>
+									<td>89</td>
+									<td>57</td>
 								</tr>
 								<tr>
 									<td></td>
 									<td>Cameras</td>
 									<td>TFIDF-cosine</td>
 									<td>title+desc</td>
-									<td>0.53</td>
-									<td>0.80</td>
-									<td>0.64</td>
+									<td>53</td>
+									<td>80</td>
+									<td>64</td>
 								</tr>
 								<tr>
 									<td></td>
 									<td>Watches</td>
 									<td>TFIDF-cosine</td>
 									<td>title</td>
-									<td>0.51</td>
-									<td>0.82</td>
-									<td>0.63</td>
+									<td>51</td>
+									<td>82</td>
+									<td>63</td>
 								</tr>
 								<tr>
 									<td></td>
 									<td>Shoes</td>
 									<td>TFIDF-cosine</td>
 									<td>title</td>
-									<td>0.45</td>
-									<td>0.77</td>
-									<td>0.57</td>
+									<td>45</td>
+									<td>77</td>
+									<td>57</td>
 								</tr>
 								<tr>
 									<td></td>
 									<td>All</td>
 									<td>TFIDF-cosine</td>
 									<td>title</td>
-									<td>0.46</td>
-									<td>0.74</td>
-									<td>0.57</td>
+									<td>46</td>
+									<td>74</td>
+									<td>57</td>
 								</tr>
 							<tr>
 								<td>magellan</td>
@@ -2592,8 +2590,8 @@
 					</div>
 
 					<p> Figure 7 shows the learning
-						curve for the supervised algorithms on the four combined training sets and gold standards (All).
-						Figure 8 shows the learning curve for each of the four deepmatcher models. Overall the deepmatcher approach works best for all training set sizes when compared to
+						curves for the supervised algorithms on the four combined training sets and gold standards (All).
+						Figure 8 shows the learning curves for each of the four deepmatcher models. Overall the deepmatcher approach works best for all training set sizes when compared to
 						the traditional methods. Among the deepmatcher models themselves, the RNN consistently achieves the highest F1 on the gold standard, followed by the hybrid, attention and SIF models.
 
 					<figure style='float:left;margin-top:2em'>
@@ -2614,12 +2612,12 @@
 
 
 			</div>
-
-			
-			<h2>6 Download</h2>
+<h2></h2>
 			<span id="toc6"></span>
+			<h2>6 Download</h2>
+			
 			<p>
-				We offer the WDC Product corpus for Large-scale Product Matching as well as its english subset for
+				We offer the WDC Product corpus for Large-scale Product Matching as well as its English subset for
 				public download in JSON format. The JSON file contains the fields described in section 2.2 for each offer.
 
 				
@@ -2634,7 +2632,7 @@
 				Finally the binary attribute label signifies if two product offers refer to the same product or not.
 			</p>
 
-			All JSON files can easily be imported into a pandas Dataframe using the following function call (big corpus
+			All JSON files can easily be imported into a pandas dataframe using the following function call (big corpus
 			files need a considerable amount of RAM memory):<br><br>
 			<code>import pandas as pd<br>
 						df = pd.read_json('dataset.json.gz', compression='gzip', lines=True)
@@ -2740,7 +2738,7 @@
 						<tr>
 							<td>Validation Sets Watches</td>
 							<td><a
-								href="http://data.dws.informatik.uni-mannheim.de/largescaleproductcorpus/data/v2/validsets/samples/watches_valid_xlarge_sample.txt">watches_valid_sample</a>							</td>
+								href="http://data.dws.informatik.uni-mannheim.de/largescaleproductcorpus/data/v2/samples/watches_valid_xlarge_sample.txt">watches_valid_sample</a>							</td>
 							<td>129.7KB</td>
 							<td><a
 								href="http://data.dws.informatik.uni-mannheim.de/largescaleproductcorpus/data/v2/validsets/computers_valid.zip">watches_valid.zip
