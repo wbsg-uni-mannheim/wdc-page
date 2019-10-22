@@ -1010,13 +1010,13 @@
 			distributed as follows over the product categories: 722 for Computers
 			& Accessories, 486 for Camera & Photo, 580 for Watches and 530 for Shoes. Positive pairs exist for 150 of
 			these products per category. The remaining products are used to build negative pairs (see sampling process
-			abouve). </p>
+			above). </p>
 			<span id="toc4"></span>
 		<h2>4 Training Sets </h2>
 		<p>
 			The offers in the WDC product data corpus that share identifiers (ID-clusters) can be used as weak
-			supervision for training product matching methods. There are manyfold possibilities on how derive differenz
-			size training sets from the WDC product data corpus. In order to allow the comparison of supervised matching
+			supervision for training product matching methods. There are manyfold possibilities on how to derive training sets of different
+			size from the WDC product data corpus. In order to allow the comparison of supervised matching
 			methods using the same training and validation sets, we offer pre-assembled training and validation sets of
 			4 sizes for <a href="#toc7">download</a>. The training sets were derived from the same 2318 ID-clusters that
 			are also used by the gold standard. In the following, we describe how we selected pairs of offers from the
@@ -1034,7 +1034,7 @@
 
 				<p>To generate the <strong>positive pairs</strong> of the training set, we iterate over all clusters.
 					For each cluster, we build all combinations of offers inside the cluster and from this pool randomly
-					sample x positive pairs. x is a scaling factor described below. If the pool contains less than
+					sample x positive pairs. x can be used as a scaling factor to vary the amount of positive pairs sampled per product. If the pool contains less than
 					x pairs, the maximum amount possible is sampled. For each pair it is assured that it does not appear
 					in the corresponding gold standard. We also
 					only allow half of the pairs to have a title that also appears in the gold standard. <br>
@@ -1042,7 +1042,7 @@
 					To build <strong>negative pairs</strong>, in a first step, the title similarity of all pairs of
 					clusters from
 					the gold standard is calculated using Jaccard similarity over the concatenated
-					titles of all offers within a cluster. In a second step, for each cluster the top ten most similar
+					titles of all offers within a cluster. In a second step, for each cluster, the top ten most similar
 					clusters based
 					on this similarity are chosen. Considering the resulting ten pairs of clusters (current cluster and
 					10 most similar clusters),
