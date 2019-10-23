@@ -724,7 +724,9 @@
 			of data sources and thus do not properly reflect the heterogeneity that is found in large-scale integration
 			scenarios. The WDC gold standard and training sets for large-scale product matching tackle both
 			challenges by being derived from a large product data corpus originating from many websites which annotate
-			product descriptions using the schema.org vocabulary. </p>
+			product descriptions using the schema.org vocabulary. We have performed a set of experiments in order to showcase the suitability of the WDC product corpus 
+			as training data as well as the difficulty of the gold standard. The experiments show that deep learning based matchers reach an F1 of 0.90 
+			using the xlarge training set and outperform traditional symbolic matchers by a margin of 16% in F1. </p>
 			<span id="toc2"></span>
 		<h2>2 Product Data Corpus </h2>
 		<p>Many e-shops mark-up <a href="https://schema.org/Product">products</a> and <a
@@ -1496,12 +1498,15 @@
 				<span id="toc5.2"></span>
 			<h3>5.2 Results</h3>
 			<p>Table 3 shows the results of the experiments for the best performing model of each method for each of the
-				four training set sizes. You can use the size selector at the top of the table to select a specific size. 
+				four training set sizes. You can use the size selector at the top of the table to select a specific size.
+				The experiments show that deepmatcher using an RNN reaches the highest F1 score 0.90 over all categories using the xlarge training set. 
+				In this experiments deepmatcher outperforms the best traditional symbolic matching method (random forest using term co-occurrence as features) 
+				by a margin of 16% in F1.
 			</p>
 			<div style="margin-top:2em;">
 				<div style="float: left;margin-right: 2.5em">
 					<div class="tab">
-						<button class="tablinks" onclick="openExpResult(event, 'unsup')" >small</button>
+						<button class="tablinks" onclick="openExpResult(event, 'unsup')">small</button>
 						<button class="tablinks" onclick="openExpResult(event, 'supwc')">medium</button>
 						<button class="tablinks" onclick="openExpResult(event, 'supmg')">large</button>
 						<button class="tablinks" onclick="openExpResult(event, 'supdm')" id="defaultOpen">xlarge</button>
