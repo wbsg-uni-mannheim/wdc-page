@@ -2387,11 +2387,11 @@
 								</td>
 								<td>title+desc+brand+specTable
 								</td>
-								<td>72.79
+								<td>72.32
 								</td>
-								<td>66
+								<td>65.33
 								</td>
-								<td>69.23
+								<td>68.65
 								</td>
 							</tr>
 							<tr>
@@ -2403,12 +2403,12 @@
 								<td>title+desc+brand+specTable
 
 								</td>
-								<td>71.9
+								<td>73.87
 
 								</td>
-								<td>58
+								<td>54.67
 								</td>
-								<td>64.21
+								<td>62.84
 
 								</td>
 							</tr>
@@ -2420,13 +2420,13 @@
 								<td>title+desc+brand+specTable
 
 								</td>
-								<td>76.65
+								<td>74.15
 
 								</td>
-								<td>50.33
+								<td>50.67
 
 								</td>
-								<td>60.76
+								<td>60.20
 
 								</td>
 							</tr>
@@ -2437,13 +2437,13 @@
 								<td>title+desc+brand+specTable
 
 								</td>
-								<td>51.24
+								<td>51.33
 
 								</td>
-								<td>82.67
+								<td>83.67
 
 								</td>
-								<td>63.27
+								<td>63.62
 
 								</td>
 							</tr>
@@ -2453,11 +2453,11 @@
 								<td>RandomForest</td>
 								<td>title+desc+brand+specTable
 								</td>
-								<td>48.67
+								<td>48.68
 								</td>
-								<td>77.92
+								<td>78.42
 								</td>
-								<td>59.92
+								<td>60.07
 								</td>
 							</tr>
 							<tr>
@@ -2467,11 +2467,11 @@
 								</td>
 								<td>title+desc+brand+specTable
 								</td>
-								<td>86.69
+								<td>86.74
 								</td>
-								<td>80.33
+								<td>80.67
 								</td>
-								<td>83.39
+								<td>83.59
 								</td>
 							</tr>
 							<tr>
@@ -2481,25 +2481,25 @@
 								</td>
 								<td>title+desc+brand+specTable
 								</td>
-								<td>83.33
+								<td>81.51
 								</td>
-								<td>65
+								<td>64.67
 								</td>
-								<td>73.03
+								<td>72.12
 								</td>
 							</tr>
 							<tr>
 								<td></td>
 								<td>Watches</td>
-								<td>LogisticRegression
+								<td>LinearSVC
 								</td>
 								<td>title+desc+brand+specTable
 								</td>
-								<td>87.66
+								<td>88.14
 								</td>
-								<td>68.67
+								<td>69.33
 								</td>
-								<td>77.01
+								<td>77.61
 								</td>
 							</tr>
 							<tr>
@@ -2509,37 +2509,37 @@
 								</td>
 								<td>title
 								</td>
-								<td>87.14
+								<td>86.14
 								</td>
-								<td>61
+								<td>58.00
 								</td>
-								<td>71.76
+								<td>69.32
 								</td>
 							</tr>
 							<tr>
 								<td></td>
 								<td>All</td>
-								<td>RandomForest</td>
+								<td>LogisticRegression</td>
 								<td>title+desc+brand+specTable
 								</td>
-								<td>85.06
+								<td>85.97
 								</td>
-								<td>65
+								<td>66.92
 								</td>
-								<td>73.69
+								<td>75.26
 								</td>
 							</tr>
 							<tr>
 								<td>deepmatcher</td>
 								<td>Computers</td>
-								<td>hybrid</td>
-								<td>title
+								<td>RNN</td>
+								<td>title+desc+brand
 								</td>
-								<td>91.4
+								<td>89.75
 								</td>
-								<td>93.11
+								<td>91.89
 								</td>
-								<td>92.24
+								<td>90.80
 								</td>
 							</tr>
 							<tr>
@@ -2598,24 +2598,25 @@
 					</div>
 
 					<p> Figure 7 shows the learning
-						curves for the supervised algorithms on the four combined training sets and gold standards (All).
+						curves for the supervised algorithms for the Computers and combined sets (All).
 						Figure 8 shows the learning curves for each of the four deepmatcher models. Overall the deepmatcher approach works best for all training set sizes when compared to
 						the traditional methods. Among the deepmatcher models themselves, the RNN consistently achieves the highest F1 on the gold standard, followed by the hybrid, attention and SIF models.
 
 					<figure style='float:left;margin-top:2em'>
 							<figcaption>
 									<strong>Figure 7: Learning curves of the supervised methods with increasing training set
-										size on the combined sets (All)</strong></figcaption>
-						<img src="images/comparison_supervised.png">
+										size</strong></figcaption>
+						<img width='20%' src="images/all_baseline_comparison.png">
+						<img width='20%' src="images/computers_baseline_comparison.png">
 						
 					</figure>
-					<figure style='float:left;margin-top:2em'>
+					<figure>
 							<figcaption>
 									<strong>Figure 8: Learning curves of the four deepmatcher models with increasing training set
-										size on the combined sets (All)</strong></figcaption>
+										size</strong></figcaption>
 							</figure>
-							<img style='margin-left:2.5em' src="images/dm_curve.png">
-							
+							<img width='20%' style='margin-left:1.5em' src="images/all_dm_comparison.png">
+							<img width='20%' src="images/computers_dm_comparison.png">
 				</div>
 
 
