@@ -44,7 +44,8 @@
         ['2015', 521806, 1100783, 1095517, 596229],
         ['2016', 938830, 2537539, 1668039, 2116755],
         ['2017', 1209430, 3743822, 2758884, 2685738],
-        ['2018', 1382497, 5183199, 3399902, 3835046]
+        ['2018', 1382497, 5183199, 3399902, 3835046],
+		['2019', 1039623, 6359911, 4045187, 5100519]
 
       ]);
 
@@ -78,6 +79,7 @@
         ['2016', 2216933416, 34637805559, 4600477456, 1880721886],
         ['2017', 1629581643, 24359443316, 8371745745, 3623025088],
         ['2018', 1207733576, 20318437064, 5374115412, 4159835616],
+		['2019', 1134186061, 22290981916, 11839793514, 8413179046]
 
       ]);
 
@@ -110,7 +112,9 @@
         ['2015', 181693, 97771, 44609, 63021, 10138],
         ['2016', 406441, 130211, 81345, 92574, 9009],
         ['2017', 365470, 105811, 85180, 287356, 10241],
-        ['2018', 89940, 87425, 74298, 304278, 20013]
+        ['2018', 89940, 87425, 74298, 304278, 20013],
+		['2019', 223302,  167975,  76184 , 312322, 28067]
+
 
       ]);
 
@@ -143,7 +147,8 @@
         ['2015', 17478916, 41891111, 32176784, 48656773, 5451804],
         ['2016', 24081040, 49108112, 21848027, 175035307, 9247359],
         ['2017', 9000298, 14031296, 18171969, 127159418, 2352200],
-        ['2018', 6450222, 15218991, 13752361, 101264815, 2371099]
+        ['2018', 6450222, 15218991, 13752361, 101264815, 2371099],
+		['2019', 9103364,  17480102, 19471512, 67417474, 2719137 ]
 
       ]);
 
@@ -177,7 +182,8 @@
         ['2015', 143229, 108387, 77659, 28356, 16356],
         ['2016', 338058, 249947, 192558, 55189, 31762],
         ['2017', 418807, 581482, 230844, 104576, 77731],
-        ['2018', 502615, 812205, 294390, 124022, 90369]
+        ['2018', 502615, 812205, 294390, 124022, 90369],
+		['2019',  530636,   991549,  292775,  131084,  102469 ]
 
       ]);
 
@@ -212,7 +218,9 @@
         ['2015', 78194892, 252233322, 77659, 43322033, 36242603],
         ['2016', 291970567, 682850010, 99543802, 69789534, 56250927],
         ['2017', 13713813, 439832806, 66794473, 46319490, 41478065],
-        ['2018', 89524321, 306531345, 39875083, 31526486, 28831167]
+        ['2018', 89524321, 306531345, 39875083, 31526486, 28831167],
+		['2019', 79265936 , 329320312 , 30632581 , 33189371 , 26861726 ]
+
 
       ]);
 
@@ -865,6 +873,90 @@
       var material2 = new google.visualization.BarChart(document.getElementById('d2018Urls'));
       material2.draw(data2018Urls, options2);
     }
+	
+	
+	 function drawMaterial21() {
+
+      var data2019Plds = google.visualization.arrayToDataTable([
+        ['Annotation type', '#Domains with Triples', {
+          role: 'style'
+        }, {
+          role: 'annotation'
+        }],
+        ['html-microdata', 6359911, '#D11919', 'Microdata : 6,359,911 '],
+        ['html-embedded-jsonld', 5100519, '#29A329', 'JSON-LD : 5,100,519'],
+        ['html-mf-hcard', 4045187, '#FFD633', 'mf-hcard : 4,045,187'],
+        ['html-rdfa', 1039623, '#5E8FD8', 'RDFA : 1,039,623 '],
+        ['html-mf-xfn', 403901, '#FFF5DD', 'mf-xfn : 403,901 '],
+        ['html-mf-hcalendar', 41301, '#FFDB4D', 'mf-hcalendar : 41,301 '],
+        ['html-mf-hreview', 31843, '#FFEB99', 'mf-hreview : 31,843 '],
+        ['others', 271383, '#FFE066', 'others : 271,383 ']
+      ]);
+
+
+      var options1 = {
+        width: 550,
+        height: 400,
+        title: 'Domains with Triples',
+        sliceVisibilityThreshold: 0,
+        is3D: true,
+        legend: {
+          position: 'none'
+        },
+        chartArea: {
+          left: 0
+        },
+        colors: ['#5E8FD8', '#D11919', '#29A329', '#FFCC00', '#FFD633', '#FFDB4D', '#FFE066', '#FFE680', '#FFEB99',
+          '#FFF0B2', '#FFF5CC', '#FFF5DD'
+        ]
+
+
+      };
+
+      var material1 = new google.visualization.BarChart(document.getElementById('d2019Plds'));
+      material1.draw(data2019Plds, options1);
+    }
+
+    function drawMaterial22() {
+
+      var data2019Urls = google.visualization.arrayToDataTable([
+        ['Annotation type', '#URLs with Triples', {
+          role: 'style'
+        }, {
+          role: 'annotation'
+        }],
+        ['html-microdata', 517256498, '#D11919', 'Microdata : 517,256,498 '],
+        ['html-embedded-jsonld', 284269873, '#29A329', 'JSON-LD : 284,269,873'],
+        ['html-mf-hcard', 249200906, '#FFD633', 'mf-hcard : 249,200,906'],
+        ['html-rdfa', 122273033, '#5E8FD8', 'RDFA : 122,273,033'],
+        ['html-mf-xfn', 22512393, '#FFF5DD', 'mf-xfn : 22,512,393 '],
+        ['html-mf-hcalendar', 2383464, '#FFDB4D', 'mf-hcalendar : 2,383,464 '],
+        ['html-mf-hreview', 1649989, '#FFEB99', 'mf-hreview : 1,649,989 '],
+        ['others', 16484993, '#FFE066', 'others : 16,484,993 ']
+      ]);
+
+      var options2 = {
+        width: 550,
+        height: 400,
+        title: 'URLs with Triples',
+        sliceVisibilityThreshold: 0,
+        is3D: true,
+        legend: {
+          position: 'none'
+        },
+        chartArea: {
+          left: 0
+        },
+        colors: ['#5E8FD8', '#D11919', '#29A329', '#FFCC00', '#FFD633', '#FFDB4D', '#FFE066', '#FFE680', '#FFEB99',
+          '#FFF0B2', '#FFF5CC', '#FFF5DD'
+        ]
+
+
+      };
+
+      var material2 = new google.visualization.BarChart(document.getElementById('d2019Urls'));
+      material2.draw(data2019Urls, options2);
+    }
   </script>
 
   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
@@ -919,6 +1011,9 @@
 
     <h2 id="news">News</h2>
     <ul>
+	<li><strong>2020-01-10: We have released the WDC <a href="#results-2019-1">RDFa, Microdata, Microformat, and
+            Embedded JSON-LD</a> data sets extracted from the November 2019 Common Crawl corpus and created multiple <a
+            href="2019-12/stats/schema_org_subsets.html">schema.org class-specific subsets</a>. </strong></li>
   <li><strong>2019-10-23: <a href="http://webdatacommons.org/largescaleproductcorpus/v2/index.html">Version 2.0</a> of the WDC Product Data Corpus and Gold Standard for Large-Scale Product Matching released.</strong></li>
 	<li><strong>2019-05-15: Journal Article about <a href="https://www.springerprofessional.de/en/using-the-semantic-web-as-a-source-of-training-data/16727168">Using the Semantic Web as a Source of Training Data</a> has been published by the <a href="https://www.springer.com/computer/database+management+%26+information+retrieval/journal/13222">Datenbank-Spektrum Journal</a>.</strong></li>
 	<li><strong>2019-02-27: Paper about <a href="https://dl.acm.org/citation.cfm?id=3316609">The WDC training dataset and gold standard for large-scale product matching</a> accepted at <a href="https://sites.google.com/view/ecnlp">ECNLP Workshop</a> at <a href="https://www2019.thewebconf.org/">WWW2019</a> conference in San Francisco.</strong></li>
@@ -985,6 +1080,7 @@
         <p>Up till now, we have extracted all RDFa, Microdata and Microformats data from the following releases of the
           Common Crawl web corpora:</p>
         <ul>
+		  <li><a href="#results-2019-1">November 2019</a></li>
           <li><a href="#results-2018-1">November 2018</a></li>
           <li><a href="#results-2017-1">November 2017</a></li>
           <li><a href="#results-2016-1">October 2016</a></li>
@@ -1199,7 +1295,79 @@
       <span id="rdf_pld" style="width:500px"></span>
       <span id="rdf_triple" style="width:500px"></span>
 
-      <h3 id="results-2018-1">3.2. Extraction Results from the November 2018 Common Crawl Corpus</h3>
+	<h3 id="results-2019-1">3.2. Extraction Results from the November 2019 Common Crawl Corpus</h3>
+      <div>
+        <p>
+          The November 2019 Common Crawl Corpus is available on <a href="http://aws.amazon.com/s3/">Amazon S3</a> in
+          the
+          bucket <code>aws-publicdatasets</code> under the key prefix <code>/common-crawl/crawl-data/CC-MAIN-2019-47/</code>
+          .
+        </p>
+        <h4>Extraction Statistics</h4>
+        <br />
+        <table>
+          <tbody>
+            <tr>
+              <th>Crawl Date</th>
+              <td>November 2019</td>
+              <td></td>
+            </tr>
+            <tr>
+              <th>Total Data</th>
+              <td align="right">53.9 Terabyte</td>
+              <td>(compressed)</td>
+            </tr>
+            <tr>
+              <th>Parsed HTML URLs</th>
+              <td align="right">2,454,900,132</td>
+              <td></td>
+            </tr>
+            <tr>
+              <th>URLs with Triples</th>
+              <td align="right">934,814,452</td>
+              <td></td>
+            </tr>
+            <tr>
+              <th>Domains in Crawl</th>
+              <td align="right">32,040,026</td>
+              <td></td>
+            </tr>
+            <tr>
+              <th>Domains with Triples</th>
+              <td align="right">11,917,576</td>
+              <td></td>
+            </tr>
+            <tr>
+              <th>Typed Entities</th>
+              <td align="right">14,450,406,289</td>
+              <td></td>
+            </tr>
+            <tr>
+              <th>Triples</th>
+              <td align="right">44,245,690,165	</td>
+              <td></td>
+            </tr>
+            <tr>
+              <th>Size of Extracted Data</th>
+              <td align="right">1.1TB</td>
+              <td>(compressed)</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <span style="width:2000px;display:inline-block">
+          <span id="d2019Plds" style="float:left"></span>
+          <span id="d2019Urls" style="float:left"></span>
+        </span>
+
+        <ul style="clear: left">
+          <li><a href="2019-12/stats/stats.html">Detailed Statistics for the November 2019 corpus (HTML)</a></li>
+          <li><a href="2019-12/stats/how_to_get_the_data.html">Download Instructions for the whole corpus</a></li>
+          <li><a href="2019-12/stats/schema_org_subsets.html">Schema.org Class Specific Data-Subsets and Statistics</a></li>
+        </ul>
+      </div>
+
+      <h3 id="results-2018-1">3.3. Extraction Results from the November 2018 Common Crawl Corpus</h3>
       <div>
         <p>
           The November 2018 Common Crawl Corpus is available on <a href="http://aws.amazon.com/s3/">Amazon S3</a> in
@@ -1273,7 +1441,7 @@
 
 
 
-      <h3 id="results-2017-1">3.2. Extraction Results from the November 2017 Common Crawl Corpus</h3>
+      <h3 id="results-2017-1">3.3. Extraction Results from the November 2017 Common Crawl Corpus</h3>
       <div>
         <p>
           The November 2017 Common Crawl Corpus is available on <a href="http://aws.amazon.com/s3/">Amazon S3</a> in
@@ -1340,7 +1508,7 @@
         </ul>
       </div>
 
-      <h3 id="results-2016-1">3.3. Extraction Results from the October 2016 Common Crawl Corpus</h3>
+      <h3 id="results-2016-1">3.4. Extraction Results from the October 2016 Common Crawl Corpus</h3>
       <div>
         <p>
           The October 2016 Common Crawl Corpus is available on <a href="http://aws.amazon.com/s3/">Amazon S3</a> in the
@@ -1407,7 +1575,7 @@
         </ul>
       </div>>
 
-      <h3 id="results-2015-1">3.4. Extraction Results from the November 2015 Common Crawl Corpus</h3>
+      <h3 id="results-2015-1">3.5. Extraction Results from the November 2015 Common Crawl Corpus</h3>
       <div>
         <p>
           The November 2015 Common Crawl Corpus is available on <a href="http://aws.amazon.com/s3/">Amazon S3</a> in
@@ -1485,7 +1653,7 @@
         </ul>
       </div>>
 
-      <h3 id="results-2014-1">3.5. Extraction Results from the December 2014 Common Crawl Corpus</h3>
+      <h3 id="results-2014-1">3.6. Extraction Results from the December 2014 Common Crawl Corpus</h3>
       <div>
         <p>
           The December 2014 Common Crawl Corpus is available on <a href="http://aws.amazon.com/s3/">Amazon S3</a> in
@@ -1559,7 +1727,7 @@
         </ul>
       </div>
 
-      <h3 id="results-2013-1">3.6. Extraction Results from the November 2013 Common Crawl Corpus</h3>
+      <h3 id="results-2013-1">3.7. Extraction Results from the November 2013 Common Crawl Corpus</h3>
       <div>
         <p>
           The November 2013 Common Crawl Corpus is available on <a href="http://aws.amazon.com/s3/">Amazon S3</a> in
@@ -1633,7 +1801,7 @@
         </ul>
       </div>
 
-      <h3 id="results-2012-1">3.6. Extraction Results from the August 2012 Common Crawl Corpus</h3>
+      <h3 id="results-2012-1">3.8. Extraction Results from the August 2012 Common Crawl Corpus</h3>
       <div>
         <p>
           The August 2012 Common Crawl Corpus is available on <a href="http://aws.amazon.com/s3/">Amazon S3</a> in the
@@ -1726,7 +1894,7 @@
         </p>
       </div>
 
-      <h3 id="results-2010">3.8. Extraction Results from the 2009/2010 Common Crawl Corpus</h3>
+      <h3 id="results-2010">3.9. Extraction Results from the 2009/2010 Common Crawl Corpus</h3>
       <div>
         <p>
           The 2009/2010 Common Crawl Corpus is available on <a href="http://aws.amazon.com/s3/">Amazon S3</a> in the
