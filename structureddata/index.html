@@ -34,18 +34,25 @@
     google.charts.setOnLoadCallback(drawMaterial18);
     google.charts.setOnLoadCallback(drawMaterial19);
     google.charts.setOnLoadCallback(drawMaterial20);
+	google.charts.setOnLoadCallback(drawMaterial21);
+	google.charts.setOnLoadCallback(drawMaterial22);
+	google.charts.setOnLoadCallback(drawMaterial23);
+	google.charts.setOnLoadCallback(drawMaterial24);
 
     function drawMaterial1() {
       var data = google.visualization.arrayToDataTable([
-        ['Crawl', 'RDFa', 'Microdata', 'hCard', 'JSON-LD'],
-        ['2012', 519379, 140312, 1511855, 0],
-        ['2013', 471406, 463539, 995258, 0],
-        ['2014', 571581, 819990, 1095517, 0],
-        ['2015', 521806, 1100783, 1095517, 596229],
-        ['2016', 938830, 2537539, 1668039, 2116755],
-        ['2017', 1209430, 3743822, 2758884, 2685738],
-        ['2018', 1382497, 5183199, 3399902, 3835046],
-		['2019', 1039623, 6359911, 4045187, 5100519]
+        
+		['Crawl', 'Microdata', 'JSON-LD', 'hCard', 'RDFa'],
+        ['2012', 140312, 0, 1511855, 519379],
+        ['2013', 463539, 0, 995258, 471406],
+        ['2014', 819990, 0, 1095517, 571581],
+        ['2015', 1100783, 596229, 1095517, 521806],
+        ['2016', 2537539, 2116755, 1668039, 938830],
+        ['2017', 3743822, 2685738, 2758884, 1209430],
+        ['2018', 5183199, 3835046, 3399902, 1382497],
+		['2019', 6359911, 5100519, 4045187, 1039623]
+
+	
 
       ]);
 
@@ -71,17 +78,19 @@
 
     function drawMaterial2() {
       var data2 = google.visualization.arrayToDataTable([
-        ['Crawl', 'RDFa', 'Microdata', 'hCard', 'JSON-LD'],
-        ['2012', 1079175202, 1488063426, 3547824107, 0],
-        ['2013', 2636964693, 8795074538, 4884918863, 0],
-        ['2014', 2566827347, 9438536906, 3850290103, 0],
-        ['2015', 1598114462, 13224134881, 4238311400, 382896204],
-        ['2016', 2216933416, 34637805559, 4600477456, 1880721886],
-        ['2017', 1629581643, 24359443316, 8371745745, 3623025088],
-        ['2018', 1207733576, 20318437064, 5374115412, 4159835616],
-		['2019', 1134186061, 22290981916, 11839793514, 8413179046]
+	  
+	  ['Crawl', 'Microdata', 'JSON-LD', 'hCard', 'RDFa'],
+	  ['2012', 1488063426, 0, 3547824107, 1079175202],
+	  ['2013', 8795074538, 0, 4884918863, 2636964693],
+      ['2014', 9438536906, 0, 3850290103, 2566827347],
+      ['2015', 13224134881, 382896204, 4238311400, 1598114462],
+      ['2016', 34637805559, 1880721886, 4600477456, 2216933416],
+      ['2017', 24359443316, 3623025088, 8371745745, 1629581643],
+	  ['2018', 20318437064, 4159835616, 5374115412, 1207733576],
+	  ['2019', 22290981916, 8413179046, 11839793514, 1134186061]
 
-      ]);
+
+           ]);
 
       var options2 = {
         width: 500,
@@ -119,7 +128,7 @@
       ]);
 
       var options3 = {
-        width: 500,
+        width: 600,
         height: 300,
         chart: {
           title: 'Development of Selected Classes by #PLDs'
@@ -153,7 +162,7 @@
       ]);
 
       var options4 = {
-        width: 500,
+        width: 600,
         height: 300,
         chart: {
           title: 'Development of Selected Classes by #Entities'
@@ -174,24 +183,24 @@
     function drawMaterial5() {
       var dataMD1 = google.visualization.arrayToDataTable([
         ['Crawl', 'schema:PostalAddress', 'schema:Product', 'schema:LocalBusiness', 'schema:Review',
-          'schema:Rating'
+          'schema:Event'
         ],
-        ['2012', 19592, 16612, 16383, 2585, 7711],
-        ['2013', 52446, 56388, 35264, 13137, 8360],
-        ['2014', 101086, 89608, 62191, 20124, 12187],
-        ['2015', 143229, 108387, 77659, 28356, 16356],
-        ['2016', 338058, 249947, 192558, 55189, 31762],
-        ['2017', 418807, 581482, 230844, 104576, 77731],
-        ['2018', 502615, 812205, 294390, 124022, 90369],
-		['2019',  530636,   991549,  292775,  131084,  102469 ]
+        ['2012', 19592, 16612, 16383, 2585, 4102],
+        ['2013', 52446, 56388, 35264, 13137, 8258],
+        ['2014', 101086, 89608, 62191, 20124, 12746],
+        ['2015', 143229, 108387, 77659, 28356, 12746],
+        ['2016', 338058, 249947, 192558, 55189, 28892],
+        ['2017', 418807, 581482, 230844, 104576, 65114],
+        ['2018', 502615, 812205, 294390, 124022, 88130],
+		['2019',  530636,   991549,  292775,  131084,  88130 ]
 
       ]);
 
       var options5 = {
-        width: 600,
+        width: 400,
         height: 300,
         chart: {
-          title: 'Development of Selected Classes by #PLDs'
+          title: 'Development of Selected schema.org Classes by #PLDs - MD format'
         },
         hAxis: {
           title: 'Year of Crawl',
@@ -200,6 +209,9 @@
         vAxis: {
           title: '#PLDs'
         },
+		legend: {
+			position: 'none'
+		}
 
       };
       var material5 = new google.charts.Line(document.getElementById('md_pld'));
@@ -210,16 +222,16 @@
 
       var dataMD2 = google.visualization.arrayToDataTable([
         ['Crawl', 'schema:PostalAddress', 'schema:Product', 'schema:LocalBusiness', 'schema:Review',
-          'schema:Rating'
+          'schema:Event'
         ],
-        ['2012', 9513985, 19386194, 5089, 3114006, 1777255],
-        ['2013', 125780525, 178334394, 76317387, 35213270, 30887676],
-        ['2014', 48804397, 288082823, 20194229, 42561245, 39170723],
-        ['2015', 78194892, 252233322, 77659, 43322033, 36242603],
-        ['2016', 291970567, 682850010, 99543802, 69789534, 56250927],
-        ['2017', 13713813, 439832806, 66794473, 46319490, 41478065],
-        ['2018', 89524321, 306531345, 39875083, 31526486, 28831167],
-		['2019', 79265936 , 329320312 , 30632581 , 33189371 , 26861726 ]
+        ['2012', 9513985, 19386194, 5089, 3114006, 1509601],
+        ['2013', 125780525, 178334394, 76317387, 35213270, 10551937],
+        ['2014', 48804397, 288082823, 20194229, 42561245, 4833993],
+        ['2015', 78194892, 252233322, 77659, 43322033, 13184936],
+        ['2016', 291970567, 682850010, 99543802, 69789534, 24483731],
+        ['2017', 13713813, 439832806, 66794473, 46319490, 21359059],
+        ['2018', 89524321, 306531345, 39875083, 31526486, 26035295],
+		['2019', 79265936 , 329320312 , 30632581 , 33189371 , 27102262 ]
 
 
       ]);
@@ -228,7 +240,7 @@
         width: 600,
         height: 300,
         chart: {
-          title: 'Development of Selected Classes by #Entities'
+          title: 'Development of Selected schema.org Classes by #Entities - MD format'
         },
         hAxis: {
           title: 'Year of Crawl',
@@ -957,6 +969,75 @@
       var material2 = new google.visualization.BarChart(document.getElementById('d2019Urls'));
       material2.draw(data2019Urls, options2);
     }
+	
+	
+	function drawMaterial23() {
+      var datajson1 = google.visualization.arrayToDataTable([
+        ['Crawl', 'schema:PostalAddress', 'schema:Product', 'schema:LocalBusiness', 'schema:Review',
+          'schema:Event'
+        ],
+		 ['2015', 2656, 571, 19750, 174, 2599],
+        ['2016', 18849, 571, 122929, 923, 4477],
+        ['2017', 69401, 12514, 154877, 2721, 45249 ],
+        ['2018', 178500, 40169, 249017, 6622, 63605],
+		['2019',  282176,   218270, 126820 ,  16675,  84283 ]
+        
+
+      ]);
+
+      var options23 = {
+        width: 400,
+        height: 300,
+        chart: {
+          title: 'Development of Selected schema.org Classes by #PLDs - JSON-LD format'
+        },
+        hAxis: {
+          title: 'Year of Crawl',
+          minValue: 0,
+        },
+        vAxis: {
+          title: '#PLDs'
+        },
+		legend: {
+			position: 'none'
+		}
+
+      };
+      var material23 = new google.charts.Line(document.getElementById('json_pld'));
+      material23.draw(datajson1, options23);
+    }
+
+    function drawMaterial24() {
+
+      var datajson2 = google.visualization.arrayToDataTable([
+        ['Crawl', 'schema:PostalAddress', 'schema:Product', 'schema:LocalBusiness', 'schema:Review',
+          'schema:Event'],
+		['2015', 1719300, 110102, 61297, 33887, 115106],
+        ['2016', 9291712, 7377107, 1727378, 959715, 1809562],
+        ['2017', 14290321, 14422594, 4501581, 1736504, 2615089],
+        ['2018', 20005146, 20614006, 6741534, 3332329, 2661806],
+		['2019', 24928628 , 42026698,  4773645,  5788102, 3833998]
+      ]);
+
+      var options6 = {
+        width: 600,
+        height: 300,
+        chart: {
+          title: 'Development of Selected schema.org Classes by #Entities - JSON-LD format'
+        },
+        hAxis: {
+          title: 'Year of Crawl',
+          minValue: 0,
+        },
+        vAxis: {
+          title: '#Entities'
+        }
+
+      };
+      var material6 = new google.charts.Line(document.getElementById('json_triple'));
+      material6.draw(datajson2, options6);
+    }
+
   </script>
 
   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
@@ -1011,7 +1092,7 @@
 
     <h2 id="news">News</h2>
     <ul>
-	<li><strong>2020-01-10: We have released the WDC <a href="#results-2019-1">RDFa, Microdata, Microformat, and
+	<li><strong>2020-01-13: We have released the WDC <a href="#results-2019-1">RDFa, Microdata, Microformat, and
             Embedded JSON-LD</a> data sets extracted from the November 2019 Common Crawl corpus and created multiple <a
             href="2019-12/stats/schema_org_subsets.html">schema.org class-specific subsets</a>. </strong></li>
   <li><strong>2019-10-23: <a href="http://webdatacommons.org/largescaleproductcorpus/v2/index.html">Version 2.0</a> of the WDC Product Data Corpus and Gold Standard for Large-Scale Product Matching released.</strong></li>
@@ -1237,7 +1318,7 @@
         We give an overview of the structured data adoption through the years by analyzing trends in the deployment of
         the most widely spread formats as well as in the
         deployment of selected RDFa and Microdata classes. For this analysis we use the data sets released between 2012
-        and 2018.
+        and 2019.
         </br>
         It is important to mention that the corresponding CommonCrawl web corpora have different sizes (2 billion to 3
         billion HTML pages), cover different amounts of websites (12 million PLDs to 40 million PLDs, selection by
@@ -1247,15 +1328,15 @@
       <h4>Adoption by Format</h4>
       <p>
         The diagram below shows the total number of pay-level domains (PLD) making use of one of the four most widely
-        spread markup formats (RDFa, Microdata, Microformat hCard and Embedded JSON-LD) within the seven crawls.
-        Although it seems the total number of domains using Microformats hCard has decreased from 2012 to 2015 one has
-        to keep
-        in mind, that the first crawl contains 50% more HTML pages than the latter two while the last crawl is almost
-        double the size. For Microdata and especially <code>schema.org</code>, we find an increase in deployment since
-        2012. In total we see a continuous increase in the deployment of structured data. However, Microdata
-        and JSON-LD formats have a faster growing rate in comparison to the hCard and RDFa formats.
-        The second diagram shows how the amount of triples that we extracted from the crawls for has developed
-        between 2012 and 2018.
+        spread markup formats (Microdata, Microformat hCard, Embedded JSON-LD and RDFa) within the eight crawls.
+        In total we see a continuous increase in the deployment of structured data.
+		Microdata and JSON-LD dominate over the other markup formats and have a fast growing rate mostly in the last four years.
+		Microformat hCard is also adopted by a steadily increasing number of websites while the growth of RDFa markup format is the smallest among all markup formats.
+        The second diagram shows how the amount of triples that we extracted from the crawls has developed
+        between 2012 and 2019. The growing trends are similar to ones the appearing in the PLD diagram, however we observe a high peak on the amount of triples for the year 2016.
+		We can interpret this peak by looking at the crawl size and depth of the corresponding crawl versions. The October 2016 crawl was the largest in size in comparison to the crawls of November 2017, 2018 and 2019.
+		Additionally it is much deeper, i.e. more pages of the same PLD are crawled. The average number of crawled pages (urls) by PLD was larger than 500 for the October 2016 crawl which is 5-7 times larger than the average number of pages per PLD for the 
+		rest of the crawls. 
       </p>
       <div>
         <span id="dev_plds" style="width:500px"></span>
@@ -1264,20 +1345,26 @@
 
       <h4>Adoption of Selected Schema.org Classes</h4>
       <p>
-        Below, we analyze the development of the adoption of schema.org classes embedded using the Microdata syntax.
+        Below, we analyze the development of the adoption of schema.org classes embedded using the Microdata and JSON-LD syntax.
         The two diagrams below show again the deployment of those classes by number of deploying PLDs and number of
         entities extracted from the crawls. We can see a continuous increase in the number of PLDs adopting the
-        schema.org classes. This is also reflected in the number of entities within the datasets, where the slight
-        decrease in 2015 of the two classes <code>PostalAddress</code> and <code>LocalBusiness</code> might originate
-        from the characteristics of the third crawl, which contains a similar number of pages as the second crawl, but
-        covers a larger number of PLDs. This has likely resulted in a more shallow coverage of websites that contain
-        schema.org data and thus in a smaller number of extracted entities.
+        schema.org classes. The adoption of the schema:Product and schema:PosatlAddress class is considerably growing mostly over the last three years.
+		We notice a drop from 2018 to 2019 in the number of PLDs using the schema:LocalBusiness class with the JSON-LD format. However, related classes such as schema:Organization and schema:Hotel noted significant growth
+		from 2018 to 2019: 1.3M PLDs to 2.2M PLDs for the schema:Organization class and 2.7 PLDs to 9.8K PLDs for the schema:Hotel class. Therefore the LocalBusiness class might have been replaced by other related classes from certain PLDs
+		 which could easily explain the drop. To verify this, further analysis is required.
+
+		
       </p>
-      <div>
-        <span id="md_pld" style="width:500px"></span>
-        <span id="md_triple" style="width:500px"></span>
-      </div>
-      </p>
+		<span style="width:1050px;display:inline-block">
+		  <span id="md_pld" style="float:left"></span>
+		  <span id="md_triple" style="float:right"></span>
+		</span>
+	  <span style="width:1050px;display:inline-block">
+          <span id="json_pld" style="float:left"></span>
+          <span id="json_triple" style="float:right"></span>
+        </span>
+	  
+	  
 
 
       <h4>Adoption of Selected RDFa Classes</h4>
@@ -1286,7 +1373,7 @@
         of PLDs using each class. The second diagram shows the total number of entities of each class contained in the
         WDC RDFa data sets. We see that the number of websites deploying the Facebook Open Graph Protocol classes <code>og:article</code>
         and <code>og:product</code> as well as <code>foaf:Document</code> stays approximately constant. The deployment
-        of <code>og:website</code> and <code>gd:breadcrumb</code> is increasing.
+        of <code>gd:breadcrumb</code> is increasing in terms of #PLDs.
       </p>
 
       <div id=="rdf_pld"></div>
@@ -1349,13 +1436,13 @@
             </tr>
             <tr>
               <th>Size of Extracted Data</th>
-              <td align="right">1.1TB</td>
+              <td align="right">1.01TB</td>
               <td>(compressed)</td>
             </tr>
           </tbody>
         </table>
 
-        <span style="width:2000px;display:inline-block">
+        <span style="width:1100px;display:inline-block">
           <span id="d2019Plds" style="float:left"></span>
           <span id="d2019Urls" style="float:left"></span>
         </span>
@@ -1427,7 +1514,7 @@
           </tbody>
         </table>
 
-        <span style="width:2000px;display:inline-block">
+        <span style="width:1100px;display:inline-block">
           <span id="d2018Plds" style="float:left"></span>
           <span id="d2018Urls" style="float:left"></span>
         </span>
@@ -1496,7 +1583,7 @@
           </tbody>
         </table>
 
-        <span style="width:2000px;display:inline-block">
+        <span style="width:1100px;display:inline-block">
           <span id="d2017Plds" style="float:left"></span>
           <span id="d2017Urls" style="float:left"></span>
         </span>
@@ -1563,7 +1650,7 @@
           </tbody>
         </table>
 
-        <span style="width:2000px;display:inline-block">
+        <span style="width:1100px;display:inline-block">
           <span id="d2016Plds" style="float:left"></span>
           <span id="d2016Urls" style="float:left"></span>
         </span>
