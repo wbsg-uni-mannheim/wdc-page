@@ -2639,6 +2639,8 @@
 				the attribute pair_id which uniquely
 				identifies each pair by concatenating their individual ids in the form id_left + '#' + id_right.
 				Finally the binary attribute label signifies if two product offers refer to the same product or not.
+				We offer all files both non-normalized and normalized. The non-normalized files contain all raw textual properties while for the normalized files all values are lowercased 
+				and all non alphanumeric characters have been removed.
 			</p>
 
 			All JSON files can easily be imported into a pandas dataframe using the following function call (big corpus
@@ -2653,9 +2655,13 @@
 					<tbody>
 						<tr>
 							<td><b>File</b></td>
-							<td><b>Sample</b></td>
+							<td><b>Non-normalized Sample</b></td>
 							<td><b>Size</b></td>
-							<td><b>Download</b></td>
+							<td><b>Non-normalized Download</b></td>
+							<td><b>Normalized Sample</b></td>
+							<td><b>Size</b></td>
+							<td><b>Normalized Download</b></td>
+							
 						</tr>
 
 
@@ -2663,25 +2669,47 @@
 						<tr>
 							<td>Product Data Corpus (Full)</td>
 							<td><a
+									href="http://data.dws.informatik.uni-mannheim.de/largescaleproductcorpus/data/v2_nonnorm/samples/offers_corpus_all_v2_sample_non_norm.json">sample_offers</a>
+								</td>
+							<td>6.5GB</td>
+							<td><a
+									href="http://data.dws.informatik.uni-mannheim.de/largescaleproductcorpus/data/v2_nonnorm/offers_corpus_all_v2_non_norm.json.gz">offers_corpus_all_v2_non_norm.json.gz
+							</td>
+							<td><a
 									href="http://data.dws.informatik.uni-mannheim.de/largescaleproductcorpus/data/v2/samples/offers_corpus_all_v2_sample.json">sample_offers</a>
 								</td>
 							<td>4.5GB</td>
 							<td><a
 									href="http://data.dws.informatik.uni-mannheim.de/largescaleproductcorpus/data/v2/offers_corpus_all_v2.json.gz">offers_corpus_all_v2.json.gz
 							</td>
+							
 						</tr>
 						<tr>
 							<td>Product Data Corpus (English)</td>
+
+							<td><a
+								href="http://data.dws.informatik.uni-mannheim.de/largescaleproductcorpus/data/v2_nonnorm/samples/offers_corpus_english_v2_sample_non_norm.json">sample_offers_english</a>							</td>
+							<td>3.7GB</td>
+							<td><a
+								href="http://data.dws.informatik.uni-mannheim.de/largescaleproductcorpus/data/v2_nonnorm/offers_corpus_english_v2_non_norm.json.gz">offers_corpus_english_v2_non_norm.json.gz
+							</td>
 							<td><a
 								href="http://data.dws.informatik.uni-mannheim.de/largescaleproductcorpus/data/v2/samples/offers_corpus_english_v2_sample.json">sample_offers_english</a>							</td>
 							<td>2.7GB</td>
 							<td><a
 								href="http://data.dws.informatik.uni-mannheim.de/largescaleproductcorpus/data/v2/offers_corpus_english_v2.json.gz">offers_corpus_english_v2.json.gz
 							</td>
+							
 						</tr>
 						
 						<tr>
 							<td>Training Sets Computers</td>
+							<td><a
+								href="http://data.dws.informatik.uni-mannheim.de/largescaleproductcorpus/data/v2_nonnorm/samples/computers_train_xlarge_sample.json">computers_train_sample</a>							</td>
+							<td>54.5MB</td>
+							<td><a
+								href="http://data.dws.informatik.uni-mannheim.de/largescaleproductcorpus/data/v2_nonnorm/trainsets/computers_train.zip">computers_train.zip
+							</td>
 							<td><a
 								href="http://data.dws.informatik.uni-mannheim.de/largescaleproductcorpus/data/v2/samples/computers_train_xlarge_sample.json">computers_train_sample</a>							</td>
 							<td>16.3MB</td>
@@ -2691,6 +2719,12 @@
 						</tr>
 						<tr>
 							<td>Training Sets Cameras</td>
+							<td><a
+								href="http://data.dws.informatik.uni-mannheim.de/largescaleproductcorpus/data/v2_nonnorm/samples/cameras_train_xlarge_sample.json">cameras_train_sample</a>							</td>
+							<td>45.2MB</td>
+							<td><a
+								href="http://data.dws.informatik.uni-mannheim.de/largescaleproductcorpus/data/v2_nonnorm/trainsets/cameras_train.zip">cameras_train.zip
+							</td>
 							<td><a
 								href="http://data.dws.informatik.uni-mannheim.de/largescaleproductcorpus/data/v2/samples/cameras_train_xlarge_sample.json">cameras_train_sample</a>							</td>
 							<td>15.4MB</td>
@@ -2702,6 +2736,12 @@
 						<tr>
 							<td>Training Sets Watches</td>
 							<td><a
+								href="http://data.dws.informatik.uni-mannheim.de/largescaleproductcorpus/data/v2_nonnorm/samples/watches_train_xlarge_sample.json">watches_train_sample</a>							</td>
+							<td>48.2MB</td>
+							<td><a
+								href="http://data.dws.informatik.uni-mannheim.de/largescaleproductcorpus/data/v2_nonnorm/trainsets/watches_train.zip">watches_train.zip
+							</td>
+							<td><a
 								href="http://data.dws.informatik.uni-mannheim.de/largescaleproductcorpus/data/v2/samples/watches_train_xlarge_sample.json">watches_train_sample</a>							</td>
 							<td>13.9MB</td>
 							<td><a
@@ -2711,6 +2751,12 @@
 						<tr>
 							<td>Training Sets Shoes</td>
 							<td><a
+								href="http://data.dws.informatik.uni-mannheim.de/largescaleproductcorpus/data/v2_nonnorm/samples/shoes_train_xlarge_sample.json">shoes_train_sample</a>							</td>
+							<td>36 MB</td>
+							<td><a
+								href="http://data.dws.informatik.uni-mannheim.de/largescaleproductcorpus/data/v2_nonnorm/trainsets/shoes_train.zip">shoes_train.zip
+							</td>
+							<td><a
 								href="http://data.dws.informatik.uni-mannheim.de/largescaleproductcorpus/data/v2/samples/shoes_train_xlarge_sample.json">shoes_train_sample</a>							</td>
 							<td>11.9MB</td>
 							<td><a
@@ -2719,6 +2765,12 @@
 						</tr>
 						<tr>
 							<td>Training Sets All</td>
+							<td><a
+								href="http://data.dws.informatik.uni-mannheim.de/largescaleproductcorpus/data/v2_nonnorm/samples/all_train_xlarge_sample.json">all_train_sample</a>							</td>
+							<td>213.3 MB</td>
+							<td><a
+								href="http://data.dws.informatik.uni-mannheim.de/largescaleproductcorpus/data/v2_nonnorm/trainsets/all_train.zip">all_train.zip
+							</td>
 							<td><a
 								href="http://data.dws.informatik.uni-mannheim.de/largescaleproductcorpus/data/v2/samples/all_train_xlarge_sample.json">all_train_sample</a>							</td>
 							<td>57.6MB</td>
@@ -2774,6 +2826,14 @@
 						<tr>
 							<td>Gold Standard Computers</td>
 							<td><a
+								href="http://data.dws.informatik.uni-mannheim.de/largescaleproductcorpus/data/v2_nonnorm/samples/computers_gs_sample.json">computers_gs_sample</a></td>
+
+							<td>528KB</td>
+							<td><a
+								href="http://data.dws.informatik.uni-mannheim.de/largescaleproductcorpus/data/v2_nonnorm/goldstandards/computers_gs.json.gz">computers_gs.json.gz
+							</td>
+							
+							<td><a
 								href="http://data.dws.informatik.uni-mannheim.de/largescaleproductcorpus/data/v2/samples/computers_gs_sample.json">computers_gs_sample</a></td>
 
 							<td>294.5KB</td>
@@ -2785,6 +2845,13 @@
 						<tr>
 							<td>Gold Standard Cameras</td>
 							<td><a
+								href="http://data.dws.informatik.uni-mannheim.de/largescaleproductcorpus/data/v2_nonnorm/samples/cameras_gs_sample.json">cameras_gs_sample</a></td>
+							<td>705KB</td>
+							<td><a
+								href="http://data.dws.informatik.uni-mannheim.de/largescaleproductcorpus/data/v2_nonnorm/goldstandards/cameras_gs.json.gz">cameras_gs.json.gz
+							</td>
+							
+							<td><a
 								href="http://data.dws.informatik.uni-mannheim.de/largescaleproductcorpus/data/v2/samples/cameras_gs_sample.json">cameras_gs_sample</a></td>
 							<td>369.3KB</td>
 							<td><a
@@ -2795,6 +2862,13 @@
 						<tr>
 							<td>Gold Standard Watches</td>
 							<td><a
+								href="http://data.dws.informatik.uni-mannheim.de/largescaleproductcorpus/data/v2_nonnorm/samples/watches_gs_sample.json">watches_gs_sample</a></td>
+							<td>551KB</td>
+							<td><a
+								href="http://data.dws.informatik.uni-mannheim.de/largescaleproductcorpus/data/v2_nonnorm/goldstandards/watches_gs.json.gz">watches_gs.json.gz
+							</td>
+							
+							<td><a
 								href="http://data.dws.informatik.uni-mannheim.de/largescaleproductcorpus/data/v2/samples/watches_gs_sample.json">watches_gs_sample</a></td>
 							<td>311KB</td>
 							<td><a
@@ -2804,6 +2878,15 @@
 						</tr>
 						<tr>
 							<td>Gold Standard Shoes</td>
+							
+							<td><a
+								href="http://data.dws.informatik.uni-mannheim.de/largescaleproductcorpus/data/v2_nonnorm/samples/shoes_gs_sample.json">shoes_gs_sample</a></td>
+							<td>490KB</td>
+							<td><a
+								href="http://data.dws.informatik.uni-mannheim.de/largescaleproductcorpus/data/v2_nonnorm/goldstandards/shoes_gs.json.gz">shoes_gs.json.gz
+							</td>
+
+							
 							<td><a
 								href="http://data.dws.informatik.uni-mannheim.de/largescaleproductcorpus/data/v2/samples/shoes_gs_sample.json">shoes_gs_sample</a></td>
 							<td>274.3KB</td>
@@ -2814,6 +2897,14 @@
 						</tr>
 						<tr>
 							<td>Gold Standard All</td>
+							
+							<td><a
+								href="http://data.dws.informatik.uni-mannheim.de/largescaleproductcorpus/data/v2_nonnorm/samples/all_gs_sample.json">all_gs_sample</a></td>
+							<td>2.6MB</td>
+							<td><a
+								href="http://data.dws.informatik.uni-mannheim.de/largescaleproductcorpus/data/v2_nonnorm/goldstandards/all_gs.json.gz">all_gs.json.gz
+							</td>
+							
 							<td><a
 								href="http://data.dws.informatik.uni-mannheim.de/largescaleproductcorpus/data/v2/samples/all_gs_sample.json">all_gs_sample</a></td>
 							<td>1.2MB</td>
