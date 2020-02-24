@@ -804,75 +804,58 @@
 									<li>'Office_Products'</li>
 								</ul>
 						<li><strong> title: </strong>The product title</li>
-						<ul><strong> Normalized </strong>
-								<li>'amd yd1400bbaebox ryzen 5 1400 3 2g 8mb 65w with wraith stealth cooler for 169 80'</li>
-								<li>'corsair vengeance red led 16gb 2x8gb ddr4 pc4 21300 2666mhz dual channel kit cmu16gx4m2a2666c16r novatech'</li>
-							</ul>
 						<ul><strong> Non-Normalized </strong>
 								<li>'AMD YD1400BBAEBOX Ryzen 1400 3.2g 8mb 65w Wraith Stealth Cooler for $169.80'</li>
 								<li>'Corsair Vengeance Red LED 16GB 2x 8GB DDR4 PC4 21300 2666Mhz dual-channel Kit - CMU16GX4M2A2666C16R Novatech'</li>
 						</ul>
+						<ul><strong> Normalized </strong>
+								<li>'amd yd1400bbaebox ryzen 5 1400 3 2g 8mb 65w with wraith stealth cooler for 169 80'</li>
+								<li>'corsair vengeance red led 16gb 2x8gb ddr4 pc4 21300 2666mhz dual channel kit cmu16gx4m2a2666c16r novatech'</li>
+							</ul>
+						
 						<li><strong> description: </strong>The product description</li>
+						<ul><strong> Non-Normalized </strong>
+								<li>'AMD YD1400BBAEBOX Ryzen 1400 3.2g 8mb 65w Wraith Stealth Cooler for $169.80. Free shipping on large orders. 30 day return policy. Secure purchasing. Highly rated company established 1991.'</li>
+								<li>'DDR4 2666MHz C116, 1.2V, XMP 2.0 red-led, Lifetime Warranty'</li>
+							</ul>
 						<ul><strong> Normalized </strong>
 								<li>'amd yd1400bbaebox ryzen 1400 3 2g 8mb 65w wraith stealth cooler for 169 80 free shipping on large orders 30 day return policy secure purchasing highly rated company established 1991'</li>
 								<li>'ddr4 2666mhz cl16 1 2v xmp 2 0 red led lifetime warranty'</li>
 							</ul>
-							<ul><strong> Non-Normalized </strong>
-								<li>'AMD YD1400BBAEBOX Ryzen 1400 3.2g 8mb 65w Wraith Stealth Cooler for $169.80. Free shipping on large orders. 30 day return policy. Secure purchasing. Highly rated company established 1991.'</li>
-								<li>'DDR4 2666MHz C116, 1.2V, XMP 2.0 red-led, Lifetime Warranty'</li>
-							</ul>
+							
 						<li><strong> brand: </strong>The product brand</li>
-						<ul><strong> Normalized </strong>
-								<li>'amd'</li>
-								<li>'corsair'</li>
-							</ul>
 						<ul><strong> Non-Normalized </strong>
 								<li>'AMD'</li>
 								<li>'Corsair'</li>
 							</ul>
+						<ul><strong> Normalized </strong>
+								<li>'amd'</li>
+								<li>'corsair'</li>
+							</ul>
+						
 						<li><strong> price: </strong>The product price</li>
+						<ul><strong> Non-Normalized </strong>
+								<li>'USD 169.95'</li>
+								<li>'USD 89.99'</li>
+							</ul>
 						<ul><strong> Normalized </strong>
 								<li>'usd 169 95'</li>
 								<li>'usd 89 99'</li>
 							</ul>
-							<ul><strong> Non-Normalized </strong>
-								<li>'USD 169.95'</li>
-								<li>'USD 89.99'</li>
-							</ul>
+							
 						<li><strong> specTableContent: </strong>The specification table content of the products website as
 							one string</li>
-							<ul> <strong> Normalized </strong>
-									<li>'mfg model amd yd1400bbaebox mfg part yd1400bbaebox upc 730143308427 description ryzen 5 1400 3 2g 8mb 65w with wraith stealth cooler price 169 80 essential information blt item b8q6824 manufacturer part yd1400bbaebox manufacturer amd description ryzen 5 1400 3 2g 8mb 65w with wraith stealth cooler weight 1 1 lbs manufacturer s website http www amd com dimensions 5 4 x 5 4 x 5 3 upc 730143308427 return policy standard blt return policy'</li>
-									<li>'memory type ddr4 pc4 21300 capacity 16gb 2 x 8gb tested speed 2666mhz tested latency 16 18 18 35 tested voltage 1 20v registered unbuffered unbuffered error checking non ecc memory features red led xmp 2 0'</li>
-								</ul>
 							<ul> <strong> Non-Normalized </strong>
 									<li>'Mfg. & Model: AMD YD1400BBAEBOX Mfg. Part #: YD1400BBAEBOX UPC: 730143308427 Description: Ryzen 5 1400 3.2g 8mb 65w With Wraith Stealth Cooler Price: $169.80 Essential Information BLT Item #: B8Q6824 Manufacturer Part #: YD1400BBAEBOX Manufacturer: AMD Description: RYZEN 5 1400 3.2G 8MB 65W WITH WRAITH STEALTH COOLER Weight: 1.1 lbs. Manufacturer's website: http://www.amd.com/ Dimensions: 5.4\" x 5.4\" x 5.3\" UPC: 730143308427 Return Policy: Standard BLT Return Policy'</li>
 									<li>'Memory Type DDR4 (PC4-21300) Capacity 16GB (2 x 8GB) Tested Speed 2666MHz Tested Latency 16-18-18-35 Tested Voltage 1.20V Registered / Unbuffered Unbuffered Error Checking Non-ECC Memory Features - red-led XMP 2.0'</li>
 								</ul>
+							<ul> <strong> Normalized </strong>
+									<li>'mfg model amd yd1400bbaebox mfg part yd1400bbaebox upc 730143308427 description ryzen 5 1400 3 2g 8mb 65w with wraith stealth cooler price 169 80 essential information blt item b8q6824 manufacturer part yd1400bbaebox manufacturer amd description ryzen 5 1400 3 2g 8mb 65w with wraith stealth cooler weight 1 1 lbs manufacturer s website http www amd com dimensions 5 4 x 5 4 x 5 3 upc 730143308427 return policy standard blt return policy'</li>
+									<li>'memory type ddr4 pc4 21300 capacity 16gb 2 x 8gb tested speed 2666mhz tested latency 16 18 18 35 tested voltage 1 20v registered unbuffered unbuffered error checking non ecc memory features red led xmp 2 0'</li>
+								</ul>
+							
 						<li><strong> keyValuePairs: </strong>The key-value pairs that were extracted from the specification tables using the method described above</li>
-						<ul><strong> Normalized </strong>
-								<li>'{'mfg model': 'amd yd1400bbaebox',
-										'mfg part': 'yd1400bbaebox',
-										'upc': '730143308427',
-										'description': 'ryzen 5 1400 3 2g 8mb 65w with wraith stealth cooler',
-										'price': '169 80',
-										'blt item': 'b8q6824',
-										'manufacturer part': 'yd1400bbaebox',
-										'manufacturer': 'amd',
-										'weight': '1 1 lbs',
-										'manufacturer s website': 'http www amd com',
-										'dimensions': '5 4 x 5 4 x 5 3',
-										'return policy': 'standard blt return policy'}'</li>
-								<li>'{'memory type': 'ddr4 pc4 21300',
-										'capacity': '16gb 2 x 8gb',
-										'tested speed': '2666mhz',
-										'tested latency': '16 18 18 35',
-										'tested voltage': '1 20v',
-										'registered unbuffered': 'unbuffered',
-										'error checking': 'non ecc',
-										'memory features': 'red led xmp 2 0'}'</li>
-							</ul>
-							<ul><strong> Non-Normalized </strong>
+						<ul><strong> Non-Normalized </strong>
 								<li>'{'Mfg. & Model:':'AMD YD1400BBAEBOX',
 									'Mfg. Part #:':'YD1400BBAEBOX',
 									'UPC:':'730143308427',
@@ -896,6 +879,30 @@
 									'Memory Features':'red-led XMP 2.0'}'
 								</li>
 							</ul>
+						
+						<ul><strong> Normalized </strong>
+								<li>'{'mfg model': 'amd yd1400bbaebox',
+										'mfg part': 'yd1400bbaebox',
+										'upc': '730143308427',
+										'description': 'ryzen 5 1400 3 2g 8mb 65w with wraith stealth cooler',
+										'price': '169 80',
+										'blt item': 'b8q6824',
+										'manufacturer part': 'yd1400bbaebox',
+										'manufacturer': 'amd',
+										'weight': '1 1 lbs',
+										'manufacturer s website': 'http www amd com',
+										'dimensions': '5 4 x 5 4 x 5 3',
+										'return policy': 'standard blt return policy'}'</li>
+								<li>'{'memory type': 'ddr4 pc4 21300',
+										'capacity': '16gb 2 x 8gb',
+										'tested speed': '2666mhz',
+										'tested latency': '16 18 18 35',
+										'tested voltage': '1 20v',
+										'registered unbuffered': 'unbuffered',
+										'error checking': 'non ecc',
+										'memory features': 'red led xmp 2 0'}'</li>
+							</ul>
+							
 					</ul>
 
 		</p>
