@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Profiling of Reproducible Entity Matching Benchmark Tasks</title>
+	<link rel='stylesheet' href='http://webdatacommons.org/style.css' type='text/css' media='screen' />
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<style>
+		.tar {
+		text-align: right;
+		}
+		.rtable
+		{
+		float: right;
+		padding-left:10px;
+		}
+		.smalltable, .smalltable TD, .smalltable TH
+		{
+		font-size:9pt;
+		}
+		.tab {
+		overflow: hidden;
+		border: 1px solid #ccc;
+		background-color: #eaf3fa;
+		clear:both;
+		padding-left: 37px;
+		width:500px
+		}
+		.tab button {
+		background-color: inherit;
+		float: left;
+		border: none;
+		outline: none;
+		cursor: pointer;
+		padding: 15px 15px;
+		transition: 0.3s;
+		}
+		.tab button:hover {
+  		background-color: #ddd;
+		}
+		.tab button.active {
+  		background-color: #ccc;
+		}
+		.tabcontent {
+		display: none;
+		padding: 6px 12px;
+		border-top: none;
+		animation: fadeEffect 1s;
+		width:500px
+		}
+		.table-wrapper {
+		position:relative;
+		}
+		.table-scroll {
+		height:240px;
+		overflow:auto;
+		margin-top:-10px;
+		}
+		.show{
+		display:block;
+		}
+		.no-show{
+		display:none;
+		}
+		caption {
+		caption-side: bottom;
+		font-style: italic;
+		}
+		td[scope="mergedcol"] {
+		text-align: center;
+		}
+		hr {
+		width: 50%;
+		margin: 20px 0; /* This leaves 10px margin on left and right. If only right margin is needed try margin-right: 10px; */
+		}
+		@keyframes fadeEffect {
+			from {opacity: 0;}
+			to {opacity: 1;}
+		}
+	</style>
+	<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+	<script type="text/javascript">
+		google.load('visualization', '1', {
+			packages: ['bar', 'line', 'corechart']
+		});
+		<!--google.setOnLoadCallback(drawOffersPerClassChart);--!>
+		
+	</script>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+	<script type="text/javascript" src="../jquery.toc.min.js"></script>
+	<script type="text/javascript">
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-30248817-1']);
+		_gaq.push(['_trackPageview']);
+
+		(function () {
+			var ga = document.createElement('script');
+			ga.type = 'text/javascript';
+			ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0];
+			s.parentNode.insertBefore(ga, s);
+		})();
+		
+		$(document).ready(function () {  
+            $('tr.parent')  
+                .css("cursor", "pointer")  
+                .attr("title", "repo")  
+                .click(function () {  
+                    $(this).siblings('.child-' + this.id).toggle();  
+                });  
+            $('tr[@class^=child-]').hide().children('td');  
+    });  
+	</script>
+
+		
+</head>
+
+<body>
+	<div id="logo" style="text-align:right; background-color: white;">&nbsp;&nbsp;<a href="http://dws.informatik.uni-mannheim.de"><img
+			 src="../images/ma-logo.gif" alt="University of Mannheim - Logo"></a></div>
+	<div id="header">
+		<h1 style="font-size: 250%;">Web Data Commons - Profiling of Reproducible Entity Matching Benchmark Tasks</h1>
+	</div>
+	<div id="authors">
+		<!--<a href="https://dws.informatik.uni-mannheim.de/en/people/researchers/anna-primpeli/">Anna Primpeli</a><br />
+		<a href="http://dws.informatik.uni-mannheim.de/en/people/professors/prof-dr-christian-bizer/">Christian Bizer</a><br />!-->
+	</div>
+	<div id="content">
+	<p>
+	<strong> *The page in under construction. All artifacts and code for reproducing our experiments are already available in this page.* </strong>
+	</p>
+		<p>
+			This page provides benchmark tasks for entity matching that enhance the reproducibility and comparability of matching methods by providing fixed 
+			development and test sets as well as baseline results. All task-related artifacts are available for public download. Additionally, we provide the code
+			for reproducing the baseline experiments.
+
+		</p>
+		
+		<h2 id="news">News</h2>
+		<ul>
+			<li><strong>2020-07-05: We complement and provide baseline results for popular existing benchmark entity matching tasks.</strong> 
+		</ul>
+		<h2>Contents</h2>
+		<ul>
+			<li class="toc-h2 toc-active">
+				<a href="#toc1"> 1. Motivation</a>
+			</li>
+			<li class="toc-h2 toc-active">
+				<a href="#toc2"> 2. Benchmark Matching Tasks - Download</a>
+			</li>
+			<li class="toc-h2 toc-active">
+				<a href="#toc3"> 3. Baseline Matching Method</a>
+			</li>
+			<li class="toc-h2 toc-active">
+				<a href="#toc4"> 4. Baseline Matching Results</a>
+			</li>
+			<li class="toc-h2 toc-active">
+				<a href="#toc5"> 5. References</a>
+			</li>
+			
+			</li>
+		</ul>
+
+		<span id="toc1"></span>
+		<h2>1. Motivation</h2>
+		<p> Entity matching is an important task for data integration and has been the focus of many research works.
+		A large amount of entity matching tasks for benchmarking have been developed and made publicly available for evaluating,
+		comparing, reproducing and showing the strengths of different matching methods.
+		However, the lack of fixed development and test sets, correspondence sets including both matching and non-matching record
+		pairs as well as baseline results, hinders reproducibility and comparability.
+		We mitigate this problem by defining a standard execution procedure for complementing matching tasks,
+		apply it in 20 benchmark matching tasks and establish baseline evaluation results. </p>
+
+		
+		<span id="toc2"></span>	
+		<h2>2. Benchmark Matching Tasks - Download</h2>
+		<p>
+		<table>
+			  <tr>
+				<th>Matching Task</th>
+				<th>Train Set</th>
+				<th>Valid. Set</th>
+				<th>Test Set</th>
+				<th>Feature Vector</th>
+				<th>Data sources</th>
+				<th>Acknowledgment</th>
+				<th>Used In</th>
+			  </tr>
+			  <tr class="parent" id="leipzig" title="repo" style="cursor: pointer;">
+				<td colspan="7"; style="text-align: center"> <b>+/-</b>
+				<a href="https://dbs.uni-leipzig.de/research/projects/object_matching/benchmark_datasets_for_entity_resolution"> Database Group Leipzig</a>
+				</td>
+			  </tr>
+			  <tr class="child-leipzig" style="display: table-row;">
+				<td>abt-buy</td>
+				<td><a href="http://data.dws.informatik.uni-mannheim.de/benchmarkmatchingtasks/abt-buy/gs_train.csv" target="_blank">gs_train</a> (107KB)</td>
+				<td><a href="http://data.dws.informatik.uni-mannheim.de/benchmarkmatchingtasks/abt-buy/gs_val.csv" target="_blank" >gs_val</a> (31KB)</td>
+				<td><a href="http://data.dws.informatik.uni-mannheim.de/benchmarkmatchingtasks/abt-buy/gs_test.csv" target="_blank" >gs_test</a> (16KB)</td>
+				<td><a href="http://data.dws.informatik.uni-mannheim.de/benchmarkmatchingtasks/abt-buy/feature_vector.zip" target="_blank">feature_vector.zip</a> (850KB)</td>
+				<td><a href="http://data.dws.informatik.uni-mannheim.de/benchmarkmatchingtasks/abt-buy/records.zip" target="_blank">records.zip</a> (125KB)</td>
+
+				<td></td>
+				<td></td>
+			  </tr>
+			  <tr class="child-leipzig" style="display: table-row;">
+				<td>amazon-google</td>
+				<td><a href="http://data.dws.informatik.uni-mannheim.de/benchmarkmatchingtasks/amazon-google/gs_train.csv" target="_blank">gs_train</a> (459KB)</td>
+				<td><a href="http://data.dws.informatik.uni-mannheim.de/benchmarkmatchingtasks/amazon-google/gs_val.csv" target="_blank">gs_val</a> (132KB)</td>
+				<td><a href="http://data.dws.informatik.uni-mannheim.de/benchmarkmatchingtasks/amazon-google/gs_test.csv" target="_blank">gs_test</a> (65KB)</td>
+				<td><a href="http://data.dws.informatik.uni-mannheim.de/benchmarkmatchingtasks/amazon-google/feature_vector.zip" target="_blank">feature_vector.zip</a> (1.5MB)</td>
+				<td><a href="http://data.dws.informatik.uni-mannheim.de/benchmarkmatchingtasks/amazon-google/records.zip" target="_blank">records.zip</a> (602KB)</td>
+				<td></td>
+				<td></td>
+			  </tr>
+			  <tr class="child-leipzig" style="display: table-row;">
+				<td>dblp-acm</td>
+				<td><a href="http://data.dws.informatik.uni-mannheim.de/benchmarkmatchingtasks/dblp-acm/gs_train.csv" target="_blank">gs_train</a> (1.1MB)</td>
+				<td><a href="http://data.dws.informatik.uni-mannheim.de/benchmarkmatchingtasks/dblp-acm/gs_val.csv" target="_blank">gs_val</a> (343KB)</td>
+				<td><a href="http://data.dws.informatik.uni-mannheim.de/benchmarkmatchingtasks/dblp-acm/gs_test.csv" target="_blank">gs_test</a> (168KB)</td>
+				<td><a href="http://data.dws.informatik.uni-mannheim.de/benchmarkmatchingtasks/dblp-acm/feature_vector.zip" target="_blank">feature_vector.zip</a> (4.6MB)</td>
+				<td><a href="http://data.dws.informatik.uni-mannheim.de/benchmarkmatchingtasks/dblp-acm/records.zip" target="_blank">records.zip</a> (244KB)</td>
+				<td></td>
+				<td></td>
+			  </tr>
+			  <tr class="child-leipzig" style="display: table-row;">
+				<td>dblp-scholar</td>
+				<td><a href="http://data.dws.informatik.uni-mannheim.de/benchmarkmatchingtasks/dblp-scholar/gs_train.csv" target="_blank">gs_train</a> (2.6MB)</td>
+				<td><a href="http://data.dws.informatik.uni-mannheim.de/benchmarkmatchingtasks/dblp-scholar/gs_val.csv" target="_blank">gs_val</a> (767KB)	</td>
+				<td><a href="http://data.dws.informatik.uni-mannheim.de/benchmarkmatchingtasks/dblp-scholar/gs_test.csv" target="_blank">gs_test</a> (375KB)</td>
+				<td><a href="http://data.dws.informatik.uni-mannheim.de/benchmarkmatchingtasks/dblp-scholar/feature_vector.zip" target="_blank">feature_vector.zip</a> (9.9MB)</td>
+				<td><a href="http://data.dws.informatik.uni-mannheim.de/benchmarkmatchingtasks/dblp-scholar/records.zip" target="_blank">records.zip</a> (3.9MB)</td>
+				<td></td>
+				<td></td>
+			  </tr>
+			  <tr class="parent" id="magellan" title="repo" style="cursor: pointer;">				
+				<td colspan="7"; style="text-align: center"><b>+/-</b>
+				<a href="https://sites.google.com/site/anhaidgroup/useful-stuff/data">Magellan Data Repository</a></td>
+			  </tr>
+			  <tr class="child-magellan" style="display: table-row;">
+				<td>restaurants (Fodors-Zagats)</td>
+				<td><a href="http://data.dws.informatik.uni-mannheim.de/benchmarkmatchingtasks/restaurants_(Fodors-Zagats)/gs_train.csv" target="_blank">gs_train</a> (7KB)</td>
+				<td><a href="http://data.dws.informatik.uni-mannheim.de/benchmarkmatchingtasks/restaurants_(Fodors-Zagats)/gs_val.csv" target="_blank">gs_val</a> (2KB)</td>
+				<td><a href="http://data.dws.informatik.uni-mannheim.de/benchmarkmatchingtasks/restaurants_(Fodors-Zagats)/gs_test.csv" target="_blank">gs_test</a> (1KB)</td>
+				<td><a href="http://data.dws.informatik.uni-mannheim.de/benchmarkmatchingtasks/restaurants_(Fodors-Zagats)/feature_vector.zip.csv" target="_blank">feature_vector.zip</a> (61KB)</td>
+				<td><a href="http://data.dws.informatik.uni-mannheim.de/benchmarkmatchingtasks/restaurants_(Fodors-Zagats)/records.zip" target="_blank">records.zip</a> (24KB)</td>
+				<td></td>
+				<td></td>
+			  </tr>
+			  <tr class="child-magellan" style="display: table-row;">
+				<td>products (Walmart-Amazon)</td>
+				<td><a href="http://data.dws.informatik.uni-mannheim.de/benchmarkmatchingtasks/products_(Walmart-Amazon)/gs_train.csv" target="_blank">gs_train</a> (169KB)</td>
+				<td><a href="http://data.dws.informatik.uni-mannheim.de/benchmarkmatchingtasks/products_(Walmart-Amazon)/gs_val.csv" target="_blank">gs_val</a>  (49KB)</td>
+				<td><a href="http://data.dws.informatik.uni-mannheim.de/benchmarkmatchingtasks/products_(Walmart-Amazon)/gs_test.csv" target="_blank">gs_test</a> (24KB)</td>
+				<td><a href="http://data.dws.informatik.uni-mannheim.de/benchmarkmatchingtasks/products_(Walmart-Amazon)/gs_feature_vector.zip" target="_blank">feature_vector.zip</a> (3.8MB)</td>
+				<td><a href="http://data.dws.informatik.uni-mannheim.de/benchmarkmatchingtasks/products_(Walmart-Amazon)/records.zip" target="_blank">records.zip</a> (13.5MB)</td>
+				<td></td>
+				<td></td>
+			  </tr>
+			  <tr class="child-magellan" style="display: table-row;">
+				<td>baby products</td>
+				<td><a href="http://data.dws.informatik.uni-mannheim.de/benchmarkmatchingtasks/baby_products/gs_train.csv" target="_blank">gs_train</a> (6KB)</td>
+				<td><a href="http://data.dws.informatik.uni-mannheim.de/benchmarkmatchingtasks/baby_products/gs_val.csv" target="_blank">gs_val</a> (2KB)</td>
+				<td><a href="http://data.dws.informatik.uni-mannheim.de/benchmarkmatchingtasks/baby_products/gs_test.csv" target="_blank">gs_test</a> (1KB)</td>
+				<td><a href="http://data.dws.informatik.uni-mannheim.de/benchmarkmatchingtasks/baby_products/feature_vector.zip" target="_blank">feature_vector.zip</a> (62KB)</td>
+				<td><a href="http://data.dws.informatik.uni-mannheim.de/benchmarkmatchingtasks/baby_products/records.zip" target="_blank">records.zip</a> (455KB)</td>
+				<td></td>
+				<td></td>
+			  </tr>
+			  <tr class="child-magellan" style="display: table-row;">
+				<td>beer</td>
+				<td><a href="http://data.dws.informatik.uni-mannheim.de/benchmarkmatchingtasks/beer/gs_train.csv" target="_blank">gs_train</a> (6KB)</td>
+				<td><a href="http://data.dws.informatik.uni-mannheim.de/benchmarkmatchingtasks/beer/gs_val.csv" target="_blank">gs_val</a> (2KB)</td>
+				<td><a href="http://data.dws.informatik.uni-mannheim.de/benchmarkmatchingtasks/beer/gs_test.csv" target="_blank">gs_test</a> (1KB)</td>
+				<td><a href="http://data.dws.informatik.uni-mannheim.de/benchmarkmatchingtasks/beer/feature_vector.zip" target="_blank">feature_vector.zip</a> (46KB)</td>
+				<td><a href="http://data.dws.informatik.uni-mannheim.de/benchmarkmatchingtasks/beer/records.zip" target="_blank">records.zip</a> (162KB)</td>
+				<td></td>
+				<td></td>
+			  </tr>
+			  <tr class="child-magellan" style="display: table-row;">
+				<td>bikes</td>
+				<td><a href="http://data.dws.informatik.uni-mannheim.de/benchmarkmatchingtasks/bikes/gs_train.csv" target="_blank">gs_train</a> (6KB)</td>
+				<td><a href="http://data.dws.informatik.uni-mannheim.de/benchmarkmatchingtasks/bikes/gs_val.csv" target="_blank">gs_val</a> (2KB)</td>
+				<td><a href="http://data.dws.informatik.uni-mannheim.de/benchmarkmatchingtasks/bikes/gs_test.csv" target="_blank">gs_test</a> (1KB)</td>
+				<td><a href="http://data.dws.informatik.uni-mannheim.de/benchmarkmatchingtasks/bikes/feature_vector.zip" target="_blank">feature_vector.zip</a> (42KB)</td>
+				<td><a href="http://data.dws.informatik.uni-mannheim.de/benchmarkmatchingtasks/bikes/records.zip" target="_blank">records.zip</a> (241KB)</td>
+				<td></td>
+				<td></td>
+			  </tr>
+			  <tr class="child-magellan" style="display: table-row;">
+				<td>books (Goodreads-Barnes)</td>
+				<td><a href="http://data.dws.informatik.uni-mannheim.de/benchmarkmatchingtasks/books_(Goodreads-Barnes)/gs_train.csv" target="_blank">gs_train</a> (6KB)</td>
+				<td><a href="http://data.dws.informatik.uni-mannheim.de/benchmarkmatchingtasks/books_(Goodreads-Barnes)/gs_val.csv" target="_blank">gs_val</a> (2KB)</td>
+				<td><a href="http://data.dws.informatik.uni-mannheim.de/benchmarkmatchingtasks/books_(Goodreads-Barnes)/gs_test.csv" target="_blank">gs_test</a> (1KB)</td>
+				<td><a href="http://data.dws.informatik.uni-mannheim.de/benchmarkmatchingtasks/books_(Goodreads-Barnes)/feature_vector.zip" target="_blank">feature_vector.zip</a> (55KB)</td>
+				<td><a href="http://data.dws.informatik.uni-mannheim.de/benchmarkmatchingtasks/books_(Goodreads-Barnes)/records.zip" target="_blank">records.zip</a> (1.4MB)</td>
+				<td></td>
+				<td></td>
+			  </tr>
+			  <tr class="child-magellan" style="display: table-row;">
+				<td>cosmetics</td>
+				<td><a href="http://data.dws.informatik.uni-mannheim.de/benchmarkmatchingtasks/cosmetics/gs_train.csv" target="_blank">gs_train</a> (5KB)</td>
+				<td><a href="http://data.dws.informatik.uni-mannheim.de/benchmarkmatchingtasks/cosmetics/gs_val.csv" target="_blank">gs_val</a> (2KB)</td>
+				<td><a href="http://data.dws.informatik.uni-mannheim.de/benchmarkmatchingtasks/cosmetics/gs_test.csv" target="_blank">gs_test</a> (1KB)</td>
+				<td><a href="http://data.dws.informatik.uni-mannheim.de/benchmarkmatchingtasks/cosmetics/feature_vector.zip" target="_blank">feature_vector.zip</a> (34KB)</td>
+				<td><a href="http://data.dws.informatik.uni-mannheim.de/benchmarkmatchingtasks/cosmetics/records.zip" target="_blank">records.zip</a> (247KB)</td>
+				<td> </td>
+				<td></td>
+			  </tr>
+			  <tr class="child-magellan" style="display: table-row;">
+				<td>music (iTunes - Amazon)</td>
+				<td><a href="http://data.dws.informatik.uni-mannheim.de/benchmarkmatchingtasks/music_(iTunes-Amazon)/gs_train.csv" target="_blank">gs_train</a> (8KB)</td>
+				<td><a href="http://data.dws.informatik.uni-mannheim.de/benchmarkmatchingtasks/music_(iTunes-Amazon)/gs_val.csv" target="_blank">gs_val</a> (3KB)</td>
+				<td><a href="http://data.dws.informatik.uni-mannheim.de/benchmarkmatchingtasks/music_(iTunes-Amazon)/gs_test.csv" target="_blank">gs_test</a> (2KB)</td>
+				<td><a href="http://data.dws.informatik.uni-mannheim.de/benchmarkmatchingtasks/music_(iTunes-Amazon)/feature_vector.zip" target="_blank">feature_vector.zip</a> (71KB)</td>
+				<td><a href="http://data.dws.informatik.uni-mannheim.de/benchmarkmatchingtasks/music_(iTunes-Amazon)/records.zip" target="_blank">records.zip</a> (1.3MB)</td>
+				<td></td>
+				<td></td>
+			  </tr>
+			  <tr class="child-magellan" style="display: table-row;">
+				<td>restaurants (Yellow - Yelp)</td>
+				<td><a href="http://data.dws.informatik.uni-mannheim.de/benchmarkmatchingtasks/restaurants_(YellowPages-Yelp)/gs_train.csv" target="_blank">gs_train</a> (6KB)</td>
+				<td><a href="http://data.dws.informatik.uni-mannheim.de/benchmarkmatchingtasks/restaurants_(YellowPages-Yelp)/gs_val.csv" target="_blank">gs_val</a> (2KB)</td>
+				<td><a href="http://data.dws.informatik.uni-mannheim.de/benchmarkmatchingtasks/restaurants_(YellowPages-Yelp)/gs_test.csv" target="_blank">gs_test</a> (1KB)</td>
+				<td><a href="http://data.dws.informatik.uni-mannheim.de/benchmarkmatchingtasks/restaurants_(YellowPages-Yelp)/feature_vector.zip" target="_blank">feature_vector.zip</a> (36KB)</td>
+				<td><a href="http://data.dws.informatik.uni-mannheim.de/benchmarkmatchingtasks/restaurants_(YellowPages-Yelp)/records.zip" target="_blank">records.zip</a> (376KB)</td>
+				<td></td>
+				<td></td>
+			  </tr>
+			  <tr class="parent" id="wdc" title="repo" style="cursor: pointer;">
+				<td colspan="7"; style="text-align: center"><b>+/-</b>
+				<a href="http://webdatacommons.org/productcorpus/index.html">Web Data Commons Product Corpus</a></td>
+			  </tr>
+			  <tr class="child-wdc" style="display: table-row;">
+				<td>wdc_phones</td>
+				<td><a href="http://data.dws.informatik.uni-mannheim.de/benchmarkmatchingtasks/wdc_phones/gs_train.csv" target="_blank">gs_train</a> (2.0MB)</td>
+				<td><a href="http://data.dws.informatik.uni-mannheim.de/benchmarkmatchingtasks/wdc_phones/gs_val.csv" target="_blank">gs_val</a> (575KB)</td>
+				<td><a href="http://data.dws.informatik.uni-mannheim.de/benchmarkmatchingtasks/wdc_phones/gs_test.csv" target="_blank">gs_test</a> (284KB)</td>
+				<td><a href="http://data.dws.informatik.uni-mannheim.de/benchmarkmatchingtasks/wdc_phones/gs_feature_vector.zip" target="_blank">feature_vector.zip</a> (4.7MB)</td>
+				<td><a href="http://data.dws.informatik.uni-mannheim.de/benchmarkmatchingtasks/wdc_phones/records.zip" target="_blank">records.zip</a> (49KB)</td>
+				<td></td>
+				<td></td>
+			  </tr>
+			  <tr class="child-wdc" style="display: table-row;">
+				<td>wdc_headphones</td>
+				<td><a href="http://data.dws.informatik.uni-mannheim.de/benchmarkmatchingtasks/wdc_headphones/gs_train.csv" target="_blank">gs_train</a> (2.0MB)</td>
+				<td><a href="http://data.dws.informatik.uni-mannheim.de/benchmarkmatchingtasks/wdc_headphones/gs_val.csv" target="_blank">gs_val</a> (583KB)</td>
+				<td><a href="http://data.dws.informatik.uni-mannheim.de/benchmarkmatchingtasks/wdc_headphones/gs_test.csv" target="_blank">gs_test</a> (288KB)</td>
+				<td><a href="http://data.dws.informatik.uni-mannheim.de/benchmarkmatchingtasks/wdc_headphones/gs_feature_vector.zip" target="_blank">gs_feature_vector.zip</a> (3.9MB)</td>
+				<td><a href="http://data.dws.informatik.uni-mannheim.de/benchmarkmatchingtasks/wdc_headphones/records.zip" target="_blank">records.zip</a> (43KB)</td>
+				<td></td>
+				<td></td>
+			  </tr>
+			  <tr class="child-wdc" style="display: table-row;">
+				<td>wdc_tvs</td>
+				<td><a href="http://data.dws.informatik.uni-mannheim.de/benchmarkmatchingtasks/wdc_tvs/gs_train.csv" target="_blank">gs_train</a> (2.3MB)</td>
+				<td><a href="http://data.dws.informatik.uni-mannheim.de/benchmarkmatchingtasks/wdc_tvs/gs_val.csv" target="_blank">gs_val</a> (661KB)</td>
+				<td><a href="http://data.dws.informatik.uni-mannheim.de/benchmarkmatchingtasks/wdc_tvs/gs_test.csv" target="_blank">gs_test</a> (326KB)</td>
+				<td><a href="http://data.dws.informatik.uni-mannheim.de/benchmarkmatchingtasks/wdc_tvs/feature_vector.zip" target="_blank">feature_vector.zip</a> (6.2MB)</td>
+				<td><a href="http://data.dws.informatik.uni-mannheim.de/benchmarkmatchingtasks/wdc_tvs/records.zip" target="_blank">records.zip</a> (92KB)</td>
+				<td></td>
+				<td></td>
+			  </tr>
+			  <tr class="parent" id="wdclarge" title="repo" style="cursor: pointer;">
+				<td colspan="7"; style="text-align: center"><b>+/-</b>
+				<a href="http://webdatacommons.org/largescaleproductcorpus/v2/index.html"> Web Data Commons Product Corpus for Large-Scale Product Matching 2.0</a></td>
+			  </tr>
+			  <tr class="child-wdclarge" style="display: table-row;">
+				<td>wdc_xlarge_cameras</td>
+				<td><a href="http://data.dws.informatik.uni-mannheim.de/benchmarkmatchingtasks/wdc_xlarge_cameras/gs_train.csv" target="_blank">gs_train</a> (623KB)</td>
+				<td><a href="http://data.dws.informatik.uni-mannheim.de/benchmarkmatchingtasks/wdc_xlarge_cameras/gs_val.csv" target="_blank">gs_val</a> (156KB)</td>
+				<td><a href="http://data.dws.informatik.uni-mannheim.de/benchmarkmatchingtasks/wdc_xlarge_cameras/gs_test.csv" target="_blank">gs_test</a> (21KB)</td>
+				<td><a href="http://data.dws.informatik.uni-mannheim.de/benchmarkmatchingtasks/wdc_xlarge_cameras/feature_vector.zip" target="_blank">feature_vector.zip</a> (6.3MB)</td>
+				<td><a href="http://data.dws.informatik.uni-mannheim.de/benchmarkmatchingtasks/wdc_xlarge_cameras/records.zip" target="_blank">records.zip</a> (1.0MB)</td>
+				<td></td>
+				<td></td>
+			  </tr>
+			  <tr class="child-wdclarge" style="display: table-row;">
+				<td>wdc_xlarge_watches</td>
+				<td><a href="http://data.dws.informatik.uni-mannheim.de/benchmarkmatchingtasks/wdc_xlarge_watches/gs_train.csv" target="_blank">gs_train</a> (906KB)</td>
+				<td><a href="http://data.dws.informatik.uni-mannheim.de/benchmarkmatchingtasks/wdc_xlarge_watches/gs_val.csv" target="_blank">gs_val</a> (227KB)</td>
+				<td><a href="http://data.dws.informatik.uni-mannheim.de/benchmarkmatchingtasks/wdc_xlarge_watches/gs_test.csv" target="_blank">gs_test</a> (21KB)</td>
+				<td><a href="http://data.dws.informatik.uni-mannheim.de/benchmarkmatchingtasks/wdc_xlarge_watches/feature_vector.zip" target="_blank">feature_vector.zip</a> (8.3MB)</td>
+				<td><a href="http://data.dws.informatik.uni-mannheim.de/benchmarkmatchingtasks/wdc_xlarge_watches/records.zip" target="_blank">records.zip</a> (777KB)</td>
+				<td></td>
+				<td></td>
+			  </tr>
+			  <tr class="child-wdclarge" style="display: table-row;">
+				<td>wdc_xlarge_computers</td>
+				<td><a href="http://data.dws.informatik.uni-mannheim.de/benchmarkmatchingtasks/wdc_xlarge_computers/gs_train.csv" target="_blank">gs_train</a> (1.1MB)</td>
+				<td><a href="http://data.dws.informatik.uni-mannheim.de/benchmarkmatchingtasks/wdc_xlarge_computers/gs_val.csv" target="_blank">gs_val</a>  (254KB)</td>
+				<td><a href="http://data.dws.informatik.uni-mannheim.de/benchmarkmatchingtasks/wdc_xlarge_computers/gs_test.csv" target="_blank">gs_test</a>  (20KB)</td>
+				<td><a href="http://data.dws.informatik.uni-mannheim.de/benchmarkmatchingtasks/wdc_xlarge_computers/feature_vector.zip" target="_blank">feature_vector.zip</a>  (9.8MB)</td>
+				<td><a href="http://data.dws.informatik.uni-mannheim.de/benchmarkmatchingtasks/wdc_xlarge_computers/records.zip" target="_blank">records.zip</a> (821KB)</td>
+				<td></td>
+				<td></td>
+			  </tr>
+			  <tr class="child-wdclarge" style="display: table-row;">
+				<td>wdc_xlarge_shoes</td>
+				<td><a href="http://data.dws.informatik.uni-mannheim.de/benchmarkmatchingtasks/wdc_xlarge_shoes/gs_train.csv" target="_blank">gs_train</a> (627KB)</td>
+				<td><a href="http://data.dws.informatik.uni-mannheim.de/benchmarkmatchingtasks/wdc_xlarge_shoes/gs_val.csv" target="_blank">gs_val</a> (157KB)</td>
+				<td><a href="http://data.dws.informatik.uni-mannheim.de/benchmarkmatchingtasks/wdc_xlarge_shoes/gs_test.csv" target="_blank">gs_test</a> (20KB)</td>
+				<td><a href="http://data.dws.informatik.uni-mannheim.de/benchmarkmatchingtasks/wdc_xlarge_shoes/feature_vector.zip" target="_blank">feature_vector.zip</a> (5.8MB)</td>
+				<td><a href="http://data.dws.informatik.uni-mannheim.de/benchmarkmatchingtasks/wdc_xlarge_shoes/records.zip" target="_blank">records.zip</a> (577KB)</td>
+				<td></td>
+				<td></td>
+			  </tr>
+			  
+		</table>
+		
+		</p>
+		<span id="toc3"></span>
+		<h2>3. Baseline Matching Method</h2>
+		<p>
+		
+		</p>
+		<span id="toc4"></span>
+		<h2>4. Baseline Matching Results</h2>
+		<p>
+			<table style="td:first-child {border-left: black 1px solid;}">
+<thead>
+  <tr>
+    <th rowspan="2"; style="text-align: center">Matching Task</th>
+    <th colspan="3"; style="text-align: center">SVM</th>
+	<th colspan="1"; style="text-align: center"></th>
+    <th colspan="3"; style="text-align: center">Random Forest</th>
+  </tr>
+  <tr>
+    <td><b>P</b></td>
+    <td><b>R</b></td>
+    <td><b>F1</b></td>
+	<th></th>
+    <td><b>P</b></td>
+    <td><b>R</b></td>
+    <td><b>F1</b></td>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td>abt-buy</td>
+    <td>0.96</td>
+    <td>0.71</td>
+    <td>0.81</td>
+	<th></th>
+    <td>0.95</td>
+    <td>0.77</td>
+    <td>0.85</td>
+  </tr>
+  <tr>
+    <td>amazon-google</td>
+    <td>0.79</td>
+    <td>0.73</td>
+    <td>0.76</td>
+	<th></th>
+    <td>0.82</td>
+    <td>0.76</td>
+    <td>0.79</td>
+  </tr>
+  <tr>
+    <td>dblp-acm</td>
+    <td>1.00</td>
+    <td>1.00</td>
+    <td>1.00</td>
+	<th></th>
+    <td>1.00</td>
+    <td>1.00</td>
+    <td>1.00</td>
+  </tr>
+  <tr>
+    <td>dblp-scholar</td>
+    <td>0.99</td>
+    <td>0.99</td>
+    <td>0.99</td>
+	<th></th>
+    <td>0.99</td>
+    <td>0.99</td>
+    <td>0.99</td>
+  </tr>
+  <tr>
+    <td>restaurants (Fodors-Zagats)</td>
+    <td>1.00</td>
+    <td>0.91</td>
+    <td>0.95</td>
+	<th></th>
+    <td>1.00</td>
+    <td>1.00</td>
+    <td>1.00</td>
+  </tr>
+  <tr>
+    <td>products (Walmart-Amazon)</td>
+    <td>0.97</td>
+    <td>0.87</td>
+    <td>0.92</td>
+	<th></th>
+    <td>0.93</td>
+    <td>0.89</td>
+    <td>0.93</td>
+  </tr>
+  <tr>
+    <td>wdc_phones</td>
+    <td>0.85</td>
+    <td>0.88</td>
+    <td>0.86</td>
+	<th></th>
+    <td>0.85</td>
+    <td>0.88</td>
+    <td>0.86</td>
+  </tr>
+  <tr>
+    <td>wdc_headphones</td>
+    <td>0.89</td>
+    <td>0.77</td>
+    <td>0.83</td>
+	<th></th>
+    <td>0.95</td>
+    <td>0.82</td>
+    <td>0.88</td>
+  </tr>
+  <tr>
+    <td>wdc_tvs</td>
+    <td>0.93</td>
+    <td>0.78</td>
+    <td>0.85</td>
+	<th></th>
+    <td>0.94</td>
+    <td>0.89</td>
+    <td>0.91</td>
+  </tr>
+  <tr>
+    <td>wdc_xlarge_cameras</td>
+    <td>0.71</td>
+    <td>0.61</td>
+    <td>0.65</td>
+	<th></th>
+    <td>0.75</td>
+    <td>0.67</td>
+    <td>0.71</td>
+  </tr>
+  <tr>
+    <td>wdc_xlarge_watches</td>
+    <td>0.86</td>
+    <td>0.71</td>
+    <td>0.78</td>
+	<th></th>
+    <td>0.82</td>
+    <td>0.73</td>
+    <td>0.81</td>
+  </tr>
+  <tr>
+    <td>wdc_xlarge_computers</td>
+    <td>0.74</td>
+    <td>0.67</td>
+    <td>0.70</td>
+	<th></th>
+    <td>0.78</td>
+    <td>0.78</td>
+    <td>0.78</td>
+  </tr>
+  <tr>
+    <td>wdc_xlarge_shoes</td>
+    <td>0.83</td>
+    <td>0.43</td>
+    <td>0.57</td>
+	<th></th>
+    <td>0.82</td>
+    <td>0.38</td>
+    <td>0.52</td>
+  </tr>
+  <tr>
+    <td>baby products</td>
+    <td>0.70</td>
+    <td>0.64</td>
+    <td>0.67</td>
+	<th></th>
+    <td>0.68</td>
+    <td>0.55</td>
+    <td>0.63</td>
+  </tr>
+  <tr>
+    <td>beer</td>
+    <td>1.00</td>
+    <td>0.86</td>
+    <td>0.92</td>
+	<th></th>
+    <td>1.00</td>
+    <td>1.00</td>
+    <td>1.00</td>
+  </tr>
+  <tr>
+    <td>bikes</td>
+    <td>0.92</td>
+    <td>0.92</td>
+    <td>0.92</td>
+	<th></th>
+    <td>0.92</td>
+    <td>0.92</td>
+    <td>0.92</td>
+  </tr>
+  <tr>
+    <td>books (Goodreads-Barnes)</td>
+    <td>0.80</td>
+    <td>0.89</td>
+    <td>0.84</td>
+	<th></th>
+    <td>0.73</td>
+    <td>0.89</td>
+    <td>0.80</td>
+  </tr>
+  <tr>
+    <td>cosmetics</td>
+    <td>1.00</td>
+    <td>0.77</td>
+    <td>0.87</td>
+	<th></th>
+    <td>0.90</td>
+    <td>0.69</td>
+    <td>0.78</td>
+  </tr>
+  <tr>
+    <td>music (iTunes-Amazon)</td>
+    <td>1.00</td>
+    <td>1.00</td>
+    <td>1.00</td>
+	<th></th>
+    <td>1.00</td>
+    <td>1.00</td>
+    <td>1.00</td>
+  </tr>
+  <tr>
+    <td>restaurants (Yellow-Yelp)</td>
+    <td>1.00</td>
+    <td>1.00</td>
+    <td>1.00</td>
+	<th></th>
+    <td>1.00</td>
+    <td>1.00</td>
+    <td>1.00</td>
+  </tr>
+</tbody>
+</table>
+		</p>
+		
+		<span id="toc5"></span>
+		<h2>5. References</h2>
+		<p>
+		
+		</p>
+		
+					<script type="text/javascript">
+						$('#toc').toc({
+							'selectors': 'h2', //elements to use as headings
+							'container': '#toccontent', //element to find all selectors in
+							'smoothScrolling': true, //enable or disable smooth scrolling on click
+							'prefix': 'toc', //prefix for anchor tags and class names
+							'highlightOnScroll': true, //add class to heading that is currently in focus
+							'highlightOffset': 100, //offset to trigger the next headline
+							'anchorName': function (i, heading, prefix) { //custom function for anchor name
+								return prefix + i;
+							}
+						});
+						$('[id*="link_"]').each(function () {
+							var element = $(this);
+							element.click(function (e) {
+								e.preventDefault();
+								var id = element.attr("id").split("_")[1];
+								element.parent().removeClass("show").addClass("no-show");
+								$('#charts_' + id).removeClass("no-show").addClass("show");
+							});
+						});
+						$('[id*="colapse_"]').each(function () {
+							var element = $(this);
+							element.click(function (e) {
+								e.preventDefault();
+								var id = element.attr("id").split("_")[1];
+								element.parent().removeClass("show").addClass("no-show");
+								$('#intro_' + id).removeClass("no-show").addClass("show");
+							});
+						});
+						document.getElementById("defaultOpen").click();
+					</script>
+</body>
+
+</html>
