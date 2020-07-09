@@ -2701,9 +2701,14 @@
 			files need a considerable amount of RAM memory):<br><br>
 			<code>import pandas as pd<br>
 						df = pd.read_json('dataset.json.gz', compression='gzip', lines=True)
-				</code><br><br>
-
+				</code>
+				<p>
 				Additionally we offer a csv file containing a mapping from the unique ids of each offer to the URL where this offer originated from. This allows for further scraping of information to enrich the dataset if desired.
+			</p>
+				<p>
+				If you want to map offers from version 2 of the corpus back to version 1, we offer a tsv file which allows you to do this.
+				Each offer in v1 is uniquely identified by the concatenation of nodeID and url with one whitespace in between (nodeID + ' ' + url).
+			</p>
 			<p>
 				<p>
 					Code to reproduce the baseline experiments can be found <a href="https://github.com/Weyoun2211/wdc-lspc-v2">here</a> (will be extended). The self-trained fastText model is available <a href="http://data.dws.informatik.uni-mannheim.de/largescaleproductcorpus/data/v2/fastText/self-trained.bin">here</a>.
@@ -2988,6 +2993,17 @@
 							<td>484.GB</td>
 							<td><a
 								href="http://data.dws.informatik.uni-mannheim.de/largescaledatacorpusHTML/html_pages.zip">html_pages.zip
+							</td>
+
+						</tr>
+						<tr>
+							<td>v1 to v2 id mapping
+							</td>
+							<td><a
+								href="http://data.dws.informatik.uni-mannheim.de/largescaleproductcorpus/data/v2/v1_v2_mapping_sample.txt">v1_v2_mapping_sample</a></td>
+							<td>1.5GB</td>
+							<td><a
+								href="http://data.dws.informatik.uni-mannheim.de/largescaleproductcorpus/data/v2/v1_v2_mapping.tsv.gz">v1_v2_mapping.tsv.gz
 							</td>
 
 						</tr>
