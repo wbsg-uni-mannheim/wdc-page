@@ -2,7 +2,7 @@
 <html>
 
 <head>
-	<title>WDC - Categorization Gold Standard</title>
+	<title>WDC-25 Gold Standard for Product Categorization</title>
 	<link rel='stylesheet' href='http://webdatacommons.org/style.css' type='text/css' media='screen' />
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<style>
@@ -479,7 +479,7 @@
 	<div id="logo" style="text-align:right; background-color: white;">&nbsp;&nbsp;<a href="http://dws.informatik.uni-mannheim.de"><img
 			 src="../images/ma-logo.gif" alt="University of Mannheim - Logo"></a></div>
 	<div id="header">
-		<h1 style="font-size: 250%;">Web Data Commons - Categorization Gold Standard</h1>
+		<h1 style="font-size: 250%;">WDC-25 Gold Standard for Product Categorization	</h1>
 	</div>
 	<div id="authors">
 		<a href="https://dws.informatik.uni-mannheim.de/en/people/researchers/anna-primpeli/">Anna Primpeli</a><br />
@@ -488,7 +488,7 @@
 	</div>
 	<div id="content">
 		<p>
-		This page provides the WDC Categorization Gold Standard for public download. The gold standard consists of more than 24,000 manually labelled product offers from different e-shops. The offers are  assigned to a flat catagorization schema consisting of 25 product categories. We also present the results of a baseline cagegorization experiment in which we train  and evaluate an ensemble of one-vs-rest classifiers. We apply the learned classifier to the the WDC Training Dataset for Large-scale Product Matching in order to obtain a consistent categorization of all 26 million product offers contained in the dataset, which we also provide for download. </p>
+		This page provides the WDC-25  Gold Standard for Product Categorization for public download. The gold standard consists of more than 24,000 manually labelled product offers from different e-shops. The offers are  assigned to a flat catagorization schema consisting of 25 product categories. We also present the results of a baseline cagegorization experiment in which we train  and evaluate an ensemble of one-vs-rest classifiers. We apply the learned classifier to the the WDC Training Dataset for Large-scale Product Matching in order to obtain a consistent categorization of all 26 million product offers contained in the dataset, which we also provide for download. </p>
 		
 		<h2>Contents</h2>
 		<ul>
@@ -517,12 +517,13 @@
 		<span id="toc1"></span>
 		<h2>1. Motivation</h2>
 		<p> Categorizing product offers from different e-shops into a single categorization schema is a task faced by many aggregators in e-commerce. The WDC Categorization Gold Standard allows the comparison of  learning-based categorization methods on this task. The gold standard is based on the <a href="http://webdatacommons.org/largescaleproductcorpus/">WDC Training Set for Large-scale Product Matching</a> which contains offers from 79 thousand websites. The offers are marked up on the websites using the <a href="https://schema.org/Product">schema.org product vocabulary</a>. We created the WDC Categorization Gold Standard by manually categorizing  a subset of the offers in the training set into a flat, non-overlapping schema of 25 top-level product categories. We labelled at least 500 offers for each category.   </p>
+		<p>For researchers that are interested in hierarchical product categorization, we also offer the <a href="http://data.dws.informatik.uni-mannheim.de/largescaleproductcorpus/categorization/">WDC-222 Gold Standard for Hierarchical Product Categorization</a> which consists of 2,984 product offers from different e-sops that are assigned to 222 leaf node categories of the <a href="https://icecat.de/">Icecat</a> product categorization hierarchy. </p>
         
         <p>
-            In the following, we describe the methodology that was used to create the categorization gold standard, as well as statistics about the dataset and baseline experiments. Finally, we present statistics about the results of applying the learned classifer to the whole WDC product data corpus.		</p>
+            In the following, we describe the methodology that was used to create the WDC-25 gold standard, as well as statistics about the dataset and baseline experiments. Finally, we present statistics about the results of applying the learned classifer to the whole WDC product data corpus.		</p>
 		<span id="toc2"></span>
 		<h2>2. Gold Standard Creation</h2>
-		<p>To create a gold standard that contains a sufficient amount of offers per category to train and evaluate a classification model that performs effectively on all categories, we manually labelled  offers from the <a href="http://webdatacommons.org/largescaleproductcorpus/index.html#toc7">English Training Corpus</a>. </p>
+		<p>To create a WDC-25 gold standard that contains a sufficient amount of offers per category to train and evaluate a classification model that performs effectively on all categories, we manually labelled  offers from the <a href="http://webdatacommons.org/largescaleproductcorpus/index.html#toc7">English Training Corpus</a>. </p>
         <p>
             First, we defined a set of categories with the goal of creating a taxonomy that is comparable to other relevant e-commerce category taxonomies. In order to create such a category set, the <a href="http://jmcauley.ucsd.edu/data/amazon/">Amazon</a>, <a href="https://www.google.com/basepages/producttype/taxonomy.en-GB.txt">Google</a> and <a href="https://wwwcfprd.doa.louisiana.gov/osp/lapac/vendor/commodityTree.cfm">UNSPSC</a> taxonomies were compared and the overlapping first-level categories were identified. Additionally, some second-level categories were used in the electronics and clothing domains to create a categorization that is not too broad, resulting in a set of 25 representative categories. </p>
         <p>
@@ -1084,7 +1085,7 @@
 				<span id="toc5"></span>
 				<h2>5. Download</h2>
                 <p>
-					Below, we offer the WDC Categorization Gold Standard for public download. The Gold Standard is a subset of the english training corpus and contains the same properties for each offer as described <a href="http://webdatacommons.org/largescaleproductcorpus/index.html#toc7">here</a>. We further provide the subsets of the gold standard that were used for training and testing aggregated in clusters, as well as the Amazon sample that was used as additional training data. The training and test set contain the schema.org, as well as the parent schema.org properties name, title, description, brand and manufacturer. Additionally specification table keys and values and HTML content are contained. Each attribute is concatenated within a cluster. The Amazon training offers contain a title, brand and description along with a category label and an identifier (asin). Finally, we offer the Categorized Training Dataset for Large-scale Product Matching for download. It contains cluster ids and category labels in a csv format.
+					Below, we provide the WDC-25 Gold Standard for Product Categorization for public download. The gold standard is a subset of the english training corpus and contains the same properties for each offer as described <a href="http://webdatacommons.org/largescaleproductcorpus/index.html#toc7">here</a>. We further provide the subsets of the gold standard that were used for training and testing aggregated in clusters, as well as the Amazon sample that was used as additional training data. The training and test set contain the schema.org, as well as the parent schema.org properties name, title, description, brand and manufacturer. Additionally specification table keys and values and HTML content are contained. Each attribute is concatenated within a cluster. The Amazon training offers contain a title, brand and description along with a category label and an identifier (asin). Finally, we offer the Categorized Training Dataset for Large-scale Product Matching for download. It contains cluster ids and category labels in a csv format.
                 </p>
                 <table>
 						<tbody>
