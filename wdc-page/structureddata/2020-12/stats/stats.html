@@ -3,7 +3,7 @@
 
 <head>
     <meta name="robots" content="nofollow"/>
-    <title>Web Data Commons Extraction Report - November 2020 Corpus</title>
+    <title>Web Data Commons Extraction Report - December 2020 Corpus</title>
     <link rel='stylesheet' href='http://webdatacommons.org/style.css' type='text/css' media='screen'/>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <script type="text/javascript" src="https://www.google.com/jsapi"></script>
@@ -92,18 +92,18 @@
 
             var data2020Entities = google.visualization.arrayToDataTable([
                 ['Annotation type', '#Entities'],
-                ['html-rdfa', 1],
-                ['html-microdata', 1],
-                ['html-embedded-jsonld', 1],
-                ['html-geo', 1],
-                ['html-mf-hcard', 1],
-                ['html-mf-hcalendar', 1],
-                ['html-mf-hlisting', 1],
-                ['html-mf-hresume', 1],
-                ['html-mf-hreview', 1],
-                ['html-mf-species', 1],
-                ['html-mf-hrecipe', 1],
-                ['html-mf-xfn', 1]
+                ['html-rdfa', 981589545],
+                ['html-microdata', 7374224188],
+                ['html-embedded-jsonld', 6684258935],
+                ['html-geo', 6495007],
+                ['html-mf-hcard', 6462214971],
+                ['html-mf-hcalendar', 15891355],
+                ['html-mf-hlisting', 11788682],
+                ['html-mf-hresume', 12210],
+                ['html-mf-hreview', 6916213],
+                ['html-mf-species', 159030],
+                ['html-mf-hrecipe', 2393939],
+                ['html-mf-xfn', 63863815]
             ]);
 
             var options3 = {
@@ -190,19 +190,18 @@
 
 <body><a name='top'></a>
 <h1>Web Data Commons - RDFa, Microdata, Embedded JSON-LD, and Microformats Data Sets
-    - September 2020</h1>
+    - December 2020</h1>
 <span id="test"></span>
-<p>TO-DO</p>
 <p>This document provides statistics about the <a target="_blank" href="http://webdatacommons.org/structureddata/">Web
     Data Commons</a> RDFa, Microdata and Microformats data sets which have been extracted from the <a target="_blank"
-                                                                                                      href="https://commoncrawl.org/2020/11/november-2020-crawl-archive-now-available/">
-    November 2020</a>
+                                                                                                      href="https://commoncrawl.org/2020/10/september-2020-crawl-archive-now-available/">
+    September 2020</a>
     release of the <a target="_blank" href="http://commoncrawl.org/">Common Crawl</a>.</p>
-<p>In summary, we found structured data within 0.93 billion HTML pages out of the 2.45 billion pages contained in the
-    crawl (37.9%).
-    These pages originate from 11.9 million different pay-level-domains out of the 32 million pay-level-domains covered
-    by the crawl (37.2%).
-    Altogether, the extracted data sets consist of 44.2 billion <a target="_blank" href="http://www.w3.org/TR/n-quads/">RDF
+<p>In summary, we found structured data within 2.2 billion HTML pages out of the 3.4 billion pages contained in the
+    crawl (64.7%).
+    These pages originate from 19.8 million different pay-level-domains out of the 34.5 million pay-level-domains covered
+    by the crawl (57.3%).
+    Altogether, the extracted data sets consist of 98.4 billion <a target="_blank" href="http://www.w3.org/TR/n-quads/">RDF
         quads</a>.
 </p>
 
@@ -218,22 +217,22 @@
     Please note that in the following term <i>Domains</i> refers to pay-level-domains. Subdomains are not counted as
     separate domains.
 </p>
-<h2>Overall - TO-DO</h2><br/>
+<h2>Overall</h2><br/>
 <table>
     <tbody>
     <tr>
         <th>Crawl Date</th>
-        <td>September 2020 - (?)</td>
+        <td>September 2020</td>
         <td></td>
     </tr>
     <tr>
         <th>Total Data</th>
-        <td align="right">63.79 Terabyte - (?)</td>
+        <td align="right">81.8 Terabyte</td>
         <td>(compressed)</td>
     </tr>
     <tr>
         <th>Parsed HTML URLs</th>
-        <td align="right">-</td>
+        <td align="right">3,410,268,379</td>
         <td></td>
     </tr>
     <tr>
@@ -243,17 +242,17 @@
     </tr>
     <tr>
         <th>Domains in Crawl</th>
-        <td align="right">-</td>
+        <td align="right">34,596,585</td>
         <td></td>
     </tr>
     <tr>
         <th>Domains with Triples</th>
-        <td align="right">-</td>
+        <td align="right">19,895,758</td>
         <td></td>
     </tr>
     <tr>
         <th>Typed Entities</th>
-        <td align="right">-</td>
+        <td align="right">21,636,640,919</td>
         <td></td>
     </tr>
     <tr>
@@ -263,7 +262,7 @@
     </tr>
     <tr>
         <th>Size of Extracted Data</th>
-        <td align="right">-</td>
+        <td align="right">2.26 Terabyte</td>
         <td>(compressed)</td>
     </tr>
     </tbody>
@@ -283,105 +282,105 @@
         <th>html-microdata</th>
         <td align="right">7,809,978</td>
         <td align="right">892,571,812</td>
-        <td align="right">-</td>
+        <td align="right">7,374,224,188</td>
         <td align="right">35,612,247,646</td>
     </tr>
     <tr>
         <th>html-embedded-jsonld</th>
         <td align="right">7,659,585</td>
         <td align="right">767,626,882</td>
-        <td align="right">-</td>
+        <td align="right">6,684,258,935</td>
         <td align="right">32,078,019,309</td>
     </tr>
     <tr>
         <th>html-mf-hcard</th>
         <td align="right">4,309,621</td>
         <td align="right">371,420,305</td>
-        <td align="right">-</td>
+        <td align="right">6,462,214,971</td>
         <td align="right">12,102,799,203</td>
     </tr>
     <tr>
         <th>html-rdfa</th>
         <td align="right">18,601,286</td>
         <td align="right">1,971,226,562</td>
-        <td align="right">-</td>
+        <td align="right">981,589,545</td>
         <td align="right">17,963,001,986</td>
     </tr>
     <tr>
         <th>html-mf-xfn</th>
         <td align="right">412,477</td>
         <td align="right">30,140,863</td>
-        <td align="right">-</td>
+        <td align="right">63,863,815</td>
         <td align="right">419,542,263</td>
     </tr>
     <tr>
         <th>html-mf-adr</th>
         <td align="right">181,242</td>
         <td align="right">12,750,690</td>
-        <td align="right">-</td>
+        <td align="right">26,453,736</td>
         <td align="right">87,046,820</td>
     </tr>
     <tr>
         <th>html-mf-geo</th>
         <td align="right">71,749</td>
         <td align="right">3,567,479</td>
-        <td align="right">-</td>
+        <td align="right">6,495,007</td>
         <td align="right">17,417,545</td>
     </tr>
     <tr>
         <th>html-mf-hcalendar</th>
         <td align="right">38,130</td>
         <td align="right">2,142,316</td>
-        <td align="right">-</td>
+        <td align="right">15,891,355</td>
         <td align="right">70,428,605</td>
     </tr>
     <tr>
         <th>html-mf-hreview</th>
         <td align="right">30,675</td>
         <td align="right">2,501,767</td>
-        <td align="right">-</td>
+        <td align="right">6,916,213</td>
         <td align="right">49,204,380</td>
     </tr>
     <tr>
         <th>html-mf-hlisting</th>
         <td align="right">10,987</td>
         <td align="right">298,608</td>
-        <td align="right">-</td>
+        <td align="right">11,788,682</td>
         <td align="right">38,710,735</td>
     </tr>
     <tr>
         <th>html-mf-hrecipe</th>
         <td align="right">5,044</td>
         <td align="right">473,051</td>
-        <td align="right">-</td>
+        <td align="right">2,393,939</td>
         <td align="right">9,830,473</td>
     </tr>
     <tr>
         <th>html-mf2-h-adr</th>
         <td align="right">11,595</td>
         <td align="right">305,724</td>
-        <td align="right">-</td>
+        <td align="right">379,293</td>
         <td align="right">1,541,329</td>
     </tr>
     <tr>
         <th>html-mf-hresume</th>
         <td align="right">126</td>
         <td align="right">6,604</td>
-        <td align="right">-</td>
+        <td align="right">12,210</td>
         <td align="right">30,825</td>
     </tr>
     <tr>
         <th>html-mf-species</th>
         <td align="right">256</td>
         <td align="right">54,723</td>
-        <td align="right">-</td>
+        <td align="right">12,210</td>
         <td align="right">392,875</td>
     </tr>
     <tr style="font-weight:bold">
         <th>OVERALL</th>
         <td align="right">19,895,758</td>
         <td align="right">2,211,631,902</td>
-        <td align="right">-</td>
+        <td align="right">21,636,640,919</td>
         <td align="right">98,450,213,994</td>
     </tr>
     <tr>
@@ -486,7 +485,7 @@
     </tr>
     <tr>
         <th>Typed Entities</th>
-        <td>-</td>
+        <td>7,374,224,188</td>
     </tr>
     <tr>
         <th>Top Domains by Extracted Triples</th>
@@ -549,7 +548,26 @@
                       onclick="document.getElementById('html-microdata-top-class-values-by-domain-count').style.display='block';this.style.display='none';return false;">Show
             top values by domain count</a></small>
             <ol id='html-microdata-top-class-values-by-domain-count' style='display:none'>
-                <li>-</li>
+                <li>https://schema.org/WebPage (1,339,999 Domains)</li>
+				<li>http://schema.org/ImageObject (1,277,128 Domains)</li>
+				<li>http://schema.org/WebPage (1,059,202 Domains)</li>
+				<li>http://schema.org/Product (1,059,149 Domains)</li>
+				<li>https://schema.org/WPHeader (976,666 Domains)</li>
+				<li>https://schema.org/SiteNavigationElement (976,488 Domains)</li>
+				<li>http://schema.org/Offer (946,725 Domains)</li>
+				<li>http://schema.org/ListItem (930,377 Domains)</li>
+				<li>https://schema.org/WPFooter (926,231 Domains)</li>
+				<li>http://schema.org/BreadcrumbList (924,991 Domains)</li>
+				<li>http://schema.org/Organization (815,237 Domains)</li>
+				<li>https://schema.org/ImageObject (793,889 Domains)</li>
+				<li>https://schema.org/Organization (745,416 Domains)</li>
+				<li>https://schema.org/Person (723,002 Domains)</li>
+				<li>https://schema.org/CreativeWork (696,845 Domains)</li>
+				<li>https://schema.org/Blog (663,915 Domains)</li>
+				<li>http://schema.org/Article (627,303 Domains)</li>
+				<li>http://schema.org/PostalAddress (585,417 Domains)</li>
+				<li>http://schema.org/WPHeader (562,744 Domains)</li>
+				<li>http://schema.org/BlogPosting (552,338 Domains)</li>
             </ol>
             <br/>
         </td>
@@ -560,7 +578,26 @@
                       onclick="document.getElementById('html-microdata-top-class-values-by-entity-count').style.display='block';this.style.display='none';return false;">Show
             top values by entity count</a></small>
             <ol id='html-microdata-top-class-values-by-entity-count' style='display:none'>
-                <li>-</li>
+                <li>http://schema.org/ImageObject (802,177,369 Entities)</li>
+				<li>http://schema.org/ListItem (598,501,297 Entities)</li>
+				<li>http://schema.org/Product (455,716,942 Entities)</li>
+				<li>http://schema.org/Offer (444,472,599 Entities)</li>
+				<li>https://schema.org/ImageObject (279,426,164 Entities)</li>
+				<li>http://schema.org/Person (262,703,616 Entities)</li>
+				<li>http://data-vocabulary.org/Breadcrumb (252,211,289 Entities)</li>
+				<li>https://schema.org/ListItem (241,251,747 Entities)</li>
+				<li>https://schema.org/Person (211,807,358 Entities)</li>
+				<li>https://www.schema.org/SiteNavigationElement (206,396,744 Entities)</li>
+				<li>http://schema.org/BreadcrumbList (175,238,756 Entities)</li>
+				<li>http://schema.org/Organization (168,484,637 Entities)</li>
+				<li>https://schema.org/Organization (161,857,861 Entities)</li>
+				<li>https://schema.org/WebPage (143,496,257 Entities)</li>
+				<li>http://schema.org/Article (139,693,932 Entities)</li>
+				<li>http://schema.org/SiteNavigationElement (129,214,400 Entities)</li>
+				<li>http://schema.org/BlogPosting (128,720,966 Entities)</li>
+				<li>http://schema.org/PostalAddress (113,717,463 Entities)</li>
+				<li>https://schema.org/Offer (107,115,146 Entities)</li>
+				<li>https://schema.org/Product (106,713,547 Entities)</li>
             </ol>
             <br/>
         </td>
@@ -571,7 +608,26 @@
                       onclick="document.getElementById('html-microdata-top-property-values-by-domain-count').style.display='block';this.style.display='none';return false;">Show
             top values by domain count</a></small>
             <ol id='html-microdata-top-property-values-by-domain-count' style='display:none'>
-                <li>-</li>
+                <li>http://www.w3.org/1999/xhtml/microdata#item (7,813,032 Domains)</li>
+				<li>http://schema.org/name (3,418,181 Domains)</li>
+				<li>http://schema.org/image (2,087,295 Domains)</li>
+				<li>http://schema.org/url (2,042,480 Domains)</li>
+				<li>http://schema.org/description (1,818,655 Domains)</li>
+				<li>https://schema.org/name (1,457,614 Domains)</li>
+				<li>https://schema.org/url (1,423,514 Domains)</li>
+				<li>https://schema.org/image (987,478 Domains)</li>
+				<li>http://schema.org/itemListElement (940,235 Domains)</li>
+				<li>https://schema.org/headline (910,392 Domains)</li>
+				<li>http://schema.org/offers (899,954 Domains)</li>
+				<li>http://schema.org/priceCurrency (867,377 Domains)</li>
+				<li>http://schema.org/price (854,441 Domains)</li>
+				<li>http://schema.org/item (848,294 Domains)</li>
+				<li>http://schema.org/position (839,037 Domains)</li>
+				<li>http://schema.org/contentUrl (709,990 Domains)</li>
+				<li>http://schema.org/datePublished (708,005 Domains)</li>
+				<li>http://schema.org/author (686,851 Domains)</li>
+				<li>http://schema.org/availability (664,868 Domains)</li>
+				<li>https://schema.org/datePublished (624,943 Domains)</li>
 
             </ol>
         </td>
@@ -582,7 +638,26 @@
                       onclick="document.getElementById('html-microdata-top-property-values-by-entity-count').style.display='block';this.style.display='none';return false;">Show
             top values by entity count</a></small>
             <ol id='html-microdata-top-property-values-by-entity-count' style='display:none'>
-                <li>-</li>
+                <li>http://schema.org/name (1,547,284,580 Entities)</li>
+				<li>http://schema.org/url (1,202,638,168 Entities)</li>
+				<li>http://www.w3.org/1999/xhtml/microdata#item (894,781,645 Entities)</li>
+				<li>http://schema.org/image (790,870,957 Entities)</li>
+				<li>https://schema.org/url (663,976,304 Entities)</li>
+				<li>https://schema.org/name (632,723,694 Entities)</li>
+				<li>http://schema.org/position (562,637,763 Entities)</li>
+				<li>http://schema.org/item (498,516,525 Entities)</li>
+				<li>http://schema.org/description (442,219,375 Entities)</li>
+				<li>http://schema.org/priceCurrency (400,090,796 Entities)</li>
+				<li>http://schema.org/price (377,878,891 Entities)</li>
+				<li>http://schema.org/offers (364,962,821 Entities)</li>
+				<li>http://schema.org/contentURL (341,642,074 Entities)</li>
+				<li>http://schema.org/datePublished (293,209,647 Entities)</li>
+				<li>http://schema.org/author (286,777,147 Entities)</li>
+				<li>https://schema.org/image (257,614,107 Entities)</li>
+				<li>http://schema.org/availability (257,145,706 Entities)</li>
+				<li>http://data-vocabulary.org/url (236,236,378 Entities)</li>
+				<li>https://schema.org/position (234,073,848 Entities)</li>
+				<li>http://schema.org/contentUrl (221,033,420 Entities)</li>
             </ol>
             <br/>
         </td>
@@ -618,7 +693,7 @@
     </tr>
     <tr>
         <th>Typed Entities</th>
-        <td>-</td>
+        <td>6,684,258,935</td>
     </tr>
     <tr>
         <th>Top Domains by Extracted Triples</th>
@@ -681,7 +756,26 @@
                       onclick="document.getElementById('html-embedded-jsonld-top-class-values-by-domain-count').style.display='block';this.style.display='none';return false;">Show
             top values by domain count</a></small>
             <ol id='html-embedded-jsonld-top-class-values-by-domain-count' style='display:none'>
-                <li>-</li>
+                <li>http://schema.org/WebSite (5,616,104 Domains)</li>
+				<li>http://schema.org/SearchAction (5,192,070 Domains)</li>
+				<li>http://schema.org/WebPage (4,484,026 Domains)</li>
+				<li>http://schema.org/ImageObject (4,416,077 Domains)</li>
+				<li>http://schema.org/Organization (3,882,068 Domains)</li>
+				<li>http://schema.org/Person (3,151,809 Domains)</li>
+				<li>http://schema.org/ReadAction (2,549,387 Domains)</li>
+				<li>http://schema.org/CollectionPage (2,250,714 Domains)</li>
+				<li>http://schema.org/ListItem (1,727,804 Domains)</li>
+				<li>http://schema.org/BreadcrumbList (1,688,820 Domains)</li>
+				<li>http://schema.org/Article (1,327,578 Domains)</li>
+				<li>http://schema.org/Product (1,234,972 Domains)</li>
+				<li>http://schema.org/Offer (1,182,855 Domains)</li>
+				<li>http://schema.org/PostalAddress (863,243 Domains)</li>
+				<li>http://schema.org/ProfilePage (719,597 Domains)</li>
+				<li>http://schema.org/BlogPosting (529,020 Domains)</li>
+				<li>http://schema.org/AggregateRating (432,014 Domains)</li>
+				<li>http://schema.org/LocalBusiness (363,843 Domains)</li>
+				<li>http://schema.org/Thing (361,421 Domains)</li>
+				<li>http://schema.org/GeoCoordinates (329,285 Domains)</li>
             </ol>
             <br/>
         </td>
@@ -692,7 +786,26 @@
                       onclick="document.getElementById('html-embedded-jsonld-top-class-values-by-entity-count').style.display='block';this.style.display='none';return false;">Show
             top values by entity count</a></small>
             <ol id='html-embedded-jsonld-top-class-values-by-entity-count' style='display:none'>
-                <li>-</li>
+                <li>http://schema.org/ListItem (907,787,601 Entities)</li>
+				<li>http://schema.org/ImageObject (792,224,527 Entities)</li>
+				<li>http://schema.org/Organization (607,282,627 Entities)</li>
+				<li>http://schema.org/WebPage (596,629,235 Entities)</li>
+				<li>http://schema.org/WebSite (445,049,095 Entities)</li>
+				<li>http://schema.org/Person (401,846,713 Entities)</li>
+				<li>http://schema.org/SearchAction (369,922,377 Entities)</li>
+				<li>http://schema.org/Offer (325,872,264 Entities)</li>
+				<li>http://schema.org/BreadcrumbList (283,366,894 Entities)</li>
+				<li>http://schema.org/Product (224,104,749 Entities)</li>
+				<li>http://schema.org/ReadAction (180,744,479 Entities)</li>
+				<li>http://schema.org/PostalAddress (126,824,887 Entities)</li>
+				<li>http://schema.org/Article (115,754,226 Entities)</li>
+				<li>http://schema.org/CollectionPage (90,174,932 Entities)</li>
+				<li>http://schema.org/Thing (72,603,558 Entities)</li>
+				<li>http://schema.org/NewsArticle (65,586,557 Entities)</li>
+				<li>http://schema.org/ContactPoint (62,411,652 Entities)</li>
+				<li>http://schema.org/Place (51,160,975 Entities)</li>
+				<li>http://schema.org/Review (50,885,339 Entities)</li>
+				<li>http://schema.org/Rating (49,975,158 Entities)</li>
             </ol>
             <br/>
         </td>
@@ -703,7 +816,26 @@
                       onclick="document.getElementById('html-embedded-jsonld-top-property-values-by-domain-count').style.display='block';this.style.display='none';return false;">Show
             top values by domain count</a></small>
             <ol id='html-embedded-jsonld-top-property-values-by-domain-count' style='display:none'>
-                <li>-</li>
+                <li>http://schema.org/url (7,247,704 Domains)</li>
+				<li>http://schema.org/name (7,017,883 Domains)</li>
+				<li>http://schema.org/potentialAction (5,224,159 Domains)</li>
+				<li>http://schema.org/target (5,221,265 Domains)</li>
+				<li>http://schema.org/query-input (5,192,401 Domains)</li>
+				<li>http://schema.org/image (4,849,845 Domains)</li>
+				<li>http://schema.org/datePublished (4,798,690 Domains)</li>
+				<li>http://schema.org/dateModified (4,676,931 Domains)</li>
+				<li>http://schema.org/description (4,373,463 Domains)</li>
+				<li>http://schema.org/width (4,088,294 Domains)</li>
+				<li>http://schema.org/height (4,085,029 Domains)</li>
+				<li>http://schema.org/inLanguage (4,075,475 Domains)</li>
+				<li>http://schema.org/isPartOf (4,017,850 Domains)</li>
+				<li>http://schema.org/primaryImageOfPage (3,035,058 Domains)</li>
+				<li>http://schema.org/author (2,989,304 Domains)</li>
+				<li>http://schema.org/logo (2,749,209 Domains)</li>
+				<li>http://schema.org/caption (2,698,091 Domains)</li>
+				<li>http://schema.org/publisher (2,668,904 Domains)</li>
+				<li>http://schema.org/mainEntityOfPage (2,298,259 Domains)</li>
+				<li>http://schema.org/sameAs (1,809,123 Domains)</li>
 
             </ol>
         </td>
@@ -714,7 +846,26 @@
                       onclick="document.getElementById('html-embedded-jsonld-top-property-values-by-entity-count').style.display='block';this.style.display='none';return false;">Show
             top values by entity count</a></small>
             <ol id='html-embedded-jsonld-top-property-values-by-entity-count' style='display:none'>
-                <li>-</li>
+                <li>http://schema.org/url (2,963,640,230 Entities)</li>
+				<li>http://schema.org/name (2,617,622,269 Entities)</li>
+				<li>http://schema.org/position (923,008,247 Entities)</li>
+				<li>http://schema.org/image (909,872,890 Entities)</li>
+				<li>http://schema.org/item (836,611,162 Entities)</li>
+				<li>http://schema.org/inLanguage (831,368,584 Entities)</li>
+				<li>http://schema.org/target (574,196,597 Entities)</li>
+				<li>http://schema.org/potentialAction (572,643,933 Entities)</li>
+				<li>http://schema.org/description (524,245,730 Entities)</li>
+				<li>http://schema.org/datePublished (523,726,493 Entities)</li>
+				<li>http://schema.org/width (522,416,977 Entities)</li>
+				<li>http://schema.org/height (518,820,470 Entities)</li>
+				<li>http://schema.org/dateModified (467,994,096 Entities)</li>
+				<li>http://schema.org/publisher (421,230,731 Entities)</li>
+				<li>http://schema.org/logo (409,903,551 Entities)</li>
+				<li>http://schema.org/author (400,080,925 Entities)</li>
+				<li>http://schema.org/isPartOf (398,685,923 Entities)</li>
+				<li>http://schema.org/query-input (369,888,848 Entities)</li>
+				<li>http://schema.org/priceCurrency (365,100,289 Entities)</li>
+				<li>http://schema.org/price (352,389,711 Entities)</li>
             </ol>
             <br/>
         </td>
@@ -750,7 +901,7 @@
     </tr>
     <tr>
         <th>Typed Entities</th>
-        <td>-</td>
+        <td>6,462,214,971</td>
     </tr>
     <tr>
         <th>Top Domains by Extracted Triples</th>
@@ -824,7 +975,9 @@
                       onclick="document.getElementById('html-mf-hcard-top-class-values-by-domain-count').style.display='block';this.style.display='none';return false;">Show
             top values by domain count</a></small>
             <ol id='html-mf-hcard-top-class-values-by-domain-count' style='display:none'>
-                <li>-</li>
+                <li>http://www.w3.org/2006/vcard/ns#Name (4,311,472 Domains)</li>
+				<li>http://www.w3.org/2006/vcard/ns#VCard (4,311,460 Domains)</li>
+				<li>http://www.w3.org/2006/vcard/ns#Organization (107,840 Domains)</li>
             </ol>
             <br/>
         </td>
@@ -835,7 +988,9 @@
                       onclick="document.getElementById('html-mf-hcard-top-class-values-by-entity-count').style.display='block';this.style.display='none';return false;">Show
             top values by entity count</a></small>
             <ol id='html-mf-hcard-top-class-values-by-entity-count' style='display:none'>
-                <li>-</li>
+                <li>http://www.w3.org/2006/vcard/ns#Name (3,224,540,892 Entities)</li>
+				<li>http://www.w3.org/2006/vcard/ns#VCard (3,224,539,961 Entities)</li>
+				<li>http://www.w3.org/2006/vcard/ns#Organization (13,134,118 Entities)</li>
             </ol>
             <br/>
         </td>
@@ -846,7 +1001,26 @@
                       onclick="document.getElementById('html-mf-hcard-top-property-values-by-domain-count').style.display='block';this.style.display='none';return false;">Show
             top values by domain count</a></small>
             <ol id='html-mf-hcard-top-property-values-by-domain-count' style='display:none'>
-                <li>-</li>
+                <li>http://www.w3.org/2006/vcard/ns#n (4,311,471 Domains)</li>
+				<li>http://www.w3.org/2006/vcard/ns#given-name (3,470,035 Domains)</li>
+				<li>http://www.w3.org/2006/vcard/ns#family-name (3,460,996 Domains)</li>
+				<li>http://www.w3.org/2006/vcard/ns#fn (3,431,471 Domains)</li>
+				<li>http://www.w3.org/2006/vcard/ns#url (2,324,831 Domains)</li>
+				<li>http://www.w3.org/2006/vcard/ns#photo (760,379 Domains)</li>
+				<li>http://www.w3.org/2006/vcard/ns#adr (133,194 Domains)</li>
+				<li>http://www.w3.org/2006/vcard/ns#tel (115,070 Domains)</li>
+				<li>http://www.w3.org/2006/vcard/ns#org (107,840 Domains)</li>
+				<li>http://www.w3.org/2006/vcard/ns#organization-name (91,114 Domains)</li>
+				<li>http://www.w3.org/2006/vcard/ns#email (76,294 Domains)</li>
+				<li>http://www.w3.org/2006/vcard/ns#title (13,566 Domains)</li>
+				<li>http://www.w3.org/2006/vcard/ns#nickname (10,957 Domains)</li>
+				<li>http://www.w3.org/2006/vcard/ns#note (9,823 Domains)</li>
+				<li>http://www.w3.org/2006/vcard/ns#geo (9,617 Domains)</li>
+				<li>http://www.w3.org/2006/vcard/ns#logo (4,691 Domains)</li>
+				<li>http://www.w3.org/2006/vcard/ns#workTel (4,294 Domains)</li>
+				<li>http://www.w3.org/2006/vcard/ns#role (3,360 Domains)</li>
+				<li>http://www.w3.org/2006/vcard/ns#category (2,348 Domains)</li>
+				<li>http://www.w3.org/2006/vcard/ns#fax (2,336 Domains)</li>
 
             </ol>
         </td>
@@ -857,15 +1031,31 @@
                       onclick="document.getElementById('html-mf-hcard-top-property-values-by-entity-count').style.display='block';this.style.display='none';return false;">Show
             top values by entity count</a></small>
             <ol id='html-mf-hcard-top-property-values-by-entity-count' style='display:none'>
-                <li>-</li>
+                <li>http://www.w3.org/2006/vcard/ns#n (3,224,540,891 Entities)</li>
+				<li>http://www.w3.org/2006/vcard/ns#given-name (2,757,641,960 Entities)</li>
+				<li>http://www.w3.org/2006/vcard/ns#family-name (2,722,558,589 Entities)</li>
+				<li>http://www.w3.org/2006/vcard/ns#fn (2,674,616,044 Entities)</li>
+				<li>http://www.w3.org/2006/vcard/ns#url (1,603,850,482 Entities)</li>
+				<li>http://www.w3.org/2006/vcard/ns#photo (542,339,149 Entities)</li>
+				<li>http://www.w3.org/2006/vcard/ns#adr (14,989,045 Entities)</li>
+				<li>http://www.w3.org/2006/vcard/ns#org (13,134,118 Entities)</li>
+				<li>http://www.w3.org/2006/vcard/ns#tel (10,797,355 Entities)</li>
+				<li>http://www.w3.org/2006/vcard/ns#organization-name (9,784,556 Entities)</li>
+				<li>http://www.w3.org/2006/vcard/ns#email (5,044,507 Entities)</li>
+				<li>http://www.w3.org/2006/vcard/ns#nickname (4,426,544 Entities)</li>
+				<li>http://www.w3.org/2006/vcard/ns#geo (3,206,459 Entities)</li>
+				<li>http://www.w3.org/2006/vcard/ns#title (1,452,340 Entities)</li>
+				<li>http://www.w3.org/2006/vcard/ns#note (1,135,448 Entities)</li>
+				<li>http://www.w3.org/2006/vcard/ns#logo (1,026,308 Entities)</li>
+				<li>http://www.w3.org/2006/vcard/ns#role (637,239 Entities)</li>
+				<li>http://www.w3.org/2006/vcard/ns#category (603,535 Entities)</li>
+				<li>http://www.w3.org/2006/vcard/ns#workTel (371,821 Entities)</li>
+				<li>http://www.w3.org/2006/vcard/ns#bday (200,468 Entities)</li>
             </ol>
             <br/>
         </td>
     </tr>
-    <tr>
-        <th>Detailed Statistics as Excel-File</th>
-        <td><a target="_blank" href="html-mf-hcard.xlsx">html-mf-hcard.xlsx</a> TO-DO</td>
-    </tr>
+    
 </table>
 
 <a name='html-rdfa'></a>
@@ -893,7 +1083,7 @@
     </tr>
     <tr>
         <th>Typed Entities</th>
-        <td>-</td>
+        <td>981,589,545</td>
     </tr>
     <tr>
         <th>Top Domains by Extracted Triples</th>
@@ -948,7 +1138,26 @@
                       onclick="document.getElementById('html-rdfa-top-class-values-by-domain-count').style.display='block';this.style.display='none';return false;">Show
             top values by domain count</a></small>
             <ol id='html-rdfa-top-class-values-by-domain-count' style='display:none'>
-                <li>-</li>
+                <li>http://www.w3.org/1999/xhtml/vocab#listitem (238,095 Domains)</li>
+				<li>http://rdf.data-vocabulary.org/#Breadcrumb (237,377 Domains)</li>
+				<li>article (138,797 Domains)</li>
+				<li>foaf:Image (138,495 Domains)</li>
+				<li>website (111,122 Domains)</li>
+				<li>foaf:Document (84,485 Domains)</li>
+				<li>sioc:Item (72,309 Domains)</li>
+				<li>http://xmlns.com/foaf/0.1/Document (66,205 Domains)</li>
+				<li>v:Breadcrumb (65,975 Domains)</li>
+				<li>http://xmlns.com/foaf/0.1/Image (63,333 Domains)</li>
+				<li>http://rdfs.org/sioc/ns#Item (54,379 Domains)</li>
+				<li>schema:WebPage (32,262 Domains)</li>
+				<li>skos:Concept (27,398 Domains)</li>
+				<li>product (25,468 Domains)</li>
+				<li>http://www.w3.org/1999/xhtml (23,506 Domains)</li>
+				<li>http://www.w3.org/2004/02/skos/core#Concept (21,609 Domains)</li>
+				<li>http://www.w3.org/1999/xhtml/vocab#article (20,383 Domains)</li>
+				<li>sioc:UserAccount (16,556 Domains)</li>
+				<li>http://rdfs.org/sioc/ns#UserAccount (16,505 Domains)</li>
+				<li>schema:Article (14,220 Domains)</li>
             </ol>
             <br/>
         </td>
@@ -959,7 +1168,26 @@
                       onclick="document.getElementById('html-rdfa-top-class-values-by-entity-count').style.display='block';this.style.display='none';return false;">Show
             top values by entity count</a></small>
             <ol id='html-rdfa-top-class-values-by-entity-count' style='display:none'>
-                <li>-</li>
+                <li>foaf:Image (192,184,433 Entities)</li>
+				<li>http://rdf.data-vocabulary.org/#Breadcrumb (142,298,777 Entities)</li>
+				<li>http://www.w3.org/1999/xhtml/vocab#listitem (88,062,309 Entities)</li>
+				<li>http://xmlns.com/foaf/0.1/Image (83,944,646 Entities)</li>
+				<li>foaf:Document (38,889,579 Entities)</li>
+				<li>sioc:Item (37,218,284 Entities)</li>
+				<li>article (22,839,983 Entities)</li>
+				<li>skos:Concept (21,117,773 Entities)</li>
+				<li>v:Breadcrumb (20,833,317 Entities)</li>
+				<li>http://xmlns.com/foaf/0.1/Document (19,778,266 Entities)</li>
+				<li>http://www.w3.org/1999/xhtml (19,086,865 Entities)</li>
+				<li>http://rdfs.org/sioc/ns#Item (18,500,424 Entities)</li>
+				<li>http://www.w3.org/2004/02/skos/core#Concept (12,842,114 Entities)</li>
+				<li>website (8,752,719 Entities)</li>
+				<li>http://rdfs.org/sioc/ns#UserAccount (7,055,312 Entities)</li>
+				<li>sioc:UserAccount (6,753,837 Entities)</li>
+				<li>sioc:Post (6,392,400 Entities)</li>
+				<li>sioct:Comment (5,763,980 Entities)</li>
+				<li>schema:Article (4,608,711 Entities)</li>
+				<li>schema:Person (4,567,767 Entities)</li>
             </ol>
             <br/>
         </td>
@@ -970,7 +1198,26 @@
                       onclick="document.getElementById('html-rdfa-top-property-values-by-domain-count').style.display='block';this.style.display='none';return false;">Show
             top values by domain count</a></small>
             <ol id='html-rdfa-top-property-values-by-domain-count' style='display:none'>
-                <li>-</li>
+                <li>og:url (13,386,870 Domains)</li>
+				<li>og:type (12,588,968 Domains)</li>
+				<li>og:title (11,913,834 Domains)</li>
+				<li>og:image (11,751,558 Domains)</li>
+				<li>og:site_name (9,925,926 Domains)</li>
+				<li>https://api.w.org/ (9,605,611 Domains)</li>
+				<li>og:description (9,538,700 Domains)</li>
+				<li>og:locale (6,913,281 Domains)</li>
+				<li>og:image:width (5,586,181 Domains)</li>
+				<li>og:image:height (5,575,672 Domains)</li>
+				<li>article:modified_time (4,728,698 Domains)</li>
+				<li>article:published_time (3,887,428 Domains)</li>
+				<li>og:image:secure_url (2,415,021 Domains)</li>
+				<li>article:publisher (1,742,582 Domains)</li>
+				<li>og:updated_time (1,252,132 Domains)</li>
+				<li>article:section (1,081,577 Domains)</li>
+				<li>fb:admins (806,790 Domains)</li>
+				<li>og:image:alt (791,932 Domains)</li>
+				<li>fb:app_id (714,971 Domains)</li>
+				<li>article:tag (658,790 Domains)</li>
 
             </ol>
         </td>
@@ -981,7 +1228,26 @@
                       onclick="document.getElementById('html-rdfa-top-property-values-by-entity-count').style.display='block';this.style.display='none';return false;">Show
             top values by entity count</a></small>
             <ol id='html-rdfa-top-property-values-by-entity-count' style='display:none'>
-                <li>-</li>
+                <li>og:url (1,454,537,017 Entities)</li>
+				<li>og:type (1,365,763,844 Entities)</li>
+				<li>og:image (1,305,550,818 Entities)</li>
+				<li>og:site_name (992,963,359 Entities)</li>
+				<li>og:title (949,785,163 Entities)</li>
+				<li>https://api.w.org/ (713,128,322 Entities)</li>
+				<li>og:locale (678,943,645 Entities)</li>
+				<li>og:description (565,599,331 Entities)</li>
+				<li>og:image:width (453,264,991 Entities)</li>
+				<li>og:image:height (450,773,560 Entities)</li>
+				<li>article:published_time (339,402,956 Entities)</li>
+				<li>article:modified_time (324,228,218 Entities)</li>
+				<li>fb:app_id (261,548,465 Entities)</li>
+				<li>og:image:secure_url (204,397,841 Entities)</li>
+				<li>article:publisher (198,421,613 Entities)</li>
+				<li>http://rdf.data-vocabulary.org/#url (137,487,225 Entities)</li>
+				<li>fb:admins (95,509,405 Entities)</li>
+				<li>http://rdf.data-vocabulary.org/#title (93,786,836 Entities)</li>
+				<li>og:updated_time (78,163,003 Entities)</li>
+				<li>article:section (77,318,334 Entities)</li>
             </ol>
             <br/>
         </td>
@@ -1017,7 +1283,7 @@
     </tr>
     <tr>
         <th>Typed Entities</th>
-        <td>-</td>
+        <td>63,863,815</td>
     </tr>
     <tr>
         <th>Top Domains by Extracted Triples</th>
@@ -1083,7 +1349,8 @@
                       onclick="document.getElementById('html-mf-xfn-top-class-values-by-domain-count').style.display='block';this.style.display='none';return false;">Show
             top values by domain count</a></small>
             <ol id='html-mf-xfn-top-class-values-by-domain-count' style='display:none'>
-                <li>-</li>
+                <li>http://xmlns.com/foaf/0.1/Person (412,964 Domains)</li>
+
             </ol>
             <br/>
         </td>
@@ -1094,7 +1361,8 @@
                       onclick="document.getElementById('html-mf-xfn-top-class-values-by-entity-count').style.display='block';this.style.display='none';return false;">Show
             top values by entity count</a></small>
             <ol id='html-mf-xfn-top-class-values-by-entity-count' style='display:none'>
-                <li>-</li>
+                <li>http://xmlns.com/foaf/0.1/Person (63,863,815 Entities)</li>
+
             </ol>
             <br/>
         </td>
@@ -1105,7 +1373,26 @@
                       onclick="document.getElementById('html-mf-xfn-top-property-values-by-domain-count').style.display='block';this.style.display='none';return false;">Show
             top values by domain count</a></small>
             <ol id='html-mf-xfn-top-property-values-by-domain-count' style='display:none'>
-                <li>-</li>
+                <li>http://vocab.sindice.com/xfn#mePage (412,970 Domains)</li>
+				<li>http://vocab.sindice.com/xfn#me-hyperlink (379,064 Domains)</li>
+				<li>http://vocab.sindice.com/xfn#friend (20,584 Domains)</li>
+				<li>http://vocab.sindice.com/xfn#friend-hyperlink (20,583 Domains)</li>
+				<li>http://vocab.sindice.com/xfn#met (12,160 Domains)</li>
+				<li>http://vocab.sindice.com/xfn#met-hyperlink (12,158 Domains)</li>
+				<li>http://vocab.sindice.com/xfn#contact (12,043 Domains)</li>
+				<li>http://vocab.sindice.com/xfn#contact-hyperlink (12,033 Domains)</li>
+				<li>http://vocab.sindice.com/xfn#colleague (11,950 Domains)</li>
+				<li>http://vocab.sindice.com/xfn#colleague-hyperlink (11,946 Domains)</li>
+				<li>http://vocab.sindice.com/xfn#co-worker (6,989 Domains)</li>
+				<li>http://vocab.sindice.com/xfn#co-worker-hyperlink (6,986 Domains)</li>
+				<li>http://vocab.sindice.com/xfn#acquaintance (6,585 Domains)</li>
+				<li>http://vocab.sindice.com/xfn#acquaintance-hyperlink (6,585 Domains)</li>
+				<li>http://vocab.sindice.com/xfn#parent (5,700 Domains)</li>
+				<li>http://vocab.sindice.com/xfn#parent-hyperlink (5,700 Domains)</li>
+				<li>http://vocab.sindice.com/xfn#neighbor (3,650 Domains)</li>
+				<li>http://vocab.sindice.com/xfn#neighbor-hyperlink (3,648 Domains)</li>
+				<li>http://vocab.sindice.com/xfn#co-resident (2,175 Domains)</li>
+				<li>http://vocab.sindice.com/xfn#co-resident-hyperlink (2,174 Domains)</li>
 
             </ol>
         </td>
@@ -1116,15 +1403,31 @@
                       onclick="document.getElementById('html-mf-xfn-top-property-values-by-entity-count').style.display='block';this.style.display='none';return false;">Show
             top values by entity count</a></small>
             <ol id='html-mf-xfn-top-property-values-by-entity-count' style='display:none'>
-                <li>-</li>
+                <li>http://vocab.sindice.com/xfn#mePage (63,861,734 Entities)</li>
+				<li>http://vocab.sindice.com/xfn#me-hyperlink (22,920,185 Entities)</li>
+				<li>http://vocab.sindice.com/xfn#friend (4,038,128 Entities)</li>
+				<li>http://vocab.sindice.com/xfn#friend-hyperlink (4,038,094 Entities)</li>
+				<li>http://vocab.sindice.com/xfn#met (2,339,023 Entities)</li>
+				<li>http://vocab.sindice.com/xfn#met-hyperlink (2,338,987 Entities)</li>
+				<li>http://vocab.sindice.com/xfn#colleague (2,326,589 Entities)</li>
+				<li>http://vocab.sindice.com/xfn#colleague-hyperlink (2,326,341 Entities)</li>
+				<li>http://vocab.sindice.com/xfn#contact (2,263,659 Entities)</li>
+				<li>http://vocab.sindice.com/xfn#contact-hyperlink (2,260,935 Entities)</li>
+				<li>http://vocab.sindice.com/xfn#parent (1,889,200 Entities)</li>
+				<li>http://vocab.sindice.com/xfn#parent-hyperlink (1,889,200 Entities)</li>
+				<li>http://vocab.sindice.com/xfn#acquaintance (1,704,736 Entities)</li>
+				<li>http://vocab.sindice.com/xfn#acquaintance-hyperlink (1,704,735 Entities)</li>
+				<li>http://vocab.sindice.com/xfn#co-worker (1,391,772 Entities)</li>
+				<li>http://vocab.sindice.com/xfn#co-worker-hyperlink (1,391,338 Entities)</li>
+				<li>http://vocab.sindice.com/xfn#neighbor (600,666 Entities)</li>
+				<li>http://vocab.sindice.com/xfn#neighbor-hyperlink (600,577 Entities)</li>
+				<li>http://vocab.sindice.com/xfn#co-resident (477,786 Entities)</li>
+				<li>http://vocab.sindice.com/xfn#co-resident-hyperlink (477,785 Entities)</li>
             </ol>
             <br/>
         </td>
     </tr>
-    <tr>
-        <th>Detailed Statistics as Excel-File</th>
-        <td><a target="_blank" href="html-mf-xfn.xlsx">html-mf-xfn.xlsx</a> TO-DO</td>
-    </tr>
+    
 </table>
 
 <a name='html-mf-adr'></a>
@@ -1152,7 +1455,7 @@
     </tr>
     <tr>
         <th>Typed Entities</th>
-        <td>-</td>
+        <td>26,453,736</td>
     </tr>
     <tr>
         <th>Top Domains by Extracted Triples</th>
@@ -1211,7 +1514,7 @@
                       onclick="document.getElementById('html-mf-adr-top-class-values-by-domain-count').style.display='block';this.style.display='none';return false;">Show
             top values by domain count</a></small>
             <ol id='html-mf-adr-top-class-values-by-domain-count' style='display:none'>
-                <li>-</li>
+                <li>http://www.w3.org/2006/vcard/ns#Address (181,361 Domains)</li>
             </ol>
             <br/>
         </td>
@@ -1222,7 +1525,7 @@
                       onclick="document.getElementById('html-mf-adr-top-class-values-by-entity-count').style.display='block';this.style.display='none';return false;">Show
             top values by entity count</a></small>
             <ol id='html-mf-adr-top-class-values-by-entity-count' style='display:none'>
-                <li>-</li>
+                <li>http://www.w3.org/2006/vcard/ns#Address (26,453,736 Entities)</li>
             </ol>
             <br/>
         </td>
@@ -1233,7 +1536,14 @@
                       onclick="document.getElementById('html-mf-adr-top-property-values-by-domain-count').style.display='block';this.style.display='none';return false;">Show
             top values by domain count</a></small>
             <ol id='html-mf-adr-top-property-values-by-domain-count' style='display:none'>
-                <li>-</li>
+                <li>http://www.w3.org/2006/vcard/ns#locality (125,024 Domains)</li>
+				<li>http://www.w3.org/2006/vcard/ns#postal-code (117,784 Domains)</li>
+				<li>http://www.w3.org/2006/vcard/ns#street-address (116,244 Domains)</li>
+				<li>http://www.w3.org/2006/vcard/ns#region (95,565 Domains)</li>
+				<li>http://www.w3.org/2006/vcard/ns#country-name (31,523 Domains)</li>
+				<li>http://www.w3.org/2006/vcard/ns#extended-address (6,831 Domains)</li>
+				<li>http://www.w3.org/2006/vcard/ns#addressType (5,860 Domains)</li>
+				<li>http://www.w3.org/2006/vcard/ns#post-office-box (439 Domains)</li>
 
             </ol>
         </td>
@@ -1244,15 +1554,19 @@
                       onclick="document.getElementById('html-mf-adr-top-property-values-by-entity-count').style.display='block';this.style.display='none';return false;">Show
             top values by entity count</a></small>
             <ol id='html-mf-adr-top-property-values-by-entity-count' style='display:none'>
-                <li>-</li>
+                <li>http://www.w3.org/2006/vcard/ns#locality (12,286,775 Entities)</li>
+				<li>http://www.w3.org/2006/vcard/ns#postal-code (11,995,424 Entities)</li>
+				<li>http://www.w3.org/2006/vcard/ns#street-address (10,149,457 Entities)</li>
+				<li>http://www.w3.org/2006/vcard/ns#region (7,732,112 Entities)</li>
+				<li>http://www.w3.org/2006/vcard/ns#country-name (2,923,342 Entities)</li>
+				<li>http://www.w3.org/2006/vcard/ns#addressType (640,120 Entities)</li>
+				<li>http://www.w3.org/2006/vcard/ns#extended-address (406,393 Entities)</li>
+				<li>http://www.w3.org/2006/vcard/ns#post-office-box (177,467 Entities)</li>
             </ol>
             <br/>
         </td>
     </tr>
-    <tr>
-        <th>Detailed Statistics as Excel-File</th>
-        <td><a target="_blank" href="html-mf-adr.xlsx">html-mf-adr.xlsx</a> TO-DO</td>
-    </tr>
+    
 </table>
 
 <a name='html-mf-geo'></a>
@@ -1280,7 +1594,7 @@
     </tr>
     <tr>
         <th>Typed Entities</th>
-        <td>-</td>
+        <td>6,495,007</td>
     </tr>
     <tr>
         <th>Top Domains by Extracted Triples</th>
@@ -1346,7 +1660,7 @@
                       onclick="document.getElementById('html-mf-geo-top-class-values-by-domain-count').style.display='block';this.style.display='none';return false;">Show
             top values by domain count</a></small>
             <ol id='html-mf-geo-top-class-values-by-domain-count' style='display:none'>
-                <li>-</li>
+                <li>http://www.w3.org/2006/vcard/ns#Location (71,815 Domains)</li>
             </ol>
             <br/>
         </td>
@@ -1357,7 +1671,7 @@
                       onclick="document.getElementById('html-mf-geo-top-class-values-by-entity-count').style.display='block';this.style.display='none';return false;">Show
             top values by entity count</a></small>
             <ol id='html-mf-geo-top-class-values-by-entity-count' style='display:none'>
-                <li>-</li>
+                <li>http://www.w3.org/2006/vcard/ns#Location (6,495,007 Entities)</li>
             </ol>
             <br/>
         </td>
@@ -1368,7 +1682,8 @@
                       onclick="document.getElementById('html-mf-geo-top-property-values-by-domain-count').style.display='block';this.style.display='none';return false;">Show
             top values by domain count</a></small>
             <ol id='html-mf-geo-top-property-values-by-domain-count' style='display:none'>
-                <li>-</li>
+                <li>http://www.w3.org/2006/vcard/ns#latitude (69,186 Domains)</li>
+				<li>http://www.w3.org/2006/vcard/ns#longitude (69,157 Domains)</li>
 
             </ol>
         </td>
@@ -1379,15 +1694,13 @@
                       onclick="document.getElementById('html-mf-geo-top-property-values-by-entity-count').style.display='block';this.style.display='none';return false;">Show
             top values by entity count</a></small>
             <ol id='html-mf-geo-top-property-values-by-entity-count' style='display:none'>
-                <li>-</li>
+                <li>http://www.w3.org/2006/vcard/ns#latitude (5,202,175 Entities)</li>
+				<li>http://www.w3.org/2006/vcard/ns#longitude (5,198,730 Entities)</li>
             </ol>
             <br/>
         </td>
     </tr>
-    <tr>
-        <th>Detailed Statistics as Excel-File</th>
-        <td><a target="_blank" href="html-mf-geo.xlsx">html-mf-geo.xlsx</a> TO-DO</td>
-    </tr>
+    
 </table>
 
 <a name='html-mf-hcalendar'></a>
@@ -1411,11 +1724,11 @@
     </tr>
     <tr>
         <th>Average Triples per Domain</th>
-        <td>1,847.07</td>
+        <td>1,8477</td>
     </tr>
     <tr>
         <th>Typed Entities</th>
-        <td>-</td>
+        <td>15,891,355</td>
     </tr>
     <tr>
         <th>Top Domains by Extracted Triples</th>
@@ -1473,7 +1786,10 @@
                       onclick="document.getElementById('html-mf-hcalendar-top-class-values-by-domain-count').style.display='block';this.style.display='none';return false;">Show
             top values by domain count</a></small>
             <ol id='html-mf-hcalendar-top-class-values-by-domain-count' style='display:none'>
-                <li>-</li>
+                <li>http://www.w3.org/2002/12/cal/icaltzd#Vcalendar (38,150 Domains)</li>
+				<li>http://www.w3.org/2002/12/cal/icaltzd#Vevent (32,604 Domains)</li>
+				<li>http://www.w3.org/2002/12/cal/icaltzd#DomainOf_rrule (6 Domains)</li>
+				<li>http://www.w3.org/2002/12/cal/icaltzd#Vtodo (5 Domains)</li>
             </ol>
             <br/>
         </td>
@@ -1484,7 +1800,10 @@
                       onclick="document.getElementById('html-mf-hcalendar-top-class-values-by-entity-count').style.display='block';this.style.display='none';return false;">Show
             top values by entity count</a></small>
             <ol id='html-mf-hcalendar-top-class-values-by-entity-count' style='display:none'>
-                <li>-</li>
+                <li>http://www.w3.org/2002/12/cal/icaltzd#Vevent (13,743,570 Entities)</li>
+				<li>http://www.w3.org/2002/12/cal/icaltzd#Vcalendar (2,147,587 Entities)</li>
+				<li>http://www.w3.org/2002/12/cal/icaltzd#DomainOf_rrule (115 Entities)</li>
+				<li>http://www.w3.org/2002/12/cal/icaltzd#Vtodo (83 Entities)</li>
             </ol>
             <br/>
         </td>
@@ -1495,7 +1814,22 @@
                       onclick="document.getElementById('html-mf-hcalendar-top-property-values-by-domain-count').style.display='block';this.style.display='none';return false;">Show
             top values by domain count</a></small>
             <ol id='html-mf-hcalendar-top-property-values-by-domain-count' style='display:none'>
-                <li>-</li>
+                <li>http://www.w3.org/2002/12/cal/icaltzd#component (32,606 Domains)</li>
+				<li>http://www.w3.org/2002/12/cal/icaltzd#dtstart (22,802 Domains)</li>
+				<li>http://www.w3.org/2002/12/cal/icaltzd#summary (20,821 Domains)</li>
+				<li>http://www.w3.org/2002/12/cal/icaltzd#url (15,533 Domains)</li>
+				<li>http://www.w3.org/2002/12/cal/icaltzd#dtend (13,512 Domains)</li>
+				<li>http://www.w3.org/2002/12/cal/icaltzd#location (10,880 Domains)</li>
+				<li>http://www.w3.org/2002/12/cal/icaltzd#description (9,335 Domains)</li>
+				<li>http://www.w3.org/2002/12/cal/icaltzd#categories (975 Domains)</li>
+				<li>http://www.w3.org/2002/12/cal/icaltzd#uid (653 Domains)</li>
+				<li>http://www.w3.org/2002/12/cal/icaltzd#organizer (198 Domains)</li>
+				<li>http://www.w3.org/2002/12/cal/icaltzd#calAddress (168 Domains)</li>
+				<li>http://www.w3.org/2002/12/cal/icaltzd#dtstamp (127 Domains)</li>
+				<li>http://www.w3.org/2002/12/cal/icaltzd#status (37 Domains)</li>
+				<li>http://www.w3.org/2002/12/cal/icaltzd#class (15 Domains)</li>
+				<li>http://www.w3.org/2002/12/cal/icaltzd#rrule (6 Domains)</li>
+				<li>http://www.w3.org/2002/12/cal/icaltzd#freq (2 Domains)</li>
 
             </ol>
         </td>
@@ -1506,15 +1840,27 @@
                       onclick="document.getElementById('html-mf-hcalendar-top-property-values-by-entity-count').style.display='block';this.style.display='none';return false;">Show
             top values by entity count</a></small>
             <ol id='html-mf-hcalendar-top-property-values-by-entity-count' style='display:none'>
-                <li>-</li>
+                <li>http://www.w3.org/2002/12/cal/icaltzd#dtstart (8,162,479 Entities)</li>
+				<li>http://www.w3.org/2002/12/cal/icaltzd#url (6,669,206 Entities)</li>
+				<li>http://www.w3.org/2002/12/cal/icaltzd#summary (6,031,227 Entities)</li>
+				<li>http://www.w3.org/2002/12/cal/icaltzd#dtend (3,458,124 Entities)</li>
+				<li>http://www.w3.org/2002/12/cal/icaltzd#location (3,053,369 Entities)</li>
+				<li>http://www.w3.org/2002/12/cal/icaltzd#component (1,889,857 Entities)</li>
+				<li>http://www.w3.org/2002/12/cal/icaltzd#description (1,356,675 Entities)</li>
+				<li>http://www.w3.org/2002/12/cal/icaltzd#uid (865,283 Entities)</li>
+				<li>http://www.w3.org/2002/12/cal/icaltzd#categories (245,012 Entities)</li>
+				<li>http://www.w3.org/2002/12/cal/icaltzd#dtstamp (148,997 Entities)</li>
+				<li>http://www.w3.org/2002/12/cal/icaltzd#class (140,699 Entities)</li>
+				<li>http://www.w3.org/2002/12/cal/icaltzd#organizer (17,366 Entities)</li>
+				<li>http://www.w3.org/2002/12/cal/icaltzd#calAddress (14,378 Entities)</li>
+				<li>http://www.w3.org/2002/12/cal/icaltzd#status (7,022 Entities)</li>
+				<li>http://www.w3.org/2002/12/cal/icaltzd#rrule (55 Entities)</li>
+				<li>http://www.w3.org/2002/12/cal/icaltzd#freq (11 Entities)</li>
             </ol>
             <br/>
         </td>
     </tr>
-    <tr>
-        <th>Detailed Statistics as Excel-File</th>
-        <td><a target="_blank" href="html-mf-hcalendar.xlsx">html-mf-hcalendar.xlsx</a> TO-DO</td>
-    </tr>
+    
 </table>
 
 <a name='html-mf-hreview'></a>
@@ -1538,11 +1884,11 @@
     </tr>
     <tr>
         <th>Average Triples per Domain</th>
-        <td>1,604.05</td>
+        <td>1,6045</td>
     </tr>
     <tr>
         <th>Typed Entities</th>
-        <td>-</td>
+        <td>6,916,213</td>
     </tr>
     <tr>
         <th>Top Domains by Extracted Triples</th>
@@ -1607,7 +1953,7 @@
                       onclick="document.getElementById('html-mf-hreview-top-class-values-by-domain-count').style.display='block';this.style.display='none';return false;">Show
             top values by domain count</a></small>
             <ol id='html-mf-hreview-top-class-values-by-domain-count' style='display:none'>
-                <li>-</li>
+				<li>http://purl.org/stuff/rev#Review (30,697 Domains)</li>
             </ol>
             <br/>
         </td>
@@ -1618,7 +1964,8 @@
                       onclick="document.getElementById('html-mf-hreview-top-class-values-by-entity-count').style.display='block';this.style.display='none';return false;">Show
             top values by entity count</a></small>
             <ol id='html-mf-hreview-top-class-values-by-entity-count' style='display:none'>
-                <li>-</li>
+                <li>http://purl.org/stuff/rev#Review (6,916,213 Entities)</li>
+
             </ol>
             <br/>
         </td>
@@ -1629,7 +1976,16 @@
                       onclick="document.getElementById('html-mf-hreview-top-property-values-by-domain-count').style.display='block';this.style.display='none';return false;">Show
             top values by domain count</a></small>
             <ol id='html-mf-hreview-top-property-values-by-domain-count' style='display:none'>
-                <li>-</li>
+                <li>http://purl.org/stuff/rev#reviewer (26,785 Domains)</li>
+				<li>http://purl.org/stuff/rev#hasReview (25,435 Domains)</li>
+				<li>http://www.w3.org/2006/vcard/ns#url (25,434 Domains)</li>
+				<li>http://purl.org/dc/terms/date (24,554 Domains)</li>
+				<li>http://www.w3.org/2006/vcard/ns#fn (19,847 Domains)</li>
+				<li>http://purl.org/stuff/rev#rating (17,081 Domains)</li>
+				<li>http://www.w3.org/2006/vcard/ns#photo (9,461 Domains)</li>
+				<li>http://purl.org/stuff/rev#text (4,362 Domains)</li>
+				<li>http://purl.org/stuff/rev#title (2,394 Domains)</li>
+				<li>http://purl.org/stuff/rev#type (1,219 Domains)</li>
 
             </ol>
         </td>
@@ -1640,14 +1996,19 @@
                       onclick="document.getElementById('html-mf-hreview-top-property-values-by-entity-count').style.display='block';this.style.display='none';return false;">Show
             top values by entity count</a></small>
             <ol id='html-mf-hreview-top-property-values-by-entity-count' style='display:none'>
-                <li>-</li>
+                <li>http://purl.org/stuff/rev#hasReview (7,565,766 Entities)</li>
+				<li>http://www.w3.org/2006/vcard/ns#url (7,565,738 Entities)</li>
+				<li>http://purl.org/stuff/rev#reviewer (5,800,611 Entities)</li>
+				<li>http://www.w3.org/2006/vcard/ns#fn (5,623,400 Entities)</li>
+				<li>http://purl.org/dc/terms/date (5,554,364 Entities)</li>
+				<li>http://purl.org/stuff/rev#rating (3,644,401 Entities)</li>
+				<li>http://www.w3.org/2006/vcard/ns#photo (2,283,325 Entities)</li>
+				<li>http://purl.org/stuff/rev#text (549,614 Entities)</li>
+				<li>http://purl.org/stuff/rev#title (331,407 Entities)</li>
+				<li>http://purl.org/stuff/rev#type (106,221 Entities)</li>
             </ol>
             <br/>
         </td>
-    </tr>
-    <tr>
-        <th>Detailed Statistics as Excel-File</th>
-        <td><a target="_blank" href="html-mf-hreview.xlsx">html-mf-hreview.xlsx</a> TO-DO</td>
     </tr>
 </table>
 
@@ -1676,7 +2037,7 @@
     </tr>
     <tr>
         <th>Typed Entities</th>
-        <td>-</td>
+        <td>11,788,682</td>
     </tr>
     <tr>
         <th>Top Domains by Extracted Triples</th>
@@ -1746,7 +2107,9 @@
                       onclick="document.getElementById('html-mf-hlisting-top-class-values-by-domain-count').style.display='block';this.style.display='none';return false;">Show
             top values by domain count</a></small>
             <ol id='html-mf-hlisting-top-class-values-by-domain-count' style='display:none'>
-                <li>-</li>
+                <li>http://sindice.com/hlisting/0.1/Lister (10,991 Domains)</li>
+				<li>http://sindice.com/hlisting/0.1/Listing (10,991 Domains)</li>
+				<li>http://sindice.com/hlisting/0.1/Item (9,004 Domains)</li>
             </ol>
             <br/>
         </td>
@@ -1757,7 +2120,9 @@
                       onclick="document.getElementById('html-mf-hlisting-top-class-values-by-entity-count').style.display='block';this.style.display='none';return false;">Show
             top values by entity count</a></small>
             <ol id='html-mf-hlisting-top-class-values-by-entity-count' style='display:none'>
-                <li>-</li>
+                <li>http://sindice.com/hlisting/0.1/Lister (4,073,933 Entities)</li>
+				<li>http://sindice.com/hlisting/0.1/Listing (4,073,933 Entities)</li>
+				<li>http://sindice.com/hlisting/0.1/Item (3,640,816 Entities)</li>
             </ol>
             <br/>
         </td>
@@ -1768,7 +2133,24 @@
                       onclick="document.getElementById('html-mf-hlisting-top-property-values-by-domain-count').style.display='block';this.style.display='none';return false;">Show
             top values by domain count</a></small>
             <ol id='html-mf-hlisting-top-property-values-by-domain-count' style='display:none'>
-                <li>-</li>
+                <li>http://sindice.com/hlisting/0.1/lister (10,991 Domains)</li>
+				<li>http://sindice.com/hlisting/0.1/item (9,004 Domains)</li>
+				<li>http://sindice.com/hlisting/0.1/itemPhoto (9,004 Domains)</li>
+				<li>http://sindice.com/hlisting/0.1/itemUrl (9,004 Domains)</li>
+				<li>http://sindice.com/hlisting/0.1/price (1,599 Domains)</li>
+				<li>http://sindice.com/hlisting/0.1/description (629 Domains)</li>
+				<li>http://sindice.com/hlisting/0.1/itemName (72 Domains)</li>
+				<li>http://sindice.com/hlisting/0.1/action (37 Domains)</li>
+				<li>http://sindice.com/hlisting/0.1/listerLogo (32 Domains)</li>
+				<li>http://sindice.com/hlisting/0.1/listerUrl (32 Domains)</li>
+				<li>http://sindice.com/hlisting/0.1/listerName (26 Domains)</li>
+				<li>http://sindice.com/hlisting/0.1/dtlisted (20 Domains)</li>
+				<li>http://sindice.com/hlisting/0.1/listerOrg (18 Domains)</li>
+				<li>http://sindice.com/hlisting/0.1/summary (13 Domains)</li>
+				<li>http://www.w3.org/2006/vcard/ns#tel (8 Domains)</li>
+				<li>http://sindice.com/hlisting/0.1/permalink (5 Domains)</li>
+				<li>http://sindice.com/hlisting/0.1/dtexpired (4 Domains)</li>
+				<li>http://xmlns.com/foaf/0.1/mbox (4 Domains)</li>
 
             </ol>
         </td>
@@ -1779,15 +2161,29 @@
                       onclick="document.getElementById('html-mf-hlisting-top-property-values-by-entity-count').style.display='block';this.style.display='none';return false;">Show
             top values by entity count</a></small>
             <ol id='html-mf-hlisting-top-property-values-by-entity-count' style='display:none'>
-                <li>-</li>
+                <li>http://sindice.com/hlisting/0.1/lister (4,073,933 Entities)</li>
+				<li>http://sindice.com/hlisting/0.1/item (3,640,816 Entities)</li>
+				<li>http://sindice.com/hlisting/0.1/itemPhoto (3,640,816 Entities)</li>
+				<li>http://sindice.com/hlisting/0.1/itemUrl (3,640,816 Entities)</li>
+				<li>http://sindice.com/hlisting/0.1/price (605,322 Entities)</li>
+				<li>http://sindice.com/hlisting/0.1/itemName (166,083 Entities)</li>
+				<li>http://sindice.com/hlisting/0.1/description (80,187 Entities)</li>
+				<li>http://sindice.com/hlisting/0.1/summary (18,887 Entities)</li>
+				<li>http://sindice.com/hlisting/0.1/dtlisted (17,437 Entities)</li>
+				<li>http://sindice.com/hlisting/0.1/listerLogo (4,039 Entities)</li>
+				<li>http://sindice.com/hlisting/0.1/listerUrl (4,031 Entities)</li>
+				<li>http://sindice.com/hlisting/0.1/action (3,750 Entities)</li>
+				<li>http://sindice.com/hlisting/0.1/listerName (2,677 Entities)</li>
+				<li>http://sindice.com/hlisting/0.1/listerOrg (1,747 Entities)</li>
+				<li>http://www.w3.org/2006/vcard/ns#tel (836 Entities)</li>
+				<li>http://sindice.com/hlisting/0.1/permalink (630 Entities)</li>
+				<li>http://sindice.com/hlisting/0.1/dtexpired (227 Entities)</li>
+				<li>http://xmlns.com/foaf/0.1/mbox (62 Entities)</li>
             </ol>
             <br/>
         </td>
     </tr>
-    <tr>
-        <th>Detailed Statistics as Excel-File</th>
-        <td><a target="_blank" href="html-mf-hlisting.xlsx">html-mf-hlisting.xlsx</a> TO-DO</td>
-    </tr>
+    
 </table>
 
 <a name='html-mf-hrecipe'></a>
@@ -1815,7 +2211,7 @@
     </tr>
     <tr>
         <th>Typed Entities</th>
-        <td>-</td>
+        <td>2,393,939</td>
     </tr>
     <tr>
         <th>Top Domains by Extracted Triples</th>
@@ -1870,7 +2266,10 @@
                       onclick="document.getElementById('html-mf-hrecipe-top-class-values-by-domain-count').style.display='block';this.style.display='none';return false;">Show
             top values by domain count</a></small>
             <ol id='html-mf-hrecipe-top-class-values-by-domain-count' style='display:none'>
-                <li>-</li>
+                <li>http://vocab.sindice.net/any23#hrecipe/Recipe (5,049 Domains)</li>
+				<li>http://vocab.sindice.net/any23#hrecipe/Ingredient (2,703 Domains)</li>
+				<li>http://vocab.sindice.net/any23#hrecipe/Duration (826 Domains)</li>
+				<li>http://vocab.sindice.net/any23#hrecipe/Nutrition (280 Domains)</li>
             </ol>
             <br/>
         </td>
@@ -1881,7 +2280,10 @@
                       onclick="document.getElementById('html-mf-hrecipe-top-class-values-by-entity-count').style.display='block';this.style.display='none';return false;">Show
             top values by entity count</a></small>
             <ol id='html-mf-hrecipe-top-class-values-by-entity-count' style='display:none'>
-                <li>-</li>
+                <li>http://vocab.sindice.net/any23#hrecipe/Ingredient (1,728,718 Entities)</li>
+				<li>http://vocab.sindice.net/any23#hrecipe/Recipe (561,122 Entities)</li>
+				<li>http://vocab.sindice.net/any23#hrecipe/Duration (80,165 Entities)</li>
+				<li>http://vocab.sindice.net/any23#hrecipe/Nutrition (23,934 Entities)</li>
             </ol>
             <br/>
         </td>
@@ -1892,7 +2294,24 @@
                       onclick="document.getElementById('html-mf-hrecipe-top-property-values-by-domain-count').style.display='block';this.style.display='none';return false;">Show
             top values by domain count</a></small>
             <ol id='html-mf-hrecipe-top-property-values-by-domain-count' style='display:none'>
-                <li>-</li>
+                <li>http://vocab.sindice.net/any23#hrecipe/fn (3,484 Domains)</li>
+				<li>http://vocab.sindice.net/any23#hrecipe/ingredient (2,703 Domains)</li>
+				<li>http://vocab.sindice.net/any23#hrecipe/photo (2,562 Domains)</li>
+				<li>http://vocab.sindice.net/any23#hrecipe/tag (2,346 Domains)</li>
+				<li>http://vocab.sindice.net/any23#hrecipe/ingredientName (2,220 Domains)</li>
+				<li>http://vocab.sindice.net/any23#hrecipe/yield (2,025 Domains)</li>
+				<li>http://vocab.sindice.net/any23#hrecipe/instructions (1,042 Domains)</li>
+				<li>http://vocab.sindice.net/any23#hrecipe/author (1,005 Domains)</li>
+				<li>http://vocab.sindice.net/any23#hrecipe/duration (826 Domains)</li>
+				<li>http://vocab.sindice.net/any23#hrecipe/summary (693 Domains)</li>
+				<li>http://vocab.sindice.net/any23#hrecipe/published (691 Domains)</li>
+				<li>http://vocab.sindice.net/any23#hrecipe/durationTime (672 Domains)</li>
+				<li>http://vocab.sindice.net/any23#hrecipe/nutrition (280 Domains)</li>
+				<li>http://vocab.sindice.net/any23#hrecipe/ingredientQuantity (233 Domains)</li>
+				<li>http://vocab.sindice.net/any23#hrecipe/nutritionValue (203 Domains)</li>
+				<li>http://vocab.sindice.net/any23#hrecipe/durationTitle (146 Domains)</li>
+				<li>http://vocab.sindice.net/any23#hrecipe/ingredientQuantityType (132 Domains)</li>
+				<li>http://vocab.sindice.net/any23#hrecipe/nutritionValueType (33 Domains)</li>
 
             </ol>
         </td>
@@ -1903,7 +2322,24 @@
                       onclick="document.getElementById('html-mf-hrecipe-top-property-values-by-entity-count').style.display='block';this.style.display='none';return false;">Show
             top values by entity count</a></small>
             <ol id='html-mf-hrecipe-top-property-values-by-entity-count' style='display:none'>
-                <li>-</li>
+                <li>http://vocab.sindice.net/any23#hrecipe/ingredientName (909,530 Entities)</li>
+				<li>http://vocab.sindice.net/any23#hrecipe/photo (288,389 Entities)</li>
+				<li>http://vocab.sindice.net/any23#hrecipe/fn (269,433 Entities)</li>
+				<li>http://vocab.sindice.net/any23#hrecipe/ingredient (214,792 Entities)</li>
+				<li>http://vocab.sindice.net/any23#hrecipe/tag (208,002 Entities)</li>
+				<li>http://vocab.sindice.net/any23#hrecipe/ingredientQuantity (162,054 Entities)</li>
+				<li>http://vocab.sindice.net/any23#hrecipe/yield (146,001 Entities)</li>
+				<li>http://vocab.sindice.net/any23#hrecipe/author (137,876 Entities)</li>
+				<li>http://vocab.sindice.net/any23#hrecipe/published (90,792 Entities)</li>
+				<li>http://vocab.sindice.net/any23#hrecipe/duration (73,582 Entities)</li>
+				<li>http://vocab.sindice.net/any23#hrecipe/ingredientQuantityType (49,158 Entities)</li>
+				<li>http://vocab.sindice.net/any23#hrecipe/durationTime (43,695 Entities)</li>
+				<li>http://vocab.sindice.net/any23#hrecipe/instructions (42,458 Entities)</li>
+				<li>http://vocab.sindice.net/any23#hrecipe/summary (33,225 Entities)</li>
+				<li>http://vocab.sindice.net/any23#hrecipe/nutritionValue (20,291 Entities)</li>
+				<li>http://vocab.sindice.net/any23#hrecipe/nutrition (12,388 Entities)</li>
+				<li>http://vocab.sindice.net/any23#hrecipe/durationTitle (7,910 Entities)</li>
+				<li>http://vocab.sindice.net/any23#hrecipe/nutritionValueType (7,277 Entities)</li>
             </ol>
             <br/>
         </td>
@@ -1939,7 +2375,7 @@
     </tr>
     <tr>
         <th>Typed Entities</th>
-        <td>-</td>
+        <td>12,210</td>
     </tr>
     <tr>
         <th>Top Domains by Extracted Triples</th>
@@ -1999,7 +2435,7 @@
                       onclick="document.getElementById('html-mf-hresume-top-class-values-by-domain-count').style.display='block';this.style.display='none';return false;">Show
             top values by domain count</a></small>
             <ol id='html-mf-hresume-top-class-values-by-domain-count' style='display:none'>
-                <li>-</li>
+                <li>http://xmlns.com/foaf/0.1/Person (128 Domains)</li>
             </ol>
             <br/>
         </td>
@@ -2010,7 +2446,7 @@
                       onclick="document.getElementById('html-mf-hresume-top-class-values-by-entity-count').style.display='block';this.style.display='none';return false;">Show
             top values by entity count</a></small>
             <ol id='html-mf-hresume-top-class-values-by-entity-count' style='display:none'>
-                <li>-</li>
+				<li>http://xmlns.com/foaf/0.1/Person (12,210 Entities)</li>
             </ol>
             <br/>
         </td>
@@ -2021,7 +2457,16 @@
                       onclick="document.getElementById('html-mf-hresume-top-property-values-by-domain-count').style.display='block';this.style.display='none';return false;">Show
             top values by domain count</a></small>
             <ol id='html-mf-hresume-top-property-values-by-domain-count' style='display:none'>
-                <li>-</li>
+                <li>http://ramonantonio.net/doac/0.1/#summary (77 Domains)</li>
+				<li>http://ramonantonio.net/doac/0.1/#start-date (60 Domains)</li>
+				<li>http://ramonantonio.net/doac/0.1/#education (57 Domains)</li>
+				<li>http://ramonantonio.net/doac/0.1/#organization (56 Domains)</li>
+				<li>http://ramonantonio.net/doac/0.1/#experience (55 Domains)</li>
+				<li>http://ramonantonio.net/doac/0.1/#title (49 Domains)</li>
+				<li>http://ramonantonio.net/doac/0.1/#end-date (30 Domains)</li>
+				<li>http://xmlns.com/foaf/0.1/isPrimaryTopicOf (30 Domains)</li>
+				<li>http://ramonantonio.net/doac/0.1/#skill (26 Domains)</li>
+				<li>http://ramonantonio.net/doac/0.1/#affiliation (3 Domains)</li>
 
             </ol>
         </td>
@@ -2032,15 +2477,21 @@
                       onclick="document.getElementById('html-mf-hresume-top-property-values-by-entity-count').style.display='block';this.style.display='none';return false;">Show
             top values by entity count</a></small>
             <ol id='html-mf-hresume-top-property-values-by-entity-count' style='display:none'>
-                <li>-</li>
+                <li>http://xmlns.com/foaf/0.1/isPrimaryTopicOf (6,250 Entities)</li>
+				<li>http://ramonantonio.net/doac/0.1/#affiliation (4,346 Entities)</li>
+				<li>http://ramonantonio.net/doac/0.1/#summary (2,079 Entities)</li>
+				<li>http://ramonantonio.net/doac/0.1/#start-date (666 Entities)</li>
+				<li>http://ramonantonio.net/doac/0.1/#organization (576 Entities)</li>
+				<li>http://ramonantonio.net/doac/0.1/#title (389 Entities)</li>
+				<li>http://ramonantonio.net/doac/0.1/#end-date (304 Entities)</li>
+				<li>http://ramonantonio.net/doac/0.1/#education (68 Entities)</li>
+				<li>http://ramonantonio.net/doac/0.1/#experience (61 Entities)</li>
+				<li>http://ramonantonio.net/doac/0.1/#skill (28 Entities)</li>
             </ol>
             <br/>
         </td>
     </tr>
-    <tr>
-        <th>Detailed Statistics as Excel-File</th>
-        <td><a target="_blank" href="html-mf-hresume.xlsx">html-mf-hresume.xlsx</a> TO-DO</td>
-    </tr>
+    
 </table>
 
 <a name='html-mf-species'></a>
@@ -2068,7 +2519,7 @@
     </tr>
     <tr>
         <th>Typed Entities</th>
-        <td>-</td>
+        <td>159,030</td>
     </tr>
     <tr>
         <th>Top Domains by Extracted Triples</th>
@@ -2118,7 +2569,14 @@
                       onclick="document.getElementById('html-mf-species-top-class-values-by-domain-count').style.display='block';this.style.display='none';return false;">Show
             top values by domain count</a></small>
             <ol id='html-mf-species-top-class-values-by-domain-count' style='display:none'>
-                <li>-</li>
+                <li>http://purl.org/ontology/wo/species (257 Domains)</li>
+				<li>http://purl.org/ontology/wo/Species (132 Domains)</li>
+				<li>http://purl.org/ontology/wo/Genus (131 Domains)</li>
+				<li>http://purl.org/ontology/wo/Family (128 Domains)</li>
+				<li>http://purl.org/ontology/wo/Order (123 Domains)</li>
+				<li>http://purl.org/ontology/wo/Kingdom (122 Domains)</li>
+				<li>http://purl.org/ontology/wo/Phylum (93 Domains)</li>
+				<li>http://purl.org/ontology/wo/Class (85 Domains)</li>
             </ol>
             <br/>
         </td>
@@ -2129,7 +2587,14 @@
                       onclick="document.getElementById('html-mf-species-top-class-values-by-entity-count').style.display='block';this.style.display='none';return false;">Show
             top values by entity count</a></small>
             <ol id='html-mf-species-top-class-values-by-entity-count' style='display:none'>
-                <li>-</li>
+                <li>http://purl.org/ontology/wo/species (57,750 Entities)</li>
+				<li>http://purl.org/ontology/wo/Order (18,143 Entities)</li>
+				<li>http://purl.org/ontology/wo/Kingdom (17,993 Entities)</li>
+				<li>http://purl.org/ontology/wo/Genus (17,445 Entities)</li>
+				<li>http://purl.org/ontology/wo/Family (16,628 Entities)</li>
+				<li>http://purl.org/ontology/wo/Phylum (13,305 Entities)</li>
+				<li>http://purl.org/ontology/wo/Species (10,153 Entities)</li>
+				<li>http://purl.org/ontology/wo/Class (7,613 Entities)</li>
             </ol>
             <br/>
         </td>
@@ -2140,7 +2605,21 @@
                       onclick="document.getElementById('html-mf-species-top-property-values-by-domain-count').style.display='block';this.style.display='none';return false;">Show
             top values by domain count</a></small>
             <ol id='html-mf-species-top-property-values-by-domain-count' style='display:none'>
-                <li>-</li>
+                <li>http://purl.org/ontology/wo/species (132 Domains)</li>
+				<li>http://purl.org/ontology/wo/genus (131 Domains)</li>
+				<li>http://purl.org/ontology/wo/scientificName (128 Domains)</li>
+				<li>http://purl.org/ontology/wo/family (128 Domains)</li>
+				<li>http://purl.org/ontology/wo/genusName (123 Domains)</li>
+				<li>http://purl.org/ontology/wo/order (123 Domains)</li>
+				<li>http://purl.org/ontology/wo/kingdom (122 Domains)</li>
+				<li>http://purl.org/ontology/wo/familyName (121 Domains)</li>
+				<li>http://purl.org/ontology/wo/kingdomName (115 Domains)</li>
+				<li>http://purl.org/ontology/wo/orderName (114 Domains)</li>
+				<li>http://purl.org/ontology/wo/phylum (93 Domains)</li>
+				<li>http://purl.org/ontology/wo/phylumName (90 Domains)</li>
+				<li>http://purl.org/ontology/wo/speciesName (85 Domains)</li>
+				<li>http://purl.org/ontology/wo/className (85 Domains)</li>
+				<li>http://purl.org/ontology/wo/class (85 Domains)</li>
 
             </ol>
         </td>
@@ -2151,15 +2630,26 @@
                       onclick="document.getElementById('html-mf-species-top-property-values-by-entity-count').style.display='block';this.style.display='none';return false;">Show
             top values by entity count</a></small>
             <ol id='html-mf-species-top-property-values-by-entity-count' style='display:none'>
-                <li>-</li>
+                <li>http://purl.org/ontology/wo/scientificName (28,360 Entities)</li>
+				<li>http://purl.org/ontology/wo/order (18,147 Entities)</li>
+				<li>http://purl.org/ontology/wo/kingdom (17,993 Entities)</li>
+				<li>http://purl.org/ontology/wo/genus (17,449 Entities)</li>
+				<li>http://purl.org/ontology/wo/family (16,632 Entities)</li>
+				<li>http://purl.org/ontology/wo/genusName (16,218 Entities)</li>
+				<li>http://purl.org/ontology/wo/orderName (15,918 Entities)</li>
+				<li>http://purl.org/ontology/wo/familyName (14,415 Entities)</li>
+				<li>http://purl.org/ontology/wo/kingdomName (14,310 Entities)</li>
+				<li>http://purl.org/ontology/wo/phylum (13,305 Entities)</li>
+				<li>http://purl.org/ontology/wo/phylumName (11,201 Entities)</li>
+				<li>http://purl.org/ontology/wo/species (10,157 Entities)</li>
+				<li>http://purl.org/ontology/wo/speciesName (7,706 Entities)</li>
+				<li>http://purl.org/ontology/wo/class (7,613 Entities)</li>
+				<li>http://purl.org/ontology/wo/className (7,282 Entities)</li>
             </ol>
             <br/>
         </td>
     </tr>
-    <tr>
-        <th>Detailed Statistics as Excel-File</th>
-        <td><a target="_blank" href="html-mf-species.xlsx">html-mf-species.xlsx</a> TO-DO</td>
-    </tr>
+    
 </table>
 
 
