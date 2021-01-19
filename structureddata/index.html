@@ -52,7 +52,9 @@
         ['2016', 2537539, 2116755, 1668039, 938830],
         ['2017', 3743822, 2685738, 2758884, 1209430],
         ['2018', 5183199, 3835046, 3399902, 1382497],
-		['2019', 6359911, 5100519, 4045187, 1039623]
+		['2019', 6359911, 5100519, 4045187, 1039623],
+		['2020', 7809978, 7659585, 4309621, 3354300]
+
 
 	
 
@@ -89,7 +91,9 @@
       ['2016', 34637805559, 1880721886, 4600477456, 2216933416],
       ['2017', 24359443316, 3623025088, 8371745745, 1629581643],
 	  ['2018', 20318437064, 4159835616, 5374115412, 1207733576],
-	  ['2019', 22290981916, 8413179046, 11839793514, 1134186061]
+	  ['2019', 22290981916, 8413179046, 11839793514, 1134186061],
+	  ['2020', 35612247646, 32078019309, 12102799203, 5893793116]
+
 
 
            ]);
@@ -124,7 +128,9 @@
         ['2016', 406441, 130211, 81345, 92574, 9009],
         ['2017', 365470, 105811, 85180, 287356, 10241],
         ['2018', 89940, 87425, 74298, 304278, 20013],
-		['2019', 223302,  167975,  76184 , 312322, 28067]
+		['2019', 223302,  167975,  76184 , 312322, 28067],
+		['2020', 0,  0,  0 , 0, 0]
+
 
 
       ]);
@@ -160,6 +166,7 @@
         ['2017', 9000298, 14031296, 18171969, 127159418, 2352200],
         ['2018', 6450222, 15218991, 13752361, 101264815, 2371099],
 		['2019', 9103364,  17480102, 19471512, 67417474, 2719137 ]
+
 
       ]);
 
@@ -1052,7 +1059,7 @@
             ['html-microdata', 7809978, '#D11919', 'Microdata : 7,809,978 '],
             ['html-embedded-jsonld', 7659585, '#29A329', 'JSON-LD : 7,659,585 '],
             ['html-mf-hcard', 4309621, '#FFD633', 'mf-hcard : 4,309,621 '],
-            ['html-rdfa', 18601286, '#5E8FD8', 'RDFA : 18,601,286 '],
+            ['html-rdfa', 3354300, '#5E8FD8', 'RDFA : 3,354,300 '],
             ['html-mf-xfn', 412477, '#FFF5DD', 'mf-xfn : 412,477 '],
             ['html-mf-hcalendar', 38130, '#FFDB4D', 'mf-hcalendar : 38,130 '],
             ['html-mf-hreview', 30675, '#FFEB99', 'mf-hreview : 30,675 '],
@@ -1088,7 +1095,7 @@
             ['html-microdata', 892571812, '#D11919', 'Microdata : 892,571,812 '],
             ['html-embedded-jsonld', 767626882, '#29A329', 'JSON-LD : 767,626,882 '],
             ['html-mf-hcard', 371420305, '#FFD633', 'mf-hcard : 371,420,305 '],
-            ['html-rdfa', 1971226562, '#5E8FD8', 'RDFA : 1,971,226,562 '],
+            ['html-rdfa', 408439900, '#5E8FD8', 'RDFA : 408,439,900 '],
             ['html-mf-xfn', 30140863, '#FFF5DD', 'mf-xfn : 30,140,863 '],
             ['html-mf-hcalendar', 2142316, '#FFDB4D', 'mf-hcalendar : 2,142,316 '],
             ['html-mf-hreview', 2501767, '#FFEB99', 'mf-hreview : 2,501,767 '],
@@ -1238,6 +1245,7 @@
         <p>Up till now, we have extracted all Microdata, JSON-LD, RDFa, and Microformats data from the following releases of the
           Common Crawl web corpora:</p>
         <ul>
+		  <li><a href="#results-2020-1">September 2020</a></li>
 		  <li><a href="#results-2019-1">November 2019</a></li>
           <li><a href="#results-2018-1">November 2018</a></li>
           <li><a href="#results-2017-1">November 2017</a></li>
@@ -1459,12 +1467,12 @@
       <span id="rdf_pld" style="width:500px"></span>
       <span id="rdf_triple" style="width:500px"></span>
 
-    <h3 id="results-2019-1">3.2. Extraction Results from the September 2020 Common Crawl Corpus</h3>
+    <h3 id="results-2020-1">3.2. Extraction Results from the September 2020 Common Crawl Corpus</h3>
       <div>
         <p>
           The September 2020 Common Crawl Corpus is available on <a href="http://aws.amazon.com/s3/">Amazon S3</a> in
           the
-          bucket <code>aws-publicdatasets</code> under the key prefix <code>/common-crawl/crawl-data/TO-DO/</code>
+          bucket <code>aws-publicdatasets</code> under the key prefix <code>/common-crawl/crawl-data/CC-MAIN-2020-40/</code>
           .
         </p>
         <h4>Extraction Statistics</h4>
@@ -1488,7 +1496,7 @@
       </tr>
       <tr>
         <th>URLs with Triples</th>
-        <td align="right">2,211,631,902</td>
+        <td align="right">1,701,573,394</td>
         <td></td>
       </tr>
       <tr>
@@ -1498,22 +1506,22 @@
       </tr>
       <tr>
         <th>Domains with Triples</th>
-        <td align="right">19,895,758</td>
+        <td align="right">15,316,527</td>
         <td></td>
       </tr>
       <tr>
         <th>Typed Entities</th>
-        <td align="right">21,636,640,919</td>
+        <td align="right">21,899,221,750</td>
         <td></td>
       </tr>
       <tr>
         <th>Triples</th>
-        <td align="right">98,450,213,994</td>
+        <td align="right">86,381,005,124</td>
         <td></td>
       </tr>
 	   <tr>
         <th>Size of Extracted Data</th>
-        <td align="right">2.26 Terabyte</td>
+        <td align="right">1,9 Terabyte</td>
         <td>(compressed)</td>
       </tr>
     </tbody>
