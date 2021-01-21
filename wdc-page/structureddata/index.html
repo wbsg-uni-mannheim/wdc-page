@@ -1419,12 +1419,16 @@
         The diagram below shows the total number of pay-level domains (PLD) making use of one of the four most widely
         spread markup formats (Microdata, Microformat hCard, Embedded JSON-LD and RDFa) within the nine web corpora.
         In total we see a continuous increase in the deployment of structured data.
-		Microdata and JSON-LD dominate over the other markup formats and have a fast growing rate mostly in the last four years.
+		Microdata and JSON-LD dominate over the other markup formats, 
+		while the JSON-LD has an even faster growing rate in comparison to Microdata, which is mostly observed when looking at the 
+		number of PLDs with JSON-LD annotations in 2020. Indeed, this trend can be verified by looking at the <a href="http://webdatacommons.org/structureddata/2020-12/stats/stats.html">format specific stats of 2020</a> where
+		we can see that some domains even switch their main annotation format from Microdata to JSON-LD.
 		Microformat hCard is also adopted by a steadily increasing number of websites while the growth of RDFa markup format is the smallest among all markup formats.
         The second diagram shows how the amount of triples that we extracted from the crawls has developed
-        between 2012 and 2019. The growing trends are similar to ones the appearing in the PLD diagram, however we observe a high peak on the amount of triples for the year 2016.
-		We can interpret this peak by looking at the crawl size and depth of the corresponding crawl versions. The October 2016 crawl was the largest in size in comparison to the crawls of November 2017, 2018 and 2019.
-		Additionally it is much deeper, i.e. more pages of the same PLD are crawled. The average number of crawled pages (urls) by PLD was larger than 500 for the October 2016 crawl which is 5-7 times larger than the average number of pages per PLD for the 
+        between 2012 and 2020. The growing trends are similar to ones the appearing in the PLD diagram, however we observe a high peak
+		on the amount of triples for the year 2016 and 2020.
+		We can interpret this peak by looking at the crawl size and depth of the corresponding crawl versions. The October 2016 and September 2020 crawls was the largest in size in comparison to the crawls of November 2017, 2018 and 2019.
+		Additionally they are much deeper, i.e. more pages of the same PLD are crawled. The average number of crawled pages (urls) by PLD was larger than 500 for the October 2016 crawl which is 5-7 times larger than the average number of pages per PLD for the 
 		rest of the crawls. 
       </p>
       <div>
@@ -1437,10 +1441,13 @@
         Below, we analyze the development of the adoption of schema.org classes embedded using the Microdata and JSON-LD syntax.
         The two diagrams below show again the deployment of those classes by number of deploying PLDs and number of
         entities extracted from the crawls. We can see a continuous increase in the number of PLDs adopting the
-        schema.org classes. The adoption of the schema:Product and schema:PosatlAddress class is considerably growing mostly over the last three years.
+        schema.org classes. The adoption of the schema:Product and schema:PostalAddress class is considerably growing mostly over the last years.
 		We notice a drop from 2018 to 2019 in the number of PLDs using the schema:LocalBusiness class with the JSON-LD format. However, related classes such as schema:Organization and schema:Hotel noted significant growth
 		from 2018 to 2019: 1.3M PLDs to 2.2M PLDs for the schema:Organization class and 2.7 PLDs to 9.8K PLDs for the schema:Hotel class. Therefore the LocalBusiness class might have been replaced by other related classes from certain PLDs
-		 which could easily explain the drop. To verify this, further analysis is required.
+		 which could easily explain the drop. To verify this, further analysis is required. Finally, we observe that between the years 2019 and 2020, the increase in number of PLDs using Microdata together with schema.org is not significant and 
+		could be explained by the overall larger crawl size. However, this is not the case for the JSON-LD format which has an exceptional growth in 2020 in terms of number of PLDs using the specific schema.org classes.
+		
+		
 
 		
       </p>
