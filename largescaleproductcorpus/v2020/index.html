@@ -720,7 +720,7 @@
 			</div>
 			
 			<div id="urls_filter">
-				<h3>**new** Dealing with pages having more than one annotated offers</h3>
+				<h3>**new** Dealing with pages having more than one annotated offer</h3>
 				<p>
 					When multiple entities occur under one URL, the page can either be a listing page,
 					a page with a main entity and product recommendations, or a product variation
@@ -823,7 +823,7 @@
 					</p>
 				</div>
 				
-				<h4> Resulting data after dealing with pages having more than one annotated offers </h4>
+				<h4> Resulting data after dealing with pages having more than one annotated offer </h4>
 				<br>
 				<table>
 					<tr>
@@ -949,7 +949,7 @@
 		<h3>ID-Clusters creation</h3>
 		<p>
 			In this step we group the offer entities into ID-Clusters using their identifiers. As it happens that single offers
-			contain multiple alterative identifiers we use this information to merge clusters refering 
+			contain multiple alternative identifiers we use this information to merge clusters refering 
 			to the same product. This results in 80,478,480 ID-Clusters.
 					</p>
 			 <h4>
@@ -989,7 +989,9 @@
 				with maximum 4 more offers.
 				This implies that the extracted offers
 				are most likely the main product entities on the page while recommendations and listings have been successfully removed during the cleansing process.
-				Finally, Figures 4 and 5 show the distribution of offer entities and positive pairs per cluster size. 
+				Table 2 presents the distribution of offer entities per cluster size, for sizes 1-20.
+				Finally, Figures 4 and 5 show the distribution of offer entities and positive pairs per cluster size and compare
+				to the one of the <a href="http://webdatacommons.org/largescaleproductcorpus/index.html">2017 Large-Scale Product Corpus</a>. 
 			</p>
 			
 			<div id="tableContainer-1">
@@ -1103,6 +1105,94 @@
 			</table>
 
 			
+			
+			<table class="smalltable" style="margin-top: 100px">
+				<caption>
+					<p>
+						Table 2: Distribution of #Clusters per Cluster Size (detailed).
+					</p>
+				</caption>
+				<thead>
+					<tr>
+						<th>Cluster Size</th>
+						<th># Clusters</th>
+						
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>[1]</td>
+						<td>  73,364,315 </td>
+						
+					</tr>
+					
+				
+					<tr>
+						<td>[2]</td>
+						<td>  4,339,060  </td>
+						
+					</tr>
+					
+					<tr>
+						<td>[3]</td>
+						<td>  1,214,828  </td>
+						
+					</tr>
+					
+					<tr>
+						<td>[4]</td>
+						<td>  566,378  </td>
+						
+					</tr>
+					 <tr class="parent" id="loadmore" title="urls" style="cursor: pointer;">
+					<td colspan="3"; style="text-align: center"><b>+/- Expand/Close for more cluster sizes</b></td>
+					</tr>
+					<tr  class="child-loadmore" style="display: none;">
+						<td>[5]</td>
+						<td>  323,371  </td>
+						
+					</tr>
+					<tr  class="child-loadmore" style="display: none;">
+						<td>[6]</td>
+						<td>   185,722   </td>
+						
+					</tr>
+					<tr class="child-loadmore" style="display: none;">
+						<td>[7]</td>
+						<td>   113,970   </td>
+						
+					</tr>
+					<tr class="child-loadmore" style="display: none;">
+						<td>[8]</td>
+						<td>   74,561  </td>
+						
+					</tr>
+					<tr class="child-loadmore" style="display: none;">
+						<td>[9]</td>
+						<td>   52,254   </td>
+						
+					</tr>
+					<tr class="child-loadmore" style="display: none;">
+						<td>[10]</td>
+						<td>   37,832   </td>
+						
+					</tr>
+					<tr class="child-loadmore" style="display: none;">
+						<td>[11-15]</td>
+						<td>  103,815  </td>
+						
+					</tr>
+					<tr class="child-loadmore" style="display: none;">
+						<td>[16-20]</td>
+						<td>   36,060  </td>
+						
+					</tr>
+					
+				</tbody>
+			</table>
+			
+			
+			
 			</div>
 
 			<div id="tableContainer-1">
@@ -1122,7 +1212,7 @@
 			For each evaluation group 1000 pairs of offers were sampled across all clusters. The small clusters were found to contain <b>6.9% noise</b>
 			while the large clusters are estimated to contain <b>1.8% noise</b>. Despite the high quality of large clusters, it was observed during evaluation
 			that most offers belonging to large clusters had very similar or even identical attribute values. This may originate from redirects, i.e. 
-			the same page was crawled many times following different url paths inside the same website, or from dupicated content across different e-shops.
+			the same page was crawled many times following different url paths inside the same website, or from duplicated content across different e-shops.
 			Therefore, the large clusters of the corpus need to be used with caution as they may not be informative enough for training good matchers.
 			</p>
 		
@@ -1158,7 +1248,16 @@
 			
 			<p>Additionally, we map the offers of the WDC Product Corpus - V.2020 to the <a href="http://webdatacommons.org/structureddata/schemaorgtables/">table corpus</a>
 			and offer the mappings in separate json files. Considering that different preprocessing steps have been implemented when creating the two corpora,
-			i.e. the table corpus and the WDC Product Corpus - V.2020, 53.2% (52.6M) of the offers were mapped to rows in the tables. 
+			i.e. the table corpus and the WDC Product Corpus - V.2020, 53.2% (52.6M) of the offers were mapped to rows in the tables. More concretely, for the creation of the 
+			WDC Product Corpus V.2020 entities of both types schema.org:Offer and schema.org:Product were considered granting that they contain some product identifier related property.
+			On the other hand, the product subset of the table corpus contains solely entities of type schema.org:Product. Therefore, the Offer entities of the WDC Product Corpus 
+			cannot be mapped to the table corpus. Additionally, further missing mappings derive from the different strategies followed for removing listing pages: For the construction of the
+			table corpus all product entities 
+			containing less than three schema.org properties were removed while listing pages and product ads are identified based on a textual length heuristic.
+			In contrast, the listing and ads detection method of the WDC Product Corpus V.2020 considers a different value threshold for the textual length heuristic as well as
+			certain schema.org properties for
+			identifying main entities in a page as described above in Section 3.
+			</br>
 			Each JSON mapping file contains the following fields:
 			
 			<ul>
