@@ -2,7 +2,7 @@
 <html>
 
 <head>
-	<title>WDC Product Corpus - V2020</title>
+	<title>WDC Product Data Corpus - V2020</title>
 	<link rel='stylesheet' href='http://webdatacommons.org/style.css' type='text/css' media='screen' />
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<style>
@@ -128,7 +128,7 @@
 			]);
 
 			var options = {
-				title: "Figure 3: Amount of product offers with specific properties. - WDC Product Corpus December 2020 (green). Comparison to absolute and relative numbers of 2017 (blue).",
+				title: "Figure 3: Amount of product offers with specific properties. - WDC Product Data Corpus December 2020 (green). Comparison to absolute and relative numbers of 2017 (blue).",
 				width: 600,
 				height: 500,
 				bar: {
@@ -187,7 +187,7 @@
 			]);
 
 			var options = {
-				title: "Figure 1: Top product-related properties - WDC Product Corpus V. 2020 (green). Comparison to absolute and relative numbers of 2017 (blue).",
+				title: "Figure 1: Top product-related properties - WDC Product Data Corpus V. 2020 (green). Comparison to absolute and relative numbers of 2017 (blue).",
 				width: 600,
 				height: 500,
 				bar: {
@@ -245,7 +245,7 @@
 			]);
 
 			var options = {
-				title: "Figure 2: Product id-related properties per # (schema:Offer & schema:Product) Entities - WDC Product Corpus V. 2020 (green) - Comparison to absolute and relative numbers of 2017 (blue).",
+				title: "Figure 2: Product id-related properties per # (schema:Offer & schema:Product) Entities - WDC Product Data Corpus V. 2020 (green) - Comparison to absolute and relative numbers of 2017 (blue).",
 				width: 600,
 				height: 500,
 				bar: {
@@ -476,7 +476,7 @@
 		{
 			"@context": "http://schema.org/",
 			"@type": "Dataset",
-			"name": "WDC Product Corpus - V2020",
+			"name": "WDC Product Data Corpus - V2020",
 			"description": "The dataset consists of more than 70.5 million pairs of product offers referring to the same products. The offers were extracted from 603 thousand e-shops which provide schema.org annotations including some form of product ID such as a GTIN or MPN. ",
 			"url": "http://webdatacommons.org/largescaleproductcorpus/v2020/index.html",
 			"keywords": [
@@ -522,7 +522,7 @@
 	<div id="logo" style="text-align:right; background-color: white;">&nbsp;&nbsp;<a href="http://dws.informatik.uni-mannheim.de"><img
 			 src="../../images/ma-logo.gif" alt="University of Mannheim - Logo"></a></div>
 	<div id="header">
-		<h1 style="font-size: 250%;">WDC Product Corpus - V.2020</h1>
+		<h1 style="font-size: 250%;">WDC Product Data Corpus - V.2020</h1>
 	</div>
 	<div id="authors">
 		Marc Becker<br />
@@ -533,10 +533,10 @@
 		<p>
 			This page provides the Product Corpus V.2020 for public download.
 			The corpus is extracted from the <a href="http://webdatacommons.org/structureddata/2020-12/stats/schema_org_subsets.html#stats_md">December 2020 WDC schema.org Product Microdata and JSON-LD subsets</a>.
-			In comparison to our previously published <a href="http://webdatacommons.org/largescaleproductcorpus/">Dataset for Large-scale Product Matching</a>, the current dataset is 4x larger in terms of amount of product entities.
-			The current version of the WDC Product Corpus consists of more than 98 million product offers originating from 603 thousand websites. The
-			offers are grouped into 80 million clusters of offers referring to the same product using product identifiers, such
-			as GTINs or MPNs. 
+			In comparison to our previously published <a href="http://webdatacommons.org/largescaleproductcorpus/">Product Data Corpus</a> which contains data from 2017, the current corpus is 4 times larger and covers up-to-date products from 2020. 
+			The current version of the WDC Product Data Corpus consists of more than 98 million product offers originating from 603 thousand websites. 
+			Grouping the offers based on the co-occurrence of their annotated product identifier values, such as GTINs and MPNs, results in
+			more than 7.1 million groups of size two or larger.
 		</p>
 		
 		<h2 id="news">News</h2>
@@ -588,8 +588,8 @@
 			WDC 2020 schema.org Microdata and JSON-LD Product</a> corpora. 
 		</p>
 			
-		<p>The corpus consists of 98.9 million offers which are grouped into 80.4 million clusters
-			referring to the same product. 1.5 million of these clusters have a size larger than three, 670 thousand have a size
+		<p>The corpus consists of 98.9 million offers which we group into clusters based on the co-occurence of their annotated product identifier values.
+		The grouping results in 7.1 million clusters of size two or larger. 1.5 million of these clusters have a size larger than three while 670 thousand have a size
 			larger than five. </p>
 		<p>
 			In the following, we first provide some statistics about the adoption of schema.org annotations in the domain of e-commerce given the 2020 MD and JSON-LD schema.org Product Corpora.
@@ -1142,7 +1142,7 @@
 			<span id="toc6"></span>
 			<h2>6. Download</h2>
 			<p>
-				We offer the WDC Product Corpus - V.2020 for public download in JSON format.
+				We offer the WDC Product Data Corpus - V.2020 for public download in JSON format.
 				To ease the loading of the corpus, we provide 359 split gzipped json files of size <300MB.
 				Each JSON file contains the following fields for each offer:
 
@@ -1169,15 +1169,15 @@
 
 			</p>
 			
-			<p>Additionally, we map the offers of the WDC Product Corpus - V.2020 to the <a href="http://webdatacommons.org/structureddata/schemaorgtables/">table corpus</a>
+			<p>Additionally, we map the offers of the WDC Product Data Corpus - V.2020 to the <a href="http://webdatacommons.org/structureddata/schemaorgtables/">table corpus</a>
 			and offer the mappings in separate json files. Considering that different preprocessing steps have been implemented when creating the two corpora,
-			i.e. the table corpus and the WDC Product Corpus - V.2020, 53.2% (52.6M) of the offers were mapped to rows in the tables. More concretely, for the creation of the 
-			WDC Product Corpus V.2020 entities of both types schema.org:Offer and schema.org:Product were considered granting that they contain some product identifier related property.
-			On the other hand, the product subset of the table corpus contains solely entities of type schema.org:Product. Therefore, the Offer entities of the WDC Product Corpus 
+			i.e. the table corpus and the WDC Product Data Corpus - V.2020, 53.2% (52.6M) of the offers were mapped to rows in the tables. More concretely, for the creation of the 
+			WDC Product Data Corpus V.2020 entities of both types schema.org:Offer and schema.org:Product were considered granting that they contain some product identifier related property.
+			On the other hand, the product subset of the table corpus contains solely entities of type schema.org:Product. Therefore, the Offer entities of the WDC Product Data Corpus 
 			cannot be mapped to the table corpus. Additionally, further missing mappings derive from the different strategies followed for removing listing pages: For the construction of the
 			table corpus all product entities 
 			containing less than three schema.org properties were removed while listing pages and product ads are identified based on a textual length heuristic.
-			In contrast, the listing and ads detection method of the WDC Product Corpus V.2020 considers a different value threshold for the textual length heuristic as well as
+			In contrast, the listing and ads detection method of the WDC Product Data Corpus V.2020 considers a different value threshold for the textual length heuristic as well as
 			certain schema.org properties for
 			identifying main entities in a page as described above in Section 3.
 			</br>
