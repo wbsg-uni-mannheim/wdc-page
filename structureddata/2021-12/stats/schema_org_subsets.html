@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html><head><title>Web Data Commons - October 2021 Corpus - Schema.org Class Specific Subsets</title><link rel='stylesheet' href='http://webdatacommons.org/style.css' type='text/css' media='screen'/>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script type="text/javascript" src="/jquery.toc.min.js"></script>
+
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-30248817-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+  
+
+
+  function showhide(stats) {
+	  var x = document.getElementById(stats);
+	  if (x.style.display === "none") {
+		x.style.display = "block";
+	  } else {
+		x.style.display = "none";
+	  }
+	}
+</script>
+
+
+</head>
+<body><a name='top'></a>
+<h1>Class-Specific Subsets of the Schema.org Data contained in the October 2021 Corpus</h1>
+<p>This page provides access to and statistics about class-specific subsets of the  <a href="http://schema.org">Schema.org</a> data contained in the <a href="http://webdatacommons.org/structureddata/2021-12/stats/stats.html">October 2021 version</a> of the <a href="http://webdatacommons.org/structureddata/">Web Data Commons Microdata and JSON-LD corpus</a>.</p>
+
+<h2>Introduction</h2>
+<p>
+As many users are only interested in specific types of Schema.org data (like product data, event data, or address data), we have created class-specific subsets out of the complete <a href="http://webdatacommons.org/structureddata/2021-12/stats/stats.html">Microdata and JSON-LD corpora</a> for a selection of <i>schema.org</i> classes.
+The subsets contain all instances of a specific class  as well as all other data that is found on the webpages containing these instances. For example, a page containing data about a product might also contain reviews and offers for this product; a page containing data about an event might also contain data about the location of the event and the persons involved in the event. The data is represented in <a href="http://www.w3.org/TR/n-quads/">N-Quads</a> format, meaning that the forth element of each quad contains the URL of the webpage from which the data was extracted. 
+<br>
+<ul>
+<li><a href="#stats_md">Schema.org - Microdata</a></li>
+<li><a href="#stats_json">Schema.org - JSON</a></li>
+</ul>
+</p>
+
+
+<p><b>Please note that </b>
+<ul>
+  <li> considering the general trend towards using 'https' more widely, the schema.org subsets of the 2021 extraction contain entities annotated with both 'http' and 'https', e.g. http://schema.org/Product and https://schema.org/Product.
+  </li>
+  <li>the data in the  files is not disjunct. This means that whenever you combine two files you might end up with duplicated quads, as one webpage can contain more than one class (e.g. schema.org/Product and schema.org/Offer).
+  </li>
+  <li>the  data is only the tip of the iceberg. The <a href="http://commoncrawl.org/">CommonCrawl</a> covers only a subset of all webpages that are offered by a specific website. Thus, only a subset of all data offered by a site is contained in our corpus. If you need more instances of a specific class, you will need to crawl deeper into the websites that we identified to contain specific types of Schema.org data.</li>
+</ul>
+You are welcome to use the datasets and also to tell about your findings. If you find our datasets useful for your research, please cite the paper: <a href="https://www.wim.uni-mannheim.de/fileadmin/lehrstuehle/ki/pub/Meusel-etal-TheWDCMicrodataRdfaMicroformatsDataSeries-ISWC2014-rbds.pdf" target="_blank"> The WebDataCommons Microdata, RDFa and Microformat Dataset Series</a> by <i>Robert Meusel, Petar Petrovski, and Christian Bizer</i> in the Proceedings of the 13th International Semantic Web Conference: Replication, Benchmark, Data and Software Track (ISWC2014).
+</p>
+
+<div id="stats_md" >
+<h2>Class-Specific Subsets of the Schema.org Data - Microdata Corpus - TO-DO</h2>
+<p>
+<table style="width:1500px">
+</table>
+</p>
+
+
+</div>
+
+</br>
+
+<div id="stats_json">
+<h2>Class-Specific Subsets of the Schema.org Data - JSON-LD Corpus - TO-DO</h2>
+<p>
+<table style="width:1500px">
+</table>
+</p>
+</div>
+
+
+<p>
+In case you are interested in a particular class or set of classes which is not listed above, please get in contact with the WebDataCommons team via <a href="http://groups.google.com/group/web-data-commons">Mailing List</a> or our <a href="https://groups.google.com/forum/?fromgroups#!forum/web-data-commons">Google Group</a>.
+</p>
+
+<h2>Get the Code</h2>
+<p>
+The jupyter notebooks used to create the schema.org subsets from the MD and JSON-LD corpus can be checked out from our <a href="https://subversion.assembla.com/svn/commondata/SubsetCreatorJupyterNBs">Subversion repository</a>.
+</p>
+
+
+<p>
+The extraction of the December 2021 was done with <a href="https://subversion.assembla.com/svn/commondata/WDCFramework/tags/1/0/5/">version 1.5 of the extractor</a>. For more information about the framework and a detailed description how to run a own extraction visit the <a href="http://webdatacommons.org/framework">framework page</a>.
+</p>
+
+<h2>Get Support</h2>
+<p></p>
+
+<p>Please send questions and feedback to the <a href="http://groups.google.com/group/web-data-commons">Web Data Commons mailing list</a> or post them in our <a href="https://groups.google.com/forum/?fromgroups#!forum/web-data-commons">Web Data Commons Google Group</a>.</p>
+</div>
+
+<script type="text/javascript">
+$('#toc').toc({
+    'selectors': 'h2', //elements to use as headings
+    'container': '#toccontent', //element to find all selectors in
+    'smoothScrolling': true, //enable or disable smooth scrolling on click
+    'prefix': 'toc', //prefix for anchor tags and class names
+    'highlightOnScroll': true, //add class to heading that is currently in focus
+    'highlightOffset': 100, //offset to trigger the next headline
+    'anchorName': function(i, heading, prefix) { //custom function for anchor name
+        return prefix+i;
+    } 
+});
+</script>
+
+</body></html>

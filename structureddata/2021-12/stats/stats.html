@@ -1,0 +1,2167 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="robots" content="nofollow"/>
+    <title>Web Data Commons Extraction Report - December 2021 Corpus</title>
+    <link rel='stylesheet' href='http://webdatacommons.org/style.css' type='text/css' media='screen'/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+        google.load('visualization', '1', {
+            packages: ['bar', 'line', 'corechart']
+        });
+
+        google.setOnLoadCallback(drawMaterial1);
+        google.setOnLoadCallback(drawMaterial2);
+        google.setOnLoadCallback(drawMaterial3);
+        google.setOnLoadCallback(drawMaterial4);
+
+        function drawMaterial1() {
+
+            var data2021Plds = google.visualization.arrayToDataTable([
+                ['Annotation type', '#Domains with Triples', {role: 'style'}, {role: 'annotation'}],
+                ['html-microdata', 7827114, '#D11919', 'microdata : 7,827,114 '],
+                ['html-embedded-jsonld', 8342031, '#29A329', 'embedded-jsonld : 8,342,031 '],
+                ['html-mf-hcard', 4156046, '#FFD633', 'mf-hcard : 4,156,046 '],
+                ['html-rdfa', 720156, '#5E8FD8', 'rdfa : 720,156 '],
+                ['html-mf-xfn', 387671, '#FFF5DD', 'mf-xfn : 387,671 '],
+                ['html-mf-hcalendar', 28363, '#FFDB4D', 'mf-hcalendar : 28,363 '],
+                ['html-mf-hreview', 22779, '#FFEB99', 'mf-hreview : 22,779 '],
+                ['others', 247448, '#FFE066', 'others : 247,448 ']
+            ]);
+
+
+            var options1 = {
+                width: 550,
+                height: 400,
+                title: 'Domains with Triples',
+                sliceVisibilityThreshold: 0,
+                is3D: true,
+                legend: {position: 'none'},
+                chartArea: {
+                    left: 0
+                },
+                colors: ['#5E8FD8', '#D11919', '#29A329', '#FFCC00', '#FFD633', '#FFDB4D', '#FFE066', '#FFE680', '#FFEB99',
+                    '#FFF0B2', '#FFF5CC', '#FFF5DD'
+                ]
+
+
+            };
+
+            var material1 = new google.visualization.BarChart(document.getElementById('d2020Plds'));
+            material1.draw(data2021Plds, options1);
+        }
+
+        function drawMaterial2() {
+
+            var data2021Urls = google.visualization.arrayToDataTable([
+                ['Annotation type', '#URLs with Triples', {role: 'style'}, {role: 'annotation'}],
+                ['html-microdata', 837527236, '#D11919', 'microdata : 837,527,236 '],
+                ['html-embedded-jsonld', 793347572, '#29A329', 'embedded-jsonld : 793,347,572 '],
+                ['html-mf-hcard', 330580166, '#FFD633', 'mf-hcard : 330,580,166 '],
+                ['html-rdfa', 111741339, '#5E8FD8', 'rdfa : 111,741,339 '],
+                ['html-mf-xfn', 24820616, '#FFF5DD', 'mf-xfn : 24,820,616 '],
+                ['html-mf-hcalendar', 2176078, '#FFDB4D', 'mf-hcalendar : 2,176,078 '],
+                ['html-mf-hreview', 1644215, '#FFEB99', 'mf-hreview : 1,644,215 '],
+                ['others', 247448, '#FFE066', 'others : 247,448 ']
+            ]);
+
+            var options2 = {
+                width: 550,
+                height: 400,
+                title: 'URLs with Triples',
+                sliceVisibilityThreshold: 0,
+                is3D: true,
+                legend: {position: 'none'},
+                chartArea: {
+                    left: 0
+                },
+                colors: ['#5E8FD8', '#D11919', '#29A329', '#FFCC00', '#FFD633', '#FFDB4D', '#FFE066', '#FFE680', '#FFEB99',
+                    '#FFF0B2', '#FFF5CC', '#FFF5DD'
+                ]
+
+
+            };
+
+            var material2 = new google.visualization.BarChart(document.getElementById('d2020Urls'));
+            material2.draw(data2021Urls, options2);
+        }
+
+        function drawMaterial3() {
+
+            var data2021Entities = google.visualization.arrayToDataTable([
+                ['Annotation type', '#Entities']
+            ]);
+
+            var options3 = {
+                width: 550,
+                height: 400,
+                title: 'Typed Entities',
+                sliceVisibilityThreshold: 0,
+                pieSliceTextStyle: {
+                    color: 'black',
+                },
+                chartArea: {
+                    left: 0
+                },
+                is3D: true,
+                colors: ['#5E8FD8', '#D11919', '#29A329', '#FFCC00', '#FFD633', '#FFDB4D', '#FFE066', '#FFE680', '#FFEB99',
+                    '#FFF0B2', '#FFF5CC', '#FFF5DD'
+                ]
+            };
+
+            var material3 = new google.visualization.PieChart(document.getElementById('d2020Entities'));
+            material3.draw(data2021Entities, options3);
+        }
+
+        function drawMaterial4() {
+
+            var data2021Triples = google.visualization.arrayToDataTable([
+                ['Annotation type', '#Triples'],
+                ['html-rdfa', 939395103],
+                ['html-microdata', 30500208616],
+                ['html-embedded-jsonld', 37872880504],
+                ['html-mf-geo', 14570965],
+                ['html-mf-hcard', 12265118615],
+                ['html-mf-hcalendar', 62146461],
+                ['html-mf-hlisting', 32867553],
+                ['html-mf-hresume', 14492],
+                ['html-mf-hreview', 34052728],
+                ['html-mf-species', 383379],
+                ['html-mf-hrecipe', 7415652],
+                ['html-mf-xfn', 343472171]
+            ]);
+
+            var options4 = {
+                width: 550,
+                height: 400,
+                title: 'Triples',
+                sliceVisibilityThreshold: 0,
+                pieSliceTextStyle: {
+                    color: 'black',
+                },
+                chartArea: {
+                    left: 0
+                },
+                is3D: true,
+                colors: ['#5E8FD8', '#D11919', '#29A329', '#FFCC00', '#FFD633', '#FFDB4D', '#FFE066', '#FFE680', '#FFEB99',
+                    '#FFF0B2', '#FFF5CC', '#FFF5DD'
+                ]
+            };
+
+            var material4 = new google.visualization.PieChart(document.getElementById('d2020Triples'));
+            material4.draw(data2021Triples, options4);
+        }
+    </script>
+
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="/jquery.toc.min.js"></script>
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-30,248,817-1']);
+        _gaq.push(['_trackPageview']);
+
+        (function () {
+            var ga = document.createElement('script');
+            ga.type = 'text/javascript';
+            ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') +
+                '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+
+
+</head>
+
+<body><a name='top'></a>
+<h1>Web Data Commons - RDFa, Microdata, Embedded JSON-LD, and Microformats Data Sets
+    - December 2021</h1>
+<span id="test"></span>
+<p>This document provides statistics about the <a target="_blank" href="http://webdatacommons.org/structureddata/">Web
+    Data Commons</a> RDFa, Microdata and Microformats data sets which have been extracted from the <a target="_blank"
+                                                                                                      href="https://commoncrawl.org/2020/10/september-2020-crawl-archive-now-available/">
+    October 2021</a>
+    release of the <a target="_blank" href="http://commoncrawl.org/">Common Crawl</a>.</p>
+<p>In summary, we found structured data within xx billion HTML pages out of the xx billion pages contained in the
+    crawl (xx%).
+    These pages originate from xx million different pay-level-domains out of the xx million pay-level-domains
+    covered
+    by the crawl (xx%).
+    Altogether, the extracted data sets consist of xx billion <a target="_blank" href="http://www.w3.org/TR/n-quads/">RDF
+        quads</a>.
+</p>
+
+<p>
+    Instructions on how to download the RDFa, Microdata, Embedded JSON-LD and Microformats data sets are given on the
+    page <a href="how_to_get_the_data.html">how to get the data</a>.
+</p>
+<p>
+    In addition we have extracted <a href="schema_org_subsets.html">schema.org class-specific datasets</a> from the
+    Microdata and JSON-LD corpora.
+</p>
+<p>
+    Please note that in the following term <i>Domains</i> refers to pay-level-domains. Subdomains are not counted as
+    separate domains.
+</p>
+<h2>Overall - TO-DO</h2><br/>
+<table>
+    <tbody>
+    <tr>
+        <th>Crawl Date</th>
+        <td>October 2021</td>
+        <td></td>
+    </tr>
+    <tr>
+        <th>Total Data</th>
+        <td align="right">xxx Terabyte</td>
+        <td>(compressed)</td>
+    </tr>
+    <tr>
+        <th>Parsed HTML URLs</th>
+        <td align="right">xx</td>
+        <td></td>
+    </tr>
+    <tr>
+        <th>URLs with Triples</th>
+        <td align="right">xx</td>
+        <td></td>
+    </tr>
+    <tr>
+        <th>Domains in Crawl</th>
+        <td align="right">xx</td>
+        <td></td>
+    </tr>
+    <tr>
+        <th>Domains with Triples</th>
+        <td align="right">xx</td>
+        <td></td>
+    </tr>
+    <tr>
+        <th>Typed Entities</th>
+        <td align="right">xx</td>
+        <td></td>
+    </tr>
+    <tr>
+        <th>Triples</th>
+        <td align="right">xx</td>
+        <td></td>
+    </tr>
+    <tr>
+        <th>Size of Extracted Data</th>
+        <td align="right">xx Terabyte</td>
+        <td>(compressed)</td>
+    </tr>
+    </tbody>
+</table>
+
+<h2>Results per Format</h2><br/>
+<table>
+    <tbody>
+    <tr>
+        <td>Format</td>
+        <td>Domains</td>
+        <td>URLs</td>
+        <td>Typed Entities</td>
+        <td>Triples</td>
+    </tr>
+    <tr>
+    <th>html-microdata</th>
+    <td align="right">7,827,114</td>
+    <td align="right">837,527,236</td>
+    <td align="right">0</td>
+    <td align="right">30,500,208,616</td>
+    </tr>
+    <tr>
+        <th>html-embedded-jsonld</th>
+        <td align="right">8,342,031</td>
+        <td align="right">793,347,572</td>
+        <td align="right">0</td>
+        <td align="right">37,872,880,504</td>
+    </tr>
+    <tr>
+        <th>html-mf-hcard</th>
+        <td align="right">4,156,046</td>
+        <td align="right">330,580,166</td>
+        <td align="right">0</td>
+        <td align="right">12,265,118,615</td>
+    </tr>
+    <tr>
+        <th>html-rdfa</th>
+        <td align="right">720,156</td>
+        <td align="right">111,741,339</td>
+        <td align="right">0</td>
+        <td align="right">939,395,103</td>
+    </tr>
+    <tr>
+        <th>html-mf-xfn</th>
+        <td align="right">387,671</td>
+        <td align="right">24,820,616</td>
+        <td align="right">0</td>
+        <td align="right">343,472,171</td>
+    </tr>
+    <tr>
+        <th>html-mf-adr</th>
+        <td align="right">159,756</td>
+        <td align="right">10,313,987</td>
+        <td align="right">0</td>
+        <td align="right">69,283,127</td>
+    </tr>
+    <tr>
+        <th>html-mf-geo</th>
+        <td align="right">60,467</td>
+        <td align="right">2,926,136</td>
+        <td align="right">0</td>
+        <td align="right">14,570,965</td>
+    </tr>
+    <tr>
+        <th>html-mf-hcalendar</th>
+        <td align="right">28,363</td>
+        <td align="right">2,176,078</td>
+        <td align="right">0</td>
+        <td align="right">62,146,461</td>
+    </tr>
+    <tr>
+        <th>html-mf-hreview</th>
+        <td align="right">22,779</td>
+        <td align="right">1,644,215</td>
+        <td align="right">0</td>
+        <td align="right">34,052,728</td>
+    </tr>
+    <tr>
+        <th>html-mf-hlisting</th>
+        <td align="right">9,693</td>
+        <td align="right">241,573</td>
+        <td align="right">0</td>
+        <td align="right">32,867,553</td>
+    </tr>
+    <tr>
+        <th>html-mf-hrecipe</th>
+        <td align="right">3,951</td>
+        <td align="right">303,445</td>
+        <td align="right">0</td>
+        <td align="right">7,415,652</td>
+    </tr>
+    <tr>
+        <th>html-mf2-h-adr</th>
+        <td align="right">12,922</td>
+        <td align="right">218,289</td>
+        <td align="right">0</td>
+        <td align="right">1,109,503</td>
+    </tr>
+    <tr>
+        <th>html-mf-hresume</th>
+        <td align="right">121</td>
+        <td align="right">2,392</td>
+        <td align="right">0</td>
+        <td align="right">14,492</td>
+    </tr>
+    <tr>
+        <th>html-mf-species</th>
+        <td align="right">538</td>
+        <td align="right">62,012</td>
+        <td align="right">0</td>
+        <td align="right">383,379</td>
+    </tr>
+    <tr>
+        <th>overall</th>
+        <td align="right">14,564,790</td>
+        <td align="right">1,516,194,663</td>
+        <td align="right">0</td>
+        <td align="right">82,142,918,869</td>
+    </tr>
+
+
+    </tbody>
+</table>
+
+<div>
+    <p>
+    </p>
+</div>
+<div>
+    <span id="d2020Plds" style="float:left;width:50%"></span>
+    <span id="d2020Urls" style="float:left;width:50%"></span>
+</div>
+<br/>
+<div>
+    <span id="d2020Entities" style="float:left"></span>
+    <span id="d2020Triples" style="float:left"></span>
+</div>
+<br/>
+
+
+<h2>Top Domains by Extracted Triples</h2><br/>
+<ol>
+    <li><a rel='nofollow' target='_blank' href='https://blogspot.com'>blogspot.com</a> (798,950,384 triples)</li>
+    <li><a rel='nofollow' target='_blank' href='https://wordpress.com'>wordpress.com</a> (165,188,273 triples)</li>
+    <li><a rel='nofollow' target='_blank' href='https://google.com'>google.com</a> (106,901,948 triples)</li>
+    <li><a rel='nofollow' target='_blank' href='https://livejournal.com'>livejournal.com</a> (91,580,297 triples)</li>
+    <li><a rel='nofollow' target='_blank' href='https://wixsite.com'>wixsite.com</a> (84,547,604 triples)</li>
+    <li><a rel='nofollow' target='_blank' href='https://nasa.gov'>nasa.gov</a> (74,548,167 triples)</li>
+    <li><a rel='nofollow' target='_blank' href='https://wikipedia.org'>wikipedia.org</a> (71,140,967 triples)</li>
+    <li><a rel='nofollow' target='_blank' href='https://pixnet.net'>pixnet.net</a> (61,709,979 triples)</li>
+    <li><a rel='nofollow' target='_blank' href='https://leonardoboff.org'>leonardoboff.org</a> (61,682,596 triples)</li>
+    <li><a rel='nofollow' target='_blank' href='https://momstart.com'>momstart.com</a> (58,408,559 triples)</li>
+    <li><a rel='nofollow' target='_blank' href='https://royalcanin.com'>royalcanin.com</a> (57,194,757 triples)</li>
+    <li><a rel='nofollow' target='_blank' href='https://webcindario.com'>webcindario.com</a> (57,004,997 triples)</li>
+    <li><a rel='nofollow' target='_blank' href='https://vidal.fr'>vidal.fr</a> (55,247,556 triples)</li>
+    <li><a rel='nofollow' target='_blank' href='https://yahoo.com'>yahoo.com</a> (48,241,745 triples)</li>
+    <li><a rel='nofollow' target='_blank' href='https://aljazeera.net'>aljazeera.net</a> (46,945,518 triples)</li>
+    <li><a rel='nofollow' target='_blank' href='https://smittenkitchen.com'>smittenkitchen.com</a> (46,820,512 triples)
+    </li>
+    <li><a rel='nofollow' target='_blank' href='https://alibaba.com'>alibaba.com</a> (43,725,806 triples)</li>
+    <li><a rel='nofollow' target='_blank' href='https://hotels.com'>hotels.com</a> (43,257,893 triples)</li>
+    <li><a rel='nofollow' target='_blank' href='https://elpais.com'>elpais.com</a> (43,213,932 triples)</li>
+    <li><a rel='nofollow' target='_blank' href='https://made-in-china.com'>made-in-china.com</a> (42,868,323 triples)
+    </li>
+
+    <li><a href="top_domains_by_extracted_triples.html">More</a></li>
+</ol>
+<br/>
+
+<h2>Top Domains by URLs with Triples</h2><br/>
+<ol>
+    <li><a rel='nofollow' target='_blank' href='https://wordpress.com'>wordpress.com</a> (19,908,794 urls)</li>
+    <li><a rel='nofollow' target='_blank' href='https://blogspot.com'>blogspot.com</a> (19,396,448 urls)</li>
+    <li><a rel='nofollow' target='_blank' href='https://fandom.com'>fandom.com</a> (3,223,269 urls)</li>
+    <li><a rel='nofollow' target='_blank' href='https://wikipedia.org'>wikipedia.org</a> (2,883,670 urls)</li>
+    <li><a rel='nofollow' target='_blank' href='https://livejournal.com'>livejournal.com</a> (2,472,508 urls)</li>
+    <li><a rel='nofollow' target='_blank' href='https://pixnet.net'>pixnet.net</a> (2,417,572 urls)</li>
+    <li><a rel='nofollow' target='_blank' href='https://fc2.com'>fc2.com</a> (1,659,169 urls)</li>
+    <li><a rel='nofollow' target='_blank' href='https://drom.ru'>drom.ru</a> (1,274,567 urls)</li>
+    <li><a rel='nofollow' target='_blank' href='https://blog.jp'>blog.jp</a> (1,270,870 urls)</li>
+    <li><a rel='nofollow' target='_blank' href='https://hatenablog.com'>hatenablog.com</a> (1,159,907 urls)</li>
+    <li><a rel='nofollow' target='_blank' href='https://stackexchange.com'>stackexchange.com</a> (1,066,485 urls)</li>
+    <li><a rel='nofollow' target='_blank' href='https://herokuapp.com'>herokuapp.com</a> (921,070 urls)</li>
+    <li><a rel='nofollow' target='_blank' href='https://tistory.com'>tistory.com</a> (872,667 urls)</li>
+    <li><a rel='nofollow' target='_blank' href='https://whatsapp.com'>whatsapp.com</a> (845,006 urls)</li>
+    <li><a rel='nofollow' target='_blank' href='https://mos.ru'>mos.ru</a> (839,469 urls)</li>
+    <li><a rel='nofollow' target='_blank' href='https://cocolog-nifty.com'>cocolog-nifty.com</a> (830,249 urls)</li>
+    <li><a rel='nofollow' target='_blank' href='https://altervista.org'>altervista.org</a> (785,463 urls)</li>
+    <li><a rel='nofollow' target='_blank' href='https://yahoo.com'>yahoo.com</a> (770,848 urls)</li>
+    <li><a rel='nofollow' target='_blank' href='https://weebly.com'>weebly.com</a> (747,256 urls)</li>
+    <li><a rel='nofollow' target='_blank' href='https://ning.com'>ning.com</a> (741,574 urls)</li>
+
+    <li><a href="top_domains_by_urls_with_triples.html">More</a></li>
+</ol>
+<br/>
+
+<a id='html-microdata'></a>
+<h3>Extractor html-microdata</h3><br/>
+<table>
+    <tr>
+        <th>Triples Extracted</th>
+        <td>30,500,208,616</td>
+    </tr>
+    <tr>
+        <th>URLs with Triples</th>
+        <td>837,527,236</td>
+    </tr>
+    <tr>
+        <th>Average Triples per URL</th>
+        <td>36.42</td>
+    </tr>
+    <tr>
+        <th>Domains with Triples</th>
+        <td>7,827,114</td>
+    </tr>
+    <tr>
+        <th>Average Triples per Domain</th>
+        <td>3,896.74</td>
+    </tr>
+    <tr>
+        <th>Typed Entities</th>
+        <td>-</td>
+    </tr>
+    <tr>
+        <th>Top Domains by Extracted Triples</th>
+        <td><small><a href=''
+                      onclick="document.getElementById('html-microdata-top-domains-by-triples-2021-12').style.display='block';this.style.display='none';return false;">Show
+            top domains</a></small>
+
+            <ol id='html-microdata-top-domains-by-triples-2021-12' style='display:none'>
+                <li><a rel='nofollow' target='_blank' href='https://blogspot.com'>blogspot.com</a> (467,318,864 triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://wordpress.com'>wordpress.com</a> (106,221,819
+                    triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://google.com'>google.com</a> (75,520,910 triples)</li>
+                <li><a rel='nofollow' target='_blank' href='https://smugmug.com'>smugmug.com</a> (47,688,427 triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://sputniknews.com'>sputniknews.com</a> (42,512,787
+                    triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://elpais.com'>elpais.com</a> (41,918,122 triples)</li>
+                <li><a rel='nofollow' target='_blank' href='https://iherb.com'>iherb.com</a> (37,597,323 triples)</li>
+                <li><a rel='nofollow' target='_blank' href='https://spearswms.com'>spearswms.com</a> (36,335,630
+                    triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://stackexchange.com'>stackexchange.com</a> (35,402,837
+                    triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://vestiairecollective.com'>vestiairecollective.com</a>
+                    (29,568,019 triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://soundcloud.com'>soundcloud.com</a> (29,297,315
+                    triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://jegs.com'>jegs.com</a> (26,841,578 triples)</li>
+                <li><a rel='nofollow' target='_blank' href='https://planete-gateau.com'>planete-gateau.com</a>
+                    (23,914,023 triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://uni-trier.de'>uni-trier.de</a> (23,797,543 triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://eslite.com'>eslite.com</a> (23,431,584 triples)</li>
+                <li><a rel='nofollow' target='_blank' href='https://zappos.com'>zappos.com</a> (21,906,305 triples)</li>
+                <li><a rel='nofollow' target='_blank' href='https://reservations.com'>reservations.com</a> (21,720,779
+                    triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://eleconomista.es'>eleconomista.es</a> (20,555,002
+                    triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://stofledninger.com'>stofledninger.com</a> (19,957,597
+                    triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://7digital.com'>7digital.com</a> (19,436,214 triples)
+                </li>
+                <li><a href="top_domains_by_extracted_triples_for_extractor_html-microdata.html">More</a></li>
+            </ol>
+            <br/>
+        </td>
+    </tr>
+    <tr>
+        <th>Top Classes</th>
+        <td><small><a href=''
+                      onclick="document.getElementById('html-microdata-top-class-values-by-domain-count-2021-12').style.display='block';this.style.display='none';return false;">Show
+            top values by domain count</a></small>
+            <ol id='html-microdata-top-class-values-by-domain-count-2021-12' style='display:none'>
+                <li>-</li>
+            </ol>
+            <br/>
+        </td>
+    </tr>
+    <tr>
+        <th></th>
+        <td><small><a href=''
+                      onclick="document.getElementById('html-microdata-top-class-values-by-entity-count-2021-12').style.display='block';this.style.display='none';return false;">Show
+            top values by entity count</a></small>
+            <ol id='html-microdata-top-class-values-by-entity-count-2021-12' style='display:none'>
+                <li>-</li>
+            </ol>
+            <br/>
+        </td>
+    </tr>
+    <tr>
+        <th>Top Properties</th>
+        <td><small><a href=''
+                      onclick="document.getElementById('html-microdata-top-property-values-by-domain-count-2021-12').style.display='block';this.style.display='none';return false;">Show
+            top values by domain count</a></small>
+            <ol id='html-microdata-top-property-values-by-domain-count-2021-12' style='display:none'>
+                <li>-</li>
+
+            </ol>
+        </td>
+    </tr>
+    <tr>
+        <th></th>
+        <td><small><a href=''
+                      onclick="document.getElementById('html-microdata-top-property-values-by-entity-count-2021-12').style.display='block';this.style.display='none';return false;">Show
+            top values by entity count</a></small>
+            <ol id='html-microdata-top-property-values-by-entity-count-2021-12' style='display:none'>
+                <li>-</li>
+            </ol>
+            <br/>
+        </td>
+    </tr>
+    <tr>
+        <th>Detailed Statistics as Excel-File</th>
+        <td><a target="_blank" href="html-microdata.xlsx">html-microdata.xlsx</a> TO-DO</td>
+    </tr>
+</table>
+
+<a id='html-embedded-jsonld'></a>
+<h3>Extractor html-embedded-jsonld</h3><br/>
+<table>
+    <tr>
+        <th>Triples Extracted</th>
+        <td>37,872,880,504</td>
+    </tr>
+    <tr>
+        <th>URLs with Triples</th>
+        <td>793,347,572</td>
+    </tr>
+    <tr>
+        <th>Average Triples per URL</th>
+        <td>47.74</td>
+    </tr>
+    <tr>
+        <th>Domains with Triples</th>
+        <td>8,342,031</td>
+    </tr>
+    <tr>
+        <th>Average Triples per Domain</th>
+        <td>4,540.01</td>
+    </tr>
+    <tr>
+        <th>Typed Entities</th>
+        <td>-</td>
+    </tr>
+    <tr>
+        <th>Top Domains by Extracted Triples</th>
+        <td><small><a href=''
+                      onclick="document.getElementById('html-embedded-jsonld-top-domains-by-triples-2021-12').style.display='block';this.style.display='none';return false;">Show
+            top domains</a></small>
+
+            <ol id='html-embedded-jsonld-top-domains-by-triples-2021-12' style='display:none'>
+                <li><a rel='nofollow' target='_blank' href='https://livejournal.com'>livejournal.com</a> (151,297,226
+                    triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://wikipedia.org'>wikipedia.org</a> (77,765,626
+                    triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://minnesotamonthly.com'>minnesotamonthly.com</a>
+                    (75,838,719 triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://alibaba.com'>alibaba.com</a> (62,175,483 triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://kayak.com'>kayak.com</a> (56,795,395 triples)</li>
+                <li><a rel='nofollow' target='_blank' href='https://southleedslife.com'>southleedslife.com</a>
+                    (52,188,510 triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://yahoo.com'>yahoo.com</a> (48,518,826 triples)</li>
+                <li><a rel='nofollow' target='_blank' href='https://blogspot.com'>blogspot.com</a> (38,155,324 triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://pinterest.com'>pinterest.com</a> (37,747,537
+                    triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://apple.com'>apple.com</a> (33,142,354 triples)</li>
+                <li><a rel='nofollow' target='_blank' href='https://fargounderground.com'>fargounderground.com</a>
+                    (29,809,149 triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://biomedcentral.com'>biomedcentral.com</a> (27,488,657
+                    triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://momcollective.com'>momcollective.com</a> (25,009,941
+                    triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://indiatimes.com'>indiatimes.com</a> (24,474,736
+                    triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://deezer.com'>deezer.com</a> (23,535,195 triples)</li>
+                <li><a rel='nofollow' target='_blank' href='https://allmenus.com'>allmenus.com</a> (22,307,490 triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://radiozet.pl'>radiozet.pl</a> (22,238,468 triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://infranken.de'>infranken.de</a> (22,049,221 triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://freepik.com'>freepik.com</a> (22,003,138 triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://16tons.ru'>16tons.ru</a> (21,318,402 triples)</li>
+                <li><a href="top_domains_by_extracted_triples_for_extractor_html-microdata.html">More</a></li>
+            </ol>
+            <br/>
+        </td>
+    </tr>
+    <tr>
+        <th>Top Classes</th>
+        <td><small><a href=''
+                      onclick="document.getElementById('html-embedded-jsonld-top-class-values-by-domain-count-2021-12').style.display='block';this.style.display='none';return false;">Show
+            top values by domain count</a></small>
+            <ol id='html-embedded-jsonld-top-class-values-by-domain-count-2021-12' style='display:none'>
+                <li>-</li>
+            </ol>
+            <br/>
+        </td>
+    </tr>
+    <tr>
+        <th></th>
+        <td><small><a href=''
+                      onclick="document.getElementById('html-embedded-jsonld-top-class-values-by-entity-count-2021-12').style.display='block';this.style.display='none';return false;">Show
+            top values by entity count</a></small>
+            <ol id='html-embedded-jsonld-top-class-values-by-entity-count-2021-12' style='display:none'>
+                <li>-</li>
+            </ol>
+            <br/>
+        </td>
+    </tr>
+    <tr>
+        <th>Top Properties</th>
+        <td><small><a href=''
+                      onclick="document.getElementById('html-embedded-jsonld-top-property-values-by-domain-count-2021-12').style.display='block';this.style.display='none';return false;">Show
+            top values by domain count</a></small>
+            <ol id='html-embedded-jsonld-top-property-values-by-domain-count-2021-12' style='display:none'>
+                <li>-</li>
+
+            </ol>
+        </td>
+    </tr>
+    <tr>
+        <th></th>
+        <td><small><a href=''
+                      onclick="document.getElementById('html-embedded-jsonld-top-property-values-by-entity-count-2021-12').style.display='block';this.style.display='none';return false;">Show
+            top values by entity count</a></small>
+            <ol id='html-embedded-jsonld-top-property-values-by-entity-count-2021-12' style='display:none'>
+                <li>-</li>
+            </ol>
+            <br/>
+        </td>
+    </tr>
+    <tr>
+        <th>Detailed Statistics as Excel-File</th>
+        <td><a target="_blank" href="html-embedded-jsonld.xlsx">html-embedded-jsonld.xlsx</a> TO-DO</td>
+    </tr>
+</table>
+
+<a id='html-mf-hcard'></a>
+<h3>Extractor html-mf-hcard</h3><br/>
+<table>
+    <tr>
+        <th>Triples Extracted</th>
+        <td>12,265,118,615</td>
+    </tr>
+    <tr>
+        <th>URLs with Triples</th>
+        <td>330,580,166</td>
+    </tr>
+    <tr>
+        <th>Average Triples per URL</th>
+        <td>37.1</td>
+    </tr>
+    <tr>
+        <th>Domains with Triples</th>
+        <td>4,156,046</td>
+    </tr>
+    <tr>
+        <th>Average Triples per Domain</th>
+        <td>2,951.15</td>
+    </tr>
+    <tr>
+        <th>Typed Entities</th>
+        <td>-</td>
+    </tr>
+    <tr>
+        <th>Top Domains by Extracted Triples</th>
+        <td><small><a href=''
+                      onclick="document.getElementById('html-mf-hcard-top-domains-by-triples-2021-12').style.display='block';this.style.display='none';return false;">Show
+            top domains</a></small>
+
+            <ol id='html-mf-hcard-top-domains-by-triples-2021-12' style='display:none'>
+                <li><a rel='nofollow' target='_blank' href='https://blogspot.com'>blogspot.com</a> (353,014,997 triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://wordpress.com'>wordpress.com</a> (348,561,736
+                    triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://onlinehome.us'>onlinehome.us</a> (84,846,572
+                    triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://drroyspencer.com'>drroyspencer.com</a> (67,547,705
+                    triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://smittenkitchen.com'>smittenkitchen.com</a>
+                    (63,709,056 triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://rbweb.us'>rbweb.us</a> (57,426,781 triples)</li>
+                <li><a rel='nofollow' target='_blank' href='https://livejournal.com'>livejournal.com</a> (49,638,359
+                    triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://marqspusta.com'>marqspusta.com</a> (48,635,904
+                    triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://dannybuyshouses.com'>dannybuyshouses.com</a>
+                    (44,977,993 triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://mojepozivnice.com'>mojepozivnice.com</a> (44,383,005
+                    triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://huayuworld.org'>huayuworld.org</a> (40,575,396
+                    triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://hola.com'>hola.com</a> (35,825,716 triples)</li>
+                <li><a rel='nofollow' target='_blank' href='https://yuga-life.com'>yuga-life.com</a> (26,952,748
+                    triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://visualoop.com'>visualoop.com</a> (26,944,092
+                    triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://usask.ca'>usask.ca</a> (26,077,961 triples)</li>
+                <li><a rel='nofollow' target='_blank' href='https://healthilivingathome.com'>healthilivingathome.com</a>
+                    (25,551,554 triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://reportervirtual.ro'>reportervirtual.ro</a>
+                    (25,170,766 triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://usawatchdog.com'>usawatchdog.com</a> (23,649,367
+                    triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://allaboutbasic.com'>allaboutbasic.com</a> (21,747,397
+                    triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://dur-gol.com'>dur-gol.com</a> (20,904,943 triples)
+                </li>
+                <li><a href="top_domains_by_extracted_triples_for_extractor_html-microdata.html">More</a></li>
+            </ol>
+            <br/>
+        </td>
+    </tr>
+    <tr>
+        <th>Top Classes</th>
+        <td><small><a href=''
+                      onclick="document.getElementById('html-mf-hcard-top-class-values-by-domain-count-2021-12').style.display='block';this.style.display='none';return false;">Show
+            top values by domain count</a></small>
+            <ol id='html-mf-hcard-top-class-values-by-domain-count-2021-12' style='display:none'>
+                <li>-</li>
+            </ol>
+            <br/>
+        </td>
+    </tr>
+    <tr>
+        <th></th>
+        <td><small><a href=''
+                      onclick="document.getElementById('html-mf-hcard-top-class-values-by-entity-count-2021-12').style.display='block';this.style.display='none';return false;">Show
+            top values by entity count</a></small>
+            <ol id='html-mf-hcard-top-class-values-by-entity-count-2021-12' style='display:none'>
+                <li>-</li>
+            </ol>
+            <br/>
+        </td>
+    </tr>
+    <tr>
+        <th>Top Properties</th>
+        <td><small><a href=''
+                      onclick="document.getElementById('html-mf-hcard-top-property-values-by-domain-count-2021-12').style.display='block';this.style.display='none';return false;">Show
+            top values by domain count</a></small>
+            <ol id='html-mf-hcard-top-property-values-by-domain-count-2021-12' style='display:none'>
+                <li>-</li>
+
+            </ol>
+        </td>
+    </tr>
+    <tr>
+        <th></th>
+        <td><small><a href=''
+                      onclick="document.getElementById('html-mf-hcard-top-property-values-by-entity-count-2021-12').style.display='block';this.style.display='none';return false;">Show
+            top values by entity count</a></small>
+            <ol id='html-mf-hcard-top-property-values-by-entity-count-2021-12' style='display:none'>
+                <li>-</li>
+            </ol>
+            <br/>
+        </td>
+    </tr>
+    <tr>
+        <th>Detailed Statistics as Excel-File</th>
+        <td><a target="_blank" href="html-mf-hcard.xlsx">html-mf-hcard.xlsx</a> TO-DO</td>
+    </tr>
+</table>
+
+<a id='html-rdfa'></a>
+<h3>Extractor html-rdfa</h3><br/>
+<table>
+    <tr>
+        <th>Triples Extracted</th>
+        <td>939,395,103</td>
+    </tr>
+    <tr>
+        <th>URLs with Triples</th>
+        <td>111,741,339</td>
+    </tr>
+    <tr>
+        <th>Average Triples per URL</th>
+        <td>8.41</td>
+    </tr>
+    <tr>
+        <th>Domains with Triples</th>
+        <td>720,156</td>
+    </tr>
+    <tr>
+        <th>Average Triples per Domain</th>
+        <td>1,304.43</td>
+    </tr>
+    <tr>
+        <th>Typed Entities</th>
+        <td>-</td>
+    </tr>
+    <tr>
+        <th>Top Domains by Extracted Triples</th>
+        <td><small><a href=''
+                      onclick="document.getElementById('html-rdfa-top-domains-by-triples-2021-12').style.display='block';this.style.display='none';return false;">Show
+            top domains</a></small>
+
+            <ol id='html-rdfa-top-domains-by-triples-2021-12' style='display:none'>
+                <li><a rel='nofollow' target='_blank' href='https://uoregon.edu'>uoregon.edu</a> (6,221,400 triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://hup.hu'>hup.hu</a> (4,984,268 triples)</li>
+                <li><a rel='nofollow' target='_blank' href='https://justhungry.com'>justhungry.com</a> (4,871,113
+                    triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://mit.edu'>mit.edu</a> (4,719,419 triples)</li>
+                <li><a rel='nofollow' target='_blank' href='https://europa.eu'>europa.eu</a> (4,455,182 triples)</li>
+                <li><a rel='nofollow' target='_blank' href='https://migrationpolicy.org'>migrationpolicy.org</a>
+                    (4,324,130 triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://poetaster.de'>poetaster.de</a> (4,223,349 triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://mn.gov'>mn.gov</a> (4,147,768 triples)</li>
+                <li><a rel='nofollow' target='_blank' href='https://maayboli.com'>maayboli.com</a> (3,410,969 triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://dbpedia.org'>dbpedia.org</a> (3,026,989 triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://ning.com'>ning.com</a> (2,719,572 triples)</li>
+                <li><a rel='nofollow' target='_blank' href='https://typepad.com'>typepad.com</a> (2,280,297 triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://ctvnews.ca'>ctvnews.ca</a> (2,266,012 triples)</li>
+                <li><a rel='nofollow' target='_blank' href='https://anarchistnews.org'>anarchistnews.org</a> (2,131,000
+                    triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://openjurist.org'>openjurist.org</a> (2,067,753
+                    triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://blogspot.com'>blogspot.com</a> (2,023,386 triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://banggood.com'>banggood.com</a> (1,974,532 triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://prolificnorth.co.uk'>prolificnorth.co.uk</a>
+                    (1,920,058 triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://wellesley.edu'>wellesley.edu</a> (1,912,563 triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://skyrock.com'>skyrock.com</a> (1,818,314 triples)
+                </li>
+                <li><a href="top_domains_by_extracted_triples_for_extractor_html-microdata.html">More</a></li>
+            </ol>
+            <br/>
+        </td>
+    </tr>
+    <tr>
+        <th>Top Classes</th>
+        <td><small><a href=''
+                      onclick="document.getElementById('html-rdfa-top-class-values-by-domain-count-2021-12').style.display='block';this.style.display='none';return false;">Show
+            top values by domain count</a></small>
+            <ol id='html-rdfa-top-class-values-by-domain-count-2021-12' style='display:none'>
+                <li>-</li>
+            </ol>
+            <br/>
+        </td>
+    </tr>
+    <tr>
+        <th></th>
+        <td><small><a href=''
+                      onclick="document.getElementById('html-rdfa-top-class-values-by-entity-count-2021-12').style.display='block';this.style.display='none';return false;">Show
+            top values by entity count</a></small>
+            <ol id='html-rdfa-top-class-values-by-entity-count-2021-12' style='display:none'>
+                <li>-</li>
+            </ol>
+            <br/>
+        </td>
+    </tr>
+    <tr>
+        <th>Top Properties</th>
+        <td><small><a href=''
+                      onclick="document.getElementById('html-rdfa-top-property-values-by-domain-count-2021-12').style.display='block';this.style.display='none';return false;">Show
+            top values by domain count</a></small>
+            <ol id='html-rdfa-top-property-values-by-domain-count-2021-12' style='display:none'>
+                <li>-</li>
+
+            </ol>
+        </td>
+    </tr>
+    <tr>
+        <th></th>
+        <td><small><a href=''
+                      onclick="document.getElementById('html-rdfa-top-property-values-by-entity-count-2021-12').style.display='block';this.style.display='none';return false;">Show
+            top values by entity count</a></small>
+            <ol id='html-rdfa-top-property-values-by-entity-count-2021-12' style='display:none'>
+                <li>-</li>
+            </ol>
+            <br/>
+        </td>
+    </tr>
+    <tr>
+        <th>Detailed Statistics as Excel-File</th>
+        <td><a target="_blank" href="html-rdfa.xlsx">html-rdfa.xlsx</a> TO-DO</td>
+    </tr>
+</table>
+
+<a id='html-mf-xfn'></a>
+<h3>Extractor html-mf-xfn</h3><br/>
+<table>
+    <tr>
+        <th>Triples Extracted</th>
+        <td>343,472,171</td>
+    </tr>
+    <tr>
+        <th>URLs with Triples</th>
+        <td>24,820,616</td>
+    </tr>
+    <tr>
+        <th>Average Triples per URL</th>
+        <td>13.84</td>
+    </tr>
+    <tr>
+        <th>Domains with Triples</th>
+        <td>387,671</td>
+    </tr>
+    <tr>
+        <th>Average Triples per Domain</th>
+        <td>885.99</td>
+    </tr>
+    <tr>
+        <th>Typed Entities</th>
+        <td>-</td>
+    </tr>
+    <tr>
+        <th>Top Domains by Extracted Triples</th>
+        <td><small><a href=''
+                      onclick="document.getElementById('html-mf-xfn-top-domains-by-triples-2021-12').style.display='block';this.style.display='none';return false;">Show
+            top domains</a></small>
+
+            <ol id='html-mf-xfn-top-domains-by-triples-2021-12' style='display:none'>
+                <li><a rel='nofollow' target='_blank' href='https://wordpress.com'>wordpress.com</a> (34,146,000
+                    triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://rtfitchauthor.com'>rtfitchauthor.com</a> (2,877,192
+                    triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://typepad.com'>typepad.com</a> (2,718,640 triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://shopify.com'>shopify.com</a> (2,122,124 triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://apollosolaris.com'>apollosolaris.com</a> (1,674,960
+                    triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://slideshare.net'>slideshare.net</a> (1,269,124
+                    triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://dribbble.com'>dribbble.com</a> (1,262,246 triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://atmostfear-entertainment.com'>atmostfear-entertainment.com</a>
+                    (1,170,232 triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://irs.gov'>irs.gov</a> (1,111,354 triples)</li>
+                <li><a rel='nofollow' target='_blank' href='https://indiepulsemusic.com'>indiepulsemusic.com</a>
+                    (1,087,512 triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://rosepointpublishing.com'>rosepointpublishing.com</a>
+                    (998,514 triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://heartland.org'>heartland.org</a> (966,120 triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://pootergeek.com'>pootergeek.com</a> (856,560 triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://financialoccultist.com'>financialoccultist.com</a>
+                    (811,716 triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://inosmi.ru'>inosmi.ru</a> (786,554 triples)</li>
+                <li><a rel='nofollow' target='_blank' href='https://yahoo.com'>yahoo.com</a> (663,916 triples)</li>
+                <li><a rel='nofollow' target='_blank' href='https://stuba.sk'>stuba.sk</a> (623,772 triples)</li>
+                <li><a rel='nofollow' target='_blank' href='https://stackexchange.com'>stackexchange.com</a> (611,618
+                    triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://taiwantour.info'>taiwantour.info</a> (592,470
+                    triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://ideamappingsuccess.com'>ideamappingsuccess.com</a>
+                    (577,750 triples)
+                </li>
+                <li><a href="top_domains_by_extracted_triples_for_extractor_html-microdata.html">More</a></li>
+            </ol>
+            <br/>
+        </td>
+    </tr>
+    <tr>
+        <th>Top Classes</th>
+        <td><small><a href=''
+                      onclick="document.getElementById('html-mf-xfn-top-class-values-by-domain-count-2021-12').style.display='block';this.style.display='none';return false;">Show
+            top values by domain count</a></small>
+            <ol id='html-mf-xfn-top-class-values-by-domain-count-2021-12' style='display:none'>
+                <li>-</li>
+            </ol>
+            <br/>
+        </td>
+    </tr>
+    <tr>
+        <th></th>
+        <td><small><a href=''
+                      onclick="document.getElementById('html-mf-xfn-top-class-values-by-entity-count-2021-12').style.display='block';this.style.display='none';return false;">Show
+            top values by entity count</a></small>
+            <ol id='html-mf-xfn-top-class-values-by-entity-count-2021-12' style='display:none'>
+                <li>-</li>
+            </ol>
+            <br/>
+        </td>
+    </tr>
+    <tr>
+        <th>Top Properties</th>
+        <td><small><a href=''
+                      onclick="document.getElementById('html-mf-xfn-top-property-values-by-domain-count-2021-12').style.display='block';this.style.display='none';return false;">Show
+            top values by domain count</a></small>
+            <ol id='html-mf-xfn-top-property-values-by-domain-count-2021-12' style='display:none'>
+                <li>-</li>
+
+            </ol>
+        </td>
+    </tr>
+    <tr>
+        <th></th>
+        <td><small><a href=''
+                      onclick="document.getElementById('html-mf-xfn-top-property-values-by-entity-count-2021-12').style.display='block';this.style.display='none';return false;">Show
+            top values by entity count</a></small>
+            <ol id='html-mf-xfn-top-property-values-by-entity-count-2021-12' style='display:none'>
+                <li>-</li>
+            </ol>
+            <br/>
+        </td>
+    </tr>
+    <tr>
+        <th>Detailed Statistics as Excel-File</th>
+        <td><a target="_blank" href="html-mf-xfn.xlsx">html-mf-xfn.xlsx</a> TO-DO</td>
+    </tr>
+</table>
+
+<a id='html-mf-adr'></a>
+<h3>Extractor html-mf-adr</h3><br/>
+<table>
+    <tr>
+        <th>Triples Extracted</th>
+        <td>69,283,127</td>
+    </tr>
+    <tr>
+        <th>URLs with Triples</th>
+        <td>10,313,987</td>
+    </tr>
+    <tr>
+        <th>Average Triples per URL</th>
+        <td>6.72</td>
+    </tr>
+    <tr>
+        <th>Domains with Triples</th>
+        <td>159,756</td>
+    </tr>
+    <tr>
+        <th>Average Triples per Domain</th>
+        <td>433.68</td>
+    </tr>
+    <tr>
+        <th>Typed Entities</th>
+        <td>-</td>
+    </tr>
+    <tr>
+        <th>Top Domains by Extracted Triples</th>
+        <td><small><a href=''
+                      onclick="document.getElementById('html-mf-adr-top-domains-by-triples-2021-12').style.display='block';this.style.display='none';return false;">Show
+            top domains</a></small>
+
+            <ol id='html-mf-adr-top-domains-by-triples-2021-12' style='display:none'>
+                <li><a rel='nofollow' target='_blank' href='https://mavic.com'>mavic.com</a> (3,843,198 triples)</li>
+                <li><a rel='nofollow' target='_blank' href='https://virgilio.it'>virgilio.it</a> (1,123,770 triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://uio.no'>uio.no</a> (1,037,616 triples)</li>
+                <li><a rel='nofollow' target='_blank' href='https://us-business.info'>us-business.info</a> (937,410
+                    triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://lawyerlegion.com'>lawyerlegion.com</a> (851,302
+                    triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://stanford.edu'>stanford.edu</a> (847,398 triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://uni-leipzig.de'>uni-leipzig.de</a> (830,995 triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://wikipedia.org'>wikipedia.org</a> (640,792 triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://mnsu.edu'>mnsu.edu</a> (492,515 triples)</li>
+                <li><a rel='nofollow' target='_blank' href='https://1c-bitrix.ru'>1c-bitrix.ru</a> (466,510 triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://score.org'>score.org</a> (406,218 triples)</li>
+                <li><a rel='nofollow' target='_blank' href='https://rigagialla.it'>rigagialla.it</a> (389,307 triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://wikivoyage.org'>wikivoyage.org</a> (361,163 triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://gerlinde.it'>gerlinde.it</a> (353,646 triples)</li>
+                <li><a rel='nofollow' target='_blank' href='https://eleconomista.es'>eleconomista.es</a> (337,169
+                    triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://stadtbranche.de'>stadtbranche.de</a> (328,029
+                    triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://radugabt.ru'>radugabt.ru</a> (326,689 triples)</li>
+                <li><a rel='nofollow' target='_blank' href='https://yellowpages.com'>yellowpages.com</a> (291,586
+                    triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://inschriften.net'>inschriften.net</a> (281,260
+                    triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://kidsoutandabout.com'>kidsoutandabout.com</a>
+                    (257,087 triples)
+                </li>
+                <li><a href="top_domains_by_extracted_triples_for_extractor_html-microdata.html">More</a></li>
+            </ol>
+            <br/>
+        </td>
+    </tr>
+    <tr>
+        <th>Top Classes</th>
+        <td><small><a href=''
+                      onclick="document.getElementById('html-mf-adr-top-class-values-by-domain-count-2021-12').style.display='block';this.style.display='none';return false;">Show
+            top values by domain count</a></small>
+            <ol id='html-mf-adr-top-class-values-by-domain-count-2021-12' style='display:none'>
+                <li>-</li>
+            </ol>
+            <br/>
+        </td>
+    </tr>
+    <tr>
+        <th></th>
+        <td><small><a href=''
+                      onclick="document.getElementById('html-mf-adr-top-class-values-by-entity-count-2021-12').style.display='block';this.style.display='none';return false;">Show
+            top values by entity count</a></small>
+            <ol id='html-mf-adr-top-class-values-by-entity-count-2021-12' style='display:none'>
+                <li>-</li>
+            </ol>
+            <br/>
+        </td>
+    </tr>
+    <tr>
+        <th>Top Properties</th>
+        <td><small><a href=''
+                      onclick="document.getElementById('html-mf-adr-top-property-values-by-domain-count-2021-12').style.display='block';this.style.display='none';return false;">Show
+            top values by domain count</a></small>
+            <ol id='html-mf-adr-top-property-values-by-domain-count-2021-12' style='display:none'>
+                <li>-</li>
+
+            </ol>
+        </td>
+    </tr>
+    <tr>
+        <th></th>
+        <td><small><a href=''
+                      onclick="document.getElementById('html-mf-adr-top-property-values-by-entity-count-2021-12').style.display='block';this.style.display='none';return false;">Show
+            top values by entity count</a></small>
+            <ol id='html-mf-adr-top-property-values-by-entity-count-2021-12' style='display:none'>
+                <li>-</li>
+            </ol>
+            <br/>
+        </td>
+    </tr>
+    <tr>
+        <th>Detailed Statistics as Excel-File</th>
+        <td><a target="_blank" href="html-mf-adr.xlsx">html-mf-adr.xlsx</a> TO-DO</td>
+    </tr>
+</table>
+
+<a id='html-mf-geo'></a>
+<h3>Extractor html-mf-geo</h3><br/>
+<table>
+    <tr>
+        <th>Triples Extracted</th>
+        <td>14,570,965</td>
+    </tr>
+    <tr>
+        <th>URLs with Triples</th>
+        <td>2,926,136</td>
+    </tr>
+    <tr>
+        <th>Average Triples per URL</th>
+        <td>4.98</td>
+    </tr>
+    <tr>
+        <th>Domains with Triples</th>
+        <td>60,467</td>
+    </tr>
+    <tr>
+        <th>Average Triples per Domain</th>
+        <td>240.97</td>
+    </tr>
+    <tr>
+        <th>Typed Entities</th>
+        <td>-</td>
+    </tr>
+    <tr>
+        <th>Top Domains by Extracted Triples</th>
+        <td><small><a href=''
+                      onclick="document.getElementById('html-mf-geo-top-domains-by-triples-2021-12').style.display='block';this.style.display='none';return false;">Show
+            top domains</a></small>
+
+            <ol id='html-mf-geo-top-domains-by-triples-2021-12' style='display:none'>
+                <li><a rel='nofollow' target='_blank' href='https://wikipedia.org'>wikipedia.org</a> (3,664,326 triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://wordpress.com'>wordpress.com</a> (1,319,634 triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://wikivoyage.org'>wikivoyage.org</a> (805,428 triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://esciudad.com'>esciudad.com</a> (382,788 triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://pangaea.de'>pangaea.de</a> (143,733 triples)</li>
+                <li><a rel='nofollow' target='_blank' href='https://inschriften.net'>inschriften.net</a> (108,486
+                    triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://kidsoutandabout.com'>kidsoutandabout.com</a> (90,183
+                    triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://dieschlenderer.de'>dieschlenderer.de</a> (89,700
+                    triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://weather-forecast.com'>weather-forecast.com</a>
+                    (87,168 triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://ibegin.com'>ibegin.com</a> (79,338 triples)</li>
+                <li><a rel='nofollow' target='_blank' href='https://eleconomista.es'>eleconomista.es</a> (73,368
+                    triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://ledet.com'>ledet.com</a> (63,191 triples)</li>
+                <li><a rel='nofollow' target='_blank' href='https://namenforschung.net'>namenforschung.net</a> (61,266
+                    triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://officegenie.co.uk'>officegenie.co.uk</a> (57,792
+                    triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://filcolana.dk'>filcolana.dk</a> (50,871 triples)</li>
+                <li><a rel='nofollow' target='_blank' href='https://aemet.es'>aemet.es</a> (49,404 triples)</li>
+                <li><a rel='nofollow' target='_blank' href='https://mirino.eu'>mirino.eu</a> (49,308 triples)</li>
+                <li><a rel='nofollow' target='_blank' href='https://4grainsdesel.com'>4grainsdesel.com</a> (49,086
+                    triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://universia.es'>universia.es</a> (44,553 triples)</li>
+                <li><a rel='nofollow' target='_blank' href='https://ipfs.io'>ipfs.io</a> (44,400 triples)</li>
+                <li><a href="top_domains_by_extracted_triples_for_extractor_html-microdata.html">More</a></li>
+            </ol>
+            <br/>
+        </td>
+    </tr>
+    <tr>
+        <th>Top Classes</th>
+        <td><small><a href=''
+                      onclick="document.getElementById('html-mf-geo-top-class-values-by-domain-count-2021-12').style.display='block';this.style.display='none';return false;">Show
+            top values by domain count</a></small>
+            <ol id='html-mf-geo-top-class-values-by-domain-count-2021-12' style='display:none'>
+                <li>-</li>
+            </ol>
+            <br/>
+        </td>
+    </tr>
+    <tr>
+        <th></th>
+        <td><small><a href=''
+                      onclick="document.getElementById('html-mf-geo-top-class-values-by-entity-count-2021-12').style.display='block';this.style.display='none';return false;">Show
+            top values by entity count</a></small>
+            <ol id='html-mf-geo-top-class-values-by-entity-count-2021-12' style='display:none'>
+                <li>-</li>
+            </ol>
+            <br/>
+        </td>
+    </tr>
+    <tr>
+        <th>Top Properties</th>
+        <td><small><a href=''
+                      onclick="document.getElementById('html-mf-geo-top-property-values-by-domain-count-2021-12').style.display='block';this.style.display='none';return false;">Show
+            top values by domain count</a></small>
+            <ol id='html-mf-geo-top-property-values-by-domain-count-2021-12' style='display:none'>
+                <li>-</li>
+
+            </ol>
+        </td>
+    </tr>
+    <tr>
+        <th></th>
+        <td><small><a href=''
+                      onclick="document.getElementById('html-mf-geo-top-property-values-by-entity-count-2021-12').style.display='block';this.style.display='none';return false;">Show
+            top values by entity count</a></small>
+            <ol id='html-mf-geo-top-property-values-by-entity-count-2021-12' style='display:none'>
+                <li>-</li>
+            </ol>
+            <br/>
+        </td>
+    </tr>
+    <tr>
+        <th>Detailed Statistics as Excel-File</th>
+        <td><a target="_blank" href="html-mf-geo.xlsx">html-mf-geo.xlsx</a> TO-DO</td>
+    </tr>
+</table>
+
+<a id='html-mf-hcalendar'></a>
+<h3>Extractor html-mf-hcalendar</h3><br/>
+<table>
+    <tr>
+        <th>Triples Extracted</th>
+        <td>62,146,461</td>
+    </tr>
+    <tr>
+        <th>URLs with Triples</th>
+        <td>2,176,078</td>
+    </tr>
+    <tr>
+        <th>Average Triples per URL</th>
+        <td>28.56</td>
+    </tr>
+    <tr>
+        <th>Domains with Triples</th>
+        <td>28,363</td>
+    </tr>
+    <tr>
+        <th>Average Triples per Domain</th>
+        <td>2,191.11</td>
+    </tr>
+    <tr>
+        <th>Typed Entities</th>
+        <td>-</td>
+    </tr>
+    <tr>
+        <th>Top Domains by Extracted Triples</th>
+        <td><small><a href=''
+                      onclick="document.getElementById('html-mf-hcalendar-top-domains-by-triples-2021-12').style.display='block';this.style.display='none';return false;">Show
+            top domains</a></small>
+
+            <ol id='html-mf-hcalendar-top-domains-by-triples-2021-12' style='display:none'>
+                <li><a rel='nofollow' target='_blank' href='https://cnrs.fr'>cnrs.fr</a> (9,046,146 triples)</li>
+                <li><a rel='nofollow' target='_blank' href='https://uu.se'>uu.se</a> (4,272,990 triples)</li>
+                <li><a rel='nofollow' target='_blank' href='https://sched.com'>sched.com</a> (3,971,770 triples)</li>
+                <li><a rel='nofollow' target='_blank' href='https://szene1.at'>szene1.at</a> (1,921,369 triples)</li>
+                <li><a rel='nofollow' target='_blank' href='https://wikipedia.org'>wikipedia.org</a> (1,366,831 triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://calagator.org'>calagator.org</a> (900,928 triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://connpass.com'>connpass.com</a> (875,009 triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://euractiv.com'>euractiv.com</a> (872,744 triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://cam.ac.uk'>cam.ac.uk</a> (755,582 triples)</li>
+                <li><a rel='nofollow' target='_blank' href='https://xn----7sbcaucqbthgyg0d8d5c.xn--p1ai'>xn----7sbcaucqbthgyg0d8d5c.xn--p1ai</a>
+                    (733,829 triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://ticketcity.com'>ticketcity.com</a> (729,278 triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://eder-dampfradio.de'>eder-dampfradio.de</a> (715,926
+                    triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://lrezoskc.lt'>lrezoskc.lt</a> (608,770 triples)</li>
+                <li><a rel='nofollow' target='_blank' href='https://kth.se'>kth.se</a> (581,345 triples)</li>
+                <li><a rel='nofollow' target='_blank' href='https://agenda-des-sorties.com'>agenda-des-sorties.com</a>
+                    (543,965 triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://dicasmiudas.com.br'>dicasmiudas.com.br</a> (513,408
+                    triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://ledet.com'>ledet.com</a> (435,808 triples)</li>
+                <li><a rel='nofollow' target='_blank' href='https://resonanzraum.club'>resonanzraum.club</a> (422,155
+                    triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://sch.gr'>sch.gr</a> (415,652 triples)</li>
+                <li><a rel='nofollow' target='_blank' href='https://catholique.fr'>catholique.fr</a> (353,086 triples)
+                </li>
+                <li><a href="top_domains_by_extracted_triples_for_extractor_html-microdata.html">More</a></li>
+            </ol>
+            <br/>
+        </td>
+    </tr>
+    <tr>
+        <th>Top Classes</th>
+        <td><small><a href=''
+                      onclick="document.getElementById('html-mf-hcalendar-top-class-values-by-domain-count-2021-12').style.display='block';this.style.display='none';return false;">Show
+            top values by domain count</a></small>
+            <ol id='html-mf-hcalendar-top-class-values-by-domain-count-2021-12' style='display:none'>
+                <li>-</li>
+            </ol>
+            <br/>
+        </td>
+    </tr>
+    <tr>
+        <th></th>
+        <td><small><a href=''
+                      onclick="document.getElementById('html-mf-hcalendar-top-class-values-by-entity-count-2021-12').style.display='block';this.style.display='none';return false;">Show
+            top values by entity count</a></small>
+            <ol id='html-mf-hcalendar-top-class-values-by-entity-count-2021-12' style='display:none'>
+                <li>-</li>
+            </ol>
+            <br/>
+        </td>
+    </tr>
+    <tr>
+        <th>Top Properties</th>
+        <td><small><a href=''
+                      onclick="document.getElementById('html-mf-hcalendar-top-property-values-by-domain-count-2021-12').style.display='block';this.style.display='none';return false;">Show
+            top values by domain count</a></small>
+            <ol id='html-mf-hcalendar-top-property-values-by-domain-count-2021-12' style='display:none'>
+                <li>-</li>
+
+            </ol>
+        </td>
+    </tr>
+    <tr>
+        <th></th>
+        <td><small><a href=''
+                      onclick="document.getElementById('html-mf-hcalendar-top-property-values-by-entity-count-2021-12').style.display='block';this.style.display='none';return false;">Show
+            top values by entity count</a></small>
+            <ol id='html-mf-hcalendar-top-property-values-by-entity-count-2021-12' style='display:none'>
+                <li>-</li>
+            </ol>
+            <br/>
+        </td>
+    </tr>
+    <tr>
+        <th>Detailed Statistics as Excel-File</th>
+        <td><a target="_blank" href="html-mf-hcalendar.xlsx">html-mf-hcalendar.xlsx</a> TO-DO</td>
+    </tr>
+</table>
+
+<a id='html-mf-hreview'></a>
+<h3>Extractor html-mf-hreview</h3><br/>
+<table>
+    <tr>
+        <th>Triples Extracted</th>
+        <td>34,052,728</td>
+    </tr>
+    <tr>
+        <th>URLs with Triples</th>
+        <td>1,644,215</td>
+    </tr>
+    <tr>
+        <th>Average Triples per URL</th>
+        <td>20.71</td>
+    </tr>
+    <tr>
+        <th>Domains with Triples</th>
+        <td>22,779</td>
+    </tr>
+    <tr>
+        <th>Average Triples per Domain</th>
+        <td>1,494.92</td>
+    </tr>
+    <tr>
+        <th>Typed Entities</th>
+        <td>-</td>
+    </tr>
+    <tr>
+        <th>Top Domains by Extracted Triples</th>
+        <td><small><a href=''
+                      onclick="document.getElementById('html-mf-hreview-top-domains-by-triples-2021-12').style.display='block';this.style.display='none';return false;">Show
+            top domains</a></small>
+
+            <ol id='html-mf-hreview-top-domains-by-triples-2021-12' style='display:none'>
+                <li><a rel='nofollow' target='_blank' href='https://stewartlee.co.uk'>stewartlee.co.uk</a> (2,392,821
+                    triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://alisonjames.us'>alisonjames.us</a> (1,545,342
+                    triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://livedigitally.com'>livedigitally.com</a> (660,192
+                    triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://blogspot.com'>blogspot.com</a> (472,806 triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://vector.co.jp'>vector.co.jp</a> (414,424 triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://atlaspiv.cz'>atlaspiv.cz</a> (369,230 triples)</li>
+                <li><a rel='nofollow' target='_blank' href='https://inmsol.com'>inmsol.com</a> (328,795 triples)</li>
+                <li><a rel='nofollow' target='_blank' href='https://przywiazanie.szkola.pl'>przywiazanie.szkola.pl</a>
+                    (275,520 triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://worldcuesports.com.au'>worldcuesports.com.au</a>
+                    (263,219 triples)
+                </li>
+                <li><a rel='nofollow' target='_blank'
+                       href='https://moncouplemesrelations.com'>moncouplemesrelations.com</a> (244,256 triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://the-easel.com'>the-easel.com</a> (231,200 triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://affirmationpod.com'>affirmationpod.com</a> (209,931
+                    triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://pmclounge.com'>pmclounge.com</a> (183,400 triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://stefanierogge.de'>stefanierogge.de</a> (164,259
+                    triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://chicbijoux.ro'>chicbijoux.ro</a> (162,848 triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://thespro.gr'>thespro.gr</a> (161,333 triples)</li>
+                <li><a rel='nofollow' target='_blank' href='https://designbuildpros.com'>designbuildpros.com</a>
+                    (150,168 triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://travelata.ru'>travelata.ru</a> (145,519 triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://perfectbath.com'>perfectbath.com</a> (138,210
+                    triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://newsantaana.com'>newsantaana.com</a> (135,855
+                    triples)
+                </li>
+                <li><a href="top_domains_by_extracted_triples_for_extractor_html-microdata.html">More</a></li>
+            </ol>
+            <br/>
+        </td>
+    </tr>
+    <tr>
+        <th>Top Classes</th>
+        <td><small><a href=''
+                      onclick="document.getElementById('html-mf-hreview-top-class-values-by-domain-count-2021-12').style.display='block';this.style.display='none';return false;">Show
+            top values by domain count</a></small>
+            <ol id='html-mf-hreview-top-class-values-by-domain-count-2021-12' style='display:none'>
+                <li>-</li>
+            </ol>
+            <br/>
+        </td>
+    </tr>
+    <tr>
+        <th></th>
+        <td><small><a href=''
+                      onclick="document.getElementById('html-mf-hreview-top-class-values-by-entity-count-2021-12').style.display='block';this.style.display='none';return false;">Show
+            top values by entity count</a></small>
+            <ol id='html-mf-hreview-top-class-values-by-entity-count-2021-12' style='display:none'>
+                <li>-</li>
+            </ol>
+            <br/>
+        </td>
+    </tr>
+    <tr>
+        <th>Top Properties</th>
+        <td><small><a href=''
+                      onclick="document.getElementById('html-mf-hreview-top-property-values-by-domain-count-2021-12').style.display='block';this.style.display='none';return false;">Show
+            top values by domain count</a></small>
+            <ol id='html-mf-hreview-top-property-values-by-domain-count-2021-12' style='display:none'>
+                <li>-</li>
+
+            </ol>
+        </td>
+    </tr>
+    <tr>
+        <th></th>
+        <td><small><a href=''
+                      onclick="document.getElementById('html-mf-hreview-top-property-values-by-entity-count-2021-12').style.display='block';this.style.display='none';return false;">Show
+            top values by entity count</a></small>
+            <ol id='html-mf-hreview-top-property-values-by-entity-count-2021-12' style='display:none'>
+                <li>-</li>
+            </ol>
+            <br/>
+        </td>
+    </tr>
+    <tr>
+        <th>Detailed Statistics as Excel-File</th>
+        <td><a target="_blank" href="html-mf-hreview.xlsx">html-mf-hreview.xlsx</a> TO-DO</td>
+    </tr>
+</table>
+
+<a id='html-mf-hlisting'></a>
+<h3>Extractor html-mf-hlisting</h3><br/>
+<table>
+    <tr>
+        <th>Triples Extracted</th>
+        <td>32,867,553</td>
+    </tr>
+    <tr>
+        <th>URLs with Triples</th>
+        <td>241,573</td>
+    </tr>
+    <tr>
+        <th>Average Triples per URL</th>
+        <td>136.06</td>
+    </tr>
+    <tr>
+        <th>Domains with Triples</th>
+        <td>9,693</td>
+    </tr>
+    <tr>
+        <th>Average Triples per Domain</th>
+        <td>3,390.85</td>
+    </tr>
+    <tr>
+        <th>Typed Entities</th>
+        <td>-</td>
+    </tr>
+    <tr>
+        <th>Top Domains by Extracted Triples</th>
+        <td><small><a href=''
+                      onclick="document.getElementById('html-mf-hlisting-top-domains-by-triples-2021-12').style.display='block';this.style.display='none';return false;">Show
+            top domains</a></small>
+
+            <ol id='html-mf-hlisting-top-domains-by-triples-2021-12' style='display:none'>
+                <li><a rel='nofollow' target='_blank' href='https://quoka.de'>quoka.de</a> (2,043,170 triples)</li>
+                <li><a rel='nofollow' target='_blank' href='https://laendleanzeiger.at'>laendleanzeiger.at</a> (778,866
+                    triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://agedepierre.ch'>agedepierre.ch</a> (721,962 triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://vierzehn5.ch'>vierzehn5.ch</a> (719,086 triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://grecavricambi.it'>grecavricambi.it</a> (371,320
+                    triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://fraeuleinfroehlich.de'>fraeuleinfroehlich.de</a>
+                    (368,890 triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://artpilo.com'>artpilo.com</a> (319,430 triples)</li>
+                <li><a rel='nofollow' target='_blank' href='https://vinyl48.de'>vinyl48.de</a> (309,514 triples)</li>
+                <li><a rel='nofollow' target='_blank' href='https://fritskuiper.nl'>fritskuiper.nl</a> (277,250 triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://biostoffen.nl'>biostoffen.nl</a> (276,960 triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://iberia.com'>iberia.com</a> (269,373 triples)</li>
+                <li><a rel='nofollow' target='_blank' href='https://selbstgemacht-rukodelie.com'>selbstgemacht-rukodelie.com</a>
+                    (260,288 triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://barbaras-puppen-welt.de'>barbaras-puppen-welt.de</a>
+                    (236,410 triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://paulines-ohrringe.at'>paulines-ohrringe.at</a>
+                    (225,340 triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://verlag-heilbronn.de'>verlag-heilbronn.de</a>
+                    (219,880 triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://ahk-onlineshop.eu'>ahk-onlineshop.eu</a> (211,214
+                    triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://mybijouterie.ch'>mybijouterie.ch</a> (210,130
+                    triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://agenziasoleluna.it'>agenziasoleluna.it</a> (209,920
+                    triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://stick.ch'>stick.ch</a> (205,108 triples)</li>
+                <li><a rel='nofollow' target='_blank' href='https://tuescaparate.net'>tuescaparate.net</a> (190,510
+                    triples)
+                </li>
+                <li><a href="top_domains_by_extracted_triples_for_extractor_html-microdata.html">More</a></li>
+            </ol>
+            <br/>
+        </td>
+    </tr>
+    <tr>
+        <th>Top Classes</th>
+        <td><small><a href=''
+                      onclick="document.getElementById('html-mf-hlisting-top-class-values-by-domain-count-2021-12').style.display='block';this.style.display='none';return false;">Show
+            top values by domain count</a></small>
+            <ol id='html-mf-hlisting-top-class-values-by-domain-count-2021-12' style='display:none'>
+                <li>-</li>
+            </ol>
+            <br/>
+        </td>
+    </tr>
+    <tr>
+        <th></th>
+        <td><small><a href=''
+                      onclick="document.getElementById('html-mf-hlisting-top-class-values-by-entity-count-2021-12').style.display='block';this.style.display='none';return false;">Show
+            top values by entity count</a></small>
+            <ol id='html-mf-hlisting-top-class-values-by-entity-count-2021-12' style='display:none'>
+                <li>-</li>
+            </ol>
+            <br/>
+        </td>
+    </tr>
+    <tr>
+        <th>Top Properties</th>
+        <td><small><a href=''
+                      onclick="document.getElementById('html-mf-hlisting-top-property-values-by-domain-count-2021-12').style.display='block';this.style.display='none';return false;">Show
+            top values by domain count</a></small>
+            <ol id='html-mf-hlisting-top-property-values-by-domain-count-2021-12' style='display:none'>
+                <li>-</li>
+
+            </ol>
+        </td>
+    </tr>
+    <tr>
+        <th></th>
+        <td><small><a href=''
+                      onclick="document.getElementById('html-mf-hlisting-top-property-values-by-entity-count-2021-12').style.display='block';this.style.display='none';return false;">Show
+            top values by entity count</a></small>
+            <ol id='html-mf-hlisting-top-property-values-by-entity-count-2021-12' style='display:none'>
+                <li>-</li>
+            </ol>
+            <br/>
+        </td>
+    </tr>
+    <tr>
+        <th>Detailed Statistics as Excel-File</th>
+        <td><a target="_blank" href="html-mf-hlisting.xlsx">html-mf-hlisting.xlsx</a> TO-DO</td>
+    </tr>
+</table>
+
+<a id='html-mf-hrecipe'></a>
+<h3>Extractor html-mf-hrecipe</h3><br/>
+<table>
+    <tr>
+        <th>Triples Extracted</th>
+        <td>7,415,652</td>
+    </tr>
+    <tr>
+        <th>URLs with Triples</th>
+        <td>303,445</td>
+    </tr>
+    <tr>
+        <th>Average Triples per URL</th>
+        <td>24.44</td>
+    </tr>
+    <tr>
+        <th>Domains with Triples</th>
+        <td>3,951</td>
+    </tr>
+    <tr>
+        <th>Average Triples per Domain</th>
+        <td>1,876.91</td>
+    </tr>
+    <tr>
+        <th>Typed Entities</th>
+        <td>-</td>
+    </tr>
+    <tr>
+        <th>Top Domains by Extracted Triples</th>
+        <td><small><a href=''
+                      onclick="document.getElementById('html-mf-hrecipe-top-domains-by-triples-2021-12').style.display='block';this.style.display='none';return false;">Show
+            top domains</a></small>
+
+            <ol id='html-mf-hrecipe-top-domains-by-triples-2021-12' style='display:none'>
+                <li><a rel='nofollow' target='_blank' href='https://kotikokki.net'>kotikokki.net</a> (420,506 triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://1000.menu'>1000.menu</a> (247,395 triples)</li>
+                <li><a rel='nofollow' target='_blank' href='https://smittenkitchen.com'>smittenkitchen.com</a> (169,560
+                    triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://eatyourbooks.com'>eatyourbooks.com</a> (145,704
+                    triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://picantecooking.com'>picantecooking.com</a> (124,181
+                    triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://nyam.ru'>nyam.ru</a> (122,821 triples)</li>
+                <li><a rel='nofollow' target='_blank' href='https://heatherchristo.com'>heatherchristo.com</a> (117,620
+                    triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://yumyum.gr'>yumyum.gr</a> (113,249 triples)</li>
+                <li><a rel='nofollow' target='_blank' href='https://alimero.ru'>alimero.ru</a> (107,656 triples)</li>
+                <li><a rel='nofollow' target='_blank' href='https://iletaitunefoislapatisserie.com'>iletaitunefoislapatisserie.com</a>
+                    (104,514 triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://trattoriadamartina.com'>trattoriadamartina.com</a>
+                    (100,726 triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://belonika.ru'>belonika.ru</a> (89,179 triples)</li>
+                <li><a rel='nofollow' target='_blank' href='https://lacuillere.com'>lacuillere.com</a> (80,726 triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://brtnik.info'>brtnik.info</a> (79,047 triples)</li>
+                <li><a rel='nofollow' target='_blank' href='https://kikkoman.co.jp'>kikkoman.co.jp</a> (78,958 triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://onehandedcooks.com.au'>onehandedcooks.com.au</a>
+                    (77,493 triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://grouprecipes.com'>grouprecipes.com</a> (71,332
+                    triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://frasi.net'>frasi.net</a> (61,105 triples)</li>
+                <li><a rel='nofollow' target='_blank' href='https://tinnedtomatoes.com'>tinnedtomatoes.com</a> (60,358
+                    triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://e-da.net'>e-da.net</a> (59,952 triples)</li>
+                <li><a href="top_domains_by_extracted_triples_for_extractor_html-microdata.html">More</a></li>
+            </ol>
+            <br/>
+        </td>
+    </tr>
+    <tr>
+        <th>Top Classes</th>
+        <td><small><a href=''
+                      onclick="document.getElementById('html-mf-hrecipe-top-class-values-by-domain-count-2021-12').style.display='block';this.style.display='none';return false;">Show
+            top values by domain count</a></small>
+            <ol id='html-mf-hrecipe-top-class-values-by-domain-count-2021-12' style='display:none'>
+                <li>-</li>
+            </ol>
+            <br/>
+        </td>
+    </tr>
+    <tr>
+        <th></th>
+        <td><small><a href=''
+                      onclick="document.getElementById('html-mf-hrecipe-top-class-values-by-entity-count-2021-12').style.display='block';this.style.display='none';return false;">Show
+            top values by entity count</a></small>
+            <ol id='html-mf-hrecipe-top-class-values-by-entity-count-2021-12' style='display:none'>
+                <li>-</li>
+            </ol>
+            <br/>
+        </td>
+    </tr>
+    <tr>
+        <th>Top Properties</th>
+        <td><small><a href=''
+                      onclick="document.getElementById('html-mf-hrecipe-top-property-values-by-domain-count-2021-12').style.display='block';this.style.display='none';return false;">Show
+            top values by domain count</a></small>
+            <ol id='html-mf-hrecipe-top-property-values-by-domain-count-2021-12' style='display:none'>
+                <li>-</li>
+
+            </ol>
+        </td>
+    </tr>
+    <tr>
+        <th></th>
+        <td><small><a href=''
+                      onclick="document.getElementById('html-mf-hrecipe-top-property-values-by-entity-count-2021-12').style.display='block';this.style.display='none';return false;">Show
+            top values by entity count</a></small>
+            <ol id='html-mf-hrecipe-top-property-values-by-entity-count-2021-12' style='display:none'>
+                <li>-</li>
+            </ol>
+            <br/>
+        </td>
+    </tr>
+    <tr>
+        <th>Detailed Statistics as Excel-File</th>
+        <td><a target="_blank" href="html-mf-hrecipe.xlsx">html-mf-hrecipe.xlsx</a> TO-DO</td>
+    </tr>
+</table>
+
+<a id='html-mf-hresume'></a>
+<h3>Extractor html-mf-hresume</h3><br/>
+<table>
+    <tr>
+        <th>Triples Extracted</th>
+        <td>14,492</td>
+    </tr>
+    <tr>
+        <th>URLs with Triples</th>
+        <td>2,392</td>
+    </tr>
+    <tr>
+        <th>Average Triples per URL</th>
+        <td>6.06</td>
+    </tr>
+    <tr>
+        <th>Domains with Triples</th>
+        <td>121</td>
+    </tr>
+    <tr>
+        <th>Average Triples per Domain</th>
+        <td>119.77</td>
+    </tr>
+    <tr>
+        <th>Typed Entities</th>
+        <td>-</td>
+    </tr>
+    <tr>
+        <th>Top Domains by Extracted Triples</th>
+        <td><small><a href=''
+                      onclick="document.getElementById('html-mf-hresume-top-domains-by-triples-2021-12').style.display='block';this.style.display='none';return false;">Show
+            top domains</a></small>
+
+            <ol id='html-mf-hresume-top-domains-by-triples-2021-12' style='display:none'>
+                <li><a rel='nofollow' target='_blank' href='https://whatclinic.com'>whatclinic.com</a> (7,272 triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://whatclinic.de'>whatclinic.de</a> (1,217 triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://encheres-publiques.com'>encheres-publiques.com</a>
+                    (910 triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://mehani.name'>mehani.name</a> (658 triples)</li>
+                <li><a rel='nofollow' target='_blank' href='https://rachelhellmann.com'>rachelhellmann.com</a> (368
+                    triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://creativ-e-motion.fr'>creativ-e-motion.fr</a> (189
+                    triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://cabinetguerin.eu'>cabinetguerin.eu</a> (178 triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://whatclinic.ru'>whatclinic.ru</a> (169 triples)</li>
+                <li><a rel='nofollow' target='_blank' href='https://jeanmichelfahys.net'>jeanmichelfahys.net</a> (165
+                    triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://www.sarahhenderson.nz'>www.sarahhenderson.nz</a>
+                    (134 triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://lesliesteward.com'>lesliesteward.com</a> (129
+                    triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://mithriltabby.com'>mithriltabby.com</a> (126 triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://jamespoyser.net'>jamespoyser.net</a> (118 triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://benmcevoy.com.au'>benmcevoy.com.au</a> (111 triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://mickael-gouget.fr'>mickael-gouget.fr</a> (104
+                    triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://jejik.com'>jejik.com</a> (98 triples)</li>
+                <li><a rel='nofollow' target='_blank' href='https://programador-web.com.es'>programador-web.com.es</a>
+                    (93 triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://evaryont.me'>evaryont.me</a> (90 triples)</li>
+                <li><a rel='nofollow' target='_blank' href='https://smwhr.net'>smwhr.net</a> (82 triples)</li>
+                <li><a rel='nofollow' target='_blank' href='https://muschamp.ca'>muschamp.ca</a> (82 triples)</li>
+                <li><a href="top_domains_by_extracted_triples_for_extractor_html-microdata.html">More</a></li>
+            </ol>
+            <br/>
+        </td>
+    </tr>
+    <tr>
+        <th>Top Classes</th>
+        <td><small><a href=''
+                      onclick="document.getElementById('html-mf-hresume-top-class-values-by-domain-count-2021-12').style.display='block';this.style.display='none';return false;">Show
+            top values by domain count</a></small>
+            <ol id='html-mf-hresume-top-class-values-by-domain-count-2021-12' style='display:none'>
+                <li>-</li>
+            </ol>
+            <br/>
+        </td>
+    </tr>
+    <tr>
+        <th></th>
+        <td><small><a href=''
+                      onclick="document.getElementById('html-mf-hresume-top-class-values-by-entity-count-2021-12').style.display='block';this.style.display='none';return false;">Show
+            top values by entity count</a></small>
+            <ol id='html-mf-hresume-top-class-values-by-entity-count-2021-12' style='display:none'>
+                <li>-</li>
+            </ol>
+            <br/>
+        </td>
+    </tr>
+    <tr>
+        <th>Top Properties</th>
+        <td><small><a href=''
+                      onclick="document.getElementById('html-mf-hresume-top-property-values-by-domain-count-2021-12').style.display='block';this.style.display='none';return false;">Show
+            top values by domain count</a></small>
+            <ol id='html-mf-hresume-top-property-values-by-domain-count-2021-12' style='display:none'>
+                <li>-</li>
+
+            </ol>
+        </td>
+    </tr>
+    <tr>
+        <th></th>
+        <td><small><a href=''
+                      onclick="document.getElementById('html-mf-hresume-top-property-values-by-entity-count-2021-12').style.display='block';this.style.display='none';return false;">Show
+            top values by entity count</a></small>
+            <ol id='html-mf-hresume-top-property-values-by-entity-count-2021-12' style='display:none'>
+                <li>-</li>
+            </ol>
+            <br/>
+        </td>
+    </tr>
+    <tr>
+        <th>Detailed Statistics as Excel-File</th>
+        <td><a target="_blank" href="html-mf-hresume.xlsx">html-mf-hresume.xlsx</a> TO-DO</td>
+    </tr>
+</table>
+
+<a id='html-mf-species'></a>
+<h3>Extractor html-mf-species</h3><br/>
+<table>
+    <tr>
+        <th>Triples Extracted</th>
+        <td>383,379</td>
+    </tr>
+    <tr>
+        <th>URLs with Triples</th>
+        <td>62,012</td>
+    </tr>
+    <tr>
+        <th>Average Triples per URL</th>
+        <td>6.18</td>
+    </tr>
+    <tr>
+        <th>Domains with Triples</th>
+        <td>538</td>
+    </tr>
+    <tr>
+        <th>Average Triples per Domain</th>
+        <td>712.6</td>
+    </tr>
+    <tr>
+        <th>Typed Entities</th>
+        <td>-</td>
+    </tr>
+    <tr>
+        <th>Top Domains by Extracted Triples</th>
+        <td><small><a href=''
+                      onclick="document.getElementById('html-mf-species-top-domains-by-triples-2021-12').style.display='block';this.style.display='none';return false;">Show
+            top domains</a></small>
+
+            <ol id='html-mf-species-top-domains-by-triples-2021-12' style='display:none'>
+                <li><a rel='nofollow' target='_blank' href='https://wikipedia.org'>wikipedia.org</a> (299,987 triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://antwiki.org'>antwiki.org</a> (25,661 triples)</li>
+                <li><a rel='nofollow' target='_blank' href='https://preen.com'>preen.com</a> (10,122 triples)</li>
+                <li><a rel='nofollow' target='_blank' href='https://kiddle.co'>kiddle.co</a> (6,652 triples)</li>
+                <li><a rel='nofollow' target='_blank' href='https://cloudflare-ipfs.com'>cloudflare-ipfs.com</a> (5,270
+                    triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://asuscomm.com'>asuscomm.com</a> (3,317 triples)</li>
+                <li><a rel='nofollow' target='_blank' href='https://wiktionary.org'>wiktionary.org</a> (3,284 triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://wikimedia.org'>wikimedia.org</a> (3,117 triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://ipfs.io'>ipfs.io</a> (2,609 triples)</li>
+                <li><a rel='nofollow' target='_blank' href='https://coastalplainplants.org'>coastalplainplants.org</a>
+                    (2,320 triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://amanitaresearch.com'>amanitaresearch.com</a> (1,876
+                    triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://pigsonthewing.org.uk'>pigsonthewing.org.uk</a>
+                    (1,697 triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://sbcglobal.net'>sbcglobal.net</a> (1,532 triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://evergreen.edu'>evergreen.edu</a> (1,268 triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://myinnerowl.com'>myinnerowl.com</a> (1,090 triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://fandom.com'>fandom.com</a> (699 triples)</li>
+                <li><a rel='nofollow' target='_blank' href='https://sinoxnursery.com'>sinoxnursery.com</a> (635 triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://blogspot.com'>blogspot.com</a> (576 triples)</li>
+                <li><a rel='nofollow' target='_blank' href='https://leparisien.fr'>leparisien.fr</a> (572 triples)</li>
+                <li><a rel='nofollow' target='_blank' href='https://orange.com'>orange.com</a> (497 triples)</li>
+                <li><a href="top_domains_by_extracted_triples_for_extractor_html-microdata.html">More</a></li>
+            </ol>
+            <br/>
+        </td>
+    </tr>
+    <tr>
+        <th>Top Classes</th>
+        <td><small><a href=''
+                      onclick="document.getElementById('html-mf-species-top-class-values-by-domain-count-2021-12').style.display='block';this.style.display='none';return false;">Show
+            top values by domain count</a></small>
+            <ol id='html-mf-species-top-class-values-by-domain-count-2021-12' style='display:none'>
+                <li>-</li>
+            </ol>
+            <br/>
+        </td>
+    </tr>
+    <tr>
+        <th></th>
+        <td><small><a href=''
+                      onclick="document.getElementById('html-mf-species-top-class-values-by-entity-count-2021-12').style.display='block';this.style.display='none';return false;">Show
+            top values by entity count</a></small>
+            <ol id='html-mf-species-top-class-values-by-entity-count-2021-12' style='display:none'>
+                <li>-</li>
+            </ol>
+            <br/>
+        </td>
+    </tr>
+    <tr>
+        <th>Top Properties</th>
+        <td><small><a href=''
+                      onclick="document.getElementById('html-mf-species-top-property-values-by-domain-count-2021-12').style.display='block';this.style.display='none';return false;">Show
+            top values by domain count</a></small>
+            <ol id='html-mf-species-top-property-values-by-domain-count-2021-12' style='display:none'>
+                <li>-</li>
+
+            </ol>
+        </td>
+    </tr>
+    <tr>
+        <th></th>
+        <td><small><a href=''
+                      onclick="document.getElementById('html-mf-species-top-property-values-by-entity-count-2021-12').style.display='block';this.style.display='none';return false;">Show
+            top values by entity count</a></small>
+            <ol id='html-mf-species-top-property-values-by-entity-count-2021-12' style='display:none'>
+                <li>-</li>
+            </ol>
+            <br/>
+        </td>
+    </tr>
+    <tr>
+        <th>Detailed Statistics as Excel-File</th>
+        <td><a target="_blank" href="html-mf-species.xlsx">html-mf-species.xlsx</a> TO-DO</td>
+    </tr>
+</table>
+
+
+</body>
+
+</html>
