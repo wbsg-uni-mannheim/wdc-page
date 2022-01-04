@@ -1,3 +1,4 @@
+import gzip
 
 import click
 import logging
@@ -6,27 +7,38 @@ import pandas as pd
 
 
 @click.command()
-@click.option('--dir_path', help='Path to [extraction]/3_wdcurlstats!')
+@click.option('--dir_path', help='Path to [extraction]/3_wdcurlstats and [extraction]/6_stats_per_format!')
 @click.option('--extraction', help='ID of extraction. Example: 2021-12')
 def main(dir_path, extraction):
     """Create extractor tables for stats.html"""
     logging.basicConfig(format='%(levelname)s:%(message)s', level=logging.DEBUG)
 
-    file_agg_matrix_per_format = '{}\\aggMatrixPerFormat.stats'.format(dir_path)
+    file_agg_matrix_per_format = '{}\\3_wdcurlstats\\aggMatrixPerFormat.stats'.format(dir_path)
     df_stats = pd.read_csv(file_agg_matrix_per_format, sep='\t', index_col=0, dtype={'Domains': 'Int64', 'URLs': 'Int64', 'Triples': 'Int64'})
-    order = ['html-microdata', 'html-embedded-jsonld', 'html-mf-hcard','html-rdfa', 'html-mf-xfn','html-mf-adr','html-mf-geo','html-mf-hcalendar','html-mf-hreview',
+    order = ['html-microdata', 'html-embedded-jsonld', 'html-mf-hcard', 'html-rdfa', 'html-mf-xfn','html-mf-adr','html-mf-geo','html-mf-hcalendar','html-mf-hreview',
              'html-mf-hlisting','html-mf-hrecipe','html-mf-hresume','html-mf-species']
 
+    # Load typed_entities.csv
+    file_path = '{}\\typed_entities.csv'.format(dir_path)
+    typed_entities = {}
+    with open(file_path, 'r') as file:
+        for line in file.readlines():
+            values = line.split(',')
+            typed_entities[values[0]] = int(values[1].replace('\\n', ''))
+
     # Create Results per Format
-    for value in order:
-        row = df_stats.loc[value]
+    for extractor in order:
+        row = df_stats.loc[extractor]
         statistics = calc_statistics(row)
 
-        file_path_triples = '{}\\{}.domaintriple.stats'.format(dir_path, value)
+        file_path_triples = '{}\\3_wdcurlstats\\{}.domaintriple.stats'.format(dir_path, extractor)
         top_domains_by_triples = generate_top_domain_rows(file_path_triples, 'triples', 20)
 
+        top_class = generate_top_classes_and_properties(extractor, dir_path, 20, 'class')
+        top_prop = generate_top_classes_and_properties(extractor, dir_path, 20, 'prop')
+
         print('')
-        generate_table(value, statistics, top_domains_by_triples, extraction)
+        generate_table(extractor, statistics, top_domains_by_triples, top_class, top_prop, typed_entities, extraction)
 
 
 def calc_statistics(row):
@@ -38,7 +50,54 @@ def calc_statistics(row):
     return statistics
 
 
-def generate_table(extractor, statistics, top_domains_by_triples, extraction):
+def generate_top_classes_and_properties(extractor, dir_path, number_records, type_class_prop):
+    rows = {'entity': [], 'domain': []}
+    # CONTINUE HERE --> no uniform paths
+    file_path = '{}\\6_stats_per_format\\{}\\{}.stats'.format(dir_path, extractor, type_class_prop)
+    try:
+        with open(file_path, 'r', encoding='utf-8') as file:
+            file.readline() # Skip header
+            counter = 0
+            while counter < number_records:
+                line_values = file.readline().split('\t')
+                type_class_prop = line_values[0]
+                if len(line_values) > 1:
+                    entity_count = line_values[1]
+                    entity_row = '<li>{}({:,} Entities)</li>'.format(type_class_prop, int(entity_count))
+                    rows['entity'].append(entity_row)
+
+                    domain_count = line_values[3]
+                    domain_row = '<li>{}({:,} Domains)</li>'.format(type_class_prop, int(domain_count.replace('\\n', '')))
+                    rows['domain'].append(domain_row)
+
+                    counter +=1
+                else:
+                    break
+    except FileNotFoundError:
+        file_path = '{}.gz'.format(file_path)
+        with gzip.open(file_path, 'rb') as file:
+            file.readline()  # Skip header
+            counter = 0
+            while counter < number_records:
+                line_values = file.readline().decode('utf-8').split('\t')
+                type_class_prop = line_values[0]
+                if len(line_values) > 1:
+                    entity_count = line_values[1]
+                    entity_row = '<li>{}({:,} Entities)</li>'.format(type_class_prop, int(entity_count))
+                    rows['entity'].append(entity_row)
+
+                    domain_count = line_values[3]
+                    domain_row = '<li>{}({:,} Domains)</li>'.format(type_class_prop, int(domain_count.replace('\\n', '')))
+                    rows['domain'].append(domain_row)
+
+                    counter += 1
+                else:
+                    break
+
+    return rows
+
+
+def generate_table(extractor, statistics, top_domains_by_triples, top_class, top_prop, typed_entities, extraction):
     """
     :type extractor: String
     """
@@ -67,7 +126,7 @@ def generate_table(extractor, statistics, top_domains_by_triples, extraction):
     print('	  </tr>	')
     print('	  <tr>	')
     print('	    <th>Typed Entities</th>	')
-    print('	    <td>-</td>	')
+    print('	    <td>{:,}</td>	'.format(typed_entities[extractor]))
     print('	  </tr>	')
     print('	  <tr>	')
     print('	    <th>Top Domains by Extracted Triples</th>	')
@@ -86,7 +145,8 @@ def generate_table(extractor, statistics, top_domains_by_triples, extraction):
     element_top_class_values_by_domain_count = '{}-top-class-values-by-domain-count-{}'.format(extractor, extraction)
     print('	    <td><small><a href=\'\' onclick="document.getElementById(\'{}\').style.display=\'block\';this.style.display=\'none\';return false;">Show top values by domain count</a></small>	'.format(element_top_class_values_by_domain_count))
     print('	      <ol id=\'{}\' style=\'display:none\'>	'.format(element_top_class_values_by_domain_count))
-    print('	   <li>-</li>	')
+    for top_class_value in top_class['domain']:
+        print(top_class_value)
     print('	      </ol><br />	')
     print('	    </td>	')
     print('	  </tr>	')
@@ -95,7 +155,8 @@ def generate_table(extractor, statistics, top_domains_by_triples, extraction):
     element_top_class_values_by_entity_count = '{}-top-class-values-by-entity-count-{}'.format(extractor, extraction)
     print('	    <td><small><a href=\'\' onclick="document.getElementById(\'{}\').style.display=\'block\';this.style.display=\'none\';return false;">Show  top values by entity count</a></small>	'.format(element_top_class_values_by_entity_count))
     print('	      <ol id=\'{}\' style=\'display:none\'>	'.format(element_top_class_values_by_entity_count))
-    print('	   <li>-</li>	')
+    for top_class_value in top_class['entity']:
+        print(top_class_value)
     print('	      </ol><br />	')
     print('	    </td>	')
     print('	  </tr>	')
@@ -104,7 +165,8 @@ def generate_table(extractor, statistics, top_domains_by_triples, extraction):
     element_top_property_values_by_domain_count = '{}-top-property-values-by-domain-count-{}'.format(extractor, extraction)
     print('	    <td><small><a href=\'\' onclick="document.getElementById(\'{}\').style.display=\'block\';this.style.display=\'none\';return false;">Show top values by domain count</a></small>	'.format(element_top_property_values_by_domain_count))
     print('	      <ol id=\'{}\' style=\'display:none\'>	'.format(element_top_property_values_by_domain_count))
-    print('	<li>-</li>	')
+    for top_prop_value in top_prop['domain']:
+        print(top_prop_value)
     print('		')
     print('	          </ol>	')
     print('	    </td>	')
@@ -114,14 +176,16 @@ def generate_table(extractor, statistics, top_domains_by_triples, extraction):
     element_top_property_values_by_entity_count = '{}-top-property-values-by-entity-count-{}'.format(extractor, extraction)
     print('	    <td><small><a href=\'\' onclick="document.getElementById(\'{}\').style.display=\'block\';this.style.display=\'none\';return false;">Show top values by entity count</a></small>	'.format(element_top_property_values_by_entity_count))
     print('	      <ol id=\'{}\' style=\'display:none\'>	'.format(element_top_property_values_by_entity_count))
-    print('	   <li>-</li>	')
+    for top_prop_value in top_prop['entity']:
+        print(top_prop_value)
     print('	      </ol><br />	')
     print('	    </td>	')
     print('	  </tr>	')
-    print('	  <tr>	')
-    print('	    <th>Detailed Statistics as Excel-File</th>	')
-    print('	    <td><a target="_blank" href="{}.xlsx">{}.xlsx</a> TO-DO</td>	'.format(extractor, extractor))
-    print('	  </tr>	')
+    if extractor in ['html-microdata', 'html-embedded-jsonld', 'html-rdfa']:
+        print('	  <tr>	')
+        print('	    <th>Detailed Statistics as Excel-File</th>	')
+        print('	    <td><a target="_blank" href="{}.xlsx">{}.xlsx</a></td>	'.format(extractor, extractor))
+        print('	  </tr>	')
     print('	</table>	')
 
 

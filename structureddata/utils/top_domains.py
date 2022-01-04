@@ -1,14 +1,14 @@
-import pandas as pd
 import click
 
 @click.command()
 @click.option('--dir_path', help='Path to [extraction]/3_wdcurlstats!')
 @click.option('--aggregation', help='Aggregation parameter triples/urls')
 @click.option('--number_records', help='Number of records', type=int)
-def main(dir_path, aggregation, number_records):
+@click.option('--file', help='domainurlwtriple.stats or domaintriple.stats')
+def main(dir_path, aggregation, number_records, file):
     """Create top domain tables for top domains by urls with triples"""
 
-    file_path = '{}/domainurlwtriple.stats'.format(dir_path)
+    file_path = '{}/3_wdcurlstats/{}'.format(dir_path, file)
     rows = generate_top_domain_rows(file_path, aggregation, number_records)
     for row in rows:
         print(row)
