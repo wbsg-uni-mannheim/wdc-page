@@ -3,7 +3,7 @@
 
 <head>
     <meta name="robots" content="nofollow"/>
-    <title>Web Data Commons Extraction Report - December 2021 Corpus</title>
+    <title>Web Data Commons Extraction Report - October 2021 Corpus</title>
     <link rel='stylesheet' href='http://webdatacommons.org/style.css' type='text/css' media='screen'/>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <script type="text/javascript" src="https://www.google.com/jsapi"></script>
@@ -49,7 +49,7 @@
 
             };
 
-            var material1 = new google.visualization.BarChart(document.getElementById('d2020Plds'));
+            var material1 = new google.visualization.BarChart(document.getElementById('d2021Plds'));
             material1.draw(data2021Plds, options1);
         }
 
@@ -57,14 +57,14 @@
 
             var data2021Urls = google.visualization.arrayToDataTable([
                 ['Annotation type', '#URLs with Triples', {role: 'style'}, {role: 'annotation'}],
-                ['html-microdata', 892571812, '#D11919', 'Microdata : 892,571,812 '],
-                ['html-embedded-jsonld', 767626882, '#29A329', 'JSON-LD : 767,626,882 '],
-                ['html-mf-hcard', 371420305, '#FFD633', 'mf-hcard : 371,420,305 '],
-                ['html-rdfa', 408439900, '#5E8FD8', 'RDFA : 408,439,900 '],
-                ['html-mf-xfn', 30140863, '#FFF5DD', 'mf-xfn : 30,140,863 '],
-                ['html-mf-hcalendar', 2142316, '#FFDB4D', 'mf-hcalendar : 2,142,316 '],
-                ['html-mf-hreview', 2501767, '#FFEB99', 'mf-hreview : 2,501,767 '],
-                ['others', 280999, '#FFE066', 'others : 280,999 ']
+                ['html-microdata', 837527236, '#D11919', 'microdata : 837,527,236 '],
+                ['html-embedded-jsonld', 793347572, '#29A329', 'embedded-jsonld : 793,347,572 '],
+                ['html-mf-hcard', 330580166, '#FFD633', 'mf-hcard : 330,580,166 '],
+                ['html-rdfa', 111741339, '#5E8FD8', 'rdfa : 111,741,339 '],
+                ['html-mf-xfn', 24820616, '#FFF5DD', 'mf-xfn : 24,820,616 '],
+                ['html-mf-hcalendar', 2176078, '#FFDB4D', 'mf-hcalendar : 2,176,078 '],
+                ['html-mf-hreview', 1644215, '#FFEB99', 'mf-hreview : 1,644,215 '],
+                ['others', 14067834, '#FFE066', 'others : 14,067,834 ']
             ]);
 
             var options2 = {
@@ -84,7 +84,7 @@
 
             };
 
-            var material2 = new google.visualization.BarChart(document.getElementById('d2020Urls'));
+            var material2 = new google.visualization.BarChart(document.getElementById('d2021Urls'));
             material2.draw(data2021Urls, options2);
         }
 
@@ -92,20 +92,19 @@
 
             var data2021Entities = google.visualization.arrayToDataTable([
                 ['Annotation type', '#Entities'],
+                ['html-rdfa', 321223153],
+                ['html-microdata', 6294453008],
                 ['html-embedded-jsonld', 7952535579],
-                ['html-mf-adr', 20856614],
-                ['html-mf2-h-adr', 299564],
                 ['html-mf-geo', 5203891],
-                ['html-mf-hcalendar', 14144815],
                 ['html-mf-hcard', 3802922422],
+                ['html-mf-hcalendar', 14144815],
                 ['html-mf-hlisting', 9896263],
-                ['html-mf-hrecipe', 1873395],
                 ['html-mf-hresume', 5681],
                 ['html-mf-hreview', 5014056],
                 ['html-mf-species', 161009],
-                ['html-mf-xfn', 55053767],
-                ['html-microdata', 6294453008],
-                ['html-rdfa', 321223153]
+                ['html-mf-hrecipe', 1873395],
+                ['html-mf-xfn', 55053767]
+
             ]);
 
             var options3 = {
@@ -125,7 +124,7 @@
                 ]
             };
 
-            var material3 = new google.visualization.PieChart(document.getElementById('d2020Entities'));
+            var material3 = new google.visualization.PieChart(document.getElementById('d2021Entities'));
             material3.draw(data2021Entities, options3);
         }
 
@@ -164,7 +163,7 @@
                 ]
             };
 
-            var material4 = new google.visualization.PieChart(document.getElementById('d2020Triples'));
+            var material4 = new google.visualization.PieChart(document.getElementById('d2021Triples'));
             material4.draw(data2021Triples, options4);
         }
     </script>
@@ -396,13 +395,13 @@
     </p>
 </div>
 <div>
-    <span id="d2020Plds" style="float:left;width:50%"></span>
-    <span id="d2020Urls" style="float:left;width:50%"></span>
+    <span id="d2021Plds" style="float:left;width:50%"></span>
+    <span id="d2021Urls" style="float:left;width:50%"></span>
 </div>
 <br/>
 <div>
-    <span id="d2020Entities" style="float:left"></span>
-    <span id="d2020Triples" style="float:left"></span>
+    <span id="d2021Entities" style="float:left"></span>
+    <span id="d2021Triples" style="float:left"></span>
 </div>
 <br/>
 
