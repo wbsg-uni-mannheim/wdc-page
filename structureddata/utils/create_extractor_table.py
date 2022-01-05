@@ -2,6 +2,9 @@ import gzip
 
 import click
 import logging
+
+import numpy as np
+
 from top_domains import generate_top_domain_rows
 import pandas as pd
 
@@ -51,50 +54,28 @@ def calc_statistics(row):
 
 
 def generate_top_classes_and_properties(extractor, dir_path, number_records, type_class_prop):
-    rows = {'entity': [], 'domain': []}
+
     # CONTINUE HERE --> no uniform paths
     file_path = '{}\\6_stats_per_format\\{}\\{}.stats'.format(dir_path, extractor, type_class_prop)
     try:
-        with open(file_path, 'r', encoding='utf-8') as file:
-            file.readline() # Skip header
-            counter = 0
-            while counter < number_records:
-                line_values = file.readline().split('\t')
-                type_class_prop = line_values[0]
-                if len(line_values) > 1:
-                    entity_count = line_values[1]
-                    entity_row = '<li>{}({:,} Entities)</li>'.format(type_class_prop, int(entity_count))
-                    rows['entity'].append(entity_row)
-
-                    domain_count = line_values[3]
-                    domain_row = '<li>{}({:,} Domains)</li>'.format(type_class_prop, int(domain_count.replace('\\n', '')))
-                    rows['domain'].append(domain_row)
-
-                    counter +=1
-                else:
-                    break
+        df_stats = pd.read_csv(file_path, encoding='utf-8', sep='\t', on_bad_lines='warn')
     except FileNotFoundError:
         file_path = '{}.gz'.format(file_path)
-        with gzip.open(file_path, 'rb') as file:
-            file.readline()  # Skip header
-            counter = 0
-            while counter < number_records:
-                line_values = file.readline().decode('utf-8').split('\t')
-                type_class_prop = line_values[0]
-                if len(line_values) > 1:
-                    entity_count = line_values[1]
-                    entity_row = '<li>{}({:,} Entities)</li>'.format(type_class_prop, int(entity_count))
-                    rows['entity'].append(entity_row)
+        df_stats = pd.read_csv(file_path, encoding='utf-8', sep='\t', compression='gzip', on_bad_lines='warn')
 
-                    domain_count = line_values[3]
-                    domain_row = '<li>{}({:,} Domains)</li>'.format(type_class_prop, int(domain_count.replace('\\n', '')))
-                    rows['domain'].append(domain_row)
+    def generate_rows(selector):
+        rows = []
+        df_sub_stats = df_stats.sort_values(by=['num{}'.format(selector)], ascending=False)[:number_records]
+        for index, row in df_sub_stats.iterrows():
+            entity_row = '<li>{} ({:,} {})</li>'.format(row[type_class_prop], round(row['num{}'.format(selector)]),
+                                                        selector)
+            rows.append(entity_row)
 
-                    counter += 1
-                else:
-                    break
+        return rows
 
-    return rows
+    new_rows = {'entity': generate_rows('Entities'), 'domain': generate_rows('Domains')}
+
+    return new_rows
 
 
 def generate_table(extractor, statistics, top_domains_by_triples, top_class, top_prop, typed_entities, extraction):
