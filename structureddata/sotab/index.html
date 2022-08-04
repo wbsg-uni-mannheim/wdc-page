@@ -249,17 +249,18 @@
 		<h1 style="font-size: 250%;"> Web Data Commons - Schema.org Table Annotation Benchmark </h1>
 	</div>
 	<div id="authors">
+    <a href="https://www.uni-mannheim.de/dws/people/researchers/phd-students/keti-korini/">Keti Korini</a><br>
 		<a href="https://www.uni-mannheim.de/dws/people/researchers/phd-students/ralph-peeters/">Ralph Peeters</a><br>
 		<a href="https://www.uni-mannheim.de/dws/people/professors/prof-dr-christian-bizer/">Christian Bizer</a><br />
-
 	</div>
 	<div id="content">
 		<p>
-			This page provides the ... for public download.
-	  The corpus consists of  ... </p>
+			This page provides the WDC Schema.org Table Annotation Benchmark (SOTAB) for public download. SOTAB constists of <b> 46,090 tables</b> for evaluating column type annotation tasks
+      and <b>43,150</b> tables for evaluating column pair annotation tasks. The tables are distributed across 17 Schema.org classes and originate from the <a href="http://webdatacommons.org/structureddata/schemaorgtables/">Schema.org Table Corpus</a>.
+	   </p>
 <h2 id="news">News</h2>
 		<ul>
-			<li><strong>2022-08:</strong> Initial version of the ... released.</li>
+			<li><strong>2022-08:</strong> Initial version of the WDC Schema.org Table Annotation Benchmark released.</li>
 		</ul>
 		<h2>Contents</h2>
 		<ul>
@@ -269,10 +270,12 @@
 			<li class="toc-h2 toc-active">
 				<a href="#toc2"> 2. Schema.org Table Corpus</a>
 				<ul>
-					<li><a href="#toc2.1"> 2.1 Datasets Creation</a>
+					<li>
+            <a href="#toc2.1"> 2.1. Datasets Creation</a>
 					</li>
-					<li><a href="#toc2.2"> 2.2 Datasets Profiling</a> </li>
-                                        <li><a href="#toc2.3"> 2.3 Annotation Approach</a> </li>
+          <li><a href="#toc2.3"> 2.2. Annotation Approach</a> </li>
+					<li><a href="#toc2.2"> 2.3. Datasets Profiling</a> </li>
+                                        
 				</ul>
 			</li>
 
@@ -280,20 +283,16 @@
 				<a href="#toc5"> 3. Challenges </a>
 			</li>
 
-                        <li class="toc-h2 toc-active">
-				<a href="#toc6"> 4. Gold Standard </a>
-			</li>
-
-                        <li class="toc-h2 toc-active">
-				<a href="#toc7"> 5. Baselines </a>
+      <li class="toc-h2 toc-active">
+				<a href="#toc7"> 4. Baselines </a>
 			</li>
 			
 			<li class="toc-h2 toc-active">
-				<a href="#toc3"> 6. Download </a>
+				<a href="#toc3"> 5. Download </a>
 			</li>
 			<li class="toc-h2 toc-active">
-				<a href="#toc4"> 7. References </a>
-			<li class="toc-h2 toc-active"><a href="#toc5">8. Other Table Corpora </a>
+				<a href="#toc4"> 6. References </a>
+			<li class="toc-h2 toc-active"><a href="#toc5">7. Other Table Corpora </a>
 			</li>
 		</ul>
 
@@ -304,55 +303,91 @@
 
 <h2>1. Introduction</h2>
 <p>
-        <a href="https://paperswithcode.com/task/table-annotation">Table annotation</a> is the task of annotating table columns and cells with semantic labels. It consists of five different tasks: column type annotation, column pair annotation, cell
-        entity annotation, row annotation and table type detection. Public datasets are needed to evaluate table annotation approaches. The aim of this work is to create and make
-        available datasets for benchmarking CTA and CPA models/systems using tables from the Schema.org Table Corpus.
+        <a href="https://paperswithcode.com/task/table-annotation">Table annotation</a> is the task of annotating table columns and cells with semantic labels. 
+        It consists of five different tasks: column type annotation, column pair annotation, cell
+        entity annotation, row annotation and table type detection. Understanding the semantics of table columns is beneficial for tasks such as data integration, schema matching, 
+        table interpretation or knowledge discovery [ref]. For instance, in schema matching problems these semantic annotations are used to find correspondences between 
+        the schema of different tables.
         <span id="toc2"></span>
+</p>
+
+<p>
+  To build and evaluate table annotation approaches, public datasets that offer training data that covers a large range of domains are needed. The aim of this work is to create 
+  and make available datasets for benchmarking two of the table annotation approaches: column type annotation (CTA) and column pair annotation (CPA). CTA is the task of annotating 
+  table columns with the type of entities present in the column, while CPA aims to annotate the relationship between the main column of a table (usually the leftmost) with another
+  column in the table. The datasets are build by using tables from the Schema.org Table Corpus.
 </p>
 
 <h2>2. Schema.org Table Corpus </h2>
 <p>
-        The original <a href="http://webdatacommons.org/structureddata/schemaorgtables/">Schema.org Table Corpus</a> (STC) used for the creation of this benchmark was created using schema.org data from the December 2020 version of the <a href="http://webdatacommons.org/structureddata/2020-12/stats/schema_org_subsets.html">Web Data Commons Microdata and JSON-LD corpus</a>. The STC consists of 4.2 million relational tables covering 43 schema.org classes.
-Each table in the STC contains the descriptions of all entities of a specific Schema.org class that were extracted for a specific host, e.g. movie records from imdb.com or product records from ebay.com or rakuten.co.jp. 
+        The original <a href="http://webdatacommons.org/structureddata/schemaorgtables/">Schema.org Table Corpus</a> used for the creation of this benchmark was created using schema.org data from the December 2020 version of the <a href="http://webdatacommons.org/structureddata/2020-12/stats/schema_org_subsets.html">Web Data Commons Microdata and JSON-LD corpus</a>. The Schema.org Table Corpus consists of 4.2 million relational tables covering 43 schema.org classes.
+Each table in the Schema.org Table Corpus contains the descriptions of all entities of a specific Schema.org class that were extracted for a specific host, e.g. movie records from imdb.com or product records from ebay.com or rakuten.co.jp. 
 All extracted entities of one Schema.org class are collected per host and subsequently passed through a pipeline consisting of three steps, (i) Attribute extraction, (ii) Removal of listing pages and sparse entities, and (iii) content-based deduplication. The result of the pipeline is the final Schema.org table for that specific host. 
 As the Attribute extraction step is the most relevant for the creation of this benchmark, it is explained in detail in the following: First, all Schema.org attributes and their values are extracted for each of the collected entities. If an attribute contains a sub-entity instead of a literal value, these are extracted as well and presented as a list in the final table. For the attributes of sub-entities only literal values are considered. The output of this first step are tables (one per host) containing all entities of the current class and their attributes down to the second attribute level, which are the base for the creation of the CPA and CTA benchmarks.
-Steps (ii) and (iii) of the STC creation pipeline deal with cleansing the created tables by removing sparse entities deriving from listing pages and general deduplication of exact matching rows in the final tables. Following the cleansing steps, only attributes with a density of at least 25% are retained per table. For more information about these steps and the general STC creation process, statistics files and download links, please visit the <a href="http://webdatacommons.org/structureddata/schemaorgtables/">STC website</a>. 
+Steps (ii) and (iii) of the Schema.org Table Corpus creation pipeline deal with cleansing the created tables by removing sparse entities deriving from listing pages and general deduplication of exact matching rows in the final tables. Following the cleansing steps, only attributes with a density of at least 25% are retained per table. For more information about these steps and the general Schema.org Table Corpus creation process, statistics files and download links, please visit the <a href="http://webdatacommons.org/structureddata/schemaorgtables/">Schema.org Table Corpus website</a>. 
   
 </p>
 
 
 <h3>2.1. Datasets Creation</h3>
 <p>
-        For the corpus only 17 more populated classes were selected. Kept only columns that have more than 50 columns in each class.
-        The tables were extended with the subproperties of certain columns. An example is below.
-</p>
-
-<p>(Example original table/expanded table->final table)</p>
-
-<p>
-        <b>(i) Language Detection: </b> phase filtering out non-english tables and non-english rows.
-            
+  For the creation of the datasets, the top100 and minimum3 sets of tables were considered and tables belonging to the 17 classes with the most columns and tables were selected. 
+  Afterwards, some steps were taken to select tables for CTA and CPA: 
+  (i) Language Detection, (ii) Filtering out the incorrect uses of Schema.org properties, (iii) Expansion of dictionary columns, (iv) Filtering based on number of columns. These steps
+  are explained more in detail below.
 </p>
 
 <p>
-        <b>(ii) Filtering out minimum of 10 rows and minimum of 3 columns</b>
-</p>
-<p>
-        <b>(iii) Filtering out columns that have an incorrect use of a schema.org property (checking properties under classes)</b>
+  <b>(i) Language Detection: </b> In this step, the purpose was to filter out tables and rows that were not in the English language. The fastText model was used for this. The <i>description</i> column
+  and <i>disambiguatingDescription</i> column were chosen to check the language of a table, as they are longer and contain more text that can indicate the language used. If a table did
+  not have one of these columns the concatenation of all other columns was used to determine the language. If the values were predicted to be in English with a confidence of at least 50%,
+  the tables were labeled as English tables, otherwise the rows are individually checked and, following the same rule, rows with an English confidence of more than 50% are kept while the
+  other rows are discraded.
 </p>
 
 <p>
-        <b>(iv) Expand columns </b> Columns that include dictionaries(objects) with properties are expanded into new columns and old column is removed. 
-        Properties are checked to be correctly used according to schema.org. 
-        Some column such as url, image, photo and video are removed and not expanded if they are dictionaries.
+  <b>(ii) Filtering out the incorrect uses of Schema.org properties: </b> As the original corpus was extracted by websites where the website owners annotate their content themselves,
+  some errors regarding the usage of Schema.org types and properties can occur. For this reason, the column names (which refer to schema.org properties) were checked for compliance to
+  the Schema.org vocabulary. All columns that were incorrectly used were discarded.
 </p>
-						
-			
+
+<p>
+  <b>(iii) Filtering out tables based on number of columns: </b> In this step, tables that had less than 10 rows and less than 3 columns were filtered out. Furthermore, to insure that
+  enough columns are available for each Schema.org property, columns that belonged to properties with less than 50 columns in total across each class were filtered out.
+</p>
+
+<p>
+  <b>(iv) Expansion of dictionary columns: </b> The original Schema.org Table Corpus tables include columns where the values are dictionaries describing entities which also have
+  sub-schema.org properties. These sub-properties of each row were divided and grouped together and they were again checked if they were correctly used according to the Schema.org vocabulary.
+  Finally, the correct sub-properties were expanded into new columns in the table. The old columns containing these entities were removed. Some exceptions from the expansion step include
+  columns such as <i>image</i>, <i>url</i>, <i>photo</i> and <i>video</i>.
+  An example of an original table and its expanded table is shown in <i>Figure 1</i>.
+</p>
+
+<p>(IMAGE: Example original table/expanded table->final table)</p>
+
+<p>
+  <b>(v) Including challenging columns: </b> In the selection phase of the tables, columns that were missing some row values, columns that are similar or dissimilar and could be challenging to
+  make a decision on and columns that had different value formats were found and added to the final selection of the tables.
+</p>
+
 <span id="toc2.2"></span>
-<h3>2.2 Corpus Profiling</h3>
+<h3>2.2. Annotation Approach</h3>
 <p>
-        The ... consists of <b> 46,090 tables</b> distributed across 17 schema.org classes. No metadata is included in the tables (no table headers, no table caption)
-    <em>Table 1</em> gives an overview of the number of tables per class for cta and cpa problems.
+  To annotate the columns from the final selected tables for CTA and CPA Schema.org vocabulary was used. Column pairs in the CPA problem were annotated using Schema.org properties. In the
+  CTA task columns were annotated using Schema.org types. These types were derived from the expected types of a Schema.org property value. If the case where the expected type of a column
+  can be multiple, one was chosen based on the values of the column. If a decision could not be made, the most general type of the multiple types was used.
+</p> 
+
+ 
+			
+<span id="toc2.3"></span>
+<h3>2.3. Corpus Profiling</h3>
+<p>
+  The SOTAB consists of <b> 46,090 tables</b> for CPA and <b>43,150</b> tables for CTA, distributed across 17 schema.org classes. The tables do not include any metadata, i.e. no table headers 
+  and no table captions are available. Fixed training, validation and testing splits are provided.
+        
+<em>Table 1</em> gives an overview of the number of tables per class and their median columns for CTA and CPA and for each of their splits.
 </p> 
 			 
 
@@ -762,224 +797,250 @@ Steps (ii) and (iii) of the STC creation pipeline deal with cleansing the create
 </tbody>
 </table></div>
 
-<h2></h2>
-<span id="toc2.3"></span>
-<h3 style="clear:both">2.3 Annotation Approach </h3><br>
-
-class to properties to expected types (fallback types when multiple types and can not decide which one based on the original column value)
+<p>
+  The CTA datasets include 94 different labels where 4 are new types and 17 are class+name. The CPA datasets include 181 different labels. In <i>Table 2</i> the top 5 
+  CPA and CTA labels with the most columns in the sets are shown.
+</p>
 
 <p>
+
+  (TABLE)
+  (+++ How to find annotations in files)
 
 </p>
 
 <span id="toc6"></span>
-<h2>3. Challenges</h2>
+<h2>3. Challenges Subsets</h2>
 
 <p>
-        There are some subdatasets available for evaluating on some different challenging tasks. These are: ++ statistics (how many cols/tables for each challenge)
+  Alongside the training, validation and testing sets for both table annotation problems, some subsets of the testing set are made available. These include the missing values subset,
+  the corner cases subset, the value heterogeneity subset and the random subset. Each corresponds to the four selection types of columns that were used to form the full testing set.
+  The purpose of these subsets would be to evaluate separately how a model performs on different types of challenging columns and on the randomly selected columns.
         
-        
-         
-        
 </p>
 
 <p>
-        <b>(i) Missing values:</b> This subdataset includes columns from columns that have a density between 10 and 70 % of values filled. (In the CTA problem this includes xx properties
-        and in the CPA one it includes xx properties.)
+  <b>(i) Missing values:</b> This subset includes columns that have a density between 10 and 70 percent, i.e. 10-70 percent of their rows are filled with values. For the CPA problem 3,572
+  column pairs annotated with 125 CPA labels and for CTA 3,073 columns annotated with 64 CTA labels.
 </p>
 
 <p>
-        <b>(ii) Value heterogeneity:</b> This includes columns that fall under the same label and include values with different formats. Some examples are different date formats,
-        different weight and width measurements. CPA Selected columns: duration, height, weight, width, date labels, price, priceRange, telephone, faxNumber, servingSize, size, salary
-
-        CTA Selected columns: duration, height, weight, width, date/time labels, price, priceRange, telephone, faxNumber
-
+  <b>(ii) Value heterogeneity:</b> This subset includes columns that have the same label but their values are expressed in different formats. The CPA columns that are selected for this
+  challenge are the different date columns, duration, height, weight, width, price, telephone, faxNumber, servingSize, size and salary. There are in total 2,141 columns for CPA in this
+  subset annotated with 30 different CPA labels.
+  For CTA, the selected columns are duration, height, weight, width, Date, DateTime, Time, price, priceRange, telephone and faxNumber. The CTA columns are in total 958 and are annotated with
+  10 CTA labels.
 </p>
 
 <p>
-        <b>(iii) Corner Cases:</b> Corner cases are difficult cases where columns that fall under the same label are dissimilar and the ones that have different labels are similar. Inter
-        and intra column similarity/dissimilarity included.
-
+  <b>(iii) Corner Cases:</b> This subset includes columns that are considered to be corner cases. For the CPA and CTA problems corner cases are columns that are annotated with the same
+  semantic label but their values are dissimilar or columns that are annotated with different semantic labels but their values are very similar. There are 3,510 corner cases included in the
+  CPA corner cases subset which are annotated with 106 different CPA labels, while in the CTA subset there are 5,142 corner case columns annotated with 70 different CTA labels.
 </p>
 
 <p>
-        <b>(iv) Random Selection: </b> Randomly selected columns for each label of each task.
-
+  <b>(iv) Random Selection: </b> This subset includes randomly selected columns for each label of each task. In total there are 12,664 randomly selected columns for CTA and 15,758 randomly
+  selected columns in the CPA subset.
 </p>
+
+<p>
+  In each subset and for each label included there is a minimum of 10 examples. A summary of all statistics for each subset is shown in <i>Table 3</i>.
+</p>
+
+<p>(TABLE)</p>
 
 
 <span id="toc6"></span>
-<h2>4. Gold Standard</h2>
+<h2>4. Baselines</h2>
 
 <p>
-        181 labels for CPA and 94 labels for CTA where 4 are created types + 17 class/name.    
-        Top 5 or 10 of labels per problem (with the most columns?).  
-        (+++ How to find annotations in files)
+  To evaluate the created sets some baseline experiments were ran. The first baseline method is a non-deep learning method that uses TF-IDF to create features based on the column values
+  and uses a Random Forest classifier to make predictions. The second baseline is a deep learning method called TURL [ref] which uses a Transformer-based architecture and is 
+  pre-trained on relational tables using TinyBERT. For the experiments the micro-F1 score is used to report the results of each baseline method. The results are summarized in <i>Table 4</i>.
 </p>
 
-<span id="toc6"></span>
-<h2>5. Baselines</h2>
-
-<p>Results for the baselines:</p>
 
 <p>
-<table id="tg-BNPY5" class="tg">
-  <caption>Table 2. Baseline Results on Random Forest and TURL for different splits</caption>
-<thead>
-  <tr>
-        <th></th>
+  <table id="tg-BNPY5" class="tg">
+    <caption>Table 4. Baseline Results on Random Forest and TURL for different splits</caption>
+    <thead>
+      <tr>
+            <th></th>
 
-    <th class="tg-mkpc" colspan="5">Column Type Annotation</th>
-    <th class="tg-ixdq" colspan="5">Column Pair Annotation</th>
-  </tr>
-</thead>
-<tbody>
-  <tr>
-        <td>Method</td>
-        <td>Missing Values</td>
-        <td>Value Heterogeneity</td>
-        <td>Corner Cases</td>
-        <td>Random Selection</td>
-        <td>Full Set</td>
+        <th class="tg-mkpc" colspan="5">Column Type Annotation</th>
+        <th class="tg-ixdq" colspan="5">Column Pair Annotation</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+            <td>Method</td>
+            <td>Missing Values</td>
+            <td>Value Heterogeneity</td>
+            <td>Corner Cases</td>
+            <td>Random Selection</td>
+            <td>Full Set</td>
 
-        <td>Missing Values</td>
-        <td>Value Heterogeneity</td>
-        <td>Corner Cases</td>
-        <td>Random Selection</td>
-        <td>Full Set</td>
+            <td>Missing Values</td>
+            <td>Value Heterogeneity</td>
+            <td>Corner Cases</td>
+            <td>Random Selection</td>
+            <td>Full Set</td>
 
-  </tr>
-  <tr>
-    <td class="tg-d459">Random Forest <br/> TF-IDF </td>
-    <td>0.65</td>
-    <td>0.63</td>
-    <td>0.56</td>
-    <td>0.58</td>
-    <td>0.58</td>
+      </tr>
+      <tr>
+        <td class="tg-d459">Random Forest <br/> TF-IDF </td>
+        <td>0.65</td>
+        <td>0.63</td>
+        <td>0.56</td>
+        <td>0.58</td>
+        <td>0.58</td>
 
-    <td>0.46</td>
-    <td>0.58</td>
-    <td>0.45</td>
-    <td>0.47</td>
-    <td>0.47</td>
-  </tr>
-  <tr>
-    <td class="tg-lboi">TURL</td>
-    <td>0.64</td>
-    <td>0.81</td>
-    <td>0.64</td>
-    <td>0.72</td>
-    <td>0.76</td>
+        <td>0.46</td>
+        <td>0.58</td>
+        <td>0.45</td>
+        <td>0.47</td>
+        <td>0.47</td>
+      </tr>
+      <tr>
+        <td class="tg-lboi">TURL</td>
+        <td>0.64</td>
+        <td>0.81</td>
+        <td>0.64</td>
+        <td>0.72</td>
+        <td>0.76</td>
 
-    <td>0.64</td>
-    <td>0.74</td>
-    <td>0.58</td>
-    <td>0.68</td>
-    <td>0.69</td>
-  </tr>
-</tbody>
-</table>
+        <td>0.64</td>
+        <td>0.74</td>
+        <td>0.58</td>
+        <td>0.68</td>
+        <td>0.69</td>
+      </tr>
+    </tbody>
+  </table>
 </p>
+
 <p>
-
-        <table>
-
-                <caption>Table 3. Top 5 best f1 scores for labels in CTA and CPA</caption>
-<thead>
-  <tr>
-        <th></th>
-
-    <th class="tg-mkpc">CPA</th>
-  </tr>
+  The top 5 labels that reached the highest score and the top 5 labels that reached the lowest score for both CPA and CTA tasks are listed in <i>Table 5</i>.
+</p>
 
 
-</thead>
-<tbody>
-        <tr>
-                <td>Label</td>
-                <td>Overall F1</td>
-                </tr>
+<p>
+  <table>
+  <caption>Table 5. Top 5 best f1 scores for labels in CTA and CPA</caption>
+  <thead>
+    <tr>
+      <th></th>
+      <th class="tg-mkpc">CPA</th>
+      <th class="tg-mkpc"></th>
+      <th class="tg-mkpc">CTA</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Label</td>
+      <td>Overall F1</td>
+      <td>Label</td>
+      <td>Overall F1</td>
+    </tr>
 
-        <tr>
-                <td>eventAttendanceMode</td>
-                <td>1</td>
-                
-                
-                
-                
-                
-                
-                </tr>
-        <tr>
-                <td>makesOffer</td>
-                <td>0.98</td>
-                
-                
-                </tr>
-        <tr><td>eventStatus</td>
-                <td>0.96</td>
-                </tr>
+    <tr>
+      <td colspan="4">Top 5 Best scores</td>
+    </tr>
 
-                <tr><td>hasMenu</td>
-                        <td>0.96</td>
-                        </tr>
+    <tr>
+      <td>eventAttendanceMode</td>
+      <td>100</td>
+      <td>EventAttendanceModeEnumeration</td>     
+      <td>97.49</td>     
+    </tr>
 
-                <tr><td>knowsLanguage</td>
-                        <td>0.95</td>
-                        </tr>
-
-        <tr>
-                <td>seasonNumber</td>
-                <td>0</td>
-                </tr>
-
-                <tr>
-                <td>countryOfOrigin</td>
-                <td>0</td>
-                </tr>
-                <tr>
-                <td>exampleOfWork</td>
-                <td>0</td>
-                </tr>
-                <tr>
-                <td>alternateName</td>
-                <td>0</td>
-                </tr>
-                <tr>
-                <td>datePosted</td>
-                <td>0</td>
-                </tr>
-
+    <tr>
+      <td>makesOffer</td>
+      <td>98</td>
+      <td>ItemAvailability</td>     
+      <td>97</td>
+    </tr>
         
-        
-        
-        
-        </tbody>
-                
-                
-                
-                </table>
+    <tr>
+      <td>eventStatus</td>
+      <td>96</td>
+      <td>OfferItemCondition</td>     
+      <td>96.76</td>
+    </tr>
 
-        (+++ results from top5/bottom 5 results of props for each task)
-       
+    <tr>
+      <td>hasMenu</td>
+      <td>96</td>
+      <td>WarrantyPromise</td>     
+      <td>96.40</td>
+    </tr>
+
+    <tr>
+      <td>knowsLanguage</td>
+      <td>95</td>
+      <td>Action</td>     
+      <td>96.36</td>
+    </tr>
+
+    <tr>
+      <td colspan="4">Top 5 Worst scores</td>
+    </tr>
+
+    <tr>
+      <td>seasonNumber</td>
+      <td>0</td>
+      <td>identifierNameAP</td>     
+      <td>26.61</td>
+    </tr>
+
+    <tr>
+      <td>countryOfOrigin</td>
+      <td>0</td>
+      <td>AggregateRating</td>     
+      <td>26.19</td>
+    </tr>
+      
+    <tr>
+      <td>exampleOfWork</td>
+      <td>0</td>
+      <td>CreativeWork/name</td>     
+      <td>23.53</td>
+    </tr>
+
+    <tr>
+      <td>alternateName</td>
+      <td>0</td>
+      <td>CreativeWorkSeries</td>     
+      <td>19.51</td>
+    </tr>
+
+    <tr>
+      <td>datePosted</td>
+      <td>0</td>
+      <td>MusicGroup</td>     
+      <td>17.65</td>
+    </tr>
+
+  </tbody>              
+  </table>   
 </p>
 
 
 <span id="toc3"></span>
-<h2>6. Download</h2>
+<h2>5. Download</h2>
 			
         <p>The code used for the creation of the corpus will be put in github</a>.</p>
 			<p>
 
 				<span id="toc4"></span>
-				<h2>			    7. Feedback</h2>
+				<h2>			    6. Feedback</h2>
 				<p>Please send questions and feedback to the <a
 						href="http://groups.google.com/group/web-data-commons">Web Data
 						Commons Google Group</a>.<br /><br />
 					More information about the <strong>Web Data Commons</strong> project is found <a href="http://webdatacommons.org/">here</a>.</p>
 
 				<span id="toc5"></span>
-				<h2>8. Other Table Corpora</h2>
+				<h2>7. Other Table Corpora</h2>
 				<p>Links to other publicly accessible table corpora are found below:</p>
 				
 				<p>&nbsp;</p>
