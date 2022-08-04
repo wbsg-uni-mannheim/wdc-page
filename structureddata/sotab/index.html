@@ -255,9 +255,9 @@
 	</div>
 	<div id="content">
 		<p>
-			This page provides the WDC Schema.org Table Annotation Benchmark (SOTAB) for public download. SOTAB constists of <b> 46,090 tables</b> for evaluating column type annotation tasks
-      and <b>43,150</b> tables for evaluating column pair annotation tasks. The tables are distributed across 17 Schema.org classes and originate from the <a href="http://webdatacommons.org/structureddata/schemaorgtables/">Schema.org Table Corpus</a>.
-	   </p>
+			This page provides the WDC Schema.org <a href="https://paperswithcode.com/task/table-annotation">Table Annotation</a> Benchmark (SOTAB) for public download. SOTAB features two tasks: The goal of the <a href="https://paperswithcode.com/task/column-type-annotation">Column Type Annotation (CTA)</a> task is to annotate the columns of a table with 94 <a href="https://schema.org/">Schema.org</a> types, such as telephone, duration, Place, or Organization. The goal of the <a href="https://paperswithcode.com/task/columns-property-annotation">Columns Property Annotation (CPA)</a> task is to annotate pairs of table columns with one out of 181 <a href="https://schema.org/">Schema.org</a> properties such gtin13, startDate, priceValidUntil, or recipeIngredient. 
+			The benchmark consists of 46,090 tables with are split into training-, validation- and test sets for both tasks. The tables cover 17 popular Schema.org classes such as Product, LocalBusiness, Event, or JobPosting and originate from the <a href="http://webdatacommons.org/structureddata/schemaorgtables/">Schema.org Table Corpus</a>.
+	       </p>
 <h2 id="news">News</h2>
 		<ul>
 			<li><strong>2022-08:</strong> Initial version of the WDC Schema.org Table Annotation Benchmark released.</li>
@@ -303,19 +303,17 @@
 
 <h2>1. Introduction</h2>
 <p>
-        <a href="https://paperswithcode.com/task/table-annotation">Table annotation</a> is the task of annotating table columns and cells with semantic labels. 
-        It consists of five different tasks: column type annotation, column pair annotation, cell
-        entity annotation, row annotation and table type detection. Understanding the semantics of table columns is beneficial for tasks such as data integration, schema matching, 
-        table interpretation or knowledge discovery [ref]. For instance, in schema matching problems these semantic annotations are used to find correspondences between 
-        the schema of different tables.
+        <a href="https://paperswithcode.com/task/table-annotation">Table annotation</a> is the task of annotating a table with terms/concepts from knowledge graph, database schema or other vocabulary. 
+        Table annotation consists of five different tasks: column type annotation (CTA), columns property annotation (CPA), cell
+        entity annotation (CEA), row annotation, and table type detection. Understanding the semantics of table elements is beneficial for tasks such as data discovery and data integration [ref]. Table annotation has attracted <a href="https://paperswithcode.com/task/table-annotation">quite some attention in the research community</a> in recent years and there are active benchmarking campaigns on table annotation, such as <a href="https://www.cs.ox.ac.uk/isg/challenges/sem-tab/">SemTab</a>. 
         <span id="toc2"></span>
 </p>
 
 <p>
-  To build and evaluate table annotation approaches, public datasets that offer training data that covers a large range of domains are needed. The aim of this work is to create 
-  and make available datasets for benchmarking two of the table annotation approaches: column type annotation (CTA) and column pair annotation (CPA). CTA is the task of annotating 
+  In order to compare the performance of table annotation methods, banchmark datasets covering a wide range of topics are needed. The aim of this work is to create 
+  and make available datasets for benchmarking two of the table annotation tasks: column type annotation (CTA) and column pair annotation (CPA). CTA is the task of annotating 
   table columns with the type of entities present in the column, while CPA aims to annotate the relationship between the main column of a table (usually the leftmost) with another
-  column in the table. The datasets are build by using tables from the Schema.org Table Corpus.
+  column in the table. The datasets are build by using tables from the <a href="http://webdatacommons.org/structureddata/schemaorgtables/">Schema.org Table Corpus</a>.
 </p>
 
 <h2>2. Schema.org Table Corpus </h2>
