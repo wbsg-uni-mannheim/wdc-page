@@ -269,30 +269,35 @@
 			</li>
 			<li class="toc-h2 toc-active">
 				<a href="#toc2"> 2. Schema.org Table Corpus</a>
-				<ul>
-					<li>
-            <a href="#toc2.1"> 2.1. Datasets Creation</a>
-					</li>
-          <li><a href="#toc2.3"> 2.2. Annotation Approach</a> </li>
-					<li><a href="#toc2.2"> 2.3. Datasets Profiling</a> </li>
-                                        
-				</ul>
-			</li>
-
-                        <li class="toc-h2 toc-active">
-				<a href="#toc5"> 3. Challenges </a>
 			</li>
 
       <li class="toc-h2 toc-active">
-				<a href="#toc7"> 4. Baselines </a>
+				<a href="#toc5"> 3. Label Sets for the CTA and CPA Task </a>
+			</li>
+
+      <li class="toc-h2 toc-active">
+				<a href="#toc7"> 4. Table Selection </a>
+			</li>
+
+      <li class="toc-h2 toc-active">
+				<a href="#toc3"> 5. Dataset Profiling </a>
+			</li>
+
+      <li class="toc-h2 toc-active">
+				<a href="#toc3"> 6. Testsets for Specific Challenges </a>
+			</li>
+
+      <li class="toc-h2 toc-active">
+				<a href="#toc3"> 7. Baselines </a>
 			</li>
 			
 			<li class="toc-h2 toc-active">
-				<a href="#toc3"> 5. Download </a>
+				<a href="#toc3"> 8. Download </a>
 			</li>
 			<li class="toc-h2 toc-active">
-				<a href="#toc4"> 6. References </a>
-			<li class="toc-h2 toc-active"><a href="#toc5">7. Other Table Corpora </a>
+				<a href="#toc4"> 9. References </a>
+			<li class="toc-h2 toc-active">
+        <a href="#toc5"> 10. Other Table Annotation Benchmarks </a>
 			</li>
 		</ul>
 
@@ -310,7 +315,7 @@
 </p>
 
 <p>
-  In order to compare the performance of table annotation methods, banchmark datasets covering a wide range of topics are needed. The aim of this work is to create 
+  In order to compare the performance of table annotation methods, benchmark datasets covering a wide range of topics are needed. The aim of this work is to create 
   and make available datasets for benchmarking two of the table annotation tasks: column type annotation (CTA) and column pair annotation (CPA). CTA is the task of annotating 
   table columns with the type of entities present in the column, while CPA aims to annotate the relationship between the main column of a table (usually the leftmost) with another
   column in the table. The datasets are build by using tables from the <a href="http://webdatacommons.org/structureddata/schemaorgtables/">Schema.org Table Corpus</a>.
@@ -326,8 +331,30 @@ Steps (ii) and (iii) of the Schema.org Table Corpus creation pipeline deal with 
   
 </p>
 
+<span id="toc2.2"></span>
+<h3> 3. Label Sets for the CTA and CPA Task</h3>
 
-<h3>2.1. Datasets Creation</h3>
+<p>
+  To annotate the columns from the final selected tables for CTA and CPA Schema.org vocabulary was used. Column pairs in the CPA problem were annotated using Schema.org properties. In the
+  CTA task columns were annotated using Schema.org types. These types were derived from the expected types of a Schema.org property value. The final label set for CTA is 94 types and properties,
+  while the final label set for CPA is 181 properties. In the table below some column names and their CPA label and CTA label are shown.
+</p>
+
+<p>
+  <table>
+    <caption></caption>
+    <thead>
+      <td>Class</td>
+      <td>CPA label</td>
+      <td>CTA label</td>
+    </thead>
+    <tbody>
+    </tbody>
+  </table>
+</p>
+
+
+<h3> 4. Table Selection </h3>
 <p>
   For the creation of the datasets, the top100 and minimum3 sets of tables were considered and tables belonging to the 17 classes with the most columns and tables were selected. 
   Afterwards, some steps were taken to select tables for CTA and CPA: 
@@ -344,43 +371,20 @@ Steps (ii) and (iii) of the Schema.org Table Corpus creation pipeline deal with 
 </p>
 
 <p>
-  <b>(ii) Filtering out the incorrect uses of Schema.org properties: </b> As the original corpus was extracted by websites where the website owners annotate their content themselves,
-  some errors regarding the usage of Schema.org types and properties can occur. For this reason, the column names (which refer to schema.org properties) were checked for compliance to
-  the Schema.org vocabulary. All columns that were incorrectly used were discarded.
-</p>
-
-<p>
-  <b>(iii) Filtering out tables based on number of columns: </b> In this step, tables that had less than 10 rows and less than 3 columns were filtered out. Furthermore, to insure that
+  <b>(ii) Filtering out tables based on number of columns: </b> In this step, tables that had less than 10 rows and less than 3 columns were filtered out. Furthermore, to insure that
   enough columns are available for each Schema.org property, columns that belonged to properties with less than 50 columns in total across each class were filtered out.
 </p>
 
-<p>
-  <b>(iv) Expansion of dictionary columns: </b> The original Schema.org Table Corpus tables include columns where the values are dictionaries describing entities which also have
-  sub-schema.org properties. These sub-properties of each row were divided and grouped together and they were again checked if they were correctly used according to the Schema.org vocabulary.
-  Finally, the correct sub-properties were expanded into new columns in the table. The old columns containing these entities were removed. Some exceptions from the expansion step include
-  columns such as <i>image</i>, <i>url</i>, <i>photo</i> and <i>video</i>.
-  An example of an original table and its expanded table is shown in <i>Figure 1</i>.
-</p>
-
-<p>(IMAGE: Example original table/expanded table->final table)</p>
+<p>(IMAGE: interesting table)</p>
 
 <p>
-  <b>(v) Including challenging columns: </b> In the selection phase of the tables, columns that were missing some row values, columns that are similar or dissimilar and could be challenging to
+  <b>(iii) Including challenging columns: </b> In the selection phase of the tables, columns that were missing some row values, columns that are similar or dissimilar and could be challenging to
   make a decision on and columns that had different value formats were found and added to the final selection of the tables.
 </p>
 
-<span id="toc2.2"></span>
-<h3>2.2. Annotation Approach</h3>
-<p>
-  To annotate the columns from the final selected tables for CTA and CPA Schema.org vocabulary was used. Column pairs in the CPA problem were annotated using Schema.org properties. In the
-  CTA task columns were annotated using Schema.org types. These types were derived from the expected types of a Schema.org property value. If the case where the expected type of a column
-  can be multiple, one was chosen based on the values of the column. If a decision could not be made, the most general type of the multiple types was used.
-</p> 
 
- 
-			
 <span id="toc2.3"></span>
-<h3>2.3. Corpus Profiling</h3>
+<h3> 5. Dataset Profiling</h3>
 <p>
   The SOTAB consists of <b> 46,090 tables</b> for CPA and <b>43,150</b> tables for CTA, distributed across 17 schema.org classes. The tables do not include any metadata, i.e. no table headers 
   and no table captions are available. Fixed training, validation and testing splits are provided.
@@ -388,8 +392,6 @@ Steps (ii) and (iii) of the Schema.org Table Corpus creation pipeline deal with 
 <em>Table 1</em> gives an overview of the number of tables per class and their median columns for CTA and CPA and for each of their splits.
 </p> 
 			 
-
-
 <div class="tg-wrap"><table id="tg-tKOYO" class="tg">
 <caption>Table 1: Number of tables, rows and median rows per table for CPA and CTA tables</caption>
 <thead>
@@ -796,30 +798,25 @@ Steps (ii) and (iii) of the Schema.org Table Corpus creation pipeline deal with 
 </table></div>
 
 <p>
-  The CTA datasets include 94 different labels where 4 are new types and 17 are class+name. The CPA datasets include 181 different labels. In <i>Table 2</i> the top 5 
-  CPA and CTA labels with the most columns in the sets are shown.
-</p>
-
-<p>
-
   (TABLE)
   (+++ How to find annotations in files)
-
 </p>
 
 <span id="toc6"></span>
-<h2>3. Challenges Subsets</h2>
+<h2> 6. Testsets for Specific Challenges </h2>
 
 <p>
-  Alongside the training, validation and testing sets for both table annotation problems, some subsets of the testing set are made available. These include the missing values subset,
-  the corner cases subset, the value heterogeneity subset and the random subset. Each corresponds to the four selection types of columns that were used to form the full testing set.
-  The purpose of these subsets would be to evaluate separately how a model performs on different types of challenging columns and on the randomly selected columns.
-        
+  In addition to the full test sets for both tasks, we provide specialized test sets that measure how good the systems under test can handle specific annotation challenges. 
+  We provide specialized test sets for the following challenges: These include the missing values subset,
+  the corner cases subset, the value heterogeneity subset and the random subset. Each corresponds to the four selection types of columns that were used to form the full testing set and 
+  all of them are included in the full test set.        
 </p>
 
 <p>
-  <b>(i) Missing values:</b> This subset includes columns that have a density between 10 and 70 percent, i.e. 10-70 percent of their rows are filled with values. For the CPA problem 3,572
-  column pairs annotated with 125 CPA labels and for CTA 3,073 columns annotated with 64 CTA labels.
+  <b>(i) Missing values:</b> It is difficult for table annotation systems to correctly annotate columns in which many values are missing. 
+  In order to measure the annotation performance on such columns, we provide a test set that only contains columns that have a density between 10 and 70 percent, i.e. 10-70 percent of their rows are filled with values. 
+  For the CPA problem we included 3,572
+  column pairs annotated with 125 CPA labels and for CTA 3,073 columns annotated with 64 CTA labels in this testset.
 </p>
 
 <p>
@@ -849,7 +846,7 @@ Steps (ii) and (iii) of the Schema.org Table Corpus creation pipeline deal with 
 
 
 <span id="toc6"></span>
-<h2>4. Baselines</h2>
+<h2> 7. Baselines</h2>
 
 <p>
   To evaluate the created sets some baseline experiments were ran. The first baseline method is a non-deep learning method that uses TF-IDF to create features based on the column values
@@ -1025,21 +1022,24 @@ Steps (ii) and (iii) of the Schema.org Table Corpus creation pipeline deal with 
 
 
 <span id="toc3"></span>
-<h2>5. Download</h2>
+<h2> 8. Download</h2>
 			
         <p>The code used for the creation of the corpus will be put in github</a>.</p>
 			<p>
 
 				<span id="toc4"></span>
-				<h2>			    6. Feedback</h2>
+				<h2>			    9. Feedback</h2>
 				<p>Please send questions and feedback to the <a
 						href="http://groups.google.com/group/web-data-commons">Web Data
 						Commons Google Group</a>.<br /><br />
 					More information about the <strong>Web Data Commons</strong> project is found <a href="http://webdatacommons.org/">here</a>.</p>
 
 				<span id="toc5"></span>
-				<h2>7. Other Table Corpora</h2>
-				<p>Links to other publicly accessible table corpora are found below:</p>
+				<h2> 10. Other Table Annotation Benchmarks </h2>
+				<p>There exist several other benchmark datasets for the CTA and CPA task. An overview of current results on these datasets is given at Papers with Code column-type-annotation and columns-property-annotation ....
+            The two benchmarks that are most closely related to SOTAB are GitTables-SemTab and Wikitables.
+            
+        </p>
 				
 				<p>&nbsp;</p>
 
