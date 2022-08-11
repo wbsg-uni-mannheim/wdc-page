@@ -2,7 +2,7 @@
 <html>
 
 <head>
-	<title>WDC Schema.org Table Annotation Benchmark</title>
+	<title>The WDC Schema.org Table Annotation Benchmark</title>
 	<link rel='stylesheet' href='http://webdatacommons.org/style.css' type='text/css' media='screen' />
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<style>
@@ -1024,9 +1024,78 @@ Steps (ii) and (iii) of the Schema.org Table Corpus creation pipeline deal with 
 <span id="toc3"></span>
 <h2> 8. Download</h2>
 			
-        <p>The code used for the creation of the corpus will be put in github</a>.</p>
+        <p>We offer the WDC SOTAB benchmark for public download. In the table below you will find download links for training, validation and testing splits for both tasks, CPA and CTA. Each zip file contains a folder with the tables
+		as well as a csv file containing the label annotations for each table. This file consists of three columns, (i) table name, (ii) column position in the table and (iii) associated CPA/CTA label for this column.
+		
+		For both types of files we also offer a small sample file as an example and quick reference on their structure.</p>
+		
+		The tables are represented using the JSON format and can for example be easily processed using the <a href="https://pandas.pydata.org/">pandas</a> Python library.<br><br>
+			<code>import pandas as pd<br>
+						df = pd.read_json('table_name.json.gz', compression='gzip', lines=True)
+				</code>
+				<p>
+		</p>
 			<p>
+<table>
+					<tbody>
+						<tr>
+							<td><b>Task</b></td>
+							<td><b>Training Set</b></td>
+							<td><b>Size</b></td>
+							<td><b>Validation Set</b></td>
+							<td><b>Size</b></td>
+							<td><b>Test Set</b></td>
+							<td><b>Size</b></td>
+							<td><b>Table file sample</b></td>
+							<td><b>Label file sample</b></td>
+						</tr>
 
+
+
+						<tr>
+							<td>Column Property Annotation (CPA)</td>
+							<td><a
+									href="http://data.dws.informatik.uni-mannheim.de/structureddata/sotab/CPA_Training.zip">CPA_Training.zip</a>
+								</td>
+							<td>1.2GB</td>
+							<td><a
+									href="http://data.dws.informatik.uni-mannheim.de/structureddata/sotab/CPA_Validation.zip">CPA_Validation.zip</a>
+							</td>
+							<td>200MB</td>
+							<td><a
+									href="http://data.dws.informatik.uni-mannheim.de/structureddata/sotab/CPA_Testing.zip">CPA_Testing.zip</a>
+								</td>
+							<td>335MB</td>
+							<td><a
+									href="#">CPA_sample_table</a>
+							</td>
+							<td><a
+									href="#">CPA_sample_labels</a>
+							</td>
+						</tr>
+						<tr>
+    <td>Column Type Annotation (CTA)</td>
+    <td><a
+            href="http://data.dws.informatik.uni-mannheim.de/structureddata/sotab/CTA_Training.zip">CTA_Training.zip</a>
+        </td>
+	<td>1.2GB</td>
+    <td><a
+            href="http://data.dws.informatik.uni-mannheim.de/structureddata/sotab/CTA_Validation.zip">CTA_Validation.zip</a>
+    </td>
+	<td>170MB</td>
+    <td><a
+            href="http://data.dws.informatik.uni-mannheim.de/structureddata/sotab/CTA_Testing.zip">CTA_Testing.zip</a>
+        </td>
+	<td>300MB</td>
+    <td><a
+            href="#">CTA_sample_table</a>
+    </td>
+    <td><a
+            href="#">CTA_sample_labels</a>
+    </td>
+</tr>
+					</tbody>
+				</table>
 				<span id="toc4"></span>
 				<h2>			    9. Feedback</h2>
 				<p>Please send questions and feedback to the <a
