@@ -255,9 +255,13 @@
 	</div>
 	<div id="content">
 		<p>
-			This page provides the WDC Schema.org <a href="https://paperswithcode.com/task/table-annotation">Table Annotation</a> Benchmark (SOTAB) for public download. SOTAB features two tasks: The goal of the <a href="https://paperswithcode.com/task/column-type-annotation">Column Type Annotation (CTA)</a> task is to annotate the columns of a table with 94 <a href="https://schema.org/">Schema.org</a> types, such as telephone, duration, Place, or Organization. The goal of the <a href="https://paperswithcode.com/task/columns-property-annotation">Columns Property Annotation (CPA)</a> task is to annotate pairs of table columns with one out of 181 <a href="https://schema.org/">Schema.org</a> properties such gtin13, startDate, priceValidUntil, or recipeIngredient. 
-			The benchmark consists of 46,090 tables with are split into training-, validation- and test sets for both tasks. The tables cover 17 popular Schema.org classes such as Product, LocalBusiness, Event, or JobPosting and originate from the <a href="http://webdatacommons.org/structureddata/schemaorgtables/">Schema.org Table Corpus</a>.
-	       </p>
+			This page provides the <b>WDC Schema.org <a href="https://paperswithcode.com/task/table-annotation">Table Annotation</a> Benchmark</b> (SOTAB) for public download. SOTAB features two tasks: Column Type Annotation and 
+      Columns Property Annotation. The goal of the <a href="https://paperswithcode.com/task/column-type-annotation">Column Type Annotation (CTA)</a> task is to annotate the columns of a table with 93 
+      <a href="https://schema.org/">Schema.org</a> types, such as telephone, duration, Place, or Organization. The goal of the <a href="https://paperswithcode.com/task/columns-property-annotation">Columns Property 
+      Annotation (CPA)</a> task is to annotate pairs of table columns with one out of 180 <a href="https://schema.org/">Schema.org</a> properties such gtin13, startDate, priceValidUntil, or recipeIngredient. 
+			The benchmark consists of <b>42,784 tables</b> annotated for CTA and <b>45,664 tables</b> annotated for CPA which are split into training-, validation- and test sets for both tasks. 
+      The tables cover 17 popular Schema.org types such as Product, LocalBusiness, Event, or JobPosting and originate from the <a href="http://webdatacommons.org/structureddata/schemaorgtables/">Schema.org Table Corpus</a>.
+	  </p>
 <h2 id="news">News</h2>
 		<ul>
 			<li><strong>2022-08:</strong> Initial version of the WDC Schema.org Table Annotation Benchmark released.</li>
@@ -272,11 +276,11 @@
 			</li>
 
       <li class="toc-h2 toc-active">
-				<a href="#toc5"> 3. Label Sets for the CTA and CPA Task </a>
+				<a href="#toc5"> 3. Table Selection</a>
 			</li>
 
       <li class="toc-h2 toc-active">
-				<a href="#toc7"> 4. Table Selection </a>
+				<a href="#toc7"> 4. Label Sets for the CTA and CPA Task </a>
 			</li>
 
       <li class="toc-h2 toc-active">
@@ -295,9 +299,9 @@
 				<a href="#toc3"> 8. Download </a>
 			</li>
 			<li class="toc-h2 toc-active">
-				<a href="#toc4"> 9. References </a>
+				<a href="#toc4"> 9. Other Table Annotation Benchmarks  </a>
 			<li class="toc-h2 toc-active">
-        <a href="#toc5"> 10. Other Table Annotation Benchmarks </a>
+        <a href="#toc5"> 10. References </a>
 			</li>
 		</ul>
 
@@ -308,36 +312,76 @@
 
 <h2>1. Introduction</h2>
 <p>
-        <a href="https://paperswithcode.com/task/table-annotation">Table annotation</a> is the task of annotating a table with terms/concepts from knowledge graph, database schema or other vocabulary. 
-        Table annotation consists of five different tasks: column type annotation (CTA), columns property annotation (CPA), cell
-        entity annotation (CEA), row annotation, and table type detection. Understanding the semantics of table elements is beneficial for tasks such as data discovery and data integration [ref]. Table annotation has attracted <a href="https://paperswithcode.com/task/table-annotation">quite some attention in the research community</a> in recent years and there are active benchmarking campaigns on table annotation, such as <a href="https://www.cs.ox.ac.uk/isg/challenges/sem-tab/">SemTab</a>. 
-        <span id="toc2"></span>
+  Understanding the semantics of table elements is beneficial for tasks such as knowledge base augmentation [ref] and data integration [ref].
+  <a href="https://paperswithcode.com/task/table-annotation">Table annotation</a> is the task of annotating a table with terms/concepts from knowledge graph, database schema or other vocabulary. 
+  Table annotation consists of five different tasks: column type annotation (CTA), columns property annotation (CPA), cell entity annotation (CEA), row annotation, and table type detection. 
+  Table annotation has attracted <a href="https://paperswithcode.com/task/table-annotation">quite some attention in the research community</a> in recent years and there are active benchmarking campaigns on table annotation, such as <a href="https://www.cs.ox.ac.uk/isg/challenges/sem-tab/">SemTab</a>.
+  <span id="toc2"></span>
 </p>
 
 <p>
+  CTA is the task of annotating table columns with the type of entities present in the column, while CPA aims to annotate the relationship between the main column of a table (usually the leftmost) 
+  with another column in the table.
+  An example of CTA and CPA is given in <i>Figure 1</i>. For the CTA task, the first column is annotated with the label <b>"Hotel/name"</b> as the column contains values describing names of hotels. For the CPA task
+  the relationship between the main column and the second column is annotated using <b>"streetAddress"</b> as the second column shows the address of the hotels in the first column.
+</p>
+
+<figure>
+  <img src="images/table_CTA_CPA.jpg" alt="Table Annotation Example">
+  <figcaption><b><a id="Fig1"></a>Figure 1:</b> Example of table annotation. The CTA labels are placed on the top of the columns, while the CPA labels are placed between the main column (leftmost column) and another column.</figcaption>
+</figure>
+
+
+<p>
   In order to compare the performance of table annotation methods, benchmark datasets covering a wide range of topics are needed. The aim of this work is to create 
-  and make available datasets for benchmarking two of the table annotation tasks: column type annotation (CTA) and column pair annotation (CPA). CTA is the task of annotating 
-  table columns with the type of entities present in the column, while CPA aims to annotate the relationship between the main column of a table (usually the leftmost) with another
-  column in the table. The datasets are build by using tables from the <a href="http://webdatacommons.org/structureddata/schemaorgtables/">Schema.org Table Corpus</a>.
+  and make available datasets for benchmarking two of the table annotation tasks: column type annotation (CTA) and column pair annotation (CPA). 
+  The datasets are build by using tables from the <a href="http://webdatacommons.org/structureddata/schemaorgtables/">Schema.org Table Corpus</a>.
 </p>
 
 <h2>2. Schema.org Table Corpus </h2>
 <p>
         The original <a href="http://webdatacommons.org/structureddata/schemaorgtables/">Schema.org Table Corpus</a> used for the creation of this benchmark was created using schema.org data from the December 2020 version of the <a href="http://webdatacommons.org/structureddata/2020-12/stats/schema_org_subsets.html">Web Data Commons Microdata and JSON-LD corpus</a>. The Schema.org Table Corpus consists of 4.2 million relational tables covering 43 schema.org classes.
 Each table in the Schema.org Table Corpus contains the descriptions of all entities of a specific Schema.org class that were extracted for a specific host, e.g. movie records from imdb.com or product records from ebay.com or rakuten.co.jp. 
-All extracted entities of one Schema.org class are collected per host and subsequently passed through a pipeline consisting of three steps, (i) Attribute extraction, (ii) Removal of listing pages and sparse entities, and (iii) content-based deduplication. The result of the pipeline is the final Schema.org table for that specific host. 
-As the Attribute extraction step is the most relevant for the creation of this benchmark, it is explained in detail in the following: First, all Schema.org attributes and their values are extracted for each of the collected entities. If an attribute contains a sub-entity instead of a literal value, these are extracted as well and presented as a list in the final table. For the attributes of sub-entities only literal values are considered. The output of this first step are tables (one per host) containing all entities of the current class and their attributes down to the second attribute level, which are the base for the creation of the CPA and CTA benchmarks.
-Steps (ii) and (iii) of the Schema.org Table Corpus creation pipeline deal with cleansing the created tables by removing sparse entities deriving from listing pages and general deduplication of exact matching rows in the final tables. Following the cleansing steps, only attributes with a density of at least 25% are retained per table. For more information about these steps and the general Schema.org Table Corpus creation process, statistics files and download links, please visit the <a href="http://webdatacommons.org/structureddata/schemaorgtables/">Schema.org Table Corpus website</a>. 
+All extracted entities of one Schema.org class are collected per host and subsequently passed through a pipeline consisting of three steps, (i) Attribute extraction, (ii) Removal of listing pages and sparse entities, and (iii) content-based deduplication. 
+Following the cleansing steps, only attributes with a density of at least 25% are retained per table. For more information about these steps and the general Schema.org Table Corpus creation process, statistics files and download links, please visit the <a href="http://webdatacommons.org/structureddata/schemaorgtables/">Schema.org Table Corpus website</a>. 
   
 </p>
 
+<h2> 3. Table Selection and Annotation </h2>
+<p>
+  For the creation of the datasets, the top100 and minimum3 sets of tables from the Schema.org Table Corpus were considered and tables belonging to the 17 classes with the most columns and tables. 
+  Three steps were taken to select tables for CTA and CPA tables in SOTAB: 
+  (i) Language Detection, (ii) Filtering based on number of columns, (iii) Finding challenging columns. These steps are explained more in detail below.
+</p>
+
+<p>
+  <b>(i) Language Detection: </b> The purpose of this step was to filter out tables and rows that were not in the English language. 
+  The <a href="https://fasttext.cc/docs/en/language-identification.html">FastText</a> language detection model was used for detecting the language of rows/tables. The <i>description</i> column
+  and <i>disambiguatingDescription</i> column were chosen to check the language of a table, as they are columns that contain longer textual values that can indicate the language used. If a table did
+  not have one of these columns the concatenation of all other columns was used to determine the language. Tables and rows where the model was at least 50% confident that the language is English and 
+  where the model is not at least 50% confident that the language used is not English are kept and the rest are discarded.
+</p>
+
+<p>
+  <b>(ii) Filtering out tables based on number of columns: </b> In the second step, tables that had less than 10 rows and less than 3 columns were filtered out. Furthermore, as the column headers belong to
+  Schema.org properties that can be used for annotating the selected tables in later steps, to insure that enough columns are available for each Schema.org property, columns that belonged to properties with 
+  less than 50 columns in total across each table type were filtered out.
+</p>
+
+<p>
+  <b>(iii) Finding challenging columns: </b> In the selection phase of the tables, columns that were missing some row values, columns that are similar or dissimilar and could be challenging to
+  make a decision on and columns that had different value formats were found and added to the final selection of the tables.
+</p>
+
+<p>(IMAGE: interesting table)</p>
+
 <span id="toc2.2"></span>
-<h3> 3. Label Sets for the CTA and CPA Task</h3>
+<h2> 4. Label Sets for the CTA and CPA Task</h2>
 
 <p>
   To annotate the columns from the final selected tables for CTA and CPA Schema.org vocabulary was used. Column pairs in the CPA problem were annotated using Schema.org properties. In the
-  CTA task columns were annotated using Schema.org types. These types were derived from the expected types of a Schema.org property value. The final label set for CTA is 94 types and properties,
-  while the final label set for CPA is 181 properties. In the table below some column names and their CPA label and CTA label are shown.
+  CTA task columns were annotated using Schema.org types. These types were derived from the expected types of a Schema.org property value. The final label set for CTA is 93 types and properties,
+  while the final label set for CPA is 180 properties. In the table below some column names and their CPA label and CTA label are shown.
 </p>
 
 <p>
@@ -354,42 +398,14 @@ Steps (ii) and (iii) of the Schema.org Table Corpus creation pipeline deal with 
 </p>
 
 
-<h3> 4. Table Selection </h3>
-<p>
-  For the creation of the datasets, the top100 and minimum3 sets of tables were considered and tables belonging to the 17 classes with the most columns and tables were selected. 
-  Afterwards, some steps were taken to select tables for CTA and CPA: 
-  (i) Language Detection, (ii) Filtering out the incorrect uses of Schema.org properties, (iii) Expansion of dictionary columns, (iv) Filtering based on number of columns. These steps
-  are explained more in detail below.
-</p>
-
-<p>
-  <b>(i) Language Detection: </b> In this step, the purpose was to filter out tables and rows that were not in the English language. The fastText model was used for this. The <i>description</i> column
-  and <i>disambiguatingDescription</i> column were chosen to check the language of a table, as they are longer and contain more text that can indicate the language used. If a table did
-  not have one of these columns the concatenation of all other columns was used to determine the language. If the values were predicted to be in English with a confidence of at least 50%,
-  the tables were labeled as English tables, otherwise the rows are individually checked and, following the same rule, rows with an English confidence of more than 50% are kept while the
-  other rows are discraded.
-</p>
-
-<p>
-  <b>(ii) Filtering out tables based on number of columns: </b> In this step, tables that had less than 10 rows and less than 3 columns were filtered out. Furthermore, to insure that
-  enough columns are available for each Schema.org property, columns that belonged to properties with less than 50 columns in total across each class were filtered out.
-</p>
-
-<p>(IMAGE: interesting table)</p>
-
-<p>
-  <b>(iii) Including challenging columns: </b> In the selection phase of the tables, columns that were missing some row values, columns that are similar or dissimilar and could be challenging to
-  make a decision on and columns that had different value formats were found and added to the final selection of the tables.
-</p>
-
-
 <span id="toc2.3"></span>
-<h3> 5. Dataset Profiling</h3>
+<h2> 5. Dataset Profiling</h2>
 <p>
-  The SOTAB consists of <b> 46,090 tables</b> for CPA and <b>43,150</b> tables for CTA, distributed across 17 schema.org classes. The tables do not include any metadata, i.e. no table headers 
-  and no table captions are available. Fixed training, validation and testing splits are provided.
-        
-<em>Table 1</em> gives an overview of the number of tables per class and their median columns for CTA and CPA and for each of their splits.
+  The SOTAB consists of <b>174,708 columns</b> annotated from <b> 42,784 tables</b> for CTA and <b>168,254 column</b> pairs annotated from <b>45,664</b> tables for CPA, distributed across 17 Schema.org types, like 
+  <i>Product</i>, <i>Event</i> and <i>Place</i>. The tables do not include any metadata, i.e. no table headers 
+  and no table captions are available. The benchmark includes columns with textual, numerical and dateTime column values. The CPA and CTA tables are split with a 80:10:10 ration into fixed
+  training, validation and testing splits. In addition, we offer a smaller subset of the training set to help with the comparison of how models perform with different numbers of examples.     
+<em>Table 1</em> gives an overview of the number of tables and columns per type and their median columns for CTA and CPA and for each of their splits.
 </p> 
 			 
 <div class="tg-wrap"><table id="tg-tKOYO" class="tg">
@@ -397,8 +413,8 @@ Steps (ii) and (iii) of the Schema.org Table Corpus creation pipeline deal with 
 <thead>
   <tr>
     <th class="tg-j1i3"></th>
-    <th class="tg-ixdq" colspan="8">Column Pair Annotation</th>
-    <th class="tg-ixdq" colspan="8">Column Type Annotation</th>
+    <th class="tg-ixdq" colspan="10">Column Type Annotation</th>
+    <th class="tg-ixdq" colspan="10">Column Pair Annotation</th>
   </tr>
 </thead>
 <tbody>
@@ -406,16 +422,20 @@ Steps (ii) and (iii) of the Schema.org Table Corpus creation pipeline deal with 
     <th class="tg-j1i3"></th>
     <th class="tg-ixdq" colspan="2">Overall</th>
     <th class="tg-ixdq" colspan="2">Training Set</th>
+    <th class="tg-ixdq" colspan="2">Small Training Set</th>
     <th class="tg-ixdq" colspan="2">Validation Set</th>
     <th class="tg-ixdq" colspan="2">Testing Set</th>
 
     <th class="tg-ixdq" colspan="2">Overall</th>
     <th class="tg-ixdq" colspan="2">Training Set</th>
+    <th class="tg-ixdq" colspan="2">Small Training Set</th>
     <th class="tg-ixdq" colspan="2">Validation Set</th>
     <th class="tg-ixdq" colspan="2">Testing Set</th>
   </tr>
   <tr>
-    <td class="tg-45e1">Schema.org Class</td>
+    <td class="tg-45e1">Schema.org Type</td>
+    <td class="tg-o939"># tables</td>
+    <td class="tg-o939"># columns</td>
     <td class="tg-o939"># tables</td>
     <td class="tg-o939"># columns</td>
     <td class="tg-o939"># tables</td>
@@ -425,6 +445,8 @@ Steps (ii) and (iii) of the Schema.org Table Corpus creation pipeline deal with 
     <td class="tg-o939"># tables</td>
     <td class="tg-o939"># columns</td>
 
+    <td class="tg-o939"># tables</td>
+    <td class="tg-o939"># columns</td>
     <td class="tg-o939"># tables</td>
     <td class="tg-o939"># columns</td>
     <td class="tg-o939"># tables</td>
@@ -436,483 +458,602 @@ Steps (ii) and (iii) of the Schema.org Table Corpus creation pipeline deal with 
   </tr>
   <tr>
     <td class="tg-lboi">Overall</td>
-    <td class="tg-9wq8"> 46,090 </td>
-    <td class="tg-9wq8"> 169,515 </td>
-    <td class="tg-9wq8"> 34,023 </td>
-    <td class="tg-9wq8"> 127,752 </td>
-    <td class="tg-9wq8"> 4,324 </td>
-    <td class="tg-9wq8"> 16,782 </td>
-    <td class="tg-9wq8"> 7,743 </td>
-    <td class="tg-9wq8"> 24,981 </td>
+    <td class="tg-9wq8"> 42,784 </td>
+    <td class="tg-9wq8"> 174,708 </td>
+    <td class="tg-9wq8"> 32,409 </td>
+    <td class="tg-9wq8"> 135,016 </td>
+    <td class="tg-9wq8"> 7,996 </td>
+    <td class="tg-9wq8"> 33,411 </td>
+    <td class="tg-9wq8"> 4,211 </td>
+    <td class="tg-9wq8"> 17,911 </td>
+    <td class="tg-9wq8"> 6,164 </td>
+    <td class="tg-9wq8"> 21,781 </td>
 
-    <td class="tg-9wq8"> 43,150 </td>
-    <td class="tg-9wq8"> 175,468 </td>
-    <td class="tg-9wq8"> 32,713 </td>
-    <td class="tg-9wq8"> 135,641 </td>
-    <td class="tg-9wq8"> 4,245 </td>
-    <td class="tg-9wq8"> 17,990 </td>
-    <td class="tg-9wq8"> 6,192 </td>
-    <td class="tg-9wq8"> 21,837 </td>
+    <td class="tg-9wq8"> 168,254 </td>
+    <td class="tg-9wq8"> 45,664 </td>
+    <td class="tg-9wq8"> 33,679 </td>
+    <td class="tg-9wq8"> 126,733 </td>
+    <td class="tg-9wq8"> 8,435 </td>
+    <td class="tg-9wq8"> 33,679 </td>
+    <td class="tg-9wq8"> 4,263 </td>
+    <td class="tg-9wq8"> 16,637 </td>
+    <td class="tg-9wq8"> 7,722 </td>
+    <td class="tg-9wq8"> 24,884 </td>
   </tr>
   <tr>
     <td class="tg-lboi">Product</td>
-    <td class="tg-9wq8"> 12,024 </td>
-    <td class="tg-9wq8"> 28,434 </td>
-    <td class="tg-9wq8"> 9,275 </td>
-    <td class="tg-9wq8"> 21,387 </td>
-    <td class="tg-9wq8"> 996 </td>
-    <td class="tg-9wq8"> 2,379 </td>
-    <td class="tg-9wq8"> 1,753 </td>
-    <td class="tg-9wq8"> 4,668 </td>
+    <td class="tg-9wq8"> 9,498 </td>
+    <td class="tg-9wq8"> 25,079 </td>
+    <td class="tg-9wq8"> 7,527 </td>
+    <td class="tg-9wq8"> 19,694 </td>
+    <td class="tg-9wq8"> 1,862 </td>
+    <td class="tg-9wq8"> 4,106 </td>
+    <td class="tg-9wq8"> 833 </td>
+    <td class="tg-9wq8"> 1,888 </td>
+    <td class="tg-9wq8"> 1,138 </td>
+    <td class="tg-9wq8"> 3,497 </td>
 
-    <td class="tg-9wq8">  </td>
-    <td class="tg-9wq8">  </td>
-    <td class="tg-9wq8"> 7,723 </td>
-    <td class="tg-9wq8"> 19,921 </td>
-    <td class="tg-9wq8"> 850 </td>
-    <td class="tg-9wq8"> 1,907 </td>
-    <td class="tg-9wq8"> 1,157 </td>
-    <td class="tg-9wq8"> 3,524 </td>
+    <td class="tg-9wq8"> 11,664 </td>
+    <td class="tg-9wq8"> 27,953 </td>
+    <td class="tg-9wq8"> 8,976 </td>
+    <td class="tg-9wq8"> 20,996 </td>
+    <td class="tg-9wq8"> 2,130 </td>
+    <td class="tg-9wq8"> 4,877 </td>
+    <td class="tg-9wq8"> 951 </td>
+    <td class="tg-9wq8"> 2,322 </td>
+    <td class="tg-9wq8"> 1,737 </td>
+    <td class="tg-9wq8"> 4,635 </td>
   </tr>
   <tr>
     <td class="tg-d459">Event</td>
-    <td class="tg-9wq8"> 6,901 </td>
-    <td class="tg-9wq8"> 21,295 </td>
-    <td class="tg-9wq8"> 5,143 </td>
-    <td class="tg-9wq8"> 16,781 </td>
-    <td class="tg-9wq8"> 740 </td>
-    <td class="tg-9wq8"> 1,986 </td>
-    <td class="tg-9wq8"> 1,018 </td>
-    <td class="tg-9wq8"> 2,528 </td>
+    <td class="tg-9wq8"> 6,016 </td>
+    <td class="tg-9wq8"> 20,456 </td>
+    <td class="tg-9wq8"> 4,566 </td>
+    <td class="tg-9wq8"> 15,444 </td>
+    <td class="tg-9wq8"> 1,085 </td>
+    <td class="tg-9wq8"> 4,551 </td>
+    <td class="tg-9wq8"> 619 </td>
+    <td class="tg-9wq8"> 2,349 </td>
+    <td class="tg-9wq8"> 831 </td>
+    <td class="tg-9wq8"> 2,663 </td>
 
-    <td class="tg-9wq8">  </td>
-    <td class="tg-9wq8"> </td>
-    <td class="tg-9wq8"> 4,570 </td>
-    <td class="tg-9wq8"> 15,461 </td>
-    <td class="tg-9wq8"> 620 </td>
-    <td class="tg-9wq8"> 2,351 </td>
-    <td class="tg-9wq8"> 833 </td>
-    <td class="tg-9wq8"> 2,665 </td>
+    <td class="tg-9wq8"> 6,889 </td>
+    <td class="tg-9wq8"> 21,271 </td>
+    <td class="tg-9wq8"> 5,139 </td>
+    <td class="tg-9wq8"> 16,769 </td>
+    <td class="tg-9wq8"> 1,404 </td>
+    <td class="tg-9wq8"> 4,589 </td>
+    <td class="tg-9wq8"> 735 </td>
+    <td class="tg-9wq8"> 1,981 </td>
+    <td class="tg-9wq8"> 1,015 </td>
+    <td class="tg-9wq8"> 2,521 </td>
   </tr>
   <tr>
     <td class="tg-lboi">Recipe</td>
-    <td class="tg-9wq8"> 1,103 </td>
-    <td class="tg-9wq8"> 24,078 </td>
-    <td class="tg-9wq8"> 3,028 </td>
-    <td class="tg-9wq8"> 17,510 </td>
-    <td class="tg-9wq8"> 369 </td>
-    <td class="tg-9wq8"> 2,288 </td>
-    <td class="tg-9wq8"> 734 </td>
-    <td class="tg-9wq8"> 4,280 </td>
+    <td class="tg-9wq8"> 3,272 </td>
+    <td class="tg-9wq8"> 23,562 </td>
+    <td class="tg-9wq8"> 2,492 </td>
+    <td class="tg-9wq8"> 18,597 </td>
+    <td class="tg-9wq8"> 539 </td>
+    <td class="tg-9wq8"> 3,344 </td>
+    <td class="tg-9wq8"> 331 </td>
+    <td class="tg-9wq8"> 2,294 </td>
+    <td class="tg-9wq8"> 449 </td>
+    <td class="tg-9wq8"> 2,671 </td>
 
-    <td class="tg-9wq8">  </td>
-    <td class="tg-9wq8"> </td>
-    <td class="tg-9wq8"> 2,568 </td>
-    <td class="tg-9wq8"> 18,684 </td>
-    <td class="tg-9wq8"> 335 </td>
-    <td class="tg-9wq8"> 2,301 </td>
-    <td class="tg-9wq8"> 450 </td>
-    <td class="tg-9wq8"> 2,675 </td>
+    <td class="tg-9wq8"> 4,125 </td>
+    <td class="tg-9wq8"> 24,059 </td>
+    <td class="tg-9wq8"> 3,022 </td>
+    <td class="tg-9wq8"> 17,494 </td>
+    <td class="tg-9wq8"> 678 </td>
+    <td class="tg-9wq8"> 4,325 </td>
+    <td class="tg-9wq8"> 369 </td>
+    <td class="tg-9wq8"> 2,286 </td>
+    <td class="tg-9wq8"> 734 </td>
+    <td class="tg-9wq8"> 4,279 </td>
   </tr>
   <tr>
     <td class="tg-d459">Person</td>
-    <td class="tg-9wq8"> 3,946 </td>
-    <td class="tg-9wq8"> 13,267 </td>
-    <td class="tg-9wq8"> 2,697 </td>
-    <td class="tg-9wq8"> 9,652 </td>
-    <td class="tg-9wq8"> 313 </td>
-    <td class="tg-9wq8"> 1,157 </td>
-    <td class="tg-9wq8"> 936 </td>
-    <td class="tg-9wq8"> 2,458 </td>
-
-    <td class="tg-9wq8"> </td>
-    <td class="tg-9wq8"> </td>
-    <td class="tg-9wq8"> 1,525 </td>
-    <td class="tg-9wq8"> 7,087 </td>
+    <td class="tg-9wq8"> 1,986 </td>
+    <td class="tg-9wq8"> 8,555 </td>
+    <td class="tg-9wq8"> 1,524 </td>
+    <td class="tg-9wq8"> 7,076 </td>
+    <td class="tg-9wq8"> 228 </td>
+    <td class="tg-9wq8"> 945 </td>
     <td class="tg-9wq8"> 138 </td>
-    <td class="tg-9wq8"> 524 </td>
+    <td class="tg-9wq8"> 523 </td>
     <td class="tg-9wq8"> 324 </td>
     <td class="tg-9wq8"> 956 </td>
+
+    <td class="tg-9wq8"> 3,942 </td>
+    <td class="tg-9wq8"> 13,236 </td>
+    <td class="tg-9wq8"> 2,693 </td>
+    <td class="tg-9wq8"> 9,629 </td>
+    <td class="tg-9wq8"> 656 </td>
+    <td class="tg-9wq8"> 2,297 </td>
+    <td class="tg-9wq8"> 313 </td>
+    <td class="tg-9wq8"> 1,155 </td>
+    <td class="tg-9wq8"> 936 </td>
+    <td class="tg-9wq8"> 2,452 </td>
   </tr>
   <tr>
     <td class="tg-lboi">MusicRecording</td>
+    <td class="tg-9wq8"> 2,840 </td>
+    <td class="tg-9wq8"> 7,606 </td>
+    <td class="tg-9wq8"> 2,278 </td>
+    <td class="tg-9wq8"> 5,897 </td>
+    <td class="tg-9wq8"> 566 </td>
+    <td class="tg-9wq8"> 1,521 </td>
+    <td class="tg-9wq8"> 248 </td>
+    <td class="tg-9wq8"> 814 </td>
+    <td class="tg-9wq8"> 314 </td>
+    <td class="tg-9wq8"> 895 </td>
+
     <td class="tg-9wq8"> 508 </td>
-    <td class="tg-9wq8"> 1,633 </td>
+    <td class="tg-9wq8"> 1,632 </td>
     <td class="tg-9wq8"> 323 </td>
-    <td class="tg-9wq8"> 1,115 </td>
+    <td class="tg-9wq8"> 1,114 </td>
+    <td class="tg-9wq8"> 77 </td>
+    <td class="tg-9wq8"> 258 </td>
     <td class="tg-9wq8"> 42 </td>
     <td class="tg-9wq8"> 160 </td>
     <td class="tg-9wq8"> 143 </td>
     <td class="tg-9wq8"> 358 </td>
-
-    <td class="tg-9wq8"> </td>
-    <td class="tg-9wq8"> </td>
-    <td class="tg-9wq8"> 2,279</td>
-    <td class="tg-9wq8"> 5,899 </td>
-    <td class="tg-9wq8"> 248 </td>
-    <td class="tg-9wq8"> 815 </td>
-    <td class="tg-9wq8"> 314 </td>
-    <td class="tg-9wq8"> 895 </td>
   </tr>
   <tr>
     <td class="tg-d459">Place</td>
-    <td class="tg-9wq8"> 1,416 </td>
-    <td class="tg-9wq8"> 7,432 </td>
-    <td class="tg-9wq8"> 1,194 </td>
-    <td class="tg-9wq8"> 6,530 </td>
+    <td class="tg-9wq8"> 992 </td>
+    <td class="tg-9wq8"> 5,647 </td>
+    <td class="tg-9wq8"> 669 </td>
+    <td class="tg-9wq8"> 4,498 </td>
+    <td class="tg-9wq8"> 146 </td>
+    <td class="tg-9wq8"> 940 </td>
+    <td class="tg-9wq8"> 61 </td>
+    <td class="tg-9wq8"> 428 </td>
+    <td class="tg-9wq8"> 262 </td>
+    <td class="tg-9wq8"> 721 </td>
+
+    <td class="tg-9wq8"> 1,415 </td>
+    <td class="tg-9wq8"> 7,420 </td>
+    <td class="tg-9wq8"> 1,193 </td>
+    <td class="tg-9wq8"> 6,518 </td>
+    <td class="tg-9wq8"> 252 </td>
+    <td class="tg-9wq8"> 1,425 </td>
     <td class="tg-9wq8"> 87 </td>
     <td class="tg-9wq8"> 466 </td>
     <td class="tg-9wq8"> 135 </td>
     <td class="tg-9wq8"> 436 </td>
-
-    <td class="tg-9wq8"> </td>
-    <td class="tg-9wq8"> </td>
-    <td class="tg-9wq8"> 670 </td>
-    <td class="tg-9wq8"> 4,506 </td>
-    <td class="tg-9wq8"> 61 </td>
-    <td class="tg-9wq8"> 429 </td>
-    <td class="tg-9wq8"> 262 </td>
-    <td class="tg-9wq8"> 721 </td>
   </tr>
   <tr>
     <td class="tg-lboi">LocalBusiness</td>
-    <td class="tg-9wq8"> 5,899 </td>
-    <td class="tg-9wq8"> 16,945 </td>
-    <td class="tg-9wq8"> 4,584 </td>
-    <td class="tg-9wq8"> 12,402 </td>
-    <td class="tg-9wq8"> 561 </td>
-    <td class="tg-9wq8"> 2,038 </td>
-    <td class="tg-9wq8"> 754 </td>
-    <td class="tg-9wq8"> 2,505 </td>
+    <td class="tg-9wq8"> 5,056 </td>
+    <td class="tg-9wq8"> 15,659 </td>
+    <td class="tg-9wq8"> 3,848 </td>
+    <td class="tg-9wq8"> 11,518 </td>
+    <td class="tg-9wq8"> 1,077 </td>
+    <td class="tg-9wq8"> 3,819 </td>
+    <td class="tg-9wq8"> 538 </td>
+    <td class="tg-9wq8"> 1,856 </td>
+    <td class="tg-9wq8"> 670 </td>
+    <td class="tg-9wq8"> 2,285 </td>
 
-    <td class="tg-9wq8"> </td>
-    <td class="tg-9wq8"> </td>
-    <td class="tg-9wq8"> 3,852 </td>
-    <td class="tg-9wq8"> 11,534 </td>
-    <td class="tg-9wq8"> 540 </td>
-    <td class="tg-9wq8"> 1,861 </td>
-    <td class="tg-9wq8"> 671 </td>
-    <td class="tg-9wq8"> 2,290 </td>
+    <td class="tg-9wq8"> 5,883 </td>
+    <td class="tg-9wq8"> 16,894 </td>
+    <td class="tg-9wq8"> 4,573 </td>
+    <td class="tg-9wq8"> 12,372 </td>
+    <td class="tg-9wq8"> 1,195 </td>
+    <td class="tg-9wq8"> 3,699 </td>
+    <td class="tg-9wq8"> 557 </td>
+    <td class="tg-9wq8"> 2,026 </td>
+    <td class="tg-9wq8"> 753 </td>
+    <td class="tg-9wq8"> 2,496 </td>
   </tr>
   <tr>
     <td class="tg-d459">CreativeWork</td>
+    <td class="tg-9wq8"> 1,223 </td>
+    <td class="tg-9wq8"> 6,323 </td>
+    <td class="tg-9wq8"> 601 </td>
+    <td class="tg-9wq8"> 3,553 </td>
+    <td class="tg-9wq8"> 237 </td>
+    <td class="tg-9wq8"> 1,391 </td>
+    <td class="tg-9wq8"> 269 </td>
+    <td class="tg-9wq8"> 1,553 </td>
+    <td class="tg-9wq8"> 353 </td>
+    <td class="tg-9wq8"> 1,217 </td>
+
     <td class="tg-9wq8"> 2,073 </td>
-    <td class="tg-9wq8"> 8,859 </td>
+    <td class="tg-9wq8"> 8,839 </td>
     <td class="tg-9wq8"> 1,397 </td>
-    <td class="tg-9wq8"> 6,453 </td>
+    <td class="tg-9wq8"> 6,437 </td>
+    <td class="tg-9wq8"> 367 </td>
+    <td class="tg-9wq8"> 1,671 </td>
     <td class="tg-9wq8"> 225 </td>
     <td class="tg-9wq8"> 1,063 </td>
     <td class="tg-9wq8"> 451 </td>
-    <td class="tg-9wq8"> 1,343 </td>
-
-    <td class="tg-9wq8"> </td>
-    <td class="tg-9wq8"> </td>
-    <td class="tg-9wq8"> 601 </td>
-    <td class="tg-9wq8"> 3,566 </td>
-    <td class="tg-9wq8"> 269 </td>
-    <td class="tg-9wq8"> 1,554 </td>
-    <td class="tg-9wq8"> 353 </td>
-    <td class="tg-9wq8"> 1,218 </td>
+    <td class="tg-9wq8"> 1,339 </td>
   </tr>
   <tr>
     <td class="tg-lboi">MusicAlbum</td>
+    <td class="tg-9wq8"> 937 </td>
+    <td class="tg-9wq8"> 3,374 </td>
+    <td class="tg-9wq8"> 699 </td>
+    <td class="tg-9wq8"> 2,369 </td>
+    <td class="tg-9wq8"> 176 </td>
+    <td class="tg-9wq8"> 660 </td>
+    <td class="tg-9wq8"> 122 </td>
+    <td class="tg-9wq8"> 511 </td>
+    <td class="tg-9wq8"> 116 </td>
+    <td class="tg-9wq8"> 494 </td>
+
     <td class="tg-9wq8"> 570 </td>
-    <td class="tg-9wq8"> 1,486 </td>
+    <td class="tg-9wq8"> 1,484 </td>
     <td class="tg-9wq8"> 397 </td>
-    <td class="tg-9wq8"> 1,027 </td>
+    <td class="tg-9wq8"> 1,025 </td>
+    <td class="tg-9wq8"> 98 </td>
+    <td class="tg-9wq8"> 260 </td>
     <td class="tg-9wq8"> 53 </td>
     <td class="tg-9wq8"> 154 </td>
     <td class="tg-9wq8"> 120 </td>
     <td class="tg-9wq8"> 305 </td>
-
-    <td class="tg-9wq8"> </td>
-    <td class="tg-9wq8"> </td>
-    <td class="tg-9wq8"> 699 </td>
-    <td class="tg-9wq8"> 2,369 </td>
-    <td class="tg-9wq8"> 122 </td>
-    <td class="tg-9wq8"> 512 </td>
-    <td class="tg-9wq8"> 116 </td>
-    <td class="tg-9wq8"> 494 </td>
   </tr>
   <tr>
     <td class="tg-d459">Movie</td>
-    <td class="tg-9wq8"> 1,852 </td>
-    <td class="tg-9wq8"> 10,900 </td>
-    <td class="tg-9wq8"> 1,358 </td>
-    <td class="tg-9wq8"> 8,544 </td>
-    <td class="tg-9wq8"> 184 </td>
-    <td class="tg-9wq8"> 1,174 </td>
-    <td class="tg-9wq8"> 310 </td>
-    <td class="tg-9wq8"> 1,182 </td>
+    <td class="tg-9wq8"> 1,377 </td>
+    <td class="tg-9wq8"> 9,720 </td>
+    <td class="tg-9wq8"> 1,154 </td>
+    <td class="tg-9wq8"> 8,850 </td>
+    <td class="tg-9wq8"> 361 </td>
+    <td class="tg-9wq8"> 2,983 </td>
+    <td class="tg-9wq8"> 89 </td>
+    <td class="tg-9wq8"> 435 </td>
+    <td class="tg-9wq8"> 134 </td>
+    <td class="tg-9wq8"> 435 </td>
 
-    <td class="tg-9wq8"> </td>
-    <td class="tg-9wq8"> </td>
+    <td class="tg-9wq8"> 1,841 </td>
+    <td class="tg-9wq8"> 10,631 </td>
+    <td class="tg-9wq8"> 1,351 </td>
+    <td class="tg-9wq8"> 8,311 </td>
+    <td class="tg-9wq8"> 353 </td>
+    <td class="tg-9wq8"> 2,306 </td>
+    <td class="tg-9wq8"> 180 </td>
+    <td class="tg-9wq8"> 1,154 </td>
+    <td class="tg-9wq8"> 310 </td>
     <td class="tg-9wq8"> 1,166 </td>
-    <td class="tg-9wq8"> 8,965 </td>
-    <td class="tg-9wq8"> 95 </td>
-    <td class="tg-9wq8"> 443 </td>
-    <td class="tg-9wq8"> 138 </td>
-    <td class="tg-9wq8"> 442 </td>
   </tr>
   <tr>
     <td class="tg-lboi">Hotel</td>
-    <td class="tg-9wq8"> 1,599 </td>
-    <td class="tg-9wq8"> 9,721 </td>
-    <td class="tg-9wq8"> 997 </td>
-    <td class="tg-9wq8"> 6,234 </td>
-    <td class="tg-9wq8"> 277 </td>
-    <td class="tg-9wq8"> 1,841 </td>
-    <td class="tg-9wq8"> 325 </td>
-    <td class="tg-9wq8"> 1,646 </td>
+    <td class="tg-9wq8"> 1,491 </td>
+    <td class="tg-9wq8"> 9,875 </td>
+    <td class="tg-9wq8"> 973 </td>
+    <td class="tg-9wq8"> 6,701 </td>
+    <td class="tg-9wq8"> 334 </td>
+    <td class="tg-9wq8"> 2,299 </td>
+    <td class="tg-9wq8"> 203 </td>
+    <td class="tg-9wq8"> 1,412 </td>
+    <td class="tg-9wq8"> 315 </td>
+    <td class="tg-9wq8"> 1,762 </td>
 
-    <td class="tg-9wq8"> </td>
-    <td class="tg-9wq8"> </td>
-    <td class="tg-9wq8"> 978 </td>
-    <td class="tg-9wq8"> 6,737 </td>
-    <td class="tg-9wq8"> 205 </td>
-    <td class="tg-9wq8"> 1,422 </td>
-    <td class="tg-9wq8"> 316 </td>
-    <td class="tg-9wq8"> 1,769 </td>
+    <td class="tg-9wq8"> 1,588 </td>
+    <td class="tg-9wq8"> 9,618 </td>
+    <td class="tg-9wq8"> 989 </td>
+    <td class="tg-9wq8"> 6,175 </td>
+    <td class="tg-9wq8"> 337 </td>
+    <td class="tg-9wq8"> 2,120 </td>
+    <td class="tg-9wq8"> 275 </td>
+    <td class="tg-9wq8"> 1,812 </td>
+    <td class="tg-9wq8"> 324 </td>
+    <td class="tg-9wq8"> 1,631 </td>
   </tr>
   <tr>
     <td class="tg-d459">SportsEvent</td>
-    <td class="tg-9wq8"> 833 </td>
-    <td class="tg-9wq8"> 3,301 </td>
-    <td class="tg-9wq8"> 572 </td>
-    <td class="tg-9wq8"> 2,536 </td>
+    <td class="tg-9wq8"> 1,407 </td>
+    <td class="tg-9wq8"> 5,545 </td>
+    <td class="tg-9wq8"> 1,126 </td>
+    <td class="tg-9wq8"> 4,659 </td>
+    <td class="tg-9wq8"> 281 </td>
+    <td class="tg-9wq8"> 965 </td>
+    <td class="tg-9wq8"> 141 </td>
+    <td class="tg-9wq8"> 434 </td>
+    <td class="tg-9wq8"> 140 </td>
+    <td class="tg-9wq8"> 452 </td>
+
+    <td class="tg-9wq8"> 832 </td>
+    <td class="tg-9wq8"> 3,292 </td>
+    <td class="tg-9wq8"> 571 </td>
+    <td class="tg-9wq8"> 2,527 </td>
+    <td class="tg-9wq8"> 132 </td>
+    <td class="tg-9wq8"> 584 </td>
     <td class="tg-9wq8"> 67 </td>
     <td class="tg-9wq8"> 289 </td>
     <td class="tg-9wq8"> 194 </td>
     <td class="tg-9wq8"> 476 </td>
-
-    <td class="tg-9wq8"> </td>
-    <td class="tg-9wq8"> </td>
-    <td class="tg-9wq8"> 1,126 </td>
-    <td class="tg-9wq8"> 4,669 </td>
-    <td class="tg-9wq8"> 141 </td>
-    <td class="tg-9wq8"> 435 </td>
-    <td class="tg-9wq8"> 140 </td>
-    <td class="tg-9wq8"> 452 </td>
   </tr>
   <tr>
     <td class="tg-lboi">Restaurant</td>
+    <td class="tg-9wq8"> 1,508 </td>
+    <td class="tg-9wq8"> 10,297 </td>
+    <td class="tg-9wq8"> 1,182 </td>
+    <td class="tg-9wq8"> 8,539 </td>
+    <td class="tg-9wq8"> 215 </td>
+    <td class="tg-9wq8"> 1,154 </td>
+    <td class="tg-9wq8"> 111 </td>
+    <td class="tg-9wq8"> 762 </td>
+    <td class="tg-9wq8"> 215 </td>
+    <td class="tg-9wq8"> 996 </td>
+
     <td class="tg-9wq8"> 1,176 </td>
-    <td class="tg-9wq8"> 9,036 </td>
+    <td class="tg-9wq8"> 9,017 </td>
     <td class="tg-9wq8"> 948 </td>
-    <td class="tg-9wq8"> 8,162 </td>
+    <td class="tg-9wq8"> 8,143 </td>
+    <td class="tg-9wq8"> 124 </td>
+    <td class="tg-9wq8"> 932 </td>
     <td class="tg-9wq8"> 33 </td>
     <td class="tg-9wq8"> 210 </td>
     <td class="tg-9wq8"> 195 </td>
     <td class="tg-9wq8"> 664 </td>
-
-    <td class="tg-9wq8"> </td>
-    <td class="tg-9wq8"> </td>
-    <td class="tg-9wq8"> 1,182 </td>
-    <td class="tg-9wq8"> 8,556 </td>
-    <td class="tg-9wq8"> 111 </td>
-    <td class="tg-9wq8"> 768 </td>
-    <td class="tg-9wq8"> 215 </td>
-    <td class="tg-9wq8"> 996 </td>
   </tr>
   <tr>
     <td class="tg-d459">Book</td>
-    <td class="tg-9wq8"> 2,544 </td>
-    <td class="tg-9wq8"> 10,807 </td>
-    <td class="tg-9wq8"> 1,720 </td>
-    <td class="tg-9wq8"> 7,633 </td>
-    <td class="tg-9wq8"> 347 </td>
-    <td class="tg-9wq8"> 1,447 </td>
-    <td class="tg-9wq8"> 477 </td>
-    <td class="tg-9wq8"> 1,727 </td>
-
-    <td class="tg-9wq8"> </td>
-    <td class="tg-9wq8"> </td>
-    <td class="tg-9wq8"> 1,124 </td>
-    <td class="tg-9wq8"> 6,674 </td>
-    <td class="tg-9wq8"> 206 </td>
-    <td class="tg-9wq8"> 1,332 </td>
+    <td class="tg-9wq8"> 1,680 </td>
+    <td class="tg-9wq8"> 9,323 </td>
+    <td class="tg-9wq8"> 1,123 </td>
+    <td class="tg-9wq8"> 6,621 </td>
+    <td class="tg-9wq8"> 247 </td>
+    <td class="tg-9wq8"> 1,763 </td>
+    <td class="tg-9wq8"> 204 </td>
+    <td class="tg-9wq8"> 1,318 </td>
     <td class="tg-9wq8"> 353 </td>
-    <td class="tg-9wq8"> 1,387 </td>
+    <td class="tg-9wq8"> 1,384 </td>
+
+    <td class="tg-9wq8"> 2,540 </td>
+    <td class="tg-9wq8"> 10,593 </td>
+    <td class="tg-9wq8"> 1,717 </td>
+    <td class="tg-9wq8"> 7,443 </td>
+    <td class="tg-9wq8"> 559 </td>
+    <td class="tg-9wq8"> 2,248 </td>
+    <td class="tg-9wq8"> 346 </td>
+    <td class="tg-9wq8"> 1,429 </td>
+    <td class="tg-9wq8"> 477 </td>
+    <td class="tg-9wq8"> 1,721 </td>
   </tr>
   <tr>
     <td class="tg-lboi">TVEpisode</td>
+    <td class="tg-9wq8"> 464 </td>
+    <td class="tg-9wq8"> 1,813 </td>
+    <td class="tg-9wq8"> 370 </td>
+    <td class="tg-9wq8"> 1,594 </td>
+    <td class="tg-9wq8"> 92 </td>
+    <td class="tg-9wq8"> 301 </td>
+    <td class="tg-9wq8"> 46 </td>
+    <td class="tg-9wq8"> 109 </td>
+    <td class="tg-9wq8"> 48 </td>
+    <td class="tg-9wq8"> 110 </td>
+
     <td class="tg-9wq8"> 418 </td>
-    <td class="tg-9wq8"> 1,197 </td>
+    <td class="tg-9wq8"> 1,194 </td>
     <td class="tg-9wq8"> 231 </td>
-    <td class="tg-9wq8"> 832 </td>
+    <td class="tg-9wq8"> 829 </td>
+    <td class="tg-9wq8"> 38 </td>
+    <td class="tg-9wq8"> 114 </td>
     <td class="tg-9wq8"> 18 </td>
     <td class="tg-9wq8"> 56 </td>
     <td class="tg-9wq8"> 169 </td>
     <td class="tg-9wq8"> 309 </td>
-
-    <td class="tg-9wq8"> </td>
-    <td class="tg-9wq8"> </td>
-    <td class="tg-9wq8"> 370 </td>
-    <td class="tg-9wq8"> 1,600 </td>
-    <td class="tg-9wq8"> 46 </td>
-    <td class="tg-9wq8"> 110 </td>
-    <td class="tg-9wq8"> 48 </td>
-    <td class="tg-9wq8"> 110 </td>
   </tr>
   <tr>
     <td class="tg-d459">JobPosting</td>
-    <td class="tg-9wq8"> 147 </td>
-    <td class="tg-9wq8"> 738 </td>
-    <td class="tg-9wq8"> 110 </td>
-    <td class="tg-9wq8"> 586 </td>
-    <td class="tg-9wq8"> 12 </td>
-    <td class="tg-9wq8"> 74 </td>
-    <td class="tg-9wq8"> 25 </td>
-    <td class="tg-9wq8"> 78 </td>
-
-    <td class="tg-9wq8"> </td>
-    <td class="tg-9wq8"> </td>
-    <td class="tg-9wq8"> 2,135 </td>
-    <td class="tg-9wq8"> 8,900 </td>
+    <td class="tg-9wq8"> 2,856 </td>
+    <td class="tg-9wq8"> 11,227 </td>
+    <td class="tg-9wq8"> 2,132 </td>
+    <td class="tg-9wq8"> 8,894 </td>
+    <td class="tg-9wq8"> 509 </td>
+    <td class="tg-9wq8"> 2,461 </td>
     <td class="tg-9wq8"> 240 </td>
     <td class="tg-9wq8"> 1,163 </td>
     <td class="tg-9wq8"> 484 </td>
     <td class="tg-9wq8"> 1,170 </td>
+
+    <td class="tg-9wq8"> 147 </td>
+    <td class="tg-9wq8"> 737 </td>
+    <td class="tg-9wq8"> 110 </td>
+    <td class="tg-9wq8"> 585 </td>
+    <td class="tg-9wq8"> 30 </td>
+    <td class="tg-9wq8"> 143 </td>
+    <td class="tg-9wq8"> 12 </td>
+    <td class="tg-9wq8"> 74 </td>
+    <td class="tg-9wq8"> 25 </td>
+    <td class="tg-9wq8"> 78 </td>
   </tr>
   <tr>
     <td class="tg-lboi">Museum</td>
+    <td class="tg-9wq8"> 181 </td>
+    <td class="tg-9wq8"> 647 </td>
+    <td class="tg-9wq8"> 145 </td>
+    <td class="tg-9wq8"> 512 </td>
+    <td class="tg-9wq8"> 41 </td>
+    <td class="tg-9wq8"> 208 </td>
+    <td class="tg-9wq8"> 18 </td>
+    <td class="tg-9wq8"> 62 </td>
+    <td class="tg-9wq8"> 18 </td>
+    <td class="tg-9wq8"> 73 </td>
+
     <td class="tg-9wq8"> 53 </td>
-    <td class="tg-9wq8"> 386 </td>
+    <td class="tg-9wq8"> 384 </td>
     <td class="tg-9wq8"> 49 </td>
-    <td class="tg-9wq8"> 368 </td>
+    <td class="tg-9wq8"> 366 </td>
+    <td class="tg-9wq8"> 5 </td>
+    <td class="tg-9wq8"> 30 </td>
     <td class="tg-9wq8"> - </td>
     <td class="tg-9wq8"> - </td>
     <td class="tg-9wq8"> 4 </td>
     <td class="tg-9wq8"> 18 </td>
-
-    <td class="tg-9wq8"> </td>
-    <td class="tg-9wq8"> </td>
-    <td class="tg-9wq8"> 145 </td>
-    <td class="tg-9wq8"> 513 </td>
-    <td class="tg-9wq8"> 18 </td>
-    <td class="tg-9wq8"> 63 </td>
-    <td class="tg-9wq8"> 18 </td>
-    <td class="tg-9wq8"> 73 </td>
   </tr>
 </tbody>
 </table></div>
 
 <p>
-  (TABLE)
-  (+++ How to find annotations in files)
+  The ground truth files are provided in the same format as datasets used in the SemTab challenge. The files include the <i>"table_name"</i> column, the <i>"column_index"</i> column and the <i>"label"</i> column. The first
+  lists the names of the tables, the second points to the position of a column in the table and the last the annotation of the column at the specified index. Additionally, in the CPA ground truth files, the
+  <i>"main_column_index"</i> points to the position in the table where the main column of the table is located.
 </p>
 
 <span id="toc6"></span>
 <h2> 6. Testsets for Specific Challenges </h2>
 
 <p>
-  In addition to the full test sets for both tasks, we provide specialized test sets that measure how good the systems under test can handle specific annotation challenges. 
-  We provide specialized test sets for the following challenges: These include the missing values subset,
-  the corner cases subset, the value heterogeneity subset and the random subset. Each corresponds to the four selection types of columns that were used to form the full testing set and 
-  all of them are included in the full test set.        
+  In addition to the full test sets for both tasks, we provide subsets of the test set that measure how good the systems under test can handle specific annotation challenges. 
+  We provide test sets for the following challenges: (i) Missing Values, (ii) Value Format Heterogeneity and (iii) Corner Cases. The last test set is the Random subset. 
+  In each subset and for each label included there is a minimum of 10 examples. These are explained in more detail below.    
 </p>
 
 <p>
-  <b>(i) Missing values:</b> It is difficult for table annotation systems to correctly annotate columns in which many values are missing. 
-  In order to measure the annotation performance on such columns, we provide a test set that only contains columns that have a density between 10 and 70 percent, i.e. 10-70 percent of their rows are filled with values. 
-  For the CPA problem we included 3,572
-  column pairs annotated with 125 CPA labels and for CTA 3,073 columns annotated with 64 CTA labels in this testset.
+  <b>(i) Missing values:</b> It is difficult for table annotation systems to correctly annotate columns in which many values are missing. In order to measure the annotation performance on such columns, 
+  we provide a test set that contains columns that have a density between 10 and 70 percent, i.e. 10-70 percent of their rows are filled with values. For the CPA problem we included 3,572 column pairs 
+  annotated with 125 CPA labels and for CTA 3,073 columns annotated with 64 CTA labels in this testset.
 </p>
 
 <p>
-  <b>(ii) Value heterogeneity:</b> This subset includes columns that have the same label but their values are expressed in different formats. The CPA columns that are selected for this
-  challenge are the different date columns, duration, height, weight, width, price, telephone, faxNumber, servingSize, size and salary. There are in total 2,141 columns for CPA in this
+  <b>(ii) Value Format Heterogeneity:</b> As it can be difficult to distinguish columns whose values are expressed with different formats or metrics, we include this subset with columns that have the same label 
+  but their values are expressed in different formats. The CPA columns that are selected for this
+  challenge are the different date columns, duration, height, weight, width, price, telephone, faxNumber, servingSize, size and salary. There are in total 2,139 columns for CPA in this
   subset annotated with 30 different CPA labels.
-  For CTA, the selected columns are duration, height, weight, width, Date, DateTime, Time, price, priceRange, telephone and faxNumber. The CTA columns are in total 958 and are annotated with
+  For CTA, the selected columns are duration, height, weight, width, Date, DateTime, Time, price, priceRange, telephone and faxNumber. The CTA columns are in total 957 and are annotated with
   10 CTA labels.
 </p>
 
 <p>
-  <b>(iii) Corner Cases:</b> This subset includes columns that are considered to be corner cases. For the CPA and CTA problems corner cases are columns that are annotated with the same
-  semantic label but their values are dissimilar or columns that are annotated with different semantic labels but their values are very similar. There are 3,510 corner cases included in the
+  <b>(iii) Corner Cases:</b> Corner Cases columns are columns that are considered difficult to annotate as they resemble columns with different labels or their values differ from other columns with the same label.
+  This could lead to wrong predictions made by systems on these columns. Therefore we provide a subset that includes columns that are considered to be corner cases. There are 3,510 corner cases included in the
   CPA corner cases subset which are annotated with 106 different CPA labels, while in the CTA subset there are 5,142 corner case columns annotated with 70 different CTA labels.
 </p>
 
 <p>
-  <b>(iv) Random Selection: </b> This subset includes randomly selected columns for each label of each task. In total there are 12,664 randomly selected columns for CTA and 15,758 randomly
-  selected columns in the CPA subset.
+  <b>(iv) Random Columns: </b> This subset includes randomly selected columns for each label of each task. In total there are 12,609 randomly selected columns annotated with 93 different labels
+  for CTA and 15,663 randomly selected columns annotated with 180 different labels in the CPA subset.
 </p>
-
-<p>
-  In each subset and for each label included there is a minimum of 10 examples. A summary of all statistics for each subset is shown in <i>Table 3</i>.
-</p>
-
-<p>(TABLE)</p>
-
 
 <span id="toc6"></span>
 <h2> 7. Baselines</h2>
 
 <p>
-  To evaluate the created sets some baseline experiments were ran. The first baseline method is a non-deep learning method that uses TF-IDF to create features based on the column values
+  To evaluate the usefulness of the benchmark created sets, we ran two baseline experiments. The first baseline method is a non-deep learning method that uses TF-IDF weighting to create features 
+  based on the column values
   and uses a Random Forest classifier to make predictions. The second baseline is a deep learning method called TURL [ref] which uses a Transformer-based architecture and is 
-  pre-trained on relational tables using TinyBERT. For the experiments the micro-F1 score is used to report the results of each baseline method. The results are summarized in <i>Table 4</i>.
+  pre-trained on relational tables using TinyBERT. In addition, TURL incorporates table context into its model. We fine-tune TURL for 50 epochs using a learning rate of 5e-5 and a batch size of 20.
+  For the experiments the micro-F1 score is used to report the results of each baseline method and using both the Large training set and the Small training set. The results are summarized in <i>Table 3a</i> for CTA
+  and in <i>Table 3b</i> for CPA.
 </p>
 
+<div class="tg-wrap"><table id="tg-X7nck" class="tg">
+            <caption>Table 3a: Baseline Results for CTA</caption>
 
-<p>
-  <table id="tg-BNPY5" class="tg">
-    <caption>Table 4. Baseline Results on Random Forest and TURL for different splits</caption>
-    <thead>
-      <tr>
-            <th></th>
-
-        <th class="tg-mkpc" colspan="5">Column Type Annotation</th>
-        <th class="tg-ixdq" colspan="5">Column Pair Annotation</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-            <td>Method</td>
-            <td>Missing Values</td>
-            <td>Value Heterogeneity</td>
-            <td>Corner Cases</td>
-            <td>Random Selection</td>
-            <td>Full Set</td>
-
-            <td>Missing Values</td>
-            <td>Value Heterogeneity</td>
-            <td>Corner Cases</td>
-            <td>Random Selection</td>
-            <td>Full Set</td>
-
-      </tr>
-      <tr>
-        <td class="tg-d459">Random Forest <br/> TF-IDF </td>
-        <td>0.65</td>
-        <td>0.63</td>
-        <td>0.56</td>
-        <td>0.58</td>
-        <td>0.58</td>
-
-        <td>0.46</td>
-        <td>0.58</td>
-        <td>0.45</td>
-        <td>0.47</td>
-        <td>0.47</td>
-      </tr>
-      <tr>
-        <td class="tg-lboi">TURL</td>
-        <td>0.64</td>
-        <td>0.81</td>
-        <td>0.64</td>
-        <td>0.72</td>
-        <td>0.76</td>
-
-        <td>0.64</td>
-        <td>0.74</td>
-        <td>0.58</td>
-        <td>0.68</td>
-        <td>0.69</td>
-      </tr>
-    </tbody>
-  </table>
-</p>
+<thead>
+  <tr>
+    <th></th>
+    <th class="tg-mkpc" colspan="2">Large Training Set</th>
+    <th class="tg-ixdq" colspan="2">Small Training Set</th>
+  </tr>
+  <tr>
+    <th class="tg-mkpc"></th>
+    <th class="tg-ixdq">RF</th>
+    <th class="tg-ixdq">TURL</th>
+    <th class="tg-ixdq">RF</th>
+    <th class="tg-ixdq">TURL</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td class="tg-d459">Test (Full) </td>
+    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">59.48</span></td>
+    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">76.89</span></td>
+    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">54.30</span></td>
+    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">69.84</span></td>
+  </tr>
+  <tr>
+    <td class="tg-lboi"> Test (Missing Values) </td>
+    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">65.31</span></td>
+    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">76.86</span></td>
+    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">61.70</span></td>
+    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">70.09</span></td>
+  </tr>
+  <tr>
+    <td class="tg-d459"> Test (Format Heterogeneity) </td>
+    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">64.68</span></td>
+    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">88.82</span></td>
+    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">59.56</span></td>
+    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">82.86</span></td>
+  </tr>
+  <tr>
+    <td class="tg-lboi">Test (Corner Cases)</td>
+    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">57.29</span></td>
+    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">71.57</span></td>
+    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">53.66</span></td>
+    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">65.07</span></td>
+  </tr>
+  <tr>
+    <td class="tg-lboi">Test (Random Columns)</td>
+    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">58.56</span></td>
+    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">78.16</span></td>
+    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">52.38</span></td>
+    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">70.74</span></td>
+  </tr>
+</tbody>
+</table>
+					
+<table id="tg-FFQ1F" class="tg">
+  <caption>Table 3b: Baseline Results for CPA</caption>
+  <thead>
+  <tr>
+    <th></th>
+    <th class="tg-mkpc" colspan="2">Large Training Set</th>
+    <th class="tg-ixdq" colspan="2">Small Training Set</th>
+  </tr>
+  <tr>
+    <th class="tg-mkpc"></th>
+    <th class="tg-ixdq">RF</th>
+    <th class="tg-ixdq">TURL</th>
+    <th class="tg-ixdq">RF</th>
+    <th class="tg-ixdq">TURL</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td class="tg-d459">Test (Full) </td>
+    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">48.22</span></td>
+    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">68.88</span></td>
+    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">42.72</span></td>
+    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">60.68</span></td>
+  </tr>
+  <tr>
+    <td class="tg-lboi"> Test (Missing Values) </td>
+    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">46.58</span></td>
+    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">63.86</span></td>
+    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">41.29</span></td>
+    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">56.49</span></td>
+  </tr>
+  <tr>
+    <td class="tg-d459"> Test (Format Heterogeneity) </td>
+    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">58.44</span></td>
+    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">78.40</span></td>
+    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">53.25</span></td>
+    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">68.91</span></td>
+  </tr>
+  <tr>
+    <td class="tg-lboi">Test (Corner Cases)</td>
+    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">45.33</span></td>
+    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">63.39</span></td>
+    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">39.77</span></td>
+    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">56.13</span></td>
+  </tr>
+  <tr>
+    <td class="tg-lboi">Test (Random Columns)</td>
+    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">47.85</span></td>
+    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">69.96</span></td>
+    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">42.27</span></td>
+    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">61.53</span></td>
+  </tr>
+</tbody>
+</table></div>
 
 <p>
   The top 5 labels that reached the highest score and the top 5 labels that reached the lowest score for both CPA and CTA tasks are listed in <i>Table 5</i>.
@@ -1063,7 +1204,7 @@ Steps (ii) and (iii) of the Schema.org Table Corpus creation pipeline deal with 
 							</td>
 							<td>200MB</td>
 							<td><a
-									href="http://data.dws.informatik.uni-mannheim.de/structureddata/sotab/CPA_Testing.zip">CPA_Testing.zip</a>
+									href="http://data.dws.informatik.uni-mannheim.de/structureddata/sotab/CPA_Test.zip">CPA_Test.zip</a>
 								</td>
 							<td>335MB</td>
 							<td><a
@@ -1084,7 +1225,7 @@ Steps (ii) and (iii) of the Schema.org Table Corpus creation pipeline deal with 
     </td>
 	<td>170MB</td>
     <td><a
-            href="http://data.dws.informatik.uni-mannheim.de/structureddata/sotab/CTA_Testing.zip">CTA_Testing.zip</a>
+            href="http://data.dws.informatik.uni-mannheim.de/structureddata/sotab/CTA_Test.zip">CTA_Test.zip</a>
         </td>
 	<td>300MB</td>
     <td><a
@@ -1097,18 +1238,21 @@ Steps (ii) and (iii) of the Schema.org Table Corpus creation pipeline deal with 
 					</tbody>
 				</table>
 				<span id="toc4"></span>
-				<h2>			    9. Feedback</h2>
-				<p>Please send questions and feedback to the <a
+				<h2>9. Other Table Annotation Benchmarks</h2>
+
+        <p>
+          There exist several other benchmark datasets for the CTA and CPA task. An overview of current results on these datasets is given at Papers with Code column-type-annotation and columns-property-annotation ....
+          The two benchmarks that are most closely related to SOTAB are GitTables-SemTab and Wikitables.
+        </p>
+				
+				<span id="toc5"></span>
+				<h2> 10. References </h2>
+				
+
+        <p>Please send questions and feedback to the <a
 						href="http://groups.google.com/group/web-data-commons">Web Data
 						Commons Google Group</a>.<br /><br />
 					More information about the <strong>Web Data Commons</strong> project is found <a href="http://webdatacommons.org/">here</a>.</p>
-
-				<span id="toc5"></span>
-				<h2> 10. Other Table Annotation Benchmarks </h2>
-				<p>There exist several other benchmark datasets for the CTA and CPA task. An overview of current results on these datasets is given at Papers with Code column-type-annotation and columns-property-annotation ....
-            The two benchmarks that are most closely related to SOTAB are GitTables-SemTab and Wikitables.
-            
-        </p>
 				
 				<p>&nbsp;</p>
 
