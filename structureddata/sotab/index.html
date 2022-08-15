@@ -373,26 +373,102 @@ Following the cleansing steps, only attributes with a density of at least 25% ar
   make a decision on and columns that had different value formats were found and added to the final selection of the tables.
 </p>
 
-<p>(IMAGE: interesting table)</p>
-
 <span id="toc2.2"></span>
 <h2> 4. Label Sets for the CTA and CPA Task</h2>
 
 <p>
-  To annotate the columns from the final selected tables for CTA and CPA Schema.org vocabulary was used. Column pairs in the CPA problem were annotated using Schema.org properties. In the
-  CTA task columns were annotated using Schema.org types. These types were derived from the expected types of a Schema.org property value. The final label set for CTA is 93 types and properties,
-  while the final label set for CPA is 180 properties. In the table below some column names and their CPA label and CTA label are shown.
+  To annotate the columns from the final selected tables for CTA and CPA Schema.org vocabulary was used. Column pairs in the CPA problem were annotated using Schema.org properties.
+  As the Schema.org Table Corpus tables have Schema.org properties as column headers this is done directly by matching a column header to
+  a Schema.org property. In the CTA task columns were annotated using Schema.org types. These types were derived from the expected types of a Schema.org property 
+  of a specific column. As some Schema.org properties can have multiple Schema.org types, a manual selection was done to choose the most 
+  general type for annotation. In some cases, we keep as CTA labels Schema.org properties with the purpose of including more fine-grained 
+  labels. An example is the column named pricecurrency, where its corresponding Schema.org property <i>priceCurrency</i> is expected to 
+  be of type <i>Text</i>. In this case we annotate the column pricecurrency for the CTA task as <i>currency</i>, which describes the semantics 
+  of this column better than the more general type <i>Text</i>. In other cases additionally, we create some labels with the same purpose. 
+  An example is for the column named isbn, its Schema.org property <i>isbn</i> is expected to be of type <i>Text</i>. We annotate this column 
+  with a new label that we call <i>IdentifierAT</i> (AT standing for Additional Type) as we believe it is benefitial for systems to be able 
+  to distinguish identifiers from simple text.
+</p>
+
+<p>
+  The final label space for contains <b>93 CTA labels</b> and <b>180 CPA labels</b> covering more than 17 Schema.org types. 
+  In <i>Table 1</i> some 5 column names and their CPA label and CTA label from the 3 largest table types of SOTAB are shown.
+  For the full set of column names and their statistics, as well as the label space for CTA and CPA, a file is provided for download in the 
+  Download section.
 </p>
 
 <p>
   <table>
-    <caption></caption>
+    <caption> Table 1: Columns' CTA and CPA labels of 3 Schema.org table types</caption>
     <thead>
-      <td>Class</td>
-      <td>CPA label</td>
-      <td>CTA label</td>
+      <th class="tg-mkpc">Table Type</th>
+      <th class="tg-mkpc">CPA label</th>
+      <th class="tg-mkpc">CTA label</th>
+
+      <th class="tg-mkpc">Table Type</th>
+      <th class="tg-mkpc">CPA label</th>
+      <th class="tg-mkpc">CTA label</th>
+
+      <th class="tg-mkpc">Table Type</th>
+      <th class="tg-mkpc">CPA label</th>
+      <th class="tg-mkpc">CTA label</th>
     </thead>
     <tbody>
+      <tr>
+        <td rowspan="5"> <i>Product</i> </td>
+        <td>offers</td>
+        <td>Offer</td>
+
+        <td rowspan="5"> <i>Event</i> </td>
+        <td> location </td>
+        <td> Place </td>
+
+        <td rowspan="5"> <i>Recipe</i> </td>
+        <td> cookTime </td>
+        <td> Duration </td>
+
+      </tr>
+      <tr>
+        <td> priceCurrency </td>
+        <td> currency </td>
+
+        <td> description </td>
+        <td> Text </td>
+
+        <td> recipeIngredient </td>
+        <td> Text </td>
+
+      </tr><tr>
+        <td> price </td>
+        <td> price </td>
+
+        <td> eventStatus </td>
+        <td> EventStatusType </td>
+
+        <td> prepTime </td>
+        <td> Duration </td>
+
+      </tr><tr>
+        <td> priceValidUntil </td>
+        <td> Date </td>
+
+        <td> duration </td>
+        <td> Duration </td>
+
+        <td> calories </td>
+        <td> Energy </td>
+
+      </tr><tr>
+        <td> sku </td>
+        <td> IdentifierAT </td>
+
+        <td> email </td>
+        <td> email </td>
+
+        <td> fatContent </td>
+        <td> Mass </td>
+
+      </tr>
     </tbody>
   </table>
 </p>
@@ -405,11 +481,11 @@ Following the cleansing steps, only attributes with a density of at least 25% ar
   <i>Product</i>, <i>Event</i> and <i>Place</i>. The tables do not include any metadata, i.e. no table headers 
   and no table captions are available. The benchmark includes columns with textual, numerical and dateTime column values. The CPA and CTA tables are split with a 80:10:10 ration into fixed
   training, validation and testing splits. In addition, we offer a smaller subset of the training set to help with the comparison of how models perform with different numbers of examples.     
-<em>Table 1</em> gives an overview of the number of tables and columns per type and their median columns for CTA and CPA and for each of their splits.
+<em>Table 2</em> gives an overview of the number of tables and columns per type and their median columns for CTA and CPA and for each of their splits.
 </p> 
 			 
 <div class="tg-wrap"><table id="tg-tKOYO" class="tg">
-<caption>Table 1: Number of tables, rows and median rows per table for CPA and CTA tables</caption>
+<caption>Table 2: Number of tables, rows and median rows per table for CPA and CTA tables</caption>
 <thead>
   <tr>
     <th class="tg-j1i3"></th>
@@ -474,7 +550,7 @@ Following the cleansing steps, only attributes with a density of at least 25% ar
     <td class="tg-9wq8"> 33,679 </td>
     <td class="tg-9wq8"> 126,733 </td>
     <td class="tg-9wq8"> 8,435 </td>
-    <td class="tg-9wq8"> 33,679 </td>
+    <td class="tg-9wq8"> 31,878 </td>
     <td class="tg-9wq8"> 4,263 </td>
     <td class="tg-9wq8"> 16,637 </td>
     <td class="tg-9wq8"> 7,722 </td>
@@ -894,8 +970,14 @@ Following the cleansing steps, only attributes with a density of at least 25% ar
 <p>
   The ground truth files are provided in the same format as datasets used in the SemTab challenge. The files include the <i>"table_name"</i> column, the <i>"column_index"</i> column and the <i>"label"</i> column. The first
   lists the names of the tables, the second points to the position of a column in the table and the last the annotation of the column at the specified index. Additionally, in the CPA ground truth files, the
-  <i>"main_column_index"</i> points to the position in the table where the main column of the table is located.
+  <i>"main_column_index"</i> points to the position in the table where the main column of the table is located. An example of ground truth files 
+  is given in <i>Figure 2</i>.
 </p>
+
+<figure>
+  <img src="images/ground_truth_files.png" alt="Ground Truth" width="85%">
+  <figcaption><b><a id="Fig1"></a>Figure 2:</b> Example of ground truth files. The left table shows the CTA ground truth file and the right table shows the CPA ground truth file.</figcaption>
+</figure>
 
 <span id="toc6"></span>
 <h2> 6. Testsets for Specific Challenges </h2>
@@ -938,7 +1020,7 @@ Following the cleansing steps, only attributes with a density of at least 25% ar
 <p>
   To evaluate the usefulness of the benchmark created sets, we ran two baseline experiments. The first baseline method is a non-deep learning method that uses TF-IDF weighting to create features 
   based on the column values
-  and uses a Random Forest classifier to make predictions. The second baseline is a deep learning method called TURL [ref] which uses a Transformer-based architecture and is 
+  and uses a Random Forest classifier to make predictions. The second baseline is a deep learning method called TURL [3] which uses a Transformer-based [4] architecture and is 
   pre-trained on relational tables using TinyBERT. In addition, TURL incorporates table context into its model. We fine-tune TURL for 50 epochs using a learning rate of 5e-5 and a batch size of 20.
   For the experiments the micro-F1 score is used to report the results of each baseline method and using both the Large training set and the Small training set. The results are summarized in <i>Table 3a</i> for CTA
   and in <i>Table 3b</i> for CPA.
@@ -1056,111 +1138,117 @@ Following the cleansing steps, only attributes with a density of at least 25% ar
 </table></div>
 
 <p>
-  The top 5 labels that reached the highest score and the top 5 labels that reached the lowest score for both CPA and CTA tasks are listed in <i>Table 5</i>.
+  Test (Full) refers to the full test set that includes all annotated columns, while Test (Missing Values) refers to the subset of the full
+  test set that contains the columns that have missing values, Test (Format Heterogeneity) refers to the subset of the full test set that contains
+  the columns with different value formats , Test (Corner Cases) refers to the subset of the full test set that contains the hard to annotate
+  columns and lastly Test (Random Columns) contains all the columns of the full test set that were chosen randomly. 
 </p>
-
 
 <p>
-  <table>
-  <caption>Table 5. Top 5 best f1 scores for labels in CTA and CPA</caption>
+  In all cases, TURL achieves higher micro-F1 scores when trainined on the Large and Small training sets. The difference between both baselines
+  is on average 17 percetange points on all test sets. The Test (Corner Cases) and Test (Missing Values) are two of the subsets where the lowest
+  micro-F1 scores are reached for both baselines, while when evaluating on Test (Format Heterogeneity) both methods appear to achieve better performance
+  than in other subsets. Additionally, training with less examples drops the F1 scores and this can be seen more in TURL. A more fine-grained evaluation
+  and their results for each label in each task and each challenge can be found in the Download section. We list in <i>Table 4</i> the top 5 labels that reached 
+  the highest score in the overall test set and the top 5 labels that reached the lowest score for both CPA and CTA tasks in the overall test set.
+ </p>
+
+ <div class="tg-wrap"><table id="tg-X7nck" class="tg">
+  <caption>Table 4a. Top 5 best and 5 lowest F1 scores for labels in CTA for TURL using the Large training set</caption>
+
+<thead>
+  <tr>
+      <th class="tg-mkpc" colspan="2">Top 5</th>
+      <th class="tg-mkpc" colspan="2">Lowest 5</th>
+    </tr>
+  <tr>
+      <td>Label</td>
+      <td>Overall F1</td>
+      <td>Label</td>
+      <td>Overall F1</td>
+    </tr>
+</thead>
+<tbody>
+  <tr>
+    <td>Action</td>
+    <td>97.62</td>
+    <td>identifierNameAP</td>
+    <td>27.00</td>
+  </tr>
+  <tr>
+    <td>EventAttendanceModeEnumeration</td>
+    <td>97.33</td>
+    <td>MusicGroup</td>
+    <td>25.00</td>
+  </tr>
+  <tr>
+    <td>email</td>
+    <td>96.84</td>
+    <td>JobPosting/name</td>
+    <td>24.06</td>
+  </tr>
+  <tr>
+    <td>EventStatusType</td>
+    <td>96.45</td>
+    <td>CreativeWork/name</td>
+    <td>21.40</td>
+  </tr>
+  <tr>
+    <td>ItemAvailability</td>
+    <td>95.88</td>
+    <td>CreativeWorkSeries</td>
+    <td>15.38</td>
+  </tr>
+</tbody>
+</table>
+					
+<table id="tg-FFQ1F" class="tg">
+  <caption>Table 4b. Top 5 best and 5 lowest F1 scores for labels in CPA for TURL using the Large training set</caption>
   <thead>
-    <tr>
-      <th></th>
-      <th class="tg-mkpc">CPA</th>
-      <th class="tg-mkpc"></th>
-      <th class="tg-mkpc">CTA</th>
+  <tr>
+      <th class="tg-mkpc" colspan="2">Top 5</th>
+      <th class="tg-mkpc" colspan="2">Lowest 5</th>
     </tr>
-  </thead>
-  <tbody>
-    <tr>
+  <tr>
       <td>Label</td>
       <td>Overall F1</td>
       <td>Label</td>
       <td>Overall F1</td>
     </tr>
-
-    <tr>
-      <td colspan="4">Top 5 Best scores</td>
-    </tr>
-
-    <tr>
-      <td>eventAttendanceMode</td>
-      <td>100</td>
-      <td>EventAttendanceModeEnumeration</td>     
-      <td>97.49</td>     
-    </tr>
-
-    <tr>
-      <td>makesOffer</td>
-      <td>98</td>
-      <td>ItemAvailability</td>     
-      <td>97</td>
-    </tr>
-        
-    <tr>
-      <td>eventStatus</td>
-      <td>96</td>
-      <td>OfferItemCondition</td>     
-      <td>96.76</td>
-    </tr>
-
-    <tr>
-      <td>hasMenu</td>
-      <td>96</td>
-      <td>WarrantyPromise</td>     
-      <td>96.40</td>
-    </tr>
-
-    <tr>
-      <td>knowsLanguage</td>
-      <td>95</td>
-      <td>Action</td>     
-      <td>96.36</td>
-    </tr>
-
-    <tr>
-      <td colspan="4">Top 5 Worst scores</td>
-    </tr>
-
-    <tr>
-      <td>seasonNumber</td>
-      <td>0</td>
-      <td>identifierNameAP</td>     
-      <td>26.61</td>
-    </tr>
-
-    <tr>
-      <td>countryOfOrigin</td>
-      <td>0</td>
-      <td>AggregateRating</td>     
-      <td>26.19</td>
-    </tr>
-      
-    <tr>
-      <td>exampleOfWork</td>
-      <td>0</td>
-      <td>CreativeWork/name</td>     
-      <td>23.53</td>
-    </tr>
-
-    <tr>
-      <td>alternateName</td>
-      <td>0</td>
-      <td>CreativeWorkSeries</td>     
-      <td>19.51</td>
-    </tr>
-
-    <tr>
-      <td>datePosted</td>
-      <td>0</td>
-      <td>MusicGroup</td>     
-      <td>17.65</td>
-    </tr>
-
-  </tbody>              
-  </table>   
-</p>
-
+</thead>
+<tbody>
+  <tr>
+    <td>knowsLanguage</td>
+    <td>99.50</td>
+    <td>awayTeam</td>
+    <td>16.99</td>
+  </tr>
+  <tr>
+    <td>contactType</td>
+    <td>99.09</td>
+    <td>parentOrganization</td>
+    <td>16.00</td>
+  </tr>
+  <tr>
+    <td>interactionType</td>
+    <td>98.68</td>
+    <td>award</td>
+    <td>15.38</td>
+  </tr>
+  <tr>
+    <td >makesOffer</td>
+    <td>98.17</td>
+    <td>alternateName</td>
+    <td>15.38</td>
+  </tr>
+  <tr>
+    <td>dayOfWeek</td>
+    <td >97.10</td>
+    <td >homeTeam</td>
+    <td>8.96</td>
+  </tr>
+</tbody>
+</table></div>
 
 <span id="toc3"></span>
 <h2> 8. Download</h2>
@@ -1241,12 +1329,30 @@ Following the cleansing steps, only attributes with a density of at least 25% ar
 				<h2>9. Other Table Annotation Benchmarks</h2>
 
         <p>
-          There exist several other benchmark datasets for the CTA and CPA task. An overview of current results on these datasets is given at Papers with Code column-type-annotation and columns-property-annotation ....
-          The two benchmarks that are most closely related to SOTAB are GitTables-SemTab and Wikitables.
+          There exist several other benchmark datasets for the CTA and CPA task. An overview of current results on these datasets is given at Papers with Code for Column Type Annotation, Column Property Annotation and Cell Entity Annotation.
+          The two benchmarks that are most closely related to SOTAB are GitTables-SemTab [5] and Wikitables-TURL [3]. 
         </p>
 				
 				<span id="toc5"></span>
 				<h2> 10. References </h2>
+
+        <p>
+          [1] D. Ritze, O. Lehmberg, Y. Oulabi, C. Bizer, Profiling the Potential of Web Tables for
+          Augmenting Cross-domain Knowledge Bases, in: Proceedings of the 25th International
+          Conference on World Wide Web, 2016, pp. 251–261. <br/>
+
+          [2] E. Rahm, P. A. Bernstein, A survey of approaches to automatic schema matching, The
+          VLDB Journal — The International Journal on Very Large Data Bases 10 (2001) 334–350. <br/>
+
+          [3] X. Deng, H. Sun, A. Lees, Y. Wu, C. Yu, TURL: Table understanding through representation
+          learning, Proceedings of the VLDB Endowment 14 (2020) 307–319. <br/>
+
+          [4] A. Vaswani, N. Shazeer, N. Parmar, J. Uszkoreit, L. Jones, et al., Attention is All you Need,
+          in: Advances in Neural Information Processing Systems (NIPS 2017), volume 30, 2017. <br/>
+
+          [5] M. Hulsebos, Ç. Demiralp, P. Groth, GitTables: A Large-Scale Corpus of Relational Tables,
+          arXiv:2106.07258 (2022). <br/>
+        </p>
 				
 
         <p>Please send questions and feedback to the <a
