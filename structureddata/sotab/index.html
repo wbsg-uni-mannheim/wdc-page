@@ -276,40 +276,40 @@
 			</li>
 
       <li class="toc-h2 toc-active">
-				<a href="#toc5"> 3. Table Selection</a>
+				<a href="#toc3"> 3. Table Selection</a>
 			</li>
 
       <li class="toc-h2 toc-active">
-				<a href="#toc7"> 4. Label Sets for the CTA and CPA Task </a>
+				<a href="#toc4"> 4. Label Sets for the CTA and CPA Task </a>
 			</li>
 
       <li class="toc-h2 toc-active">
-				<a href="#toc3"> 5. Dataset Profiling </a>
+				<a href="#toc5"> 5. Dataset Profiling </a>
 			</li>
 
       <li class="toc-h2 toc-active">
-				<a href="#toc3"> 6. Testsets for Specific Challenges </a>
+				<a href="#toc6"> 6. Testsets for Specific Challenges </a>
 			</li>
 
       <li class="toc-h2 toc-active">
-				<a href="#toc3"> 7. Baselines </a>
+				<a href="#toc7"> 7. Baselines </a>
 			</li>
 			
 			<li class="toc-h2 toc-active">
-				<a href="#toc3"> 8. Download </a>
+				<a href="#toc8"> 8. Download </a>
 			</li>
 			<li class="toc-h2 toc-active">
-				<a href="#toc4"> 9. Other Table Annotation Benchmarks  </a>
+				<a href="#toc9"> 9. Other Table Annotation Benchmarks  </a>
 			<li class="toc-h2 toc-active">
-        <a href="#toc5"> 10. References </a>
+        <a href="#toc10"> 10. References </a>
 			</li>
 		</ul>
 
-		<span id="toc1"></span>
+		
 
 
 
-
+<span id="toc1"></span>
 <h2>1. Introduction</h2>
 <p>
   Understanding the semantics of table elements is beneficial for tasks such as knowledge base augmentation [ref] and data integration [ref].
@@ -338,6 +338,7 @@
   The datasets are build by using tables from the <a href="http://webdatacommons.org/structureddata/schemaorgtables/">Schema.org Table Corpus</a>.
 </p>
 
+<span id="toc2"></span>
 <h2>2. Schema.org Table Corpus </h2>
 <p>
         The original <a href="http://webdatacommons.org/structureddata/schemaorgtables/">Schema.org Table Corpus</a> used for the creation of this benchmark was created using schema.org data from the December 2020 version of the <a href="http://webdatacommons.org/structureddata/2020-12/stats/schema_org_subsets.html">Web Data Commons Microdata and JSON-LD corpus</a>. The Schema.org Table Corpus consists of 4.2 million relational tables covering 43 schema.org classes.
@@ -347,7 +348,8 @@ Following the cleansing steps, only attributes with a density of at least 25% ar
   
 </p>
 
-<h2> 3. Table Selection and Annotation </h2>
+<span id="toc3"></span>
+<h2> 3. Table Selection </h2>
 <p>
   For the creation of the datasets, the top100 and minimum3 sets of tables from the Schema.org Table Corpus were considered and tables belonging to the 17 classes with the most columns and tables. 
   Three steps were taken to select tables for CTA and CPA tables in SOTAB: 
@@ -369,11 +371,57 @@ Following the cleansing steps, only attributes with a density of at least 25% ar
 </p>
 
 <p>
-  <b>(iii) Finding challenging columns: </b> In the selection phase of the tables, columns that were missing some row values, columns that are similar or dissimilar and could be challenging to
-  make a decision on and columns that had different value formats were found and added to the final selection of the tables.
+  <b>(iii) Finding challenging columns: </b> In the selection phase of the tables, random columns and challenging columns were chosen for each 
+  CTA and CPA label. These challenging columns belong to three challenges: (a) Missing Values, (b) Format Heterogeneity and (c) Corner Cases.
+  In the first challenge, columns that contained missing values were selected, in the second one columns whose values were described using 
+  different formats, like different date formats or different measurement metrics were selected and finally in the third challenge columns 
+  that have the same label but dissimilar values and columns that have different labels but have similar values are included.
+  <br/><br/>
+
+  Some examples of columns selected for the three challenges are shown in <i>Table 1</i>.
 </p>
 
-<span id="toc2.2"></span>
+<table>
+  <caption>Table 1. Challenge columns examples.</caption>
+  <tbody>
+    <tr>
+      <th></th>
+      <th><b>Label</b></th>
+      <th><b>Column Values</b></th>
+    </tr>
+    <tr>
+      <td rowspan="2"> <i>(a) Missing Values</i> </td>
+      <td> <b>bestRating</b>  </td>
+      <td> 5.0, 5.0, None, None ... </td>
+    </tr>
+    <tr>
+      <td> <b>priceCurrency</b> </td>
+      <td> 'GBP', 'GBP', None, None ... </td>
+    </tr>
+    <tr>
+      <td rowspan="2"> <i>(b) Format Heterogeneity</i> </td>
+      <td> <b>duration</b> </td>
+      <td> 'Runtime: 86 mins', 'Runtime: 76 mins' ... </td>
+    </tr>
+    <tr>
+      <td> <b>duration</b> </td>
+      <td> '8:11', '4:14', '0:48', '5:51', '4:55' ... </td>
+    </tr>
+    <tr>
+      <td rowspan="2"> <i>(c) Corner Cases</i> </td>
+      <td> <b>startDate</b>  </td>
+      <td>'2020-09-12T00:00:00.000Z', '2020-05-22T01:00:00.000Z', '2020-08-07T00:00:00.000Z' ... </td>
+    </tr>
+    <tr>
+      <td> <b>endDate</b> </td>
+      <td>'2020-09-20T14:00:00.000Z', '2020-05-24T10:00:00.000Z', '2020-08-09T15:00:00.000Z' ... </td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+<span id="toc4"></span>
 <h2> 4. Label Sets for the CTA and CPA Task</h2>
 
 <p>
@@ -392,14 +440,14 @@ Following the cleansing steps, only attributes with a density of at least 25% ar
 
 <p>
   The final label space for contains <b>93 CTA labels</b> and <b>180 CPA labels</b> covering more than 17 Schema.org types. 
-  In <i>Table 1</i> some 5 column names and their CPA label and CTA label from the 3 largest table types of SOTAB are shown.
+  In <i>Table 2</i> some 5 column names and their CPA label and CTA label from the 3 largest table types of SOTAB are shown.
   For the full set of column names and their statistics, as well as the label space for CTA and CPA, a file is provided for download in the 
-  Download section.
+  <a href="#toc8">Download</a> section.
 </p>
 
 <p>
   <table>
-    <caption> Table 1: Columns' CTA and CPA labels of 3 Schema.org table types</caption>
+    <caption> Table 2: Columns' CTA and CPA labels of 3 Schema.org table types</caption>
     <thead>
       <th class="tg-mkpc">Table Type</th>
       <th class="tg-mkpc">CPA label</th>
@@ -474,18 +522,18 @@ Following the cleansing steps, only attributes with a density of at least 25% ar
 </p>
 
 
-<span id="toc2.3"></span>
+<span id="toc5"></span>
 <h2> 5. Dataset Profiling</h2>
 <p>
   The SOTAB consists of <b>174,708 columns</b> annotated from <b> 42,784 tables</b> for CTA and <b>168,254 column</b> pairs annotated from <b>45,664</b> tables for CPA, distributed across 17 Schema.org types, like 
   <i>Product</i>, <i>Event</i> and <i>Place</i>. The tables do not include any metadata, i.e. no table headers 
   and no table captions are available. The benchmark includes columns with textual, numerical and dateTime column values. The CPA and CTA tables are split with a 80:10:10 ration into fixed
   training, validation and testing splits. In addition, we offer a smaller subset of the training set to help with the comparison of how models perform with different numbers of examples.     
-<em>Table 2</em> gives an overview of the number of tables and columns per type and their median columns for CTA and CPA and for each of their splits.
+<em>Table 3</em> gives an overview of the number of tables and columns per type and their median columns for CTA and CPA and for each of their splits.
 </p> 
 			 
 <div class="tg-wrap"><table id="tg-tKOYO" class="tg">
-<caption>Table 2: Number of tables, rows and median rows per table for CPA and CTA tables</caption>
+<caption>Table 3: Number of tables, rows and median rows per table for CPA and CTA tables</caption>
 <thead>
   <tr>
     <th class="tg-j1i3"></th>
@@ -1014,7 +1062,7 @@ Following the cleansing steps, only attributes with a density of at least 25% ar
   for CTA and 15,663 randomly selected columns annotated with 180 different labels in the CPA subset.
 </p>
 
-<span id="toc6"></span>
+<span id="toc7"></span>
 <h2> 7. Baselines</h2>
 
 <p>
@@ -1022,12 +1070,12 @@ Following the cleansing steps, only attributes with a density of at least 25% ar
   based on the column values
   and uses a Random Forest classifier to make predictions. The second baseline is a deep learning method called TURL [3] which uses a Transformer-based [4] architecture and is 
   pre-trained on relational tables using TinyBERT. In addition, TURL incorporates table context into its model. We fine-tune TURL for 50 epochs using a learning rate of 5e-5 and a batch size of 20.
-  For the experiments the micro-F1 score is used to report the results of each baseline method and using both the Large training set and the Small training set. The results are summarized in <i>Table 3a</i> for CTA
-  and in <i>Table 3b</i> for CPA.
+  For the experiments the micro-F1 score is used to report the results of each baseline method and using both the Large training set and the Small training set. The results are summarized in <i>Table 4a</i> for CTA
+  and in <i>Table 4b</i> for CPA.
 </p>
 
 <div class="tg-wrap"><table id="tg-X7nck" class="tg">
-            <caption>Table 3a: Baseline Results for CTA</caption>
+            <caption>Table 4a: Baseline Results for CTA</caption>
 
 <thead>
   <tr>
@@ -1083,7 +1131,7 @@ Following the cleansing steps, only attributes with a density of at least 25% ar
 </table>
 					
 <table id="tg-FFQ1F" class="tg">
-  <caption>Table 3b: Baseline Results for CPA</caption>
+  <caption>Table 4b: Baseline Results for CPA</caption>
   <thead>
   <tr>
     <th></th>
@@ -1149,12 +1197,12 @@ Following the cleansing steps, only attributes with a density of at least 25% ar
   is on average 17 percetange points on all test sets. The Test (Corner Cases) and Test (Missing Values) are two of the subsets where the lowest
   micro-F1 scores are reached for both baselines, while when evaluating on Test (Format Heterogeneity) both methods appear to achieve better performance
   than in other subsets. Additionally, training with less examples drops the F1 scores and this can be seen more in TURL. A more fine-grained evaluation
-  and their results for each label in each task and each challenge can be found in the Download section. We list in <i>Table 4</i> the top 5 labels that reached 
-  the highest score in the overall test set and the top 5 labels that reached the lowest score for both CPA and CTA tasks in the overall test set.
+  and their results for each label in each task and each challenge can be found in the <a href="#toc8">Download</a> section. 
+  We list in <i>Table 5</i> the top 5 labels that reached the highest score in the overall test set and the top 5 labels that reached the lowest score for both CPA and CTA tasks in the overall test set.
  </p>
 
  <div class="tg-wrap"><table id="tg-X7nck" class="tg">
-  <caption>Table 4a. Top 5 best and 5 lowest F1 scores for labels in CTA for TURL using the Large training set</caption>
+  <caption>Table 5a. Top 5 best and 5 lowest F1 scores for labels in CTA for TURL using the Large training set</caption>
 
 <thead>
   <tr>
@@ -1203,7 +1251,7 @@ Following the cleansing steps, only attributes with a density of at least 25% ar
 </table>
 					
 <table id="tg-FFQ1F" class="tg">
-  <caption>Table 4b. Top 5 best and 5 lowest F1 scores for labels in CPA for TURL using the Large training set</caption>
+  <caption>Table 5b. Top 5 best and 5 lowest F1 scores for labels in CPA for TURL using the Large training set</caption>
   <thead>
   <tr>
       <th class="tg-mkpc" colspan="2">Top 5</th>
@@ -1250,7 +1298,7 @@ Following the cleansing steps, only attributes with a density of at least 25% ar
 </tbody>
 </table></div>
 
-<span id="toc3"></span>
+<span id="toc8"></span>
 <h2> 8. Download</h2>
 			
         <p>We offer the WDC SOTAB benchmark for public download. In the table below you will find download links for training, validation and testing splits for both tasks, CPA and CTA. Each zip file contains a folder with the tables
@@ -1325,15 +1373,62 @@ Following the cleansing steps, only attributes with a density of at least 25% ar
 </tr>
 					</tbody>
 				</table>
-				<span id="toc4"></span>
+
+  <h3>Additional Downloads</h3>
+  <p>
+    <table>
+      <tbody>
+        <tr>
+          <td></td>
+          <td>File</td>
+          <td>Size</td>
+        </tr>
+        <tr>
+          <td><b>Baseline Results</b></td>
+          <td>
+            <a href="http://data.dws.informatik.uni-mannheim.de/structureddata/sotab/Baseline Results.xlsx">Baseline Results.xlsx</a>
+          </td>
+          <td>149 KB</td>
+        </tr>
+        <tr>
+          <td><b>CTA and CPA Labels</b></td>
+          <td>
+            <a href="#"></a>
+          </td>
+          <td></td>
+        </tr>
+        <tr>
+          <td><b>Table Statistics</b></td>
+          <td>
+            <a href="#"></a>
+          </td>
+          <td></td>
+        </tr>
+      </tbody>  
+    </table>
+  </p>
+				<span id="toc9"></span>
 				<h2>9. Other Table Annotation Benchmarks</h2>
 
         <p>
           There exist several other benchmark datasets for the CTA and CPA task. An overview of current results on these datasets is given at Papers with Code for Column Type Annotation, Column Property Annotation and Cell Entity Annotation.
           The two benchmarks that are most closely related to SOTAB are GitTables-SemTab [5] and Wikitables-TURL [3]. 
         </p>
+
+        <p>
+          <a href="https://gittables.github.io/">GitTables</a> [5] is a corpus that contains around 1 million tables collected from GitHub and annotated with Schema.org and 
+          DBpedia classes and properties. A <a href="https://zenodo.org/record/5706316#.YvuQdnZByUk">subset of GitTables</a> was created for the SemTab challenge, where 1,101 tables were annotated 
+          and made available for benchmarking methods on the CTA task. In these tables, 721 columns were annotated with 59 unique Schema.org types and properties 
+          and 2,533 columns were annotated using 122 unique DBpedia classes.
+        </p>
+
+        <p>
+          The <a href="https://github.com/sunlab-osu/TURL">WikiTables-TURL</a>[3] datasets were created to evaluate methods on the CTA and CPA tasks. It contains 406,706 tables annotated for 
+          the CTA task using 255 unique labels from Freebase and 55,970 tables annotated for CPA using 121 unique labels. They provide fixed 
+          training, validation and test sets. Over 600,000 columns are annotated for CTA and over 60,000 column pairs for CPA. 
+        </p>
 				
-				<span id="toc5"></span>
+				<span id="toc10"></span>
 				<h2> 10. References </h2>
 
         <p>
