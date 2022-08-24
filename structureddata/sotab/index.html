@@ -375,7 +375,8 @@ Following the cleansing steps, only attributes with a density of at least 25% ar
   CTA and CPA label. These challenging columns belong to three challenges: (a) Missing Values, (b) Format Heterogeneity and (c) Corner Cases.
   In the first challenge, columns that contained missing values were selected, in the second one columns whose values were described using 
   different formats, like different date formats or different measurement metrics were selected and finally in the third challenge columns 
-  that have the same label but dissimilar values and columns that have different labels but have similar values are included.
+  that have the same label but dissimilar values and columns that have different labels but have similar values are included. These similar and dissimilar columns
+  were detected using a TF-IDF and cosine similarity method for textual columns and a Kolmogorov–Smirnov statistical test for numerical and DateTime columns.
   <br/><br/>
 
   Some examples of columns selected for the three challenges are shown in <i>Table 1</i>.
@@ -537,20 +538,20 @@ Following the cleansing steps, only attributes with a density of at least 25% ar
 <thead>
   <tr>
     <th class="tg-j1i3"></th>
-    <th class="tg-ixdq" colspan="10">Column Type Annotation</th>
-    <th class="tg-ixdq" colspan="10">Column Pair Annotation</th>
+    <th class="tg-ixdq" colspan="11">Column Type Annotation</th>
+    <th class="tg-ixdq" colspan="11">Column Pair Annotation</th>
   </tr>
 </thead>
 <tbody>
 <tr>
     <th class="tg-j1i3"></th>
-    <th class="tg-ixdq" colspan="2">Overall</th>
+    <th class="tg-ixdq" colspan="3">Overall</th>
     <th class="tg-ixdq" colspan="2">Training Set</th>
     <th class="tg-ixdq" colspan="2">Small Training Set</th>
     <th class="tg-ixdq" colspan="2">Validation Set</th>
     <th class="tg-ixdq" colspan="2">Testing Set</th>
 
-    <th class="tg-ixdq" colspan="2">Overall</th>
+    <th class="tg-ixdq" colspan="3">Overall</th>
     <th class="tg-ixdq" colspan="2">Training Set</th>
     <th class="tg-ixdq" colspan="2">Small Training Set</th>
     <th class="tg-ixdq" colspan="2">Validation Set</th>
@@ -560,6 +561,7 @@ Following the cleansing steps, only attributes with a density of at least 25% ar
     <td class="tg-45e1">Schema.org Type</td>
     <td class="tg-o939"># tables</td>
     <td class="tg-o939"># columns</td>
+    <td class="tg-o939">median rows/cols</td>
     <td class="tg-o939"># tables</td>
     <td class="tg-o939"># columns</td>
     <td class="tg-o939"># tables</td>
@@ -571,6 +573,7 @@ Following the cleansing steps, only attributes with a density of at least 25% ar
 
     <td class="tg-o939"># tables</td>
     <td class="tg-o939"># columns</td>
+    <td class="tg-o939">median rows/cols</td>
     <td class="tg-o939"># tables</td>
     <td class="tg-o939"># columns</td>
     <td class="tg-o939"># tables</td>
@@ -584,6 +587,7 @@ Following the cleansing steps, only attributes with a density of at least 25% ar
     <td class="tg-lboi">Overall</td>
     <td class="tg-9wq8"> 42,784 </td>
     <td class="tg-9wq8"> 174,708 </td>
+    <td class="tg-9wq8"> 39 / 8 </td>
     <td class="tg-9wq8"> 32,409 </td>
     <td class="tg-9wq8"> 135,016 </td>
     <td class="tg-9wq8"> 7,996 </td>
@@ -595,6 +599,7 @@ Following the cleansing steps, only attributes with a density of at least 25% ar
 
     <td class="tg-9wq8"> 168,254 </td>
     <td class="tg-9wq8"> 45,664 </td>
+    <td class="tg-9wq8"> 45 / 8 </td>
     <td class="tg-9wq8"> 33,679 </td>
     <td class="tg-9wq8"> 126,733 </td>
     <td class="tg-9wq8"> 8,435 </td>
@@ -608,6 +613,7 @@ Following the cleansing steps, only attributes with a density of at least 25% ar
     <td class="tg-lboi">Product</td>
     <td class="tg-9wq8"> 9,498 </td>
     <td class="tg-9wq8"> 25,079 </td>
+    <td class="tg-9wq8"> 60 / 8 </td>
     <td class="tg-9wq8"> 7,527 </td>
     <td class="tg-9wq8"> 19,694 </td>
     <td class="tg-9wq8"> 1,862 </td>
@@ -619,6 +625,7 @@ Following the cleansing steps, only attributes with a density of at least 25% ar
 
     <td class="tg-9wq8"> 11,664 </td>
     <td class="tg-9wq8"> 27,953 </td>
+    <td class="tg-9wq8"> 66 / 10 </td>
     <td class="tg-9wq8"> 8,976 </td>
     <td class="tg-9wq8"> 20,996 </td>
     <td class="tg-9wq8"> 2,130 </td>
@@ -632,6 +639,7 @@ Following the cleansing steps, only attributes with a density of at least 25% ar
     <td class="tg-d459">Event</td>
     <td class="tg-9wq8"> 6,016 </td>
     <td class="tg-9wq8"> 20,456 </td>
+    <td class="tg-9wq8"> 23 / 8 </td>
     <td class="tg-9wq8"> 4,566 </td>
     <td class="tg-9wq8"> 15,444 </td>
     <td class="tg-9wq8"> 1,085 </td>
@@ -643,6 +651,7 @@ Following the cleansing steps, only attributes with a density of at least 25% ar
 
     <td class="tg-9wq8"> 6,889 </td>
     <td class="tg-9wq8"> 21,271 </td>
+    <td class="tg-9wq8"> 26 / 7 </td>
     <td class="tg-9wq8"> 5,139 </td>
     <td class="tg-9wq8"> 16,769 </td>
     <td class="tg-9wq8"> 1,404 </td>
@@ -656,6 +665,7 @@ Following the cleansing steps, only attributes with a density of at least 25% ar
     <td class="tg-lboi">Recipe</td>
     <td class="tg-9wq8"> 3,272 </td>
     <td class="tg-9wq8"> 23,562 </td>
+    <td class="tg-9wq8"> 52.5 / 16</td>
     <td class="tg-9wq8"> 2,492 </td>
     <td class="tg-9wq8"> 18,597 </td>
     <td class="tg-9wq8"> 539 </td>
@@ -667,6 +677,7 @@ Following the cleansing steps, only attributes with a density of at least 25% ar
 
     <td class="tg-9wq8"> 4,125 </td>
     <td class="tg-9wq8"> 24,059 </td>
+    <td class="tg-9wq8"> 52 / 15</td>
     <td class="tg-9wq8"> 3,022 </td>
     <td class="tg-9wq8"> 17,494 </td>
     <td class="tg-9wq8"> 678 </td>
@@ -680,6 +691,7 @@ Following the cleansing steps, only attributes with a density of at least 25% ar
     <td class="tg-d459">Person</td>
     <td class="tg-9wq8"> 1,986 </td>
     <td class="tg-9wq8"> 8,555 </td>
+    <td class="tg-9wq8"> 36 / 6</td>
     <td class="tg-9wq8"> 1,524 </td>
     <td class="tg-9wq8"> 7,076 </td>
     <td class="tg-9wq8"> 228 </td>
@@ -691,6 +703,7 @@ Following the cleansing steps, only attributes with a density of at least 25% ar
 
     <td class="tg-9wq8"> 3,942 </td>
     <td class="tg-9wq8"> 13,236 </td>
+    <td class="tg-9wq8"> 36 / 5</td>
     <td class="tg-9wq8"> 2,693 </td>
     <td class="tg-9wq8"> 9,629 </td>
     <td class="tg-9wq8"> 656 </td>
@@ -704,6 +717,7 @@ Following the cleansing steps, only attributes with a density of at least 25% ar
     <td class="tg-lboi">MusicRecording</td>
     <td class="tg-9wq8"> 2,840 </td>
     <td class="tg-9wq8"> 7,606 </td>
+    <td class="tg-9wq8"> 20 / 5 </td>
     <td class="tg-9wq8"> 2,278 </td>
     <td class="tg-9wq8"> 5,897 </td>
     <td class="tg-9wq8"> 566 </td>
@@ -715,6 +729,7 @@ Following the cleansing steps, only attributes with a density of at least 25% ar
 
     <td class="tg-9wq8"> 508 </td>
     <td class="tg-9wq8"> 1,632 </td>
+    <td class="tg-9wq8"> 26.5 / 5</td>
     <td class="tg-9wq8"> 323 </td>
     <td class="tg-9wq8"> 1,114 </td>
     <td class="tg-9wq8"> 77 </td>
@@ -728,6 +743,7 @@ Following the cleansing steps, only attributes with a density of at least 25% ar
     <td class="tg-d459">Place</td>
     <td class="tg-9wq8"> 992 </td>
     <td class="tg-9wq8"> 5,647 </td>
+    <td class="tg-9wq8"> 34.5 / 7</td>
     <td class="tg-9wq8"> 669 </td>
     <td class="tg-9wq8"> 4,498 </td>
     <td class="tg-9wq8"> 146 </td>
@@ -739,6 +755,7 @@ Following the cleansing steps, only attributes with a density of at least 25% ar
 
     <td class="tg-9wq8"> 1,415 </td>
     <td class="tg-9wq8"> 7,420 </td>
+    <td class="tg-9wq8"> 33 / 7</td>
     <td class="tg-9wq8"> 1,193 </td>
     <td class="tg-9wq8"> 6,518 </td>
     <td class="tg-9wq8"> 252 </td>
@@ -752,6 +769,7 @@ Following the cleansing steps, only attributes with a density of at least 25% ar
     <td class="tg-lboi">LocalBusiness</td>
     <td class="tg-9wq8"> 5,056 </td>
     <td class="tg-9wq8"> 15,659 </td>
+    <td class="tg-9wq8">45 / 9</td>
     <td class="tg-9wq8"> 3,848 </td>
     <td class="tg-9wq8"> 11,518 </td>
     <td class="tg-9wq8"> 1,077 </td>
@@ -763,6 +781,7 @@ Following the cleansing steps, only attributes with a density of at least 25% ar
 
     <td class="tg-9wq8"> 5,883 </td>
     <td class="tg-9wq8"> 16,894 </td>
+    <td class="tg-9wq8"> 46 / 9 </td>
     <td class="tg-9wq8"> 4,573 </td>
     <td class="tg-9wq8"> 12,372 </td>
     <td class="tg-9wq8"> 1,195 </td>
@@ -776,6 +795,7 @@ Following the cleansing steps, only attributes with a density of at least 25% ar
     <td class="tg-d459">CreativeWork</td>
     <td class="tg-9wq8"> 1,223 </td>
     <td class="tg-9wq8"> 6,323 </td>
+    <td class="tg-9wq8"> 26 / 6</td>
     <td class="tg-9wq8"> 601 </td>
     <td class="tg-9wq8"> 3,553 </td>
     <td class="tg-9wq8"> 237 </td>
@@ -787,6 +807,7 @@ Following the cleansing steps, only attributes with a density of at least 25% ar
 
     <td class="tg-9wq8"> 2,073 </td>
     <td class="tg-9wq8"> 8,839 </td>
+    <td class="tg-9wq8"> 33 / 6 </td>
     <td class="tg-9wq8"> 1,397 </td>
     <td class="tg-9wq8"> 6,437 </td>
     <td class="tg-9wq8"> 367 </td>
@@ -800,6 +821,7 @@ Following the cleansing steps, only attributes with a density of at least 25% ar
     <td class="tg-lboi">MusicAlbum</td>
     <td class="tg-9wq8"> 937 </td>
     <td class="tg-9wq8"> 3,374 </td>
+    <td class="tg-9wq8"> 18 / 5 </td>
     <td class="tg-9wq8"> 699 </td>
     <td class="tg-9wq8"> 2,369 </td>
     <td class="tg-9wq8"> 176 </td>
@@ -811,6 +833,7 @@ Following the cleansing steps, only attributes with a density of at least 25% ar
 
     <td class="tg-9wq8"> 570 </td>
     <td class="tg-9wq8"> 1,484 </td>
+    <td class="tg-9wq8"> 15 / 5 </td>
     <td class="tg-9wq8"> 397 </td>
     <td class="tg-9wq8"> 1,025 </td>
     <td class="tg-9wq8"> 98 </td>
@@ -824,6 +847,7 @@ Following the cleansing steps, only attributes with a density of at least 25% ar
     <td class="tg-d459">Movie</td>
     <td class="tg-9wq8"> 1,377 </td>
     <td class="tg-9wq8"> 9,720 </td>
+    <td class="tg-9wq8"> 85 / 8 </td>
     <td class="tg-9wq8"> 1,154 </td>
     <td class="tg-9wq8"> 8,850 </td>
     <td class="tg-9wq8"> 361 </td>
@@ -835,6 +859,7 @@ Following the cleansing steps, only attributes with a density of at least 25% ar
 
     <td class="tg-9wq8"> 1,841 </td>
     <td class="tg-9wq8"> 10,631 </td>
+    <td class="tg-9wq8"> 84 / 8 </td>
     <td class="tg-9wq8"> 1,351 </td>
     <td class="tg-9wq8"> 8,311 </td>
     <td class="tg-9wq8"> 353 </td>
@@ -848,6 +873,7 @@ Following the cleansing steps, only attributes with a density of at least 25% ar
     <td class="tg-lboi">Hotel</td>
     <td class="tg-9wq8"> 1,491 </td>
     <td class="tg-9wq8"> 9,875 </td>
+    <td class="tg-9wq8"> 36 / 9 </td>
     <td class="tg-9wq8"> 973 </td>
     <td class="tg-9wq8"> 6,701 </td>
     <td class="tg-9wq8"> 334 </td>
@@ -859,6 +885,7 @@ Following the cleansing steps, only attributes with a density of at least 25% ar
 
     <td class="tg-9wq8"> 1,588 </td>
     <td class="tg-9wq8"> 9,618 </td>
+    <td class="tg-9wq8"> 35 / 9</td>
     <td class="tg-9wq8"> 989 </td>
     <td class="tg-9wq8"> 6,175 </td>
     <td class="tg-9wq8"> 337 </td>
@@ -872,6 +899,7 @@ Following the cleansing steps, only attributes with a density of at least 25% ar
     <td class="tg-d459">SportsEvent</td>
     <td class="tg-9wq8"> 1,407 </td>
     <td class="tg-9wq8"> 5,545 </td>
+    <td class="tg-9wq8"> 43 / 4 </td>
     <td class="tg-9wq8"> 1,126 </td>
     <td class="tg-9wq8"> 4,659 </td>
     <td class="tg-9wq8"> 281 </td>
@@ -883,6 +911,7 @@ Following the cleansing steps, only attributes with a density of at least 25% ar
 
     <td class="tg-9wq8"> 832 </td>
     <td class="tg-9wq8"> 3,292 </td>
+    <td class="tg-9wq8"> 44 / 5</td>
     <td class="tg-9wq8"> 571 </td>
     <td class="tg-9wq8"> 2,527 </td>
     <td class="tg-9wq8"> 132 </td>
@@ -896,6 +925,7 @@ Following the cleansing steps, only attributes with a density of at least 25% ar
     <td class="tg-lboi">Restaurant</td>
     <td class="tg-9wq8"> 1,508 </td>
     <td class="tg-9wq8"> 10,297 </td>
+    <td class="tg-9wq8"> 43 / 17</td>
     <td class="tg-9wq8"> 1,182 </td>
     <td class="tg-9wq8"> 8,539 </td>
     <td class="tg-9wq8"> 215 </td>
@@ -907,6 +937,7 @@ Following the cleansing steps, only attributes with a density of at least 25% ar
 
     <td class="tg-9wq8"> 1,176 </td>
     <td class="tg-9wq8"> 9,017 </td>
+    <td class="tg-9wq8"> 42 / 17</td>
     <td class="tg-9wq8"> 948 </td>
     <td class="tg-9wq8"> 8,143 </td>
     <td class="tg-9wq8"> 124 </td>
@@ -920,6 +951,7 @@ Following the cleansing steps, only attributes with a density of at least 25% ar
     <td class="tg-d459">Book</td>
     <td class="tg-9wq8"> 1,680 </td>
     <td class="tg-9wq8"> 9,323 </td>
+    <td class="tg-9wq8"> 93.5 / 7 </td>
     <td class="tg-9wq8"> 1,123 </td>
     <td class="tg-9wq8"> 6,621 </td>
     <td class="tg-9wq8"> 247 </td>
@@ -931,6 +963,7 @@ Following the cleansing steps, only attributes with a density of at least 25% ar
 
     <td class="tg-9wq8"> 2,540 </td>
     <td class="tg-9wq8"> 10,593 </td>
+    <td class="tg-9wq8"> 120 / 7</td>
     <td class="tg-9wq8"> 1,717 </td>
     <td class="tg-9wq8"> 7,443 </td>
     <td class="tg-9wq8"> 559 </td>
@@ -944,6 +977,7 @@ Following the cleansing steps, only attributes with a density of at least 25% ar
     <td class="tg-lboi">TVEpisode</td>
     <td class="tg-9wq8"> 464 </td>
     <td class="tg-9wq8"> 1,813 </td>
+    <td class="tg-9wq8"> 64.5 / 5 </td>
     <td class="tg-9wq8"> 370 </td>
     <td class="tg-9wq8"> 1,594 </td>
     <td class="tg-9wq8"> 92 </td>
@@ -955,6 +989,7 @@ Following the cleansing steps, only attributes with a density of at least 25% ar
 
     <td class="tg-9wq8"> 418 </td>
     <td class="tg-9wq8"> 1,194 </td>
+    <td class="tg-9wq8"> 61 / 5</td>
     <td class="tg-9wq8"> 231 </td>
     <td class="tg-9wq8"> 829 </td>
     <td class="tg-9wq8"> 38 </td>
@@ -968,6 +1003,7 @@ Following the cleansing steps, only attributes with a density of at least 25% ar
     <td class="tg-d459">JobPosting</td>
     <td class="tg-9wq8"> 2,856 </td>
     <td class="tg-9wq8"> 11,227 </td>
+    <td class="tg-9wq8"> 43 / 9 </td>
     <td class="tg-9wq8"> 2,132 </td>
     <td class="tg-9wq8"> 8,894 </td>
     <td class="tg-9wq8"> 509 </td>
@@ -979,6 +1015,7 @@ Following the cleansing steps, only attributes with a density of at least 25% ar
 
     <td class="tg-9wq8"> 147 </td>
     <td class="tg-9wq8"> 737 </td>
+    <td class="tg-9wq8"> 42 / 8</td>
     <td class="tg-9wq8"> 110 </td>
     <td class="tg-9wq8"> 585 </td>
     <td class="tg-9wq8"> 30 </td>
@@ -992,6 +1029,7 @@ Following the cleansing steps, only attributes with a density of at least 25% ar
     <td class="tg-lboi">Museum</td>
     <td class="tg-9wq8"> 181 </td>
     <td class="tg-9wq8"> 647 </td>
+    <td class="tg-9wq8"> 26 / 8 </td>
     <td class="tg-9wq8"> 145 </td>
     <td class="tg-9wq8"> 512 </td>
     <td class="tg-9wq8"> 41 </td>
@@ -1003,6 +1041,7 @@ Following the cleansing steps, only attributes with a density of at least 25% ar
 
     <td class="tg-9wq8"> 53 </td>
     <td class="tg-9wq8"> 384 </td>
+    <td class="tg-9wq8"> 23 / 9</td>
     <td class="tg-9wq8"> 49 </td>
     <td class="tg-9wq8"> 366 </td>
     <td class="tg-9wq8"> 5 </td>
@@ -1384,7 +1423,7 @@ Following the cleansing steps, only attributes with a density of at least 25% ar
           <td>Size</td>
         </tr>
         <tr>
-          <td><b>Baseline Results</b></td>
+          <td><b>Detailed Baseline Results</b></td>
           <td>
             <a href="http://data.dws.informatik.uni-mannheim.de/structureddata/sotab/Baseline Results.xlsx">Baseline Results.xlsx</a>
           </td>
@@ -1393,16 +1432,9 @@ Following the cleansing steps, only attributes with a density of at least 25% ar
         <tr>
           <td><b>CTA and CPA Labels</b></td>
           <td>
-            <a href="#"></a>
+            <a href="http://data.dws.informatik.uni-mannheim.de/structureddata/sotab/CPA and CTA Labels.xlsx">CPA and CTA Labels.xlsx</a>
           </td>
-          <td></td>
-        </tr>
-        <tr>
-          <td><b>Table Statistics</b></td>
-          <td>
-            <a href="#"></a>
-          </td>
-          <td></td>
+          <td>25 KB</td>
         </tr>
       </tbody>  
     </table>
