@@ -2,7 +2,7 @@
 <html>
 
 <head>
-	<title>The WDC Schema.org Table Annotation Benchmark</title>
+	<title>The WDC Schema.org Table Annotation Benchmark (SOTAB)</title>
 	<link rel='stylesheet' href='http://webdatacommons.org/style.css' type='text/css' media='screen' />
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<style>
@@ -228,7 +228,7 @@
 					"json"
 				],
 				//TODO: Change once final
-				"contentUrl": "http://webdatacommons.org/structureddata/schemaorgtables/index.html"
+				"contentUrl": "http://webdatacommons.org/structureddata/sotab/index.html"
 			}],
 			"citation": [
 
@@ -255,16 +255,16 @@
 	</div>
 	<div id="content">
 		<p>
-			This page provides the <b>WDC Schema.org <a href="https://paperswithcode.com/task/table-annotation">Table Annotation</a> Benchmark</b> (SOTAB) for public download. SOTAB features two tasks: Column Type Annotation and 
+			This page provides the <b>WDC Schema.org <a href="https://paperswithcode.com/task/table-annotation">Table Annotation</a> Benchmark</b> (SOTAB) for public download. SOTAB features two annotation tasks: Column Type Annotation and 
       Columns Property Annotation. The goal of the <a href="https://paperswithcode.com/task/column-type-annotation">Column Type Annotation (CTA)</a> task is to annotate the columns of a table with 93 
       <a href="https://schema.org/">Schema.org</a> types, such as telephone, duration, Place, or Organization. The goal of the <a href="https://paperswithcode.com/task/columns-property-annotation">Columns Property 
-      Annotation (CPA)</a> task is to annotate pairs of table columns with one out of 180 <a href="https://schema.org/">Schema.org</a> properties such gtin13, startDate, priceValidUntil, or recipeIngredient. 
-			The benchmark consists of <b>42,784 tables</b> annotated for CTA and <b>45,664 tables</b> annotated for CPA which are split into training-, validation- and test sets for both tasks. 
-      The tables cover 17 popular Schema.org types such as Product, LocalBusiness, Event, or JobPosting and originate from the <a href="http://webdatacommons.org/structureddata/schemaorgtables/">Schema.org Table Corpus</a>.
+      Annotation (CPA)</a> task is to annotate pairs of table columns with one out of 180 <a href="https://schema.org/">Schema.org</a> properties, such as gtin13, startDate, priceValidUntil, or recipeIngredient. 
+			The benchmark consists of <b>42,784 tables</b> annotated for CTA and <b>45,664 tables</b> annotated for CPA. The tables are split into training-, validation- and test sets for both tasks. 
+      The tables cover 17 popular Schema.org types including Product, LocalBusiness, Event, and JobPosting. The tables originate from the <a href="http://webdatacommons.org/structureddata/schemaorgtables/">Schema.org Table Corpus</a>.
 	  </p>
 <h2 id="news">News</h2>
 		<ul>
-			<li><strong>2022-08:</strong> Initial version of the WDC Schema.org Table Annotation Benchmark released.</li>
+			<li><strong>2022-08:</strong> Initial version of the WDC Schema.org Table Annotation Benchmark (SOTAB) released.</li>
 		</ul>
 		<h2>Contents</h2>
 		<ul>
@@ -312,18 +312,18 @@
 <span id="toc1"></span>
 <h2>1. Introduction</h2>
 <p>
-  Understanding the semantics of table elements is beneficial for tasks such as knowledge base augmentation [ref] and data integration [ref].
-  <a href="https://paperswithcode.com/task/table-annotation">Table annotation</a> is the task of annotating a table with terms/concepts from knowledge graph, database schema or other vocabulary. 
+  Understanding the semantics of table elements is a pre-requisite for many data integration tasks such as schema mapping or knowledge base augmentation.
+  <a href="https://paperswithcode.com/task/table-annotation">Table annotation</a> is the task of annotating a table with terms/concepts from knowledge graph, database schema or vocabulary. 
   Table annotation consists of five different tasks: column type annotation (CTA), columns property annotation (CPA), cell entity annotation (CEA), row annotation, and table type detection. 
   Table annotation has attracted <a href="https://paperswithcode.com/task/table-annotation">quite some attention in the research community</a> in recent years and there are active benchmarking campaigns on table annotation, such as <a href="https://www.cs.ox.ac.uk/isg/challenges/sem-tab/">SemTab</a>.
   <span id="toc2"></span>
 </p>
 
 <p>
-  CTA is the task of annotating table columns with the type of entities present in the column, while CPA aims to annotate the relationship between the main column of a table (usually the leftmost) 
+  CTA is the task of annotating table columns with the type of entities described in the column, while CPA aims to annotate the relationship between the main column of a table (usually the leftmost) 
   with another column in the table.
-  An example of CTA and CPA is given in <i>Figure 1</i>. For the CTA task, the first column is annotated with the label <b>"Hotel/name"</b> as the column contains values describing names of hotels. For the CPA task
-  the relationship between the main column and the second column is annotated using <b>"streetAddress"</b> as the second column shows the address of the hotels in the first column.
+  An example of CTA and CPA annotations is given in <i>Figure 1</i>. For the CTA task, the first column is annotated with the label <b>"Hotel/name"</b> as the column contains the names of hotels. Further CTA annotations are <b>"addressLocation", "addressLocality", "Country" and "currency"</b> For the CPA task
+  the relationship between the main column <b>"Hotel/name"</b> and the second column is annotated using <b>"streetAddress"</b> as the second column shows the address of the hotels in the first column.
 </p>
 
 <figure>
