@@ -333,15 +333,14 @@
 
 
 <p>
-  In order to compare the performance of table annotation methods, benchmark datasets covering a wide range of topics are needed. The aim of this work is to create 
-  and make available datasets for benchmarking two of the table annotation tasks: column type annotation (CTA) and column pair annotation (CPA). 
-  The datasets are build by using tables from the <a href="http://webdatacommons.org/structureddata/schemaorgtables/">Schema.org Table Corpus</a>.
+  In order to compare the performance of table annotation methods, benchmark datasets covering a wide range of topics are needed. The aim of SOTAB is to completement the set of publicly available table annotation benchmarks with a CTA and PCA benchmark covering various entity types of general interest, e.g. products, local business, job postings, and to provide training data from many independent data sources for these types in order to reflect the full heterogeneity of the values that are used to describe entities. 
+	The SOTAB benchmark is build using tables from the <a href="http://webdatacommons.org/structureddata/schemaorgtables/">Schema.org Table Corpus</a>.
 </p>
 
 <span id="toc2"></span>
 <h2>2. Schema.org Table Corpus </h2>
 <p>
-        The original <a href="http://webdatacommons.org/structureddata/schemaorgtables/">Schema.org Table Corpus</a> used for the creation of this benchmark was created using schema.org data from the December 2020 version of the <a href="http://webdatacommons.org/structureddata/2020-12/stats/schema_org_subsets.html">Web Data Commons Microdata and JSON-LD corpus</a>. The Schema.org Table Corpus consists of 4.2 million relational tables covering 43 schema.org classes.
+        The <a href="http://webdatacommons.org/structureddata/schemaorgtables/">Schema.org Table Corpus</a> was created using schema.org data from the December 2020 version of the <a href="http://webdatacommons.org/structureddata/2020-12/stats/schema_org_subsets.html">Web Data Commons Microdata and JSON-LD corpus</a>. The Schema.org Table Corpus consists of 4.2 million relational tables covering 43 schema.org classes.
 Each table in the Schema.org Table Corpus contains the descriptions of all entities of a specific Schema.org class that were extracted for a specific host, e.g. movie records from imdb.com or product records from ebay.com or rakuten.co.jp. 
 All extracted entities of one Schema.org class are collected per host and subsequently passed through a pipeline consisting of three steps, (i) Attribute extraction, (ii) Removal of listing pages and sparse entities, and (iii) content-based deduplication. 
 Following the cleansing steps, only attributes with a density of at least 25% are retained per table. For more information about these steps and the general Schema.org Table Corpus creation process, statistics files and download links, please visit the <a href="http://webdatacommons.org/structureddata/schemaorgtables/">Schema.org Table Corpus website</a>. 
@@ -440,7 +439,7 @@ Following the cleansing steps, only attributes with a density of at least 25% ar
 </p>
 
 <p>
-  The final label space for contains <b>93 CTA labels</b> and <b>180 CPA labels</b> covering more than 17 Schema.org types. 
+  The final label space contains <b>93 CTA labels</b> and <b>180 CPA labels</b> covering more than 17 Schema.org types. 
   In <i>Table 2</i> some 5 column names and their CPA label and CTA label from the 3 largest table types of SOTAB are shown.
   For the full set of column names and their statistics, as well as the label space for CTA and CPA, a file is provided for download in the 
   <a href="#toc8">Download</a> section.
@@ -526,11 +525,11 @@ Following the cleansing steps, only attributes with a density of at least 25% ar
 <span id="toc5"></span>
 <h2> 5. Dataset Profiling</h2>
 <p>
-  The SOTAB consists of <b>174,708 columns</b> annotated from <b> 42,784 tables</b> for CTA and <b>168,254 column</b> pairs annotated from <b>45,664</b> tables for CPA, distributed across 17 Schema.org types, like 
+  The SOTAB benchmark provides CTA annotations for <b>174,708 columns</b> from <b> 42,784 tables</b> and CPA annotations for <b>168,254 column pairs</b> from <b>45,664</b> tables. The tables are distributed across 17 Schema.org types, like 
   <i>Product</i>, <i>Event</i> and <i>Place</i>. The tables do not include any metadata, i.e. no table headers 
   and no table captions are available. The benchmark includes columns with textual, numerical and dateTime column values. The CPA and CTA tables are split with a 80:10:10 ration into fixed
   training, validation and testing splits. In addition, we offer a smaller subset of the training set to help with the comparison of how models perform with different numbers of examples.     
-<em>Table 3</em> gives an overview of the number of tables and columns per type and their median columns for CTA and CPA and for each of their splits.
+<em>Table 3</em> gives an overview of the number of tables and columns per type and overview of the number of tables and columns per type and the median number of annotations (labels) for CTA and CPA for each of the splits.
 </p> 
 			 
 <div class="tg-wrap"><table id="tg-tKOYO" class="tg">
