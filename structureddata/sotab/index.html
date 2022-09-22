@@ -256,15 +256,15 @@
 	<div id="content">
 		<p>
 			This page provides the <b>WDC Schema.org <a href="https://paperswithcode.com/task/table-annotation">Table Annotation</a> Benchmark</b> (SOTAB) for public download. SOTAB features two annotation tasks: Column Type Annotation and 
-      Columns Property Annotation. The goal of the <a href="https://paperswithcode.com/task/column-type-annotation">Column Type Annotation (CTA)</a> task is to annotate the columns of a table with 93 
+      Columns Property Annotation. The goal of the <a href="https://paperswithcode.com/task/column-type-annotation">Column Type Annotation (CTA)</a> task is to annotate the columns of a table with 91 
       <a href="https://schema.org/">Schema.org</a> types, such as telephone, duration, Place, or Organization. The goal of the <a href="https://paperswithcode.com/task/columns-property-annotation">Columns Property 
-      Annotation (CPA)</a> task is to annotate pairs of table columns with one out of 180 <a href="https://schema.org/">Schema.org</a> properties, such as gtin13, startDate, priceValidUntil, or recipeIngredient. 
-			The benchmark consists of <b>42,784 tables</b> annotated for CTA and <b>45,664 tables</b> annotated for CPA. The tables are split into training-, validation- and test sets for both tasks. 
+      Annotation (CPA)</a> task is to annotate pairs of table columns with one out of 176 <a href="https://schema.org/">Schema.org</a> properties, such as gtin13, startDate, priceValidUntil, or recipeIngredient. 
+			The benchmark consists of <b>59,548 tables</b> annotated for CTA and <b>48,379 tables</b> annotated for CPA originating from <b> 74,215 </b> different webpages. The tables are split into training-, validation- and test sets for both tasks. 
       The tables cover 17 popular Schema.org types including Product, LocalBusiness, Event, and JobPosting. The tables originate from the <a href="http://webdatacommons.org/structureddata/schemaorgtables/">Schema.org Table Corpus</a>.
 	  </p>
 <h2 id="news">News</h2>
 		<ul>
-			<li><strong>2022-08:</strong> Initial version of the WDC Schema.org Table Annotation Benchmark (SOTAB) released.</li>
+			<li><strong>2022-09-22:</strong> Initial version of the WDC Schema.org Table Annotation Benchmark (SOTAB) released.</li>
 		</ul>
 		<h2>Contents</h2>
 		<ul>
@@ -359,8 +359,7 @@ Following the cleansing steps, only attributes with a density of at least 25% ar
   <b>(i) Language Detection: </b> The purpose of this step was to filter out tables and rows that were not in the English language. 
   The <a href="https://fasttext.cc/docs/en/language-identification.html">FastText</a> language detection model was used for detecting the language of rows/tables. The <i>description</i> column
   and <i>disambiguatingDescription</i> column were chosen to check the language of a table, as they are columns that contain longer textual values that can indicate the language used. If a table did
-  not have one of these columns the concatenation of all other columns was used to determine the language. Tables and rows where the model was at least 50% confident that the language is English and 
-  where the model is not at least 50% confident that the language used is not English are kept and the rest are discarded.
+  not have one of these columns the concatenation of all other columns was used to determine the language. Tables and rows where the model was at least 50% confident that the language is English are kept and the rest are discarded.
 </p>
 
 <p>
@@ -408,13 +407,29 @@ Following the cleansing steps, only attributes with a density of at least 25% ar
       <td> '8:11', '4:14', '0:48', '5:51', '4:55' ... </td>
     </tr>
     <tr>
-      <td rowspan="2"> <i>(c) Corner Cases</i> </td>
+      <td rowspan="6"> <i>(c) Corner Cases</i> </td>
       <td> <b>startDate</b>  </td>
       <td>'2020-09-12T00:00:00.000Z', '2020-05-22T01:00:00.000Z', '2020-08-07T00:00:00.000Z' ... </td>
     </tr>
     <tr>
       <td> <b>endDate</b> </td>
       <td>'2020-09-20T14:00:00.000Z', '2020-05-24T10:00:00.000Z', '2020-08-09T15:00:00.000Z' ... </td>
+    </tr>
+    <tr>
+      <td> <b>memberOf</b> </td>
+      <td> 'Pinterest', 'youtube', 'Facebook', 'Twitter', ... </td>
+    </tr>
+    <tr>
+      <td> <b>text</b> </td>
+      <td> Share this: Email Facebook Twitter LinkedIn Pinterest' ...</td>
+    </tr>
+    <tr>
+      <td> <b>currenciesAccepted</b> </td>
+      <td>'USD', 'USD', 'USD', 'USD', ...</td>
+    </tr>
+    <tr>
+      <td> <b>priceCurrency</b> </td>
+      <td>'USD', 'USD', 'USD', 'USD', ...</td>
     </tr>
   </tbody>
 </table>
@@ -439,7 +454,7 @@ Following the cleansing steps, only attributes with a density of at least 25% ar
 </p>
 
 <p>
-  The final label space contains <b>93 CTA labels</b> and <b>180 CPA labels</b> covering more than 17 Schema.org types. 
+  The final label space contains <b>91 CTA labels</b> and <b>176 CPA labels</b> covering more than 17 Schema.org types. 
   In <i>Table 2</i> some 5 column names and their CPA label and CTA label from the 3 largest table types of SOTAB are shown.
   For the full set of column names and their statistics, as well as the label space for CTA and CPA, a file is provided for download in the 
   <a href="#toc8">Download</a> section.
@@ -525,7 +540,7 @@ Following the cleansing steps, only attributes with a density of at least 25% ar
 <span id="toc5"></span>
 <h2> 5. Dataset Profiling</h2>
 <p>
-  The SOTAB benchmark provides CTA annotations for <b>174,708 columns</b> from <b> 42,784 tables</b> and CPA annotations for <b>168,254 column pairs</b> from <b>45,664</b> tables. The tables are distributed across 17 Schema.org types, like 
+  The SOTAB benchmark provides CTA annotations for <b>162,351 columns</b> from <b> 59,548 tables</b> and CPA annotations for <b>174,998 column pairs</b> from <b>48,379</b> tables. The tables are distributed across 17 Schema.org types, like 
   <i>Product</i>, <i>Event</i> and <i>Place</i>. The tables do not include any metadata, i.e. no table headers 
   and no table captions are available. The benchmark includes columns with textual, numerical and dateTime column values. The CPA and CTA tables are split with a 80:10:10 ration into fixed
   training, validation and testing splits. In addition, we offer a smaller subset of the training set to help with the comparison of how models perform with different numbers of examples.     
@@ -584,471 +599,471 @@ Following the cleansing steps, only attributes with a density of at least 25% ar
   </tr>
   <tr>
     <td class="tg-lboi">Overall</td>
-    <td class="tg-9wq8"> 42,784 </td>
-    <td class="tg-9wq8"> 174,708 </td>
-    <td class="tg-9wq8"> 39 / 8 </td>
-    <td class="tg-9wq8"> 32,409 </td>
-    <td class="tg-9wq8"> 135,016 </td>
-    <td class="tg-9wq8"> 7,996 </td>
-    <td class="tg-9wq8"> 33,411 </td>
-    <td class="tg-9wq8"> 4,211 </td>
-    <td class="tg-9wq8"> 17,911 </td>
-    <td class="tg-9wq8"> 6,164 </td>
-    <td class="tg-9wq8"> 21,781 </td>
+    <td class="tg-9wq8"> 59,548 </td>
+    <td class="tg-9wq8"> 162,351 </td>
+    <td class="tg-9wq8"> 33/7 </td>
+    <td class="tg-9wq8"> 46,790 </td>
+    <td class="tg-9wq8"> 130,471 </td>
+    <td class="tg-9wq8"> 11,517 </td>
+    <td class="tg-9wq8"> 33,004 </td>
+    <td class="tg-9wq8"> 5,732 </td>
+    <td class="tg-9wq8"> 16,840 </td>
+    <td class="tg-9wq8"> 7,026 </td>
+    <td class="tg-9wq8"> 15,040 </td>
 
-    <td class="tg-9wq8"> 168,254 </td>
-    <td class="tg-9wq8"> 45,664 </td>
-    <td class="tg-9wq8"> 45 / 8 </td>
-    <td class="tg-9wq8"> 33,679 </td>
-    <td class="tg-9wq8"> 126,733 </td>
-    <td class="tg-9wq8"> 8,435 </td>
-    <td class="tg-9wq8"> 31,878 </td>
-    <td class="tg-9wq8"> 4,263 </td>
-    <td class="tg-9wq8"> 16,637 </td>
-    <td class="tg-9wq8"> 7,722 </td>
-    <td class="tg-9wq8"> 24,884 </td>
+    <td class="tg-9wq8"> 48,379 </td>
+    <td class="tg-9wq8"> 174,998 </td>
+    <td class="tg-9wq8"> 42/8 </td>
+    <td class="tg-9wq8"> 37,128 </td>
+    <td class="tg-9wq8"> 134,425 </td>
+    <td class="tg-9wq8"> 9,435 </td>
+    <td class="tg-9wq8"> 33,643 </td>
+    <td class="tg-9wq8"> 4,771 </td>
+    <td class="tg-9wq8"> 17,417 </td>
+    <td class="tg-9wq8"> 6,480 </td>
+    <td class="tg-9wq8"> 23,156 </td>
   </tr>
   <tr>
     <td class="tg-lboi">Product</td>
-    <td class="tg-9wq8"> 9,498 </td>
-    <td class="tg-9wq8"> 25,079 </td>
-    <td class="tg-9wq8"> 60 / 8 </td>
-    <td class="tg-9wq8"> 7,527 </td>
-    <td class="tg-9wq8"> 19,694 </td>
-    <td class="tg-9wq8"> 1,862 </td>
-    <td class="tg-9wq8"> 4,106 </td>
-    <td class="tg-9wq8"> 833 </td>
-    <td class="tg-9wq8"> 1,888 </td>
-    <td class="tg-9wq8"> 1,138 </td>
-    <td class="tg-9wq8"> 3,497 </td>
+    <td class="tg-9wq8"> 12,534 </td>
+    <td class="tg-9wq8"> 30,856 </td>
+    <td class="tg-9wq8"> 40/8 </td>
+    <td class="tg-9wq8"> 10,403 </td>
+    <td class="tg-9wq8"> 25,353 </td>
+    <td class="tg-9wq8"> 2,037 </td>
+    <td class="tg-9wq8"> 5,211 </td>
+    <td class="tg-9wq8"> 857 </td>
+    <td class="tg-9wq8"> 2,507 </td>
+    <td class="tg-9wq8"> 1,274 </td>
+    <td class="tg-9wq8"> 2,996 </td>
 
-    <td class="tg-9wq8"> 11,664 </td>
-    <td class="tg-9wq8"> 27,953 </td>
-    <td class="tg-9wq8"> 66 / 10 </td>
-    <td class="tg-9wq8"> 8,976 </td>
-    <td class="tg-9wq8"> 20,996 </td>
-    <td class="tg-9wq8"> 2,130 </td>
-    <td class="tg-9wq8"> 4,877 </td>
-    <td class="tg-9wq8"> 951 </td>
-    <td class="tg-9wq8"> 2,322 </td>
-    <td class="tg-9wq8"> 1,737 </td>
-    <td class="tg-9wq8"> 4,635 </td>
+    <td class="tg-9wq8"> 16,032 </td>
+    <td class="tg-9wq8"> 36,464 </td>
+    <td class="tg-9wq8"> 65/10 </td>
+    <td class="tg-9wq8"> 12,668 </td>
+    <td class="tg-9wq8"> 29,149 </td>
+    <td class="tg-9wq8"> 3,075 </td>
+    <td class="tg-9wq8"> 6,378 </td>
+    <td class="tg-9wq8"> 1,476 </td>
+    <td class="tg-9wq8"> 2,726 </td>
+    <td class="tg-9wq8"> 1,888 </td>
+    <td class="tg-9wq8"> 4,589 </td>
   </tr>
   <tr>
     <td class="tg-d459">Event</td>
-    <td class="tg-9wq8"> 6,016 </td>
-    <td class="tg-9wq8"> 20,456 </td>
-    <td class="tg-9wq8"> 23 / 8 </td>
-    <td class="tg-9wq8"> 4,566 </td>
-    <td class="tg-9wq8"> 15,444 </td>
-    <td class="tg-9wq8"> 1,085 </td>
-    <td class="tg-9wq8"> 4,551 </td>
-    <td class="tg-9wq8"> 619 </td>
-    <td class="tg-9wq8"> 2,349 </td>
-    <td class="tg-9wq8"> 831 </td>
-    <td class="tg-9wq8"> 2,663 </td>
+    <td class="tg-9wq8"> 6,206 </td>
+    <td class="tg-9wq8"> 17,972 </td>
+    <td class="tg-9wq8"> 23/7 </td>
+    <td class="tg-9wq8"> 4,721 </td>
+    <td class="tg-9wq8"> 14,150 </td>
+    <td class="tg-9wq8"> 1,386 </td>
+    <td class="tg-9wq8"> 4,631 </td>
+    <td class="tg-9wq8"> 593 </td>
+    <td class="tg-9wq8"> 1,869 </td>
+    <td class="tg-9wq8"> 892 </td>
+    <td class="tg-9wq8"> 1,953 </td>
 
-    <td class="tg-9wq8"> 6,889 </td>
-    <td class="tg-9wq8"> 21,271 </td>
-    <td class="tg-9wq8"> 26 / 7 </td>
-    <td class="tg-9wq8"> 5,139 </td>
-    <td class="tg-9wq8"> 16,769 </td>
-    <td class="tg-9wq8"> 1,404 </td>
-    <td class="tg-9wq8"> 4,589 </td>
-    <td class="tg-9wq8"> 735 </td>
-    <td class="tg-9wq8"> 1,981 </td>
-    <td class="tg-9wq8"> 1,015 </td>
-    <td class="tg-9wq8"> 2,521 </td>
+    <td class="tg-9wq8"> 6,713 </td>
+    <td class="tg-9wq8"> 21,298 </td>
+    <td class="tg-9wq8"> 25/8 </td>
+    <td class="tg-9wq8"> 5,220 </td>
+    <td class="tg-9wq8"> 15,949 </td>
+    <td class="tg-9wq8"> 1,417 </td>
+    <td class="tg-9wq8"> 4,868 </td>
+    <td class="tg-9wq8"> 722 </td>
+    <td class="tg-9wq8"> 2,573 </td>
+    <td class="tg-9wq8"> 771 </td>
+    <td class="tg-9wq8"> 2,776 </td>
   </tr>
   <tr>
     <td class="tg-lboi">Recipe</td>
-    <td class="tg-9wq8"> 3,272 </td>
-    <td class="tg-9wq8"> 23,562 </td>
-    <td class="tg-9wq8"> 52.5 / 16</td>
-    <td class="tg-9wq8"> 2,492 </td>
-    <td class="tg-9wq8"> 18,597 </td>
-    <td class="tg-9wq8"> 539 </td>
-    <td class="tg-9wq8"> 3,344 </td>
-    <td class="tg-9wq8"> 331 </td>
-    <td class="tg-9wq8"> 2,294 </td>
-    <td class="tg-9wq8"> 449 </td>
-    <td class="tg-9wq8"> 2,671 </td>
+    <td class="tg-9wq8"> 5,080 </td>
+    <td class="tg-9wq8"> 24,590 </td>
+    <td class="tg-9wq8"> 42/13 </td>
+    <td class="tg-9wq8"> 4,083 </td>
+    <td class="tg-9wq8"> 20,809 </td>
+    <td class="tg-9wq8"> 756 </td>
+    <td class="tg-9wq8"> 4,459 </td>
+    <td class="tg-9wq8"> 412 </td>
+    <td class="tg-9wq8"> 2,199 </td>
+    <td class="tg-9wq8"> 585 </td>
+    <td class="tg-9wq8"> 1,582 </td>
 
-    <td class="tg-9wq8"> 4,125 </td>
-    <td class="tg-9wq8"> 24,059 </td>
-    <td class="tg-9wq8"> 52 / 15</td>
-    <td class="tg-9wq8"> 3,022 </td>
-    <td class="tg-9wq8"> 17,494 </td>
-    <td class="tg-9wq8"> 678 </td>
-    <td class="tg-9wq8"> 4,325 </td>
-    <td class="tg-9wq8"> 369 </td>
-    <td class="tg-9wq8"> 2,286 </td>
-    <td class="tg-9wq8"> 734 </td>
-    <td class="tg-9wq8"> 4,279 </td>
+    <td class="tg-9wq8"> 4,535 </td>
+    <td class="tg-9wq8"> 27,070 </td>
+    <td class="tg-9wq8"> 52/15 </td>
+    <td class="tg-9wq8"> 3,547 </td>
+    <td class="tg-9wq8"> 20,279 </td>
+    <td class="tg-9wq8"> 967 </td>
+    <td class="tg-9wq8"> 4,687 </td>
+    <td class="tg-9wq8"> 426 </td>
+    <td class="tg-9wq8"> 2,426 </td>
+    <td class="tg-9wq8"> 562 </td>
+    <td class="tg-9wq8"> 4,365 </td>
   </tr>
   <tr>
     <td class="tg-d459">Person</td>
-    <td class="tg-9wq8"> 1,986 </td>
-    <td class="tg-9wq8"> 8,555 </td>
-    <td class="tg-9wq8"> 36 / 6</td>
-    <td class="tg-9wq8"> 1,524 </td>
-    <td class="tg-9wq8"> 7,076 </td>
-    <td class="tg-9wq8"> 228 </td>
-    <td class="tg-9wq8"> 945 </td>
-    <td class="tg-9wq8"> 138 </td>
-    <td class="tg-9wq8"> 523 </td>
-    <td class="tg-9wq8"> 324 </td>
-    <td class="tg-9wq8"> 956 </td>
+    <td class="tg-9wq8"> 4,623 </td>
+    <td class="tg-9wq8"> 10,466 </td>
+    <td class="tg-9wq8"> 27/5 </td>
+    <td class="tg-9wq8"> 3,818 </td>
+    <td class="tg-9wq8"> 8,680 </td>
+    <td class="tg-9wq8"> 851 </td>
+    <td class="tg-9wq8"> 1,876 </td>
+    <td class="tg-9wq8"> 374 </td>
+    <td class="tg-9wq8"> 867 </td>
+    <td class="tg-9wq8"> 431 </td>
+    <td class="tg-9wq8"> 919 </td>
 
-    <td class="tg-9wq8"> 3,942 </td>
-    <td class="tg-9wq8"> 13,236 </td>
-    <td class="tg-9wq8"> 36 / 5</td>
-    <td class="tg-9wq8"> 2,693 </td>
-    <td class="tg-9wq8"> 9,629 </td>
-    <td class="tg-9wq8"> 656 </td>
-    <td class="tg-9wq8"> 2,297 </td>
-    <td class="tg-9wq8"> 313 </td>
-    <td class="tg-9wq8"> 1,155 </td>
-    <td class="tg-9wq8"> 936 </td>
-    <td class="tg-9wq8"> 2,452 </td>
+    <td class="tg-9wq8"> 3,186 </td>
+    <td class="tg-9wq8"> 11,535 </td>
+    <td class="tg-9wq8"> 32/5 </td>
+    <td class="tg-9wq8"> 2,159 </td>
+    <td class="tg-9wq8"> 8,542 </td>
+    <td class="tg-9wq8"> 476 </td>
+    <td class="tg-9wq8"> 1,936 </td>
+    <td class="tg-9wq8"> 309 </td>
+    <td class="tg-9wq8"> 1,033 </td>
+    <td class="tg-9wq8"> 718 </td>
+    <td class="tg-9wq8"> 1,960 </td>
   </tr>
   <tr>
     <td class="tg-lboi">MusicRecording</td>
-    <td class="tg-9wq8"> 2,840 </td>
-    <td class="tg-9wq8"> 7,606 </td>
-    <td class="tg-9wq8"> 20 / 5 </td>
-    <td class="tg-9wq8"> 2,278 </td>
-    <td class="tg-9wq8"> 5,897 </td>
-    <td class="tg-9wq8"> 566 </td>
-    <td class="tg-9wq8"> 1,521 </td>
-    <td class="tg-9wq8"> 248 </td>
-    <td class="tg-9wq8"> 814 </td>
-    <td class="tg-9wq8"> 314 </td>
-    <td class="tg-9wq8"> 895 </td>
+    <td class="tg-9wq8"> 4,092 </td>
+    <td class="tg-9wq8"> 7,482 </td>
+    <td class="tg-9wq8"> 17/5 </td>
+    <td class="tg-9wq8"> 3,344 </td>
+    <td class="tg-9wq8"> 6,117 </td>
+    <td class="tg-9wq8"> 854 </td>
+    <td class="tg-9wq8"> 1546 </td>
+    <td class="tg-9wq8"> 401 </td>
+    <td class="tg-9wq8"> 749 </td>
+    <td class="tg-9wq8"> 347 </td>
+    <td class="tg-9wq8"> 616 </td>
 
-    <td class="tg-9wq8"> 508 </td>
-    <td class="tg-9wq8"> 1,632 </td>
-    <td class="tg-9wq8"> 26.5 / 5</td>
-    <td class="tg-9wq8"> 323 </td>
-    <td class="tg-9wq8"> 1,114 </td>
-    <td class="tg-9wq8"> 77 </td>
-    <td class="tg-9wq8"> 258 </td>
-    <td class="tg-9wq8"> 42 </td>
-    <td class="tg-9wq8"> 160 </td>
-    <td class="tg-9wq8"> 143 </td>
-    <td class="tg-9wq8"> 358 </td>
+    <td class="tg-9wq8"> 1,250 </td>
+    <td class="tg-9wq8"> 3,883 </td>
+    <td class="tg-9wq8"> 19/5 </td>
+    <td class="tg-9wq8"> 957 </td>
+    <td class="tg-9wq8"> 3,029 </td>
+    <td class="tg-9wq8"> 252 </td>
+    <td class="tg-9wq8"> 776 </td>
+    <td class="tg-9wq8"> 119 </td>
+    <td class="tg-9wq8"> 388 </td>
+    <td class="tg-9wq8"> 174 </td>
+    <td class="tg-9wq8"> 466 </td>
   </tr>
   <tr>
     <td class="tg-d459">Place</td>
-    <td class="tg-9wq8"> 992 </td>
-    <td class="tg-9wq8"> 5,647 </td>
-    <td class="tg-9wq8"> 34.5 / 7</td>
-    <td class="tg-9wq8"> 669 </td>
-    <td class="tg-9wq8"> 4,498 </td>
-    <td class="tg-9wq8"> 146 </td>
-    <td class="tg-9wq8"> 940 </td>
-    <td class="tg-9wq8"> 61 </td>
-    <td class="tg-9wq8"> 428 </td>
-    <td class="tg-9wq8"> 262 </td>
-    <td class="tg-9wq8"> 721 </td>
+    <td class="tg-9wq8"> 2,680 </td>
+    <td class="tg-9wq8"> 9,181 </td>
+    <td class="tg-9wq8"> 28/7 </td>
+    <td class="tg-9wq8"> 2,015 </td>
+    <td class="tg-9wq8"> 7,596 </td>
+    <td class="tg-9wq8"> 363 </td>
+    <td class="tg-9wq8"> 1,408 </td>
+    <td class="tg-9wq8"> 224</td>
+    <td class="tg-9wq8"> 735 </td>
+    <td class="tg-9wq8"> 441 </td>
+    <td class="tg-9wq8"> 850 </td>
 
-    <td class="tg-9wq8"> 1,415 </td>
-    <td class="tg-9wq8"> 7,420 </td>
-    <td class="tg-9wq8"> 33 / 7</td>
-    <td class="tg-9wq8"> 1,193 </td>
-    <td class="tg-9wq8"> 6,518 </td>
-    <td class="tg-9wq8"> 252 </td>
-    <td class="tg-9wq8"> 1,425 </td>
-    <td class="tg-9wq8"> 87 </td>
-    <td class="tg-9wq8"> 466 </td>
-    <td class="tg-9wq8"> 135 </td>
-    <td class="tg-9wq8"> 436 </td>
+    <td class="tg-9wq8"> 1,403 </td>
+    <td class="tg-9wq8"> 8,070 </td>
+    <td class="tg-9wq8"> 29/7 </td>
+    <td class="tg-9wq8"> 1,175 </td>
+    <td class="tg-9wq8"> 7,090 </td>
+    <td class="tg-9wq8"> 274 </td>
+    <td class="tg-9wq8"> 1,608 </td>
+    <td class="tg-9wq8"> 95 </td>
+    <td class="tg-9wq8"> 486 </td>
+    <td class="tg-9wq8"> 133 </td>
+    <td class="tg-9wq8"> 494 </td>
   </tr>
   <tr>
     <td class="tg-lboi">LocalBusiness</td>
-    <td class="tg-9wq8"> 5,056 </td>
-    <td class="tg-9wq8"> 15,659 </td>
-    <td class="tg-9wq8">45 / 9</td>
-    <td class="tg-9wq8"> 3,848 </td>
-    <td class="tg-9wq8"> 11,518 </td>
-    <td class="tg-9wq8"> 1,077 </td>
-    <td class="tg-9wq8"> 3,819 </td>
-    <td class="tg-9wq8"> 538 </td>
-    <td class="tg-9wq8"> 1,856 </td>
-    <td class="tg-9wq8"> 670 </td>
-    <td class="tg-9wq8"> 2,285 </td>
+    <td class="tg-9wq8"> 5,292 </td>
+    <td class="tg-9wq8"> 14,941 </td>
+    <td class="tg-9wq8"> 37/9 </td>
+    <td class="tg-9wq8"> 3,744 </td>
+    <td class="tg-9wq8"> 10,657 </td>
+    <td class="tg-9wq8"> 1,226 </td>
+    <td class="tg-9wq8"> 3,932 </td>
+    <td class="tg-9wq8"> 602 </td>
+    <td class="tg-9wq8"> 2,161 </td>
+    <td class="tg-9wq8"> 946 </td>
+    <td class="tg-9wq8"> 2,123 </td>
 
-    <td class="tg-9wq8"> 5,883 </td>
-    <td class="tg-9wq8"> 16,894 </td>
-    <td class="tg-9wq8"> 46 / 9 </td>
-    <td class="tg-9wq8"> 4,573 </td>
-    <td class="tg-9wq8"> 12,372 </td>
-    <td class="tg-9wq8"> 1,195 </td>
-    <td class="tg-9wq8"> 3,699 </td>
-    <td class="tg-9wq8"> 557 </td>
-    <td class="tg-9wq8"> 2,026 </td>
-    <td class="tg-9wq8"> 753 </td>
-    <td class="tg-9wq8"> 2,496 </td>
+    <td class="tg-9wq8"> 5,274 </td>
+    <td class="tg-9wq8"> 15,987 </td>
+    <td class="tg-9wq8"> 39/9 </td>
+    <td class="tg-9wq8"> 4,076 </td>
+    <td class="tg-9wq8"> 11,373 </td>
+    <td class="tg-9wq8"> 1,108 </td>
+    <td class="tg-9wq8"> 3,615 </td>
+    <td class="tg-9wq8"> 503 </td>
+    <td class="tg-9wq8"> 1,991 </td>
+    <td class="tg-9wq8"> 695 </td>
+    <td class="tg-9wq8"> 2,623 </td>
   </tr>
   <tr>
     <td class="tg-d459">CreativeWork</td>
-    <td class="tg-9wq8"> 1,223 </td>
-    <td class="tg-9wq8"> 6,323 </td>
-    <td class="tg-9wq8"> 26 / 6</td>
-    <td class="tg-9wq8"> 601 </td>
-    <td class="tg-9wq8"> 3,553 </td>
-    <td class="tg-9wq8"> 237 </td>
-    <td class="tg-9wq8"> 1,391 </td>
-    <td class="tg-9wq8"> 269 </td>
-    <td class="tg-9wq8"> 1,553 </td>
-    <td class="tg-9wq8"> 353 </td>
-    <td class="tg-9wq8"> 1,217 </td>
+    <td class="tg-9wq8"> 4,674 </td>
+    <td class="tg-9wq8"> 9,240 </td>
+    <td class="tg-9wq8"> 26/4 </td>
+    <td class="tg-9wq8"> 3,393 </td>
+    <td class="tg-9wq8"> 6,921 </td>
+    <td class="tg-9wq8"> 1,142 </td>
+    <td class="tg-9wq8"> 2,299 </td>
+    <td class="tg-9wq8"> 686 </td>
+    <td class="tg-9wq8"> 1,355 </td>
+    <td class="tg-9wq8"> 595 </td>
+    <td class="tg-9wq8"> 964 </td>
 
-    <td class="tg-9wq8"> 2,073 </td>
-    <td class="tg-9wq8"> 8,839 </td>
-    <td class="tg-9wq8"> 33 / 6 </td>
-    <td class="tg-9wq8"> 1,397 </td>
-    <td class="tg-9wq8"> 6,437 </td>
-    <td class="tg-9wq8"> 367 </td>
-    <td class="tg-9wq8"> 1,671 </td>
-    <td class="tg-9wq8"> 225 </td>
-    <td class="tg-9wq8"> 1,063 </td>
-    <td class="tg-9wq8"> 451 </td>
-    <td class="tg-9wq8"> 1,339 </td>
+    <td class="tg-9wq8"> 2,997 </td>
+    <td class="tg-9wq8"> 12,468 </td>
+    <td class="tg-9wq8"> 28/6 </td>
+    <td class="tg-9wq8"> 2,323 </td>
+    <td class="tg-9wq8"> 9,866 </td>
+    <td class="tg-9wq8"> 584 </td>
+    <td class="tg-9wq8"> 2,681 </td>
+    <td class="tg-9wq8"> 316 </td>
+    <td class="tg-9wq8"> 1,360 </td>
+    <td class="tg-9wq8"> 358 </td>
+    <td class="tg-9wq8"> 1,242 </td>
   </tr>
   <tr>
     <td class="tg-lboi">MusicAlbum</td>
-    <td class="tg-9wq8"> 937 </td>
-    <td class="tg-9wq8"> 3,374 </td>
-    <td class="tg-9wq8"> 18 / 5 </td>
-    <td class="tg-9wq8"> 699 </td>
-    <td class="tg-9wq8"> 2,369 </td>
-    <td class="tg-9wq8"> 176 </td>
-    <td class="tg-9wq8"> 660 </td>
-    <td class="tg-9wq8"> 122 </td>
-    <td class="tg-9wq8"> 511 </td>
-    <td class="tg-9wq8"> 116 </td>
-    <td class="tg-9wq8"> 494 </td>
+    <td class="tg-9wq8"> 393 </td>
+    <td class="tg-9wq8"> 896 </td>
+    <td class="tg-9wq8"> 45/4 </td>
+    <td class="tg-9wq8"> 316 </td>
+    <td class="tg-9wq8"> 725 </td>
+    <td class="tg-9wq8"> 80 </td>
+    <td class="tg-9wq8"> 179 </td>
+    <td class="tg-9wq8"> 38 </td>
+    <td class="tg-9wq8"> 90 </td>
+    <td class="tg-9wq8"> 39 </td>
+    <td class="tg-9wq8"> 81 </td>
 
-    <td class="tg-9wq8"> 570 </td>
-    <td class="tg-9wq8"> 1,484 </td>
-    <td class="tg-9wq8"> 15 / 5 </td>
-    <td class="tg-9wq8"> 397 </td>
-    <td class="tg-9wq8"> 1,025 </td>
-    <td class="tg-9wq8"> 98 </td>
-    <td class="tg-9wq8"> 260 </td>
-    <td class="tg-9wq8"> 53 </td>
-    <td class="tg-9wq8"> 154 </td>
-    <td class="tg-9wq8"> 120 </td>
-    <td class="tg-9wq8"> 305 </td>
+    <td class="tg-9wq8"> 373 </td>
+    <td class="tg-9wq8"> 1,057 </td>
+    <td class="tg-9wq8"> 43/4 </td>
+    <td class="tg-9wq8"> 287 </td>
+    <td class="tg-9wq8"> 806 </td>
+    <td class="tg-9wq8"> 80 </td>
+    <td class="tg-9wq8"> 198 </td>
+    <td class="tg-9wq8"> 44 </td>
+    <td class="tg-9wq8"> 125 </td>
+    <td class="tg-9wq8"> 42 </td>
+    <td class="tg-9wq8"> 126 </td>
   </tr>
   <tr>
     <td class="tg-d459">Movie</td>
-    <td class="tg-9wq8"> 1,377 </td>
-    <td class="tg-9wq8"> 9,720 </td>
-    <td class="tg-9wq8"> 85 / 8 </td>
-    <td class="tg-9wq8"> 1,154 </td>
-    <td class="tg-9wq8"> 8,850 </td>
-    <td class="tg-9wq8"> 361 </td>
-    <td class="tg-9wq8"> 2,983 </td>
-    <td class="tg-9wq8"> 89 </td>
-    <td class="tg-9wq8"> 435 </td>
-    <td class="tg-9wq8"> 134 </td>
-    <td class="tg-9wq8"> 435 </td>
+    <td class="tg-9wq8"> 2,270 </td>
+    <td class="tg-9wq8"> 6,625 </td>
+    <td class="tg-9wq8"> 75/7 </td>
+    <td class="tg-9wq8"> 1,846 </td>
+    <td class="tg-9wq8"> 5,253 </td>
+    <td class="tg-9wq8"> 489 </td>
+    <td class="tg-9wq8"> 1,605 </td>
+    <td class="tg-9wq8"> 202 </td>
+    <td class="tg-9wq8"> 945 </td>
+    <td class="tg-9wq8"> 222 </td>
+    <td class="tg-9wq8"> 427 </td>
 
-    <td class="tg-9wq8"> 1,841 </td>
-    <td class="tg-9wq8"> 10,631 </td>
-    <td class="tg-9wq8"> 84 / 8 </td>
-    <td class="tg-9wq8"> 1,351 </td>
-    <td class="tg-9wq8"> 8,311 </td>
-    <td class="tg-9wq8"> 353 </td>
-    <td class="tg-9wq8"> 2,306 </td>
-    <td class="tg-9wq8"> 180 </td>
-    <td class="tg-9wq8"> 1,154 </td>
-    <td class="tg-9wq8"> 310 </td>
-    <td class="tg-9wq8"> 1,166 </td>
+    <td class="tg-9wq8"> 1,539 </td>
+    <td class="tg-9wq8"> 9,194 </td>
+    <td class="tg-9wq8"> 65/8 </td>
+    <td class="tg-9wq8"> 1,115 </td>
+    <td class="tg-9wq8"> 7,379 </td>
+    <td class="tg-9wq8"> 298 </td>
+    <td class="tg-9wq8"> 2,164 </td>
+    <td class="tg-9wq8"> 148 </td>
+    <td class="tg-9wq8"> 828 </td>
+    <td class="tg-9wq8"> 276 </td>
+    <td class="tg-9wq8"> 987 </td>
   </tr>
   <tr>
     <td class="tg-lboi">Hotel</td>
-    <td class="tg-9wq8"> 1,491 </td>
-    <td class="tg-9wq8"> 9,875 </td>
-    <td class="tg-9wq8"> 36 / 9 </td>
-    <td class="tg-9wq8"> 973 </td>
-    <td class="tg-9wq8"> 6,701 </td>
-    <td class="tg-9wq8"> 334 </td>
-    <td class="tg-9wq8"> 2,299 </td>
-    <td class="tg-9wq8"> 203 </td>
-    <td class="tg-9wq8"> 1,412 </td>
-    <td class="tg-9wq8"> 315 </td>
-    <td class="tg-9wq8"> 1,762 </td>
+    <td class="tg-9wq8"> 1,866 </td>
+    <td class="tg-9wq8"> 6,895 </td>
+    <td class="tg-9wq8"> 42/9 </td>
+    <td class="tg-9wq8"> 1,393 </td>
+    <td class="tg-9wq8"> 5,424 </td>
+    <td class="tg-9wq8"> 394 </td>
+    <td class="tg-9wq8"> 1,498 </td>
+    <td class="tg-9wq8"> 238 </td>
+    <td class="tg-9wq8"> 895 </td>
+    <td class="tg-9wq8"> 235 </td>
+    <td class="tg-9wq8"> 576 </td>
 
-    <td class="tg-9wq8"> 1,588 </td>
-    <td class="tg-9wq8"> 9,618 </td>
-    <td class="tg-9wq8"> 35 / 9</td>
-    <td class="tg-9wq8"> 989 </td>
-    <td class="tg-9wq8"> 6,175 </td>
-    <td class="tg-9wq8"> 337 </td>
-    <td class="tg-9wq8"> 2,120 </td>
-    <td class="tg-9wq8"> 275 </td>
-    <td class="tg-9wq8"> 1,812 </td>
-    <td class="tg-9wq8"> 324 </td>
-    <td class="tg-9wq8"> 1,631 </td>
+    <td class="tg-9wq8"> 998 </td>
+    <td class="tg-9wq8"> 6,123 </td>
+    <td class="tg-9wq8"> 55/9 </td>
+    <td class="tg-9wq8"> 585 </td>
+    <td class="tg-9wq8"> 3,387 </td>
+    <td class="tg-9wq8"> 243 </td>
+    <td class="tg-9wq8"> 1,522 </td>
+    <td class="tg-9wq8"> 202 </td>
+    <td class="tg-9wq8"> 1,466 </td>
+    <td class="tg-9wq8"> 211 </td>
+    <td class="tg-9wq8"> 1,270 </td>
   </tr>
   <tr>
     <td class="tg-d459">SportsEvent</td>
-    <td class="tg-9wq8"> 1,407 </td>
-    <td class="tg-9wq8"> 5,545 </td>
-    <td class="tg-9wq8"> 43 / 4 </td>
-    <td class="tg-9wq8"> 1,126 </td>
-    <td class="tg-9wq8"> 4,659 </td>
-    <td class="tg-9wq8"> 281 </td>
-    <td class="tg-9wq8"> 965 </td>
-    <td class="tg-9wq8"> 141 </td>
-    <td class="tg-9wq8"> 434 </td>
-    <td class="tg-9wq8"> 140 </td>
-    <td class="tg-9wq8"> 452 </td>
+    <td class="tg-9wq8"> 783 </td>
+    <td class="tg-9wq8"> 2,188 </td>
+    <td class="tg-9wq8"> 41/5 </td>
+    <td class="tg-9wq8"> 613 </td>
+    <td class="tg-9wq8"> 1,823 </td>
+    <td class="tg-9wq8"> 151 </td>
+    <td class="tg-9wq8"> 371 </td>
+    <td class="tg-9wq8"> 86 </td>
+    <td class="tg-9wq8"> 199 </td>
+    <td class="tg-9wq8"> 84 </td>
+    <td class="tg-9wq8"> 166 </td>
 
-    <td class="tg-9wq8"> 832 </td>
-    <td class="tg-9wq8"> 3,292 </td>
-    <td class="tg-9wq8"> 44 / 5</td>
-    <td class="tg-9wq8"> 571 </td>
-    <td class="tg-9wq8"> 2,527 </td>
-    <td class="tg-9wq8"> 132 </td>
-    <td class="tg-9wq8"> 584 </td>
-    <td class="tg-9wq8"> 67 </td>
-    <td class="tg-9wq8"> 289 </td>
-    <td class="tg-9wq8"> 194 </td>
-    <td class="tg-9wq8"> 476 </td>
+    <td class="tg-9wq8"> 766 </td>
+    <td class="tg-9wq8"> 3,508 </td>
+    <td class="tg-9wq8"> 40/5 </td>
+    <td class="tg-9wq8"> 664 </td>
+    <td class="tg-9wq8"> 3,173 </td>
+    <td class="tg-9wq8"> 109 </td>
+    <td class="tg-9wq8"> 379 </td>
+    <td class="tg-9wq8"> 54 </td>
+    <td class="tg-9wq8"> 150 </td>
+    <td class="tg-9wq8"> 48 </td>
+    <td class="tg-9wq8"> 185 </td>
   </tr>
   <tr>
     <td class="tg-lboi">Restaurant</td>
-    <td class="tg-9wq8"> 1,508 </td>
-    <td class="tg-9wq8"> 10,297 </td>
-    <td class="tg-9wq8"> 43 / 17</td>
-    <td class="tg-9wq8"> 1,182 </td>
-    <td class="tg-9wq8"> 8,539 </td>
-    <td class="tg-9wq8"> 215 </td>
-    <td class="tg-9wq8"> 1,154 </td>
-    <td class="tg-9wq8"> 111 </td>
-    <td class="tg-9wq8"> 762 </td>
-    <td class="tg-9wq8"> 215 </td>
-    <td class="tg-9wq8"> 996 </td>
+    <td class="tg-9wq8"> 1,314 </td>
+    <td class="tg-9wq8"> 4,552 </td>
+    <td class="tg-9wq8"> 38/10 </td>
+    <td class="tg-9wq8"> 1,033 </td>
+    <td class="tg-9wq8"> 3,832 </td>
+    <td class="tg-9wq8"> 201 </td>
+    <td class="tg-9wq8"> 497 </td>
+    <td class="tg-9wq8"> 135 </td>
+    <td class="tg-9wq8"> 381 </td>
+    <td class="tg-9wq8"> 146 </td>
+    <td class="tg-9wq8"> 339 </td>
 
-    <td class="tg-9wq8"> 1,176 </td>
-    <td class="tg-9wq8"> 9,017 </td>
-    <td class="tg-9wq8"> 42 / 17</td>
-    <td class="tg-9wq8"> 948 </td>
-    <td class="tg-9wq8"> 8,143 </td>
-    <td class="tg-9wq8"> 124 </td>
-    <td class="tg-9wq8"> 932 </td>
-    <td class="tg-9wq8"> 33 </td>
-    <td class="tg-9wq8"> 210 </td>
-    <td class="tg-9wq8"> 195 </td>
-    <td class="tg-9wq8"> 664 </td>
+    <td class="tg-9wq8"> 812 </td>
+    <td class="tg-9wq8"> 6,761 </td>
+    <td class="tg-9wq8"> 35/10 </td>
+    <td class="tg-9wq8"> 643 </td>
+    <td class="tg-9wq8"> 6,445 </td>
+    <td class="tg-9wq8"> 69 </td>
+    <td class="tg-9wq8"> 643 </td>
+    <td class="tg-9wq8"> 11 </td>
+    <td class="tg-9wq8"> 58 </td>
+    <td class="tg-9wq8"> 158 </td>
+    <td class="tg-9wq8"> 258 </td>
   </tr>
   <tr>
     <td class="tg-d459">Book</td>
-    <td class="tg-9wq8"> 1,680 </td>
-    <td class="tg-9wq8"> 9,323 </td>
-    <td class="tg-9wq8"> 93.5 / 7 </td>
-    <td class="tg-9wq8"> 1,123 </td>
-    <td class="tg-9wq8"> 6,621 </td>
-    <td class="tg-9wq8"> 247 </td>
-    <td class="tg-9wq8"> 1,763 </td>
-    <td class="tg-9wq8"> 204 </td>
-    <td class="tg-9wq8"> 1,318 </td>
-    <td class="tg-9wq8"> 353 </td>
-    <td class="tg-9wq8"> 1,384 </td>
+    <td class="tg-9wq8"> 2,640 </td>
+    <td class="tg-9wq8"> 6,103 </td>
+    <td class="tg-9wq8"> 61/7 </td>
+    <td class="tg-9wq8"> 2,022 </td>
+    <td class="tg-9wq8"> 4,791 </td>
+    <td class="tg-9wq8"> 578 </td>
+    <td class="tg-9wq8"> 1,394 </td>
+    <td class="tg-9wq8"> 341 </td>
+    <td class="tg-9wq8"> 776 </td>
+    <td class="tg-9wq8"> 277 </td>
+    <td class="tg-9wq8"> 536 </td>
 
-    <td class="tg-9wq8"> 2,540 </td>
-    <td class="tg-9wq8"> 10,593 </td>
-    <td class="tg-9wq8"> 120 / 7</td>
-    <td class="tg-9wq8"> 1,717 </td>
-    <td class="tg-9wq8"> 7,443 </td>
-    <td class="tg-9wq8"> 559 </td>
-    <td class="tg-9wq8"> 2,248 </td>
-    <td class="tg-9wq8"> 346 </td>
-    <td class="tg-9wq8"> 1,429 </td>
-    <td class="tg-9wq8"> 477 </td>
-    <td class="tg-9wq8"> 1,721 </td>
+    <td class="tg-9wq8"> 1,884 </td>
+    <td class="tg-9wq8"> 9,469 </td>
+    <td class="tg-9wq8"> 73/8 </td>
+    <td class="tg-9wq8"> 1,226 </td>
+    <td class="tg-9wq8"> 6,302 </td>
+    <td class="tg-9wq8"> 372 </td>
+    <td class="tg-9wq8"> 1,847 </td>
+    <td class="tg-9wq8"> 278 </td>
+    <td class="tg-9wq8"> 1,570 </td>
+    <td class="tg-9wq8"> 380 </td>
+    <td class="tg-9wq8"> 1,597 </td>
   </tr>
   <tr>
     <td class="tg-lboi">TVEpisode</td>
-    <td class="tg-9wq8"> 464 </td>
-    <td class="tg-9wq8"> 1,813 </td>
-    <td class="tg-9wq8"> 64.5 / 5 </td>
-    <td class="tg-9wq8"> 370 </td>
-    <td class="tg-9wq8"> 1,594 </td>
-    <td class="tg-9wq8"> 92 </td>
-    <td class="tg-9wq8"> 301 </td>
-    <td class="tg-9wq8"> 46 </td>
-    <td class="tg-9wq8"> 109 </td>
-    <td class="tg-9wq8"> 48 </td>
-    <td class="tg-9wq8"> 110 </td>
+    <td class="tg-9wq8"> 433 </td>
+    <td class="tg-9wq8"> 1,051 </td>
+    <td class="tg-9wq8"> 71/5 </td>
+    <td class="tg-9wq8"> 346 </td>
+    <td class="tg-9wq8"> 849 </td>
+    <td class="tg-9wq8"> 85 </td>
+    <td class="tg-9wq8"> 208 </td>
+    <td class="tg-9wq8"> 45 </td>
+    <td class="tg-9wq8"> 115 </td>
+    <td class="tg-9wq8"> 42 </td>
+    <td class="tg-9wq8"> 87 </td>
 
-    <td class="tg-9wq8"> 418 </td>
-    <td class="tg-9wq8"> 1,194 </td>
-    <td class="tg-9wq8"> 61 / 5</td>
-    <td class="tg-9wq8"> 231 </td>
-    <td class="tg-9wq8"> 829 </td>
-    <td class="tg-9wq8"> 38 </td>
-    <td class="tg-9wq8"> 114 </td>
-    <td class="tg-9wq8"> 18 </td>
-    <td class="tg-9wq8"> 56 </td>
-    <td class="tg-9wq8"> 169 </td>
-    <td class="tg-9wq8"> 309 </td>
+    <td class="tg-9wq8"> 416 </td>
+    <td class="tg-9wq8"> 1,257 </td>
+    <td class="tg-9wq8"> 70/5 </td>
+    <td class="tg-9wq8"> 313 </td>
+    <td class="tg-9wq8"> 945 </td>
+    <td class="tg-9wq8"> 83 </td>
+    <td class="tg-9wq8"> 222 </td>
+    <td class="tg-9wq8"> 52 </td>
+    <td class="tg-9wq8"> 159 </td>
+    <td class="tg-9wq8"> 51 </td>
+    <td class="tg-9wq8"> 153 </td>
   </tr>
   <tr>
     <td class="tg-d459">JobPosting</td>
-    <td class="tg-9wq8"> 2,856 </td>
-    <td class="tg-9wq8"> 11,227 </td>
-    <td class="tg-9wq8"> 43 / 9 </td>
-    <td class="tg-9wq8"> 2,132 </td>
-    <td class="tg-9wq8"> 8,894 </td>
-    <td class="tg-9wq8"> 509 </td>
-    <td class="tg-9wq8"> 2,461 </td>
-    <td class="tg-9wq8"> 240 </td>
-    <td class="tg-9wq8"> 1,163 </td>
+    <td class="tg-9wq8"> 4,512 </td>
+    <td class="tg-9wq8"> 8,946 </td>
+    <td class="tg-9wq8"> 37/8 </td>
+    <td class="tg-9wq8"> 3,584 </td>
+    <td class="tg-9wq8"> 7,220 </td>
+    <td class="tg-9wq8"> 895 </td>
+    <td class="tg-9wq8"> 1,819 </td>
     <td class="tg-9wq8"> 484 </td>
-    <td class="tg-9wq8"> 1,170 </td>
+    <td class="tg-9wq8"> 959 </td>
+    <td class="tg-9wq8"> 444 </td>
+    <td class="tg-9wq8"> 767 </td>
 
-    <td class="tg-9wq8"> 147 </td>
-    <td class="tg-9wq8"> 737 </td>
-    <td class="tg-9wq8"> 42 / 8</td>
-    <td class="tg-9wq8"> 110 </td>
-    <td class="tg-9wq8"> 585 </td>
-    <td class="tg-9wq8"> 30 </td>
-    <td class="tg-9wq8"> 143 </td>
-    <td class="tg-9wq8"> 12 </td>
-    <td class="tg-9wq8"> 74 </td>
-    <td class="tg-9wq8"> 25 </td>
+    <td class="tg-9wq8"> 134 </td>
+    <td class="tg-9wq8"> 649 </td>
+    <td class="tg-9wq8"> 45/8 </td>
+    <td class="tg-9wq8"> 103 </td>
+    <td class="tg-9wq8"> 506 </td>
+    <td class="tg-9wq8"> 28 </td>
+    <td class="tg-9wq8"> 119 </td>
+    <td class="tg-9wq8"> 16 </td>
     <td class="tg-9wq8"> 78 </td>
+    <td class="tg-9wq8"> 15 </td>
+    <td class="tg-9wq8"> 65 </td>
   </tr>
   <tr>
     <td class="tg-lboi">Museum</td>
-    <td class="tg-9wq8"> 181 </td>
-    <td class="tg-9wq8"> 647 </td>
-    <td class="tg-9wq8"> 26 / 8 </td>
-    <td class="tg-9wq8"> 145 </td>
-    <td class="tg-9wq8"> 512 </td>
-    <td class="tg-9wq8"> 41 </td>
-    <td class="tg-9wq8"> 208 </td>
-    <td class="tg-9wq8"> 18 </td>
-    <td class="tg-9wq8"> 62 </td>
-    <td class="tg-9wq8"> 18 </td>
-    <td class="tg-9wq8"> 73 </td>
+    <td class="tg-9wq8"> 156 </td>
+    <td class="tg-9wq8"> 367 </td>
+    <td class="tg-9wq8"> 25/9 </td>
+    <td class="tg-9wq8"> 116 </td>
+    <td class="tg-9wq8"> 271 </td>
+    <td class="tg-9wq8"> 29 </td>
+    <td class="tg-9wq8"> 71 </td>
+    <td class="tg-9wq8"> 14 </td>
+    <td class="tg-9wq8"> 38 </td>
+    <td class="tg-9wq8"> 26 </td>
+    <td class="tg-9wq8"> 58 </td>
 
-    <td class="tg-9wq8"> 53 </td>
-    <td class="tg-9wq8"> 384 </td>
-    <td class="tg-9wq8"> 23 / 9</td>
-    <td class="tg-9wq8"> 49 </td>
-    <td class="tg-9wq8"> 366 </td>
-    <td class="tg-9wq8"> 5 </td>
-    <td class="tg-9wq8"> 30 </td>
+    <td class="tg-9wq8"> 67 </td>
+    <td class="tg-9wq8"> 205 </td>
+    <td class="tg-9wq8"> 25/6 </td>
+    <td class="tg-9wq8"> 67 </td>
+    <td class="tg-9wq8"> 205 </td>
     <td class="tg-9wq8"> - </td>
     <td class="tg-9wq8"> - </td>
-    <td class="tg-9wq8"> 4 </td>
-    <td class="tg-9wq8"> 18 </td>
+    <td class="tg-9wq8"> - </td>
+    <td class="tg-9wq8"> - </td>
+    <td class="tg-9wq8"> - </td>
+    <td class="tg-9wq8"> - </td>
   </tr>
 </tbody>
 </table></div>
@@ -1076,28 +1091,28 @@ Following the cleansing steps, only attributes with a density of at least 25% ar
 
 <p>
   <b>(i) Missing values:</b> It is difficult for table annotation systems to correctly annotate columns in which many values are missing. In order to measure the annotation performance on such columns, 
-  we provide a test set that contains columns that have a density between 10 and 70 percent, i.e. 10-70 percent of their rows are filled with values. For the CPA problem we included 3,572 column pairs 
-  annotated with 125 CPA labels and for CTA 3,073 columns annotated with 64 CTA labels in this testset.
+  we provide a test set that contains columns that have a density between 10 and 70 percent, i.e. 10-70 percent of their rows are filled with values. For the CPA problem we included 4,032 column pairs 
+  annotated with 130 CPA labels and for CTA 2,808 columns annotated with 66 CTA labels in this testset.
 </p>
 
 <p>
   <b>(ii) Value Format Heterogeneity:</b> As it can be difficult to distinguish columns whose values are expressed with different formats or metrics, we include this subset with columns that have the same label 
   but their values are expressed in different formats. The CPA columns that are selected for this
-  challenge are the different date columns, duration, height, weight, width, price, telephone, faxNumber, servingSize, size and salary. There are in total 2,139 columns for CPA in this
-  subset annotated with 30 different CPA labels.
-  For CTA, the selected columns are duration, height, weight, width, Date, DateTime, Time, price, priceRange, telephone and faxNumber. The CTA columns are in total 957 and are annotated with
+  challenge are the different date columns, duration, height, weight, width, price, telephone, faxNumber, servingSize, size and salary. There are in total 1,593 columns for CPA in this
+  subset annotated with 31 different CPA labels.
+  For CTA, the selected columns are duration, height, weight, width, Date, DateTime, Time, price, priceRange, telephone and faxNumber. The CTA columns are in total 619 and are annotated with
   10 CTA labels.
 </p>
 
 <p>
   <b>(iii) Corner Cases:</b> Corner Cases columns are columns that are considered difficult to annotate as they resemble columns with different labels or their values differ from other columns with the same label.
-  This could lead to wrong predictions made by systems on these columns. Therefore we provide a subset that includes columns that are considered to be corner cases. There are 3,510 corner cases included in the
-  CPA corner cases subset which are annotated with 106 different CPA labels, while in the CTA subset there are 5,142 corner case columns annotated with 70 different CTA labels.
+  This could lead to wrong predictions made by systems on these columns. Therefore we provide a subset that includes columns that are considered to be corner cases. There are 3,492 corner cases included in the
+  CPA corner cases subset which are annotated with 116 different CPA labels, while in the CTA subset there are 3,015 corner case columns annotated with 59 different CTA labels.
 </p>
 
 <p>
-  <b>(iv) Random Columns: </b> This subset includes randomly selected columns for each label of each task. In total there are 12,609 randomly selected columns annotated with 93 different labels
-  for CTA and 15,663 randomly selected columns annotated with 180 different labels in the CPA subset.
+  <b>(iv) Random Columns: </b> This subset includes randomly selected columns for each label of each task. In total there are 8,598 randomly selected columns annotated with 91 different labels
+  for CTA and 14,039 randomly selected columns annotated with 176 different labels in the CPA subset.
 </p>
 
 <span id="toc7"></span>
@@ -1132,38 +1147,38 @@ Following the cleansing steps, only attributes with a density of at least 25% ar
 <tbody>
   <tr>
     <td class="tg-d459">Test (Full) </td>
-    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">59.48</span></td>
-    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">76.89</span></td>
-    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">54.30</span></td>
-    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">69.84</span></td>
+    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">58.58</span></td>
+    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">78.96</span></td>
+    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">55.57</span></td>
+    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">72.16</span></td>
   </tr>
   <tr>
     <td class="tg-lboi"> Test (Missing Values) </td>
-    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">65.31</span></td>
-    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">76.86</span></td>
-    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">61.70</span></td>
-    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">70.09</span></td>
+    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">60.47</span></td>
+    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">73.14</span></td>
+    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">58.04</span></td>
+    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">66.98</span></td>
   </tr>
   <tr>
     <td class="tg-d459"> Test (Format Heterogeneity) </td>
-    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">64.68</span></td>
-    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">88.82</span></td>
-    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">59.56</span></td>
-    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">82.86</span></td>
+    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">64.78</span></td>
+    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">90.14</span></td>
+    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">62.35</span></td>
+    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">87.88</span></td>
   </tr>
   <tr>
     <td class="tg-lboi">Test (Corner Cases)</td>
-    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">57.29</span></td>
-    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">71.57</span></td>
-    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">53.66</span></td>
-    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">65.07</span></td>
+    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">55.15</span></td>
+    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">73.59</span></td>
+    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">51.97</span></td>
+    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">68.19</span></td>
   </tr>
   <tr>
     <td class="tg-lboi">Test (Random Columns)</td>
-    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">58.56</span></td>
-    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">78.16</span></td>
-    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">52.38</span></td>
-    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">70.74</span></td>
+    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">58.72</span></td>
+    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">81.93</span></td>
+    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">55.53</span></td>
+    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">74.11</span></td>
   </tr>
 </tbody>
 </table>
@@ -1187,38 +1202,38 @@ Following the cleansing steps, only attributes with a density of at least 25% ar
 <tbody>
   <tr>
     <td class="tg-d459">Test (Full) </td>
-    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">48.22</span></td>
-    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">68.88</span></td>
-    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">42.72</span></td>
-    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">60.68</span></td>
+    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">58.58</span></td>
+    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">72.93</span></td>
+    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">41.44</span></td>
+    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">66.30</span></td>
   </tr>
   <tr>
     <td class="tg-lboi"> Test (Missing Values) </td>
-    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">46.58</span></td>
-    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">63.86</span></td>
-    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">41.29</span></td>
-    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">56.49</span></td>
+    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">60.47</span></td>
+    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">66.24</span></td>
+    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">42.06</span></td>
+    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">59.97</span></td>
   </tr>
   <tr>
     <td class="tg-d459"> Test (Format Heterogeneity) </td>
-    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">58.44</span></td>
-    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">78.40</span></td>
-    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">53.25</span></td>
-    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">68.91</span></td>
+    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">64.78</span></td>
+    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">77.15</span></td>
+    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">43.69</span></td>
+    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">69.86</span></td>
   </tr>
   <tr>
     <td class="tg-lboi">Test (Corner Cases)</td>
-    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">45.33</span></td>
-    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">63.39</span></td>
-    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">39.77</span></td>
-    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">56.13</span></td>
+    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">55.15</span></td>
+    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">62.54</span></td>
+    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">35.39</span></td>
+    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">57.87</span></td>
   </tr>
   <tr>
     <td class="tg-lboi">Test (Random Columns)</td>
-    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">47.85</span></td>
-    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">69.96</span></td>
-    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">42.27</span></td>
-    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">61.53</span></td>
+    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">58.72</span></td>
+    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">76.96</span></td>
+    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">42.51</span></td>
+    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">69.81</span></td>
   </tr>
 </tbody>
 </table></div>
@@ -1257,33 +1272,33 @@ Following the cleansing steps, only attributes with a density of at least 25% ar
 <tbody>
   <tr>
     <td>Action</td>
-    <td>97.62</td>
-    <td>identifierNameAP</td>
-    <td>27.00</td>
+    <td>98.94</td>
+    <td>MusicAlbum/name</td>
+    <td>47.36</td>
+  </tr>
+  <tr>
+    <td>GenderType</td>
+    <td>98.90</td>
+    <td>DeliveryMethod</td>
+    <td>46.42</td>
+  </tr>
+  <tr>
+    <td>DayOfWeek</td>
+    <td>98.35</td>
+    <td>ProductModel</td>
+    <td>41.66</td>
+  </tr>
+  <tr>
+    <td>Boolean</td>
+    <td>97.24</td>
+    <td>MusicGroup</td>
+    <td>34.28</td>
   </tr>
   <tr>
     <td>EventAttendanceModeEnumeration</td>
-    <td>97.33</td>
-    <td>MusicGroup</td>
-    <td>25.00</td>
-  </tr>
-  <tr>
-    <td>email</td>
-    <td>96.84</td>
-    <td>JobPosting/name</td>
-    <td>24.06</td>
-  </tr>
-  <tr>
-    <td>EventStatusType</td>
-    <td>96.45</td>
+    <td>97.16</td>
     <td>CreativeWork/name</td>
-    <td>21.40</td>
-  </tr>
-  <tr>
-    <td>ItemAvailability</td>
-    <td>95.88</td>
-    <td>CreativeWorkSeries</td>
-    <td>15.38</td>
+    <td>31.84</td>
   </tr>
 </tbody>
 </table>
@@ -1304,34 +1319,34 @@ Following the cleansing steps, only attributes with a density of at least 25% ar
 </thead>
 <tbody>
   <tr>
-    <td>knowsLanguage</td>
-    <td>99.50</td>
-    <td>awayTeam</td>
-    <td>16.99</td>
+    <td>dayOfWeek</td>
+    <td>99.21</td>
+    <td>alternateName</td>
+    <td>20.00</td>
   </tr>
   <tr>
-    <td>contactType</td>
-    <td>99.09</td>
-    <td>parentOrganization</td>
-    <td>16.00</td>
+    <td>knowsLanguage</td>
+    <td>98.70</td>
+    <td>productID</td>
+    <td>19.90</td>
+  </tr>
+  <tr>
+    <td>availability</td>
+    <td>98.16</td>
+    <td>workLocation</td>
+    <td>18.60</td>
+  </tr>
+  <tr>
+    <td >contactType</td>
+    <td>97.85</td>
+    <td>memberOf</td>
+    <td>11.02</td>
   </tr>
   <tr>
     <td>interactionType</td>
-    <td>98.68</td>
-    <td>award</td>
-    <td>15.38</td>
-  </tr>
-  <tr>
-    <td >makesOffer</td>
-    <td>98.17</td>
-    <td>alternateName</td>
-    <td>15.38</td>
-  </tr>
-  <tr>
-    <td>dayOfWeek</td>
-    <td >97.10</td>
-    <td >homeTeam</td>
-    <td>8.96</td>
+    <td >97.43</td>
+    <td >award</td>
+    <td>7.14</td>
   </tr>
 </tbody>
 </table></div>
@@ -1382,11 +1397,11 @@ Following the cleansing steps, only attributes with a density of at least 25% ar
 								</td>
 							<td>335MB</td>
 							<td><a
-									href="#">CPA_sample_table</a>
+									href="http://data.dws.informatik.uni-mannheim.de/structureddata/sotab/sample_cpa_table.json">CPA_sample_table</a>
 							</td>
-							<td><a
-									href="#">CPA_sample_labels</a>
-							</td>
+              <td><a
+                  href="http://data.dws.informatik.uni-mannheim.de/structureddata/sotab/sample_cpa_labels.json">CTA_sample_labels</a>
+              </td>
 						</tr>
 						<tr>
     <td>Column Type Annotation (CTA)</td>
@@ -1403,10 +1418,10 @@ Following the cleansing steps, only attributes with a density of at least 25% ar
         </td>
 	<td>300MB</td>
     <td><a
-            href="#">CTA_sample_table</a>
+            href="http://data.dws.informatik.uni-mannheim.de/structureddata/sotab/sample_cta_table.json">CTA_sample_table</a>
     </td>
     <td><a
-            href="#">CTA_sample_labels</a>
+            href="http://data.dws.informatik.uni-mannheim.de/structureddata/sotab/sample_cta_labels.json">CTA_sample_labels</a>
     </td>
 </tr>
 					</tbody>
