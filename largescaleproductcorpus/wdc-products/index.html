@@ -120,10 +120,10 @@
 			1600 product entities
 			belonging to various product categories. We evaluate
 			WDC Products using several state-of-the-art matching systems,
-			including Ditto [3], HierGAT [1], and R-SupCon [2]. The full benchmark is available in both versions,
+			including Ditto, HierGAT, and R-SupCon. The full benchmark is available in both versions,
 			pair-wise and
 			multi-class, in the <a
-				href="http://webdatacommons.org/largescaleproductcorpus/wdc-products/index.html#toc5"></a>Download
+				href="http://webdatacommons.org/largescaleproductcorpus/wdc-products/index.html#toc5">Download</a>
 			section of this page.
 		</p>
 
@@ -163,7 +163,10 @@
 		<p>
 			Entity matching is the task of discovering records that refer
 			to the same real-world entity in a single or in multiple data sources and has been researched for over 50
-			years [5,8,9]. Over the last decades,
+			years [<a
+				href="http://webdatacommons.org/largescaleproductcorpus/wdc-products/index.html#toc7">5</a>,<a
+				href="http://webdatacommons.org/largescaleproductcorpus/wdc-products/index.html#toc7">8</a>,<a
+				href="http://webdatacommons.org/largescaleproductcorpus/wdc-products/index.html#toc7">9</a>]. Over the last decades,
 			a wide range of benchmarks for comparing the performance of entity matching systems has been developed.
 			WDC Products is the
 			first benchmark that employs non-generated real-world data to assess the performance of matching systems
@@ -181,8 +184,8 @@
 			available.
 		</p>
 		<p>
-			WDC Products is based on product data that has been extracted
-			in 2020 from 3307 e-shops that mark up product offers within their
+			WDC Products is based on product data that has been <b>extracted
+			in 2020 from 3307 e-shops</b> that mark up product offers within their
 			HTML pages using the schema.org vocabulary. By relying on web
 			data from many sources, WDC Products can offer a decent amount
 			of quite heterogeneous records per entity, e.g. WDC Products contains 10864 product offers describing in
@@ -903,7 +906,8 @@
 							for the unique vocabulary used across all datasets highlighting the
 							heterogeneity of the benchmark with each dataset containing between 17K and 20K unique words
 							on average as well as making use
-							of around 12K (24%) of tokens contained in RoBERTa's [6] vocabulary
+							of around 12K (24%) of tokens contained in RoBERTa's [<a
+				href="http://webdatacommons.org/largescaleproductcorpus/wdc-products/index.html#toc7">6</a>] vocabulary
 							of size ~50K.
 						</li>
 						<li>
@@ -927,6 +931,13 @@
 							exactly the same real-word products, same number of offers and
 							same distinct offers into the corresponding variants.
 						</li>
+						<li>
+							<b>Comparison to <a href="http://webdatacommons.org/largescaleproductcorpus/v2/">WDC LSPM</a>:</b>
+							In comparison to the earlier WDC LSPM benchmark, WDC Products is based on more recent data and adds two additional dimensions, amount of hard negatives and amount of unseen products, which results
+							in a generally higher difficulty for many variants of the benchmark and further allows for a more fine-grained evaluation of matching systems on real-world challenges as the following section shows.
+							Finally the building process of WDC Products enables us to cast the entity matching problem in a multi-class form which was not possible with WDC LSPM.
+
+							</li>
 					</ul>
 
 					<div class="tg-wrap">
@@ -1292,10 +1303,9 @@
 
 					<p>To show the usefulness of WDC Products, we evaluate the following supervised entity matching
 						methods using the benchmark: a
-						word (co-)occurrence baseline, Magellan [7], Ditto [3], RoBERTa-
-						base [6], the same RoBERTa model using supervised contrastive
-						pre-training (R-SupCon [2]), and a matcher based on hierarchical
-						token aggregation (HierGAT [1]). All models are trained three
+						word (co-)occurrence baseline, Magellan [<a href="http://webdatacommons.org/largescaleproductcorpus/wdc-products/index.html#toc7">7</a>], Ditto [<a href="http://webdatacommons.org/largescaleproductcorpus/wdc-products/index.html#toc7">3</a>], RoBERTa-base [<a href="http://webdatacommons.org/largescaleproductcorpus/wdc-products/index.html#toc7">6</a>], the same RoBERTa model using supervised contrastive
+						pre-training (R-SupCon [<a href="http://webdatacommons.org/largescaleproductcorpus/wdc-products/index.html#toc7">2</a>]), and a matcher based on hierarchical
+						token aggregation (HierGAT [<a href="http://webdatacommons.org/largescaleproductcorpus/wdc-products/index.html#toc7">1</a>]). All models are trained three
 						times per setup and we report the average F1.</p>
 
 					<h3>4.1 Matching Systems</h3>
@@ -1352,7 +1362,7 @@
 							contrastive loss. For this purpose, for each of the 1024 entity descriptions in a batch,
 							another 1024 are sampled from the pre-training
 							set which are matching examples for the respective partner in the
-							batch. The SupCon loss used for the pre-training tries to move
+							batch. The SupCon [<a href="http://webdatacommons.org/largescaleproductcorpus/wdc-products/index.html#toc7">4</a>] loss used for the pre-training tries to move
 							all matches in a batch closer to each other in the vector space while
 							pushing the non-matches apart. As the batches are randomly sampled in each epoch, the model
 							is able to learn from a large amount
@@ -1360,9 +1370,7 @@
 							the pre-training finishes, we freeze the parameters of the RoBERTa
 							encoder and only fine-tune a classification head with cross-entropy
 							loss using an analogous setup to the RoBERTa baseline for pair-wise
-							and multi-class matching. For more information about the SupCon
-							loss and the R-SupCon model we refer to reader to the respective
-							original papers. We pretrain the R-SupCon model for 200
+							and multi-class matching. We pretrain the R-SupCon model for 200
 							epochs using a batch size of 1024 and linearly decreasing learning
 							rate with warmup with a maximum value of 5e-5. The parameters
 							for the fine-tuning stage correspond to the ones of the RoBERTa
