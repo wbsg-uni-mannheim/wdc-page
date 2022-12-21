@@ -112,12 +112,12 @@
 			We present WDC Products, the
 			first real-world entity matching benchmark that provides for the systematic
 			evaluation of matching systems along combinations of three dimensions. The three dimensions
-			are (i) amount of hard negatives (ii) development set size and (iii)
+			are (i) amount of corner-cases (ii) development set size and (iii)
 			generalization to unseen entities. Furthermore, WDC Products is the first benchmark that provides
 			a pair-wise and a multi-class formulation of the same tasks
-			allowing for direct comparison of the two alternatives. WDC Products contains 10864 product offers
+			allowing for direct comparison of the two alternatives. WDC Products contains 11715 product offers
 			describing in total
-			1600 product entities
+			2162 product entities
 			belonging to various product categories. We evaluate
 			WDC Products using several state-of-the-art matching systems,
 			including Ditto, HierGAT, and R-SupCon. The full benchmark is available in both versions,
@@ -129,7 +129,7 @@
 
 		<h2 id="news">News</h2>
 		<ul>
-			<li><strong>2022-10-15:</strong> Initial release of WDC Products</li>
+			<li><strong>2022-12-23:</strong> Initial release of WDC Products</li>
 		</ul>
 
 		<h2>Table of Contents</h2>
@@ -163,34 +163,34 @@
 		<p>
 			Entity matching is the task of discovering records that refer
 			to the same real-world entity in a single or in multiple data sources and has been researched for over 50
-			years [<a
-				href="http://webdatacommons.org/largescaleproductcorpus/wdc-products/index.html#toc7">5</a>,<a
+			years [<a href="http://webdatacommons.org/largescaleproductcorpus/wdc-products/index.html#toc7">5</a>,<a
 				href="http://webdatacommons.org/largescaleproductcorpus/wdc-products/index.html#toc7">8</a>,<a
-				href="http://webdatacommons.org/largescaleproductcorpus/wdc-products/index.html#toc7">9</a>]. Over the last decades,
+				href="http://webdatacommons.org/largescaleproductcorpus/wdc-products/index.html#toc7">9</a>]. Over the
+			last decades,
 			a wide range of benchmarks for comparing the performance of entity matching systems has been developed.
 			WDC Products is the
 			first benchmark that employs non-generated real-world data to assess the performance of matching systems
 			along
 			three dimensions:
-			(i) amount of unseen entities in the test set, (ii) amount of hard
-			negatives, and (iii) development set size. For this, the benchmark
+			(i) amount of unseen entities in the test set, (ii) amount of corner-cases, and (iii) development set size.
+			For this, the benchmark
 			provides nine training, nine validation, and nine test sets which
 			can be combined into <b>27 variants of the benchmark</b>. The range of
 			variants includes simple variants containing only a low amount of
-			hard-negatives and no unseen entities while enough training data
-			is available. It also includes highly challenging variants which require the system to match hard-negatives
+			corner-cases and no unseen entities while enough training data
+			is available. It also includes highly challenging variants which require the system to match corner-cases
 			involving unseen entities
 			while for the seen entities only a small amount of training data is
 			available.
 		</p>
 		<p>
 			WDC Products is based on product data that has been <b>extracted
-			in 2020 from 3307 e-shops</b> that mark up product offers within their
+				in 2020 from 3259 e-shops</b> that mark up product offers within their
 			HTML pages using the schema.org vocabulary. By relying on web
 			data from many sources, WDC Products can offer a decent amount
-			of quite heterogeneous records per entity, e.g. WDC Products contains 10864 product offers describing in
+			of quite heterogeneous records per entity, e.g. WDC Products contains 11715 product offers describing in
 			total
-			1600 product entities
+			2162 product entities
 			belonging to various product categories.
 			The WDC Products benchmark strictly separates between records
 			that appear in the pairs which are contained in the training, validation, and test sets, so that each offer
@@ -229,37 +229,53 @@
 
 		<ul>
 			<li><b>Language Identification:</b>
-				PDC2020 is a multi-lingual corpus
-				with product offers originating from all across the Web and thus
-				also includes a lot of non-English product offers. As we want WDC
-				Products to be an English benchmark, we apply some steps to filter
-				out non-English offers. In a first step, we apply the <a
-					href="https://fasttext.cc/docs/en/language-identification.html">fastText language identification
-					model</a> to each row in PDC2020, more specifically to the concatenation of the attributes title and
-				description and keep all rows where the classifier confidence is highest for the
-				English language. In a second step, we apply a regular expression
-				to identify non-Latin characters in the remaining product offers
-				and keep only those containing less than four non-Latin characters..
+				PDC2020 is a multi-lingual corpus with product offers originating from all across the Web and thus also
+				includes a lot of non-English product offers.
+				As we want WDC Products to be an English benchmark, we apply some steps to filter out non-English
+				offers. In its original form PDC2020 contains more than 98M
+				offers and over 7M product clusters with size of at least two. In a first step, we apply the
+				<a href="https://fasttext.cc/docs/en/language-identification.html">fastText language identification
+					model</a> to each row in PDC2020, more specifically to the concatenation of the attributes
+				<i>title</i> and <i>description</i>. If a product offer has a longer textual description this should be
+				reliably identifiable as English or non-English
+				for the algorithm. For any offers without description the language identification has to rely on
+				non-English words in the product titles alone. After applying
+				the fastText model, we keep all rows where the classifier confidence is highest for the English
+				language. In a second step, we apply a regular expression to
+				identify non-Latin characters in the remaining product offers and keep only those containing less than
+				four non-Latin characters. We choose to keep these as
+				sometimes product descriptions contain non-Latin characters as part of a model name or branding of the
+				manufacturer. Any product offers with more than four
+				non-Latin characters we assume to be non-English and remove them.
 			</li>
 			<li><b>Deduplication and Removal of Short Offers:</b>
-				In the next step,
-				we concatenate the attributes title, description and brand and drop
-				any duplicate rows on this combined attribute, keeping only the
-				first occurrence. Finally, we remove all product offers where the
-				title attribute contains less than five tokens, as we expect offers
-				with such short titles to be unsuited due to being very sparsely
-				described which results in unsolvable ambiguity when trying to
-				match similarly sparse but different products.
+				In the next step, we concatenate the attributes <i>title</i>, <i>description</i> and <i>brand</i> and
+				drop any duplicate rows on
+				this combined attribute, keeping only the first occurrence. Finally, we remove all product offers where
+				the title attribute contains less than
+				five tokens, as we expect offers with such short titles to be unsuited due to being very sparsely
+				described which results in unsolvable ambiguity
+				when trying to match similarly sparse but different products.
 			</li>
 			<li><b>Cluster-based Cleansing:</b>
-				In the final step, we further aim to
-				eliminate any remaining noisy products in the product clusters.
-				For this purpose, we employ a heuristic based on simple word
-				occurrence among offers inside a cluster to identify the words defining the product of the cluster. We
-				remove any offers not overlapping sufficiently with these words.
-				After the cluster-based cleansing PDC2020 contains 22M offers and 900K
-				product clusters of size greater than one. This cleansed corpus is
-				used as the base for the creation of WDC Products.
+				In the final step, we further aim to eliminate any remaining noisy products in the product clusters. For
+				this purpose,
+				we employ a heuristic based on simple word occurrence among offers inside a cluster. More specifically,
+				we scan each clusters offers
+				and keep track of general <i>title</i> length while building a dictionary of word counts across offers'
+				<i>titles</i>. We expect any offer
+				containing very unique words compared to all others in the cluster to be noisy non-matching product
+				offers and subsequently remove them from the
+				cluster and corpus. First, we count the overlap of a specific products <i>title</i> tokens with the rest
+				of the clusters offers. If a token is contained
+				in at least one third of offers, we count it as part of the main product this cluster should contain.
+				One third is a relaxed threshold but in order to account
+				for the heterogeneity in product titles from different origins the threshold must not be chosen too
+				high. Furthermore, it is very likely that a product not
+				belonging to the cluster will match in less than one third of tokens as its surface form will be
+				fundamentally different in most cases. Finally, we account
+				for average value length by removing a product offer only if the count of overlapping tokens is less or
+				equal to one quarter of the average title length.
 			</li>
 		</ul>
 		</p>
@@ -268,8 +284,8 @@
 			For the creation of WDC Products, we select multiple sets of 500
 			products from the cleansed PDC2020 corpus along three dimensions
 			that characterize the final benchmark. The three dimensions are:
-			(i) amount of hard negatives, (ii) amount of unseen products and
-			(iii) development set size. The amount of hard negatives determines
+			(i) amount of corner-cases, (ii) amount of unseen products and
+			(iii) development set size. The amount of corner-cases determines
 			the percentage of the 500 products which have at least 4 highly
 			similar products in the set of 500. We vary this dimension in 3
 			steps, 80%, 50% and 20%. The amount of unseen products is only
@@ -305,14 +321,14 @@
 				<p>
 					In the following, we describe the
 					selection of 500 products for the final benchmark datasets along
-					all three dimensions but keep the hard negative dimension fixed to
-					80% hard negatives to improve understandability. As the process is
-					analogous for the other hard negative percentages, the following
+					all three dimensions but keep the corner-case dimension fixed to
+					80% corner-cases to improve understandability. As the process is
+					analogous for the other corner-case percentages, the following
 					description can be directly applied to them as well.
 
 				</p>
 				<p> the first step we need to select 400 products which include at
-					least 4 hard negatives for each product (80% hard negatives) and
+					least 4 hard corner-case products for each product (80% corner-cases) and
 					100 random products (the remaining 20%) once from the seen and
 					once from the unseen split of our corpus so we can later build sets
 					for each unseen percentage. We begin by iterating through the
@@ -320,11 +336,15 @@
 					then search for the four most
 					similar product clusters inside that DBSCAN cluster by alternating between the most similar examples
 					on product title according
-					to SoftTDIDF and cosine similarity from the py_stringmatching
-					package. After collecting 400 products in this way once for the seen
+					a variety of similarity metrics: <i>Cosine</i>, <i>DICE</i> and <i>Generalized Jaccard</i>
+					similarities from the <a
+						href="https://github.com/anhaidgroup/py_stringmatching">py_stringmatching</a>
+					package and a <i>fastText</i> embedding model trained on the titles of the product matching
+					benchmarks <i>Amazon-Google</i>, <i>Abt-Buy</i> and <i>Walmart-Amazon</i>.
+					After collecting 400 products in this way once for the seen
 					and once for the unseen split, we use the remaining products and
 					randomly select a further 100 for seen and unseen, bringing both
-					products sets to 500 products with a 80% hard negative ratio.
+					products sets to 500 products with a 80% corner-case ratio.
 				</p>
 				<p>
 					In the second step we split each of the 500 product clusters of
@@ -337,13 +357,13 @@
 
 					To build the unseen dimension we proceed with systematically
 					replacing products in the fully seen test set with products from the
-					unseen split. Care is taken to keep the hard negative amount the
+					unseen split. Care is taken to keep the corner-case amount the
 					same, i.e. for building the 50% unseen test set, we need to replace
-					250 products with unseen products in a ratio of 80% hard negatives
+					250 products with unseen products in a ratio of 80% corner-cases
 					and 20% random. Finally to build the 100% unseen test set, we can
 					simply fully replace the original test set with the corresponding
 					selection from the unseen split. In summary, we generate 3 test sets
-					(0%, 50%, 100% unseen) for the hard negative ratio of 80%.
+					(0%, 50%, 100% unseen) for the corner-case ratio of 80%.
 
 				</p>
 				<p>
@@ -352,10 +372,12 @@
 					were assigned to the training split as follows: All product offers are
 					assigned to the large training set, three among those are assigned
 					to the medium training set and two of the three are finally assigned
-					to the small training set.
-					As stated before, we proceed with the same process for the hard
-					negative ratios 50% and 20%. Finally, we have produced three test
-					sets and 3 training sets for each hard negative ratio - nine test sets,
+					to the small training set. For the corner-case products we ensure that at least
+					one corner-case positive pair is assigned to each split using the previously mentioned similarity
+					metrics
+					As stated before, we proceed with the same process for the corner-case ratios 50% and 20%. Finally,
+					we have produced three test
+					sets and 3 training sets for each corner-case ratio - nine test sets,
 					nine validation sets and nine training sets overall. We can directly
 					use these datasets for evaluating multi-class entity matchers. For
 					pair-wise matching we still need to generate pairs from the selected
@@ -368,8 +390,8 @@
 						the pair-wise datasets we can directly use the previously prepared
 						training, validation and test splits. We iterate over each offer in
 						each set and build all positive pairs as well as varying amounts of
-						hard negative and random pairs depending on the development set
-						size and desired hard negative ratio. In the following, we use the
+						negative corner-cases and random pairs depending on the development set
+						size and desired corner-case ratio. In the following, we use the
 						building process of the training set size large as an example.
 
 					</p>
@@ -379,7 +401,7 @@
 						possible positive pairs using the available offers and include them
 						in the final large training set. Afterwards, we iterate over each offer
 						in the product cluster and select for each the 3 most similar (using
-						alternating SoftTDIDF and cosine similarity) product offers among
+						the same similarity metrics as before) product offers among
 						the remaining 499 product clusters in the dataset. If a pair is already
 						contained in the final training set, e.g. because of a mirrored pair,
 						we select the next most similar pair to add instead. Finally, we add
@@ -392,7 +414,7 @@
 						The generation of all pair-wise test sets and the large validation
 						sets follow the same process as for the large training sets. For
 						the medium and small training and validation sets, we reduce the
-						amount of selected hard negatives per product offer to 2 (medium
+						amount of selected negative corner-cases per product offer to 2 (medium
 						sets) and 1 (small sets) to simulate a reduced labeling effort in
 						addition to the lower amount of available product offers per product
 						for the different training sets (3 for medium and 2 for small).
@@ -403,9 +425,9 @@
 					<span id="toc3"></span>
 					<h2>3 Benchmark Profiling</h2>
 
-					<p>The WDC Products benchmark consists of overall 1600 real-word products across all subsets which
+					<p>The WDC Products benchmark consists of overall 2162 real-word products across all subsets which
 						are
-						described by 10864 unique records. It further consists of overall nine
+						described by 11715 unique records. It further consists of overall nine
 						training, nine validation and nine test sets each for pair-wise matching as well as multi-class
 						matching resulting in overall <b>27 variants</b> of the benchmark. Table 1 shows size statistics
 						of the dataset for each of these splits. Each split contains offers for
@@ -413,7 +435,7 @@
 						offers (multi-class). The sizes of the training
 						and validation sets on the other hand vary across the development
 						set size dimension from 2500 (pairwise) and 1000 (multi-class) representing the small dataset to
-						∼21000/4500 and ∼3000/1000 in the
+						∼20000/4500 and ∼3000/1000 in the
 						large sets. This allows for the evaluation of matching systems along
 						the dimension of development set size while ensuring comparability between pair-wise and
 						multi-class task, as both datasets always
@@ -421,18 +443,19 @@
 						as no overlapping offers between the training and evaluation splits.
 						In addition to the development set size dimension each dataset
 						exists in three versions of increasing difficulty signified by the
-						amount of hard negatives in the contained products. Finally for
+						amount of corner-cases in the contained products. Finally for
 						each of the three difficulties, three test sets of the same size are
 						available with an increasing amount of unseen products from 0%
 						over 50% to 100% representing the third and final dimension of the
 						benchmark. As explained in Section 2 when replacing seen with
-						unseen products, care is taken to preserve the corresponding hard
-						negative to random ratio.</p>
+						unseen products, care is taken to preserve the corresponding corner-case to random ratio.</p>
+
+
 
 					<div class="tg-wrap">
 						<table style="border-collapse:collapse;border-color:#ccc;border-spacing:0" class="tg">
 							<caption><b>Table 1: Statistics of the training, validation and test sets along the
-									dimensions amount of hard negatives and
+									dimensions amount of corner-cases and
 									development set size for the pair-wise and multi-class matching tasks.</b></caption>
 							<thead>
 								<tr>
@@ -441,7 +464,7 @@
 										Type</th>
 									<th
 										style="background-color:#f0f0f0;border-color:inherit;border-style:solid;border-width:1px;color:#333;font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;position:-webkit-sticky;position:sticky;text-align:center;top:-1px;vertical-align:top;will-change:transform;word-break:normal">
-										Hard Negatives/<br>Random (%)</th>
+										Corner-Cases/<br>Random (%)</th>
 									<th style="background-color:#f0f0f0;border-color:inherit;border-style:solid;border-width:1px;color:#333;font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;position:-webkit-sticky;position:sticky;text-align:center;top:-1px;vertical-align:top;will-change:transform;word-break:normal"
 										colspan="9">Pair-wise  </th>
 									<th style="background-color:#f0f0f0;border-color:inherit;border-style:solid;border-width:1px;color:#333;font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;position:-webkit-sticky;position:sticky;text-align:center;top:-1px;vertical-align:top;will-change:transform;word-break:normal"
@@ -542,13 +565,13 @@
 										4,500</td>
 									<td
 										style="background-color:#f9f9f9;border-color:inherit;border-style:solid;border-width:1px;color:#333;font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;text-align:center;vertical-align:top;word-break:normal">
-										20,932</td>
+										19,835</td>
 									<td
 										style="background-color:#f9f9f9;border-color:inherit;border-style:solid;border-width:1px;color:#333;font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;text-align:center;vertical-align:top;word-break:normal">
-										9,180</td>
+										8,471</td>
 									<td
 										style="background-color:#f9f9f9;border-color:inherit;border-style:solid;border-width:1px;color:#333;font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;text-align:center;vertical-align:top;word-break:normal">
-										11,752</td>
+										11,364</td>
 									<td
 										style="background-color:#f9f9f9;border-color:inherit;border-style:solid;border-width:1px;color:#333;font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;text-align:center;vertical-align:top;word-break:normal">
 										1,000</td>
@@ -557,7 +580,7 @@
 										1,500</td>
 									<td
 										style="background-color:#f9f9f9;border-color:inherit;border-style:solid;border-width:1px;color:#333;font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;text-align:center;vertical-align:top;word-break:normal">
-										2,938</td>
+										2,841</td>
 								</tr>
 								<tr>
 									<td
@@ -655,7 +678,7 @@
 										500</td>
 									<td
 										style="background-color:#fff;border-color:inherit;border-style:solid;border-width:1px;color:#333;font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;text-align:center;vertical-align:top;word-break:normal">
-										2000</td>
+										2,000</td>
 									<td
 										style="background-color:#fff;border-color:inherit;border-style:solid;border-width:1px;color:#333;font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;text-align:center;vertical-align:top;word-break:normal">
 										6,000</td>
@@ -667,13 +690,13 @@
 										4,500</td>
 									<td
 										style="background-color:#fff;border-color:inherit;border-style:solid;border-width:1px;color:#333;font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;text-align:center;vertical-align:top;word-break:normal">
-										20,733</td>
+										19,607</td>
 									<td
 										style="background-color:#fff;border-color:inherit;border-style:solid;border-width:1px;color:#333;font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;text-align:center;vertical-align:top;word-break:normal">
-										9,049</td>
+										8,339</td>
 									<td
 										style="background-color:#fff;border-color:inherit;border-style:solid;border-width:1px;color:#333;font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;text-align:center;vertical-align:top;word-break:normal">
-										11,684</td>
+										11,268</td>
 									<td
 										style="background-color:#fff;border-color:inherit;border-style:solid;border-width:1px;color:#333;font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;text-align:center;vertical-align:top;word-break:normal">
 										1,000</td>
@@ -682,7 +705,7 @@
 										1,500</td>
 									<td
 										style="background-color:#fff;border-color:inherit;border-style:solid;border-width:1px;color:#333;font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;text-align:center;vertical-align:top;word-break:normal">
-										2,921</td>
+										2,817</td>
 								</tr>
 								<tr>
 									<td
@@ -792,13 +815,13 @@
 										4,500</td>
 									<td
 										style="background-color:#f9f9f9;border-color:inherit;border-style:solid;border-width:1px;color:#333;font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;text-align:center;vertical-align:top;word-break:normal">
-										20,812</td>
+										19,015</td>
 									<td
 										style="background-color:#f9f9f9;border-color:inherit;border-style:solid;border-width:1px;color:#333;font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;text-align:center;vertical-align:top;word-break:normal">
-										9,084</td>
+										7,963</td>
 									<td
 										style="background-color:#f9f9f9;border-color:inherit;border-style:solid;border-width:1px;color:#333;font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;text-align:center;vertical-align:top;word-break:normal">
-										11,728</td>
+										11,052</td>
 									<td
 										style="background-color:#f9f9f9;border-color:inherit;border-style:solid;border-width:1px;color:#333;font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;text-align:center;vertical-align:top;word-break:normal">
 										1,000</td>
@@ -807,7 +830,7 @@
 										1,500</td>
 									<td
 										style="background-color:#f9f9f9;border-color:inherit;border-style:solid;border-width:1px;color:#333;font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;text-align:center;vertical-align:top;word-break:normal">
-										2,932</td>
+										2,763</td>
 								</tr>
 								<tr>
 									<td
@@ -907,7 +930,8 @@
 							heterogeneity of the benchmark with each dataset containing between 17K and 20K unique words
 							on average as well as making use
 							of around 12K (24%) of tokens contained in RoBERTa's [<a
-				href="http://webdatacommons.org/largescaleproductcorpus/wdc-products/index.html#toc7">6</a>] vocabulary
+								href="http://webdatacommons.org/largescaleproductcorpus/wdc-products/index.html#toc7">6</a>]
+							vocabulary
 							of size ~50K.
 						</li>
 						<li>
@@ -932,19 +956,25 @@
 							same distinct offers into the corresponding variants.
 						</li>
 						<li>
-							<b>Comparison to <a href="http://webdatacommons.org/largescaleproductcorpus/v2/">WDC LSPM</a>:</b>
-							In comparison to the earlier WDC LSPM benchmark, WDC Products is based on more recent data and adds two additional dimensions, amount of hard negatives and amount of unseen products, which results
-							in a generally higher difficulty for many variants of the benchmark and further allows for a more fine-grained evaluation of matching systems on real-world challenges as the following section shows.
-							Finally the building process of WDC Products enables us to cast the entity matching problem in a multi-class form which was not possible with WDC LSPM.
+							<b>Comparison to <a href="http://webdatacommons.org/largescaleproductcorpus/v2/">WDC
+									LSPM</a>:</b>
+							In comparison to the earlier WDC LSPM benchmark, WDC Products is based on more recent data
+							and adds two additional dimensions, amount of corner-cases and amount of unseen products,
+							which results
+							in a generally higher difficulty for many variants of the benchmark and further allows for a
+							more fine-grained evaluation of matching systems on real-world challenges as the following
+							section shows.
+							Finally the building process of WDC Products enables us to cast the entity matching problem
+							in a multi-class form which was not possible with WDC LSPM.
 
-							</li>
+						</li>
 					</ul>
 
 					<div class="tg-wrap">
 						<table style="border-collapse:collapse;border-color:#ccc;border-spacing:0" class="tg">
 							<caption><b>Table 2: Attribute density and length statistics across the merged training,
 									validation and test sets by training set size and
-									amount of hard negatives.</b></caption>
+									amount of corner-cases.</b></caption>
 							<thead>
 								<tr>
 									<th
@@ -952,7 +982,7 @@
 										Training Set<br>Size</th>
 									<th
 										style="background-color:#f0f0f0;border-color:inherit;border-style:solid;border-width:1px;color:#333;font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;position:-webkit-sticky;position:sticky;text-align:center;top:-1px;vertical-align:top;will-change:transform;word-break:normal">
-										Hard Negatives/<br>Random (%)</th>
+										Corner-Cases/<br>Random (%)</th>
 									<th
 										style="background-color:#f0f0f0;border-color:inherit;border-style:solid;border-width:1px;color:#333;font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;position:-webkit-sticky;position:sticky;text-align:center;top:-1px;vertical-align:top;will-change:transform;word-break:normal">
 										# Entities</th>
@@ -968,7 +998,7 @@
 										style="background-color:#f9f9f9;border-color:inherit;border-style:solid;border-width:1px;color:#333;font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;text-align:left;vertical-align:top;word-break:normal">
 									</td>
 									<td
-										style="background-color:#f9f9f9;border-color:inherit;border-style:solid;border-width:1px;color:#333;font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;text-align:center;vertical-align:top;word-break:normal">
+										style="background-color:#f9f9f9;border-color:inherit;border-style:solid;border-width:1px;color:#333;font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;text-align:left;vertical-align:top;word-break:normal">
 									</td>
 									<td
 										style="background-color:#f9f9f9;border-color:inherit;border-style:solid;border-width:1px;color:#333;font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;text-align:center;vertical-align:top;word-break:normal">
@@ -1016,16 +1046,16 @@
 										93/1</td>
 									<td
 										style="background-color:#fff;border-color:inherit;border-style:solid;border-width:1px;color:#333;font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;text-align:center;vertical-align:top;word-break:normal">
-										91/1</td>
+										90/1</td>
 									<td
 										style="background-color:#fff;border-color:inherit;border-style:solid;border-width:1px;color:#333;font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;text-align:center;vertical-align:top;word-break:normal">
-										33/1</td>
+										35/1</td>
 									<td
 										style="background-color:#fff;border-color:inherit;border-style:solid;border-width:1px;color:#333;font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;text-align:center;vertical-align:top;word-break:normal">
-										19,895</td>
+										18,832</td>
 									<td
 										style="background-color:#fff;border-color:inherit;border-style:solid;border-width:1px;color:#333;font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;text-align:center;vertical-align:top;word-break:normal">
-										12,379</td>
+										11,876</td>
 								</tr>
 								<tr>
 									<td
@@ -1044,19 +1074,19 @@
 										75/37</td>
 									<td
 										style="background-color:#f9f9f9;border-color:inherit;border-style:solid;border-width:1px;color:#333;font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;text-align:center;vertical-align:top;word-break:normal">
-										93/1</td>
+										94/1</td>
 									<td
 										style="background-color:#f9f9f9;border-color:inherit;border-style:solid;border-width:1px;color:#333;font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;text-align:center;vertical-align:top;word-break:normal">
 										91/1</td>
 									<td
 										style="background-color:#f9f9f9;border-color:inherit;border-style:solid;border-width:1px;color:#333;font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;text-align:center;vertical-align:top;word-break:normal">
-										33/1</td>
+										34/1</td>
 									<td
 										style="background-color:#f9f9f9;border-color:inherit;border-style:solid;border-width:1px;color:#333;font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;text-align:center;vertical-align:top;word-break:normal">
-										17,284</td>
+										16,662</td>
 									<td
 										style="background-color:#f9f9f9;border-color:inherit;border-style:solid;border-width:1px;color:#333;font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;text-align:center;vertical-align:top;word-break:normal">
-										11,733</td>
+										11,420</td>
 								</tr>
 								<tr>
 									<td
@@ -1079,13 +1109,13 @@
 										91/1</td>
 									<td
 										style="background-color:#fff;border-color:inherit;border-style:solid;border-width:1px;color:#333;font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;text-align:center;vertical-align:top;word-break:normal">
-										33/1</td>
+										34/1</td>
 									<td
 										style="background-color:#fff;border-color:inherit;border-style:solid;border-width:1px;color:#333;font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;text-align:center;vertical-align:top;word-break:normal">
-										18,375</td>
+										17,612</td>
 									<td
 										style="background-color:#fff;border-color:inherit;border-style:solid;border-width:1px;color:#333;font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;text-align:center;vertical-align:top;word-break:normal">
-										12,087</td>
+										11,718</td>
 								</tr>
 								<tr>
 									<td
@@ -1108,13 +1138,13 @@
 										91/1</td>
 									<td
 										style="background-color:#f9f9f9;border-color:inherit;border-style:solid;border-width:1px;color:#333;font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;text-align:center;vertical-align:top;word-break:normal">
-										33/1</td>
+										34/1</td>
 									<td
 										style="background-color:#f9f9f9;border-color:inherit;border-style:solid;border-width:1px;color:#333;font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;text-align:center;vertical-align:top;word-break:normal">
-										20,555</td>
+										19,862</td>
 									<td
 										style="background-color:#f9f9f9;border-color:inherit;border-style:solid;border-width:1px;color:#333;font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;text-align:center;vertical-align:top;word-break:normal">
-										12,608</td>
+										12,246</td>
 								</tr>
 								<tr>
 									<td
@@ -1133,19 +1163,19 @@
 										76/32</td>
 									<td
 										style="background-color:#fff;border-color:inherit;border-style:solid;border-width:1px;color:#333;font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;text-align:center;vertical-align:top;word-break:normal">
-										94/1</td>
+										93/1</td>
 									<td
 										style="background-color:#fff;border-color:inherit;border-style:solid;border-width:1px;color:#333;font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;text-align:center;vertical-align:top;word-break:normal">
-										92/1</td>
+										90/1</td>
 									<td
 										style="background-color:#fff;border-color:inherit;border-style:solid;border-width:1px;color:#333;font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;text-align:center;vertical-align:top;word-break:normal">
-										33/1</td>
+										35/1</td>
 									<td
 										style="background-color:#fff;border-color:inherit;border-style:solid;border-width:1px;color:#333;font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;text-align:center;vertical-align:top;word-break:normal">
-										17,875</td>
+										17,232</td>
 									<td
 										style="background-color:#fff;border-color:inherit;border-style:solid;border-width:1px;color:#333;font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;text-align:center;vertical-align:top;word-break:normal">
-										11,957</td>
+										11,548</td>
 								</tr>
 								<tr>
 									<td
@@ -1162,19 +1192,19 @@
 										76/32</td>
 									<td
 										style="background-color:#f9f9f9;border-color:inherit;border-style:solid;border-width:1px;color:#333;font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;text-align:center;vertical-align:top;word-break:normal">
-										94/1</td>
+										93/1</td>
 									<td
 										style="background-color:#f9f9f9;border-color:inherit;border-style:solid;border-width:1px;color:#333;font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;text-align:center;vertical-align:top;word-break:normal">
-										92/1</td>
+										90/1</td>
 									<td
 										style="background-color:#f9f9f9;border-color:inherit;border-style:solid;border-width:1px;color:#333;font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;text-align:center;vertical-align:top;word-break:normal">
-										33/1</td>
+										35/1</td>
 									<td
 										style="background-color:#f9f9f9;border-color:inherit;border-style:solid;border-width:1px;color:#333;font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;text-align:center;vertical-align:top;word-break:normal">
-										18,955</td>
+										18,313</td>
 									<td
 										style="background-color:#f9f9f9;border-color:inherit;border-style:solid;border-width:1px;color:#333;font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;text-align:center;vertical-align:top;word-break:normal">
-										12,306</td>
+										11,912</td>
 								</tr>
 								<tr>
 									<td
@@ -1188,22 +1218,22 @@
 										100/8</td>
 									<td
 										style="background-color:#fff;border-color:inherit;border-style:solid;border-width:1px;color:#333;font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;text-align:center;vertical-align:top;word-break:normal">
-										76/32</td>
+										75/32</td>
 									<td
 										style="background-color:#fff;border-color:inherit;border-style:solid;border-width:1px;color:#333;font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;text-align:center;vertical-align:top;word-break:normal">
-										94/1</td>
+										93/1</td>
 									<td
 										style="background-color:#fff;border-color:inherit;border-style:solid;border-width:1px;color:#333;font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;text-align:center;vertical-align:top;word-break:normal">
-										92/1</td>
+										90/1</td>
 									<td
 										style="background-color:#fff;border-color:inherit;border-style:solid;border-width:1px;color:#333;font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;text-align:center;vertical-align:top;word-break:normal">
-										33/1</td>
+										35/1</td>
 									<td
 										style="background-color:#fff;border-color:inherit;border-style:solid;border-width:1px;color:#333;font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;text-align:center;vertical-align:top;word-break:normal">
-										21,233</td>
+										20,361</td>
 									<td
 										style="background-color:#fff;border-color:inherit;border-style:solid;border-width:1px;color:#333;font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;text-align:center;vertical-align:top;word-break:normal">
-										12,831</td>
+										12,372</td>
 								</tr>
 								<tr>
 									<td
@@ -1219,22 +1249,22 @@
 										100/8</td>
 									<td
 										style="background-color:#f9f9f9;border-color:inherit;border-style:solid;border-width:1px;color:#333;font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;text-align:center;vertical-align:top;word-break:normal">
-										76/29</td>
+										74/29</td>
 									<td
 										style="background-color:#f9f9f9;border-color:inherit;border-style:solid;border-width:1px;color:#333;font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;text-align:center;vertical-align:top;word-break:normal">
-										93/1</td>
+										92/1</td>
 									<td
 										style="background-color:#f9f9f9;border-color:inherit;border-style:solid;border-width:1px;color:#333;font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;text-align:center;vertical-align:top;word-break:normal">
-										91/1</td>
+										90/1</td>
 									<td
 										style="background-color:#f9f9f9;border-color:inherit;border-style:solid;border-width:1px;color:#333;font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;text-align:center;vertical-align:top;word-break:normal">
-										33/1</td>
+										35/1</td>
 									<td
 										style="background-color:#f9f9f9;border-color:inherit;border-style:solid;border-width:1px;color:#333;font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;text-align:center;vertical-align:top;word-break:normal">
-										17,836</td>
+										16,179</td>
 									<td
 										style="background-color:#f9f9f9;border-color:inherit;border-style:solid;border-width:1px;color:#333;font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;text-align:center;vertical-align:top;word-break:normal">
-										11,834</td>
+										11,201</td>
 								</tr>
 								<tr>
 									<td
@@ -1248,22 +1278,22 @@
 										100/8</td>
 									<td
 										style="background-color:#fff;border-color:inherit;border-style:solid;border-width:1px;color:#333;font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;text-align:center;vertical-align:top;word-break:normal">
-										76/29</td>
+										74/29</td>
 									<td
 										style="background-color:#fff;border-color:inherit;border-style:solid;border-width:1px;color:#333;font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;text-align:center;vertical-align:top;word-break:normal">
-										93/1</td>
+										92/1</td>
 									<td
 										style="background-color:#fff;border-color:inherit;border-style:solid;border-width:1px;color:#333;font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;text-align:center;vertical-align:top;word-break:normal">
-										91/1</td>
+										90/1</td>
 									<td
 										style="background-color:#fff;border-color:inherit;border-style:solid;border-width:1px;color:#333;font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;text-align:center;vertical-align:top;word-break:normal">
-										33/1</td>
+										35/1</td>
 									<td
 										style="background-color:#fff;border-color:inherit;border-style:solid;border-width:1px;color:#333;font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;text-align:center;vertical-align:top;word-break:normal">
-										18,938</td>
+										17,220</td>
 									<td
 										style="background-color:#fff;border-color:inherit;border-style:solid;border-width:1px;color:#333;font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;text-align:center;vertical-align:top;word-break:normal">
-										12,205</td>
+										11,563</td>
 								</tr>
 								<tr>
 									<td
@@ -1277,22 +1307,22 @@
 										100/8</td>
 									<td
 										style="background-color:#f9f9f9;border-color:inherit;border-style:solid;border-width:1px;color:#333;font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;text-align:center;vertical-align:top;word-break:normal">
-										76/29</td>
+										74/29</td>
 									<td
 										style="background-color:#f9f9f9;border-color:inherit;border-style:solid;border-width:1px;color:#333;font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;text-align:center;vertical-align:top;word-break:normal">
-										93/1</td>
+										92/1</td>
 									<td
 										style="background-color:#f9f9f9;border-color:inherit;border-style:solid;border-width:1px;color:#333;font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;text-align:center;vertical-align:top;word-break:normal">
-										91/1</td>
+										90/1</td>
 									<td
 										style="background-color:#f9f9f9;border-color:inherit;border-style:solid;border-width:1px;color:#333;font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;text-align:center;vertical-align:top;word-break:normal">
-										33/1</td>
+										34/1</td>
 									<td
 										style="background-color:#f9f9f9;border-color:inherit;border-style:solid;border-width:1px;color:#333;font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;text-align:center;vertical-align:top;word-break:normal">
-										21,333</td>
+										19,235</td>
 									<td
 										style="background-color:#f9f9f9;border-color:inherit;border-style:solid;border-width:1px;color:#333;font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;text-align:center;vertical-align:top;word-break:normal">
-										12,753</td>
+										12,028</td>
 								</tr>
 							</tbody>
 						</table>
@@ -1303,9 +1333,19 @@
 
 					<p>To show the usefulness of WDC Products, we evaluate the following supervised entity matching
 						methods using the benchmark: a
-						word (co-)occurrence baseline, Magellan [<a href="http://webdatacommons.org/largescaleproductcorpus/wdc-products/index.html#toc7">7</a>], Ditto [<a href="http://webdatacommons.org/largescaleproductcorpus/wdc-products/index.html#toc7">3</a>], RoBERTa-base [<a href="http://webdatacommons.org/largescaleproductcorpus/wdc-products/index.html#toc7">6</a>], the same RoBERTa model using supervised contrastive
-						pre-training (R-SupCon [<a href="http://webdatacommons.org/largescaleproductcorpus/wdc-products/index.html#toc7">2</a>]), and a matcher based on hierarchical
-						token aggregation (HierGAT [<a href="http://webdatacommons.org/largescaleproductcorpus/wdc-products/index.html#toc7">1</a>]). All models are trained three
+						word (co-)occurrence baseline, Magellan [<a
+							href="http://webdatacommons.org/largescaleproductcorpus/wdc-products/index.html#toc7">7</a>],
+						Ditto [<a
+							href="http://webdatacommons.org/largescaleproductcorpus/wdc-products/index.html#toc7">3</a>],
+						RoBERTa-base [<a
+							href="http://webdatacommons.org/largescaleproductcorpus/wdc-products/index.html#toc7">6</a>],
+						the same RoBERTa model using supervised contrastive
+						pre-training (R-SupCon [<a
+							href="http://webdatacommons.org/largescaleproductcorpus/wdc-products/index.html#toc7">2</a>]),
+						and a matcher based on hierarchical
+						token aggregation (HierGAT [<a
+							href="http://webdatacommons.org/largescaleproductcorpus/wdc-products/index.html#toc7">1</a>]).
+						All models are trained three
 						times per setup and we report the average F1.</p>
 
 					<h3>4.1 Matching Systems</h3>
@@ -1362,7 +1402,9 @@
 							contrastive loss. For this purpose, for each of the 1024 entity descriptions in a batch,
 							another 1024 are sampled from the pre-training
 							set which are matching examples for the respective partner in the
-							batch. The SupCon [<a href="http://webdatacommons.org/largescaleproductcorpus/wdc-products/index.html#toc7">4</a>] loss used for the pre-training tries to move
+							batch. The SupCon [<a
+								href="http://webdatacommons.org/largescaleproductcorpus/wdc-products/index.html#toc7">4</a>]
+							loss used for the pre-training tries to move
 							all matches in a batch closer to each other in the vector space while
 							pushing the non-matches apart. As the batches are randomly sampled in each epoch, the model
 							is able to learn from a large amount
@@ -1401,12 +1443,12 @@
 
 					<p>Table 3 summarizes the results of the experiments for the pair-wise
 						matching tasks along all three dimensions, training set size, amount
-						of hard negatives and amount of unseen entities in the test split.
+						of corner-cases and amount of unseen entities in the test split.
 
 					<div class="tg-wrap">
 						<table style="border-collapse:collapse;border-color:#ccc;border-spacing:0" class="tg">
 							<caption><b>Table 3: Results of the pair-wise baseline experiments over all three
-									dimensions, training set size, amount of hard negatives
+									dimensions, training set size, amount of corner-cases
 									and amount of unseen products in the test set (% columns below each method, zero
 									means all are seen products). Results are F1
 									on the match class.</b></caption>
@@ -1417,7 +1459,7 @@
 										Training Set<br>Size</th>
 									<th
 										style="background-color:#f0f0f0;border-color:inherit;border-style:solid;border-width:1px;color:#333;font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;position:-webkit-sticky;position:sticky;text-align:center;top:-1px;vertical-align:top;will-change:transform;word-break:normal">
-										Hard Negatives/<br>Random (%)</th>
+										Corner-Cases/<br>Random (%)</th>
 									<th style="background-color:#f0f0f0;border-color:inherit;border-style:solid;border-width:1px;color:#333;font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;position:-webkit-sticky;position:sticky;text-align:center;top:-1px;vertical-align:top;will-change:transform;word-break:normal"
 										colspan="3">Word-Cooc</th>
 									<th style="background-color:#f0f0f0;border-color:inherit;border-style:solid;border-width:1px;color:#333;font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;position:-webkit-sticky;position:sticky;text-align:center;top:-1px;vertical-align:top;will-change:transform;word-break:normal"
@@ -2052,7 +2094,7 @@
 							learning methods.
 						</li>
 						<li>
-							<b>Dimension Hard Negatives:</b> Increasing the amount of hard negatives causes
+							<b>Dimension Corner-Cases:</b> Increasing the amount of corner-cases causes
 							all methods to lose performance while not changing the ranking of
 							the results. The overall drop in performance is similar for all models
 							suggesting that no model is much better suited for handling hard
@@ -2061,7 +2103,7 @@
 						</li>
 						<li>
 							<b>Multi-Class matching:</b> Table 4 shows the results for the multi-
-							class matching experiment which we limit to the hard negative and
+							class matching experiment which we limit to the corner-case and
 							training set size dimension at this time. We plan to include results for the unseen
 							dimension soon.
 							As prediction on unseen classes is in general not possible for multi-class matching systems,
@@ -2084,7 +2126,7 @@
 						<table style="border-collapse:collapse;border-color:#ccc;border-spacing:0" class="tg">
 							<caption><b>Table 4: Results of the baseline experiments for multi-class
 									matching over the dimensions training size and amount of
-									hard negatives. Results are micro-F1.</b></caption>
+									corner-cases. Results are micro-F1.</b></caption>
 							<thead>
 								<tr>
 									<th
@@ -2092,7 +2134,7 @@
 										Training Set<br>Size</th>
 									<th
 										style="background-color:#f0f0f0;border-color:inherit;border-style:solid;border-width:1px;color:#333;font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;position:-webkit-sticky;position:sticky;text-align:center;top:-1px;vertical-align:top;will-change:transform;word-break:normal">
-										Hard Negatives/<br>Random (%)</th>
+										Corner-Cases/<br>Random (%)</th>
 									<th
 										style="background-color:#f0f0f0;border-color:inherit;border-style:solid;border-width:1px;color:#333;font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;position:-webkit-sticky;position:sticky;text-align:center;top:-1px;vertical-align:top;will-change:transform;word-break:normal">
 										Word-Occ</th>
@@ -2266,7 +2308,7 @@
 					<p>
 						We offer the WDC Products benchmark for public download. The benchmark is available as
 						a single
-						zip file for each hardness level, 80%, 50% and 20% amount of hard negatives. Each zip file
+						zip file for each hardness level, 80%, 50% and 20% amount of corner-cases. Each zip file
 						contains all
 						corresponding development sets as well as test sets along the two remaining dimensions, amount
 						of unseen
@@ -2323,6 +2365,19 @@
 							"id_left#id_right". This uniquely identifies a pair of offers. This attribute only exists in
 							the pair-wise files.
 						</li>
+						<li>
+							<b>is_hard_negative:</b> Only exists in the pair-wise files. This attribute is boolean and
+							signifies if a negative pair
+							was selected using a similarity metric or randomly.
+						</li>
+						<li>
+							<b>unseen:</b> Only exists in the multi-class files. This attribute is boolean and signifies
+							if a certain offer has training examples in the development set.
+						</li>
+						<li>
+							<b>url:</b> Only exists in the PDC2020 corpus file. This attribute references the webpage
+							the product offer was extracted from.
+						</li>
 					</ul>
 
 					<p>In the pair-wise files, every offer-specific attribute appears twice with either a "_left" or
@@ -2332,6 +2387,10 @@
 						download. Its attributes correspond to the ones in the multi-class files minus the label
 						attribute.</p>
 
+					<p>Finally we offer additional validation sets for experimentation for each setup which are different from the original
+						ones as they also implement the unseen dimension, i.e. these are validation sets containing
+						additional products unseen during training. There is no overlap between these unseen products
+						and the ones in the corresponding test sets.</p>
 					<p>
 					<table>
 						<tbody>
@@ -2348,11 +2407,11 @@
 
 
 							<tr>
-								<td>80% hard negatives</td>
+								<td>80% corner-cases</td>
 								<td><a
 										href="http://data.dws.informatik.uni-mannheim.de/largescaleproductcorpus/data/wdc-products/80pair.zip">80pair</a>
 								</td>
-								<td>22.8MB
+								<td>21.5MB
 								</td>
 								<td><a
 										href="http://data.dws.informatik.uni-mannheim.de/largescaleproductcorpus/data/wdc-products/sample_pairwise.json">Example</a>
@@ -2360,40 +2419,40 @@
 								<td><a
 										href="http://data.dws.informatik.uni-mannheim.de/largescaleproductcorpus/data/wdc-products/80multi.zip">80multi</a>
 								</td>
-								<td>2.7MB
+								<td>2.4MB
 								</td>
 								<td><a
 										href="http://data.dws.informatik.uni-mannheim.de/largescaleproductcorpus/data/wdc-products/sample_multi.json">Example</a>
 								</td>
 							<tr>
-								<td>50% hard negatives</td>
+								<td>50% corner-cases</td>
 								<td><a
 										href="http://data.dws.informatik.uni-mannheim.de/largescaleproductcorpus/data/wdc-products/50pair.zip">50pair</a>
 								</td>
-								<td>22.9MB
+								<td>21.6MB
 								</td>
 								<td>
 								</td>
 								<td><a
 										href="http://data.dws.informatik.uni-mannheim.de/largescaleproductcorpus/data/wdc-products/50multi.zip">50multi</a>
 								</td>
-								<td>2.7MB
+								<td>2.5MB
 								</td>
 								<td>
 								</td>
 							<tr>
-								<td>20% hard negatives</td>
+								<td>20% corner-cases</td>
 								<td><a
 										href="http://data.dws.informatik.uni-mannheim.de/largescaleproductcorpus/data/wdc-products/20pair.zip">20pair</a>
 								</td>
-								<td>22.5MB
+								<td>20MB
 								</td>
 								<td>
 								</td>
 								<td><a
 										href="http://data.dws.informatik.uni-mannheim.de/largescaleproductcorpus/data/wdc-products/20multi.zip">20multi</a>
 								</td>
-								<td>2.7MB
+								<td>2.3MB
 								</td>
 								<td>
 								</td>
@@ -2406,9 +2465,25 @@
 								<td>
 								</td>
 								<td><a
-										href="http://data.dws.informatik.uni-mannheim.de/largescaleproductcorpus/data/wdc-products/wdcproducts_corpus.json.gz">corpus</a>
+										href="http://data.dws.informatik.uni-mannheim.de/largescaleproductcorpus/data/wdc-products/wdcproducts_corpus_with_url.json.gz">corpus</a>
 								</td>
 								<td>4.3GB
+								</td>
+								<td>
+								</td>
+							<tr>
+								<td>Add. validation sets</td>
+								<td><a
+										href="http://data.dws.informatik.uni-mannheim.de/largescaleproductcorpus/data/wdc-products/val_pair.zip">valpair</a>
+								</td>
+								<td>25.7MB
+								</td>
+								<td>
+								</td>
+								<td><a
+										href="http://data.dws.informatik.uni-mannheim.de/largescaleproductcorpus/data/wdc-products/val_multi.zip">valmulti</a>
+								</td>
+								<td>3.9MB
 								</td>
 								<td>
 								</td>
