@@ -353,7 +353,8 @@
 					product cluster to 15. For the unseen products we sample exactly 2
 					offers from the respective cluster. Validation and Test splits are assigned two offers each, the
 					remaining offers are part of the training split. The selection of offers
-					for each split is done randomly.
+					for each split is done either randomly or in the case of a product selected as a corner-case, we
+					ensure that one positive corner-case pair is sampled to each split.
 
 					To build the unseen dimension we proceed with systematically
 					replacing products in the fully seen test set with products from the
@@ -2387,7 +2388,8 @@
 						download. Its attributes correspond to the ones in the multi-class files minus the label
 						attribute.</p>
 
-					<p>Finally we offer additional validation sets for experimentation for each setup which are different from the original
+					<p>Finally we offer additional validation sets for experimentation for each setup which are
+						different from the original
 						ones as they also implement the unseen dimension, i.e. these are validation sets containing
 						additional products unseen during training. There is no overlap between these unseen products
 						and the ones in the corresponding test sets.</p>
