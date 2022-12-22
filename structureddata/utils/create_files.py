@@ -20,7 +20,7 @@ def main(dir_path, extraction):
                 if line_values[1] not in  paths_per_extractor:
                     paths_per_extractor[line_values[1]] = []
 
-                full_path = 'http://data.dws.informatik.uni-mannheim.de/structureddata/{}/quads/{}'.format(extraction, line)
+                full_path = 'https://data.dws.informatik.uni-mannheim.de/structureddata/{}/quads/{}'.format(extraction, line)
                 paths.append(full_path)
                 paths_per_extractor[line_values[1]].append(full_path)
 
