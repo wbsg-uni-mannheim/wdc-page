@@ -16,7 +16,7 @@ def main(dir_path, extraction):
     """Create extractor tables for stats.html"""
     logging.basicConfig(format='%(levelname)s:%(message)s', level=logging.DEBUG)
 
-    file_agg_matrix_per_format = '{}\\3_wdcurlstats\\aggMatrixPerFormat.stats'.format(dir_path)
+    file_agg_matrix_per_format = '{}\\3_wdcurlstats\\aggMatrixPerFormat.stats.gz'.format(dir_path)
     df_stats = pd.read_csv(file_agg_matrix_per_format, sep='\t', index_col=0, dtype={'Domains': 'Int64', 'URLs': 'Int64', 'Triples': 'Int64'})
     order = ['html-microdata', 'html-embedded-jsonld', 'html-mf-hcard', 'html-rdfa', 'html-mf-xfn','html-mf-adr','html-mf-geo','html-mf-hcalendar','html-mf-hreview',
              'html-mf-hlisting','html-mf-hrecipe','html-mf-hresume','html-mf-species']
@@ -26,15 +26,16 @@ def main(dir_path, extraction):
     typed_entities = {}
     with open(file_path, 'r') as file:
         for line in file.readlines():
-            values = line.split(',')
-            typed_entities[values[0]] = int(values[1].replace('\\n', ''))
+            values = line.split('\t')
+            if len(values) > 1:
+                typed_entities[values[0]] = int(values[1].replace('\\n', ''))
 
     # Create Results per Format
     for extractor in order:
         row = df_stats.loc[extractor]
         statistics = calc_statistics(row)
 
-        file_path_triples = '{}\\3_wdcurlstats\\{}.domaintriple.stats'.format(dir_path, extractor)
+        file_path_triples = '{}\\3_wdcurlstats\\{}.domaintriple.stats.gz'.format(dir_path, extractor)
         top_domains_by_triples = generate_top_domain_rows(file_path_triples, 'triples', 20)
 
         top_class = generate_top_classes_and_properties(extractor, dir_path, 20, 'class')
@@ -165,7 +166,7 @@ def generate_table(extractor, statistics, top_domains_by_triples, top_class, top
     if extractor in ['html-microdata', 'html-embedded-jsonld', 'html-rdfa']:
         print('	  <tr>	')
         print('	    <th>Detailed Statistics as Excel-File</th>	')
-        print('	    <td><a target="_blank" href="{}.xlsx">{}.xlsx</a></td>	'.format(extractor, extractor))
+        print('	    <td><a target="_blank" href="{}_{}.xlsx">{}.xlsx</a></td>	'.format(extractor, extraction, extractor))
         print('	  </tr>	')
     print('	</table>	')
 

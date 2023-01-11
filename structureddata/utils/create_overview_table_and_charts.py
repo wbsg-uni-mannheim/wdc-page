@@ -5,19 +5,20 @@ import click
 @click.option('--dir_path', help='Path to [extraction]/3_wdcurlstats!')
 def main(dir_path):
     """Create general tables and bar charts for stats.html"""
-    file_agg_matrix_per_format = '{}\\3_wdcurlstats\\aggMatrixPerFormat.stats'.format(dir_path)
+    file_agg_matrix_per_format = '{}\\3_wdcurlstats\\aggMatrixPerFormat.stats.gz'.format(dir_path)
 
     # Load typed_entities.csv
     file_path = '{}\\typed_entities.csv'.format(dir_path)
     typed_entities = {}
-    count_entities = 0
+    #count_entities = 0
     with open(file_path, 'r') as file:
         for line in file.readlines():
-            values = line.split(',')
-            typed_entities[values[0]] = int(values[1].replace('\\n', ''))
-            count_entities += int(values[1].replace('\\n', ''))
+            values = line.split('\t')
+            if len(values) > 1:
+                typed_entities[values[0]] = int(values[1].replace('\\n', ''))
+            #count_entities += int(values[1].replace('\\n', ''))
 
-    typed_entities['overall'] = count_entities
+    #typed_entities['overall'] = count_entities
 
     df_stats = pd.read_csv(file_agg_matrix_per_format, sep='\t', index_col=0, dtype={'Domains': 'Int64', 'URLs': 'Int64', 'Triples': 'Int64'})
     order = ['html-microdata', 'html-embedded-jsonld', 'html-mf-hcard','html-rdfa', 'html-mf-xfn','html-mf-adr','html-mf-geo','html-mf-hcalendar','html-mf-hreview',
@@ -39,6 +40,8 @@ def main(dir_path):
     create_bar_charts(df_stats, order, 'Domains')
     create_bar_charts(df_stats, order, 'URLs')
 
+    df_typed_entities = pd.DataFrame().from_dict(typed_entities, orient='index', columns=['Typed Entities'])
+    create_pie_chart(df_typed_entities, 'Typed Entities')
     create_pie_chart(df_stats, 'Triples')
 
 

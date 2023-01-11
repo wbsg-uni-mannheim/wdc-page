@@ -16,11 +16,11 @@ def main(cc_extraction, dir_path, output_dir):
         html_head = html_head_file.readlines()
 
 
+    path_wdcurlstats = '{}/3_wdcurlstats'.format(dir_path)
+    for f in listdir(path_wdcurlstats):
+        if 'domaintriple.stats.gz' in f:
 
-    for f in listdir(dir_path):
-        if 'domaintriple.stats' in f:
-
-            extractor = f.replace('.domaintriple.stats', '')
+            extractor = f.replace('.domaintriple.stats.gz', '')
             extractor = extractor.replace('html-', '')
 
             if 'mf' in extractor:
@@ -30,7 +30,7 @@ def main(cc_extraction, dir_path, output_dir):
 
             logging.info('Start to generate HTML page for extractor {}'.format(extractor))
 
-            output_path = '{}/top_domains_by_extracted_triples_for_extractor_html-{}.html'.format(output_dir, extractor)
+            output_path = '{}/stats/top_domains_by_extracted_triples_for_extractor_html-{}.html'.format(output_dir, extractor)
             with open(output_path, 'w') as output_file:
                 output_file.writelines(html_head)
                 output_file.write('<body><a name=\'top\'></a><h1>Top Domains by Extracted Triples for Extractor {}</h1>\n'.format(extractor_long))
@@ -43,7 +43,7 @@ def main(cc_extraction, dir_path, output_dir):
 
                 output_file.write('<ol>\n')
 
-                file_path = '{}/{}'.format(dir_path, f)
+                file_path = '{}/{}'.format(path_wdcurlstats, f)
                 rows = generate_top_domain_rows(file_path, 'triples', 1000)
 
                 for row in rows:

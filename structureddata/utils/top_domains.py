@@ -1,10 +1,12 @@
+import gzip
+
 import click
 
 @click.command()
 @click.option('--dir_path', help='Path to [extraction]/3_wdcurlstats!')
 @click.option('--aggregation', help='Aggregation parameter triples/urls')
 @click.option('--number_records', help='Number of records', type=int)
-@click.option('--file', help='domainurlwtriple.stats or domaintriple.stats')
+@click.option('--file', help='domainurlwtriple.stats.gz or domaintriple.stats.gz')
 def main(dir_path, aggregation, number_records, file):
     """Create top domain tables for top domains by urls with triples"""
 
@@ -16,10 +18,10 @@ def main(dir_path, aggregation, number_records, file):
 
 def generate_top_domain_rows(file_path, aggregation, number_records):
     rows = []
-    with open(file_path, 'r') as file:
+    with gzip.open(file_path, 'rb') as file:
         counter = 0
         while counter < number_records:
-            line_values = file.readline().split('\t')
+            line_values = file.readline().decode('utf-8').split('\t')
             domain = line_values[0]
             if len(line_values) > 1:
                 count = line_values[1]
