@@ -6,7 +6,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
-        google.charts.load('43', {
+        google.charts.load('51', {
             packages: ['bar', 'line', 'corechart']
         });
 
@@ -136,7 +136,7 @@
                 ['2019', 223302, 167975, 76184, 312322, 28067],
                 ['2020', 111122, 138797, 84485, 237377, 25468],
                 ['2021', 95762, 116219, 50539, 166848, 20273],
-                ['2022', 2572, 3351, 40077, 122805, 141]
+                ['2022', 58750, 60540, 40077, 122805, 14192]
 
 
             ]);
@@ -177,9 +177,7 @@
                 ['2019', 9103364, 17480102, 19471512, 67417474, 2719137],
                 ['2020', 8752719, 22839983, 38889579, 142298777, 2765644],
                 ['2021', 7017264, 17328487, 13193502, 43720604, 1753177],
-                ['2022', 288394, 483121, 10782676, 32552435, 53407]
-
-
+                ['2022', 4462518, 10436238, 10782676, 32552435, 984542]
             ]);
 
             var options4 = {
@@ -1022,12 +1020,12 @@
                 chart: {
                     title: 'Development of Selected schema.org Classes by #PLDs - JSON-LD format'
                 },
-                hAxis: {
-                    title: 'Year of Crawl',
-                    minValue: 0,
-                },
                 vAxis: {
                     title: '#PLDs'
+                },
+                hAxis: {
+                    title: 'Year of Crawl',
+                    minValue: 0
                 },
                 legend: {
                     position: 'none'
@@ -1652,7 +1650,7 @@
             number of PLDs with JSON-LD annotations in 2021. Indeed, this trend can be verified by looking at the format
             specific stats of <a
                 href="https://webdatacommons.org/structureddata/2021-12/stats/stats.html">
-            2021</a> and <a href="https://webdatacommons.org/structureddata/2021-12/stats/stats.html">
+            2021</a> and <a href="https://webdatacommons.org/structureddata/2022-12/stats/stats.html">
             2022</a> where
             we can see that some domains switch their main annotation format from Microdata to JSON-LD.
             Microformat hCard is used by a steady number of websites while the growth of RDFa
@@ -1702,13 +1700,13 @@
 
         </p>
         <span style="width:1200px;display:inline-block">
-		  <span id="md_pld" style="float:left"></span>
-		  <span id="md_triple" style="float:right"></span>
-		</span>
-        <span style="width:1200px;display:inline-block">
           <span id="json_pld" style="float:left"></span>
           <span id="json_triple" style="float:right"></span>
         </span>
+        <span style="width:1200px;display:inline-block">
+		  <span id="md_pld" style="float:left"></span>
+		  <span id="md_triple" style="float:right"></span>
+		</span>
 
 
         <h4>Adoption of Selected RDFa Classes</h4>
