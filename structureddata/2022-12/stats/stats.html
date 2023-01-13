@@ -21,8 +21,8 @@
 
             var data2022Plds = google.visualization.arrayToDataTable([
                 ['Annotation type', '#Domains with Triples', {role: 'style'}, {role: 'annotation'}],
-                ['html-microdata', 7471628, '#D11919', 'microdata : 7,471,628 '],
                 ['html-embedded-jsonld', 8596990, '#29A329', 'embedded-jsonld : 8,596,990 '],
+                ['html-microdata', 7471628, '#D11919', 'microdata : 7,471,628 '],
                 ['html-mf-hcard', 3880989, '#FFD633', 'mf-hcard : 3,880,989 '],
                 ['html-rdfa', 594018, '#5E8FD8', 'rdfa : 594,018 '],
                 ['html-mf-xfn', 349876, '#FFF5DD', 'mf-xfn : 349,876 '],
@@ -42,7 +42,7 @@
                 chartArea: {
                     left: 0
                 },
-                colors: ['#5E8FD8', '#D11919', '#29A329', '#FFCC00', '#FFD633', '#FFDB4D', '#FFE066', '#FFE680', '#FFEB99',
+                colors: ['#29A329', '#D11919', '#FFD633', '#5E8FD8', '#FFD633', '#FFDB4D', '#FFE066', '#FFE680', '#FFEB99',
                     '#FFF0B2', '#FFF5CC', '#FFF5DD'
                 ]
 
@@ -57,8 +57,8 @@
 
             var data2022Urls = google.visualization.arrayToDataTable([
                 ['Annotation type', '#URLs with Triples', {role: 'style'}, {role: 'annotation'}],
-                ['html-microdata', 801909298, '#D11919', 'microdata : 801,909,298 '],
                 ['html-embedded-jsonld', 877812654, '#29A329', 'embedded-jsonld : 877,812,654 '],
+                ['html-microdata', 801909298, '#D11919', 'microdata : 801,909,298 '],
                 ['html-mf-hcard', 318625913, '#FFD633', 'mf-hcard : 318,625,913 '],
                 ['html-rdfa', 91100238, '#5E8FD8', 'rdfa : 91,100,238 '],
                 ['html-mf-xfn', 21005003, '#FFF5DD', 'mf-xfn : 21,005,003 '],
@@ -77,7 +77,7 @@
                 chartArea: {
                     left: 0
                 },
-                colors: ['#5E8FD8', '#D11919', '#29A329', '#FFCC00', '#FFD633', '#FFDB4D', '#FFE066', '#FFE680', '#FFEB99',
+                colors: ['#29A329', '#D11919', '#FFD633', '#5E8FD8', '#FFD633', '#FFDB4D', '#FFE066', '#FFE680', '#FFEB99',
                     '#FFF0B2', '#FFF5CC', '#FFF5DD'
                 ]
 
@@ -92,11 +92,11 @@
 
             var data2022Entities = google.visualization.arrayToDataTable([
                 ['Annotation type', '#Entities'],
-                ['html-rdfa', 259090037],
-                ['html-microdata', 6030281759],
                 ['html-embedded-jsonld', 9388554696],
-                ['html-mf-geo', 4927722],
+                ['html-microdata', 6030281759],
                 ['html-mf-hcard', 3300807398],
+                ['html-rdfa', 275563980],
+                ['html-mf-geo', 4927722],
                 ['html-mf-hcalendar', 9617912],
                 ['html-mf-hlisting', 9234428],
                 ['html-mf-hresume', 6203],
@@ -118,7 +118,7 @@
                     left: 0
                 },
                 is3D: true,
-                colors: ['#5E8FD8', '#D11919', '#29A329', '#FFCC00', '#FFD633', '#FFDB4D', '#FFE066', '#FFE680', '#FFEB99',
+                colors: ['#29A329', '#D11919', '#FFD633', '#5E8FD8', '#FFD633', '#FFDB4D', '#FFE066', '#FFE680', '#FFEB99',
                     '#FFF0B2', '#FFF5CC', '#FFF5DD'
                 ]
             };
@@ -131,11 +131,11 @@
 
             var data2022Triples = google.visualization.arrayToDataTable([
                 ['Annotation type', '#Triples'],
-                ['html-rdfa', 768304041],
-                ['html-microdata', 28824001037],
                 ['html-embedded-jsonld', 45840052993],
-                ['html-mf-geo', 13595239],
+                ['html-microdata', 28824001037],
                 ['html-mf-hcard', 10566510286],
+                ['html-rdfa', 768304041],
+                ['html-mf-geo', 13595239],
                 ['html-mf-hcalendar', 42673659],
                 ['html-mf-hlisting', 31201851],
                 ['html-mf-hresume', 14014],
@@ -157,7 +157,7 @@
                     left: 0
                 },
                 is3D: true,
-                colors: ['#5E8FD8', '#D11919', '#29A329', '#FFCC00', '#FFD633', '#FFDB4D', '#FFE066', '#FFE680', '#FFEB99',
+                colors: ['#29A329', '#D11919', '#FFD633', '#5E8FD8', '#FFD633', '#FFDB4D', '#FFE066', '#FFE680', '#FFEB99',
                     '#FFF0B2', '#FFF5CC', '#FFF5DD'
                 ]
             };
@@ -279,19 +279,20 @@
         <td>Typed Entities</td>
         <td>Triples</td>
     </tr>
-    <tr>
-        <th>html-microdata</th>
-        <td align="right">7,471,628</td>
-        <td align="right">801,909,298</td>
-        <td align="right">6,030,281,759</td>
-        <td align="right">28,824,001,037</td>
-    </tr>
+
     <tr>
         <th>html-embedded-jsonld</th>
         <td align="right">8,596,990</td>
         <td align="right">877,812,654</td>
         <td align="right">9,388,554,696</td>
         <td align="right">45,840,052,993</td>
+    </tr>
+    <tr>
+        <th>html-microdata</th>
+        <td align="right">7,471,628</td>
+        <td align="right">801,909,298</td>
+        <td align="right">6,030,281,759</td>
+        <td align="right">28,824,001,037</td>
     </tr>
     <tr>
         <th>html-mf-hcard</th>
@@ -304,7 +305,7 @@
         <th>html-rdfa</th>
         <td align="right">594,018</td>
         <td align="right">91,100,238</td>
-        <td align="right">259,090,037</td>
+        <td align="right">275,563,980</td>
         <td align="right">768,304,041</td>
     </tr>
     <tr>
@@ -381,7 +382,7 @@
         <th>overall</th>
         <td align="right">14,235,035</td>
         <td align="right">1,518,609,988</td>
-        <td align="right">19,072,628,514</td>
+        <td align="right">19,089,102,457</td>
         <td align="right">86,462,816,435</td>
     </tr>
 
@@ -459,6 +460,210 @@
     <li><a href="top_domains_by_urls_with_triples.html">More</a></li>
 </ol>
 <br/>
+
+<a id='html-embedded-jsonld'></a>
+<h3>Extractor html-embedded-jsonld</h3><br/>
+<table>
+    <tr>
+        <th>Triples Extracted</th>
+        <td>45,840,052,993</td>
+    </tr>
+    <tr>
+        <th>URLs with Triples</th>
+        <td>877,812,654</td>
+    </tr>
+    <tr>
+        <th>Average Triples per URL</th>
+        <td>52.22</td>
+    </tr>
+    <tr>
+        <th>Domains with Triples</th>
+        <td>8,596,990</td>
+    </tr>
+    <tr>
+        <th>Average Triples per Domain</th>
+        <td>5,332.1</td>
+    </tr>
+    <tr>
+        <th>Typed Entities</th>
+        <td>9,388,554,696</td>
+    </tr>
+    <tr>
+        <th>Top Domains by Extracted Triples</th>
+        <td><small><a href=''
+                      onclick="document.getElementById('html-embedded-jsonld-top-domains-by-triples-2022-12').style.display='block';this.style.display='none';return false;">Show
+            top domains</a></small>
+
+            <ol id='html-embedded-jsonld-top-domains-by-triples-2022-12' style='display:none'>
+                <li><a rel='nofollow' target='_blank' href='https://wikipedia.org'>wikipedia.org</a> (164,793,024
+                    triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://yummly.com'>yummly.com</a> (86,956,010 triples)</li>
+                <li><a rel='nofollow' target='_blank' href='https://kayak.com'>kayak.com</a> (77,615,972 triples)</li>
+                <li><a rel='nofollow' target='_blank' href='https://southleedslife.com'>southleedslife.com</a>
+                    (63,495,108 triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://hotels.com'>hotels.com</a> (58,310,850 triples)</li>
+                <li><a rel='nofollow' target='_blank' href='https://yahoo.com'>yahoo.com</a> (57,417,024 triples)</li>
+                <li><a rel='nofollow' target='_blank' href='https://freepik.com'>freepik.com</a> (56,124,447 triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://pinterest.com'>pinterest.com</a> (47,060,205
+                    triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://blogspot.com'>blogspot.com</a> (46,571,068 triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://indiatimes.com'>indiatimes.com</a> (42,508,890
+                    triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://hostadvice.com'>hostadvice.com</a> (42,309,867
+                    triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://apple.com'>apple.com</a> (42,099,974 triples)</li>
+                <li><a rel='nofollow' target='_blank' href='https://vsemayki.ru'>vsemayki.ru</a> (38,167,097 triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://coursera.org'>coursera.org</a> (37,450,689 triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://minnesotamonthly.com'>minnesotamonthly.com</a>
+                    (31,432,352 triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://rent.com'>rent.com</a> (31,135,467 triples)</li>
+                <li><a rel='nofollow' target='_blank' href='https://pinkoi.com'>pinkoi.com</a> (30,590,485 triples)</li>
+                <li><a rel='nofollow' target='_blank' href='https://ubereats.com'>ubereats.com</a> (30,178,773 triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://postmates.com'>postmates.com</a> (27,975,894
+                    triples)
+                </li>
+                <li><a rel='nofollow' target='_blank' href='https://pixels.com'>pixels.com</a> (26,370,424 triples)</li>
+                <li><a href="top_domains_by_extracted_triples_for_extractor_html-embedded-jsonld.html">More</a></li>
+            </ol>
+            <br/>
+        </td>
+    </tr>
+    <tr>
+        <th>Top Classes</th>
+        <td><small><a href=''
+                      onclick="document.getElementById('html-embedded-jsonld-top-class-values-by-domain-count-2022-12').style.display='block';this.style.display='none';return false;">Show
+            top values by domain count</a></small>
+            <ol id='html-embedded-jsonld-top-class-values-by-domain-count-2022-12' style='display:none'>
+                <li>http://schema.org/WebSite (5,799,829 Domains)</li>
+                <li>http://schema.org/SearchAction (5,424,227 Domains)</li>
+                <li>http://schema.org/ImageObject (5,155,603 Domains)</li>
+                <li>http://schema.org/WebPage (5,152,232 Domains)</li>
+                <li>http://schema.org/ListItem (4,788,891 Domains)</li>
+                <li>http://schema.org/BreadcrumbList (4,749,333 Domains)</li>
+                <li>http://schema.org/Organization (4,502,002 Domains)</li>
+                <li>http://schema.org/ReadAction (3,839,383 Domains)</li>
+                <li>http://schema.org/Person (3,525,253 Domains)</li>
+                <li>http://schema.org/EntryPoint (3,457,645 Domains)</li>
+                <li>http://schema.org/CollectionPage (2,642,399 Domains)</li>
+                <li>http://schema.org/Article (1,626,152 Domains)</li>
+                <li>http://schema.org/Product (1,562,108 Domains)</li>
+                <li>http://schema.org/Offer (1,539,982 Domains)</li>
+                <li>http://schema.org/PostalAddress (1,521,467 Domains)</li>
+                <li>http://schema.org/LocalBusiness (945,649 Domains)</li>
+                <li>http://schema.org/ProfilePage (828,152 Domains)</li>
+                <li>http://schema.org/AggregateRating (586,683 Domains)</li>
+                <li>http://schema.org/CommentAction (552,205 Domains)</li>
+                <li>http://schema.org/BlogPosting (531,890 Domains)</li>
+            </ol>
+            <br/>
+        </td>
+    </tr>
+    <tr>
+        <th></th>
+        <td><small><a href=''
+                      onclick="document.getElementById('html-embedded-jsonld-top-class-values-by-entity-count-2022-12').style.display='block';this.style.display='none';return false;">Show
+            top values by entity count</a></small>
+            <ol id='html-embedded-jsonld-top-class-values-by-entity-count-2022-12' style='display:none'>
+                <li>http://schema.org/ListItem (1,776,897,934 Entities)</li>
+                <li>http://schema.org/ImageObject (1,104,379,534 Entities)</li>
+                <li>http://schema.org/Organization (701,690,573 Entities)</li>
+                <li>http://schema.org/BreadcrumbList (611,100,715 Entities)</li>
+                <li>http://schema.org/WebPage (578,744,933 Entities)</li>
+                <li>http://schema.org/WebSite (539,400,423 Entities)</li>
+                <li>http://schema.org/Person (474,297,581 Entities)</li>
+                <li>http://schema.org/SearchAction (456,012,690 Entities)</li>
+                <li>http://schema.org/Offer (369,323,192 Entities)</li>
+                <li>http://schema.org/EntryPoint (327,531,382 Entities)</li>
+                <li>http://schema.org/ReadAction (291,945,619 Entities)</li>
+                <li>http://schema.org/Product (221,542,852 Entities)</li>
+                <li>http://schema.org/PostalAddress (159,212,117 Entities)</li>
+                <li>http://schema.org/Article (139,762,566 Entities)</li>
+                <li>http://schema.org/CollectionPage (112,104,217 Entities)</li>
+                <li>http://schema.org/Rating (74,884,872 Entities)</li>
+                <li>http://schema.org/Review (71,982,183 Entities)</li>
+                <li>http://schema.org/NewsArticle (71,361,114 Entities)</li>
+                <li>http://schema.org/SiteNavigationElement (69,411,976 Entities)</li>
+                <li>http://schema.org/Place (65,848,203 Entities)</li>
+            </ol>
+            <br/>
+        </td>
+    </tr>
+    <tr>
+        <th>Top Properties</th>
+        <td><small><a href=''
+                      onclick="document.getElementById('html-embedded-jsonld-top-property-values-by-domain-count-2022-12').style.display='block';this.style.display='none';return false;">Show
+            top values by domain count</a></small>
+            <ol id='html-embedded-jsonld-top-property-values-by-domain-count-2022-12' style='display:none'>
+                <li>http://schema.org/WebSite/url (5,774,278 Domains)</li>
+                <li>http://schema.org/WebSite/name (5,482,615 Domains)</li>
+                <li>http://schema.org/SearchAction/target (5,424,008 Domains)</li>
+                <li>http://schema.org/SearchAction/query-input (5,423,535 Domains)</li>
+                <li>http://schema.org/WebSite/potentialAction (5,405,381 Domains)</li>
+                <li>http://schema.org/ImageObject/url (5,006,242 Domains)</li>
+                <li>http://schema.org/ListItem/position (4,787,215 Domains)</li>
+                <li>http://schema.org/BreadcrumbList/itemListElement (4,748,026 Domains)</li>
+                <li>http://schema.org/ImageObject/width (4,730,621 Domains)</li>
+                <li>http://schema.org/ImageObject/height (4,727,500 Domains)</li>
+                <li>http://schema.org/WebPage/name (4,657,726 Domains)</li>
+                <li>http://schema.org/WebPage/url (4,596,608 Domains)</li>
+                <li>http://schema.org/WebPage/isPartOf (4,503,819 Domains)</li>
+                <li>http://schema.org/WebPage/datePublished (4,493,843 Domains)</li>
+                <li>http://schema.org/WebPage/dateModified (4,491,521 Domains)</li>
+                <li>http://schema.org/WebPage/inLanguage (4,465,935 Domains)</li>
+                <li>http://schema.org/Organization/name (4,414,361 Domains)</li>
+                <li>http://schema.org/ListItem/item (4,409,292 Domains)</li>
+                <li>http://schema.org/WebSite/description (4,187,041 Domains)</li>
+                <li>http://schema.org/WebSite/inLanguage (4,181,443 Domains)</li>
+
+            </ol>
+        </td>
+    </tr>
+    <tr>
+        <th></th>
+        <td><small><a href=''
+                      onclick="document.getElementById('html-embedded-jsonld-top-property-values-by-entity-count-2022-12').style.display='block';this.style.display='none';return false;">Show
+            top values by entity count</a></small>
+            <ol id='html-embedded-jsonld-top-property-values-by-entity-count-2022-12' style='display:none'>
+                <li>http://schema.org/ListItem/position (1,771,325,227 Entities)</li>
+                <li>http://schema.org/ListItem/item (1,341,343,891 Entities)</li>
+                <li>http://schema.org/ImageObject/url (996,925,294 Entities)</li>
+                <li>http://schema.org/ListItem/name (996,514,374 Entities)</li>
+                <li>http://schema.org/ImageObject/width (759,363,544 Entities)</li>
+                <li>http://schema.org/ImageObject/height (756,701,240 Entities)</li>
+                <li>http://schema.org/Organization/name (674,134,120 Entities)</li>
+                <li>http://schema.org/ImageObject/contentUrl (610,501,066 Entities)</li>
+                <li>http://schema.org/BreadcrumbList/itemListElement (610,209,290 Entities)</li>
+                <li>http://schema.org/ImageObject/inLanguage (552,346,763 Entities)</li>
+                <li>http://schema.org/WebSite/url (518,948,274 Entities)</li>
+                <li>http://schema.org/WebSite/name (508,617,959 Entities)</li>
+                <li>http://schema.org/name (485,512,776 Entities)</li>
+                <li>http://schema.org/WebPage/name (473,341,486 Entities)</li>
+                <li>http://schema.org/Organization/logo (457,936,107 Entities)</li>
+                <li>http://schema.org/SearchAction/target (455,926,297 Entities)</li>
+                <li>http://schema.org/SearchAction/query-input (455,784,834 Entities)</li>
+                <li>http://schema.org/ImageObject/caption (453,007,739 Entities)</li>
+                <li>http://schema.org/Person/name (450,198,517 Entities)</li>
+                <li>http://schema.org/WebSite/potentialAction (444,840,712 Entities)</li>
+            </ol>
+            <br/>
+        </td>
+    </tr>
+    <tr>
+        <th>Detailed Statistics as Excel-File</th>
+        <td><a target="_blank" href="html-embedded-jsonld_2022-12.xlsx">html-embedded-jsonld.xlsx</a></td>
+    </tr>
+</table>
 
 <a id='html-microdata'></a>
 <h3>Extractor html-microdata</h3><br/>
@@ -664,210 +869,6 @@
     </tr>
 </table>
 
-<a id='html-embedded-jsonld'></a>
-<h3>Extractor html-embedded-jsonld</h3><br/>
-<table>
-    <tr>
-        <th>Triples Extracted</th>
-        <td>45,840,052,993</td>
-    </tr>
-    <tr>
-        <th>URLs with Triples</th>
-        <td>877,812,654</td>
-    </tr>
-    <tr>
-        <th>Average Triples per URL</th>
-        <td>52.22</td>
-    </tr>
-    <tr>
-        <th>Domains with Triples</th>
-        <td>8,596,990</td>
-    </tr>
-    <tr>
-        <th>Average Triples per Domain</th>
-        <td>5,332.1</td>
-    </tr>
-    <tr>
-        <th>Typed Entities</th>
-        <td>9,388,554,696</td>
-    </tr>
-    <tr>
-        <th>Top Domains by Extracted Triples</th>
-        <td><small><a href=''
-                      onclick="document.getElementById('html-embedded-jsonld-top-domains-by-triples-2022-12').style.display='block';this.style.display='none';return false;">Show
-            top domains</a></small>
-
-            <ol id='html-embedded-jsonld-top-domains-by-triples-2022-12' style='display:none'>
-                <li><a rel='nofollow' target='_blank' href='https://wikipedia.org'>wikipedia.org</a> (164,793,024
-                    triples)
-                </li>
-                <li><a rel='nofollow' target='_blank' href='https://yummly.com'>yummly.com</a> (86,956,010 triples)</li>
-                <li><a rel='nofollow' target='_blank' href='https://kayak.com'>kayak.com</a> (77,615,972 triples)</li>
-                <li><a rel='nofollow' target='_blank' href='https://southleedslife.com'>southleedslife.com</a>
-                    (63,495,108 triples)
-                </li>
-                <li><a rel='nofollow' target='_blank' href='https://hotels.com'>hotels.com</a> (58,310,850 triples)</li>
-                <li><a rel='nofollow' target='_blank' href='https://yahoo.com'>yahoo.com</a> (57,417,024 triples)</li>
-                <li><a rel='nofollow' target='_blank' href='https://freepik.com'>freepik.com</a> (56,124,447 triples)
-                </li>
-                <li><a rel='nofollow' target='_blank' href='https://pinterest.com'>pinterest.com</a> (47,060,205
-                    triples)
-                </li>
-                <li><a rel='nofollow' target='_blank' href='https://blogspot.com'>blogspot.com</a> (46,571,068 triples)
-                </li>
-                <li><a rel='nofollow' target='_blank' href='https://indiatimes.com'>indiatimes.com</a> (42,508,890
-                    triples)
-                </li>
-                <li><a rel='nofollow' target='_blank' href='https://hostadvice.com'>hostadvice.com</a> (42,309,867
-                    triples)
-                </li>
-                <li><a rel='nofollow' target='_blank' href='https://apple.com'>apple.com</a> (42,099,974 triples)</li>
-                <li><a rel='nofollow' target='_blank' href='https://vsemayki.ru'>vsemayki.ru</a> (38,167,097 triples)
-                </li>
-                <li><a rel='nofollow' target='_blank' href='https://coursera.org'>coursera.org</a> (37,450,689 triples)
-                </li>
-                <li><a rel='nofollow' target='_blank' href='https://minnesotamonthly.com'>minnesotamonthly.com</a>
-                    (31,432,352 triples)
-                </li>
-                <li><a rel='nofollow' target='_blank' href='https://rent.com'>rent.com</a> (31,135,467 triples)</li>
-                <li><a rel='nofollow' target='_blank' href='https://pinkoi.com'>pinkoi.com</a> (30,590,485 triples)</li>
-                <li><a rel='nofollow' target='_blank' href='https://ubereats.com'>ubereats.com</a> (30,178,773 triples)
-                </li>
-                <li><a rel='nofollow' target='_blank' href='https://postmates.com'>postmates.com</a> (27,975,894
-                    triples)
-                </li>
-                <li><a rel='nofollow' target='_blank' href='https://pixels.com'>pixels.com</a> (26,370,424 triples)</li>
-                <li><a href="top_domains_by_extracted_triples_for_extractor_html-microdata.html">More</a></li>
-            </ol>
-            <br/>
-        </td>
-    </tr>
-    <tr>
-        <th>Top Classes</th>
-        <td><small><a href=''
-                      onclick="document.getElementById('html-embedded-jsonld-top-class-values-by-domain-count-2022-12').style.display='block';this.style.display='none';return false;">Show
-            top values by domain count</a></small>
-            <ol id='html-embedded-jsonld-top-class-values-by-domain-count-2022-12' style='display:none'>
-                <li>http://schema.org/WebSite (5,799,829 Domains)</li>
-                <li>http://schema.org/SearchAction (5,424,227 Domains)</li>
-                <li>http://schema.org/ImageObject (5,155,603 Domains)</li>
-                <li>http://schema.org/WebPage (5,152,232 Domains)</li>
-                <li>http://schema.org/ListItem (4,788,891 Domains)</li>
-                <li>http://schema.org/BreadcrumbList (4,749,333 Domains)</li>
-                <li>http://schema.org/Organization (4,502,002 Domains)</li>
-                <li>http://schema.org/ReadAction (3,839,383 Domains)</li>
-                <li>http://schema.org/Person (3,525,253 Domains)</li>
-                <li>http://schema.org/EntryPoint (3,457,645 Domains)</li>
-                <li>http://schema.org/CollectionPage (2,642,399 Domains)</li>
-                <li>http://schema.org/Article (1,626,152 Domains)</li>
-                <li>http://schema.org/Product (1,562,108 Domains)</li>
-                <li>http://schema.org/Offer (1,539,982 Domains)</li>
-                <li>http://schema.org/PostalAddress (1,521,467 Domains)</li>
-                <li>http://schema.org/LocalBusiness (945,649 Domains)</li>
-                <li>http://schema.org/ProfilePage (828,152 Domains)</li>
-                <li>http://schema.org/AggregateRating (586,683 Domains)</li>
-                <li>http://schema.org/CommentAction (552,205 Domains)</li>
-                <li>http://schema.org/BlogPosting (531,890 Domains)</li>
-            </ol>
-            <br/>
-        </td>
-    </tr>
-    <tr>
-        <th></th>
-        <td><small><a href=''
-                      onclick="document.getElementById('html-embedded-jsonld-top-class-values-by-entity-count-2022-12').style.display='block';this.style.display='none';return false;">Show
-            top values by entity count</a></small>
-            <ol id='html-embedded-jsonld-top-class-values-by-entity-count-2022-12' style='display:none'>
-                <li>http://schema.org/ListItem (1,776,897,934 Entities)</li>
-                <li>http://schema.org/ImageObject (1,104,379,534 Entities)</li>
-                <li>http://schema.org/Organization (701,690,573 Entities)</li>
-                <li>http://schema.org/BreadcrumbList (611,100,715 Entities)</li>
-                <li>http://schema.org/WebPage (578,744,933 Entities)</li>
-                <li>http://schema.org/WebSite (539,400,423 Entities)</li>
-                <li>http://schema.org/Person (474,297,581 Entities)</li>
-                <li>http://schema.org/SearchAction (456,012,690 Entities)</li>
-                <li>http://schema.org/Offer (369,323,192 Entities)</li>
-                <li>http://schema.org/EntryPoint (327,531,382 Entities)</li>
-                <li>http://schema.org/ReadAction (291,945,619 Entities)</li>
-                <li>http://schema.org/Product (221,542,852 Entities)</li>
-                <li>http://schema.org/PostalAddress (159,212,117 Entities)</li>
-                <li>http://schema.org/Article (139,762,566 Entities)</li>
-                <li>http://schema.org/CollectionPage (112,104,217 Entities)</li>
-                <li>http://schema.org/Rating (74,884,872 Entities)</li>
-                <li>http://schema.org/Review (71,982,183 Entities)</li>
-                <li>http://schema.org/NewsArticle (71,361,114 Entities)</li>
-                <li>http://schema.org/SiteNavigationElement (69,411,976 Entities)</li>
-                <li>http://schema.org/Place (65,848,203 Entities)</li>
-            </ol>
-            <br/>
-        </td>
-    </tr>
-    <tr>
-        <th>Top Properties</th>
-        <td><small><a href=''
-                      onclick="document.getElementById('html-embedded-jsonld-top-property-values-by-domain-count-2022-12').style.display='block';this.style.display='none';return false;">Show
-            top values by domain count</a></small>
-            <ol id='html-embedded-jsonld-top-property-values-by-domain-count-2022-12' style='display:none'>
-                <li>http://schema.org/WebSite/url (5,774,278 Domains)</li>
-                <li>http://schema.org/WebSite/name (5,482,615 Domains)</li>
-                <li>http://schema.org/SearchAction/target (5,424,008 Domains)</li>
-                <li>http://schema.org/SearchAction/query-input (5,423,535 Domains)</li>
-                <li>http://schema.org/WebSite/potentialAction (5,405,381 Domains)</li>
-                <li>http://schema.org/ImageObject/url (5,006,242 Domains)</li>
-                <li>http://schema.org/ListItem/position (4,787,215 Domains)</li>
-                <li>http://schema.org/BreadcrumbList/itemListElement (4,748,026 Domains)</li>
-                <li>http://schema.org/ImageObject/width (4,730,621 Domains)</li>
-                <li>http://schema.org/ImageObject/height (4,727,500 Domains)</li>
-                <li>http://schema.org/WebPage/name (4,657,726 Domains)</li>
-                <li>http://schema.org/WebPage/url (4,596,608 Domains)</li>
-                <li>http://schema.org/WebPage/isPartOf (4,503,819 Domains)</li>
-                <li>http://schema.org/WebPage/datePublished (4,493,843 Domains)</li>
-                <li>http://schema.org/WebPage/dateModified (4,491,521 Domains)</li>
-                <li>http://schema.org/WebPage/inLanguage (4,465,935 Domains)</li>
-                <li>http://schema.org/Organization/name (4,414,361 Domains)</li>
-                <li>http://schema.org/ListItem/item (4,409,292 Domains)</li>
-                <li>http://schema.org/WebSite/description (4,187,041 Domains)</li>
-                <li>http://schema.org/WebSite/inLanguage (4,181,443 Domains)</li>
-
-            </ol>
-        </td>
-    </tr>
-    <tr>
-        <th></th>
-        <td><small><a href=''
-                      onclick="document.getElementById('html-embedded-jsonld-top-property-values-by-entity-count-2022-12').style.display='block';this.style.display='none';return false;">Show
-            top values by entity count</a></small>
-            <ol id='html-embedded-jsonld-top-property-values-by-entity-count-2022-12' style='display:none'>
-                <li>http://schema.org/ListItem/position (1,771,325,227 Entities)</li>
-                <li>http://schema.org/ListItem/item (1,341,343,891 Entities)</li>
-                <li>http://schema.org/ImageObject/url (996,925,294 Entities)</li>
-                <li>http://schema.org/ListItem/name (996,514,374 Entities)</li>
-                <li>http://schema.org/ImageObject/width (759,363,544 Entities)</li>
-                <li>http://schema.org/ImageObject/height (756,701,240 Entities)</li>
-                <li>http://schema.org/Organization/name (674,134,120 Entities)</li>
-                <li>http://schema.org/ImageObject/contentUrl (610,501,066 Entities)</li>
-                <li>http://schema.org/BreadcrumbList/itemListElement (610,209,290 Entities)</li>
-                <li>http://schema.org/ImageObject/inLanguage (552,346,763 Entities)</li>
-                <li>http://schema.org/WebSite/url (518,948,274 Entities)</li>
-                <li>http://schema.org/WebSite/name (508,617,959 Entities)</li>
-                <li>http://schema.org/name (485,512,776 Entities)</li>
-                <li>http://schema.org/WebPage/name (473,341,486 Entities)</li>
-                <li>http://schema.org/Organization/logo (457,936,107 Entities)</li>
-                <li>http://schema.org/SearchAction/target (455,926,297 Entities)</li>
-                <li>http://schema.org/SearchAction/query-input (455,784,834 Entities)</li>
-                <li>http://schema.org/ImageObject/caption (453,007,739 Entities)</li>
-                <li>http://schema.org/Person/name (450,198,517 Entities)</li>
-                <li>http://schema.org/WebSite/potentialAction (444,840,712 Entities)</li>
-            </ol>
-            <br/>
-        </td>
-    </tr>
-    <tr>
-        <th>Detailed Statistics as Excel-File</th>
-        <td><a target="_blank" href="html-embedded-jsonld_2022-12.xlsx">html-embedded-jsonld.xlsx</a></td>
-    </tr>
-</table>
-
 <a id='html-mf-hcard'></a>
 <h3>Extractor html-mf-hcard</h3><br/>
 <table>
@@ -951,7 +952,7 @@
                 <li><a rel='nofollow' target='_blank' href='https://sustainable-everyday-project.net'>sustainable-everyday-project.net</a>
                     (11,287,529 triples)
                 </li>
-                <li><a href="top_domains_by_extracted_triples_for_extractor_html-microdata.html">More</a></li>
+                <li><a href="top_domains_by_extracted_triples_for_extractor_html-mf-hcard.html">More</a></li>
             </ol>
             <br/>
         </td>
@@ -1075,7 +1076,7 @@
     </tr>
     <tr>
         <th>Typed Entities</th>
-        <td>259,090,037</td>
+        <td>275,563,980</td>
     </tr>
     <tr>
         <th>Top Domains by Extracted Triples</th>
@@ -1121,7 +1122,7 @@
                 <li><a rel='nofollow' target='_blank' href='https://bcstrategies.com'>bcstrategies.com</a> (1,509,958
                     triples)
                 </li>
-                <li><a href="top_domains_by_extracted_triples_for_extractor_html-microdata.html">More</a></li>
+                <li><a href="top_domains_by_extracted_triples_for_extractor_html-rdfa.html">More</a></li>
             </ol>
             <br/>
         </td>
@@ -1133,25 +1134,25 @@
             top values by domain count</a></small>
             <ol id='html-rdfa-top-class-values-by-domain-count-2022-12' style='display:none'>
                 <li>http://rdf.data-vocabulary.org/#Breadcrumb (122,805 Domains)</li>
+                <li>article (60,540 Domains)</li>
+                <li>website (58,750 Domains)</li>
                 <li>http://xmlns.com/foaf/0.1/Document (40,077 Domains)</li>
                 <li>http://xmlns.com/foaf/0.1/Image (38,074 Domains)</li>
                 <li>http://rdfs.org/sioc/ns#Item (32,496 Domains)</li>
                 <li>http://www.w3.org/1999/xhtml (17,416 Domains)</li>
+                <li>product (14,192 Domains)</li>
                 <li>http://www.w3.org/2004/02/skos/core#Concept (13,527 Domains)</li>
                 <li>http://rdfs.org/sioc/ns#UserAccount (9,644 Domains)</li>
                 <li>http://rdfs.org/sioc/ns#Post (3,825 Domains)</li>
-                <li>article (3,351 Domains)</li>
-                <li>website (2,572 Domains)</li>
+                <li>blog (3,576 Domains)</li>
                 <li>http://schema.org/WebPage (2,502 Domains)</li>
+                <li>profile (2,325 Domains)</li>
                 <li>http://rdfs.org/sioc/types#Comment (1,932 Domains)</li>
                 <li>https://rdf.data-vocabulary.org/#Breadcrumb (1,776 Domains)</li>
                 <li>http://rdfs.org/sioc/types#BlogPost (1,743 Domains)</li>
+                <li>object (1,613 Domains)</li>
                 <li>http://rdf.data-vocabulary.org/#Review-aggregate (1,587 Domains)</li>
                 <li>https://schema.org/Breadcrumb (1,465 Domains)</li>
-                <li>http://rdf.data-vocabulary.org/#Rating (1,005 Domains)</li>
-                <li>http://xmlns.com/foaf/0.1/Person (958 Domains)</li>
-                <li>http://purl.org/goodrelations/v1#BusinessEntity (669 Domains)</li>
-                <li>http://www.w3.org/2006/vcard/ns#Address (642 Domains)</li>
             </ol>
             <br/>
         </td>
@@ -1166,12 +1167,15 @@
                 <li>http://xmlns.com/foaf/0.1/Image (14,703,739 Entities)</li>
                 <li>http://www.w3.org/1999/xhtml (11,680,767 Entities)</li>
                 <li>http://xmlns.com/foaf/0.1/Document (10,782,676 Entities)</li>
+                <li>article (10,436,238 Entities)</li>
                 <li>http://rdfs.org/sioc/ns#Item (10,101,652 Entities)</li>
                 <li>http://www.w3.org/2004/02/skos/core#Concept (8,299,011 Entities)</li>
+                <li>website (4,462,518 Entities)</li>
                 <li>http://rdfs.org/sioc/ns#UserAccount (2,597,416 Entities)</li>
                 <li>http://rdfs.org/sioc/ns#Post (2,136,204 Entities)</li>
                 <li>http://rdfs.org/sioc/types#Comment (1,928,740 Entities)</li>
                 <li>https://spia.princeton.edu/Image (1,054,702 Entities)</li>
+                <li>product (984,542 Entities)</li>
                 <li>https://openlearning.mit.edu/courses-programs/Image (867,054 Entities)</li>
                 <li>https://rdf.data-vocabulary.org/#Breadcrumb (866,727 Entities)</li>
                 <li>https://calendar.wellesley.edu/counseling/resources/Document (672,282 Entities)</li>
@@ -1179,9 +1183,6 @@
                 <li>https://socialconcerns.nd.edu/Document (627,344 Entities)</li>
                 <li>https://climate.mit.edu/Image (610,876 Entities)</li>
                 <li>https://socialconcerns.nd.edu/ItemItem (594,258 Entities)</li>
-                <li>https://sheg.stanford.edu/Image (575,560 Entities)</li>
-                <li>https://climate-dev.mit.edu/Image (568,181 Entities)</li>
-                <li>https://medialibrary.nei.nih.gov/Image (521,491 Entities)</li>
             </ol>
             <br/>
         </td>
@@ -1192,26 +1193,26 @@
                       onclick="document.getElementById('html-rdfa-top-property-values-by-domain-count-2022-12').style.display='block';this.style.display='none';return false;">Show
             top values by domain count</a></small>
             <ol id='html-rdfa-top-property-values-by-domain-count-2022-12' style='display:none'>
-                <li>http://ogp.me/ns#title (137,680 Domains)</li>
-                <li>http://ogp.me/ns#description (126,542 Domains)</li>
-                <li>http://ogp.me/ns#url (125,313 Domains)</li>
                 <li>http://rdf.data-vocabulary.org/#Breadcrumb/#url (121,720 Domains)</li>
                 <li>http://rdf.data-vocabulary.org/#Breadcrumb/#title (121,695 Domains)</li>
-                <li>http://ogp.me/ns#image (114,257 Domains)</li>
-                <li>http://ogp.me/ns#site_name (112,160 Domains)</li>
-                <li>http://ogp.me/ns#type (101,933 Domains)</li>
+                <li>article/ns#title (57,800 Domains)</li>
+                <li>article/ns#url (56,552 Domains)</li>
                 <li>http://opengraphprotocol.org/schema/site_name (55,651 Domains)</li>
+                <li>website/ns#title (54,030 Domains)</li>
                 <li>http://opengraphprotocol.org/schema/title (53,809 Domains)</li>
+                <li>article/ns#site_name (52,927 Domains)</li>
                 <li>http://opengraphprotocol.org/schema/url (52,669 Domains)</li>
                 <li>http://opengraphprotocol.org/schema/type (52,545 Domains)</li>
+                <li>website/ns#url (52,196 Domains)</li>
+                <li>article/ns#description (51,521 Domains)</li>
+                <li>http://ogp.me/ns#title (51,431 Domains)</li>
                 <li>http://opengraphprotocol.org/schema/image (50,896 Domains)</li>
+                <li>http://ogp.me/ns#description (49,598 Domains)</li>
                 <li>http://opengraphprotocol.org/schema/description (46,071 Domains)</li>
-                <li>http://rdf.data-vocabulary.org/#title (41,737 Domains)</li>
-                <li>http://rdf.data-vocabulary.org/#url (41,325 Domains)</li>
-                <li>http://xmlns.com/foaf/0.1/Document/title (36,273 Domains)</li>
-                <li>http://xmlns.com/foaf/0.1/Document/encoded (33,772 Domains)</li>
-                <li>http://ogp.me/ns/fb#app_id (32,913 Domains)</li>
-                <li>http://ogp.me/ns#locale (31,886 Domains)</li>
+                <li>website/ns#description (45,462 Domains)</li>
+                <li>http://ogp.me/ns#image (45,421 Domains)</li>
+                <li>website/ns#site_name (45,421 Domains)</li>
+                <li>http://rdf.data-vocabulary.org/#title (41,714 Domains)</li>
 
             </ol>
         </td>
@@ -1224,24 +1225,24 @@
             <ol id='html-rdfa-top-property-values-by-entity-count-2022-12' style='display:none'>
                 <li>http://rdf.data-vocabulary.org/#Breadcrumb/#title (29,923,532 Entities)</li>
                 <li>http://rdf.data-vocabulary.org/#Breadcrumb/#url (29,308,102 Entities)</li>
-                <li>http://ogp.me/ns#title (16,973,785 Entities)</li>
-                <li>http://ogp.me/ns#url (15,833,822 Entities)</li>
-                <li>http://ogp.me/ns#type (14,855,991 Entities)</li>
-                <li>http://ogp.me/ns#site_name (13,844,861 Entities)</li>
-                <li>http://ogp.me/ns#image (13,562,452 Entities)</li>
-                <li>http://ogp.me/ns#description (13,444,979 Entities)</li>
-                <li>http://www.facebook.com/2008/fbmlapp_id (8,396,623 Entities)</li>
-                <li>http://www.w3.org/2004/02/skos/core#Concept/core#prefLabel (8,074,186 Entities)</li>
-                <li>http://www.w3.org/2004/02/skos/core#Concept/rdf-schema#label (8,072,269 Entities)</li>
-                <li>http://ogp.me/ns/fb#app_id (6,924,214 Entities)</li>
-                <li>http://xmlns.com/foaf/0.1/Document/title (6,841,666 Entities)</li>
+                <li>article/ns#title (8,807,148 Entities)</li>
+                <li>article/ns#url (8,539,660 Entities)</li>
+                <li>http://www.w3.org/2004/02/skos/core#Concept/core#prefLabel (8,069,281 Entities)</li>
+                <li>http://www.w3.org/2004/02/skos/core#Concept/rdf-schema#label (8,067,364 Entities)</li>
+                <li>article/ns#site_name (7,967,668 Entities)</li>
+                <li>article/ns#description (7,155,424 Entities)</li>
+                <li>http://xmlns.com/foaf/0.1/Document/title (6,841,514 Entities)</li>
                 <li>http://opengraphprotocol.org/schema/title (6,693,938 Entities)</li>
+                <li>http://www.facebook.com/2008/fbmlapp_id (6,513,569 Entities)</li>
                 <li>http://opengraphprotocol.org/schema/url (6,362,647 Entities)</li>
                 <li>http://opengraphprotocol.org/schema/type (6,331,442 Entities)</li>
                 <li>http://opengraphprotocol.org/schema/site_name (6,322,466 Entities)</li>
+                <li>article/ns#image (6,153,223 Entities)</li>
+                <li>http://ogp.me/ns/fb#app_id (5,805,662 Entities)</li>
                 <li>http://opengraphprotocol.org/schema/image (5,766,821 Entities)</li>
-                <li>http://www.facebook.com/2008/fbmladmins (5,498,449 Entities)</li>
                 <li>http://opengraphprotocol.org/schema/description (5,174,706 Entities)</li>
+                <li>http://www.facebook.com/2008/fbmladmins (4,491,967 Entities)</li>
+                <li>http://xmlns.com/foaf/0.1/Document/encoded (4,370,703 Entities)</li>
             </ol>
             <br/>
         </td>
@@ -1332,7 +1333,7 @@
                 <li><a rel='nofollow' target='_blank' href='https://rogerogreen.com'>rogerogreen.com</a> (599,256
                     triples)
                 </li>
-                <li><a href="top_domains_by_extracted_triples_for_extractor_html-microdata.html">More</a></li>
+                <li><a href="top_domains_by_extracted_triples_for_extractor_html-mf-xfn.html">More</a></li>
             </ol>
             <br/>
         </td>
@@ -1494,7 +1495,7 @@
                 <li><a rel='nofollow' target='_blank' href='https://law.com'>law.com</a> (275,399 triples)</li>
                 <li><a rel='nofollow' target='_blank' href='https://wikivoyage.org'>wikivoyage.org</a> (252,579 triples)
                 </li>
-                <li><a href="top_domains_by_extracted_triples_for_extractor_html-microdata.html">More</a></li>
+                <li><a href="top_domains_by_extracted_triples_for_extractor_html-mf-adr.html">More</a></li>
             </ol>
             <br/>
         </td>
@@ -1635,7 +1636,7 @@
                 </li>
                 <li><a rel='nofollow' target='_blank' href='https://youropi.com'>youropi.com</a> (42,209 triples)</li>
                 <li><a rel='nofollow' target='_blank' href='https://oma.sk'>oma.sk</a> (36,684 triples)</li>
-                <li><a href="top_domains_by_extracted_triples_for_extractor_html-microdata.html">More</a></li>
+                <li><a href="top_domains_by_extracted_triples_for_extractor_html-mf-geo.html">More</a></li>
             </ol>
             <br/>
         </td>
@@ -1760,7 +1761,7 @@
                 <li><a rel='nofollow' target='_blank' href='https://resonanzraum.club'>resonanzraum.club</a> (307,134
                     triples)
                 </li>
-                <li><a href="top_domains_by_extracted_triples_for_extractor_html-microdata.html">More</a></li>
+                <li><a href="top_domains_by_extracted_triples_for_extractor_html-mf-hcalendar.html">More</a></li>
             </ol>
             <br/>
         </td>
@@ -1932,7 +1933,7 @@
                 <li><a rel='nofollow' target='_blank' href='https://affirmationpod.com'>affirmationpod.com</a> (111,320
                     triples)
                 </li>
-                <li><a href="top_domains_by_extracted_triples_for_extractor_html-microdata.html">More</a></li>
+                <li><a href="top_domains_by_extracted_triples_for_extractor_html-mf-hreview.html">More</a></li>
             </ol>
             <br/>
         </td>
@@ -2091,7 +2092,7 @@
                 <li><a rel='nofollow' target='_blank' href='https://kunstgeeftgeluk.nl'>kunstgeeftgeluk.nl</a> (158,810
                     triples)
                 </li>
-                <li><a href="top_domains_by_extracted_triples_for_extractor_html-microdata.html">More</a></li>
+                <li><a href="top_domains_by_extracted_triples_for_extractor_html-mf-hlisting.html">More</a></li>
             </ol>
             <br/>
         </td>
@@ -2259,7 +2260,7 @@
                 <li><a rel='nofollow' target='_blank' href='https://debskitchen.com'>debskitchen.com</a> (41,649
                     triples)
                 </li>
-                <li><a href="top_domains_by_extracted_triples_for_extractor_html-microdata.html">More</a></li>
+                <li><a href="top_domains_by_extracted_triples_for_extractor_html-mf-hrecipe.html">More</a></li>
             </ol>
             <br/>
         </td>
@@ -2423,7 +2424,7 @@
                 <li><a rel='nofollow' target='_blank' href='https://jonnay.net'>jonnay.net</a> (57 triples)</li>
                 <li><a rel='nofollow' target='_blank' href='https://lionel-girard.fr'>lionel-girard.fr</a> (50 triples)
                 </li>
-                <li><a href="top_domains_by_extracted_triples_for_extractor_html-microdata.html">More</a></li>
+                <li><a href="top_domains_by_extracted_triples_for_extractor_html-mf-hresume.html">More</a></li>
             </ol>
             <br/>
         </td>
@@ -2566,7 +2567,7 @@
                 <li><a rel='nofollow' target='_blank' href='https://windsoftime.us'>windsoftime.us</a> (352 triples)
                 </li>
                 <li><a rel='nofollow' target='_blank' href='https://wmflabs.org'>wmflabs.org</a> (349 triples)</li>
-                <li><a href="top_domains_by_extracted_triples_for_extractor_html-microdata.html">More</a></li>
+                <li><a href="top_domains_by_extracted_triples_for_extractor_html-mf-species.html">More</a></li>
             </ol>
             <br/>
         </td>
@@ -2660,7 +2661,6 @@
         </td>
     </tr>
 </table>
-
 </body>
 
 </html>
