@@ -18,7 +18,7 @@ def main(dir_path, extraction):
 
     file_agg_matrix_per_format = '{}\\3_wdcurlstats\\aggMatrixPerFormat.stats.gz'.format(dir_path)
     df_stats = pd.read_csv(file_agg_matrix_per_format, sep='\t', index_col=0, dtype={'Domains': 'Int64', 'URLs': 'Int64', 'Triples': 'Int64'})
-    order = ['html-microdata', 'html-embedded-jsonld', 'html-mf-hcard', 'html-rdfa', 'html-mf-xfn','html-mf-adr','html-mf-geo','html-mf-hcalendar','html-mf-hreview',
+    order = ['html-embedded-jsonld', 'html-microdata', 'html-mf-hcard', 'html-rdfa', 'html-mf-xfn','html-mf-adr','html-mf-geo','html-mf-hcalendar','html-mf-hreview',
              'html-mf-hlisting','html-mf-hrecipe','html-mf-hresume','html-mf-species']
 
     # Load typed_entities.csv
@@ -118,7 +118,7 @@ def generate_table(extractor, statistics, top_domains_by_triples, top_class, top
     print('	      <ol id=\'{}\' style=\'display:none\'>	'.format(element_top_domains_by_triples))
     for domain in top_domains_by_triples:
         print(domain)
-    print('	        <li><a href="top_domains_by_extracted_triples_for_extractor_html-microdata.html">More</a></li>	')
+    print('	        <li><a href="top_domains_by_extracted_triples_for_extractor_{}.html">More</a></li>	'.format(extractor))
     print('	      </ol><br />	')
     print('	    </td>	')
     print('	  </tr>	')

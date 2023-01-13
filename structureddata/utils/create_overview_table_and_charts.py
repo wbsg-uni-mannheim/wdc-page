@@ -21,7 +21,7 @@ def main(dir_path):
     #typed_entities['overall'] = count_entities
 
     df_stats = pd.read_csv(file_agg_matrix_per_format, sep='\t', index_col=0, dtype={'Domains': 'Int64', 'URLs': 'Int64', 'Triples': 'Int64'})
-    order = ['html-microdata', 'html-embedded-jsonld', 'html-mf-hcard','html-rdfa', 'html-mf-xfn','html-mf-adr','html-mf-geo','html-mf-hcalendar','html-mf-hreview',
+    order =  ['html-embedded-jsonld', 'html-microdata', 'html-mf-hcard','html-rdfa', 'html-mf-xfn','html-mf-adr','html-mf-geo','html-mf-hcalendar','html-mf-hreview',
              'html-mf-hlisting','html-mf-hrecipe', 'html-mf2-h-adr','html-mf-hresume','html-mf-species','overall']
 
     # Create Results per Format
@@ -48,7 +48,7 @@ def main(dir_path):
 def create_bar_charts(df_stats, order, column):
     print('{} with Triples'.format(column))
 
-    colors = {'html-microdata': '#D11919', 'html-embedded-jsonld': '#29A329', 'html-mf-hcard': '#FFD633',
+    colors = {'html-embedded-jsonld': '#29A329', 'html-microdata': '#D11919', 'html-mf-hcard': '#FFD633',
               'html-rdfa': '#5E8FD8', 'html-mf-xfn': '#FFF5DD', 'html-mf-hcalendar': '#FFDB4D',
               'html-mf-hreview': '#FFEB99'}
 
@@ -70,7 +70,7 @@ def create_bar_charts(df_stats, order, column):
 def create_pie_chart(df_stats, column):
     print('Pie triples - {}'.format(column))
 
-    order = ['html-rdfa', 'html-microdata', 'html-embedded-jsonld', 'html-mf-geo', 'html-mf-hcard', 'html-mf-hcalendar',
+    order = ['html-embedded-jsonld', 'html-microdata', 'html-mf-hcard', 'html-rdfa', 'html-mf-geo',  'html-mf-hcalendar',
              'html-mf-hlisting','html-mf-hresume', 'html-mf-hreview', 'html-mf-species', 'html-mf-hrecipe','html-mf-xfn']
 
     for value in order:
