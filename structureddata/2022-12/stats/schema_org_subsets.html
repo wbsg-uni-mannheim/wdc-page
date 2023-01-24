@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html>
+<head><title>Web Data Commons - October 2022 Corpus - Schema.org Class Specific Subsets</title>
+    <link rel='stylesheet' href='https://webdatacommons.org/style.css' type='text/css' media='screen'/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="/jquery.toc.min.js"></script>
+
+
+    <script type="text/javascript">
+
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-30248817-1']);
+        _gaq.push(['_trackPageview']);
+
+        (function () {
+            var ga = document.createElement('script');
+            ga.type = 'text/javascript';
+            ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(ga, s);
+        })();
+
+
+        function showhide(stats) {
+            var x = document.getElementById(stats);
+            if (x.style.display === "none") {
+                x.style.display = "block";
+            } else {
+                x.style.display = "none";
+            }
+        }
+
+        })
+        ;
+    </script>
+    <script>
+        let base_dir = "https://data.dws.informatik.uni-mannheim.de/structureddata/2022-12/quads/classspecific/"
+    </script>
+
+</head>
+<body>
+
+
+<a name='top'></a>
+<h1>Class-Specific Subsets of the Schema.org Data contained in the October 2022 Corpus</h1>
+<p>This page provides access to and statistics about class-specific subsets of the <a href="http://schema.org">Schema.org</a>
+    data contained in the <a href="http://webdatacommons.org/structureddata/2022-12/stats/stats.html">October 2022
+        version</a> of the <a href="http://webdatacommons.org/structureddata/">Web Data Commons Microdata and JSON-LD
+        corpus</a>.</p>
+
+<h2>Introduction </h2>
+<p>
+    As many users are only interested in specific types of Schema.org data (like product data, event data, job postings,
+    or data describing local businesses), we have created class-specific subsets out of the complete and merged <a
+        href="http://webdatacommons.org/structureddata/2022-12/stats/stats.html">Microdata and JSON-LD corpora</a> for a
+    selection of <i>schema.org</i> classes.
+    The subsets contain all instances of a specific class of either formats as well as all other data that is found on
+    the webpages containing these instances. For example, a page containing data about a product might also contain
+    reviews and offers for this product; a page containing data about an event might also contain data about the
+    location of the event and the persons involved in the event.
+    The data is represented in <a href="http://www.w3.org/TR/n-quads/">N-Quads</a> format, meaning that the forth
+    element of each quad contains the URL of the webpage from which the data was extracted.
+    To facilitate the download and access to the class specific data, we provide the schema.org subsets in chunks. Each
+    chunk contains quads of specific pay-level-domains (PLDs), i.e. all quads of one PLD, e.g. yummly.com,
+    are organized within the same chunk file. Additionally, we provide lookup files containing the mappings between PLDs
+    and their corresponding chunks as well as csv files with PLD-specific statistics.
+    <br>
+
+</p>
+
+
+<p><b>Please note that: </b>
+<ul>
+    <li> the merged Microdata and JSON-LD corpora are not deduplicated, i.e. if a schema.org/Product entity is annotated
+        on the same page with both formats, it will appear twice on the merged Product schema.org subset.
+    </li>
+    <li> considering the general trend towards using 'https' more widely, the schema.org subsets of the 2022 extraction
+        contain entities annotated with both 'http' and 'https', e.g. http://schema.org/Product and
+        https://schema.org/Product.
+    </li>
+    <li>the data in the files is not disjunct. This means that whenever you combine two files you might end up with
+        duplicated quads, as one webpage can contain more than one class (e.g. schema.org/Product and schema.org/Offer).
+    </li>
+    <li>the data is only the tip of the iceberg. The <a href="http://commoncrawl.org/">CommonCrawl</a> covers only a
+        subset of all webpages that are offered by a specific website. Thus, only a subset of all data offered by a site
+        is contained in our corpus. If you need more instances of a specific class, you will need to crawl deeper into
+        the websites that we identified to contain specific types of Schema.org data.
+    </li>
+</ul>
+You are welcome to use the datasets and also to tell about your findings. If you find our datasets useful for your
+research, please cite the paper: <a
+        href="https://www.wim.uni-mannheim.de/fileadmin/lehrstuehle/ki/pub/Meusel-etal-TheWDCMicrodataRdfaMicroformatsDataSeries-ISWC2014-rbds.pdf"
+        target="_blank"> The WebDataCommons Microdata, RDFa and Microformat Dataset Series</a> by <i>Robert Meusel,
+    Petar Petrovski, and Christian Bizer</i> in the Proceedings of the 13th International Semantic Web Conference:
+Replication, Benchmark, Data and Software Track (ISWC2014).
+</p>
+
+<div>
+    <h2>Class-Specific Subsets of the Schema.org Data</h2>
+    <p>
+    <table style="width:1600px">
+        <tr>
+            <th>Schema.org Subset</a></th>
+            <th> General Stats</th>
+            <th>Related Classes</th>
+            <th>Size </br> (# Files)</th>
+            <th>Download (Sample)</th>
+            <th>PLD to File look-up </br> PLD Specific Stats</th>
+        </tr>
+
+        <tr>
+            <th><a href="http://schema.org/AdministrativeArea">AdministrativeArea</a></th>
+            <td> Quads: 77,960,962</br> URLs: 381,624</br> Hosts: 2,695</br></td>
+            <td>http://schema.org/City (2,154,382)</br>http://schema.org/ImageObject (1,260,633)</br>
+                http://schema.org/AdministrativeArea (932,550)</br>http://schema.org/Person (819,487)</br>
+                http://schema.org/ListItem (810,411)</br></td>
+            <td>923.8 MB<br> (1)</td>
+            <td>
+                <a href="https://data.dws.informatik.uni-mannheim.de/structureddata/2022-12/quads/classspecific/AdministrativeArea">AdministrativeArea</a>
+                (<a href="https://data.dws.informatik.uni-mannheim.de/structureddata/2022-12/quads/classspecific/AdministrativeArea/AdministrativeArea_sample.txt">sample</a>)
+            </td>
+            <td>
+                <a href="https://data.dws.informatik.uni-mannheim.de/structureddata/2022-12/quads/classspecific/AdministrativeArea/AdministrativeArea_lookup.csv">lookup_file</a><br>
+                <a href="https://data.dws.informatik.uni-mannheim.de/structureddata/2022-12/quads/classspecific/AdministrativeArea/AdministrativeArea_domain_stats.csv">pld_stats_file</a>
+            </td>
+        </tr>
+        <tr>
+            <th><a href="http://schema.org/Airport">Airport</a></th>
+            <td> Quads: 54,033,331</br> URLs: 160,852</br> Hosts: 538</br></td>
+            <td>http://schema.org/Airport (4,569,542)</br>http://schema.org/GeoCoordinates (2,461,017)</br>
+                http://schema.org/Flight (1,593,849)</br>http://schema.org/Airline (1,473,676)</br>
+                http://schema.org/Offer (1,244,616)</br></td>
+            <td>415.83 MB<br> (1)</td>
+            <td>
+                <a href="https://data.dws.informatik.uni-mannheim.de/structureddata/2022-12/quads/classspecific/Airport">Airport</a>
+                (<a href="https://data.dws.informatik.uni-mannheim.de/structureddata/2022-12/quads/classspecific/Airport/Airport_sample.txt">sample</a>)
+            </td>
+            <td>
+                <a href="https://data.dws.informatik.uni-mannheim.de/structureddata/2022-12/quads/classspecific/Airport/Airport_lookup.csv">lookup_file</a><br>
+                <a href="https://data.dws.informatik.uni-mannheim.de/structureddata/2022-12/quads/classspecific/Airport/Airport_domain_stats.csv">pld_stats_file</a>
+            </td>
+        </tr>
+        <tr>
+            <th><a href="http://schema.org/Book">Book</a></th>
+            <td> Quads: 308,456,812</br> URLs: 4,999,213</br> Hosts: 21,623</br></td>
+            <td>http://schema.org/Book (13,434,918)</br>http://schema.org/Country (7,685,986)</br>
+                http://schema.org/Offer (7,381,043)</br>http://schema.org/Person (6,792,930)</br>
+                http://schema.org/ListItem (3,755,829)</br></td>
+            <td>7.67 GB<br> (4)</td>
+            <td><a href="https://data.dws.informatik.uni-mannheim.de/structureddata/2022-12/quads/classspecific/Book">Book</a>
+                (<a href="https://data.dws.informatik.uni-mannheim.de/structureddata/2022-12/quads/classspecific/Book/Book_sample.txt">sample</a>)
+            </td>
+            <td>
+                <a href="https://data.dws.informatik.uni-mannheim.de/structureddata/2022-12/quads/classspecific/Book/Book_lookup.csv">lookup_file</a><br>
+                <a href="https://data.dws.informatik.uni-mannheim.de/structureddata/2022-12/quads/classspecific/Book/Book_domain_stats.csv">pld_stats_file</a>
+            </td>
+        </tr>
+        <tr>
+            <th><a href="http://schema.org/City">City</a></th>
+            <td> Quads: 213,841,120</br> URLs: 1,152,893</br> Hosts: 11,786</br></td>
+            <td>http://schema.org/City (5,832,337)</br>http://schema.org/ImageObject (3,890,159)</br>
+                http://schema.org/Person (3,482,668)</br>http://schema.org/ListItem (3,132,617)</br>
+                http://schema.org/PostalAddress (2,928,984)</br></td>
+            <td>2.25 GB<br> (3)</td>
+            <td><a href="https://data.dws.informatik.uni-mannheim.de/structureddata/2022-12/quads/classspecific/City">City</a>
+                (<a href="https://data.dws.informatik.uni-mannheim.de/structureddata/2022-12/quads/classspecific/City/City_sample.txt">sample</a>)
+            </td>
+            <td>
+                <a href="https://data.dws.informatik.uni-mannheim.de/structureddata/2022-12/quads/classspecific/City/City_lookup.csv">lookup_file</a><br>
+                <a href="https://data.dws.informatik.uni-mannheim.de/structureddata/2022-12/quads/classspecific/City/City_domain_stats.csv">pld_stats_file</a>
+            </td>
+        </tr>
+        <tr>
+            <th><a href="http://schema.org/CollegeOrUniversity">CollegeOrUniversity</a></th>
+            <td> Quads: 154,890,333</br> URLs: 1,326,291</br> Hosts: 3,544</br></td>
+            <td>http://schema.org/CollegeOrUniversity (5,643,657)</br>http://schema.org/ListItem (4,582,716)</br>
+                http://schema.org/ImageObject (4,072,323)</br>http://schema.org/Person (3,630,069)</br>
+                http://schema.org/PostalAddress (2,812,621)</br></td>
+            <td>2.15 GB<br> (2)</td>
+            <td>
+                <a href="https://data.dws.informatik.uni-mannheim.de/structureddata/2022-12/quads/classspecific/CollegeOrUniversity">CollegeOrUniversity</a>
+                (<a href="https://data.dws.informatik.uni-mannheim.de/structureddata/2022-12/quads/classspecific/CollegeOrUniversity/CollegeOrUniversity_sample.txt">sample</a>)
+            </td>
+            <td>
+                <a href="https://data.dws.informatik.uni-mannheim.de/structureddata/2022-12/quads/classspecific/CollegeOrUniversity/CollegeOrUniversity_lookup.csv">lookup_file</a><br>
+                <a href="https://data.dws.informatik.uni-mannheim.de/structureddata/2022-12/quads/classspecific/CollegeOrUniversity/CollegeOrUniversity_domain_stats.csv">pld_stats_file</a>
+            </td>
+        </tr>
+        <tr>
+            <th><a href="http://schema.org/Continent">Continent</a></th>
+            <td> Quads: 1,807,060</br> URLs: 8,584</br> Hosts: 57</br></td>
+            <td>http://schema.org/City (243,141)</br>http://schema.org/AdministrativeArea (122,577)</br>
+                http://schema.org/Country (11,022)</br>http://schema.org/Continent (10,846)</br>
+                http://schema.org/ListItem (7,788)</br></td>
+            <td>16.38 MB<br> (1)</td>
+            <td>
+                <a href="https://data.dws.informatik.uni-mannheim.de/structureddata/2022-12/quads/classspecific/Continent">Continent</a>
+                (<a href="https://data.dws.informatik.uni-mannheim.de/structureddata/2022-12/quads/classspecific/Continent/Continent_sample.txt">sample</a>)
+            </td>
+            <td>
+                <a href="https://data.dws.informatik.uni-mannheim.de/structureddata/2022-12/quads/classspecific/Continent/Continent_lookup.csv">lookup_file</a><br>
+                <a href="https://data.dws.informatik.uni-mannheim.de/structureddata/2022-12/quads/classspecific/Continent/Continent_domain_stats.csv">pld_stats_file</a>
+            </td>
+        </tr>
+        <tr>
+            <th><a href="http://schema.org/Country">Country</a></th>
+            <td> Quads: 625,627,034</br> URLs: 4,840,011</br> Hosts: 24,422</br></td>
+            <td>http://schema.org/Country (43,110,397)</br>http://schema.org/ListItem (15,718,968)</br>
+                http://schema.org/Organization (8,272,171)</br>http://schema.org/Offer (8,244,657)</br>
+                http://schema.org/PostalAddress (6,901,736)</br></td>
+            <td>7.83 GB<br> (7)</td>
+            <td>
+                <a href="https://data.dws.informatik.uni-mannheim.de/structureddata/2022-12/quads/classspecific/Country">Country</a>
+                (<a href="https://data.dws.informatik.uni-mannheim.de/structureddata/2022-12/quads/classspecific/Country/Country_sample.txt">sample</a>)
+            </td>
+            <td>
+                <a href="https://data.dws.informatik.uni-mannheim.de/structureddata/2022-12/quads/classspecific/Country/Country_lookup.csv">lookup_file</a><br>
+                <a href="https://data.dws.informatik.uni-mannheim.de/structureddata/2022-12/quads/classspecific/Country/Country_domain_stats.csv">pld_stats_file</a>
+            </td>
+        </tr>
+        <tr>
+            <th><a href="http://schema.org/CreativeWork">CreativeWork</a></th>
+            <td> Quads: 2,909,313,285</br> URLs: 57,905,383</br> Hosts: 1,060,682</br></td>
+            <td>https://schema.org/CreativeWork (97,847,794)</br>https://schema.org/Person (69,897,980)</br>
+                https://schema.org/SiteNavigationElement (60,989,946)</br>https://schema.org/WPHeader (39,355,522)</br>
+                https://schema.org/WPFooter (38,637,170)</br></td>
+            <td>112.09 GB<br> (30)</td>
+            <td>
+                <a href="https://data.dws.informatik.uni-mannheim.de/structureddata/2022-12/quads/classspecific/CreativeWork">CreativeWork</a>
+                (<a href="https://data.dws.informatik.uni-mannheim.de/structureddata/2022-12/quads/classspecific/CreativeWork/CreativeWork_sample.txt">sample</a>)
+            </td>
+            <td>
+                <a href="https://data.dws.informatik.uni-mannheim.de/structureddata/2022-12/quads/classspecific/CreativeWork/CreativeWork_lookup.csv">lookup_file</a><br>
+                <a href="https://data.dws.informatik.uni-mannheim.de/structureddata/2022-12/quads/classspecific/CreativeWork/CreativeWork_domain_stats.csv">pld_stats_file</a>
+            </td>
+        </tr>
+        <tr>
+            <th><a href="http://schema.org/Dataset">Dataset</a></th>
+            <td> Quads: 50,243,885</br> URLs: 930,859</br> Hosts: 1,676</br></td>
+            <td>http://schema.org/DataDownload (2,447,952)</br>http://schema.org/Dataset (1,320,329)</br>
+                http://schema.org/Organization (951,404)</br>http://schema.org/PropertyValue (800,666)</br>
+                http://schema.org/Person (449,880)</br></td>
+            <td>782.07 MB <br> (1)</td>
+            <td>
+                <a href="https://data.dws.informatik.uni-mannheim.de/structureddata/2022-12/quads/classspecific/Dataset">Dataset</a>
+                (<a href="https://data.dws.informatik.uni-mannheim.de/structureddata/2022-12/quads/classspecific/Dataset/Dataset_sample.txt">sample</a>)
+            </td>
+            <td>
+                <a href="https://data.dws.informatik.uni-mannheim.de/structureddata/2022-12/quads/classspecific/Dataset/Dataset_lookup.csv">lookup_file</a><br>
+                <a href="https://data.dws.informatik.uni-mannheim.de/structureddata/2022-12/quads/classspecific/Dataset/Dataset_domain_stats.csv">pld_stats_file</a>
+            </td>
+        </tr>
+        <tr>
+            <th><a href="http://schema.org/EducationalOrganization">EducationalOrganization</a></th>
+            <td> Quads: 96,140,998</br> URLs: 1,146,674</br> Hosts: 9,080</br></td>
+            <td>http://schema.org/EducationalOrganization (2,312,278)</br>http://schema.org/ListItem (2,090,170)</br>
+                http://schema.org/PostalAddress (1,825,786)</br>http://schema.org/ImageObject (1,036,325)</br>
+                http://schema.org/GeoCoordinates (752,916)</br></td>
+            <td>1.5 GB<br> (1)</td>
+            <td>
+                <a href="https://data.dws.informatik.uni-mannheim.de/structureddata/2022-12/quads/classspecific/EducationalOrganization">EducationalOrganization</a>
+                (<a href="https://data.dws.informatik.uni-mannheim.de/structureddata/2022-12/quads/classspecific/EducationalOrganization/EducationalOrganization_sample.txt">sample</a>)
+            </td>
+            <td>
+                <a href="https://data.dws.informatik.uni-mannheim.de/structureddata/2022-12/quads/classspecific/EducationalOrganization/EducationalOrganization_lookup.csv">lookup_file</a><br>
+                <a href="https://data.dws.informatik.uni-mannheim.de/structureddata/2022-12/quads/classspecific/EducationalOrganization/EducationalOrganization_domain_stats.csv">pld_stats_file</a>
+            </td>
+        </tr>
+        <tr>
+            <th><a href="http://schema.org/Event">Event</a></th>
+            <td> Quads: 1,732,974,389</br> URLs: 16,038,172</br> Hosts: 313,782</br></td>
+            <td>http://schema.org/Event (68,785,848)</br>http://schema.org/Place (48,427,726)</br>
+                http://schema.org/PostalAddress (38,748,060)</br>http://schema.org/Person (21,337,534)</br>
+                http://schema.org/ListItem (15,879,353)</br></td>
+            <td>22.93 GB<br> (18)</td>
+            <td><a href="https://data.dws.informatik.uni-mannheim.de/structureddata/2022-12/quads/classspecific/Event">Event</a>
+                (<a href="https://data.dws.informatik.uni-mannheim.de/structureddata/2022-12/quads/classspecific/Event/Event_sample.txt">sample</a>)
+            </td>
+            <td>
+                <a href="https://data.dws.informatik.uni-mannheim.de/structureddata/2022-12/quads/classspecific/Event/Event_lookup.csv">lookup_file</a><br>
+                <a href="https://data.dws.informatik.uni-mannheim.de/structureddata/2022-12/quads/classspecific/Event/Event_domain_stats.csv">pld_stats_file</a>
+            </td>
+        </tr>
+        <tr>
+            <th><a href="http://schema.org/GeoCoordinates">GeoCoordinates</a></th>
+            <td> Quads: 3,699,629,956</br> URLs: 29,887,844</br> Hosts: 461,695</br></td>
+            <td>http://schema.org/ListItem (98,973,753)</br>http://schema.org/PostalAddress (64,876,448)</br>
+                http://schema.org/GeoCoordinates (60,789,730)</br>http://schema.org/ImageObject (37,038,861)</br>
+                http://schema.org/OpeningHoursSpecification (34,280,120)</br></td>
+            <td>45.45 GB<br> (37)</td>
+            <td>
+                <a href="https://data.dws.informatik.uni-mannheim.de/structureddata/2022-12/quads/classspecific/GeoCoordinates">GeoCoordinates</a>
+                (<a href="https://data.dws.informatik.uni-mannheim.de/structureddata/2022-12/quads/classspecific/GeoCoordinates/GeoCoordinates_sample.txt">sample</a>)
+            </td>
+            <td>
+                <a href="https://data.dws.informatik.uni-mannheim.de/structureddata/2022-12/quads/classspecific/GeoCoordinates/GeoCoordinates_lookup.csv">lookup_file</a><br>
+                <a href="https://data.dws.informatik.uni-mannheim.de/structureddata/2022-12/quads/classspecific/GeoCoordinates/GeoCoordinates_domain_stats.csv">pld_stats_file</a>
+            </td>
+        </tr>
+        <tr>
+            <th><a href="http://schema.org/GovernmentOrganization">GovernmentOrganization</a></th>
+            <td> Quads: 15,661,042</br> URLs: 348,175</br> Hosts: 1,398</br></td>
+            <td>http://schema.org/GovernmentOrganization (467,886)</br>http://schema.org/ImageObject (374,525)</br>
+                http://schema.org/ListItem (335,640)</br>http://schema.org/PostalAddress (251,555)</br>
+                http://schema.org/Organization (181,023)</br></td>
+            <td>303.11 MB<br> (1)</td>
+            <td>
+                <a href="https://data.dws.informatik.uni-mannheim.de/structureddata/2022-12/quads/classspecific/GovernmentOrganization">GovernmentOrganization</a>
+                (<a href="https://data.dws.informatik.uni-mannheim.de/structureddata/2022-12/quads/classspecific/GovernmentOrganization/GovernmentOrganization_sample.txt">sample</a>)
+            </td>
+            <td>
+                <a href="https://data.dws.informatik.uni-mannheim.de/structureddata/2022-12/quads/classspecific/GovernmentOrganization/GovernmentOrganization_lookup.csv">lookup_file</a><br>
+                <a href="https://data.dws.informatik.uni-mannheim.de/structureddata/2022-12/quads/classspecific/GovernmentOrganization/GovernmentOrganization_domain_stats.csv">pld_stats_file</a>
+            </td>
+        </tr>
+        <tr>
+            <th><a href="http://schema.org/Hospital">Hospital</a></th>
+            <td> Quads: 23,904,433</br> URLs: 272,304</br> Hosts: 2,058</br></td>
+            <td>http://schema.org/PostalAddress (682,782)</br>http://schema.org/Hospital (511,631)</br>
+                http://schema.org/ListItem (364,906)</br>http://schema.org/Physician (271,490)</br>
+                http://schema.org/Review (263,414)</br></td>
+            <td>315.43 MB<br> (1)</td>
+            <td>
+                <a href="https://data.dws.informatik.uni-mannheim.de/structureddata/2022-12/quads/classspecific/Hospital">Hospital</a>
+                (<a href="https://data.dws.informatik.uni-mannheim.de/structureddata/2022-12/quads/classspecific/Hospital/Hospital_sample.txt">sample</a>)
+            </td>
+            <td>
+                <a href="https://data.dws.informatik.uni-mannheim.de/structureddata/2022-12/quads/classspecific/Hospital/Hospital_lookup.csv">lookup_file</a><br>
+                <a href="https://data.dws.informatik.uni-mannheim.de/structureddata/2022-12/quads/classspecific/Hospital/Hospital_domain_stats.csv">pld_stats_file</a>
+            </td>
+        </tr>
+        <tr>
+            <th><a href="http://schema.org/Hotel">Hotel</a></th>
+            <td> Quads: 323,859,754</br> URLs: 2,636,528</br> Hosts: 24,065</br></td>
+            <td>http://schema.org/Hotel (9,579,097)</br>http://schema.org/PostalAddress (8,664,346)</br>
+                http://schema.org/Rating (8,582,433)</br>http://schema.org/ImageObject (5,499,477)</br>
+                http://schema.org/ListItem (5,076,113)</br></td>
+            <td>4.56 GB<br> (4)</td>
+            <td><a href="https://data.dws.informatik.uni-mannheim.de/structureddata/2022-12/quads/classspecific/Hotel">Hotel</a>
+                (<a href="https://data.dws.informatik.uni-mannheim.de/structureddata/2022-12/quads/classspecific/Hotel/Hotel_sample.txt">sample</a>)
+            </td>
+            <td>
+                <a href="https://data.dws.informatik.uni-mannheim.de/structureddata/2022-12/quads/classspecific/Hotel/Hotel_lookup.csv">lookup_file</a><br>
+                <a href="https://data.dws.informatik.uni-mannheim.de/structureddata/2022-12/quads/classspecific/Hotel/Hotel_domain_stats.csv">pld_stats_file</a>
+            </td>
+        </tr>
+        <tr>
+            <th><a href="http://schema.org/JobPosting">JobPosting</a></th>
+            <td> Quads: 182,882,855</br> URLs: 4,126,373</br> Hosts: 50,466</br></td>
+            <td>http://schema.org/Place (5,538,410)</br>http://schema.org/PostalAddress (5,396,582)</br>
+                http://schema.org/Organization (5,085,787)</br>http://schema.org/JobPosting (4,977,840)</br>
+                http://schema.org/ListItem (2,628,233)</br></td>
+            <td>7.01 GB<br> (2)</td>
+            <td>
+                <a href="https://data.dws.informatik.uni-mannheim.de/structureddata/2022-12/quads/classspecific/JobPosting">JobPosting</a>
+                (<a href="https://data.dws.informatik.uni-mannheim.de/structureddata/2022-12/quads/classspecific/JobPosting/JobPosting_sample.txt">sample</a>)
+            </td>
+            <td>
+                <a href="https://data.dws.informatik.uni-mannheim.de/structureddata/2022-12/quads/classspecific/JobPosting/JobPosting_lookup.csv">lookup_file</a><br>
+                <a href="https://data.dws.informatik.uni-mannheim.de/structureddata/2022-12/quads/classspecific/JobPosting/JobPosting_domain_stats.csv">pld_stats_file</a>
+            </td>
+        </tr>
+        <tr>
+            <th><a href="http://schema.org/LakeBodyOfWater">LakeBodyOfWater</a></th>
+            <td> Quads: 54,795</br> URLs: 1,719</br> Hosts: 110</br></td>
+            <td>http://schema.org/LakeBodyOfWater (1,680)</br>http://schema.org/PropertyValue (1,396)</br>
+                http://schema.org/ImageObject (1,336)</br>http://schema.org/GeoCoordinates (1,243)</br>
+                http://schema.org/PostalAddress (820)</br></td>
+            <td>2.5 MB<br> (1)</td>
+            <td>
+                <a href="https://data.dws.informatik.uni-mannheim.de/structureddata/2022-12/quads/classspecific/LakeBodyOfWater">LakeBodyOfWater</a>
+                (<a href="https://data.dws.informatik.uni-mannheim.de/structureddata/2022-12/quads/classspecific/LakeBodyOfWater/LakeBodyOfWater_sample.txt">sample</a>)
+            </td>
+            <td>
+                <a href="https://data.dws.informatik.uni-mannheim.de/structureddata/2022-12/quads/classspecific/LakeBodyOfWater/LakeBodyOfWater_lookup.csv">lookup_file</a><br>
+                <a href="https://data.dws.informatik.uni-mannheim.de/structureddata/2022-12/quads/classspecific/LakeBodyOfWater/LakeBodyOfWater_domain_stats.csv">pld_stats_file</a>
+            </td>
+        </tr>
+        <tr>
+            <th><a href="http://schema.org/LandmarksOrHistoricalBuildings">LandmarksOrHistoricalBuildings</a></th>
+            <td> Quads: 1,985,725</br> URLs: 23,513</br> Hosts: 348</br></td>
+            <td>http://schema.org/LandmarksOrHistoricalBuildings (129,909)</br>http://schema.org/PostalAddress
+                (56,802)</br>http://schema.org/PropertyValue (34,550)</br>http://schema.org/ImageObject (31,991)</br>
+                http://schema.org/Organization (27,292)</br></td>
+            <td>32.47 MB<br> (1)</td>
+            <td>
+                <a href="https://data.dws.informatik.uni-mannheim.de/structureddata/2022-12/quads/classspecific/LandmarksOrHistoricalBuildings">LandmarksOrHistoricalBuildings</a>
+                (<a href="https://data.dws.informatik.uni-mannheim.de/structureddata/2022-12/quads/classspecific/LandmarksOrHistoricalBuildings/LandmarksOrHistoricalBuildings_sample.txt">sample</a>)
+            </td>
+            <td>
+                <a href="https://data.dws.informatik.uni-mannheim.de/structureddata/2022-12/quads/classspecific/LandmarksOrHistoricalBuildings/LandmarksOrHistoricalBuildings_lookup.csv">lookup_file</a><br>
+                <a href="https://data.dws.informatik.uni-mannheim.de/structureddata/2022-12/quads/classspecific/LandmarksOrHistoricalBuildings/LandmarksOrHistoricalBuildings_domain_stats.csv">pld_stats_file</a>
+            </td>
+        </tr>
+        <tr>
+            <th><a href="http://schema.org/Language">Language</a></th>
+            <td> Quads: 701,081,445</br> URLs: 5,783,390</br> Hosts: 10,513</br></td>
+            <td>http://schema.org/Person (30,919,803)</br>http://schema.org/Comment (24,954,078)</br>
+                http://schema.org/ListItem (12,274,809)</br>http://schema.org/Language (9,191,675)</br>
+                http://schema.org/InteractionCounter (8,765,796)</br></td>
+            <td>12.56 GB<br> (7)</td>
+            <td>
+                <a href="https://data.dws.informatik.uni-mannheim.de/structureddata/2022-12/quads/classspecific/Language">Language</a>
+                (<a href="https://data.dws.informatik.uni-mannheim.de/structureddata/2022-12/quads/classspecific/Language/Language_sample.txt">sample</a>)
+            </td>
+            <td>
+                <a href="https://data.dws.informatik.uni-mannheim.de/structureddata/2022-12/quads/classspecific/Language/Language_lookup.csv">lookup_file</a><br>
+                <a href="https://data.dws.informatik.uni-mannheim.de/structureddata/2022-12/quads/classspecific/Language/Language_domain_stats.csv">pld_stats_file</a>
+            </td>
+        </tr>
+        <tr>
+            <th><a href="http://schema.org/Library">Library</a></th>
+            <td> Quads: 6,597,774</br> URLs: 199,425</br> Hosts: 714</br></td>
+            <td>http://schema.org/Library (215,364)</br>http://schema.org/OpeningHoursSpecification (205,783)</br>
+                http://schema.org/PostalAddress (94,133)</br>http://schema.org/ListItem (78,297)</br>
+                http://schema.org/Place (62,714)</br></td>
+            <td>109.4 MB<br> (1)</td>
+            <td>
+                <a href="https://data.dws.informatik.uni-mannheim.de/structureddata/2022-12/quads/classspecific/Library">Library</a>
+                (<a href="https://data.dws.informatik.uni-mannheim.de/structureddata/2022-12/quads/classspecific/Library/Library_sample.txt">sample</a>)
+            </td>
+            <td>
+                <a href="https://data.dws.informatik.uni-mannheim.de/structureddata/2022-12/quads/classspecific/Library/Library_lookup.csv">lookup_file</a><br>
+                <a href="https://data.dws.informatik.uni-mannheim.de/structureddata/2022-12/quads/classspecific/Library/Library_domain_stats.csv">pld_stats_file</a>
+            </td>
+        </tr>
+        <tr>
+            <th><a href="http://schema.org/LocalBusiness">LocalBusiness</a></th>
+            <td> Quads: 2,671,216,988</br> URLs: 37,243,804</br> Hosts: 1,197,063</br></td>
+            <td>http://schema.org/ListItem (89,958,346)</br>http://schema.org/LocalBusiness (55,898,742)</br>
+                http://schema.org/PostalAddress (51,249,632)</br>http://schema.org/ImageObject (24,054,225)</br>
+                http://schema.org/OpeningHoursSpecification (19,182,321)</br></td>
+            <td>34.85 GB<br> (27)</td>
+            <td>
+                <a href="https://data.dws.informatik.uni-mannheim.de/structureddata/2022-12/quads/classspecific/LocalBusiness">LocalBusiness</a>
+                (<a href="https://data.dws.informatik.uni-mannheim.de/structureddata/2022-12/quads/classspecific/LocalBusiness/LocalBusiness_sample.txt">sample</a>)
+            </td>
+            <td>
+                <a href="https://data.dws.informatik.uni-mannheim.de/structureddata/2022-12/quads/classspecific/LocalBusiness/LocalBusiness_lookup.csv">lookup_file</a><br>
+                <a href="https://data.dws.informatik.uni-mannheim.de/structureddata/2022-12/quads/classspecific/LocalBusiness/LocalBusiness_domain_stats.csv">pld_stats_file</a>
+            </td>
+        </tr>
+        <tr>
+            <th><a href="http://schema.org/Mountain">Mountain</a></th>
+            <td> Quads: 300,982</br> URLs: 15,293</br> Hosts: 56</br></td>
+            <td>http://schema.org/propertyValue (23,340)</br>http://schema.org/Mountain (16,503)</br>
+                http://schema.org/GeoCoordinates (16,380)</br>http://schema.org/ImageObject (2,323)</br>
+                http://schema.org/Place (838)</br></td>
+            <td>5.63 MB<br> (1)</td>
+            <td>
+                <a href="https://data.dws.informatik.uni-mannheim.de/structureddata/2022-12/quads/classspecific/Mountain">Mountain</a>
+                (<a href="https://data.dws.informatik.uni-mannheim.de/structureddata/2022-12/quads/classspecific/Mountain/Mountain_sample.txt">sample</a>)
+            </td>
+            <td>
+                <a href="https://data.dws.informatik.uni-mannheim.de/structureddata/2022-12/quads/classspecific/Mountain/Mountain_lookup.csv">lookup_file</a><br>
+                <a href="https://data.dws.informatik.uni-mannheim.de/structureddata/2022-12/quads/classspecific/Mountain/Mountain_domain_stats.csv">pld_stats_file</a>
+            </td>
+        </tr>
+        <tr>
+            <th><a href="http://schema.org/Movie">Movie</a></th>
+            <td> Quads: 232,715,373</br> URLs: 2,265,947</br> Hosts: 7,801</br></td>
+            <td>http://schema.org/Person (10,501,940)</br>http://schema.org/Movie (6,832,078)</br>
+                https://schema.org/Person (3,423,482)</br>http://schema.org/ImageObject (2,789,665)</br>
+                http://schema.org/VideoObject (2,435,667)</br></td>
+            <td>3.39 GB<br> (3)</td>
+            <td><a href="https://data.dws.informatik.uni-mannheim.de/structureddata/2022-12/quads/classspecific/Movie">Movie</a>
+                (<a href="https://data.dws.informatik.uni-mannheim.de/structureddata/2022-12/quads/classspecific/Movie/Movie_sample.txt">sample</a>)
+            </td>
+            <td>
+                <a href="https://data.dws.informatik.uni-mannheim.de/structureddata/2022-12/quads/classspecific/Movie/Movie_lookup.csv">lookup_file</a><br>
+                <a href="https://data.dws.informatik.uni-mannheim.de/structureddata/2022-12/quads/classspecific/Movie/Movie_domain_stats.csv">pld_stats_file</a>
+            </td>
+        </tr>
+        <tr>
+            <th><a href="http://schema.org/Museum">Museum</a></th>
+            <td> Quads: 6,137,731</br> URLs: 102,146</br> Hosts: 610</br></td>
+            <td>http://schema.org/OpeningHoursSpecification (223,564)</br>http://schema.org/Museum (113,752)</br>
+                http://schema.org/PostalAddress (91,909)</br>http://schema.org/Event (68,844)</br>
+                http://schema.org/ListItem (62,544)</br></td>
+            <td>83.71 MB<br> (1)</td>
+            <td><a href="https://data.dws.informatik.uni-mannheim.de/structureddata/2022-12/quads/classspecific/Museum">Museum</a>
+                (<a href="https://data.dws.informatik.uni-mannheim.de/structureddata/2022-12/quads/classspecific/Museum/Museum_sample.txt">sample</a>)
+            </td>
+            <td>
+                <a href="https://data.dws.informatik.uni-mannheim.de/structureddata/2022-12/quads/classspecific/Museum/Museum_lookup.csv">lookup_file</a><br>
+                <a href="https://data.dws.informatik.uni-mannheim.de/structureddata/2022-12/quads/classspecific/Museum/Museum_domain_stats.csv">pld_stats_file</a>
+            </td>
+        </tr>
+        <tr>
+            <th><a href="http://schema.org/MusicAlbum">MusicAlbum</a></th>
+            <td> Quads: 116,521,141</br> URLs: 901,157</br> Hosts: 16,829</br></td>
+            <td>http://schema.org/MusicRecording (7,489,652)</br>http://schema.org/Country (6,478,141)</br>
+                http://schema.org/Offer (2,588,062)</br>http://schema.org/MusicAlbum (2,378,182)</br>
+                http://schema.org/AudioObject (2,209,240)</br></td>
+            <td>1.07 GB<br> (2)</td>
+            <td>
+                <a href="https://data.dws.informatik.uni-mannheim.de/structureddata/2022-12/quads/classspecific/MusicAlbum">MusicAlbum</a>
+                (<a href="https://data.dws.informatik.uni-mannheim.de/structureddata/2022-12/quads/classspecific/MusicAlbum/MusicAlbum_sample.txt">sample</a>)
+            </td>
+            <td>
+                <a href="https://data.dws.informatik.uni-mannheim.de/structureddata/2022-12/quads/classspecific/MusicAlbum/MusicAlbum_lookup.csv">lookup_file</a><br>
+                <a href="https://data.dws.informatik.uni-mannheim.de/structureddata/2022-12/quads/classspecific/MusicAlbum/MusicAlbum_domain_stats.csv">pld_stats_file</a>
+            </td>
+        </tr>
+        <tr>
+            <th><a href="http://schema.org/MusicRecording">MusicRecording</a></th>
+            <td> Quads: 194,556,455</br> URLs: 1,683,808</br> Hosts: 24,513</br></td>
+            <td>http://schema.org/Country (16,492,792)</br>http://schema.org/MusicRecording (13,576,880)</br>
+                http://schema.org/Offer (2,866,310)</br>http://schema.org/AudioObject (2,533,762)</br>
+                http://schema.org/MusicGroup (2,344,164)</br></td>
+            <td>1.8 GB<br> (2)</td>
+            <td>
+                <a href="https://data.dws.informatik.uni-mannheim.de/structureddata/2022-12/quads/classspecific/MusicRecording">MusicRecording</a>
+                (<a href="https://data.dws.informatik.uni-mannheim.de/structureddata/2022-12/quads/classspecific/MusicRecording/MusicRecording_sample.txt">sample</a>)
+            </td>
+            <td>
+                <a href="https://data.dws.informatik.uni-mannheim.de/structureddata/2022-12/quads/classspecific/MusicRecording/MusicRecording_lookup.csv">lookup_file</a><br>
+                <a href="https://data.dws.informatik.uni-mannheim.de/structureddata/2022-12/quads/classspecific/MusicRecording/MusicRecording_domain_stats.csv">pld_stats_file</a>
+            </td>
+        </tr>
+        <tr>
+            <th><a href="http://schema.org/Organization">Organization</a></th>
+            <td> Quads: 40,108,866,817</br> URLs: 637,002,088</br> Hosts: 5,915,483</br></td>
+            <td>http://schema.org/ListItem (1,085,683,835)</br>http://schema.org/ImageObject (933,908,146)</br>
+                http://schema.org/Organization (840,543,926)</br>http://schema.org/WebPage (429,047,446)</br>
+                http://schema.org/Person (408,926,073)</br></td>
+            <td>679.48 GB<br> (401)</td>
+            <td>
+                <a href="https://data.dws.informatik.uni-mannheim.de/structureddata/2022-12/quads/classspecific/Organization">Organization</a>
+                (<a href="https://data.dws.informatik.uni-mannheim.de/structureddata/2022-12/quads/classspecific/Organization/Organization_sample.txt">sample</a>)
+            </td>
+            <td>
+                <a href="https://data.dws.informatik.uni-mannheim.de/structureddata/2022-12/quads/classspecific/Organization/Organization_lookup.csv">lookup_file</a><br>
+                <a href="https://data.dws.informatik.uni-mannheim.de/structureddata/2022-12/quads/classspecific/Organization/Organization_domain_stats.csv">pld_stats_file</a>
+            </td>
+        </tr>
+        <tr>
+            <th><a href="http://schema.org/Painting">Painting</a></th>
+            <td> Quads: 15,219,466</br> URLs: 137,718</br> Hosts: 525</br></td>
+            <td>http://schema.org/Person (2,870,457)</br>http://schema.org/Painting (619,613)</br>
+                http://schema.org/Offer (398,543)</br>http://schema.org/ListItem (309,616)</br>
+                http://schema.org/Property (179,754)</br></td>
+            <td>136.25 MB<br> (1)</td>
+            <td>
+                <a href="https://data.dws.informatik.uni-mannheim.de/structureddata/2022-12/quads/classspecific/Painting">Painting</a>
+                (<a href="https://data.dws.informatik.uni-mannheim.de/structureddata/2022-12/quads/classspecific/Painting/Painting_sample.txt">sample</a>)
+            </td>
+            <td>
+                <a href="https://data.dws.informatik.uni-mannheim.de/structureddata/2022-12/quads/classspecific/Painting/Painting_lookup.csv">lookup_file</a><br>
+                <a href="https://data.dws.informatik.uni-mannheim.de/structureddata/2022-12/quads/classspecific/Painting/Painting_domain_stats.csv">pld_stats_file</a>
+            </td>
+        </tr>
+        <tr>
+            <th><a href="http://schema.org/Park">Park</a></th>
+            <td> Quads: 1,105,870</br> URLs: 13,473</br> Hosts: 280</br></td>
+            <td>http://schema.org/PostalAddress (31,540)</br>http://schema.org/OpeningHoursSpecification (29,531)</br>
+                http://schema.org/ListItem (16,167)</br>http://schema.org/Park (15,215)</br>
+                http://schema.org/GeoCoordinates (13,676)</br></td>
+            <td>16.83 MB<br> (1)</td>
+            <td><a href="https://data.dws.informatik.uni-mannheim.de/structureddata/2022-12/quads/classspecific/Park">Park</a>
+                (<a href="https://data.dws.informatik.uni-mannheim.de/structureddata/2022-12/quads/classspecific/Park/Park_sample.txt">sample</a>)
+            </td>
+            <td>
+                <a href="https://data.dws.informatik.uni-mannheim.de/structureddata/2022-12/quads/classspecific/Park/Park_lookup.csv">lookup_file</a><br>
+                <a href="https://data.dws.informatik.uni-mannheim.de/structureddata/2022-12/quads/classspecific/Park/Park_domain_stats.csv">pld_stats_file</a>
+            </td>
+        </tr>
+        <tr>
+            <th><a href="http://schema.org/Person">Person</a></th>
+            <td> Quads: 28,389,014,403</br> URLs: 396,876,413</br> Hosts: 4,342,475</br></td>
+            <td>http://schema.org/ImageObject (707,265,548)</br>http://schema.org/Person (685,309,482)</br>
+                http://schema.org/ListItem (587,832,845)</br>http://schema.org/WebPage (356,489,547)</br>
+                http://schema.org/Organization (326,175,879)</br></td>
+            <td>559.6 GB<br> (284)</td>
+            <td><a href="https://data.dws.informatik.uni-mannheim.de/structureddata/2022-12/quads/classspecific/Person">Person</a>
+                (<a href="https://data.dws.informatik.uni-mannheim.de/structureddata/2022-12/quads/classspecific/Person/Person_sample.txt">sample</a>)
+            </td>
+            <td>
+                <a href="https://data.dws.informatik.uni-mannheim.de/structureddata/2022-12/quads/classspecific/Person/Person_lookup.csv">lookup_file</a><br>
+                <a href="https://data.dws.informatik.uni-mannheim.de/structureddata/2022-12/quads/classspecific/Person/Person_domain_stats.csv">pld_stats_file</a>
+            </td>
+        </tr>
+        <tr>
+            <th><a href="http://schema.org/Place">Place</a></th>
+            <td> Quads: 3,732,184,081</br> URLs: 32,121,226</br> Hosts: 430,758</br></td>
+            <td>http://schema.org/ListItem (94,624,361)</br>http://schema.org/Place (93,816,638)</br>
+                http://schema.org/PostalAddress (78,329,151)</br>http://schema.org/Event (52,594,074)</br>
+                http://schema.org/Person (38,433,126)</br></td>
+            <td>51.62 GB<br> (38)</td>
+            <td><a href="https://data.dws.informatik.uni-mannheim.de/structureddata/2022-12/quads/classspecific/Place">Place</a>
+                (<a href="https://data.dws.informatik.uni-mannheim.de/structureddata/2022-12/quads/classspecific/Place/Place_sample.txt">sample</a>)
+            </td>
+            <td>
+                <a href="https://data.dws.informatik.uni-mannheim.de/structureddata/2022-12/quads/classspecific/Place/Place_lookup.csv">lookup_file</a><br>
+                <a href="https://data.dws.informatik.uni-mannheim.de/structureddata/2022-12/quads/classspecific/Place/Place_domain_stats.csv">pld_stats_file</a>
+            </td>
+        </tr>
+        <tr>
+            <th><a href="http://schema.org/Product">Product</a></th>
+            <td> Quads: 17,883,521,101</br> URLs: 256,873,876</br> Hosts: 2,551,754</br></td>
+            <td>http://schema.org/Offer (568,611,575)</br>http://schema.org/Product (502,424,891)</br>
+                http://schema.org/ListItem (500,361,108)</br>http://schema.org/Organization (218,515,422)</br>
+                http://schema.org/ImageObject (142,962,903)</br></td>
+            <td>257.16 GB<br> (179)</td>
+            <td>
+                <a href="https://data.dws.informatik.uni-mannheim.de/structureddata/2022-12/quads/classspecific/Product">Product</a>
+                (<a href="https://data.dws.informatik.uni-mannheim.de/structureddata/2022-12/quads/classspecific/Product/Product_sample.txt">sample</a>)
+            </td>
+            <td>
+                <a href="https://data.dws.informatik.uni-mannheim.de/structureddata/2022-12/quads/classspecific/Product/Product_lookup.csv">lookup_file</a><br>
+                <a href="https://data.dws.informatik.uni-mannheim.de/structureddata/2022-12/quads/classspecific/Product/Product_domain_stats.csv">pld_stats_file</a>
+            </td>
+        </tr>
+        <tr>
+            <th><a href="http://schema.org/RadioStation">RadioStation</a></th>
+            <td> Quads: 19,207,934</br> URLs: 393,145</br> Hosts: 967</br></td>
+            <td>http://schema.org/ListItem (847,579)</br>http://schema.org/RadioStation (449,935)</br>
+                http://schema.org/ImageObject (308,248)</br>http://schema.org/NewsArticle (264,461)</br>
+                http://schema.org/BreadcrumbList (199,135)</br></td>
+            <td>301.1 MB<br> (1)</td>
+            <td>
+                <a href="https://data.dws.informatik.uni-mannheim.de/structureddata/2022-12/quads/classspecific/RadioStation">RadioStation</a>
+                (<a href="https://data.dws.informatik.uni-mannheim.de/structureddata/2022-12/quads/classspecific/RadioStation/RadioStation_sample.txt">sample</a>)
+            </td>
+            <td>
+                <a href="https://data.dws.informatik.uni-mannheim.de/structureddata/2022-12/quads/classspecific/RadioStation/RadioStation_lookup.csv">lookup_file</a><br>
+                <a href="https://data.dws.informatik.uni-mannheim.de/structureddata/2022-12/quads/classspecific/RadioStation/RadioStation_domain_stats.csv">pld_stats_file</a>
+            </td>
+        </tr>
+        <tr>
+            <th><a href="http://schema.org/Recipe">Recipe</a></th>
+            <td> Quads: 449,214,017</br> URLs: 4,090,428</br> Hosts: 40,702</br></td>
+            <td>http://schema.org/HowToStep (13,702,473)</br>http://schema.org/ImageObject (7,240,806)</br>
+                http://schema.org/Person (6,709,755)</br>http://schema.org/ListItem (6,635,160)</br>
+                http://schema.org/Recipe (5,290,014)</br></td>
+            <td>7.33 GB<br> (5)</td>
+            <td><a href="https://data.dws.informatik.uni-mannheim.de/structureddata/2022-12/quads/classspecific/Recipe">Recipe</a>
+                (<a href="https://data.dws.informatik.uni-mannheim.de/structureddata/2022-12/quads/classspecific/Recipe/Recipe_sample.txt">sample</a>)
+            </td>
+            <td>
+                <a href="https://data.dws.informatik.uni-mannheim.de/structureddata/2022-12/quads/classspecific/Recipe/Recipe_lookup.csv">lookup_file</a><br>
+                <a href="https://data.dws.informatik.uni-mannheim.de/structureddata/2022-12/quads/classspecific/Recipe/Recipe_domain_stats.csv">pld_stats_file</a>
+            </td>
+        </tr>
+        <tr>
+            <th><a href="http://schema.org/Restaurant">Restaurant</a></th>
+            <td> Quads: 216,942,320</br> URLs: 1,599,457</br> Hosts: 63,121</br></td>
+            <td>http://schema.org/Offer (6,963,370)</br>http://schema.org/MenuItem (6,426,675)</br>
+                http://schema.org/Restaurant (4,675,743)</br>http://schema.org/ListItem (3,907,235)</br>
+                http://schema.org/PostalAddress (3,561,463)</br></td>
+            <td>2.35 GB<br> (3)</td>
+            <td>
+                <a href="https://data.dws.informatik.uni-mannheim.de/structureddata/2022-12/quads/classspecific/Restaurant">Restaurant</a>
+                (<a href="https://data.dws.informatik.uni-mannheim.de/structureddata/2022-12/quads/classspecific/Restaurant/Restaurant_sample.txt">sample</a>)
+            </td>
+            <td>
+                <a href="https://data.dws.informatik.uni-mannheim.de/structureddata/2022-12/quads/classspecific/Restaurant/Restaurant_lookup.csv">lookup_file</a><br>
+                <a href="https://data.dws.informatik.uni-mannheim.de/structureddata/2022-12/quads/classspecific/Restaurant/Restaurant_domain_stats.csv">pld_stats_file</a>
+            </td>
+        </tr>
+        <tr>
+            <th><a href="http://schema.org/RiverBodyOfWater">RiverBodyOfWater</a></th>
+            <td> Quads: 167,629</br> URLs: 3,221</br> Hosts: 19</br></td>
+            <td>http://schema.org/ImageObject (6,369)</br>http://schema.org/ListItem (6,367)</br>
+                http://schema.org/Organization (4,276)</br>http://schema.org/RiverBodyOfWater (3,239)</br>
+                http://schema.org/GeoCoordinates (2,726)</br></td>
+            <td>4.06 MB<br> (1)</td>
+            <td>
+                <a href="https://data.dws.informatik.uni-mannheim.de/structureddata/2022-12/quads/classspecific/RiverBodyOfWater">RiverBodyOfWater</a>
+                (<a href="https://data.dws.informatik.uni-mannheim.de/structureddata/2022-12/quads/classspecific/RiverBodyOfWater/RiverBodyOfWater_sample.txt">sample</a>)
+            </td>
+            <td>
+                <a href="https://data.dws.informatik.uni-mannheim.de/structureddata/2022-12/quads/classspecific/RiverBodyOfWater/RiverBodyOfWater_lookup.csv">lookup_file</a><br>
+                <a href="https://data.dws.informatik.uni-mannheim.de/structureddata/2022-12/quads/classspecific/RiverBodyOfWater/RiverBodyOfWater_domain_stats.csv">pld_stats_file</a>
+            </td>
+        </tr>
+        <tr>
+            <th><a href="http://schema.org/School">School</a></th>
+            <td> Quads: 12,547,288</br> URLs: 235,736</br> Hosts: 1,699</br></td>
+            <td>http://schema.org/School (395,869)</br>http://schema.org/ListItem (339,734)</br>
+                http://schema.org/PostalAddress (271,185)</br>http://schema.org/ImageObject (140,270)</br>
+                http://schema.org/WebPage (122,865)</br></td>
+            <td>182.74 MB<br> (1)</td>
+            <td><a href="https://data.dws.informatik.uni-mannheim.de/structureddata/2022-12/quads/classspecific/School">School</a>
+                (<a href="https://data.dws.informatik.uni-mannheim.de/structureddata/2022-12/quads/classspecific/School/School_sample.txt">sample</a>)
+            </td>
+            <td>
+                <a href="https://data.dws.informatik.uni-mannheim.de/structureddata/2022-12/quads/classspecific/School/School_lookup.csv">lookup_file</a><br>
+                <a href="https://data.dws.informatik.uni-mannheim.de/structureddata/2022-12/quads/classspecific/School/School_domain_stats.csv">pld_stats_file</a>
+            </td>
+        </tr>
+        <tr>
+            <th><a href="http://schema.org/ShoppingCenter">ShoppingCenter</a></th>
+            <td> Quads: 10,680,910</br> URLs: 136,690</br> Hosts: 1,199</br></td>
+            <td>http://schema.org/PostalAddress (207,036)</br>http://schema.org/ShoppingCenter (202,312)</br>
+                http://schema.org/Offer (173,447)</br>http://schema.org/Organization (165,687)</br>
+                http://schema.org/ListItem (148,766)</br></td>
+            <td>135.23 MB<br> (1)</td>
+            <td>
+                <a href="https://data.dws.informatik.uni-mannheim.de/structureddata/2022-12/quads/classspecific/ShoppingCenter">ShoppingCenter</a>
+                (<a href="https://data.dws.informatik.uni-mannheim.de/structureddata/2022-12/quads/classspecific/ShoppingCenter/ShoppingCenter_sample.txt">sample</a>)
+            </td>
+            <td>
+                <a href="https://data.dws.informatik.uni-mannheim.de/structureddata/2022-12/quads/classspecific/ShoppingCenter/ShoppingCenter_lookup.csv">lookup_file</a><br>
+                <a href="https://data.dws.informatik.uni-mannheim.de/structureddata/2022-12/quads/classspecific/ShoppingCenter/ShoppingCenter_domain_stats.csv">pld_stats_file</a>
+            </td>
+        </tr>
+        <tr>
+            <th><a href="http://schema.org/SkiResort">SkiResort</a></th>
+            <td> Quads: 1,475,134</br> URLs: 34,829</br> Hosts: 250</br></td>
+            <td>http://schema.org/ListItem (50,178)</br>http://schema.org/SkiResort (39,260)</br>
+                http://schema.org/PostalAddress (28,966)</br>http://schema.org/Person (23,906)</br>
+                http://schema.org/Review (23,384)</br></td>
+            <td>26.25 MB<br> (1)</td>
+            <td>
+                <a href="https://data.dws.informatik.uni-mannheim.de/structureddata/2022-12/quads/classspecific/SkiResort">SkiResort</a>
+                (<a href="https://data.dws.informatik.uni-mannheim.de/structureddata/2022-12/quads/classspecific/SkiResort/SkiResort_sample.txt">sample</a>)
+            </td>
+            <td>
+                <a href="https://data.dws.informatik.uni-mannheim.de/structureddata/2022-12/quads/classspecific/SkiResort/SkiResort_lookup.csv">lookup_file</a><br>
+                <a href="https://data.dws.informatik.uni-mannheim.de/structureddata/2022-12/quads/classspecific/SkiResort/SkiResort_domain_stats.csv">pld_stats_file</a>
+            </td>
+        </tr>
+        <tr>
+            <th><a href="http://schema.org/SportsEvent">SportsEvent</a></th>
+            <td> Quads: 140,098,380</br> URLs: 905,879</br> Hosts: 6,743</br></td>
+            <td>http://schema.org/SportsEvent (6,683,759)</br>http://schema.org/Place (6,215,841)</br>
+                http://schema.org/SportsTeam (5,822,261)</br>http://schema.org/PostalAddress (4,944,824)</br>
+                http://schema.org/Organization (1,993,490)</br></td>
+            <td>1.18 GB<br> (2)</td>
+            <td>
+                <a href="https://data.dws.informatik.uni-mannheim.de/structureddata/2022-12/quads/classspecific/SportsEvent">SportsEvent</a>
+                (<a href="https://data.dws.informatik.uni-mannheim.de/structureddata/2022-12/quads/classspecific/SportsEvent/SportsEvent_sample.txt">sample</a>)
+            </td>
+            <td>
+                <a href="https://data.dws.informatik.uni-mannheim.de/structureddata/2022-12/quads/classspecific/SportsEvent/SportsEvent_lookup.csv">lookup_file</a><br>
+                <a href="https://data.dws.informatik.uni-mannheim.de/structureddata/2022-12/quads/classspecific/SportsEvent/SportsEvent_domain_stats.csv">pld_stats_file</a>
+            </td>
+        </tr>
+        <tr>
+            <th><a href="http://schema.org/SportsTeam">SportsTeam</a></th>
+            <td> Quads: 99,150,611</br> URLs: 734,718</br> Hosts: 3,818</br></td>
+            <td>http://schema.org/SportsTeam (6,879,209)</br>http://schema.org/SportsEvent (2,591,617)</br>
+                http://schema.org/Place (2,420,968)</br>http://schema.org/Organization (1,837,178)</br>
+                http://schema.org/PostalAddress (1,788,906)</br></td>
+            <td>876.31 MB<br> (1)</td>
+            <td>
+                <a href="https://data.dws.informatik.uni-mannheim.de/structureddata/2022-12/quads/classspecific/SportsTeam">SportsTeam</a>
+                (<a href="https://data.dws.informatik.uni-mannheim.de/structureddata/2022-12/quads/classspecific/SportsTeam/SportsTeam_sample.txt">sample</a>)
+            </td>
+            <td>
+                <a href="https://data.dws.informatik.uni-mannheim.de/structureddata/2022-12/quads/classspecific/SportsTeam/SportsTeam_lookup.csv">lookup_file</a><br>
+                <a href="https://data.dws.informatik.uni-mannheim.de/structureddata/2022-12/quads/classspecific/SportsTeam/SportsTeam_domain_stats.csv">pld_stats_file</a>
+            </td>
+        </tr>
+        <tr>
+            <th><a href="http://schema.org/StadiumOrArena">StadiumOrArena</a></th>
+            <td> Quads: 27,517,383</br> URLs: 78,382</br> Hosts: 253</br></td>
+            <td>http://schema.org/Organization (1,118,034)</br>http://schema.org/SportsTeam (997,719)</br>
+                http://schema.org/ImageObject (848,949)</br>http://schema.org/BlogPosting (417,543)</br>
+                http://schema.org/SportsEvent (397,598)</br></td>
+            <td>207.27 MB<br> (1)</td>
+            <td>
+                <a href="https://data.dws.informatik.uni-mannheim.de/structureddata/2022-12/quads/classspecific/StadiumOrArena">StadiumOrArena</a>
+                (<a href="https://data.dws.informatik.uni-mannheim.de/structureddata/2022-12/quads/classspecific/StadiumOrArena/StadiumOrArena_sample.txt">sample</a>)
+            </td>
+            <td>
+                <a href="https://data.dws.informatik.uni-mannheim.de/structureddata/2022-12/quads/classspecific/StadiumOrArena/StadiumOrArena_lookup.csv">lookup_file</a><br>
+                <a href="https://data.dws.informatik.uni-mannheim.de/structureddata/2022-12/quads/classspecific/StadiumOrArena/StadiumOrArena_domain_stats.csv">pld_stats_file</a>
+            </td>
+        </tr>
+        <tr>
+            <th><a href="http://schema.org/TelevisionStation">TelevisionStation</a></th>
+            <td> Quads: 1,637,886</br> URLs: 20,631</br> Hosts: 91</br></td>
+            <td>http://schema.org/ListItem (51,424)</br>http://schema.org/ImageObject (31,052)</br>
+                http://schema.org/TelevisionStation (25,578)</br>http://schema.org/Organization (23,518)</br>
+                http://schema.org/PostalAddress (22,709)</br></td>
+            <td>24.68 MB<br> (1)</td>
+            <td>
+                <a href="https://data.dws.informatik.uni-mannheim.de/structureddata/2022-12/quads/classspecific/TelevisionStation">TelevisionStation</a>
+                (<a href="https://data.dws.informatik.uni-mannheim.de/structureddata/2022-12/quads/classspecific/TelevisionStation/TelevisionStation_sample.txt">sample</a>)
+            </td>
+            <td>
+                <a href="https://data.dws.informatik.uni-mannheim.de/structureddata/2022-12/quads/classspecific/TelevisionStation/TelevisionStation_lookup.csv">lookup_file</a><br>
+                <a href="https://data.dws.informatik.uni-mannheim.de/structureddata/2022-12/quads/classspecific/TelevisionStation/TelevisionStation_domain_stats.csv">pld_stats_file</a>
+            </td>
+        </tr>
+        <tr>
+            <th><a href="http://schema.org/TVEpisode">TVEpisode</a></th>
+            <td> Quads: 68,894,417</br> URLs: 394,881</br> Hosts: 1,204</br></td>
+            <td>http://schema.org/Country (5,010,019)</br>https://schema.org/TVEpisode (3,390,748)</br>
+                http://schema.org/TVEpisode (1,626,080)</br>http://schema.org/Person (866,730)</br>
+                http://schema.org/ListItem (408,453)</br></td>
+            <td>703.18 MB<br> (1)</td>
+            <td>
+                <a href="https://data.dws.informatik.uni-mannheim.de/structureddata/2022-12/quads/classspecific/TVEpisode">TVEpisode</a>
+                (<a href="https://data.dws.informatik.uni-mannheim.de/structureddata/2022-12/quads/classspecific/TVEpisode/TVEpisode_sample.txt">sample</a>)
+            </td>
+            <td>
+                <a href="https://data.dws.informatik.uni-mannheim.de/structureddata/2022-12/quads/classspecific/TVEpisode/TVEpisode_lookup.csv">lookup_file</a><br>
+                <a href="https://data.dws.informatik.uni-mannheim.de/structureddata/2022-12/quads/classspecific/TVEpisode/TVEpisode_domain_stats.csv">pld_stats_file</a>
+            </td>
+        </tr>
+
+    </table>
+    </p>
+
+
+</div>
+
+</br>
+
+<p>
+    In case you are interested in a particular class or set of classes which is not listed above, please get in contact
+    with the WebDataCommons team via <a href="http://groups.google.com/group/web-data-commons">Mailing List</a> or our
+    <a href="https://groups.google.com/forum/?fromgroups#!forum/web-data-commons">Google Group</a>.
+</p>
+
+<h2>Conversion to Other Formats</h2>
+<p>
+    We provide the extracted data for download using a variation of the <a
+        href="http://www.w3.org/TR/n-quads/">N-Quads</a> format. For users who prefer other formats, we provide code
+    for converting the download files into CSV and JSON formats, which are supported by
+    a wide range of spreadsheet applications, relational databases and data mining frameworks like the python data
+    analysis library pandas. Please find further details on how to convert the download files to other formats on the <a
+        href="../../?#toc17">main page</a>.
+
+</p>
+
+<h2>Get the Code</h2>
+<p>
+    The jupyter notebooks used to create the schema.org subsets from the MD and JSON-LD corpus can be checked out from
+    our <a href="https://github.com/wbsg-uni-mannheim/SubsetCreatorJupyterNBs.git"> Git repository</a>.
+</p>
+
+
+<p>
+    The extraction of the December 2022 was done with <a
+        href="https://github.com/Web-based-Systems-Group/WDCFramework">version 1.5 of the
+    extractor</a>. For more information about the framework and a detailed description how to run a own extraction visit
+    the <a href="http://webdatacommons.org/framework">framework page</a>.
+</p>
+
+<h2>Get Support</h2>
+<p></p>
+
+<p>Please send questions and feedback to the <a href="http://groups.google.com/group/web-data-commons">Web Data Commons
+    mailing list</a> or post them in our <a href="https://groups.google.com/forum/?fromgroups#!forum/web-data-commons">Web
+    Data Commons Google Group</a>.</p>
+</div>
+
+<script type="text/javascript">
+    $('#toc').toc({
+        'selectors': 'h2', //elements to use as headings
+        'container': '#toccontent', //element to find all selectors in
+        'smoothScrolling': true, //enable or disable smooth scrolling on click
+        'prefix': 'toc', //prefix for anchor tags and class names
+        'highlightOnScroll': true, //add class to heading that is currently in focus
+        'highlightOffset': 100, //offset to trigger the next headline
+        'anchorName': function (i, heading, prefix) { //custom function for anchor name
+            return prefix + i;
+        }
+    });
+
+</script>
+
+</body>
+</html>
