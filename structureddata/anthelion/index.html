@@ -107,7 +107,7 @@ representing the existence of at least one parent or sibling labeled with the ta
 A bandit-based selection approach estimates the relevance of a group of items for a given target, and performs this selection based on the expected gain (or relevance) of the groups.
 The bandit operates as follows: at each round <i><b>t</b></i> we have a set of actions <i><b>A</b></i> (or <i>arms</i>), and we choose one of them <i><b>a(t)</i></b> from <i><b>A</b></i>; then, we observe a reward <i><b>r(a,t)</i></b>, and the goal is to find a policy for selecting actions such as the cumulative reward over time is maximized. The main idea is that the algorithm can improve its arm-selection strategy over time with every new observation. It is important to remark that the algorithm receives no feedback for unchosen arms.
 <br>
-An ideal bandit would like to maximize the expected reward. If we just want to maximize the immediate reward (exploitation) we need to choose an action where calculated possible reward is largest. However, in an exploration/exploitation setting we want to randomly select an action <i><b>a</b></i> according to its probability of being Bayes-optimal. (For more detailed information have a look at Section 3.2 within the <a href="https://www.wim.uni-mannheim.de/fileadmin/lehrstuehle/ki/pub/Meusel-etal-FocusedCrawlingForStructuredData-CIKM14.pdf">paper</a>).
+An ideal bandit would like to maximize the expected reward. If we just want to maximize the immediate reward (exploitation) we need to choose an action where calculated possible reward is largest. However, in an exploration/exploitation setting we want to randomly select an action <i><b>a</b></i> according to its probability of being Bayes-optimal. (For more detailed information have a look at Section 3.2 within the <a href="https://www.uni-mannheim.de/media/Einrichtungen/dws/Files_Research/Web-based_Systems/pub/Meusel-etal-FocusedCrawlingForStructuredData-CIKM14.pdf">paper</a>).
 <br>
 In the case of our crawler, we will use our bandit-based approach to make a first selection of the host to be crawled. This is motivated by the observation that the decision to use structured data markup is performed at a host-level in most cases. Informally, we represent each host with a bandit that represents the value of all discovered pages belonging to this host. The available functions to calculate the score for a host and by this the estimated relevance for a target are diverse and described next. It is important to remark that selecting an arm (action) in this context would mean to select the host, which at a given point in time <i><b>t</b></i> has the highest expected value to include pages which are relevant for our target. Once we have selected the host, we follow by selecting a page from that host using the online classifier described above.
 <br>
@@ -125,7 +125,7 @@ We have defined several scoring functions to estimate the expected gain of each 
 <h2 id="arch">2. System Architecture</h2>
 <p>
 We implemented our system as module to replace the selection strategy of an existing crawler. 
-The architecture is described in detail within section 4.1 within the <a href="https://www.wim.uni-mannheim.de/fileadmin/lehrstuehle/ki/pub/Meusel-etal-FocusedCrawlingForStructuredData-CIKM14.pdf">paper</a> presented at CIKM 2014. 
+The architecture is described in detail within section 4.1 within the <a href="https://www.uni-mannheim.de/media/Einrichtungen/dws/Files_Research/Web-based_Systems/pub/Meusel-etal-FocusedCrawlingForStructuredData-CIKM14.pdf">paper</a> presented at CIKM 2014.
 <br>
 The following diagram illustrates the process flow of the system:
 <br>
@@ -144,7 +144,7 @@ In addition, the label of the crawled pages is returned as feedback to classifie
 </p>
 <h2 id="code">3. Code and Data</h2>
 <p>
-For the experiments presented in our work <a href="https://www.wim.uni-mannheim.de/fileadmin/lehrstuehle/ki/pub/Meusel-etal-FocusedCrawlingForStructuredData-CIKM14.pdf">Focused Crawling for Structured Data</a> used the 2012 corpus of the Common Crawl foundation. For our experiments we crawled (within the Common Crawl Corpus) over 5 million pages, starting from seeds from <a href="http://www.dmoz.org/">the Open Directory Project</a>. The data files can be found <a href="https://data.dws.informatik.uni-mannheim.de/structureddata/anthelion/data/">here</a>. 
+For the experiments presented in our work <a href="https://www.uni-mannheim.de/media/Einrichtungen/dws/Files_Research/Web-based_Systems/pub/Meusel-etal-FocusedCrawlingForStructuredData-CIKM14.pdf">Focused Crawling for Structured Data</a> used the 2012 corpus of the Common Crawl foundation. For our experiments we crawled (within the Common Crawl Corpus) over 5 million pages, starting from seeds from <a href="http://www.dmoz.org/">the Open Directory Project</a>. The data files can be found <a href="https://data.dws.informatik.uni-mannheim.de/structureddata/anthelion/data/">here</a>.
 The code which was used to perform the experiments, as well as a ready-to-run Apache Nutch plugin is provided within the open source project released in <a href="https://github.com/yahoo/anthelion">github</a> under Apache License 2.0. 
 </p>
 <!--
@@ -153,7 +153,7 @@ The code which was used to perform the experiments, as well as a ready-to-run Ap
 <h2 id="refe">4. References</h2>
 <p>
 <ul>
-<li>Robert Meusel, Peter Mika, Roi Blanco: <a href="https://www.wim.uni-mannheim.de/fileadmin/lehrstuehle/ki/pub/Meusel-etal-FocusedCrawlingForStructuredData-CIKM14.pdf">Focused Crawling for Structured Data</a>. in the proceedings of the 23th ACM International Conference on Information and Knowledge Management (CIKM'14)</li>
+<li>Robert Meusel, Peter Mika, Roi Blanco: <a href="https://www.uni-mannheim.de/media/Einrichtungen/dws/Files_Research/Web-based_Systems/pub/Meusel-etal-FocusedCrawlingForStructuredData-CIKM14.pdf">Focused Crawling for Structured Data</a>. in the proceedings of the 23th ACM International Conference on Information and Knowledge Management (CIKM'14)</li>
 </ul>
 </p>
 
