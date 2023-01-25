@@ -110,8 +110,7 @@
 	<div id="content">
 		<p>
 			This page offers the WDC Products benchmark for download. WDC Products provides for evaluating entity
-			matching systems along combinations of three dimensions. The three dimensions are (i) development set size
-			(ii) amount of corner-cases and (iii) generalization to unseen entities.
+			matching systems along combinations of three dimensions. The three dimensions are (i) amount of corner-cases, (ii) amount of unseen entities in the test set, and (iii) development set size.
 			Beside of a pair-wise formulation, WDC Products also offers a multi-class formulation of the benchmark tasks
 			allowing for direct comparison of the two alternatives. WDC Products contains 11715 product offers
 			describing in total
@@ -170,7 +169,7 @@
 			first benchmark that employs non-generated real-world data to assess the performance of matching systems
 			along
 			three dimensions:
-			(i) amount of unseen entities in the test set, (ii) amount of corner-cases, and (iii) development set size.
+			(i) amount of corner-cases, (ii) amount of unseen entities in the test set, and (iii) development set size.
 			For this, the benchmark
 			provides nine training, nine validation, and nine test sets which
 			can be combined into <b>27 variants of the benchmark</b>. The range of
@@ -211,214 +210,42 @@
 		<span id="toc2"></span>
 		<h2>2 Benchmark Creation</h2>
 
-		<p>The WDC Products benchmark uses product offers from the
-			<a href="http://webdatacommons.org/largescaleproductcorpus/v2020/index.html"> Product Data Corpus V2020</a>
-			(PDC2020). The PDC2020 corpus
-			consists of ~98 million product offers originating from 603,000 websites. These offers all contain some form
-			of product identifier which
-			allows to group them into ~7.1 million clusters having a size of
-			at least two offers.
-		</p>
+        <p>The WDC Products benchmark was created using a pipeline consisting of the following six steps: (i) product
+                       offer extraction from the Common Crawl, (ii) cleansing the product clusters, (iii) grouping similar
+                       products, (iv) product selection, (v) splitting, and (vi) pair-generation. This section provides an overview
+                       of the six steps. Detailed explanations of every step can be found in the corresponding <a
+                               href="https://arxiv.org/abs/2301.09521">paper</a></p>
 
-		<h3>2.1 Cleansing the Product Clusters</h3>
-		<p>
-			In order to increase the quality of the product clusters, we apply some further cleansing steps to the
-			PDC2020:
+               <p>The first step of the pipeline is the extraction of large amounts of product offers from the <a
+                               href="https://commoncrawl.org">Common Crawl</a> using schema.org annotations. Some product offers
+                       contain product identifiers like MPNs and GTINs which allow us to group offers into clusters containing
+                       offers for the same product. In the second step, we apply several cleansing heuristics to prepare the data
+                       for the benchmark. The resulting corpus is the basis of the benchmark and is also available for download
+                       below.</p>
 
-		<ul>
-			<li><b>Language Identification:</b>
-				PDC2020 is a multi-lingual corpus with product offers originating from all across the Web and thus also
-				includes a lot of non-English product offers.
-				As we want WDC Products to be an English benchmark, we apply some steps to filter out non-English
-				offers. In its original form PDC2020 contains more than 98M
-				offers and over 7M product clusters with size of at least two. In a first step, we apply the
-				<a href="https://fasttext.cc/docs/en/language-identification.html">fastText language identification
-					model</a> to each row in PDC2020, more specifically to the concatenation of the attributes
-				<i>title</i> and <i>description</i>. If a product offer has a longer textual description this should be
-				reliably identifiable as English or non-English
-				for the algorithm. For any offers without description the language identification has to rely on
-				non-English words in the product titles alone. After applying
-				the fastText model, we keep all rows where the classifier confidence is highest for the English
-				language. In a second step, we apply a regular expression to
-				identify non-Latin characters in the remaining product offers and keep only those containing less than
-				four non-Latin characters. We choose to keep these as
-				sometimes product descriptions contain non-Latin characters as part of a model name or branding of the
-				manufacturer. Any product offers with more than four
-				non-Latin characters we assume to be non-English and remove them.
-			</li>
-			<li><b>Deduplication and Removal of Short Offers:</b>
-				In the next step, we concatenate the attributes <i>title</i>, <i>description</i> and <i>brand</i> and
-				drop any duplicate rows on
-				this combined attribute, keeping only the first occurrence. Finally, we remove all product offers where
-				the title attribute contains less than
-				five tokens, as we expect offers with such short titles to be unsuited due to being very sparsely
-				described which results in unsolvable ambiguity
-				when trying to match similarly sparse but different products.
-			</li>
-			<li><b>Cluster-based Cleansing:</b>
-				In the final step, we further aim to eliminate any remaining noisy products in the product clusters. For
-				this purpose,
-				we employ a heuristic based on simple word occurrence among offers inside a cluster. More specifically,
-				we scan each clusters offers
-				and keep track of general <i>title</i> length while building a dictionary of word counts across offers'
-				<i>titles</i>. We expect any offer
-				containing very unique words compared to all others in the cluster to be noisy non-matching product
-				offers and subsequently remove them from the
-				cluster and corpus. First, we count the overlap of a specific products <i>title</i> tokens with the rest
-				of the clusters offers. If a token is contained
-				in at least one third of offers, we count it as part of the main product this cluster should contain.
-				One third is a relaxed threshold but in order to account
-				for the heterogeneity in product titles from different origins the threshold must not be chosen too
-				high. Furthermore, it is very likely that a product not
-				belonging to the cluster will match in less than one third of tokens as its surface form will be
-				fundamentally different in most cases. Finally, we account
-				for average value length by removing a product offer only if the count of overlapping tokens is less or
-				equal to one quarter of the average title length.
-			</li>
-		</ul>
-		</p>
-		<h3>2.2 Product Selection and Benchmark Building</h3>
-		<p>
-			For the creation of WDC Products, we select multiple sets of 500
-			products from the cleansed PDC2020 corpus along three dimensions
-			that characterize the final benchmark. The three dimensions are:
-			(i) amount of corner-cases, (ii) amount of unseen products and
-			(iii) development set size. The amount of corner-cases determines
-			the percentage of the 500 products which have at least 4 highly
-			similar products in the set of 500. We vary this dimension in 3
-			steps, 80%, 50% and 20%. The amount of unseen products is only
-			relevant for test splits and determines the percentage of products
-			that are represented in the training and validation sets. We vary
-			this dimension from 0% unseen over 50% to 100% unseen. The third
-			dimension varies the amount of available development data in sizes
-			small, medium and large.
-		</p>
+               <p>In the third step, we group similar product clusters together in order to facilitate the later discovery of
+                       corner-cases. Additionally, this grouping allows us to remove some unwanted groups like adult products. In
+                       the fourth step, we select several sets of 500 product clusters from the previous grouping to mix and merge
+                       for materializing the two dimensions <i>amount of corner-cases</i> and <i>unseen products</i>. For this
+                       purpose, we iterate over the groups and randomly select one seed product cluster per group. To ensure the
+                       inclusion of corner cases, we perform similarity searches using different similarity metrics among the
+                       product clusters from the previous grouping and the respective selected seed product. For example, to create
+                       a set of 500 products with 80% corner-case ratio, for each seed product we select 4 highly similar
+                       additional product clusters from that group until we have selected 400 products. The remaining 100 are then
+                       selected randomly among all groups. For each corner-case selection we randomly draw from a set of similarity
+                       metrics to reduce selection bias. As basis for the later generation of the unseen dimension, we further
+                       select a second distinct set of 500 products for each corner-case ratio.</p>
 
-		<h4>2.2.1 DBSCAN Clustering and Manual Labeling</h3>
-			<p>
-				We first employ
-				the scikit-learn implementation of <a
-					href="https://scikit-learn.org/stable/modules/generated/sklearn.cluster.DBSCAN.html">DBSCAN
-					clustering</a> on the data
-				corpus with an epsilon of 0.35 and min_samples of 1 to determine
-				coarse clusters of similar products which we can later use for hard
-				negative selection. As feature vector for each product, we use simple
-				binary word occurrence after lower-casing and removing tags and
-				punctuation. In the next
-				step, we split the corpus with annotated DBSCAN clusters into two
-				parts, the first one (from which we draw the seen portion of the
-				benchmark, represented by 629 DBSCAN clusters) containing all
-				products represented by at least 7 offers and the second one (from
-				which we draw the unseen examples, represented by 2845 DBSCAN
-				clusters) with products containing between 2 and 6 offers. The result of this
-				process are two sets of clustered products
-				from which we build WDC Products in the next step.
-			</p>
-
-			<h4>2.2.2 Building the Benchmark</h3>
-				<p>
-					In the following, we describe the
-					selection of 500 products for the final benchmark datasets along
-					all three dimensions but keep the corner-case dimension fixed to
-					80% corner-cases to improve understandability. As the process is
-					analogous for the other corner-case percentages, the following
-					description can be directly applied to them as well.
-
-				</p>
-				<p> the first step we need to select 400 products which include at
-					least 4 hard corner-case products for each product (80% corner-cases) and
-					100 random products (the remaining 20%) once from the seen and
-					once from the unseen split of our corpus so we can later build sets
-					for each unseen percentage. We begin by iterating through the
-					annotated DBSCAN clusters. Inside each DBSCAN cluster, we randomly select one product cluster and
-					then search for the four most
-					similar product clusters inside that DBSCAN cluster by alternating between the most similar examples
-					on product title according
-					a variety of similarity metrics: <i>Cosine</i>, <i>DICE</i> and <i>Generalized Jaccard</i>
-					similarities from the <a
-						href="https://github.com/anhaidgroup/py_stringmatching">py_stringmatching</a>
-					package and a <i>fastText</i> embedding model trained on the titles of the product matching
-					benchmarks <i>Amazon-Google</i>, <i>Abt-Buy</i> and <i>Walmart-Amazon</i>.
-					After collecting 400 products in this way once for the seen
-					and once for the unseen split, we use the remaining products and
-					randomly select a further 100 for seen and unseen, bringing both
-					products sets to 500 products with a 80% corner-case ratio.
-				</p>
-				<p>
-					In the second step we split each of the 500 product clusters of
-					the seen split into training, validation and test offers. For the seen
-					products, we limit the maximum amount of offers we select from a
-					product cluster to 15. For the unseen products we sample exactly 2
-					offers from the respective cluster. Validation and Test splits are assigned two offers each, the
-					remaining offers are part of the training split. The selection of offers
-					for each split is done either randomly or in the case of a product selected as a corner-case, we
-					ensure that one positive corner-case pair is sampled to each split.
-
-					To build the unseen dimension we proceed with systematically
-					replacing products in the fully seen test set with products from the
-					unseen split. Care is taken to keep the corner-case amount the
-					same, i.e. for building the 50% unseen test set, we need to replace
-					250 products with unseen products in a ratio of 80% corner-cases
-					and 20% random. Finally to build the 100% unseen test set, we can
-					simply fully replace the original test set with the corresponding
-					selection from the unseen split. In summary, we generate 3 test sets
-					(0%, 50%, 100% unseen) for the corner-case ratio of 80%.
-
-				</p>
-				<p>
-					Finally, we generate datasets for the last dimension, development
-					set size. For this purpose we split the subsets of each product that
-					were assigned to the training split as follows: All product offers are
-					assigned to the large training set, three among those are assigned
-					to the medium training set and two of the three are finally assigned
-					to the small training set. For the corner-case products we ensure that at least
-					one corner-case positive pair is assigned to each split using the previously mentioned similarity
-					metrics
-					As stated before, we proceed with the same process for the corner-case ratios 50% and 20%. Finally,
-					we have produced three test
-					sets and 3 training sets for each corner-case ratio - nine test sets,
-					nine validation sets and nine training sets overall. We can directly
-					use these datasets for evaluating multi-class entity matchers. For
-					pair-wise matching we still need to generate pairs from the selected
-					product offers.
-				</p>
-
-				<h4>2.2.3 Generation of Pairs for Pair-wise Matching</h3>
-					<p>
-						To generate
-						the pair-wise datasets we can directly use the previously prepared
-						training, validation and test splits. We iterate over each offer in
-						each set and build all positive pairs as well as varying amounts of
-						negative corner-cases and random pairs depending on the development set
-						size and desired corner-case ratio. In the following, we use the
-						building process of the training set size large as an example.
-
-					</p>
-					<p>
-						First we iterate over each product cluster in the selected training
-						set. We generate all
-						possible positive pairs using the available offers and include them
-						in the final large training set. Afterwards, we iterate over each offer
-						in the product cluster and select for each the 3 most similar (using
-						the same similarity metrics as before) product offers among
-						the remaining 499 product clusters in the dataset. If a pair is already
-						contained in the final training set, e.g. because of a mirrored pair,
-						we select the next most similar pair to add instead. Finally, we add
-						one random negative pair for a total of 4 negative pairs for each
-						offer in the current product cluster. We continue this process for
-						all 499 remaining product clusters resulting in the final pair-wise
-						large training set.
-					</p>
-					<p>
-						The generation of all pair-wise test sets and the large validation
-						sets follow the same process as for the large training sets. For
-						the medium and small training and validation sets, we reduce the
-						amount of selected negative corner-cases per product offer to 2 (medium
-						sets) and 1 (small sets) to simulate a reduced labeling effort in
-						addition to the lower amount of available product offers per product
-						for the different training sets (3 for medium and 2 for small).
-					</p>
-
+               <p>In the fifth step, the offers in the selected clusters are split into training, validation, and test sets.
+                       In order to prevent information leakage in the training process, each offer is only assigned to a single
+                       set. Depending on the corner-case ratio, this splitting is either done randomly or using the previously
+                       applied similarity metrics to ensure positive corner-cases. At this point, the unseen dimension is
+                       materialized as well by replacing e.g. 50% of the products in the test split with products from the second
+                       set of 500 <i>unseen</i> products. Finally, the development set size dimension is realized by further
+                       selecting subsets from the training split of each product in order to build a medium and small training set.
+                       In the sixth and final step, the generated splits are used to generate pairs of offers for the pair-wise
+                       formulation of the benchmark. To ensure an appropriate amount of corner-case pairs, we again randomly chose
+                       from the same set of similarity metrics that we already used in step 4.</p>
 
 
 					<span id="toc3"></span>
