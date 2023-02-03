@@ -4,7 +4,192 @@
     <title>The Web Data Commons Schema.org data set series</title>
     <link rel="stylesheet" href="https://webdatacommons.org/style.css" type="text/css" media="screen"/>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        google.charts.load('51', {
+            packages: ['line']
+        });
 
+        google.charts.setOnLoadCallback(drawMaterial5);
+        google.charts.setOnLoadCallback(drawMaterial6);
+        google.charts.setOnLoadCallback(drawMaterial23);
+        google.charts.setOnLoadCallback(drawMaterial24);
+
+        function drawMaterial5() {
+            var dataMD1 = google.visualization.arrayToDataTable([
+                ['Crawl', 'schema:PostalAddress', 'schema:Product', 'schema:LocalBusiness', 'schema:Review',
+                    'schema:Event'
+                ],
+                ['2012', 19592, 16612, 16383, 2585, 4102],
+                ['2013', 52446, 56388, 35264, 13137, 8258],
+                ['2014', 101086, 89608, 62191, 20124, 12746],
+                ['2015', 143229, 108387, 77659, 28356, 12746],
+                ['2016', 338058, 249947, 192558, 55189, 28892],
+                ['2017', 418807, 581482, 230844, 104576, 65114],
+                ['2018', 502615, 812205, 294390, 124022, 88130],
+                ['2019', 530636, 991549, 292775, 131084, 88130],
+                ['2020', 585417, 1059149, 280338, 158333, 77722],
+                ['2021', 517368, 1046560, 249585, 135876, 67415],
+                ['2022', 461748, 906088, 206176, 106257, 61905]
+
+            ]);
+
+            var options5 = {
+                width: 550,
+                height: 300,
+                chart: {
+                    title: 'Development of Selected schema.org Classes by #PLDs - Microdata format'
+                },
+                hAxis: {
+                    title: 'Year of Crawl',
+                    minValue: 0,
+                },
+                vAxis: {
+                    title: '#PLDs'
+                },
+                legend: {
+                    position: 'none'
+                }
+
+            };
+            var material5 = new google.charts.Line(document.getElementById('md_pld'));
+            material5.draw(dataMD1, options5);
+        }
+
+        function drawMaterial6() {
+
+            var dataMD2 = google.visualization.arrayToDataTable([
+                ['Crawl', 'schema:PostalAddress', 'schema:Product', 'schema:LocalBusiness', 'schema:Review',
+                    'schema:Event'
+                ],
+                ['2012', 9513985, 19386194, 5089, 3114006, 1509601],
+                ['2013', 125780525, 178334394, 76317387, 35213270, 10551937],
+                ['2014', 48804397, 288082823, 20194229, 42561245, 4833993],
+                ['2015', 78194892, 252233322, 77659, 43322033, 13184936],
+                ['2016', 291970567, 682850010, 99543802, 69789534, 24483731],
+                ['2017', 13713813, 439832806, 66794473, 46319490, 21359059],
+                ['2018', 89524321, 306531345, 39875083, 31526486, 26035295],
+                ['2019', 79265936, 329320312, 30632581, 33189371, 27102262],
+                ['2020', 113717463, 455716942, 44615426, 50628588, 30645764],
+                ['2021', 86806414, 355643054, 44615426, 32918258, 26611445],
+                ['2022', 76865605, 273141269, 26554538, 38323819, 19789760]
+
+
+            ]);
+
+            var options6 = {
+                width: 600,
+                height: 300,
+                chart: {
+                    title: 'Development of Selected schema.org Classes by #Entities - Microdata format'
+                },
+                hAxis: {
+                    title: 'Year of Crawl',
+                    minValue: 0,
+                },
+                vAxis: {
+                    title: '#Triples'
+                },
+
+            };
+            var material6 = new google.charts.Line(document.getElementById('md_triple'));
+            material6.draw(dataMD2, options6);
+        }
+
+        function drawMaterial23() {
+            var datajson1 = google.visualization.arrayToDataTable([
+                ['Crawl', 'schema:PostalAddress', 'schema:Product', 'schema:LocalBusiness', 'schema:Review',
+                    'schema:Event'
+                ],
+                ['2015', 2656, 571, 19750, 174, 2599],
+                ['2016', 18849, 571, 122929, 923, 4477],
+                ['2017', 69401, 12514, 154877, 2721, 45249],
+                ['2018', 178500, 40169, 249017, 6622, 63605],
+                ['2019', 282176, 218270, 126820, 16675, 84283],
+                ['2020', 863243, 1234972, 363843, 181097, 194115],
+                ['2021', 1002082, 1478171, 445841, 218052, 198592],
+                ['2022', 1521467, 1562108, 945649, 225219, 257151]
+
+
+            ]);
+
+            var options23 = {
+                width: 550,
+                height: 300,
+                chart: {
+                    title: 'Development of Selected schema.org Classes by #PLDs - JSON-LD format'
+                },
+                vAxis: {
+                    title: '#PLDs'
+                },
+                hAxis: {
+                    title: 'Year of Crawl',
+                    minValue: 0
+                },
+                legend: {
+                    position: 'none'
+                }
+
+            };
+            var material23 = new google.charts.Line(document.getElementById('json_pld'));
+            material23.draw(datajson1, options23);
+        }
+
+        function drawMaterial24() {
+
+            var datajson2 = google.visualization.arrayToDataTable([
+                ['Crawl', 'schema:PostalAddress', 'schema:Product', 'schema:LocalBusiness', 'schema:Review',
+                    'schema:Event'],
+                ['2015', 1719300, 110102, 61297, 33887, 115106],
+                ['2016', 9291712, 7377107, 1727378, 959715, 1809562],
+                ['2017', 14290321, 14422594, 4501581, 1736504, 2615089],
+                ['2018', 20005146, 20614006, 6741534, 3332329, 2661806],
+                ['2019', 24928628, 42026698, 4773645, 5788102, 3833998],
+                ['2020', 126824887, 224104749, 21948033, 50885339, 37519200],
+                ['2021', 145161527, 228690526, 22829094, 59276453, 45888936],
+                ['2022', 159212117, 221542852, 27449654, 71982183, 48507628]
+            ]);
+
+            var options6 = {
+                width: 600,
+                height: 300,
+                chart: {
+                    title: 'Development of Selected schema.org Classes by #Entities - JSON-LD format'
+                },
+                hAxis: {
+                    title: 'Year of Crawl',
+                    minValue: 0,
+                },
+                vAxis: {
+                    title: '#Entities'
+                }
+
+            };
+            var material6 = new google.charts.Line(document.getElementById('json_triple'));
+            material6.draw(datajson2, options6);
+        }
+
+
+    </script>
+
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="/jquery.toc.min.js"></script>
+
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-30248817-1']);
+        _gaq.push(['_trackPageview']);
+
+        (function () {
+            var ga = document.createElement('script');
+            ga.type = 'text/javascript';
+            ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') +
+                '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
 </head>
 
 <body>
@@ -18,7 +203,7 @@
     <h1 style="font-size: 250%;">The Web Data Commons Schema.org Data Set Series</h1>
 </div>
 
-<div id="tagline">Extracting Structured Schema.org Data from the Web Data Commons Crawl</div>
+<div id="tagline">Extracting Schema.org Data from the Common Crawl</div>
 
 <div id="authors">
     <a href="https://www.uni-mannheim.de/dws/people/professors/prof-dr-christian-bizer/">Christian
@@ -30,10 +215,16 @@
 </div>
 
 <div id="content">
-    <h2>Schema.org Data Set Series</h2>
     <p>
         Millions of websites have started to annotate structured data within
-        their HTML pages using the schema.org vocabulary.
+        their HTML pages using the <a href='https://schema.org'>schema.org</a> vocabulary.
+        Popular types of entities that are annotated with schema.org terms are
+        <a href='https://schema.org/Product'>products</a>, <a href='https://schema.org/LocalBusiness'>local
+        businesses</a>,
+        <a href='https://schema.org/Event'>events</a>, <a href='https://schema.org/JobPosting'>job
+        postings</a>, <a href='https://schema.org/Review'>reviews</a>, <a
+            href='https://schema.org/Question'>question</a>
+        and <a href='https://schema.org/Answer'>answers</a>.
         The Web Data Commons project has been extracting schema.org data from the Common Crawl every year since 2013 and
         offers the extracted data for public download
         in the form of the schema.org data set series.
@@ -42,9 +233,9 @@
     <h2>Contents</h2>
     <div id="toc" class="toc"></div>
 
-    <div id="toccontent">
+<!--    <div id="toccontent">-->
 
-        <h2 id="about">1. About the schema.org data set series</h2>
+        <h2 id="about">1. About the Schema.org Data Set Series</h2>
         <div>
             <p> The Web Data Commons project has been extracting schema.org data from the Common Crawl every year since
                 2013 and offers the extracted data for public download
@@ -60,7 +251,26 @@
                 the extracted JSON-LD and Microdata corpora of the <a href="https://webdatacommons.org/structureddata/">Web
                     Data Commons Data Set</a> are merged for a selection of schema.org classes to create
                 class-specific subsets. The subsets contain all entities of a particular class together with entities of
-                other classes that are found on the same pages</p>
+                other classes that are found on the same pages. For example, a page containing data about a product
+                might also contain reviews and offers for this product; a page containing data about an event might also
+                contain data about the location of the event and the persons involved in the event. The data is
+                represented in N-Quads format, meaning that the forth element of each quad contains the URL of the
+                webpage from which the data was extracted. The diagrams below on the left-hand side show the growth in
+                the number of websites
+                (pay-level domains) over the last decade that annotate specific entity types using JSON-LD and Microdata
+                respectively.
+                The diagrams on the right-hand side show the growth of the number of entities of these classes that are
+                contained in the data sets.</p>
+
+            <span style="width:1200px;display:inline-block">
+          <span id="json_pld" style="float:left"></span>
+          <span id="json_triple" style="float:right"></span>
+        </span>
+            <span style="width:1200px;display:inline-block">
+		  <span id="md_pld" style="float:left"></span>
+		  <span id="md_triple" style="float:right"></span>
+		</span>
+
         </div>
 
         <h2 id="releases">2. Releases</h2>
@@ -73,85 +283,102 @@
             <tr>
                 <th>Release</th>
                 <th>PLDs</th>
+                <th>Quads</th>
                 <th>Size</th>
             </tr>
 
             <tr>
                 <th>
-                    <a href='https://webdatacommons.org/structureddata/2013-11/stats/schema_org_subsets.html'>2013-11</a>
+                    <a href='https://webdatacommons.org/structureddata/2022-12/stats/schema_org_subsets.html'>2022-12</a>
                 </th>
-                <td align="right">400 K</td>
-                <td align="right">227 GB</td>
-            </tr>
-            <tr>
-                <th>
-                    <a href='https://webdatacommons.org/structureddata/2014-12/stats/schema_org_subsets.html'>2014-12</a>
-                </th>
-                <td align="right">700 K</td>
-                <td align="right">262 GB</td>
-            </tr>
-            <tr>
-                <th>
-                    <a href='https://webdatacommons.org/structureddata/2015-11/stats/schema_org_subsets.html'>2015-11</a>
-                </th>
-                <td align="right">1,370 K</td>
-                <td align="right">267 GB</td>
-            </tr>
-            <tr>
-                <th>
-                    <a href='https://webdatacommons.org/structureddata/2016-10/stats/schema_org_subsets.html'>2016-10</a>
-                </th>
-                <td align="right">3,846 K</td>
-                <td align="right">707 GB</td>
-            </tr>
-            <tr>
-                <th>
-                    <a href='https://webdatacommons.org/structureddata/2017-12/stats/schema_org_subsets.html'>2017-12</a>
-                </th>
-                <td align="right">5,144 K</td>
-                <td align="right">431 GB</td>
-            </tr>
-            <tr>
-                <th>
-                    <a href='https://webdatacommons.org/structureddata/2018-12/stats/schema_org_subsets.html'>2018-12</a>
-                </th>
-                <td align="right">7,226 K</td>
-                <td align="right">469 GB</td>
-            </tr>
-            <tr>
-                <th>
-                    <a href='https://webdatacommons.org/structureddata/2019-12/stats/schema_org_subsets.html'>2019-12</a>
-                </th>
-                <td align="right">9,470 K</td>
-                <td align="right">542 GB</td>
-            </tr>
-            <tr>
-                <th>
-                    <a href='https://webdatacommons.org/structureddata/2020-12/stats/schema_org_subsets.html'>2020-12</a>
-                </th>
-                <td align="right">12,414 K</td>
-                <td align="right">1,339 GB</td>
+                <td align="right">12,838,680</td>
+                <td align="right">105,579,841,305</td>
+                <td align="right">1,831 GB</td>
             </tr>
             <tr>
                 <th>
                     <a href='https://webdatacommons.org/structureddata/2021-12/stats/schema_org_subsets.html'>2021-12</a>
                 </th>
-                <td align="right">12,897 K</td>
+                <td align="right">12,897,837</td>
+                <td align="right">94,445,547,365</td>
                 <td align="right">1,691 GB</td>
             </tr>
             <tr>
                 <th>
-                    <a href='https://webdatacommons.org/structureddata/2022-12/stats/schema_org_subsets.html'>2022-12</a>
+                    <a href='https://webdatacommons.org/structureddata/2020-12/stats/schema_org_subsets.html'>2020-12</a>
                 </th>
-                <td align="right">12,838 K</td>
-                <td align="right">1,831 GB</td>
+                <td align="right">12,414,851</td>
+                <td align="right">90,416,246,904</td>
+                <td align="right">1,339 GB</td>
+            </tr>
+            <tr>
+                <th>
+                    <a href='https://webdatacommons.org/structureddata/2019-12/stats/schema_org_subsets.html'>2019-12</a>
+                </th>
+                <td align="right">9,470,865</td>
+                <td align="right">25,366,269,937</td>
+                <td align="right">542 GB</td>
+            </tr>
+            <tr>
+                <th>
+                    <a href='https://webdatacommons.org/structureddata/2018-12/stats/schema_org_subsets.html'>2018-12</a>
+                </th>
+                <td align="right">7,226,784</td>
+                <td align="right">20,135,070,334</td>
+                <td align="right">469 GB</td>
+            </tr>
+            <tr>
+                <th>
+                    <a href='https://webdatacommons.org/structureddata/2017-12/stats/schema_org_subsets.html'>2017-12</a>
+                </th>
+                <td align="right">5,144,983</td>
+                <td align="right">14,424,702,204</td>
+                <td align="right">431 GB</td>
+            </tr>
+            <tr>
+                <th>
+                    <a href='https://webdatacommons.org/structureddata/2016-10/stats/schema_org_subsets.html'>2016-10</a>
+                </th>
+                <td align="right">3,846,805</td>
+                <td align="right">26,719,043,004</td>
+                <td align="right">707 GB</td>
+            </tr>
+            <tr>
+                <th>
+                    <a href='https://webdatacommons.org/structureddata/2015-11/stats/schema_org_subsets.html'>2015-11</a>
+                </th>
+                <td align="right">1,370,192</td>
+                <td align="right">12,910,049,866</td>
+                <td align="right">267 GB</td>
+            </tr>
+            <tr>
+                <th>
+                    <a href='https://webdatacommons.org/structureddata/2014-12/stats/schema_org_subsets.html'>2014-12</a>
+                </th>
+                <td align="right">700,000</td>
+                <td align="right">11,067,728,953</td>
+                <td align="right">262 GB</td>
+            </tr>
+            <tr>
+                <th>
+                    <a href='https://webdatacommons.org/structureddata/2013-11/stats/schema_org_subsets.html'>2013-11</a>
+                </th>
+                <td align="right">400,000</td>
+                <td align="right">10,395,924,438</td>
+                <td align="right">227 GB</td>
             </tr>
 
 
             </tbody>
         </table>
 
-        <h2 id="references">3. References</h2>
+        <h2 id="feedback">3. Feedback</h2>
+        <p>Please post questions and feedback in our <a
+                href="https://groups.google.com/forum/?fromgroups#!forum/web-data-commons">Web
+            Data Commons Google Group</a>.<br/><br/>
+            More information about Web Data Commons is found <a href="../../index.html">here</a>.</p>
+
+        <h2 id="references">4. References</h2>
 
         <ul>
 
@@ -163,6 +390,7 @@
                 July 2015.
             </li>
         </ul>
+
 
     </div>
 
