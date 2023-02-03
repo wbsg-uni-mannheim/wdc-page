@@ -173,7 +173,9 @@
     </script>
 
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-    <script type="text/javascript" src="/jquery.toc.min.js"></script>
+    <script src="//code.jquery.com/jquery.min.js"></script>
+    <script src="toc.js"></script>
+
 
     <script type="text/javascript">
         var _gaq = _gaq || [];
@@ -190,6 +192,47 @@
             s.parentNode.insertBefore(ga, s);
         })();
     </script>
+    <script type="application/ld+json">
+        {
+            "@context": "http://schema.org/",
+            "@type": "Dataset",
+            "name": "The Web Data Commons Schema.org Data Set Series",
+            "description": "The product dataset consists of 20 million pairs of product offers referring to the same products. The offers were extracted from 43 thousand e-shops which provide schema.org annotations including some form of product ID such as a GTIN or MPN. We also created a gold standard by manually verifying 4400 pairs of offers belonging to four different product categories.",
+            "url": "http://webdatacommons.org/structureddata/schemaorg/index.html",
+            "keywords": [
+                "table corpus",
+                "product corpus",
+                "large scale",
+                "product matching",
+                "entity matching"
+            ],
+            "creator": [
+                {
+                    "@type": "Person",
+                    "url": "https://www.uni-mannheim.de/dws/people/researchers/phd-students/alexander-brinkmann/"
+                    "name": "Alexander Brinkmann"
+                },
+                {
+                    "@type": "Person",
+                    "url": "https://www.uni-mannheim.de/dws/people/professors/prof-dr-christian-bizer/",
+                    "name": "Christian Bizer"
+                }
+            ],
+            "distribution": [
+                {
+                    "@type": "DataDownload",
+                    "fileFormat": [
+                        "json"
+                    ],
+                    //TODO: Change once final
+                    "contentUrl": "http://webdatacommons.org/structureddata/schemaorg/index.html"
+                }
+            ],
+            "citation": [
+            ]
+        }
+    </script>
+
 </head>
 
 <body>
@@ -231,171 +274,188 @@
     </p>
 
     <h2>Contents</h2>
-    <div id="toc" class="toc"></div>
+    <div class="toc"></div>
 
-        <div id="toccontent">
+    <ul>
+        <li class="toc-h2 toc-active">
+            <a href="#about"> 1. About the Schema.org Data Set Series</a>
+        </li>
+        <li class="toc-h2 toc-active">
+            <a href="#releases"> 2. Releases</a>
+        </li>
 
-        <h2 id="about">1. About the Schema.org Data Set Series</h2>
-        <div>
-            <p> The Web Data Commons project has been extracting schema.org data from the Common Crawl every year since
-                2013 and offers the extracted data for public download
-                in the form of the schema.org data set series.
-                From a Web Science perspective, this data set
-                series lays the foundation for analyzing the adoption process of
-                schema.org annotations on the Web over the past decade. From a
-                machine learning perspective, the annotations provide a large pool
-                of training data for tasks such as product matching, product or job
-                categorization, information extraction, or question answering.
 
-                Webmasters primarily use the JSON-LD and Microdata formats to annotate structured data with schema.org,
-                the extracted JSON-LD and Microdata corpora of the <a href="https://webdatacommons.org/structureddata/">Web
-                    Data Commons Data Set</a> are merged for a selection of schema.org classes to create
-                class-specific subsets. The subsets contain all entities of a particular class together with entities of
-                other classes that are found on the same pages. For example, a page containing data about a product
-                might also contain reviews and offers for this product; a page containing data about an event might also
-                contain data about the location of the event and the persons involved in the event. The data is
-                represented in N-Quads format, meaning that the forth element of each quad contains the URL of the
-                webpage from which the data was extracted. The diagrams below on the left-hand side show the growth in
-                the number of websites
-                (pay-level domains) over the last decade that annotate specific entity types using JSON-LD and Microdata
-                respectively.
-                The diagrams on the right-hand side show the growth of the number of entities of these classes that are
-                contained in the data sets.</p>
+        <li class="toc-h2 toc-active">
+            <a href="#feedback"> 3. Feedback </a>
+        </li>
+        <li class="toc-h2 toc-active">
+            <a href="#references"> 4. References </a>
+        </li>
+    </ul>
 
-            <span style="width:1200px;display:inline-block">
+    <h2 id="about">1. About the Schema.org Data Set Series</h2>
+    <div>
+        <p> The Web Data Commons project has been extracting schema.org data from the Common Crawl every year since
+            2013 and offers the extracted data for public download
+            in the form of the schema.org data set series.
+            From a Web Science perspective, this data set
+            series lays the foundation for analyzing the adoption process of
+            schema.org annotations on the Web over the past decade. From a
+            machine learning perspective, the annotations provide a large pool
+            of training data for tasks such as product matching, product or job
+            categorization, information extraction, or question answering.
+
+            Webmasters primarily use the JSON-LD and Microdata formats to annotate structured data with schema.org,
+            the extracted JSON-LD and Microdata corpora of the <a href="https://webdatacommons.org/structureddata/">Web
+                Data Commons Data Set</a> are merged for a selection of schema.org classes to create
+            class-specific subsets. The subsets contain all entities of a particular class together with entities of
+            other classes that are found on the same pages. For example, a page containing data about a product
+            might also contain reviews and offers for this product; a page containing data about an event might also
+            contain data about the location of the event and the persons involved in the event. The data is
+            represented in N-Quads format, meaning that the forth element of each quad contains the URL of the
+            webpage from which the data was extracted. The diagrams below on the left-hand side show the growth in
+            the number of websites
+            (pay-level domains) over the last decade that annotate specific entity types using JSON-LD and Microdata
+            respectively.
+            The diagrams on the right-hand side show the growth of the number of entities of these classes that are
+            contained in the data sets.</p>
+
+        <span style="width:1200px;display:inline-block">
           <span id="json_pld" style="float:left"></span>
           <span id="json_triple" style="float:right"></span>
         </span>
-            <span style="width:1200px;display:inline-block">
+        <span style="width:1200px;display:inline-block">
 		  <span id="md_pld" style="float:left"></span>
 		  <span id="md_triple" style="float:right"></span>
 		</span>
 
-        </div>
-
-        <h2 id="releases">2. Releases</h2>
-        <div>
-            <p> The following table outlines each release of the schema.org data set series.</p>
-        </div>
-
-        <table>
-            <tbody>
-            <tr>
-                <th>Release</th>
-                <th>PLDs</th>
-                <th>Quads</th>
-                <th>Size</th>
-            </tr>
-
-            <tr>
-                <th>
-                    <a href='https://webdatacommons.org/structureddata/2022-12/stats/schema_org_subsets.html'>2022-12</a>
-                </th>
-                <td align="right">12,838,680</td>
-                <td align="right">105,579,841,305</td>
-                <td align="right">1,831 GB</td>
-            </tr>
-            <tr>
-                <th>
-                    <a href='https://webdatacommons.org/structureddata/2021-12/stats/schema_org_subsets.html'>2021-12</a>
-                </th>
-                <td align="right">12,897,837</td>
-                <td align="right">94,445,547,365</td>
-                <td align="right">1,691 GB</td>
-            </tr>
-            <tr>
-                <th>
-                    <a href='https://webdatacommons.org/structureddata/2020-12/stats/schema_org_subsets.html'>2020-12</a>
-                </th>
-                <td align="right">12,414,851</td>
-                <td align="right">90,416,246,904</td>
-                <td align="right">1,339 GB</td>
-            </tr>
-            <tr>
-                <th>
-                    <a href='https://webdatacommons.org/structureddata/2019-12/stats/schema_org_subsets.html'>2019-12</a>
-                </th>
-                <td align="right">9,470,865</td>
-                <td align="right">25,366,269,937</td>
-                <td align="right">542 GB</td>
-            </tr>
-            <tr>
-                <th>
-                    <a href='https://webdatacommons.org/structureddata/2018-12/stats/schema_org_subsets.html'>2018-12</a>
-                </th>
-                <td align="right">7,226,784</td>
-                <td align="right">20,135,070,334</td>
-                <td align="right">469 GB</td>
-            </tr>
-            <tr>
-                <th>
-                    <a href='https://webdatacommons.org/structureddata/2017-12/stats/schema_org_subsets.html'>2017-12</a>
-                </th>
-                <td align="right">5,144,983</td>
-                <td align="right">14,424,702,204</td>
-                <td align="right">431 GB</td>
-            </tr>
-            <tr>
-                <th>
-                    <a href='https://webdatacommons.org/structureddata/2016-10/stats/schema_org_subsets.html'>2016-10</a>
-                </th>
-                <td align="right">3,846,805</td>
-                <td align="right">26,719,043,004</td>
-                <td align="right">707 GB</td>
-            </tr>
-            <tr>
-                <th>
-                    <a href='https://webdatacommons.org/structureddata/2015-11/stats/schema_org_subsets.html'>2015-11</a>
-                </th>
-                <td align="right">1,370,192</td>
-                <td align="right">12,910,049,866</td>
-                <td align="right">267 GB</td>
-            </tr>
-            <tr>
-                <th>
-                    <a href='https://webdatacommons.org/structureddata/2014-12/stats/schema_org_subsets.html'>2014-12</a>
-                </th>
-                <td align="right">700,000</td>
-                <td align="right">11,067,728,953</td>
-                <td align="right">262 GB</td>
-            </tr>
-            <tr>
-                <th>
-                    <a href='https://webdatacommons.org/structureddata/2013-11/stats/schema_org_subsets.html'>2013-11</a>
-                </th>
-                <td align="right">400,000</td>
-                <td align="right">10,395,924,438</td>
-                <td align="right">227 GB</td>
-            </tr>
-
-
-            </tbody>
-        </table>
-
-        <h2 id="feedback">3. Feedback</h2>
-        <p>Please post questions and feedback in our <a
-                href="https://groups.google.com/forum/?fromgroups#!forum/web-data-commons">Web
-            Data Commons Google Group</a>.<br/><br/>
-            More information about Web Data Commons is found <a href="../../index.html">here</a>.</p>
-
-        <h2 id="references">4. References</h2>
-
-        <ul>
-
-            <li>Robert Meusel, Christian Bizer, Heiko Paulheim: <a
-                    href="https://www.uni-mannheim.de/media/Einrichtungen/dws/Files_Research/Web-based_Systems/pub/Meusel-etal-Schema-org-Adoption-WIMS2015.pdf">A
-                Web-scale Study of the Adoption and Evolution of the schema.org Vocabulary over Time</a>. <a
-                    href="http://easyconferences.eu/?portfolio=wims-2015">5th
-                International Conference on Web Intelligence, Mining and Semantics (WIMS2015)</a>, Limassol, Cyprus,
-                July 2015.
-            </li>
-        </ul>
-
-
     </div>
+
+    <h2 id="releases">2. Releases</h2>
+    <div>
+        <p> The following table outlines each release of the schema.org data set series.</p>
+    </div>
+
+    <table>
+        <tbody>
+        <tr>
+            <th>Release</th>
+            <th>PLDs</th>
+            <th>Quads</th>
+            <th>Size</th>
+        </tr>
+
+        <tr>
+            <th>
+                <a href='https://webdatacommons.org/structureddata/2022-12/stats/schema_org_subsets.html'>2022-12</a>
+            </th>
+            <td align="right">12,838,680</td>
+            <td align="right">105,579,841,305</td>
+            <td align="right">1,831 GB</td>
+        </tr>
+        <tr>
+            <th>
+                <a href='https://webdatacommons.org/structureddata/2021-12/stats/schema_org_subsets.html'>2021-12</a>
+            </th>
+            <td align="right">12,897,837</td>
+            <td align="right">94,445,547,365</td>
+            <td align="right">1,691 GB</td>
+        </tr>
+        <tr>
+            <th>
+                <a href='https://webdatacommons.org/structureddata/2020-12/stats/schema_org_subsets.html'>2020-12</a>
+            </th>
+            <td align="right">12,414,851</td>
+            <td align="right">90,416,246,904</td>
+            <td align="right">1,339 GB</td>
+        </tr>
+        <tr>
+            <th>
+                <a href='https://webdatacommons.org/structureddata/2019-12/stats/schema_org_subsets.html'>2019-12</a>
+            </th>
+            <td align="right">9,470,865</td>
+            <td align="right">25,366,269,937</td>
+            <td align="right">542 GB</td>
+        </tr>
+        <tr>
+            <th>
+                <a href='https://webdatacommons.org/structureddata/2018-12/stats/schema_org_subsets.html'>2018-12</a>
+            </th>
+            <td align="right">7,226,784</td>
+            <td align="right">20,135,070,334</td>
+            <td align="right">469 GB</td>
+        </tr>
+        <tr>
+            <th>
+                <a href='https://webdatacommons.org/structureddata/2017-12/stats/schema_org_subsets.html'>2017-12</a>
+            </th>
+            <td align="right">5,144,983</td>
+            <td align="right">14,424,702,204</td>
+            <td align="right">431 GB</td>
+        </tr>
+        <tr>
+            <th>
+                <a href='https://webdatacommons.org/structureddata/2016-10/stats/schema_org_subsets.html'>2016-10</a>
+            </th>
+            <td align="right">3,846,805</td>
+            <td align="right">26,719,043,004</td>
+            <td align="right">707 GB</td>
+        </tr>
+        <tr>
+            <th>
+                <a href='https://webdatacommons.org/structureddata/2015-11/stats/schema_org_subsets.html'>2015-11</a>
+            </th>
+            <td align="right">1,370,192</td>
+            <td align="right">12,910,049,866</td>
+            <td align="right">267 GB</td>
+        </tr>
+        <tr>
+            <th>
+                <a href='https://webdatacommons.org/structureddata/2014-12/stats/schema_org_subsets.html'>2014-12</a>
+            </th>
+            <td align="right">700,000</td>
+            <td align="right">11,067,728,953</td>
+            <td align="right">262 GB</td>
+        </tr>
+        <tr>
+            <th>
+                <a href='https://webdatacommons.org/structureddata/2013-11/stats/schema_org_subsets.html'>2013-11</a>
+            </th>
+            <td align="right">400,000</td>
+            <td align="right">10,395,924,438</td>
+            <td align="right">227 GB</td>
+        </tr>
+
+
+        </tbody>
+    </table>
+
+    <h2 id="feedback">3. Feedback</h2>
+    <p>Please post questions and feedback in our <a
+            href="https://groups.google.com/forum/?fromgroups#!forum/web-data-commons">Web
+        Data Commons Google Group</a>.<br/><br/>
+        More information about Web Data Commons is found <a href="../../index.html">here</a>.</p>
+
+    <h2 id="references">4. References</h2>
+
+    <ul>
+
+        <li>Robert Meusel, Christian Bizer, Heiko Paulheim: <a
+                href="https://www.uni-mannheim.de/media/Einrichtungen/dws/Files_Research/Web-based_Systems/pub/Meusel-etal-Schema-org-Adoption-WIMS2015.pdf">A
+            Web-scale Study of the Adoption and Evolution of the schema.org Vocabulary over Time</a>. <a
+                href="http://easyconferences.eu/?portfolio=wims-2015">5th
+            International Conference on Web Intelligence, Mining and Semantics (WIMS2015)</a>, Limassol, Cyprus,
+            July 2015.
+        </li>
+    </ul>
+
+
+</div>
 
 </div>
 <script type="text/javascript">
+    $('.toc').toc();
+
     $('#toc').toc({
         'selectors': 'h2,h3', //elements to use as headings
         'container': '#toccontent', //element to find all selectors in
