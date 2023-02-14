@@ -264,6 +264,7 @@
 	  </p>
 <h2 id="news">News</h2>
 		<ul>
+			<li><strong>2022-09-22:</strong> The WDC Schema.org Table Annotation Benchmark (SOTAB) is introduced in the paper: <a href="https://ceur-ws.org/Vol-3320/paper1.pdf">SOTAB: The WDC Schema.org Table Annotation Benchmark</a> [<a href="#toc12">1</a>]</li>
       <li><strong>2022-10-25:</strong> The WDC Schema.org Table Annotation Benchmark (SOTAB) <a href="https://www.uni-mannheim.de/dws/news/sotab-wins-dataset-track-of-semtab-challenge-at-iswc-2022/">wins</a> the SemTab 2022 Dataset Track. </li>
 			<li><strong>2022-09-22:</strong> Initial version of the WDC Schema.org Table Annotation Benchmark (SOTAB) released.</li>
 		</ul>
@@ -316,7 +317,7 @@
 <span id="toc1"></span>
 <h2>1. Introduction</h2>
 <p>
-  Understanding the semantics of table elements is a pre-requisite for many data integration and data discovery tasks such as knowledge base augmentation [<a href="#toc12">1</a>], schema matching [<a href="#toc13">2</a>] or dataset search.
+  Understanding the semantics of table elements is a pre-requisite for many data integration and data discovery tasks such as knowledge base augmentation [<a href="#toc12">2</a>], schema matching [<a href="#toc13">3</a>] or dataset search.
   <a href="https://paperswithcode.com/task/table-annotation">Table annotation</a> is the task of annotating a table with terms/concepts from knowledge graph, database schema or vocabulary. 
   Table annotation consists of five different tasks: column type annotation (CTA), columns property annotation (CPA), cell entity annotation (CEA), row annotation, and table type detection. 
   Table annotation has attracted <a href="https://paperswithcode.com/task/table-annotation">quite some attention in the research community</a> in recent years and there are active benchmarking campaigns on table annotation, such as <a href="https://www.cs.ox.ac.uk/isg/challenges/sem-tab/">SemTab</a>.
@@ -1111,8 +1112,8 @@ Following the cleansing steps, only attributes with a density of at least 25% ar
 <p>
   To evaluate the usefulness of the benchmark created sets, we ran three baseline experiments. The first baseline method is a non-deep learning method that uses TF-IDF weighting to create features 
   based on the column values
-  and uses a Random Forest classifier to make predictions. The second baseline is a deep learning method called TURL [<a href="#toc14">3</a>] which uses a Transformer-based [<a href="#toc15">4</a>] architecture and is 
-  pre-trained on relational tables using TinyBERT. In addition, TURL incorporates table context into its model. We fine-tune TURL for 50 epochs using a learning rate of 5e-5 and a batch size of 20. The last baseline method is DODUO [<a href="#toc16">6</a>] which fine-tunes BERT and 
+  and uses a Random Forest classifier to make predictions. The second baseline is a deep learning method called TURL [<a href="#toc14">4</a>] which uses a Transformer-based [<a href="#toc15">5</a>] architecture and is 
+  pre-trained on relational tables using TinyBERT. In addition, TURL incorporates table context into its model. We fine-tune TURL for 50 epochs using a learning rate of 5e-5 and a batch size of 20. The last baseline method is DODUO [<a href="#toc16">7</a>] which fine-tunes BERT and 
   uses table serialization to incorporate table context. For the experiments the micro-F1 score is used to report the results of each baseline method and using both the Large training set and the Small training set. The results are summarized in <i>Table 4a</i> for CTA
   and in <i>Table 4b</i> for CPA.
 </p>
@@ -1376,7 +1377,7 @@ Following the cleansing steps, only attributes with a density of at least 25% ar
 <span id="toc8"></span>
 <h2> 8. Download</h2>
 			
-        <p>We offer the WDC SOTAB benchmark for public download. In the table below you will find download links for training, validation and testing splits for both tasks, CPA and CTA. Each zip file contains a folder with the tables
+        <p>We offer the WDC SOTAB benchmark for public download and make the code for building the benchmark available on <a href="https://github.com/wbsg-uni-mannheim/wdc-sotab">github</a>. In the table below you will find download links for training, validation and testing splits for both tasks, CPA and CTA. Each zip file contains a folder with the tables
 		as well as a csv file containing the label annotations for each table. This file consists of three columns, (i) table name, (ii) column position in the table and (iii) associated CPA/CTA label for this column.
 		
 		For both types of files we also offer a small sample file as an example and quick reference on their structure.</p>
@@ -1493,18 +1494,18 @@ Following the cleansing steps, only attributes with a density of at least 25% ar
 
         <p>
           There exist several other benchmark datasets for the CTA and CPA task. An overview of current results on these datasets is given at Papers with Code for Column Type Annotation, Column Property Annotation and Cell Entity Annotation.
-          The two benchmarks that are most closely related to SOTAB are GitTables-SemTab [<a href="#toc16">5</a>] and Wikitables-TURL [<a href="#toc14">3</a>]. 
+          The two benchmarks that are most closely related to SOTAB are GitTables-SemTab [<a href="#toc16">6</a>] and Wikitables-TURL [<a href="#toc14">4</a>]. 
         </p>
 
         <p>
-          <a href="https://gittables.github.io/">GitTables</a> [<a href="#toc16">5</a>] is a corpus that contains around 1 million tables collected from GitHub and annotated with Schema.org and 
+          <a href="https://gittables.github.io/">GitTables</a> [<a href="#toc16">6</a>] is a corpus that contains around 1 million tables collected from GitHub and annotated with Schema.org and 
           DBpedia classes and properties. A <a href="https://zenodo.org/record/5706316#.YvuQdnZByUk">subset of GitTables</a> was created for the SemTab challenge, where 1,101 tables were annotated 
           and made available for benchmarking methods on the CTA task. In these tables, 721 columns were annotated with 59 unique Schema.org types and properties 
           and 2,533 columns were annotated using 122 unique DBpedia classes.
         </p>
 
         <p>
-          The <a href="https://github.com/sunlab-osu/TURL">WikiTables-TURL</a> [<a href="#toc14">3</a>] datasets were created to evaluate methods on the CTA and CPA tasks. It contains 406,706 tables annotated for 
+          The <a href="https://github.com/sunlab-osu/TURL">WikiTables-TURL</a> [<a href="#toc14">4</a>] datasets were created to evaluate methods on the CTA and CPA tasks. It contains 406,706 tables annotated for 
           the CTA task using 255 unique labels from Freebase and 55,970 tables annotated for CPA using 121 unique labels. They provide fixed 
           training, validation and test sets. Over 600,000 columns are annotated for CTA and over 60,000 column pairs for CPA. 
         </p>
@@ -1514,28 +1515,32 @@ Following the cleansing steps, only attributes with a density of at least 25% ar
 
         <p>
           <span id="toc12"></span>
-          [1] D. Ritze, O. Lehmberg, Y. Oulabi, C. Bizer, Profiling the Potential of Web Tables for
+
+          [1] K. Korini, R. Peeters,  C. Bizer, SOTAB: The WDC Schema.org Table Annotation Benchmark,  in: Semantic Web Challenge on Tabular Data to Knowledge Graph Matching
+          (SemTab), CEUR-WS.org, 2022. <br/>
+
+          [2] D. Ritze, O. Lehmberg, Y. Oulabi, C. Bizer, Profiling the Potential of Web Tables for
           Augmenting Cross-domain Knowledge Bases, in: Proceedings of the 25th International
           Conference on World Wide Web, 2016, pp. 251–261. <br/>
 
           <span id="toc13"></span>
-          [2] E. Rahm, P. A. Bernstein, A survey of approaches to automatic schema matching, The
+          [3] E. Rahm, P. A. Bernstein, A survey of approaches to automatic schema matching, The
           VLDB Journal — The International Journal on Very Large Data Bases 10 (2001) 334–350. <br/>
 
           <span id="toc14"></span>
-          [3] X. Deng, H. Sun, A. Lees, Y. Wu, C. Yu, TURL: Table understanding through representation
+          [4] X. Deng, H. Sun, A. Lees, Y. Wu, C. Yu, TURL: Table understanding through representation
           learning, Proceedings of the VLDB Endowment 14 (2020) 307–319. <br/>
 
           <span id="toc15"></span>
-          [4] A. Vaswani, N. Shazeer, N. Parmar, J. Uszkoreit, L. Jones, et al., Attention is All you Need,
+          [5] A. Vaswani, N. Shazeer, N. Parmar, J. Uszkoreit, L. Jones, et al., Attention is All you Need,
           in: Advances in Neural Information Processing Systems (NIPS 2017), volume 30, 2017. <br/>
 
           <span id="toc16"></span>
-          [5] M. Hulsebos, Ç. Demiralp, P. Groth, GitTables: A Large-Scale Corpus of Relational Tables,
+          [6] M. Hulsebos, Ç. Demiralp, P. Groth, GitTables: A Large-Scale Corpus of Relational Tables,
           arXiv:2106.07258 (2022). <br/>
 
           <span id="toc17"></span>
-          [6] Suhara, Y., Li, J., Li, Y., Zhang, D., Demiralp, Ç. et al. “Annotating columns 
+          [7] Suhara, Y., Li, J., Li, Y., Zhang, D., Demiralp, Ç. et al. “Annotating columns 
           with pre-trained language models.” In Proceedings of the 2022 International Conference on Management of Data, 2022, pp. 1493–1503
         </p>
 
