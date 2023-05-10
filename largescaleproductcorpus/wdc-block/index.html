@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>WDC Block: A Blocking Benchmark</title>
+    <link rel='stylesheet' href='https://webdatacommons.org/style.css' type='text/css' media='screen'/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <style>
+        .center {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 70%;
+        }
+
+        @media screen and (max-width: 767px) {
+            .tg {
+                width: auto !important;
+            }
+
+            .tg col {
+                width: auto !important;
+            }
+
+            .tg-wrap {
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+            }
+        }
+    </style>
+
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../../jquery.toc.min.js"></script>
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-30248817-1']);
+        _gaq.push(['_trackPageview']);
+
+        (function () {
+            var ga = document.createElement('script');
+            ga.type = 'text/javascript';
+            ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+    <script type="application/ld+json">
+        {
+            "@context": "http://schema.org/",
+            "@type": "Dataset",
+            "name": "Web Data Commons - Block",
+            "description": "A Blocking Benchmark",
+            "url": "http://webdatacommons.org/largescaleproductcorpus/wdc-block/index.html",
+            "keywords": [
+                "product corpus",
+                "product benchmark",
+                "large scale",
+                "product matching",
+                "blocking"
+            ],
+            "creator": [
+                {
+                    "@type": "Person",
+                    "url": "https://www.uni-mannheim.de/dws/people/researchers/phd-students/alexander-brinkmann/"
+                    "name": "Alexander Brinkmann"
+                },
+                {
+                    "@type": "Person",
+                    "name": "Roee Shraga"
+                },
+                {
+                    "@type": "Person",
+                    "url": "https://www.uni-mannheim.de/dws/people/professors/prof-dr-christian-bizer/",
+                    "name": "Christian Bizer"
+                }
+            ],
+            "distribution": [
+                {
+                    "@type": "DataDownload",
+                    "fileFormat": [
+                        "json"
+                    ],
+                    "contentUrl": "http://webdatacommons.org/largescaleproductcorpus/wdc-block/index.html"
+                }
+            ],
+            "citation": [
+            ]
+        }
+    </script>
+
+    <script
+            charset="utf-8">var TGSort = window.TGSort || function (n) {
+        "use strict";
+
+        function r(n) {
+            return n ? n.length : 0
+        }
+
+        function t(n, t, e, o = 0) {
+            for (e = r(n); o < e; ++o) t(n[o], o)
+        }
+
+        function e(n) {
+            return n.split("").reverse().join("")
+        }
+
+        function o(n) {
+            var e = n[0];
+            return t(n, function (n) {
+                for (; !n.startsWith(e);) e = e.substring(0, r(e) - 1)
+            }), r(e)
+        }
+
+        function u(n, r, e = []) {
+            return t(n, function (n) {
+                r(n) && e.push(n)
+            }), e
+        }
+
+        var a = parseFloat;
+
+        function i(n, r) {
+            return function (t) {
+                var e = "";
+                return t.replace(n, function (n, t, o) {
+                    return e = t.replace(r, "") + "." + (o || "").substring(1)
+                }), a(e)
+            }
+        }
+
+        var s = i(/^(?:\s*)([+-]?(?:\d+)(?:,\d{3})*)(\.\d*)?$/g, /,/g),
+            c = i(/^(?:\s*)([+-]?(?:\d+)(?:\.\d{3})*)(,\d*)?$/g, /\./g);
+
+        function f(n) {
+            var t = a(n);
+            return !isNaN(t) && r("" + t) + 1 >= r(n) ? t : NaN
+        }
+
+        function d(n) {
+            var e = [], o = n;
+            return t([f, s, c], function (u) {
+                var a = [], i = [];
+                t(n, function (n, r) {
+                    r = u(n), a.push(r), r || i.push(n)
+                }), r(i) < r(o) && (o = i, e = a)
+            }), r(u(o, function (n) {
+                return n == o[0]
+            })) == r(o) ? e : []
+        }
+
+        function v(n) {
+            if ("TABLE" == n.nodeName) {
+                for (var a = function (r) {
+                    var e, o, u = [], a = [];
+                    return function n(r, e) {
+                        e(r), t(r.childNodes, function (r) {
+                            n(r, e)
+                        })
+                    }(n, function (n) {
+                        "TR" == (o = n.nodeName) ? (e = [], u.push(e), a.push(n)) : "TD" != o && "TH" != o || e.push(n)
+                    }), [u, a]
+                }(), i = a[0], s = a[1], c = r(i), f = c > 1 && r(i[0]) < r(i[1]) ? 1 : 0, v = f + 1, p = i[f], h = r(p), l = [], g = [], N = [], m = v; m < c; ++m) {
+                    for (var T = 0; T < h; ++T) {
+                        r(g) < h && g.push([]);
+                        var C = i[m][T], L = C.textContent || C.innerText || "";
+                        g[T].push(L.trim())
+                    }
+                    N.push(m - v)
+                }
+                t(p, function (n, t) {
+                    l[t] = 0;
+                    var a = n.classList;
+                    a.add("tg-sort-header"), n.addEventListener("click", function () {
+                        var n = l[t];
+                        !function () {
+                            for (var n = 0; n < h; ++n) {
+                                var r = p[n].classList;
+                                r.remove("tg-sort-asc"), r.remove("tg-sort-desc"), l[n] = 0
+                            }
+                        }(), (n = 1 == n ? -1 : +!n) && a.add(n > 0 ? "tg-sort-asc" : "tg-sort-desc"), l[t] = n;
+                        var i, f = g[t], m = function (r, t) {
+                            return n * f[r].localeCompare(f[t]) || n * (r - t)
+                        }, T = function (n) {
+                            var t = d(n);
+                            if (!r(t)) {
+                                var u = o(n), a = o(n.map(e));
+                                t = d(n.map(function (n) {
+                                    return n.substring(u, r(n) - a)
+                                }))
+                            }
+                            return t
+                        }(f);
+                        (r(T) || r(T = r(u(i = f.map(Date.parse), isNaN)) ? [] : i)) && (m = function (r, t) {
+                            var e = T[r], o = T[t], u = isNaN(e), a = isNaN(o);
+                            return u && a ? 0 : u ? -n : a ? n : e > o ? n : e < o ? -n : n * (r - t)
+                        });
+                        var C, L = N.slice();
+                        L.sort(m);
+                        for (var E = v; E < c; ++E) (C = s[E].parentNode).removeChild(s[E]);
+                        for (E = v; E < c; ++E) C.appendChild(s[v + L[E - v]])
+                    })
+                })
+            }
+        }
+
+        n.addEventListener("DOMContentLoaded", function () {
+            for (var t = n.getElementsByClassName("tg"), e = 0; e < r(t); ++e) try {
+                v(t[e])
+            } catch (n) {
+            }
+        })
+    }(document)</script>
+
+
+</head>
+
+<body>
+<div id="logo" style="text-align:right; background-color: white;">&nbsp;&nbsp;<a
+        href="http://dws.informatik.uni-mannheim.de"><img src="../../images/ma-logo.gif"
+                                                          alt="University of Mannheim - Logo"></a></div>
+<div id="header">
+    <h1 style="font-size: 250%;">WDC Block: A Blocking Benchmark</h1>
+</div>
+<div id="authors">
+    <a href="https://www.uni-mannheim.de/dws/people/researchers/phd-students/alexander-brinkmann/">Alexander
+        Brinkmann</a><br>
+    Roee Shraga<br>
+    <a href="https://www.uni-mannheim.de/dws/people/professors/prof-dr-christian-bizer/">Christian Bizer</a><br/>
+
+</div>
+<div id="content">
+    <p>
+        This page offers the WDC Block benchmark for download. WDC Block provides three large-scale benchmark datasets
+        to evaluate blocking systems.
+        <br>
+        We evaluate
+        WDC Block using several state-of-the-art blocking systems,
+        including CTT, Auto, JedAI, Sudowoodo, SBERT, BM25 and SC-Block.
+        Detailed explanations of the experiments can be found in the corresponding <a
+            href="https://arxiv.org/abs/2303.03132">paper</a>
+
+    <h2 id="news">News</h2>
+    <ul>
+        <li><strong>2023-02-15:</strong> Initial release of WDC Block</li>
+    </ul>
+
+    <h2>Table of Contents</h2>
+    <ul>
+        <li class="toc-h2 toc-active">
+            <a href="#toc1"> 1 Introduction </a>
+        </li>
+        <li class="toc-h2 toc-active">
+            <a href="#toc2"> 2 Benchmark Creation </a>
+        </li>
+        <li class="toc-h2 toc-active">
+            <a href="#toc3"> 3 Benchmark Profiling </a>
+        </li>
+        <li class="toc-h2 toc-active">
+            <a href="#toc4"> 4 Experiments </a>
+        </li>
+        <li class="toc-h2 toc-active">
+            <a href="#toc5"> 5 Downloads </a>
+        </li>
+        <li class="toc-h2 toc-active">
+            <a href="#toc6"> 6 Feedback </a>
+        </li>
+        <li class="toc-h2 toc-active">
+            <a href="#toc7"> 7 References </a>
+        </li>
+    </ul>
+
+    <span id="toc1"></span>
+    <h2>1 Introduction</h2>
+
+    <p>
+        Entity resolution aims to identify records across two datasets (A and B) that describe the same real-world
+        entity [<a href="#toc7">1</a>,<a
+            href="#toc7">2</a>,<a
+            href="#toc7">3</a>].
+        Since comparing all record pairs between two datasets can be computationally expensive, entity resolution is
+        usually tackled in two steps, namely, <i>blocking</i> and <i>matching</i>.
+        Blocking applies a computationally cheap method to remove non-matching record pairs and produce a smaller set of
+        candidate record pairs reducing the workload of the matcher.
+        During matching a more expensive pair-wise matcher generates a final set of matching record pairs.
+
+        Existing benchmark dataset for blocking and matching are rather small with respect to the cartesian product AxB
+        to compare all records and the vocabulary size. When
+        evaluating blockers on these small datasets, effects resulting from a large cartesian product and a large
+        vocabulary size can be overlooked.
+        Web Data Commons Block (WDC-Block) is a new large-scale benchmark dataset for blocking that allows for a more
+        realistic setup to evaluate blockers.
+        Additionally, we provide three development sets with different sizes (~1K pairs, ~5k pairs & ~20k pairs) to
+        experiment with different amounts of training data for the blockers.
+    </p>
+    <p>
+        WDC Block is based on product data that has been <b>extracted
+        in 2020 from 3,259 e-shops</b> that mark up product offers within their
+        HTML pages using the schema.org vocabulary. By relying on web
+        data from many sources, WDC Block can offer a decent amount
+        of heterogeneous records per entity, e.g. WDC Block contains 2,100,000 product offers describing in
+        total
+        2,073,224 product entities
+        belonging to various product categories.
+    </p>
+
+    <span id="toc2"></span>
+    <h2>2 Benchmark Creation</h2>
+
+    <p>The WDC Block benchmark was created in three steps: (i) select a basis matching dataset from <a
+            href="https://webdatacommons.org/largescaleproductcorpus/wdc-products/index.html">WDC Products</a>,
+        (ii) split the dataset into two separate datasets A and B, (iii) fill the datasets up with products from <a
+                href="https://webdatacommons.org/largescaleproductcorpus/v2020/index.html">WDC Product Data Corpus
+            V2020</a>, (iv) prepare the three development sets (~1K pairs, ~5k pairs & ~20k pairs). This section
+        provides an overview
+        of the four steps.</p>
+    <ol>
+        <li> We choose the large, pair-wise, 80% corner cases and 20% random dataset with the half-seen
+            test set from <a href="https://webdatacommons.org/largescaleproductcorpus/wdc-products/index.html">WDC
+                Products:
+                a multi-dimensional Entity Matching</a> as basis dataset for our benchmarks.
+            We selected the large version to start with a large number of product offers and 50% seen test set to have a
+            trade-off between products that are part of the
+            training set and not seen during training.
+        </li>
+
+        <li> We split the original record pairs into two datasets A and B to follow the common setup of entity
+            matching datasets in the <a
+                    href="https://github.com/anhaidgroup/deepmatcher/blob/master/Datasets.md"> related work</a>. Both
+            datasets A and B are deduplicated to obtain clean datasets.
+        </li>
+
+        <li> Depending on the specific benchmark (small, medium, large) we fill the datasets A and B with additional
+            randomly selected offers from the <a
+                    href="https://webdatacommons.org/largescaleproductcorpus/v2020/index.html">WDC Product Data Corpus
+                V2020</a>.
+            We make sure that the randomly selected records do not match any of the existing records in the datasets to
+            not
+            introduce additional matching pairs.
+        </li>
+
+        <li> We derive the splits train, validation & test and transfer them into the
+            format of the entity matching datasets in the <a
+                    href="https://github.com/anhaidgroup/deepmatcher/blob/master/Datasets.md"> related work</a>.
+            For the large development set (~20k pairs), the initially derived pairs are kept.
+            For the medium development set (~5k pairs) & small development set (~1k pairs), the train & validation set
+            are
+            down sampled such that the distributions of the large development set are comparable.
+            The test set remains the same for all versions of this benchmark to make the results comparable.
+        </li>
+    </ol>
+    <span id="toc3"></span>
+    <h2>3 Benchmark Profiling</h2>
+
+    <p>The WDC Block benchmark consists of overall 2,073,224 real-word products across all subsets which
+        are described by 2,100,000 product offers.
+        It comes with nine configurations, which are derived from the two dimensions dataset size (small, medium, large)
+        described in Table 1 and development set sizes (~1k, ~5k, ~20k) described in Table 2.
+    </p>
+
+    <div class="tg-wrap">
+        <table style="border-collapse:collapse;border-color:#ccc;border-spacing:0" class="tg">
+            <caption><b>Table 1: Benchmark Statistics.</b></caption>
+            <thead>
+            <tr>
+                <th>Dataset</th>
+                <th>Table A</th>
+                <th>Table B</th>
+                <th>Pos. Pairs Test</th>
+                <th>Neg. Pairs Test</th>
+                <th>Vocabulary Size</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>WDC Block small</td>
+                <td>5,000</td>
+                <td>5,000</td>
+                <td>500</td>
+                <td>4,000</td>
+                <td>67,294</td>
+            </tr>
+            <tr>
+                <td>WDC Block medium</td>
+                <td>5,000</td>
+                <td>200,000</td>
+                <td>500</td>
+                <td>4,000</td>
+                <td>1,174,280</td>
+            </tr>
+            <tr>
+                <td>WDC Block large</td>
+                <td>100,000</td>
+                <td>2,000,000</td>
+                <td>500</td>
+                <td>4,000</td>
+                <td>6,880,107</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+    <ul>
+        <li>
+            <b>Attributes and Vocabulary:</b>
+            Each record in WDC Block
+            has five attributes, <i>title</i>, <i>description</i>, <i>price</i>, <i>priceCurrency</i>
+            and <i>brand</i>.
+            Table 2 contains statistics about density and value length for each
+            attribute across all datasets. Table 2 further shows statistics
+            for the unique vocabulary used across all datasets highlighting the
+            heterogeneity of the benchmark with each dataset containing between 17K and 20K unique words
+            on average as well as making use
+            of around 12K (24%) of tokens contained in RoBERTa's [<a
+                href="http://webdatacommons.org/largescaleproductcorpus/wdc-products/index.html#toc7">6</a>]
+            vocabulary of size ~50K.
+        </li>
+    </ul>
+
+    <div class="tg-wrap">
+        <table style="border-collapse:collapse;border-color:#ccc;border-spacing:0" class="tg">
+            <caption><b>Table 2: Development Set Statistics.</b></caption>
+            <thead>
+            <tr>
+                <th>Development Set Seiz</th>
+                <th>Pos. Pairs Train</th>
+                <th>Neg. Pairs Train</th>
+                <th>Pos. Pairs Val.</th>
+                <th>Neg. Pairs Val.</th>
+                <th>Total Pairs</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>Small ~1k</td>
+                <td>362</td>
+                <td>375</td>
+                <td>38</td>
+                <td>236</td>
+                <td>1,011</td>
+            </tr>
+            <tr>
+                <td>Medium ~5k</td>
+                <td>2,301</td>
+                <td>2,428</td>
+                <td>70</td>
+                <td>393</td>
+                <td>5,192</td>
+            </tr>
+            <tr>
+                <td>Large ~20k</td>
+                <td>9,180</td>
+                <td>8,252</td>
+                <td>500</td>
+                <td>4,000</td>
+                <td>21,932</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+
+<span id="toc4"></span>
+<h2>4 Experiments</h2>
+
+<p>To show the usefulness of WDC Block, we evaluate the following blocking methods using the benchmark: BM25, BM25 with
+    trigrams (BM25-3),
+    CTT [<a
+            href="#toc7">3</a>],
+    Auto [<a href="#toc7">3</a>],
+    JedAI [<a
+            href="#toc7">2</a>],
+    SBERT [<a href="#toc7">4</a>],
+    Barlow Twins [<a
+            href="#toc7">5</a>],
+    SimCLR [<a
+            href="#toc7">5</a>],
+    and SC-Block.
+</p>
+
+<h3>4.1 Blocking Systems</h3>
+
+<p>
+<ul>
+    <li>
+        <b>BM25:</b>
+    </li>
+    <li>
+        <b>BM25-3:</b>
+    </li>
+    <li>
+        <b>CTT:</b>
+    </li>
+    <li>
+        <b>Auto:</b>
+    </li>
+    <li>
+        <b>Sparkly ?</b>
+    </li>
+    <li>
+        <b>Barlow Twins:</b>
+    </li>
+    <li>
+        <b>SimCLR:</b>
+    </li>
+    <li>
+        <b>JedAI:</b>
+    </li>
+    <li>
+        <b>SC-Block:</b>
+    </li>
+</ul>
+</p>
+<h3>4.2 Benchmark Results and Discussion</h3>
+
+<p>Table 3 summarizes the results of the experiments for blocking task along the two dimensions, dataset size and
+    development set size.
+
+<div class="tg-wrap">
+    <table style="border-collapse:collapse;border-color:#ccc;border-spacing:0" class="tg">
+        <caption><b>Table 3: Results of the blockers.
+            <!---
+            Results are Recall of the matching class, candidate set size and run time (training time plus execution time).
+            Bold results are best evaluation metric values for that benchmark variant.
+            -->
+        </b>
+        </caption>
+        <thead>
+        <tr>
+            <th
+                    style="background-color:#f0f0f0;border-color:inherit;border-style:solid;border-width:1px;color:#333;font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;position:-webkit-sticky;position:sticky;text-align:left;top:-1px;vertical-align:top;will-change:transform;word-break:normal">
+                To-Do
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td
+                    style="background-color:#f9f9f9;border-color:inherit;border-style:solid;border-width:1px;color:#333;font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;text-align:left;vertical-align:top;word-break:normal">
+                To-DO
+            </td>
+
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<ul>
+    <li>
+        <b>Dimension Dataset Size:</b>
+    </li>
+    <li>
+        <b>Dimension Development Set Size:</b>
+    </li>
+</ul>
+
+
+</div>
+
+
+</p>
+
+
+<span id="toc5"></span>
+<h2>5 Downloads</h2>
+
+<p>
+    We offer the WDC Block benchmark for public download. The benchmark is available as
+    a single zip file for each configuration. Each dataset contains the two datasets A and B as well as the
+    train, validation and test split.</p>
+
+<p>The code used for the creation of the corpus can be found on <a
+        href="https://github.com/wbsg-uni-mannheim/sc-block">github</a>.</p>
+
+The files are represented using the CSV format and can for example be easily processed using the <a
+        href="https://pandas.pydata.org/">pandas</a> Python library.<br><br>
+<code>import pandas as pd<br>
+    df = pd.read_csv('file_name.csv')
+</code>
+
+<ul>
+    <li>
+        <b>id:</b> An integer id that uniquely identifies an offer.
+    </li>
+    <li>
+        <b>brand:</b> The brand attribute, usually a short string with a median of 1 word, e.g.
+        "Nikon", "Crucial", ...
+    </li>
+    <li>
+        <b>title:</b> The title attribute, a string with a median of 8 words, e.g. "Nikon AF-S
+        NIKKOR 50mm f1.4G Lens", "Crucial 4GB (1x4GB) DDR3l PC3-12800 1600MHz SODIMM Module", ...
+    </li>
+    <li>
+        <b>description:</b> The description attribute, a longer string with a median of xxx words (271 characters).
+    </li>
+    <li>
+        <b>price:</b> The price attribute, a string containing a number, e.g. "749", "20.57", ...
+    </li>
+    <li>
+        <b>priceCurrency:</b> The priceCurrency attribute, usually containing a three character
+        string, e.g. "AUD", "GBP"
+    </li>
+    <li>
+        <b>cluster_id:</b> The integer cluster_id referring to the cluster an offer belongs to. All
+        offers in a cluster refer to the same real-word entity.
+    </li>
+
+</ul>
+
+
+<table>
+    <tbody>
+    <tr>
+        <td><b>Dataset Size</b></td>
+        <td><b>Small development set (~1k)</b></td>
+        <td><b>Size</b></td>
+        <td><b>Medium development set (~5k)</b></td>
+        <td><b>Size</b></td>
+        <td><b>Large development set (~20k)</b></td>
+        <td><b>Size</b></td>
+    </tr>
+
+
+    <tr>
+        <td>Small</td>
+        <td><a
+                href="https://data.dws.informatik.uni-mannheim.de/largescaleproductcorpus/data/wdc-block/wdcproducts80cc20rnd050un_block_s_train_s.zip">Size S, Train S</a>
+        </td>
+        <td>2.2MB
+        </td>
+        <td><a
+                href="https://data.dws.informatik.uni-mannheim.de/largescaleproductcorpus/data/wdc-block/wdcproducts80cc20rnd050un_block_s_train_m.zip">Size S, Train M</a>
+        </td>
+        <td>2.2MB
+        </td>
+            <td><a
+                href="https://data.dws.informatik.uni-mannheim.de/largescaleproductcorpus/data/wdc-block/wdcproducts80cc20rnd050un_block_s_train_l.zip">Size S, Train L</a>
+        </td>
+        <td>2.5MB
+        </td>
+
+    <tr>
+        <td>Medium</td>
+        <td><a
+                href="https://data.dws.informatik.uni-mannheim.de/largescaleproductcorpus/data/wdc-block/wdcproducts80cc20rnd050un_block_m_train_s.zip">DS M, Train S</a>
+        </td>
+        <td>38MB
+        </td>
+        <td><a
+                href="https://data.dws.informatik.uni-mannheim.de/largescaleproductcorpus/data/wdc-block/wdcproducts80cc20rnd050un_block_m_train_m.zip">DS M, Train M</a>
+        </td>
+        <td>38MB
+        </td>
+            <td><a
+                href="https://data.dws.informatik.uni-mannheim.de/largescaleproductcorpus/data/wdc-block/wdcproducts80cc20rnd050un_block_m_train_l.zip">DS M, Train L</a>
+        </td>
+        <td>39MB
+        </td>
+    <tr>
+        <td>Large</td>
+        <td><a
+                href="https://data.dws.informatik.uni-mannheim.de/largescaleproductcorpus/data/wdc-block/wdcproducts80cc20rnd050un_block_l_train_s.zip">DS L, Train S</a>
+        </td>
+        <td>385MB
+        </td>
+        <td><a
+                href="https://data.dws.informatik.uni-mannheim.de/largescaleproductcorpus/data/wdc-block/wdcproducts80cc20rnd050un_block_l_train_m.zip">DS L, Train M</a>
+        </td>
+        <td>385MB
+        </td>
+            <td><a
+                href="https://data.dws.informatik.uni-mannheim.de/largescaleproductcorpus/data/wdc-block/wdcproducts80cc20rnd050un_block_l_train_l.zip">DS L, Train L</a>
+        </td>
+        <td>385MB
+        </td>
+
+    </tbody>
+</table>
+</p>
+
+<span id="toc6"></span>
+<h2>6 Feedback</h2>
+
+<p>Please send questions and feedback to the <a href="http://groups.google.com/group/web-data-commons">Web Data
+    Commons Google Group</a>.<br/><br/>
+    More information about Web Data Commons is found <a href="../../index.html">here</a>.</p>
+
+<span id="toc7"></span>
+<h2>7 References</h2>
+
+<p>
+<div class="csl-bib-body" style="line-height: 1.35; ">
+    <div class="csl-entry" style="clear: left; ">
+        <div class="csl-left-margin" style="float: left; padding-right: 0.5em;text-align: right; width: 1em;">
+            [1]
+        </div>
+        <div class="csl-right-inline" style="margin: 0 .4em 0 1.5em;">P. Christen, 2012, "Data matching : concepts and
+            techniques for record linkage",
+            entity resolution, and duplicate detection. Springer, Berlin, Heidelberg.
+        </div>
+    </div>
+    <span class="Z3988"
+          title="url_ver=Z39.88-2004&amp;ctx_ver=Z39.88-2004&amp;rfr_id=info%3Asid%2Fzotero.org%3A2&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&amp;rft.genre=proceeding&amp;rft.atitle=Entity%20Resolution%20with%20Hierarchical%20Graph%20Attention%20Networks&amp;rft.btitle=Proceedings%20of%20the%202022%20International%20Conference%20on%20Management%20of%20Data&amp;rft.aufirst=Dezhong&amp;rft.aulast=Yao&amp;rft.au=Dezhong%20Yao&amp;rft.au=Yuhong%20Gu&amp;rft.au=Gao%20Cong&amp;rft.au=Hai%20Jin&amp;rft.au=Xinqiao%20Lv&amp;rft.date=2022-06&amp;rft.pages=429%E2%80%93442&amp;rft.spage=429&amp;rft.epage=442"></span>
+    <div class="csl-entry" style="clear: left; ">
+        <div class="csl-left-margin" style="float: left; padding-right: 0.5em;text-align: right; width: 1em;">
+            [2]
+        </div>
+        <div class="csl-right-inline" style="margin: 0 .4em 0 1.5em;">V. Christophides, V. Efthymiou, T. Palpanas, G.
+            Papadakis,
+            and K. Stefanidis, 2021, "An Overview of End-to-End Entity Resolution for
+            Big Data", in <i>ACM Comput. Surv. 53</i>, 6 (Nov. 2021), 1–42.
+        </div>
+    </div>
+    <span class="Z3988"
+          title="url_ver=Z39.88-2004&amp;ctx_ver=Z39.88-2004&amp;rfr_id=info%3Asid%2Fzotero.org%3A2&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&amp;rft.genre=proceeding&amp;rft.atitle=Supervised%20Contrastive%20Learning%20for%20Product%20Matching&amp;rft.btitle=Companion%20Proceedings%20of%20the%20Web%20Conference%202022&amp;rft.aufirst=Ralph&amp;rft.aulast=Peeters&amp;rft.au=Ralph%20Peeters&amp;rft.au=Christian%20Bizer&amp;rft.date=2022-04&amp;rft.pages=248%E2%80%93251&amp;rft.spage=248&amp;rft.epage=251"></span>
+    <div class="csl-entry" style="clear: left; ">
+        <div class="csl-left-margin" style="float: left; padding-right: 0.5em;text-align: right; width: 1em;">
+            [3]
+        </div>
+        <div class="csl-right-inline" style="margin: 0 .4em 0 1.5em;">S. Thirumuruganathan, H. Li, N. Tang, M. Ouzzani,
+            Y. Govind, D. Paulsen, G. Fung, and A. Doan, 2021, "Deep learning
+            for blocking in entity matching: a design space exploration" in
+            <i>Proceedings of the VLDB Endowment</i>, vol. 14, no. 1, pp. 2459–2472.
+        </div>
+    </div>
+    <span class="Z3988"
+          title="url_ver=Z39.88-2004&amp;ctx_ver=Z39.88-2004&amp;rfr_id=info%3Asid%2Fzotero.org%3A2&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Ajournal&amp;rft.genre=article&amp;rft.atitle=A%20theory%20for%20record%20linkage&amp;rft.jtitle=Journal%20of%20the%20American%20Statistical%20Association&amp;rft.volume=64&amp;rft.issue=328&amp;rft.aufirst=Ivan%20P.&amp;rft.aulast=Fellegi&amp;rft.au=Ivan%20P.%20Fellegi&amp;rft.au=Alan%20B.%20Sunter&amp;rft.date=1969&amp;rft.pages=1183%E2%80%931210&amp;rft.spage=1183&amp;rft.epage=1210"></span>
+    <div class="csl-entry" style="clear: left; ">
+        <div class="csl-left-margin" style="float: left; padding-right: 0.5em;text-align: right; width: 1em;">
+            [4]
+        </div>
+        <div class="csl-right-inline" style="margin: 0 .4em 0 1.5em;">N. Reimers and I. Gurevych, 2019, "Sentence-BERT:
+            Sentence Embeddings using Siamese BERT-Networks" in
+            <i>Proceedings of Empirical Methods in Natural Language Processing and the 9th International Joint
+                Conference on Natural Language Processing (EMNLP-IJCNLP)</i>, pp. 3982–3992.
+        </div>
+
+    </div>
+    <span class="Z3988"
+          title="url_ver=Z39.88-2004&amp;ctx_ver=Z39.88-2004&amp;rfr_id=info%3Asid%2Fzotero.org%3A2&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Ajournal&amp;rft.genre=article&amp;rft.atitle=A%20theory%20for%20record%20linkage&amp;rft.jtitle=Journal%20of%20the%20American%20Statistical%20Association&amp;rft.volume=64&amp;rft.issue=328&amp;rft.aufirst=Ivan%20P.&amp;rft.aulast=Fellegi&amp;rft.au=Ivan%20P.%20Fellegi&amp;rft.au=Alan%20B.%20Sunter&amp;rft.date=1969&amp;rft.pages=1183%E2%80%931210&amp;rft.spage=1183&amp;rft.epage=1210"></span>
+    <div class="csl-entry" style="clear: left; ">
+        <div class="csl-left-margin" style="float: left; padding-right: 0.5em;text-align: right; width: 1em;">
+            [5]
+        </div>
+        <div class="csl-right-inline" style="margin: 0 .4em 0 1.5em;">R. Wang, Y. Li, and J. Wang, 2022, "Sudowoodo: Contrastive Self-supervised Learning for Multi-purpose Data Integration and Preparation" on
+            <i>arXiv</i>.
+        </div>
+
+
+    </div>
+    <span class="Z3988"
+          title="url_ver=Z39.88-2004&amp;ctx_ver=Z39.88-2004&amp;rfr_id=info%3Asid%2Fzotero.org%3A2&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Ajournal&amp;rft.genre=article&amp;rft.atitle=A%20theory%20for%20record%20linkage&amp;rft.jtitle=Journal%20of%20the%20American%20Statistical%20Association&amp;rft.volume=64&amp;rft.issue=328&amp;rft.aufirst=Ivan%20P.&amp;rft.aulast=Fellegi&amp;rft.au=Ivan%20P.%20Fellegi&amp;rft.au=Alan%20B.%20Sunter&amp;rft.date=1969&amp;rft.pages=1183%E2%80%931210&amp;rft.spage=1183&amp;rft.epage=1210"></span>
+
+</div>
+</p>
+
+<script type="text/javascript">
+    $('#toc').toc({
+        'selectors': 'h2', //elements to use as headings
+        'container': '#toccontent', //element to find all selectors in
+        'smoothScrolling': true, //enable or disable smooth scrolling on click
+        'prefix': 'toc', //prefix for anchor tags and class names
+        'highlightOnScroll': true, //add class to heading that is currently in focus
+        'highlightOffset': 100, //offset to trigger the next headline
+        'anchorName': function (i, heading, prefix) { //custom function for anchor name
+            return prefix + i;
+        }
+    });
+    $('[id*="link_"]').each(function () {
+        var element = $(this);
+        element.click(function (e) {
+            e.preventDefault();
+            var id = element.attr("id").split("_")[1];
+            element.parent().removeClass("show").addClass("no-show");
+            $('#charts_' + id).removeClass("no-show").addClass("show");
+        });
+    });
+    $('[id*="colapse_"]').each(function () {
+        var element = $(this);
+        element.click(function (e) {
+            e.preventDefault();
+            var id = element.attr("id").split("_")[1];
+            element.parent().removeClass("show").addClass("no-show");
+            $('#intro_' + id).removeClass("no-show").addClass("show");
+        });
+    });
+    document.getElementById("defaultOpen").click();
+</script>
+</body>
+
+</html>
