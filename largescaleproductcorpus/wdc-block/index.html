@@ -231,11 +231,12 @@
 </div>
 <div id="content">
     <p>
-        This page offers the WDC Block benchmark for download. WDC Block provides three large-scale benchmark datasets
-        to evaluate blocking systems.
+        This page offers the WDC Block benchmark for download.
+        The benchmark consists of three sizes (small, medium, large), three different training sets (~1k, ~5k, ~20k) and
+        a consistent evaluation set.
         <br>
-        We evaluate
-        WDC Block using several state-of-the-art blocking systems,
+        We use
+        WDC Block to evaluate several state-of-the-art blocking systems,
         including CTT, Auto, JedAI, Sudowoodo, SBERT, BM25 and SC-Block.
         Detailed explanations of the experiments can be found in the corresponding <a
             href="https://arxiv.org/abs/2303.03132">paper</a>
@@ -282,10 +283,12 @@
         usually tackled in two steps, namely, <i>blocking</i> and <i>matching</i>.
         Blocking applies a computationally cheap method to remove non-matching record pairs and produce a smaller set of
         candidate record pairs reducing the workload of the matcher.
-        During matching a more expensive pair-wise matcher generates a final set of matching record pairs.
+        During matching a more expensive pair-wise matcher generates a final set of matching record pairs[<a
+            href="#toc7">1</a>, <a
+            href="#toc7">7</a>].
 
-        Existing benchmark dataset for blocking and matching are rather small with respect to the cartesian product AxB
-        to compare all records and the vocabulary size. When
+        Existing benchmark datasets for blocking and matching are rather small with respect to the cartesian product AxB
+        to compare all records and the vocabulary size[<a href="#toc7">6</a>].
         evaluating blockers on these small datasets, effects resulting from a large cartesian product and a large
         vocabulary size can be overlooked.
         Web Data Commons Block (WDC-Block) is a new large-scale benchmark dataset for blocking that allows for a more
@@ -369,6 +372,7 @@
                 <th>Pos. Pairs Test</th>
                 <th>Neg. Pairs Test</th>
                 <th>Vocabulary Size</th>
+                <th>Cartesian Product</th>
             </tr>
             </thead>
             <tbody>
@@ -379,6 +383,7 @@
                 <td>500</td>
                 <td>4,000</td>
                 <td>67,294</td>
+                <td>25M</td>
             </tr>
             <tr>
                 <td>WDC Block medium</td>
@@ -387,6 +392,7 @@
                 <td>500</td>
                 <td>4,000</td>
                 <td>1,174,280</td>
+                <td>1,000M</td>
             </tr>
             <tr>
                 <td>WDC Block large</td>
@@ -395,6 +401,7 @@
                 <td>500</td>
                 <td>4,000</td>
                 <td>6,880,107</td>
+                <td>200,000M</td>
             </tr>
             </tbody>
         </table>
@@ -434,26 +441,26 @@
             <tbody>
             <tr>
                 <td>Small ~1k</td>
-                <td>362</td>
-                <td>375</td>
-                <td>38</td>
-                <td>236</td>
+                <td>266</td>
+                <td>408</td>
+                <td>133</td>
+                <td>203</td>
                 <td>1,011</td>
             </tr>
             <tr>
                 <td>Medium ~5k</td>
-                <td>2,301</td>
-                <td>2,428</td>
-                <td>70</td>
-                <td>393</td>
+                <td>1,559</td>
+                <td>1,880</td>
+                <td>779</td>
+                <td>939</td>
                 <td>5,192</td>
             </tr>
             <tr>
                 <td>Large ~20k</td>
-                <td>9,180</td>
-                <td>8,252</td>
-                <td>500</td>
-                <td>4,000</td>
+                <td>6,454</td>
+                <td>10,502</td>
+                <td>3,226</td>
+                <td>5,250</td>
                 <td>21,932</td>
             </tr>
             </tbody>
@@ -492,13 +499,12 @@
         <b>BM25-3:</b>
     </li>
     <li>
-        <b>CTT:</b>
+        <b>CTT[<a
+            href="#toc7">3</a>]:</b>
     </li>
     <li>
-        <b>Auto:</b>
-    </li>
-    <li>
-        <b>Sparkly ?</b>
+        <b>Auto[<a
+            href="#toc7">3</a>]:</b>
     </li>
     <li>
         <b>Barlow Twins:</b>
@@ -507,7 +513,12 @@
         <b>SimCLR:</b>
     </li>
     <li>
-        <b>JedAI:</b>
+        <b>JedAI[<a
+            href="#toc7">8</a>]:</b>
+    </li>
+        <li>
+        <b>SBERT[<a
+            href="#toc7">4</a>]:</b>
     </li>
     <li>
         <b>SC-Block:</b>
@@ -627,17 +638,20 @@ The files are represented using the CSV format and can for example be easily pro
     <tr>
         <td>Small</td>
         <td><a
-                href="https://data.dws.informatik.uni-mannheim.de/largescaleproductcorpus/data/wdc-block/wdcproducts80cc20rnd050un_block_s_train_s.zip">Size S, Train S</a>
+                href="https://data.dws.informatik.uni-mannheim.de/largescaleproductcorpus/data/wdc-block/wdcproducts80cc20rnd050un_block_s_train_s.zip">Size
+            S, Train S</a>
         </td>
         <td>2.2MB
         </td>
         <td><a
-                href="https://data.dws.informatik.uni-mannheim.de/largescaleproductcorpus/data/wdc-block/wdcproducts80cc20rnd050un_block_s_train_m.zip">Size S, Train M</a>
+                href="https://data.dws.informatik.uni-mannheim.de/largescaleproductcorpus/data/wdc-block/wdcproducts80cc20rnd050un_block_s_train_m.zip">Size
+            S, Train M</a>
         </td>
         <td>2.2MB
         </td>
-            <td><a
-                href="https://data.dws.informatik.uni-mannheim.de/largescaleproductcorpus/data/wdc-block/wdcproducts80cc20rnd050un_block_s_train_l.zip">Size S, Train L</a>
+        <td><a
+                href="https://data.dws.informatik.uni-mannheim.de/largescaleproductcorpus/data/wdc-block/wdcproducts80cc20rnd050un_block_s_train_l.zip">Size
+            S, Train L</a>
         </td>
         <td>2.5MB
         </td>
@@ -645,34 +659,40 @@ The files are represented using the CSV format and can for example be easily pro
     <tr>
         <td>Medium</td>
         <td><a
-                href="https://data.dws.informatik.uni-mannheim.de/largescaleproductcorpus/data/wdc-block/wdcproducts80cc20rnd050un_block_m_train_s.zip">DS M, Train S</a>
+                href="https://data.dws.informatik.uni-mannheim.de/largescaleproductcorpus/data/wdc-block/wdcproducts80cc20rnd050un_block_m_train_s.zip">DS
+            M, Train S</a>
         </td>
         <td>38MB
         </td>
         <td><a
-                href="https://data.dws.informatik.uni-mannheim.de/largescaleproductcorpus/data/wdc-block/wdcproducts80cc20rnd050un_block_m_train_m.zip">DS M, Train M</a>
+                href="https://data.dws.informatik.uni-mannheim.de/largescaleproductcorpus/data/wdc-block/wdcproducts80cc20rnd050un_block_m_train_m.zip">DS
+            M, Train M</a>
         </td>
         <td>38MB
         </td>
-            <td><a
-                href="https://data.dws.informatik.uni-mannheim.de/largescaleproductcorpus/data/wdc-block/wdcproducts80cc20rnd050un_block_m_train_l.zip">DS M, Train L</a>
+        <td><a
+                href="https://data.dws.informatik.uni-mannheim.de/largescaleproductcorpus/data/wdc-block/wdcproducts80cc20rnd050un_block_m_train_l.zip">DS
+            M, Train L</a>
         </td>
         <td>39MB
         </td>
     <tr>
         <td>Large</td>
         <td><a
-                href="https://data.dws.informatik.uni-mannheim.de/largescaleproductcorpus/data/wdc-block/wdcproducts80cc20rnd050un_block_l_train_s.zip">DS L, Train S</a>
+                href="https://data.dws.informatik.uni-mannheim.de/largescaleproductcorpus/data/wdc-block/wdcproducts80cc20rnd050un_block_l_train_s.zip">DS
+            L, Train S</a>
         </td>
         <td>385MB
         </td>
         <td><a
-                href="https://data.dws.informatik.uni-mannheim.de/largescaleproductcorpus/data/wdc-block/wdcproducts80cc20rnd050un_block_l_train_m.zip">DS L, Train M</a>
+                href="https://data.dws.informatik.uni-mannheim.de/largescaleproductcorpus/data/wdc-block/wdcproducts80cc20rnd050un_block_l_train_m.zip">DS
+            L, Train M</a>
         </td>
         <td>385MB
         </td>
-            <td><a
-                href="https://data.dws.informatik.uni-mannheim.de/largescaleproductcorpus/data/wdc-block/wdcproducts80cc20rnd050un_block_l_train_l.zip">DS L, Train L</a>
+        <td><a
+                href="https://data.dws.informatik.uni-mannheim.de/largescaleproductcorpus/data/wdc-block/wdcproducts80cc20rnd050un_block_l_train_l.zip">DS
+            L, Train L</a>
         </td>
         <td>385MB
         </td>
@@ -745,50 +765,78 @@ The files are represented using the CSV format and can for example be easily pro
         <div class="csl-left-margin" style="float: left; padding-right: 0.5em;text-align: right; width: 1em;">
             [5]
         </div>
-        <div class="csl-right-inline" style="margin: 0 .4em 0 1.5em;">R. Wang, Y. Li, and J. Wang, 2022, "Sudowoodo: Contrastive Self-supervised Learning for Multi-purpose Data Integration and Preparation" on
+        <div class="csl-right-inline" style="margin: 0 .4em 0 1.5em;">R. Wang, Y. Li, and J. Wang, 2022, "Sudowoodo:
+            Contrastive Self-supervised Learning for Multi-purpose Data Integration and Preparation" on
             <i>arXiv</i>.
         </div>
+        <div class="csl-entry" style="clear: left; ">
+            <div class="csl-left-margin" style="float: left; padding-right: 0.5em;text-align: right; width: 1em;">
+                [6]
+            </div>
+            <div class="csl-right-inline" style="margin: 0 .4em 0 1.5em;">H. Köpcke, A. Thor, and E. Rahm, 2010,
+                "Evaluation of entity resolution approaches on real-world match problems" in
+                <i>Proceedings of the VLDB Endowment</i>, vol. 3, no. 1, pp. 484–493.
+            </div>
+        </div>
+        <div class="csl-entry" style="clear: left; ">
+            <div class="csl-left-margin" style="float: left; padding-right: 0.5em;text-align: right; width: 1em;">
+                [7]
+            </div>
+            <div class="csl-right-inline" style="margin: 0 .4em 0 1.5em;">G. Papadakis, D. Skoutas, E. Thanos, and T.
+                Palpanas, 2021, "Blocking and Filtering Techniques for Entity Resolution: A Survey" in
+                <i>ACM Computing Surveys</i>, vol. 53, no. 2, pp. 1–42.
+            </div>
+            <div class="csl-entry" style="clear: left; ">
+                <div class="csl-left-margin" style="float: left; padding-right: 0.5em;text-align: right; width: 1em;">
+                    [8]
+                </div>
+                <div class="csl-right-inline" style="margin: 0 .4em 0 1.5em;">V. Efthymiou, G. Papadakis, G.
+                    Papastefanatos, K. Stefanidis, and T. Palpanas, 2017, "Parallel meta-blocking for scaling entity
+                    resolution over big heterogeneous data" in
+                    <i>Information Systems</i>, vol. 53, pp. 137–157.
+                </div>
 
+            </div>
+
+        </div>
+        <span class="Z3988"
+              title="url_ver=Z39.88-2004&amp;ctx_ver=Z39.88-2004&amp;rfr_id=info%3Asid%2Fzotero.org%3A2&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Ajournal&amp;rft.genre=article&amp;rft.atitle=A%20theory%20for%20record%20linkage&amp;rft.jtitle=Journal%20of%20the%20American%20Statistical%20Association&amp;rft.volume=64&amp;rft.issue=328&amp;rft.aufirst=Ivan%20P.&amp;rft.aulast=Fellegi&amp;rft.au=Ivan%20P.%20Fellegi&amp;rft.au=Alan%20B.%20Sunter&amp;rft.date=1969&amp;rft.pages=1183%E2%80%931210&amp;rft.spage=1183&amp;rft.epage=1210"></span>
 
     </div>
-    <span class="Z3988"
-          title="url_ver=Z39.88-2004&amp;ctx_ver=Z39.88-2004&amp;rfr_id=info%3Asid%2Fzotero.org%3A2&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Ajournal&amp;rft.genre=article&amp;rft.atitle=A%20theory%20for%20record%20linkage&amp;rft.jtitle=Journal%20of%20the%20American%20Statistical%20Association&amp;rft.volume=64&amp;rft.issue=328&amp;rft.aufirst=Ivan%20P.&amp;rft.aulast=Fellegi&amp;rft.au=Ivan%20P.%20Fellegi&amp;rft.au=Alan%20B.%20Sunter&amp;rft.date=1969&amp;rft.pages=1183%E2%80%931210&amp;rft.spage=1183&amp;rft.epage=1210"></span>
+    </p>
 
-</div>
-</p>
-
-<script type="text/javascript">
-    $('#toc').toc({
-        'selectors': 'h2', //elements to use as headings
-        'container': '#toccontent', //element to find all selectors in
-        'smoothScrolling': true, //enable or disable smooth scrolling on click
-        'prefix': 'toc', //prefix for anchor tags and class names
-        'highlightOnScroll': true, //add class to heading that is currently in focus
-        'highlightOffset': 100, //offset to trigger the next headline
-        'anchorName': function (i, heading, prefix) { //custom function for anchor name
-            return prefix + i;
-        }
-    });
-    $('[id*="link_"]').each(function () {
-        var element = $(this);
-        element.click(function (e) {
-            e.preventDefault();
-            var id = element.attr("id").split("_")[1];
-            element.parent().removeClass("show").addClass("no-show");
-            $('#charts_' + id).removeClass("no-show").addClass("show");
+    <script type="text/javascript">
+        $('#toc').toc({
+            'selectors': 'h2', //elements to use as headings
+            'container': '#toccontent', //element to find all selectors in
+            'smoothScrolling': true, //enable or disable smooth scrolling on click
+            'prefix': 'toc', //prefix for anchor tags and class names
+            'highlightOnScroll': true, //add class to heading that is currently in focus
+            'highlightOffset': 100, //offset to trigger the next headline
+            'anchorName': function (i, heading, prefix) { //custom function for anchor name
+                return prefix + i;
+            }
         });
-    });
-    $('[id*="colapse_"]').each(function () {
-        var element = $(this);
-        element.click(function (e) {
-            e.preventDefault();
-            var id = element.attr("id").split("_")[1];
-            element.parent().removeClass("show").addClass("no-show");
-            $('#intro_' + id).removeClass("no-show").addClass("show");
+        $('[id*="link_"]').each(function () {
+            var element = $(this);
+            element.click(function (e) {
+                e.preventDefault();
+                var id = element.attr("id").split("_")[1];
+                element.parent().removeClass("show").addClass("no-show");
+                $('#charts_' + id).removeClass("no-show").addClass("show");
+            });
         });
-    });
-    document.getElementById("defaultOpen").click();
-</script>
+        $('[id*="colapse_"]').each(function () {
+            var element = $(this);
+            element.click(function (e) {
+                e.preventDefault();
+                var id = element.attr("id").split("_")[1];
+                element.parent().removeClass("show").addClass("no-show");
+                $('#intro_' + id).removeClass("no-show").addClass("show");
+            });
+        });
+        document.getElementById("defaultOpen").click();
+    </script>
 </body>
 
 </html>
