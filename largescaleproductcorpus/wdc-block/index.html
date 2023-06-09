@@ -67,6 +67,7 @@
                 },
                 {
                     "@type": "Person",
+                    "url": "https://sites.google.com/view/roee-shraga/"
                     "name": "Roee Shraga"
                 },
                 {
@@ -225,7 +226,7 @@
 <div id="authors">
     <a href="https://www.uni-mannheim.de/dws/people/researchers/phd-students/alexander-brinkmann/">Alexander
         Brinkmann</a><br>
-    Roee Shraga<br>
+    <a href="https://sites.google.com/view/roee-shraga/">Roee Shraga</a><br>
     <a href="https://www.uni-mannheim.de/dws/people/professors/prof-dr-christian-bizer/">Christian Bizer</a><br/>
 
 </div>
@@ -493,46 +494,61 @@
 <p>
 <ul>
     <li>
-        <b>BM25:</b>
-    </li>
-    <li>
-        <b>BM25-3:</b>
+        <b>BM25:</b>  BM25 is a sparse bag-of-words retrieval model.
+It is an unsupervised nearest neighbour blocker that uses a vector space model and the BM25 term weighting scheme to compute a similarity score for the nearest neighbour search.
+        Recent work shows the effectiveness of BM25 for blocking[<a
+            href="#toc7">9</a>].
+We evaluate BM25 with whitespace tokenization referred to as BM25 and BM25 with tri-grams referred to as BM25-3.
     </li>
     <li>
         <b>CTT[<a
-            href="#toc7">3</a>]:</b>
+            href="#toc7">3</a>]:</b> Cross Tuple Training (CTT) use fasttext to embed the tokens of the record texts and aggregate these token embeddings into a single embedding.
+                            For CTT, the embeddings are sent through a Siamese summarizer. Afterwards, a classifier learns to detect matches based on the element-wise difference of the created embeddings.
+                            CTT is trained on synthetically produced training data derived from the two blocked datasets.
+                            The trained encoder embeds the record texts for the nearest neighbour search.
     </li>
     <li>
         <b>Auto[<a
-            href="#toc7">3</a>]:</b>
+            href="#toc7">3</a>]:</b> Autoencoder (Auto) use fasttext to embed the tokens of the record texts and aggregate these token embeddings into a single embedding.
+        For Auto, the embeddings are sent through an autoencoder. Auto is self-supervised and requires no labelled data during training.
+        The trained encoder embeds the record texts for the nearest neighbour search.
     </li>
     <li>
-        <b>Barlow Twins:</b>
+        <b>Barlow Twins:</b> The usage of Barlow Twins (BT) for blocking is inspired by Sudowoodo[<a href="#toc7">5</a>].
+During self-supervised training a batch of record texts is built. Each record is duplicated, and both the original record text and the duplicate are augmented by dropping a random token of the record text.
+The record texts are embedded through a pre-trained roberta language model and mean-pooled. For BT, a linear layer projects the embeddings to 4096 dimensions.
+During training, the empirical cross-correlation of the augmented originals and the augmented duplicates is measured and moved close to the identity matrix.
     </li>
     <li>
-        <b>SimCLR:</b>
+        <b>SimCLR:</b> The usage of SimCLR for blocking is inspired by Sudowoodo[<a href="#toc7">5</a>].
+During self-supervised training of both models, a batch of record texts is built.
+Each record is duplicated, and both the original record text and the duplicate are augmented by dropping a random token of the record text.
+The record texts are embedded through a pre-trained roberta language model and mean-pooled.
+SimCLR maximizes the agreement of embeddings representing the two previously augmented records and minimizes the agreement of embeddings representing distinct records within a batch of records.
     </li>
     <li>
         <b>JedAI[<a
-            href="#toc7">8</a>]:</b>
+            href="#toc7">8</a>]:</b> JedAI defines a blocking key value (BKV) to block records that share six-gram blocks and prunes the candidate set by removing pairs with low matching likelihood to obtain a candidate set.
     </li>
         <li>
         <b>SBERT[<a
-            href="#toc7">4</a>]:</b>
+            href="#toc7">4</a>]:</b> Sentence-Bert (SBERT) is a sentence embedding framework. Using SBERT's framework we train a supervised nearest neighbour blocker. The blocker requires labelled pairs of matching and non-matching records for training. It embeds record text pairs in a siamese fashion using a pre-trained roberta language model and mean-pools the embeddings.
     </li>
     <li>
-        <b>SC-Block:</b>
+        <b>SC-Block:</b> SC-Block applies supervised contrastive learning to position record embeddings describing the same real-world entity close to each other in an embedding space.
+        During self-supervised training of both models, a batch of record texts is built.
+        SC-Block maximizes the agreement of embeddings representing the same real-world entity according to the training set and minimizes the agreement of embeddings representing distinct records within a batch of records.
     </li>
 </ul>
 </p>
 <h3>4.2 Benchmark Results and Discussion</h3>
 
-<p>Table 3 summarizes the results of the experiments for blocking task along the two dimensions, dataset size and
-    development set size.
+<p>Table 3 summarizes the results of the experiments for blocking task for the different dataset sizes.
 
 <div class="tg-wrap">
-    <table style="border-collapse:collapse;border-color:#ccc;border-spacing:0" class="tg">
-        <caption><b>Table 3: Results of the blockers.
+    <table style="border-collapse:collapse;border-color:#ccc;border-spacing:0" class="tg"><thead>
+        <caption><b>Table 3: Recall (R) and Precision (P) of the candidate sets generated by all nearest neighbour blockers with 𝑘 = 5 on the test sets
+of the datasets. The highest Recall and Precision values are marked in bold. ’timeout’ indicates a timeout after 48h and ’OOM’ indicates an out-of-memory error.
             <!---
             Results are Recall of the matching class, candidate set size and run time (training time plus execution time).
             Bold results are best evaluation metric values for that benchmark variant.
@@ -540,33 +556,125 @@
         </b>
         </caption>
         <thead>
-        <tr>
-            <th
-                    style="background-color:#f0f0f0;border-color:inherit;border-style:solid;border-width:1px;color:#333;font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;position:-webkit-sticky;position:sticky;text-align:left;top:-1px;vertical-align:top;will-change:transform;word-break:normal">
-                To-Do
-            </th>
-        </tr>
+    <tr>
+        <th></th>
+        <th colspan="2">WDC Block small</th>
+        <th colspan="2">WDC Block medium</th>
+        <th colspan="2">WDC Block large</th>
+
+    </tr>
+
+    <tr>
+        <th>Blocker</th>
+        <th>Recall</th>
+        <th>Precision</th>
+        <th>Recall</th>
+        <th>Precision</th>
+        <th>Recall</th>
+        <th>Precision</th>
+
+    </tr>
         </thead>
         <tbody>
-        <tr>
-            <td
-                    style="background-color:#f9f9f9;border-color:inherit;border-style:solid;border-width:1px;color:#333;font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;text-align:left;vertical-align:top;word-break:normal">
-                To-DO
-            </td>
+    <tr>
+        <td style="background-color:#f0f0f0;border-color:inherit;border-style:solid;border-width:1px;color:#333;font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;position:-webkit-sticky;position:sticky;text-align:left;top:-1px;vertical-align:top;will-change:transform;word-break:normal">SC Block Large Train</td>
+        <td><b>71.52%</b></td>
+        <td><b>57.27%</b></td>
+        <td><b>66.37%</b></td>
+        <td><b>63.52%</b></td>
+        <td><b>56.73%</b></td>
+        <td><b>74.41%</b></td>
 
-        </tr>
+    </tr>
+    <tr>
+        <td style="background-color:#f0f0f0;border-color:inherit;border-style:solid;border-width:1px;color:#333;font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;position:-webkit-sticky;position:sticky;text-align:left;top:-1px;vertical-align:top;will-change:transform;word-break:normal">BM25</td>
+        <td>59.42%</td>
+        <td>39.73%</td>
+        <td>53.81%</td>
+        <td>45.28%</td>
+        <td>41.70%</td>
+        <td>54.39% </td>
+
+    </tr>
+    <tr>
+        <td style="background-color:#f0f0f0;border-color:inherit;border-style:solid;border-width:1px;color:#333;font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;position:-webkit-sticky;position:sticky;text-align:left;top:-1px;vertical-align:top;will-change:transform;word-break:normal">BM25-3</td>
+        <td>52.47%</td>
+        <td>38.87%</td>
+        <td>46.64%</td>
+        <td>43.88%</td>
+        <td>time out </td>
+        <td>time out </td>
+
+    </tr>
+    <tr>
+        <td style="background-color:#f0f0f0;border-color:inherit;border-style:solid;border-width:1px;color:#333;font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;position:-webkit-sticky;position:sticky;text-align:left;top:-1px;vertical-align:top;will-change:transform;word-break:normal">SC Block Medium Train</td>
+        <td>58.52%</td>
+        <td>51.58%</td>
+        <td>50.67%</td>
+        <td>58.25%</td>
+        <td>37.00%</td>
+        <td>62.74% </td>
+
+    </tr>
+    <tr>
+        <td style="background-color:#f0f0f0;border-color:inherit;border-style:solid;border-width:1px;color:#333;font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;position:-webkit-sticky;position:sticky;text-align:left;top:-1px;vertical-align:top;will-change:transform;word-break:normal">SC Block Small Train</td>
+        <td>42.15%</td>
+        <td>46.88%</td>
+        <td>26.46%</td>
+        <td>46.83%</td>
+        <td>17.49%</td>
+        <td>47.56% </td>
+    </tr>
+    <tr>
+        <td style="background-color:#f0f0f0;border-color:inherit;border-style:solid;border-width:1px;color:#333;font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;position:-webkit-sticky;position:sticky;text-align:left;top:-1px;vertical-align:top;will-change:transform;word-break:normal">Barlow</td>
+        <td>31.61%</td>
+        <td>34.73%</td>
+        <td>21.30%</td>
+        <td>35.58%</td>
+        <td>12.56%</td>
+        <td>33.14% </td>
+    </tr>
+    <tr>
+        <td style="background-color:#f0f0f0;border-color:inherit;border-style:solid;border-width:1px;color:#333;font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;position:-webkit-sticky;position:sticky;text-align:left;top:-1px;vertical-align:top;will-change:transform;word-break:normal">SimCLR</td>
+        <td>34.75%</td>
+        <td>39.24%</td>
+        <td>21.08%</td>
+        <td>38.52%</td>
+        <td>2.69%</td>
+        <td>33.33% </td>
+    </tr>
+    <tr>
+        <td style="background-color:#f0f0f0;border-color:inherit;border-style:solid;border-width:1px;color:#333;font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;position:-webkit-sticky;position:sticky;text-align:left;top:-1px;vertical-align:top;will-change:transform;word-break:normal">SBERT</td>
+        <td>45.29%</td>
+        <td>48.91%</td>
+        <td>34.98%</td>
+        <td>55.12%</td>
+        <td>24.44%</td>
+        <td>56.77% </td>
+    </tr>
+    <tr>
+        <td style="background-color:#f0f0f0;border-color:inherit;border-style:solid;border-width:1px;color:#333;font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;position:-webkit-sticky;position:sticky;text-align:left;top:-1px;vertical-align:top;will-change:transform;word-break:normal">Auto</td>
+        <td>43.20%</td>
+        <td>39.48%</td>
+        <td>35.80%</td>
+        <td>40.68%</td>
+        <td>OOM</td>
+        <td>OOM</td>
+    </tr>
+    <tr>
+        <td style="background-color:#f0f0f0;border-color:inherit;border-style:solid;border-width:1px;color:#333;font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;position:-webkit-sticky;position:sticky;text-align:left;top:-1px;vertical-align:top;will-change:transform;word-break:normal">CTT</td>
+        <td>42.60%</td>
+        <td>38.10%</td>
+        <td>34.80%</td>
+        <td>40.56%</td>
+        <td>OOM</td>
+        <td>OOM</td>
+    </tr>
         </tbody>
-    </table>
+</table>
 </div>
 
-<ul>
-    <li>
-        <b>Dimension Dataset Size:</b>
-    </li>
-    <li>
-        <b>Dimension Development Set Size:</b>
-    </li>
-</ul>
+
 
 
 </div>
@@ -796,6 +904,14 @@ The files are represented using the CSV format and can for example be easily pro
                     <i>Information Systems</i>, vol. 53, pp. 137–157.
                 </div>
 
+            </div>
+            <div class="csl-entry" style="clear: left; ">
+                <div class="csl-left-margin" style="float: left; padding-right: 0.5em;text-align: right; width: 1em;">
+                    [9]
+                </div>
+                <div class="csl-right-inline" style="margin: 0 .4em 0 1.5em;">D. Paulsen, Y. Govind, and A. Doan., 2023, "Sparkly: A Simple yet Surprisingly Strong TF/IDF Blocker for Entity Matching" in
+                    <i>Proceedings of the VLDB Endowment</i>, vol. 16, pp. 1507–1519.
+                </div>
             </div>
 
         </div>
