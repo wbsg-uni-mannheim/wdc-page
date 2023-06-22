@@ -232,9 +232,9 @@
 </div>
 <div id="content">
     <p>
-        This page offers the WDC Block benchmark for download.
+        This page offers the WDC Block benchmark for download. WDC Block is a large blocking benchmark, which has a more challenging setup to evalute blockers than existing benchmarks.
         The benchmark consists of three sizes (small, medium, large), three different training sets (~1k, ~5k, ~20k) and
-        a consistent evaluation set.
+        a consistent test set.
         <br>
         We use
         WDC Block to evaluate several state-of-the-art blocking systems,
@@ -244,7 +244,8 @@
 
     <h2 id="news">News</h2>
     <ul>
-        <li><strong>2023-02-15:</strong> Initial release of WDC Block</li>
+        <li><strong>2023-02-15:</strong> We have released an initial version of WDC Block.</li>
+        <li><strong>2023-06-22:</strong> We have released an extended version of WDC Block that comes with different sizes (small, medium, large) and different development sets (~1k, ~5k, ~20k).</li>
     </ul>
 
     <h2>Table of Contents</h2>
@@ -281,8 +282,8 @@
             href="#toc7">2</a>,<a
             href="#toc7">3</a>].
         Since comparing all record pairs between two datasets can be computationally expensive, entity resolution is
-        usually tackled in two steps, namely, <i>blocking</i> and <i>matching</i>.
-        Blocking applies a computationally cheap method to remove non-matching record pairs and produce a smaller set of
+        tackled in two steps, <i>blocking</i> and <i>matching</i>.
+        Blocking applies a computationally cheap method to remove non-matching record pairs and produces a smaller set of
         candidate record pairs reducing the workload of the matcher.
         During matching a more expensive pair-wise matcher generates a final set of matching record pairs[<a
             href="#toc7">1</a>, <a
@@ -290,8 +291,7 @@
 
         Existing benchmark datasets for blocking and matching are rather small with respect to the cartesian product AxB
         to compare all records and the vocabulary size[<a href="#toc7">6</a>].
-        evaluating blockers on these small datasets, effects resulting from a large cartesian product and a large
-        vocabulary size can be overlooked.
+        If blockers are only evaluated on these small datasets, effects that increase the candidate set size resulting from a high number of records in the datasets and a large vocabulary of unique tokens can be overlooked.
         Web Data Commons Block (WDC-Block) is a new large-scale benchmark dataset for blocking that allows for a more
         realistic setup to evaluate blockers.
         Additionally, we provide three development sets with different sizes (~1K pairs, ~5k pairs & ~20k pairs) to
@@ -311,7 +311,7 @@
     <span id="toc2"></span>
     <h2>2 Benchmark Creation</h2>
 
-    <p>The WDC Block benchmark was created in three steps: (i) select a basis matching dataset from <a
+    <p>The WDC Block benchmark was created in three steps: (i) select a seed matching dataset from <a
             href="https://webdatacommons.org/largescaleproductcorpus/wdc-products/index.html">WDC Products</a>,
         (ii) split the dataset into two separate datasets A and B, (iii) fill the datasets up with products from <a
                 href="https://webdatacommons.org/largescaleproductcorpus/v2020/index.html">WDC Product Data Corpus
@@ -323,9 +323,9 @@
             test set from <a href="https://webdatacommons.org/largescaleproductcorpus/wdc-products/index.html">WDC
                 Products:
                 a multi-dimensional Entity Matching</a> as basis dataset for our benchmarks.
-            We selected the large version to start with a large number of product offers and 50% seen test set to have a
-            trade-off between products that are part of the
-            training set and not seen during training.
+            We selected the large version to start with a large number of product offers that are challenging to match and 50% seen/ 50% unseen test set to have a
+            trade-off between product offers that are part of the
+            training set and product offers that the blockers did not see during training.
         </li>
 
         <li> We split the original record pairs into two datasets A and B to follow the common setup of entity
@@ -339,8 +339,7 @@
                     href="https://webdatacommons.org/largescaleproductcorpus/v2020/index.html">WDC Product Data Corpus
                 V2020</a>.
             We make sure that the randomly selected records do not match any of the existing records in the datasets to
-            not
-            introduce additional matching pairs.
+            not introduce additional matching pairs.
         </li>
 
         <li> We derive the splits train, validation & test and transfer them into the
@@ -348,8 +347,7 @@
                     href="https://github.com/anhaidgroup/deepmatcher/blob/master/Datasets.md"> related work</a>.
             For the large development set (~20k pairs), the initially derived pairs are kept.
             For the medium development set (~5k pairs) & small development set (~1k pairs), the train & validation set
-            are
-            down sampled such that the distributions of the large development set are comparable.
+            are down sampled such that the distributions of the large development set are comparable.
             The test set remains the same for all versions of this benchmark to make the results comparable.
         </li>
     </ol>
@@ -358,8 +356,15 @@
 
     <p>The WDC Block benchmark consists of overall 2,073,224 real-word products across all subsets which
         are described by 2,100,000 product offers.
-        It comes with nine configurations, which are derived from the two dimensions dataset size (small, medium, large)
+        Each product offer in WDC Block has five attributes, <i>title</i>, <i>description</i>, <i>price</i>, <i>priceCurrency</i>
+            and <i>brand</i>.
+        WDC Block comes with nine configurations, which are derived from the two dimensions dataset size (small, medium, large)
         described in Table 1 and development set sizes (~1k, ~5k, ~20k) described in Table 2.
+        Table 1 shows the number of records in Table A and Table B, the number of positive and negative pairs in the test set as well as vocabulary size and the cartesian product of the different dataset sizes.
+        The vocabulary size represents the number of unique tokens after concatenating the attribute values of the product offers in Table A and Table B and tokenizing the concatenated attribute values by whitespace.
+        The cartesian product is the maximum number of record comparisons between Table A and Table B (AxB).
+
+
     </p>
 
     <div class="tg-wrap">
@@ -408,30 +413,12 @@
         </table>
     </div>
 
-
-    <ul>
-        <li>
-            <b>Attributes and Vocabulary:</b>
-            Each record in WDC Block
-            has five attributes, <i>title</i>, <i>description</i>, <i>price</i>, <i>priceCurrency</i>
-            and <i>brand</i>.
-            Table 2 contains statistics about density and value length for each
-            attribute across all datasets. Table 2 further shows statistics
-            for the unique vocabulary used across all datasets highlighting the
-            heterogeneity of the benchmark with each dataset containing between 17K and 20K unique words
-            on average as well as making use
-            of around 12K (24%) of tokens contained in RoBERTa's [<a
-                href="http://webdatacommons.org/largescaleproductcorpus/wdc-products/index.html#toc7">6</a>]
-            vocabulary of size ~50K.
-        </li>
-    </ul>
-
     <div class="tg-wrap">
         <table style="border-collapse:collapse;border-color:#ccc;border-spacing:0" class="tg">
             <caption><b>Table 2: Development Set Statistics.</b></caption>
             <thead>
             <tr>
-                <th>Development Set Seiz</th>
+                <th>Development Set Size</th>
                 <th>Pos. Pairs Train</th>
                 <th>Neg. Pairs Train</th>
                 <th>Pos. Pairs Val.</th>
@@ -474,7 +461,7 @@
 <span id="toc4"></span>
 <h2>4 Experiments</h2>
 
-<p>To show the usefulness of WDC Block, we evaluate the following blocking methods using the benchmark: BM25, BM25 with
+<p>To demonstrate the usefulness of WDC Block, we evaluate the blocking methods BM25, BM25 with
     trigrams (BM25-3),
     CTT [<a
             href="#toc7">3</a>],
@@ -486,7 +473,10 @@
             href="#toc7">5</a>],
     SimCLR [<a
             href="#toc7">5</a>],
-    and SC-Block.
+    and SC-Block on WDC-Block.
+    <!---
+    Additionally, we evaluate complete entity resolution pipelines by combining the blockers Barlow Twins, BM25 and SC-Block with the state-of-the-art matchers Magellan, Cross Encoder, Ditto and SubCon.
+    --->
 </p>
 
 <h3>4.1 Blocking Systems</h3>
@@ -498,7 +488,7 @@
 It is an unsupervised nearest neighbour blocker that uses a vector space model and the BM25 term weighting scheme to compute a similarity score for the nearest neighbour search.
         Recent work shows the effectiveness of BM25 for blocking[<a
             href="#toc7">9</a>].
-We evaluate BM25 with whitespace tokenization referred to as BM25 and BM25 with tri-grams referred to as BM25-3.
+We evaluate BM25 with whitespace tokenization referred to as BM25 and BM25 with tri-grams referred to as BM25<sub>3</sub>.
     </li>
     <li>
         <b>CTT[<a
@@ -526,10 +516,11 @@ Each record is duplicated, and both the original record text and the duplicate a
 The record texts are embedded through a pre-trained roberta language model and mean-pooled.
 SimCLR maximizes the agreement of embeddings representing the two previously augmented records and minimizes the agreement of embeddings representing distinct records within a batch of records.
     </li>
-    <li>
+   <!--- <li>
         <b>JedAI[<a
             href="#toc7">8</a>]:</b> JedAI defines a blocking key value (BKV) to block records that share six-gram blocks and prunes the candidate set by removing pairs with low matching likelihood to obtain a candidate set.
     </li>
+    --->
         <li>
         <b>SBERT[<a
             href="#toc7">4</a>]:</b> Sentence-Bert (SBERT) is a sentence embedding framework. Using SBERT's framework we train a supervised nearest neighbour blocker. The blocker requires labelled pairs of matching and non-matching records for training. It embeds record text pairs in a siamese fashion using a pre-trained roberta language model and mean-pools the embeddings.
@@ -541,12 +532,17 @@ SimCLR maximizes the agreement of embeddings representing the two previously aug
     </li>
 </ul>
 </p>
-<h3>4.2 Benchmark Results and Discussion</h3>
+<h3>4.2 Benchmark Results for nearest neighbour blockers with 𝑘 = 5 </h3>
 
-<p>Table 3 summarizes the results of the experiments for blocking task for the different dataset sizes.
+<p> We first analyze all nearest neighbour blockers with a fixed number of nearest neighbours 𝑘 = 5.
+We use recall and precision to evaluate the candidate sets with respect to the test sets of the datasets.
+By fixing the hyperparameter 𝑘 differences in recall and precision become visible that are not visible if 𝑘 is tuned.
+    The recall and precision scores in Table 3 show that 𝑘 = 5 is not sufficient for the benchmarked blockers to reach a recall above 75%.
+    The results also show that both increasing the dataset size and decreasing the development set size increase the difficulty of the benchmark.
+</p>
 
 <div class="tg-wrap">
-    <table style="border-collapse:collapse;border-color:#ccc;border-spacing:0" class="tg"><thead>
+    <table style="border-collapse:collapse;border-color:#ccc;border-spacing:0" class="tg">
         <caption><b>Table 3: Recall (R) and Precision (P) of the candidate sets generated by all nearest neighbour blockers with 𝑘 = 5 on the test sets
 of the datasets. The highest Recall and Precision values are marked in bold. ’timeout’ indicates a timeout after 48h and ’OOM’ indicates an out-of-memory error.
             <!---
@@ -558,9 +554,9 @@ of the datasets. The highest Recall and Precision values are marked in bold. ’
         <thead>
     <tr>
         <th></th>
-        <th colspan="2">WDC Block small</th>
-        <th colspan="2">WDC Block medium</th>
-        <th colspan="2">WDC Block large</th>
+        <th colspan="2">WDC Block<sub>small</sub></th>
+        <th colspan="2">WDC Block<sub>medium</sub></th>
+        <th colspan="2">WDC Block<sub>large</sub></th>
 
     </tr>
 
@@ -577,7 +573,7 @@ of the datasets. The highest Recall and Precision values are marked in bold. ’
         </thead>
         <tbody>
     <tr>
-        <td style="background-color:#f0f0f0;border-color:inherit;border-style:solid;border-width:1px;color:#333;font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;position:-webkit-sticky;position:sticky;text-align:left;top:-1px;vertical-align:top;will-change:transform;word-break:normal">SC Block Large Train</td>
+        <td style="background-color:#f0f0f0;border-color:inherit;border-style:solid;border-width:1px;color:#333;font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;position:-webkit-sticky;position:sticky;text-align:left;top:-1px;vertical-align:top;will-change:transform;word-break:normal">SC Block<sub>Large Dev. Set</sub></td>
         <td><b>71.52%</b></td>
         <td><b>57.27%</b></td>
         <td><b>66.37%</b></td>
@@ -597,7 +593,7 @@ of the datasets. The highest Recall and Precision values are marked in bold. ’
 
     </tr>
     <tr>
-        <td style="background-color:#f0f0f0;border-color:inherit;border-style:solid;border-width:1px;color:#333;font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;position:-webkit-sticky;position:sticky;text-align:left;top:-1px;vertical-align:top;will-change:transform;word-break:normal">BM25-3</td>
+        <td style="background-color:#f0f0f0;border-color:inherit;border-style:solid;border-width:1px;color:#333;font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;position:-webkit-sticky;position:sticky;text-align:left;top:-1px;vertical-align:top;will-change:transform;word-break:normal">BM25<sub>3</sub></td>
         <td>52.47%</td>
         <td>38.87%</td>
         <td>46.64%</td>
@@ -607,7 +603,7 @@ of the datasets. The highest Recall and Precision values are marked in bold. ’
 
     </tr>
     <tr>
-        <td style="background-color:#f0f0f0;border-color:inherit;border-style:solid;border-width:1px;color:#333;font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;position:-webkit-sticky;position:sticky;text-align:left;top:-1px;vertical-align:top;will-change:transform;word-break:normal">SC Block Medium Train</td>
+        <td style="background-color:#f0f0f0;border-color:inherit;border-style:solid;border-width:1px;color:#333;font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;position:-webkit-sticky;position:sticky;text-align:left;top:-1px;vertical-align:top;will-change:transform;word-break:normal">SC Block<sub>Medium Dev. Set</sub></td>
         <td>58.52%</td>
         <td>51.58%</td>
         <td>50.67%</td>
@@ -617,7 +613,7 @@ of the datasets. The highest Recall and Precision values are marked in bold. ’
 
     </tr>
     <tr>
-        <td style="background-color:#f0f0f0;border-color:inherit;border-style:solid;border-width:1px;color:#333;font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;position:-webkit-sticky;position:sticky;text-align:left;top:-1px;vertical-align:top;will-change:transform;word-break:normal">SC Block Small Train</td>
+        <td style="background-color:#f0f0f0;border-color:inherit;border-style:solid;border-width:1px;color:#333;font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;position:-webkit-sticky;position:sticky;text-align:left;top:-1px;vertical-align:top;will-change:transform;word-break:normal">SC Block<sub>Small Dev. Set</sub></td>
         <td>42.15%</td>
         <td>46.88%</td>
         <td>26.46%</td>
@@ -644,7 +640,7 @@ of the datasets. The highest Recall and Precision values are marked in bold. ’
         <td>33.33% </td>
     </tr>
     <tr>
-        <td style="background-color:#f0f0f0;border-color:inherit;border-style:solid;border-width:1px;color:#333;font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;position:-webkit-sticky;position:sticky;text-align:left;top:-1px;vertical-align:top;will-change:transform;word-break:normal">SBERT</td>
+        <td style="background-color:#f0f0f0;border-color:inherit;border-style:solid;border-width:1px;color:#333;font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;position:-webkit-sticky;position:sticky;text-align:left;top:-1px;vertical-align:top;will-change:transform;word-break:normal">SBERT<sub>Large Dev. Set</sub></td>
         <td>45.29%</td>
         <td>48.91%</td>
         <td>34.98%</td>
@@ -674,6 +670,49 @@ of the datasets. The highest Recall and Precision values are marked in bold. ’
 </table>
 </div>
 
+<h3>4.3 Benchmark Results for nearest neighbour blockers with recall >99.5% </h3>
+
+<p>
+We analyze how a tuned hyperparameter 𝑘 influences the recall of the nearest neighbour blockers on WDC Block. Increasing 𝑘 increases the probability of finding a matching pair resulting in a higher
+recall. Higher values of 𝑘 produce larger candidate sets because the matcher has to compare more candidate pairs. This prolongs
+the matching phase of the entity resolution pipeline. Our main goal in tuning 𝑘 is to add all matching pairs to the candidate set
+while keeping the candidate set as small as possible. To achieve this goal, we evaluate each nearest neighbour blocker with increasing
+values of 𝑘 starting at 𝑘 = 1 on the validation set. Once the recall of the candidate set exceeds 99.5% on the validation set, 𝑘 is found.
+To limit the search space, we set a maximum value of 𝑘 = 50 on WDC-Block<sub>small</sub> , 𝑘 = 100 on WDC-Block<sub>medium</sub> and
+𝑘 = 200 on WDC-Block<sub>large</sub>.
+</p>
+<p>The results in Table 4 show how challenging WDC Block for the blockers is because except for SC Block<sub>Large Dev. Set</sub> all blockers fail to generate candidate sets that exceed a threshold of 99.5% recall on the validation set.
+WDC Block<sub>large</sub> is the most challenging benchmark dataset due to the high number of records and the large vocabulary of unique tokens.
+    The blockers BM25<sub>3</sub>, JedAI, Auto and CTT fail to generate candidate sets on WDC Block<sub>large</sub> due to time and ram constraints.</p>
+<div class="tg-wrap">
+    <table style="border-collapse:collapse;border-color:#ccc;border-spacing:0" class="tg">
+        <caption><b>Table 4: 𝑘 per blocker and dataset after tuning 𝑘 for recall 99.5% on the respective validation set. Recall (R) and candidate set
+size (|C|) of all blockers on the test set. The highest recall, as well as the lowest 𝑘 and |C| values per dataset, are marked in bold.
+’timeout’ indicates a timeout after 48h and ’OOM’ indicates an out-of-memory error.
+            <!---
+            Results are Recall of the matching class, candidate set size and run time (training time plus execution time).
+            Bold results are best evaluation metric values for that benchmark variant.
+            -->
+        </b>
+        </caption>
+<tr><th></th><th colspan="3">WDC Block<sub>small</sub></th><th colspan="3">WDC Block<sub>medium</sub></th><th colspan="3">WDC Block<sub>large</sub></th></tr>
+<tr><th></th><th>k</th><th>Recall</th><th>|C|</th><th>k</th><th>Recall/th><th>|C|</th><th>k</th><th>Recall</th><th>|C|</th></tr>
+        </thead>
+        <tbody>
+<tr><td style="background-color:#f0f0f0;border-color:inherit;border-style:solid;border-width:1px;color:#333;font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;position:-webkit-sticky;position:sticky;text-align:left;top:-1px;vertical-align:top;will-change:transform;word-break:normal">SC Block<sub>Large Dev. Set</sub></td><td><b>14</b></td><td>93.50%</td><td><b>70k</b></td><td><b>20</b></td><td>91.93%</td><td><b>100k</b></td><td><b>50</b></td><td><b>89.46%</b></td><td><b>5M</b></td></tr>
+<tr><td style="background-color:#f0f0f0;border-color:inherit;border-style:solid;border-width:1px;color:#333;font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;position:-webkit-sticky;position:sticky;text-align:left;top:-1px;vertical-align:top;will-change:transform;word-break:normal">BM25</td><td>50</td><td><b>96.86%</b></td><td>250k</td><td>100</td><td><b>97.76%</b></td><td>500k</td><td>50</td><td>83.18%</td><td>20M</td></tr>
+<tr><td style="background-color:#f0f0f0;border-color:inherit;border-style:solid;border-width:1px;color:#333;font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;position:-webkit-sticky;position:sticky;text-align:left;top:-1px;vertical-align:top;will-change:transform;word-break:normal">BM25<sub>3</sub></td><td>50</td><td>94.17%</td><td>250k</td><td>100</td><td>93.95%</td><td>500k</td><td colspan="3">timeout</td></tr>
+<tr><td style="background-color:#f0f0f0;border-color:inherit;border-style:solid;border-width:1px;color:#333;font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;position:-webkit-sticky;position:sticky;text-align:left;top:-1px;vertical-align:top;will-change:transform;word-break:normal">SC Block<sub>Medium Dev. Set</sub></td><td>50</td><td>92.60%</td><td>250k</td><td>100</td><td>86.55%</td><td>500k</td><td>50</td><td>68.16%</td><td>500k</td></tr>
+<tr><td style="background-color:#f0f0f0;border-color:inherit;border-style:solid;border-width:1px;color:#333;font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;position:-webkit-sticky;position:sticky;text-align:left;top:-1px;vertical-align:top;will-change:transform;word-break:normal">SC Block<sub>Small Dev. Set</sub></td><td>50</td><td>71.75%</td><td>250k</td><td>100</td><td>52.02%</td><td>500k</td><td>50</td><td>34.08%</td><td>500k</td></tr>
+<tr><td style="background-color:#f0f0f0;border-color:inherit;border-style:solid;border-width:1px;color:#333;font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;position:-webkit-sticky;position:sticky;text-align:left;top:-1px;vertical-align:top;will-change:transform;word-break:normal">Barlow</td><td>50</td><td>66.59%</td><td>250k</td><td>100</td><td>42.60%</td><td>500k</td><td>50</td><td>27.80%</td><td>500k</td></tr>
+<tr><td style="background-color:#f0f0f0;border-color:inherit;border-style:solid;border-width:1px;color:#333;font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;position:-webkit-sticky;position:sticky;text-align:left;top:-1px;vertical-align:top;will-change:transform;word-break:normal">SimCLR</td><td>50</td><td>69.51%</td><td>250k</td><td>100</td><td>45.96%</td><td>500k</td><td>50</td><td>7.40%</td><td>500k</td></tr>
+<tr><td style="background-color:#f0f0f0;border-color:inherit;border-style:solid;border-width:1px;color:#333;font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;position:-webkit-sticky;position:sticky;text-align:left;top:-1px;vertical-align:top;will-change:transform;word-break:normal">JedAI</td><td>-</td><td>55.40%</td><td>51k</td><td>-</td><td>80.60%</td><td>561k</td><td colspan="3">timeout</td></tr>
+<tr><td style="background-color:#f0f0f0;border-color:inherit;border-style:solid;border-width:1px;color:#333;font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;position:-webkit-sticky;position:sticky;text-align:left;top:-1px;vertical-align:top;will-change:transform;word-break:normal">SBERT<sub>Large Dev. Set</sub></td><td>50</td><td>78.48%</td><td>250k</td><td>100</td><td>63.39%</td><td>500k</td><td>50</td><td>58.74%</td><td>500k</td></tr>
+<tr><td style="background-color:#f0f0f0;border-color:inherit;border-style:solid;border-width:1px;color:#333;font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;position:-webkit-sticky;position:sticky;text-align:left;top:-1px;vertical-align:top;will-change:transform;word-break:normal">Auto</td><td>50</td><td>85.20%</td><td>250k</td><td>100</td><td>80%</td><td>500k</td><td colspan="3">out-of-memory</td></tr>
+<tr><td style="background-color:#f0f0f0;border-color:inherit;border-style:solid;border-width:1px;color:#333;font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;position:-webkit-sticky;position:sticky;text-align:left;top:-1px;vertical-align:top;will-change:transform;word-break:normal">CTT</td><td>50</td><td>83%</td><td>250k</td><td>100</td><td>78%</td><td>500k</td><td colspan="3">out-of-memory</td></tr>
+        </tbody>
+</table>
+</div>
 
 
 
