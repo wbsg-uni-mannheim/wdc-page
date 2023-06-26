@@ -238,12 +238,12 @@
         We use
         WDC Block to evaluate several state-of-the-art blocking systems,
         including CTT, Auto, JedAI, Sudowoodo, SBERT, BM25 and SC-Block.
-        Detailed explanations of the experiments can be found in the corresponding <a
-            href="https://arxiv.org/abs/2303.03132">paper</a>.
 
     <h2 id="news">News</h2>
     <ul>
-        <li><strong>2023-06-22:</strong> We release WDC Block a benchmark for comparing the performance of blocking methods. WDC Block features a maximal Cartesian product of 200 billion pairs of product offers which were extracted form 3,259 e-shops.
+        <li><strong>2023-06-22:</strong> We release WDC Block a benchmark for comparing the performance of blocking
+            methods. WDC Block features a maximal Cartesian product of 200 billion pairs of product offers which were
+            extracted form 3,259 e-shops.
         </li>
         <li><strong>2023-02-15:</strong> We have released an initial version of WDC Block.</li>
     </ul>
@@ -292,10 +292,10 @@
 
         Existing benchmark datasets for blocking and matching are rather small with respect to the cartesian product AxB
         to compare all records and the vocabulary size[<a href="#toc7">7</a>].
-        If blockers are only evaluated on these small datasets, effects that increase the candidate set size resulting
-        from a high number of records in the datasets and a large vocabulary of unique tokens can be overlooked.
-        Web Data Commons Block (WDC-Block) is a new large-scale benchmark dataset for blocking that allows for a more
-        realistic setup to evaluate blockers.
+        If blockers are only evaluated on these small datasets, effects that result from a high number of records or
+        from a large vocabulary size (large amount of unique tokens that need to be indexed) can be overlooked.
+        Web Data Commons Block (WDC-Block) is a new blocking benchmark which offers much larger datasets and thus
+        requires blockers to deal with these scalability challenges.
         Additionally, we provide three development sets with different sizes (~1K pairs, ~5k pairs & ~20k pairs) to
         experiment with different amounts of training data for the blockers.
     </p>
@@ -310,18 +310,19 @@
     <span id="toc2"></span>
     <h2>2 Benchmark Creation</h2>
 
-    <p>The WDC Block benchmark was created in three steps: (i) select a seed matching dataset from <a
-            href="https://webdatacommons.org/largescaleproductcorpus/wdc-products/index.html">WDC Products</a>,
-        (ii) split the dataset into two separate datasets A and B, (iii) enlarge the dataset by adding offers for
+    <p>The WDC Block benchmark was created in three steps: (i) we select a difficult variant of the <a
+            href="https://webdatacommons.org/largescaleproductcorpus/wdc-products/index.html">WDC Products</a>
+        entity matching benchmark as seed dataset for WDC Block,
+        (ii) we split the dataset into two separate datasets A and B, (iii) we enlarge the dataset by adding offers for
         additional non-matching products from <a
                 href="https://webdatacommons.org/largescaleproductcorpus/v2020/index.html">WDC Product Data Corpus
             V2020</a>, (iv) prepare three development sets (~1K pairs, ~5k pairs & ~20k pairs). This section
         provides an overview of the four steps.</p>
     <ol>
-        <li> We choose the large, pair-wise, 80% corner cases and 20% random dataset with the half-seen
-            test set from <a href="https://webdatacommons.org/largescaleproductcorpus/wdc-products/index.html">WDC
-                Products:
-                a multi-dimensional Entity Matching</a> as basis dataset for our benchmarks.
+        <li> We choose the large, pair-wise, 80% corner cases and 20% random training set and the 50%-unseen test set
+            from the <a
+                    href="https://webdatacommons.org/largescaleproductcorpus/wdc-products/index.html">WDC Products
+                entity matching benchmark</a> as seed dataset for our benchmark.
             We selected the large version to start with a large number of product offers that are challenging to match
             and 50% seen/ 50% unseen test set to have a
             trade-off between product offers that are part of the
@@ -478,6 +479,9 @@
             href="#toc7">6</a>],
     and SC-Block[<a
             href="#toc7">1</a>] on WDC-Block.
+    Detailed explanations of the experiments can be found in the corresponding <a
+            href="https://arxiv.org/abs/2303.03132">paper</a> [<a
+            href="#toc7">1</a>].
     <!---
     Additionally, we evaluate complete entity resolution pipelines by combining the blockers Barlow Twins, BM25 and SC-Block with the state-of-the-art matchers Magellan, Cross Encoder, Ditto and SubCon.
     --->
@@ -531,9 +535,10 @@
         SimCLR maximizes the agreement of embeddings representing the two previously augmented records and minimizes the
         agreement of embeddings representing distinct records within a batch of records.
     </li>
-         <b>JedAI[<a
-             href="#toc7">9</a>]:</b> JedAI defines a blocking key value (BKV) to block records that share six-gram blocks and prunes the candidate set by removing pairs with low matching likelihood to obtain a candidate set.
-     </li>
+    <b>JedAI[<a
+            href="#toc7">9</a>]:</b> JedAI defines a blocking key value (BKV) to block records that share six-gram
+    blocks and prunes the candidate set by removing pairs with low matching likelihood to obtain a candidate set.
+    </li>
     <li>
         <b>SBERT[<a
                 href="#toc7">5</a>]:</b> Sentence-Bert (SBERT) is a sentence embedding framework. Using SBERT's
@@ -597,17 +602,6 @@
         <tbody>
         <tr>
             <td style="background-color:#f0f0f0;border-color:inherit;border-style:solid;border-width:1px;color:#333;font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;position:-webkit-sticky;position:sticky;text-align:left;top:-1px;vertical-align:top;will-change:transform;word-break:normal">
-                SC Block<sub>Large Dev. Set</sub></td>
-            <td><b>71.52%</b></td>
-            <td><b>57.27%</b></td>
-            <td><b>66.37%</b></td>
-            <td><b>63.52%</b></td>
-            <td><b>56.73%</b></td>
-            <td><b>74.41%</b></td>
-
-        </tr>
-        <tr>
-            <td style="background-color:#f0f0f0;border-color:inherit;border-style:solid;border-width:1px;color:#333;font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;position:-webkit-sticky;position:sticky;text-align:left;top:-1px;vertical-align:top;will-change:transform;word-break:normal">
                 BM25
             </td>
             <td>59.42%</td>
@@ -627,6 +621,17 @@
             <td>43.88%</td>
             <td>time out</td>
             <td>time out</td>
+
+        </tr>
+        <tr>
+            <td style="background-color:#f0f0f0;border-color:inherit;border-style:solid;border-width:1px;color:#333;font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;position:-webkit-sticky;position:sticky;text-align:left;top:-1px;vertical-align:top;will-change:transform;word-break:normal">
+                SC Block<sub>Large Dev. Set</sub></td>
+            <td><b>71.52%</b></td>
+            <td><b>57.27%</b></td>
+            <td><b>66.37%</b></td>
+            <td><b>63.52%</b></td>
+            <td><b>56.73%</b></td>
+            <td><b>74.41%</b></td>
 
         </tr>
         <tr>
@@ -711,7 +716,7 @@
 <h3>4.3 Benchmark Results for nearest neighbour blockers with recall >99.5% on validation set</h3>
 
 <p>
-    We analyze how a tuned hyperparameter 𝑘 influences the recall of the nearest neighbour blockers on WDC Block.
+    We analyze how tuning the hyperparameter 𝑘 influences the recall of the nearest neighbour blockers on WDC Block.
     Increasing 𝑘 increases the probability of finding a matching pair resulting in a higher
     recall. Higher values of 𝑘 produce larger candidate sets because the matcher has to compare more candidate pairs.
     This prolongs
@@ -765,19 +770,7 @@
         </tr>
         </thead>
         <tbody>
-        <tr>
-            <td style="background-color:#f0f0f0;border-color:inherit;border-style:solid;border-width:1px;color:#333;font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;position:-webkit-sticky;position:sticky;text-align:left;top:-1px;vertical-align:top;will-change:transform;word-break:normal">
-                SC Block<sub>Large Dev. Set</sub></td>
-            <td><b>14</b></td>
-            <td>93.50%</td>
-            <td><b>70k</b></td>
-            <td><b>20</b></td>
-            <td>91.93%</td>
-            <td><b>100k</b></td>
-            <td><b>50</b></td>
-            <td><b>89.46%</b></td>
-            <td><b>5M</b></td>
-        </tr>
+
         <tr>
             <td style="background-color:#f0f0f0;border-color:inherit;border-style:solid;border-width:1px;color:#333;font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;position:-webkit-sticky;position:sticky;text-align:left;top:-1px;vertical-align:top;will-change:transform;word-break:normal">
                 BM25
@@ -802,6 +795,19 @@
             <td>93.95%</td>
             <td>500k</td>
             <td colspan="3">timeout</td>
+        </tr>
+        <tr>
+            <td style="background-color:#f0f0f0;border-color:inherit;border-style:solid;border-width:1px;color:#333;font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;position:-webkit-sticky;position:sticky;text-align:left;top:-1px;vertical-align:top;will-change:transform;word-break:normal">
+                SC Block<sub>Large Dev. Set</sub></td>
+            <td><b>14</b></td>
+            <td>93.50%</td>
+            <td><b>70k</b></td>
+            <td><b>20</b></td>
+            <td>91.93%</td>
+            <td><b>100k</b></td>
+            <td><b>50</b></td>
+            <td><b>89.46%</b></td>
+            <td><b>5M</b></td>
         </tr>
         <tr>
             <td style="background-color:#f0f0f0;border-color:inherit;border-style:solid;border-width:1px;color:#333;font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;position:-webkit-sticky;position:sticky;text-align:left;top:-1px;vertical-align:top;will-change:transform;word-break:normal">
@@ -1058,8 +1064,9 @@ The files are represented using the CSV format and can for example be easily pro
         <div class="csl-left-margin" style="float: left; padding-right: 0.5em;text-align: right; width: 1em;">
             [1]
         </div>
-        <div class="csl-right-inline" style="margin: 0 .4em 0 1.5em;">A. Brinkmann, R.Shraga and C. Bizer, 2023, "SC-Block: Supervised Contrastive Blocking within Entity
-Resolution Pipelines", arXiv:2303.03132 [cs].
+        <div class="csl-right-inline" style="margin: 0 .4em 0 1.5em;">A. Brinkmann, R.Shraga and C. Bizer, 2023,
+            "SC-Block: Supervised Contrastive Blocking within Entity
+            Resolution Pipelines", arXiv:2303.03132 [cs].
         </div>
     </div>
 </div>
@@ -1152,7 +1159,8 @@ Resolution Pipelines", arXiv:2303.03132 [cs].
                 <div class="csl-left-margin" style="float: left; padding-right: 0.5em;text-align: right; width: 1.5em;">
                     [10]
                 </div>
-                <div class="csl-right-inline" style="margin: 0 .4em 0 1.5em;"> D. Paulsen, Y. Govind, and A. Doan., 2023,
+                <div class="csl-right-inline" style="margin: 0 .4em 0 1.5em;"> D. Paulsen, Y. Govind, and A. Doan.,
+                    2023,
                     "Sparkly: A Simple yet Surprisingly Strong TF/IDF Blocker for Entity Matching" in
                     <i>Proceedings of the VLDB Endowment</i>, vol. 16, pp. 1507–1519.
                 </div>
@@ -1163,40 +1171,40 @@ Resolution Pipelines", arXiv:2303.03132 [cs].
               title="url_ver=Z39.88-2004&amp;ctx_ver=Z39.88-2004&amp;rfr_id=info%3Asid%2Fzotero.org%3A2&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Ajournal&amp;rft.genre=article&amp;rft.atitle=A%20theory%20for%20record%20linkage&amp;rft.jtitle=Journal%20of%20the%20American%20Statistical%20Association&amp;rft.volume=64&amp;rft.issue=328&amp;rft.aufirst=Ivan%20P.&amp;rft.aulast=Fellegi&amp;rft.au=Ivan%20P.%20Fellegi&amp;rft.au=Alan%20B.%20Sunter&amp;rft.date=1969&amp;rft.pages=1183%E2%80%931210&amp;rft.spage=1183&amp;rft.epage=1210"></span>
 
     </div>
-    </div>
+</div>
 
-    <script type="text/javascript">
-        $('#toc').toc({
-            'selectors': 'h2', //elements to use as headings
-            'container': '#toccontent', //element to find all selectors in
-            'smoothScrolling': true, //enable or disable smooth scrolling on click
-            'prefix': 'toc', //prefix for anchor tags and class names
-            'highlightOnScroll': true, //add class to heading that is currently in focus
-            'highlightOffset': 100, //offset to trigger the next headline
-            'anchorName': function (i, heading, prefix) { //custom function for anchor name
-                return prefix + i;
-            }
+<script type="text/javascript">
+    $('#toc').toc({
+        'selectors': 'h2', //elements to use as headings
+        'container': '#toccontent', //element to find all selectors in
+        'smoothScrolling': true, //enable or disable smooth scrolling on click
+        'prefix': 'toc', //prefix for anchor tags and class names
+        'highlightOnScroll': true, //add class to heading that is currently in focus
+        'highlightOffset': 100, //offset to trigger the next headline
+        'anchorName': function (i, heading, prefix) { //custom function for anchor name
+            return prefix + i;
+        }
+    });
+    $('[id*="link_"]').each(function () {
+        var element = $(this);
+        element.click(function (e) {
+            e.preventDefault();
+            var id = element.attr("id").split("_")[1];
+            element.parent().removeClass("show").addClass("no-show");
+            $('#charts_' + id).removeClass("no-show").addClass("show");
         });
-        $('[id*="link_"]').each(function () {
-            var element = $(this);
-            element.click(function (e) {
-                e.preventDefault();
-                var id = element.attr("id").split("_")[1];
-                element.parent().removeClass("show").addClass("no-show");
-                $('#charts_' + id).removeClass("no-show").addClass("show");
-            });
+    });
+    $('[id*="colapse_"]').each(function () {
+        var element = $(this);
+        element.click(function (e) {
+            e.preventDefault();
+            var id = element.attr("id").split("_")[1];
+            element.parent().removeClass("show").addClass("no-show");
+            $('#intro_' + id).removeClass("no-show").addClass("show");
         });
-        $('[id*="colapse_"]').each(function () {
-            var element = $(this);
-            element.click(function (e) {
-                e.preventDefault();
-                var id = element.attr("id").split("_")[1];
-                element.parent().removeClass("show").addClass("no-show");
-                $('#intro_' + id).removeClass("no-show").addClass("show");
-            });
-        });
-        document.getElementById("defaultOpen").click();
-    </script>
+    });
+    document.getElementById("defaultOpen").click();
+</script>
 </body>
 
 </html>
