@@ -232,8 +232,8 @@
 </div>
 <div id="content">
     <p>
-        This page offers the WDC Block benchmark for download. WDC Block is benchmark for comparing the performance of
-        blocking methods that are used as part of entity resolution pipelines. WDC Block features a maximal Cartesian
+        This page offers the WDC Block benchmark for download. WDC Block is a benchmark for comparing the performance of
+        blocking methods that are used as part of entity resolution pipelines. WDC Block features a maximum Cartesian
         product of 200 billion pairs as well as training sets of different sizes for evaluating supervised blockers.
         We use
         WDC Block to evaluate several state-of-the-art blocking systems,
@@ -277,32 +277,32 @@
     <h2>1 Introduction</h2>
 
     <p>
-        Entity resolution aims to identify records across two datasets (A and B) that describe the same real-world
+        Entity resolution aims to identify records in two datasets (A and B) that describe the same real-world
         entity [<a href="#toc7">2</a>,<a
             href="#toc7">3</a>,<a
             href="#toc7">4</a>].
         Since comparing all record pairs between two datasets can be computationally expensive, entity resolution is
-        tackled in two steps, <i>blocking</i> and <i>matching</i>.
+        approached in two steps, <i>blocking</i> and <i>matching</i>.
         Blocking applies a computationally cheap method to remove non-matching record pairs and produces a smaller set
         of
         candidate record pairs reducing the workload of the matcher.
-        During matching a more expensive pair-wise matcher generates a final set of matching record pairs[<a
+        During matching a more expensive pair-wise matcher produces a final set of matching record pairs[<a
             href="#toc7">2</a>, <a
             href="#toc7">8</a>].
 
-        Existing benchmark datasets for blocking and matching are rather small with respect to the cartesian product AxB
-        to compare all records and the vocabulary size[<a href="#toc7">7</a>].
-        If blockers are only evaluated on these small datasets, effects that result from a high number of records or
-        from a large vocabulary size (large amount of unique tokens that need to be indexed) can be overlooked.
-        Web Data Commons Block (WDC-Block) is a new blocking benchmark which offers much larger datasets and thus
-        requires blockers to deal with these scalability challenges.
-        Additionally, we provide three development sets with different sizes (~1K pairs, ~5k pairs & ~20k pairs) to
+        Existing benchmark datasets for blocking and matching are rather small with respect to the Cartesian product AxB
+        for comparing all records and the vocabulary size[<a href="#toc7">7</a>].
+        If blockers are evaluated only on these small datasets, effects resulting from a high number of records or
+        from a large vocabulary size (large number of unique tokens that need to be indexed) may be missed.
+        The Web Data Commons Block (WDC-Block) is a new blocking benchmark that provides much larger datasets and thus
+        requires blockers that address these scalability challenges.
+        Additionally, we provide three development sets with different sizes (~1K pairs, ~5K pairs & ~20K pairs) to
         experiment with different amounts of training data for the blockers.
     </p>
     <p>
         WDC Block is based on product data that has been extracted
         in 2020 from 3,259 e-shops that mark up product offers within their
-        HTML pages using the schema.org vocabulary. The largest variant of WDC Block employs offers of 2 million
+        HTML pages using the schema.org vocabulary. The largest variant of WDC Block uses offers from 2 million
         different products. Multiple offers referring to the same product are identified based on GTIN and MPN numbers
         provided by the e-shops.
     </p>
@@ -312,19 +312,19 @@
 
     <p>The WDC Block benchmark was created in three steps: (i) we select a difficult variant of the <a
             href="https://webdatacommons.org/largescaleproductcorpus/wdc-products/index.html">WDC Products</a>
-        entity matching benchmark as seed dataset for WDC Block,
+        entity matching benchmark as the seed dataset for WDC Block,
         (ii) we split the dataset into two separate datasets A and B, (iii) we enlarge the dataset by adding offers for
-        additional non-matching products from <a
+        additional non-matching products from the <a
                 href="https://webdatacommons.org/largescaleproductcorpus/v2020/index.html">WDC Product Data Corpus
-            V2020</a>, (iv) prepare three development sets (~1K pairs, ~5k pairs & ~20k pairs). This section
-        provides an overview of the four steps.</p>
+            V2020</a>, (iv) we prepare three development sets (~1K pairs, ~5k pairs & ~20k pairs). This section
+        gives an overview of the four steps.</p>
     <ol>
-        <li> We choose the large, pair-wise, 80% corner cases and 20% random training set and the 50%-unseen test set
+        <li> We choose the large, pairwise, 80% corner cases and 20% random training set and the 50%-unseen test set
             from the <a
                     href="https://webdatacommons.org/largescaleproductcorpus/wdc-products/index.html">WDC Products
-                entity matching benchmark</a> as seed dataset for our benchmark.
-            We selected the large version to start with a large number of product offers that are challenging to match
-            and 50% seen/ 50% unseen test set to have a
+                entity matching benchmark</a> as the seed dataset for our benchmark.
+            We selected the large version to start with a large number of product offers that are difficult to match
+            and th e50% seen/ 50% unseen test set to have a
             trade-off between product offers that are part of the
             training set and product offers that the blockers did not see during training.
         </li>
@@ -335,35 +335,35 @@
             datasets A and B are deduplicated to obtain clean datasets.
         </li>
 
-        <li> Depending on the specific benchmark (small, medium, large) we fill the datasets A and B with additional
+        <li> Depending on the specific benchmark (small, medium, large), we populate the datasets A and B with additional
             randomly selected offers from the <a
                     href="https://webdatacommons.org/largescaleproductcorpus/v2020/index.html">WDC Product Data Corpus
                 V2020</a>.
             We make sure that the randomly selected records do not match any of the existing records in the datasets to
-            not introduce additional matching pairs.
+            avoid introducing additional matching pairs.
         </li>
 
-        <li> We derive the splits train, validation & test and transfer them into the
+        <li> We derive the splits train, validation & test and transfer them to the
             format of the entity matching datasets in the <a
                     href="https://github.com/anhaidgroup/deepmatcher/blob/master/Datasets.md"> related work</a>.
-            For the large development set (~20k pairs), the initially derived pairs are kept.
+            For the large development set (~20k pairs), the initially derived pairs are retained.
             For the medium development set (~5k pairs) & small development set (~1k pairs), the train & validation set
-            are down sampled such that the distributions of the large development set are comparable.
+            are down-sampled such that the distributions of the large development set are comparable.
             The test set remains the same for all versions of this benchmark to make the results comparable.
         </li>
     </ol>
     <span id="toc3"></span>
     <h2>3 Benchmark Profiling</h2>
 
-    <p>The WDC Block benchmark consists of overall 2,073,224 real-word products across all subsets which
+    <p>The WDC Block benchmark consists of a total of 2,073,224 real-word products across all subsets which
         are described by 2,100,000 product offers.
         Each product offer in WDC Block has five attributes, <i>title</i>, <i>description</i>, <i>price</i>, <i>priceCurrency</i>
         and <i>brand</i>.
-        WDC Block comes with nine configurations, which are derived from the two dimensions dataset size (small, medium,
+        WDC Block comes with nine configurations, which are derived of the two dimensions dataset size (small, medium,
         large)
         described in Table 1 and development set sizes (~1k, ~5k, ~20k) described in Table 2.
         Table 1 shows the number of records in Table A and Table B, the number of positive and negative pairs in the
-        test set as well as vocabulary size and the cartesian product of the different dataset sizes.
+        test set as well as the vocabulary size and the Cartesian product of the different dataset sizes.
         The vocabulary size represents the number of unique tokens after concatenating the attribute values of the
         product offers in Table A and Table B and tokenizing the concatenated attribute values by whitespace.
         The cartesian product is the maximum number of record comparisons between Table A and Table B (AxB).
@@ -502,23 +502,23 @@
     </li>
     <li>
         <b>CTT[<a
-                href="#toc7">4</a>]:</b> Cross Tuple Training (CTT) use fasttext to embed the tokens of the record texts
-        and aggregate these token embeddings into a single embedding.
-        For CTT, the embeddings are sent through a Siamese summarizer. Afterwards, a classifier learns to detect matches
+                href="#toc7">4</a>]:</b> Cross Tuple Training (CTT) uses fasttext to embed the tokens of the record texts
+        and aggregates these token embeddings into a single embedding.
+        For CTT, the embeddings are sent through a Siamese summarizer. Then, a classifier learns to detect matches
         based on the element-wise difference of the created embeddings.
         CTT is trained on synthetically produced training data derived from the two blocked datasets.
         The trained encoder embeds the record texts for the nearest neighbour search.
     </li>
     <li>
         <b>Auto[<a
-                href="#toc7">4</a>]:</b> Autoencoder (Auto) use fasttext to embed the tokens of the record texts and
-        aggregate these token embeddings into a single embedding.
+                href="#toc7">4</a>]:</b> Autoencoder (Auto) uses fasttext to embed the tokens of the record texts and
+        aggregates these token embeddings into a single embedding.
         For Auto, the embeddings are sent through an autoencoder. Auto is self-supervised and requires no labelled data
         during training.
         The trained encoder embeds the record texts for the nearest neighbour search.
     </li>
     <li>
-        <b>Barlow Twins:</b> The usage of Barlow Twins (BT) for blocking is inspired by Sudowoodo[<a href="#toc7">6</a>].
+        <b>Barlow Twins:</b> The use of Barlow Twins (BT) for blocking is inspired by Sudowoodo[<a href="#toc7">6</a>].
         During self-supervised training a batch of record texts is built. Each record is duplicated, and both the
         original record text and the duplicate are augmented by dropping a random token of the record text.
         The record texts are embedded through a pre-trained roberta language model and mean-pooled. For BT, a linear
@@ -527,7 +527,7 @@
         measured and moved close to the identity matrix.
     </li>
     <li>
-        <b>SimCLR:</b> The usage of SimCLR for blocking is inspired by Sudowoodo[<a href="#toc7">6</a>].
+        <b>SimCLR:</b> The use of SimCLR for blocking is inspired by Sudowoodo[<a href="#toc7">6</a>].
         During self-supervised training of both models, a batch of record texts is built.
         Each record is duplicated, and both the original record text and the duplicate are augmented by dropping a
         random token of the record text.
@@ -547,9 +547,9 @@
         language model and mean-pools the embeddings.
     </li>
     <li>
-        <b>SC-Block:</b> SC-Block applies supervised contrastive learning to position record embeddings describing the
+        <b>SC-Block:</b> SC-Block uses supervised contrastive learning to position record embeddings describing the
         same real-world entity close to each other in an embedding space.
-        During self-supervised training of both models, a batch of record texts is built.
+        During the self-supervised training of the model, a batch of record texts is built.
         SC-Block maximizes the agreement of embeddings representing the same real-world entity according to the training
         set and minimizes the agreement of embeddings representing distinct records within a batch of records.
     </li>
@@ -561,7 +561,7 @@
     We use recall and precision to evaluate the candidate sets with respect to the test sets of the datasets.
     By fixing the hyperparameter 𝑘 differences in recall and precision become visible that are not visible if 𝑘 is
     tuned.
-    The recall and precision scores in Table 3 show that 𝑘 = 5 is not sufficient for the benchmarked blockers to reach
+    The recall and precision results in Table 3 show that 𝑘 = 5 is not sufficient for the benchmarked blockers to achieve
     a recall above 75%.
     The results also show that both increasing the dataset size and decreasing the development set size increase the
     difficulty of the benchmark.
@@ -716,27 +716,27 @@
 <h3>4.3 Benchmark Results for nearest neighbour blockers with recall >99.5% on validation set</h3>
 
 <p>
-    We analyze how tuning the hyperparameter 𝑘 influences the recall of the nearest neighbour blockers on WDC Block.
+    We analyze how tuning the hyperparameter 𝑘 affects the recall of the nearest neighbour blockers on WDC Block.
     Increasing 𝑘 increases the probability of finding a matching pair resulting in a higher
-    recall. Higher values of 𝑘 produce larger candidate sets because the matcher has to compare more candidate pairs.
+    recall. Higher values of 𝑘 produce larger candidate sets because the matcher has more candidate pairs to compare.
     This prolongs
     the matching phase of the entity resolution pipeline. Our main goal in tuning 𝑘 is to add all matching pairs to the
     candidate set
     while keeping the candidate set as small as possible. To achieve this goal, we evaluate each nearest neighbour
     blocker with increasing
-    values of 𝑘 starting at 𝑘 = 1 on the validation set. Once the recall of the candidate set exceeds 99.5% on the
+    values of 𝑘 starting with 𝑘 = 1 on the validation set. Once the recall of the candidate set exceeds 99.5% on the
     validation set, 𝑘 is found.
     To limit the search space, we set a maximum value of 𝑘 = 50 on WDC-Block<sub>small</sub> , 𝑘 = 100 on
     WDC-Block<sub>medium</sub> and
     𝑘 = 200 on WDC-Block<sub>large</sub>.
 </p>
-<p>The results in Table 4 show how challenging WDC Block for the blockers is because except for SC Block<sub>Large Dev.
-    Set</sub> all blockers fail to generate candidate sets that exceed a threshold of 99.5% recall on the validation
+<p>The results in Table 4 show how challenging WDC Block is for the blockers because except for SC Block<sub>Large Dev.
+    Set</sub> all blockers fail to generate candidate sets that exceed the 99.5% recall threshold on the validation
     set.
     WDC Block<sub>large</sub> is the most challenging benchmark dataset due to the high number of records and the large
     vocabulary of unique tokens.
     The blockers BM25<sub>3</sub>, JedAI, Auto and CTT fail to generate candidate sets on WDC Block<sub>large</sub> due
-    to time and ram constraints.</p>
+    to time and memory constraints.</p>
 <div class="tg-wrap">
     <table style="border-collapse:collapse;border-color:#ccc;border-spacing:0" class="tg">
         <caption><b>Table 4: 𝑘 per blocker and dataset after tuning 𝑘 for recall 99.5% on the respective validation
