@@ -2,7 +2,7 @@
 <html>
 
 <head>
-	<title>The WDC Schema.org Table Annotation Benchmark (SOTAB)</title>
+	<title>SOTAB V2 - Table Annotation Benchmark </title>
 	<link rel='stylesheet' href='https://webdatacommons.org/style.css' type='text/css' media='screen' />
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<style>
@@ -200,9 +200,9 @@
 		{
 			"@context": "http://schema.org/",
 			"@type": "Dataset",
-			"name": "Web Data Commons - Schema.org Table Annotation Benchmark",
+			"name": "SOTAB V2 - Table Annotation Benchmark",
 			"description": "SOTAB features two annotation tasks: Column Type Annotation and Columns Property Annotation. The benchmark consists of <b>59,548 tables</b> annotated for CTA and <b>48,379 tables</b> annotated for CPA originating from <b> 74,215 </b> different websites. The tables are split into training-, validation- and test sets for both tasks.",
-			"url": "http://webdatacommons.org/structureddata/sotab/index.html",
+			"url": "http://webdatacommons.org/structureddata/sotab/v2/index.html",
 			"keywords": [
 				"table corpus",
 				"product corpus",
@@ -233,7 +233,7 @@
 					"json"
 				],
 				//TODO: Change once final
-				"contentUrl": "http://webdatacommons.org/structureddata/sotab/index.html"
+				"contentUrl": "http://webdatacommons.org/structureddata/sotab/v2/index.html"
 			}],
 			"citation": [
 
@@ -251,7 +251,7 @@
 			href="http://dws.informatik.uni-mannheim.de"><img src="../../images/ma-logo.gif"
 				alt="University of Mannheim - Logo"></a></div>
 	<div id="header">
-		<h1 style="font-size: 250%;"> Web Data Commons - Schema.org Table Annotation Benchmark </h1>
+		<h1 style="font-size: 250%;"> SOTAB V2 - Table Annotation Benchmark</h1>
 	</div>
 	<div id="authors">
     <a href="https://www.uni-mannheim.de/dws/people/researchers/phd-students/keti-korini/">Keti Korini</a><br>
@@ -260,20 +260,15 @@
 	</div>
 	<div id="content">
 		<p>
-			This page provides the <b>WDC Schema.org <a href="https://paperswithcode.com/task/table-annotation">Table Annotation</a> Benchmark</b> (SOTAB) for public download. SOTAB features two annotation tasks: Column Type Annotation and 
-      Columns Property Annotation. The goal of the <a href="https://paperswithcode.com/task/column-type-annotation">Column Type Annotation (CTA)</a> task is to annotate the columns of a table with 91 
-      <a href="https://schema.org/">Schema.org</a> types, such as telephone, duration, Place, or Organization. The goal of the <a href="https://paperswithcode.com/task/columns-property-annotation">Columns Property 
-      Annotation (CPA)</a> task is to annotate pairs of table columns with one out of 176 <a href="https://schema.org/">Schema.org</a> properties, such as gtin13, startDate, priceValidUntil, or recipeIngredient. 
-			The benchmark consists of <b>59,548 tables</b> annotated for CTA and <b>48,379 tables</b> annotated for CPA originating from <b> 74,215 </b> different websites. The tables are split into training-, validation- and test sets for both tasks. 
-      The tables cover 17 popular Schema.org types including Product, LocalBusiness, Event, and JobPosting. The tables originate from the <a href="http://webdatacommons.org/structureddata/schemaorgtables/">Schema.org Table Corpus</a>.
-	  </p>
+			This page provides the second version of the <b>WDC Schema.org Table Annotation Benchmark (SOTAB V2)</b> for public download. SOTAB V2 features two annotation tasks: <a href="https://paperswithcode.com/task/column-type-annotation">Column Type Annotation (CTA)</a> and <a href="https://paperswithcode.com/task/columns-property-annotation">Columns Property 
+      Annotation (CPA)</a>. The goal of the Column Type Annotation (CTA) task is to annotate the columns of a table using 82 types from the <a href="https://schema.org/">Schema.org</a> vocabulary, such as telephone, Duration, Mass, or Organization. 
+	  The goal of the Columns Property Annotation (CPA) task is to annotate pairs of table columns with one out of 108 Schema.org properties, such as gtin, startDate, priceValidUntil, or recipeIngredient. 
+			The benchmark consists of <b>45,834 tables</b> annotated for CTA and <b>30,220 tables</b> annotated for CPA originating from <b> 55,511 </b> different websites. The tables are split into training-, validation- and test sets for both tasks. 
+      The tables cover 17 popular Schema.org types including Product, LocalBusiness, Event, and JobPosting. In addition to using schema.org terms, we also offer a version of the benchmark that uses terms from the <a href="https://www.dbpedia.org/resources/ontology/">DBpedia ontology</a>.
 <h2 id="news">News</h2>
 		<ul>
-			<li><strong>2023-07-03:</strong> The <a href="http://webdatacommons.org/structureddata/sotab/v2/"><b>second version</b></a> of WDC Schema.org Table Annotation Benchmark (SOTAB) is published, offering manually verified validation and test sets as well as a new DBpedia variant.</li>
-			<li><strong>2023-04-15:</strong> The WDC Schema.org Table Annotation Benchmark (SOTAB) is used in the <a href="https://www.cs.ox.ac.uk/isg/challenges/sem-tab/">SemTab 2023</a> challenge. The task descriptions and datasets used for the first Round of the challenge can be found <a href="https://sem-tab-challenge.github.io/2023/">here</a>. </li>
-			<li><strong>2022-09-22:</strong> The WDC Schema.org Table Annotation Benchmark (SOTAB) is introduced in the paper: <a href="https://ceur-ws.org/Vol-3320/paper1.pdf">SOTAB: The WDC Schema.org Table Annotation Benchmark</a> [<a href="#toc12">1</a>]</li>
-      <li><strong>2022-10-25:</strong> The WDC Schema.org Table Annotation Benchmark (SOTAB) <a href="https://www.uni-mannheim.de/dws/news/sotab-wins-dataset-track-of-semtab-challenge-at-iswc-2022/">wins</a> the SemTab 2022 Dataset Track. </li>
-			<li><strong>2022-09-22:</strong> Initial version of the WDC Schema.org Table Annotation Benchmark (SOTAB) released.</li>
+			<li><strong>2023-06-26:</strong> WDC Schema.org Table Annotation Benchmark Version 2 (SOTAB V2) released.</li>
+			<li><strong>2023-05-18:</strong> The SOTAB V2 test sets were used in Round 2 of the <a href="https://sem-tab-challenge.github.io/2023/">SemTab 2023 Challenge</a>, meaning that results from the SemTab challenge and the results on this page can directly be compared.</li>
 		</ul>
 		<h2>Contents</h2>
 		<ul>
@@ -301,19 +296,23 @@
 			</li>
 
       <li class="toc-h2 toc-active">
-				<a href="#toc7"> 7. Baselines </a>
+				<a href="#toc7"> 7. DBpedia sets </a>
+			</li>
+
+      <li class="toc-h2 toc-active">
+				<a href="#toc8"> 8. Baselines </a>
 			</li>
 			
 			<li class="toc-h2 toc-active">
-				<a href="#toc8"> 8. Download </a>
+				<a href="#toc9"> 9. Download </a>
 			</li>
 			<li class="toc-h2 toc-active">
-				<a href="#toc9"> 9. Other Table Annotation Benchmarks  </a>
+				<a href="#toc10"> 10. Other Table Annotation Benchmarks  </a>
 			<li class="toc-h2 toc-active">
-        <a href="#toc10"> 10. References </a>
+        <a href="#toc11"> 11. References </a>
 			</li>
       <li class="toc-h2 toc-active">
-        <a href="#toc11"> 11. Feedback </a>
+        <a href="#toc12"> 12. Feedback </a>
 			</li>
 		</ul>
 
@@ -404,14 +403,14 @@ Following the cleansing steps, only attributes with a density of at least 25% ar
 </p>
 
 <p>
-  The final label space contains <b>91 CTA labels</b> and <b>176 CPA labels</b> covering more than 17 Schema.org types.
+  The final label space contains <b>82 CTA labels</b> and <b>108 CPA labels</b> covering 17 Schema.org types.
   For the full set of column names and their statistics, as well as the label space for CTA and CPA, a file is provided 
   for <a href="https://data.dws.informatik.uni-mannheim.de/structureddata/sotab/CPA and CTA Labels.xlsx">download</a>.
 </p>
 
 <p>
   <table>
-    <caption> Table 1: Columns' CTA and CPA labels of 3 Schema.org table types</caption>
+    <caption> Table 1: Examples of CTA and CPA labels for 3 Schema.org table types</caption>
     <thead>
       <th class="tg-mkpc">Table Type</th>
       <th class="tg-mkpc">CPA label</th>
@@ -427,15 +426,15 @@ Following the cleansing steps, only attributes with a density of at least 25% ar
     </thead>
     <tbody>
       <tr>
-        <td rowspan="5" > <i>Product</i> </td>
+        <td rowspan="5" > <b>Product</b> </td>
         <td>offers</td>
         <td>Offer</td>
 
-        <td rowspan="5" style="border-left: 1px solid #ccc;"> <i>Event</i> </td>
+        <td rowspan="5" style="border-left: 1px solid #ccc;"> <b>Event</b> </td>
         <td> location </td>
         <td> Place </td>
 
-        <td rowspan="5" style="border-left: 1px solid #ccc;"> <i>Recipe</i> </td>
+        <td rowspan="5" style="border-left: 1px solid #ccc;"> <b>Recipe</b> </td>
         <td> cookTime </td>
         <td> Duration </td>
 
@@ -445,7 +444,7 @@ Following the cleansing steps, only attributes with a density of at least 25% ar
         <td> currency </td>
 
         <td> description </td>
-        <td> Text </td>
+        <td> Event/description </td>
 
         <td> recipeIngredient </td>
         <td> Text </td>
@@ -471,13 +470,13 @@ Following the cleansing steps, only attributes with a density of at least 25% ar
         <td> Energy </td>
 
       </tr><tr>
-        <td> sku </td>
+        <td> gtin </td>
         <td> IdentifierAT </td>
 
         <td> email </td>
         <td> email </td>
 
-        <td> fatContent </td>
+        <td> nutrition </td>
         <td> Mass </td>
 
       </tr>
@@ -489,11 +488,11 @@ Following the cleansing steps, only attributes with a density of at least 25% ar
 <span id="toc5"></span>
 <h2> 5. Dataset Profiling</h2>
 <p>
-  The SOTAB benchmark provides CTA annotations for <b>162,351 columns</b> from <b> 59,548 tables</b> and CPA annotations for <b>174,998 column pairs</b> from <b>48,379</b> tables. The tables are distributed across 17 Schema.org types, like 
+  The SOTAB V2 benchmark provides CTA annotations for <b>120,507 columns</b> from <b> 45,834 tables</b> and CPA annotations for <b>114,793 column pairs</b> from <b>30,220</b> tables. The tables are distributed across 17 Schema.org types, like 
   <i>Product</i>, <i>Event</i> and <i>Place</i>. The tables do not include any metadata, i.e. no table headers 
-  and no table captions are available. The benchmark includes columns with textual, numerical and dateTime column values. The CPA and CTA tables are split with a 80:10:10 ration into fixed
-  training, validation and testing splits. In addition, we offer a smaller subset of the training set to help with the comparison of how models perform with different numbers of examples.     
-<em>Table 2</em> gives an overview of the number of tables and columns per type and overview of the number of tables and columns per type and the median number of annotations (labels) for CTA and CPA for each of the splits.
+  and no table captions are available. The benchmark includes columns with textual, numerical and dateTime column values. The CPA and CTA tables are split into fixed
+  training, validation and test splits. The validation and test splits provided are all <b>manually verified</b>. In addition, we offer a smaller subset of the training set to help with the comparison of how models perform with different numbers of examples.     
+<em>Table 2</em> gives an overview of the number of tables and columns per type and the median number of annotations (labels) for CTA and CPA for each of the splits.
 </p> 
 			 
 <div class="tg-wrap"><table id="tg-tKOYO" class="tg">
@@ -548,471 +547,471 @@ Following the cleansing steps, only attributes with a density of at least 25% ar
   </tr>
   <tr>
     <td class="tg-lboi">Overall</td>
-    <td class="tg-9wq8"> 59,548 </td>
-    <td class="tg-9wq8"> 162,351 </td>
-    <td class="tg-9wq8"> 33/7 </td>
-    <td class="tg-9wq8"> 46,790 </td>
-    <td class="tg-9wq8"> 130,471 </td>
-    <td class="tg-9wq8"> 11,517 </td>
-    <td class="tg-9wq8"> 33,004 </td>
-    <td class="tg-9wq8"> 5,732 </td>
-    <td class="tg-9wq8"> 16,840 </td>
-    <td class="tg-9wq8"> 7,026 </td>
-    <td class="tg-9wq8"> 15,040 </td>
+    <td class="tg-9wq8"> 45,834 </td>
+    <td class="tg-9wq8"> 120,507 </td>
+    <td class="tg-9wq8"> 32/7  </td>
+    <td class="tg-9wq8"> 44,769 </td>
+    <td class="tg-9wq8"> 116,887 </td>
+    <td class="tg-9wq8"> 10,631 </td>
+    <td class="tg-9wq8"> 27,692 </td>
+    <td class="tg-9wq8"> 456 </td>
+    <td class="tg-9wq8"> 1,769 </td>
+    <td class="tg-9wq8"> 609 </td>
+    <td class="tg-9wq8"> 1,851 </td>
 
-    <td class="tg-9wq8"> 48,379 </td>
-    <td class="tg-9wq8"> 174,998 </td>
-    <td class="tg-9wq8"> 42/8 </td>
-    <td class="tg-9wq8"> 37,128 </td>
-    <td class="tg-9wq8"> 134,425 </td>
-    <td class="tg-9wq8"> 9,435 </td>
-    <td class="tg-9wq8"> 33,643 </td>
-    <td class="tg-9wq8"> 4,771 </td>
-    <td class="tg-9wq8"> 17,417 </td>
-    <td class="tg-9wq8"> 6,480 </td>
-    <td class="tg-9wq8"> 23,156 </td>
+    <td class="tg-9wq8"> 30,220 </td>
+    <td class="tg-9wq8"> 114,793 </td>
+    <td class="tg-9wq8"> 38/8 </td>
+    <td class="tg-9wq8"> 29,158 </td>
+    <td class="tg-9wq8"> 109,994 </td>
+    <td class="tg-9wq8"> 7,430 </td>
+    <td class="tg-9wq8"> 27,603 </td>
+    <td class="tg-9wq8"> 497 </td>
+    <td class="tg-9wq8"> 2,459 </td>
+    <td class="tg-9wq8"> 565 </td>
+    <td class="tg-9wq8"> 2,340 </td>
   </tr>
   <tr>
     <td class="tg-lboi">Product</td>
-    <td class="tg-9wq8"> 12,534 </td>
-    <td class="tg-9wq8"> 30,856 </td>
-    <td class="tg-9wq8"> 40/8 </td>
-    <td class="tg-9wq8"> 10,403 </td>
-    <td class="tg-9wq8"> 25,353 </td>
-    <td class="tg-9wq8"> 2,037 </td>
-    <td class="tg-9wq8"> 5,211 </td>
-    <td class="tg-9wq8"> 857 </td>
-    <td class="tg-9wq8"> 2,507 </td>
-    <td class="tg-9wq8"> 1,274 </td>
-    <td class="tg-9wq8"> 2,996 </td>
+    <td class="tg-9wq8">9944</td>
+    <td class="tg-9wq8">23078</td>
+    <td class="tg-9wq8">40/8</td>
+    <td class="tg-9wq8">9762</td>
+    <td class="tg-9wq8">22422</td>
+    <td class="tg-9wq8">1889</td>
+    <td class="tg-9wq8">4460</td>
+    <td class="tg-9wq8">78</td>
+    <td class="tg-9wq8">300</td>
+    <td class="tg-9wq8">104</td>
+    <td class="tg-9wq8">356</td>
 
-    <td class="tg-9wq8"> 16,032 </td>
-    <td class="tg-9wq8"> 36,464 </td>
-    <td class="tg-9wq8"> 65/10 </td>
-    <td class="tg-9wq8"> 12,668 </td>
-    <td class="tg-9wq8"> 29,149 </td>
-    <td class="tg-9wq8"> 3,075 </td>
-    <td class="tg-9wq8"> 6,378 </td>
-    <td class="tg-9wq8"> 1,476 </td>
-    <td class="tg-9wq8"> 2,726 </td>
-    <td class="tg-9wq8"> 1,888 </td>
-    <td class="tg-9wq8"> 4,589 </td>
+    <td class="tg-9wq8">7243</td>
+    <td class="tg-9wq8">18885</td>
+    <td class="tg-9wq8">59/10</td>
+    <td class="tg-9wq8">7065</td>
+    <td class="tg-9wq8">18349</td>
+    <td class="tg-9wq8">1629</td>
+    <td class="tg-9wq8">3800</td>
+    <td class="tg-9wq8">91</td>
+    <td class="tg-9wq8">273</td>
+    <td class="tg-9wq8">87</td>
+    <td class="tg-9wq8">263</td>
   </tr>
   <tr>
     <td class="tg-d459">Event</td>
-    <td class="tg-9wq8"> 6,206 </td>
-    <td class="tg-9wq8"> 17,972 </td>
-    <td class="tg-9wq8"> 23/7 </td>
-    <td class="tg-9wq8"> 4,721 </td>
-    <td class="tg-9wq8"> 14,150 </td>
-    <td class="tg-9wq8"> 1,386 </td>
-    <td class="tg-9wq8"> 4,631 </td>
-    <td class="tg-9wq8"> 593 </td>
-    <td class="tg-9wq8"> 1,869 </td>
-    <td class="tg-9wq8"> 892 </td>
-    <td class="tg-9wq8"> 1,953 </td>
+    <td class="tg-9wq8">4697</td>
+    <td class="tg-9wq8">14131</td>
+    <td class="tg-9wq8">23/7</td>
+    <td class="tg-9wq8">4588</td>
+    <td class="tg-9wq8">13745</td>
+    <td class="tg-9wq8">1340</td>
+    <td class="tg-9wq8">4033</td>
+    <td class="tg-9wq8">39</td>
+    <td class="tg-9wq8">160</td>
+    <td class="tg-9wq8">70</td>
+    <td class="tg-9wq8">226</td>
 
-    <td class="tg-9wq8"> 6,713 </td>
-    <td class="tg-9wq8"> 21,298 </td>
-    <td class="tg-9wq8"> 25/8 </td>
-    <td class="tg-9wq8"> 5,220 </td>
-    <td class="tg-9wq8"> 15,949 </td>
-    <td class="tg-9wq8"> 1,417 </td>
-    <td class="tg-9wq8"> 4,868 </td>
-    <td class="tg-9wq8"> 722 </td>
-    <td class="tg-9wq8"> 2,573 </td>
-    <td class="tg-9wq8"> 771 </td>
-    <td class="tg-9wq8"> 2,776 </td>
+    <td class="tg-9wq8">4549</td>
+    <td class="tg-9wq8">15553</td>
+    <td class="tg-9wq8">24/9</td>
+    <td class="tg-9wq8">4435</td>
+    <td class="tg-9wq8">14907</td>
+    <td class="tg-9wq8">1237</td>
+    <td class="tg-9wq8">4611</td>
+    <td class="tg-9wq8">51</td>
+    <td class="tg-9wq8">331</td>
+    <td class="tg-9wq8">63</td>
+    <td class="tg-9wq8">315</td>
   </tr>
   <tr>
     <td class="tg-lboi">Recipe</td>
-    <td class="tg-9wq8"> 5,080 </td>
-    <td class="tg-9wq8"> 24,590 </td>
-    <td class="tg-9wq8"> 42/13 </td>
-    <td class="tg-9wq8"> 4,083 </td>
-    <td class="tg-9wq8"> 20,809 </td>
-    <td class="tg-9wq8"> 756 </td>
-    <td class="tg-9wq8"> 4,459 </td>
-    <td class="tg-9wq8"> 412 </td>
-    <td class="tg-9wq8"> 2,199 </td>
-    <td class="tg-9wq8"> 585 </td>
-    <td class="tg-9wq8"> 1,582 </td>
+    <td class="tg-9wq8">4008</td>
+    <td class="tg-9wq8">17995</td>
+    <td class="tg-9wq8">42/12</td>
+    <td class="tg-9wq8">3959</td>
+    <td class="tg-9wq8">17738</td>
+    <td class="tg-9wq8">754</td>
+    <td class="tg-9wq8">3855</td>
+    <td class="tg-9wq8">23</td>
+    <td class="tg-9wq8">130</td>
+    <td class="tg-9wq8">26</td>
+    <td class="tg-9wq8">127</td>
 
-    <td class="tg-9wq8"> 4,535 </td>
-    <td class="tg-9wq8"> 27,070 </td>
-    <td class="tg-9wq8"> 52/15 </td>
-    <td class="tg-9wq8"> 3,547 </td>
-    <td class="tg-9wq8"> 20,279 </td>
-    <td class="tg-9wq8"> 967 </td>
-    <td class="tg-9wq8"> 4,687 </td>
-    <td class="tg-9wq8"> 426 </td>
-    <td class="tg-9wq8"> 2,426 </td>
-    <td class="tg-9wq8"> 562 </td>
-    <td class="tg-9wq8"> 4,365 </td>
+    <td class="tg-9wq8">3360</td>
+    <td class="tg-9wq8">17064</td>
+    <td class="tg-9wq8">51/15</td>
+    <td class="tg-9wq8">3301</td>
+    <td class="tg-9wq8">16683</td>
+    <td class="tg-9wq8">916</td>
+    <td class="tg-9wq8">3888</td>
+    <td class="tg-9wq8">27</td>
+    <td class="tg-9wq8">183</td>
+    <td class="tg-9wq8">32</td>
+    <td class="tg-9wq8">198</td>
   </tr>
   <tr>
-    <td class="tg-d459">Person</td>
-    <td class="tg-9wq8"> 4,623 </td>
-    <td class="tg-9wq8"> 10,466 </td>
-    <td class="tg-9wq8"> 27/5 </td>
-    <td class="tg-9wq8"> 3,818 </td>
-    <td class="tg-9wq8"> 8,680 </td>
-    <td class="tg-9wq8"> 851 </td>
-    <td class="tg-9wq8"> 1,876 </td>
-    <td class="tg-9wq8"> 374 </td>
-    <td class="tg-9wq8"> 867 </td>
-    <td class="tg-9wq8"> 431 </td>
-    <td class="tg-9wq8"> 919 </td>
+    <td class="tg-lboi">Person</td>
+    <td class="tg-9wq8">3475</td>
+    <td class="tg-9wq8">7152</td>
+    <td class="tg-9wq8">24/4</td>
+    <td class="tg-9wq8">3366</td>
+    <td class="tg-9wq8">6936</td>
+    <td class="tg-9wq8">729</td>
+    <td class="tg-9wq8">1431</td>
+    <td class="tg-9wq8">41</td>
+    <td class="tg-9wq8">98</td>
+    <td class="tg-9wq8">68</td>
+    <td class="tg-9wq8">118</td>
 
-    <td class="tg-9wq8"> 3,186 </td>
-    <td class="tg-9wq8"> 11,535 </td>
-    <td class="tg-9wq8"> 32/5 </td>
-    <td class="tg-9wq8"> 2,159 </td>
-    <td class="tg-9wq8"> 8,542 </td>
-    <td class="tg-9wq8"> 476 </td>
-    <td class="tg-9wq8"> 1,936 </td>
-    <td class="tg-9wq8"> 309 </td>
-    <td class="tg-9wq8"> 1,033 </td>
-    <td class="tg-9wq8"> 718 </td>
-    <td class="tg-9wq8"> 1,960 </td>
+    <td class="tg-9wq8">1982</td>
+    <td class="tg-9wq8">6591</td>
+    <td class="tg-9wq8">29/5</td>
+    <td class="tg-9wq8">1838</td>
+    <td class="tg-9wq8">6148</td>
+    <td class="tg-9wq8">407</td>
+    <td class="tg-9wq8">1364</td>
+    <td class="tg-9wq8">63</td>
+    <td class="tg-9wq8">204</td>
+    <td class="tg-9wq8">81</td>
+    <td class="tg-9wq8">239</td>
   </tr>
   <tr>
     <td class="tg-lboi">MusicRecording</td>
-    <td class="tg-9wq8"> 4,092 </td>
-    <td class="tg-9wq8"> 7,482 </td>
-    <td class="tg-9wq8"> 17/5 </td>
-    <td class="tg-9wq8"> 3,344 </td>
-    <td class="tg-9wq8"> 6,117 </td>
-    <td class="tg-9wq8"> 854 </td>
-    <td class="tg-9wq8"> 1546 </td>
-    <td class="tg-9wq8"> 401 </td>
-    <td class="tg-9wq8"> 749 </td>
-    <td class="tg-9wq8"> 347 </td>
-    <td class="tg-9wq8"> 616 </td>
+    <td class="tg-9wq8">3389</td>
+    <td class="tg-9wq8">6233</td>
+    <td class="tg-9wq8">17/5</td>
+    <td class="tg-9wq8">3344</td>
+    <td class="tg-9wq8">6115</td>
+    <td class="tg-9wq8">667</td>
+    <td class="tg-9wq8">1044</td>
+    <td class="tg-9wq8">19</td>
+    <td class="tg-9wq8">56</td>
+    <td class="tg-9wq8">26</td>
+    <td class="tg-9wq8">62</td>
 
-    <td class="tg-9wq8"> 1,250 </td>
-    <td class="tg-9wq8"> 3,883 </td>
-    <td class="tg-9wq8"> 19/5 </td>
-    <td class="tg-9wq8"> 957 </td>
-    <td class="tg-9wq8"> 3,029 </td>
-    <td class="tg-9wq8"> 252 </td>
-    <td class="tg-9wq8"> 776 </td>
-    <td class="tg-9wq8"> 119 </td>
-    <td class="tg-9wq8"> 388 </td>
-    <td class="tg-9wq8"> 174 </td>
-    <td class="tg-9wq8"> 466 </td>
+    <td class="tg-9wq8">998</td>
+    <td class="tg-9wq8">3156</td>
+    <td class="tg-9wq8">19/5</td>
+    <td class="tg-9wq8">957</td>
+    <td class="tg-9wq8">3029</td>
+    <td class="tg-9wq8">252</td>
+    <td class="tg-9wq8">776</td>
+    <td class="tg-9wq8">19</td>
+    <td class="tg-9wq8">63</td>
+    <td class="tg-9wq8">22</td>
+    <td class="tg-9wq8">64</td>
   </tr>
   <tr>
     <td class="tg-d459">Place</td>
-    <td class="tg-9wq8"> 2,680 </td>
-    <td class="tg-9wq8"> 9,181 </td>
-    <td class="tg-9wq8"> 28/7 </td>
-    <td class="tg-9wq8"> 2,015 </td>
-    <td class="tg-9wq8"> 7,596 </td>
-    <td class="tg-9wq8"> 363 </td>
-    <td class="tg-9wq8"> 1,408 </td>
-    <td class="tg-9wq8"> 224</td>
-    <td class="tg-9wq8"> 735 </td>
-    <td class="tg-9wq8"> 441 </td>
-    <td class="tg-9wq8"> 850 </td>
+    <td class="tg-9wq8">1997</td>
+    <td class="tg-9wq8">7491</td>
+    <td class="tg-9wq8">26/7</td>
+    <td class="tg-9wq8">1985</td>
+    <td class="tg-9wq8">7452</td>
+    <td class="tg-9wq8">363</td>
+    <td class="tg-9wq8">1373</td>
+    <td class="tg-9wq8">3</td>
+    <td class="tg-9wq8">6</td>
+    <td class="tg-9wq8">9</td>
+    <td class="tg-9wq8">33</td>
 
-    <td class="tg-9wq8"> 1,403 </td>
-    <td class="tg-9wq8"> 8,070 </td>
-    <td class="tg-9wq8"> 29/7 </td>
-    <td class="tg-9wq8"> 1,175 </td>
-    <td class="tg-9wq8"> 7,090 </td>
-    <td class="tg-9wq8"> 274 </td>
-    <td class="tg-9wq8"> 1,608 </td>
-    <td class="tg-9wq8"> 95 </td>
-    <td class="tg-9wq8"> 486 </td>
-    <td class="tg-9wq8"> 133 </td>
-    <td class="tg-9wq8"> 494 </td>
+    <td class="tg-9wq8">1135</td>
+    <td class="tg-9wq8">6960</td>
+    <td class="tg-9wq8">28/8</td>
+    <td class="tg-9wq8">1134</td>
+    <td class="tg-9wq8">6950</td>
+    <td class="tg-9wq8">273</td>
+    <td class="tg-9wq8">1577</td>
+    <td class="tg-9wq8">1</td>
+    <td class="tg-9wq8">10</td>
+    <td class="tg-9wq8">-</td>
+    <td class="tg-9wq8">-</td>
   </tr>
   <tr>
     <td class="tg-lboi">LocalBusiness</td>
-    <td class="tg-9wq8"> 5,292 </td>
-    <td class="tg-9wq8"> 14,941 </td>
-    <td class="tg-9wq8"> 37/9 </td>
-    <td class="tg-9wq8"> 3,744 </td>
-    <td class="tg-9wq8"> 10,657 </td>
-    <td class="tg-9wq8"> 1,226 </td>
-    <td class="tg-9wq8"> 3,932 </td>
-    <td class="tg-9wq8"> 602 </td>
-    <td class="tg-9wq8"> 2,161 </td>
-    <td class="tg-9wq8"> 946 </td>
-    <td class="tg-9wq8"> 2,123 </td>
+    <td class="tg-9wq8">3842</td>
+    <td class="tg-9wq8">10647</td>
+    <td class="tg-9wq8">36/9</td>
+    <td class="tg-9wq8">3738</td>
+    <td class="tg-9wq8">10194</td>
+    <td class="tg-9wq8">1223</td>
+    <td class="tg-9wq8">3743</td>
+    <td class="tg-9wq8">42</td>
+    <td class="tg-9wq8">259</td>
+    <td class="tg-9wq8">62</td>
+    <td class="tg-9wq8">194</td>
 
-    <td class="tg-9wq8"> 5,274 </td>
-    <td class="tg-9wq8"> 15,987 </td>
-    <td class="tg-9wq8"> 39/9 </td>
-    <td class="tg-9wq8"> 4,076 </td>
-    <td class="tg-9wq8"> 11,373 </td>
-    <td class="tg-9wq8"> 1,108 </td>
-    <td class="tg-9wq8"> 3,615 </td>
-    <td class="tg-9wq8"> 503 </td>
-    <td class="tg-9wq8"> 1,991 </td>
-    <td class="tg-9wq8"> 695 </td>
-    <td class="tg-9wq8"> 2,623 </td>
+    <td class="tg-9wq8">3589</td>
+    <td class="tg-9wq8">10216</td>
+    <td class="tg-9wq8">39/9</td>
+    <td class="tg-9wq8">3478</td>
+    <td class="tg-9wq8">9651</td>
+    <td class="tg-9wq8">971</td>
+    <td class="tg-9wq8">3135</td>
+    <td class="tg-9wq8">54</td>
+    <td class="tg-9wq8">342</td>
+    <td class="tg-9wq8">57</td>
+    <td class="tg-9wq8">223</td>
   </tr>
   <tr>
     <td class="tg-d459">CreativeWork</td>
-    <td class="tg-9wq8"> 4,674 </td>
-    <td class="tg-9wq8"> 9,240 </td>
-    <td class="tg-9wq8"> 26/4 </td>
-    <td class="tg-9wq8"> 3,393 </td>
-    <td class="tg-9wq8"> 6,921 </td>
-    <td class="tg-9wq8"> 1,142 </td>
-    <td class="tg-9wq8"> 2,299 </td>
-    <td class="tg-9wq8"> 686 </td>
-    <td class="tg-9wq8"> 1,355 </td>
-    <td class="tg-9wq8"> 595 </td>
-    <td class="tg-9wq8"> 964 </td>
+    <td class="tg-9wq8">3213</td>
+    <td class="tg-9wq8">5681</td>
+    <td class="tg-9wq8">26/4</td>
+    <td class="tg-9wq8">3172</td>
+    <td class="tg-9wq8">5567</td>
+    <td class="tg-9wq8">898</td>
+    <td class="tg-9wq8">1305</td>
+    <td class="tg-9wq8">17</td>
+    <td class="tg-9wq8">62</td>
+    <td class="tg-9wq8">24</td>
+    <td class="tg-9wq8">52</td>
 
-    <td class="tg-9wq8"> 2,997 </td>
-    <td class="tg-9wq8"> 12,468 </td>
-    <td class="tg-9wq8"> 28/6 </td>
-    <td class="tg-9wq8"> 2,323 </td>
-    <td class="tg-9wq8"> 9,866 </td>
-    <td class="tg-9wq8"> 584 </td>
-    <td class="tg-9wq8"> 2,681 </td>
-    <td class="tg-9wq8"> 316 </td>
-    <td class="tg-9wq8"> 1,360 </td>
-    <td class="tg-9wq8"> 358 </td>
-    <td class="tg-9wq8"> 1,242 </td>
+    <td class="tg-9wq8">2152</td>
+    <td class="tg-9wq8">7681</td>
+    <td class="tg-9wq8">27/7</td>
+    <td class="tg-9wq8">2122</td>
+    <td class="tg-9wq8">7597</td>
+    <td class="tg-9wq8">522</td>
+    <td class="tg-9wq8">2052</td>
+    <td class="tg-9wq8">18</td>
+    <td class="tg-9wq8">46</td>
+    <td class="tg-9wq8">12</td>
+    <td class="tg-9wq8">38</td>
   </tr>
   <tr>
     <td class="tg-lboi">MusicAlbum</td>
-    <td class="tg-9wq8"> 393 </td>
-    <td class="tg-9wq8"> 896 </td>
-    <td class="tg-9wq8"> 45/4 </td>
-    <td class="tg-9wq8"> 316 </td>
-    <td class="tg-9wq8"> 725 </td>
-    <td class="tg-9wq8"> 80 </td>
-    <td class="tg-9wq8"> 179 </td>
-    <td class="tg-9wq8"> 38 </td>
-    <td class="tg-9wq8"> 90 </td>
-    <td class="tg-9wq8"> 39 </td>
-    <td class="tg-9wq8"> 81 </td>
+    <td class="tg-9wq8">335</td>
+    <td class="tg-9wq8">686</td>
+    <td class="tg-9wq8">39/4</td>
+    <td class="tg-9wq8">314</td>
+    <td class="tg-9wq8">626</td>
+    <td class="tg-9wq8">79</td>
+    <td class="tg-9wq8">120</td>
+    <td class="tg-9wq8">10</td>
+    <td class="tg-9wq8">28</td>
+    <td class="tg-9wq8">11</td>
+    <td class="tg-9wq8">32</td>
 
-    <td class="tg-9wq8"> 373 </td>
-    <td class="tg-9wq8"> 1,057 </td>
-    <td class="tg-9wq8"> 43/4 </td>
-    <td class="tg-9wq8"> 287 </td>
-    <td class="tg-9wq8"> 806 </td>
-    <td class="tg-9wq8"> 80 </td>
-    <td class="tg-9wq8"> 198 </td>
-    <td class="tg-9wq8"> 44 </td>
-    <td class="tg-9wq8"> 125 </td>
-    <td class="tg-9wq8"> 42 </td>
-    <td class="tg-9wq8"> 126 </td>
+    <td class="tg-9wq8">302</td>
+    <td class="tg-9wq8">873</td>
+    <td class="tg-9wq8">46/4</td>
+    <td class="tg-9wq8">275</td>
+    <td class="tg-9wq8">765</td>
+    <td class="tg-9wq8">80</td>
+    <td class="tg-9wq8">198</td>
+    <td class="tg-9wq8">13</td>
+    <td class="tg-9wq8">56</td>
+    <td class="tg-9wq8">14</td>
+    <td class="tg-9wq8">52</td>
   </tr>
   <tr>
     <td class="tg-d459">Movie</td>
-    <td class="tg-9wq8"> 2,270 </td>
-    <td class="tg-9wq8"> 6,625 </td>
-    <td class="tg-9wq8"> 75/7 </td>
-    <td class="tg-9wq8"> 1,846 </td>
-    <td class="tg-9wq8"> 5,253 </td>
-    <td class="tg-9wq8"> 489 </td>
-    <td class="tg-9wq8"> 1,605 </td>
-    <td class="tg-9wq8"> 202 </td>
-    <td class="tg-9wq8"> 945 </td>
-    <td class="tg-9wq8"> 222 </td>
-    <td class="tg-9wq8"> 427 </td>
+    <td class="tg-9wq8">1840</td>
+    <td class="tg-9wq8">4806</td>
+    <td class="tg-9wq8">77/7</td>
+    <td class="tg-9wq8">1774</td>
+    <td class="tg-9wq8">4569</td>
+    <td class="tg-9wq8">469</td>
+    <td class="tg-9wq8">1296</td>
+    <td class="tg-9wq8">30</td>
+    <td class="tg-9wq8">117</td>
+    <td class="tg-9wq8">36</td>
+    <td class="tg-9wq8">120</td>
 
-    <td class="tg-9wq8"> 1,539 </td>
-    <td class="tg-9wq8"> 9,194 </td>
-    <td class="tg-9wq8"> 65/8 </td>
-    <td class="tg-9wq8"> 1,115 </td>
-    <td class="tg-9wq8"> 7,379 </td>
-    <td class="tg-9wq8"> 298 </td>
-    <td class="tg-9wq8"> 2,164 </td>
-    <td class="tg-9wq8"> 148 </td>
-    <td class="tg-9wq8"> 828 </td>
-    <td class="tg-9wq8"> 276 </td>
-    <td class="tg-9wq8"> 987 </td>
+    <td class="tg-9wq8">1157</td>
+    <td class="tg-9wq8">6762</td>
+    <td class="tg-9wq8">68/9</td>
+    <td class="tg-9wq8">1062</td>
+    <td class="tg-9wq8">6250</td>
+    <td class="tg-9wq8">290</td>
+    <td class="tg-9wq8">1799</td>
+    <td class="tg-9wq8">37</td>
+    <td class="tg-9wq8">241</td>
+    <td class="tg-9wq8">58</td>
+    <td class="tg-9wq8">271</td>
   </tr>
   <tr>
     <td class="tg-lboi">Hotel</td>
-    <td class="tg-9wq8"> 1,866 </td>
-    <td class="tg-9wq8"> 6,895 </td>
-    <td class="tg-9wq8"> 42/9 </td>
-    <td class="tg-9wq8"> 1,393 </td>
-    <td class="tg-9wq8"> 5,424 </td>
-    <td class="tg-9wq8"> 394 </td>
-    <td class="tg-9wq8"> 1,498 </td>
-    <td class="tg-9wq8"> 238 </td>
-    <td class="tg-9wq8"> 895 </td>
-    <td class="tg-9wq8"> 235 </td>
-    <td class="tg-9wq8"> 576 </td>
+    <td class="tg-9wq8">1438</td>
+    <td class="tg-9wq8">5384</td>
+    <td class="tg-9wq8">40/9</td>
+    <td class="tg-9wq8">1389</td>
+    <td class="tg-9wq8">5140</td>
+    <td class="tg-9wq8">393</td>
+    <td class="tg-9wq8">1420</td>
+    <td class="tg-9wq8">18</td>
+    <td class="tg-9wq8">112</td>
+    <td class="tg-9wq8">31</td>
+    <td class="tg-9wq8">132</td>
 
-    <td class="tg-9wq8"> 998 </td>
-    <td class="tg-9wq8"> 6,123 </td>
-    <td class="tg-9wq8"> 55/9 </td>
-    <td class="tg-9wq8"> 585 </td>
-    <td class="tg-9wq8"> 3,387 </td>
-    <td class="tg-9wq8"> 243 </td>
-    <td class="tg-9wq8"> 1,522 </td>
-    <td class="tg-9wq8"> 202 </td>
-    <td class="tg-9wq8"> 1,466 </td>
-    <td class="tg-9wq8"> 211 </td>
-    <td class="tg-9wq8"> 1,270 </td>
+    <td class="tg-9wq8">611</td>
+    <td class="tg-9wq8">3627</td>
+    <td class="tg-9wq8">59/10</td>
+    <td class="tg-9wq8">558</td>
+    <td class="tg-9wq8">3219</td>
+    <td class="tg-9wq8">230</td>
+    <td class="tg-9wq8">1440</td>
+    <td class="tg-9wq8">26</td>
+    <td class="tg-9wq8">208</td>
+    <td class="tg-9wq8">27</td>
+    <td class="tg-9wq8">200</td>
   </tr>
   <tr>
     <td class="tg-d459">SportsEvent</td>
-    <td class="tg-9wq8"> 783 </td>
-    <td class="tg-9wq8"> 2,188 </td>
-    <td class="tg-9wq8"> 41/5 </td>
-    <td class="tg-9wq8"> 613 </td>
-    <td class="tg-9wq8"> 1,823 </td>
-    <td class="tg-9wq8"> 151 </td>
-    <td class="tg-9wq8"> 371 </td>
-    <td class="tg-9wq8"> 86 </td>
-    <td class="tg-9wq8"> 199 </td>
-    <td class="tg-9wq8"> 84 </td>
-    <td class="tg-9wq8"> 166 </td>
+    <td class="tg-9wq8">634</td>
+    <td class="tg-9wq8">1810</td>
+    <td class="tg-9wq8">40/5</td>
+    <td class="tg-9wq8">613</td>
+    <td class="tg-9wq8">1756</td>
+    <td class="tg-9wq8">151</td>
+    <td class="tg-9wq8">285</td>
+    <td class="tg-9wq8">10</td>
+    <td class="tg-9wq8">31</td>
+    <td class="tg-9wq8">11</td>
+    <td class="tg-9wq8">23</td>
 
-    <td class="tg-9wq8"> 766 </td>
-    <td class="tg-9wq8"> 3,508 </td>
-    <td class="tg-9wq8"> 40/5 </td>
-    <td class="tg-9wq8"> 664 </td>
-    <td class="tg-9wq8"> 3,173 </td>
-    <td class="tg-9wq8"> 109 </td>
-    <td class="tg-9wq8"> 379 </td>
-    <td class="tg-9wq8"> 54 </td>
-    <td class="tg-9wq8"> 150 </td>
-    <td class="tg-9wq8"> 48 </td>
-    <td class="tg-9wq8"> 185 </td>
+    <td class="tg-9wq8">684</td>
+    <td class="tg-9wq8">2965</td>
+    <td class="tg-9wq8">41/6</td>
+    <td class="tg-9wq8">664</td>
+    <td class="tg-9wq8">2884</td>
+    <td class="tg-9wq8">109</td>
+    <td class="tg-9wq8">338</td>
+    <td class="tg-9wq8">10</td>
+    <td class="tg-9wq8">36</td>
+    <td class="tg-9wq8">10</td>
+    <td class="tg-9wq8">45</td>
   </tr>
   <tr>
     <td class="tg-lboi">Restaurant</td>
-    <td class="tg-9wq8"> 1,314 </td>
-    <td class="tg-9wq8"> 4,552 </td>
-    <td class="tg-9wq8"> 38/10 </td>
-    <td class="tg-9wq8"> 1,033 </td>
-    <td class="tg-9wq8"> 3,832 </td>
-    <td class="tg-9wq8"> 201 </td>
-    <td class="tg-9wq8"> 497 </td>
-    <td class="tg-9wq8"> 135 </td>
-    <td class="tg-9wq8"> 381 </td>
-    <td class="tg-9wq8"> 146 </td>
-    <td class="tg-9wq8"> 339 </td>
+    <td class="tg-9wq8">1064</td>
+    <td class="tg-9wq8">3821</td>
+    <td class="tg-9wq8">36/10</td>
+    <td class="tg-9wq8">1022</td>
+    <td class="tg-9wq8">3669</td>
+    <td class="tg-9wq8">201</td>
+    <td class="tg-9wq8">474</td>
+    <td class="tg-9wq8">18</td>
+    <td class="tg-9wq8">72</td>
+    <td class="tg-9wq8">24</td>
+    <td class="tg-9wq8">80</td>
 
-    <td class="tg-9wq8"> 812 </td>
-    <td class="tg-9wq8"> 6,761 </td>
-    <td class="tg-9wq8"> 35/10 </td>
-    <td class="tg-9wq8"> 643 </td>
-    <td class="tg-9wq8"> 6,445 </td>
-    <td class="tg-9wq8"> 69 </td>
-    <td class="tg-9wq8"> 643 </td>
-    <td class="tg-9wq8"> 11 </td>
-    <td class="tg-9wq8"> 58 </td>
-    <td class="tg-9wq8"> 158 </td>
-    <td class="tg-9wq8"> 258 </td>
+    <td class="tg-9wq8">661</td>
+    <td class="tg-9wq8">6253</td>
+    <td class="tg-9wq8">35/11</td>
+    <td class="tg-9wq8">642</td>
+    <td class="tg-9wq8">6182</td>
+    <td class="tg-9wq8">69</td>
+    <td class="tg-9wq8">621</td>
+    <td class="tg-9wq8">9</td>
+    <td class="tg-9wq8">46</td>
+    <td class="tg-9wq8">10</td>
+    <td class="tg-9wq8">25</td>
   </tr>
   <tr>
     <td class="tg-d459">Book</td>
-    <td class="tg-9wq8"> 2,640 </td>
-    <td class="tg-9wq8"> 6,103 </td>
-    <td class="tg-9wq8"> 61/7 </td>
-    <td class="tg-9wq8"> 2,022 </td>
-    <td class="tg-9wq8"> 4,791 </td>
-    <td class="tg-9wq8"> 578 </td>
-    <td class="tg-9wq8"> 1,394 </td>
-    <td class="tg-9wq8"> 341 </td>
-    <td class="tg-9wq8"> 776 </td>
-    <td class="tg-9wq8"> 277 </td>
-    <td class="tg-9wq8"> 536 </td>
+    <td class="tg-9wq8">2102</td>
+    <td class="tg-9wq8">4545</td>
+    <td class="tg-9wq8">60/7</td>
+    <td class="tg-9wq8">2002</td>
+    <td class="tg-9wq8">4244</td>
+    <td class="tg-9wq8">567</td>
+    <td class="tg-9wq8">1206</td>
+    <td class="tg-9wq8">50</td>
+    <td class="tg-9wq8">158</td>
+    <td class="tg-9wq8">50</td>
+    <td class="tg-9wq8">143</td>
 
-    <td class="tg-9wq8"> 1,884 </td>
-    <td class="tg-9wq8"> 9,469 </td>
-    <td class="tg-9wq8"> 73/8 </td>
-    <td class="tg-9wq8"> 1,226 </td>
-    <td class="tg-9wq8"> 6,302 </td>
-    <td class="tg-9wq8"> 372 </td>
-    <td class="tg-9wq8"> 1,847 </td>
-    <td class="tg-9wq8"> 278 </td>
-    <td class="tg-9wq8"> 1,570 </td>
-    <td class="tg-9wq8"> 380 </td>
-    <td class="tg-9wq8"> 1,597 </td>
+    <td class="tg-9wq8">1263</td>
+    <td class="tg-9wq8">6541</td>
+    <td class="tg-9wq8">74/8</td>
+    <td class="tg-9wq8">1148</td>
+    <td class="tg-9wq8">5896</td>
+    <td class="tg-9wq8">335</td>
+    <td class="tg-9wq8">1693</td>
+    <td class="tg-9wq8">51</td>
+    <td class="tg-9wq8">325</td>
+    <td class="tg-9wq8">64</td>
+    <td class="tg-9wq8">320</td>
   </tr>
   <tr>
     <td class="tg-lboi">TVEpisode</td>
-    <td class="tg-9wq8"> 433 </td>
-    <td class="tg-9wq8"> 1,051 </td>
-    <td class="tg-9wq8"> 71/5 </td>
-    <td class="tg-9wq8"> 346 </td>
-    <td class="tg-9wq8"> 849 </td>
-    <td class="tg-9wq8"> 85 </td>
-    <td class="tg-9wq8"> 208 </td>
-    <td class="tg-9wq8"> 45 </td>
-    <td class="tg-9wq8"> 115 </td>
-    <td class="tg-9wq8"> 42 </td>
-    <td class="tg-9wq8"> 87 </td>
+    <td class="tg-9wq8">361</td>
+    <td class="tg-9wq8">747</td>
+    <td class="tg-9wq8">70/5</td>
+    <td class="tg-9wq8">339</td>
+    <td class="tg-9wq8">702</td>
+    <td class="tg-9wq8">85</td>
+    <td class="tg-9wq8">176</td>
+    <td class="tg-9wq8">12</td>
+    <td class="tg-9wq8">25</td>
+    <td class="tg-9wq8">10</td>
+    <td class="tg-9wq8">20</td>
 
-    <td class="tg-9wq8"> 416 </td>
-    <td class="tg-9wq8"> 1,257 </td>
-    <td class="tg-9wq8"> 70/5 </td>
-    <td class="tg-9wq8"> 313 </td>
-    <td class="tg-9wq8"> 945 </td>
-    <td class="tg-9wq8"> 83 </td>
-    <td class="tg-9wq8"> 222 </td>
-    <td class="tg-9wq8"> 52 </td>
-    <td class="tg-9wq8"> 159 </td>
-    <td class="tg-9wq8"> 51 </td>
-    <td class="tg-9wq8"> 153 </td>
+    <td class="tg-9wq8">341</td>
+    <td class="tg-9wq8">1021</td>
+    <td class="tg-9wq8">76/5</td>
+    <td class="tg-9wq8">313</td>
+    <td class="tg-9wq8">945</td>
+    <td class="tg-9wq8">83</td>
+    <td class="tg-9wq8">222</td>
+    <td class="tg-9wq8">14</td>
+    <td class="tg-9wq8">41</td>
+    <td class="tg-9wq8">14</td>
+    <td class="tg-9wq8">35</td>
   </tr>
   <tr>
     <td class="tg-d459">JobPosting</td>
-    <td class="tg-9wq8"> 4,512 </td>
-    <td class="tg-9wq8"> 8,946 </td>
-    <td class="tg-9wq8"> 37/8 </td>
-    <td class="tg-9wq8"> 3,584 </td>
-    <td class="tg-9wq8"> 7,220 </td>
-    <td class="tg-9wq8"> 895 </td>
-    <td class="tg-9wq8"> 1,819 </td>
-    <td class="tg-9wq8"> 484 </td>
-    <td class="tg-9wq8"> 959 </td>
-    <td class="tg-9wq8"> 444 </td>
-    <td class="tg-9wq8"> 767 </td>
+    <td class="tg-9wq8">3359</td>
+    <td class="tg-9wq8">5980</td>
+    <td class="tg-9wq8">36/8</td>
+    <td class="tg-9wq8">3286</td>
+    <td class="tg-9wq8">5752</td>
+    <td class="tg-9wq8">794</td>
+    <td class="tg-9wq8">1403</td>
+    <td class="tg-9wq8">36</td>
+    <td class="tg-9wq8">125</td>
+    <td class="tg-9wq8">37</td>
+    <td class="tg-9wq8">103</td>
 
-    <td class="tg-9wq8"> 134 </td>
-    <td class="tg-9wq8"> 649 </td>
-    <td class="tg-9wq8"> 45/8 </td>
-    <td class="tg-9wq8"> 103 </td>
-    <td class="tg-9wq8"> 506 </td>
-    <td class="tg-9wq8"> 28 </td>
-    <td class="tg-9wq8"> 119 </td>
-    <td class="tg-9wq8"> 16 </td>
-    <td class="tg-9wq8"> 78 </td>
-    <td class="tg-9wq8"> 15 </td>
-    <td class="tg-9wq8"> 65 </td>
+    <td class="tg-9wq8">126</td>
+    <td class="tg-9wq8">436</td>
+    <td class="tg-9wq8">45/8</td>
+    <td class="tg-9wq8">99</td>
+    <td class="tg-9wq8">334</td>
+    <td class="tg-9wq8">27</td>
+    <td class="tg-9wq8">89</td>
+    <td class="tg-9wq8">13</td>
+    <td class="tg-9wq8">50</td>
+    <td class="tg-9wq8">14</td>
+    <td class="tg-9wq8">52</td>
   </tr>
   <tr>
     <td class="tg-lboi">Museum</td>
-    <td class="tg-9wq8"> 156 </td>
-    <td class="tg-9wq8"> 367 </td>
-    <td class="tg-9wq8"> 25/9 </td>
-    <td class="tg-9wq8"> 116 </td>
-    <td class="tg-9wq8"> 271 </td>
-    <td class="tg-9wq8"> 29 </td>
-    <td class="tg-9wq8"> 71 </td>
-    <td class="tg-9wq8"> 14 </td>
-    <td class="tg-9wq8"> 38 </td>
-    <td class="tg-9wq8"> 26 </td>
-    <td class="tg-9wq8"> 58 </td>
+    <td class="tg-9wq8">136</td>
+    <td class="tg-9wq8">320</td>
+    <td class="tg-9wq8">25/9</td>
+    <td class="tg-9wq8">116</td>
+    <td class="tg-9wq8">260</td>
+    <td class="tg-9wq8">29</td>
+    <td class="tg-9wq8">68</td>
+    <td class="tg-9wq8">10</td>
+    <td class="tg-9wq8">30</td>
+    <td class="tg-9wq8">10</td>
+    <td class="tg-9wq8">30</td>
 
-    <td class="tg-9wq8"> 67 </td>
-    <td class="tg-9wq8"> 205 </td>
-    <td class="tg-9wq8"> 25/6 </td>
-    <td class="tg-9wq8"> 67 </td>
-    <td class="tg-9wq8"> 205 </td>
-    <td class="tg-9wq8"> - </td>
-    <td class="tg-9wq8"> - </td>
-    <td class="tg-9wq8"> - </td>
-    <td class="tg-9wq8"> - </td>
-    <td class="tg-9wq8"> - </td>
-    <td class="tg-9wq8"> - </td>
+    <td class="tg-9wq8">67</td>
+    <td class="tg-9wq8">205</td>
+    <td class="tg-9wq8">25/6</td>
+    <td class="tg-9wq8">67</td>
+    <td class="tg-9wq8">205</td>
+    <td class="tg-9wq8">-</td>
+    <td class="tg-9wq8">-</td>
+    <td class="tg-9wq8">-</td>
+    <td class="tg-9wq8">-</td>
+    <td class="tg-9wq8">-</td>
+    <td class="tg-9wq8">-</td>
   </tr>
 </tbody>
 </table></div>
@@ -1028,17 +1027,15 @@ Following the cleansing steps, only attributes with a density of at least 25% ar
 
 <p>
   <b>(a) Missing values:</b> It is difficult for table annotation systems to correctly annotate columns in which many values are missing. In order to measure the annotation performance on such columns, 
-  we provide a test set that contains columns that have a density between 10 and 70 percent, i.e. 10-70 percent of their rows are filled with values. For the CPA problem we included 4,032 column pairs 
-  annotated with 130 CPA labels and for CTA 2,808 columns annotated with 66 CTA labels in this testset.
+  we provide a test set that contains columns that have a density between 10 and 70 percent, i.e. 10-70 percent of their rows are filled with values. For the CPA problem we included 258 column pairs 
+  and for CTA 263 columns in this testset.
 </p>
 
 <p>
   <b>(b) Value Format Heterogeneity:</b> As it can be difficult to distinguish columns whose values are expressed with different formats or metrics, we include this subset with columns that have the same label 
-  but their values are expressed in different formats, like different date formats or different measurement metrics. The CPA columns that are selected for this
-  challenge are the different date columns, duration, height, weight, width, price, telephone, faxNumber, servingSize, size and salary. There are in total 1,593 columns for CPA in this
-  subset annotated with 31 different CPA labels.
-  For CTA, the selected columns are duration, height, weight, width, Date, DateTime, Time, price, priceRange, telephone and faxNumber. The CTA columns are in total 619 and are annotated with
-  10 CTA labels.
+  but their values are expressed in different formats, like different date formats or different measurement metrics. The CPA columns that are selected for this challenge are the different date columns, duration, 
+  measurements, weight, price, priceRange, telephone, faxNumber, servingSize and nutrition. There are in total 148 columns for CPA in this subset annotated with 18 different CPA labels. 
+  For CTA, the selected columns are Duration, Distance, weight, Date, DateTime, price, priceRange, Mass, telephone and faxNumber. The CTA columns are in total 156 and are annotated with 10 CTA labels.
 </p>
 
 <p>
@@ -1046,12 +1043,12 @@ Following the cleansing steps, only attributes with a density of at least 25% ar
   This could lead to wrong predictions made by systems on these columns. Therefore we provide a subset that includes columns that are considered to be corner cases. 
   These similar and dissimilar columns
   were detected using a TF-IDF and cosine similarity method for textual columns and a Kolmogorov–Smirnov statistical test for numerical and DateTime columns.
-  There are 3,492 corner cases included in the
-  CPA corner cases subset which are annotated with 116 different CPA labels, while in the CTA subset there are 3,015 corner case columns annotated with 59 different CTA labels.
+  There are 327 corner cases included in the
+  CPA corner cases subset, while in the CTA subset there are 419 corner case columns.
 </p>
 <p>
-  <b>(d) Random Columns: </b> This subset includes randomly selected columns for each label of each task. In total there are 8,598 randomly selected columns annotated with 91 different labels
-  for CTA and 14,039 randomly selected columns annotated with 176 different labels in the CPA subset.
+  <b>(d) Random Columns: </b> This subset includes randomly selected columns for each label of each task. In total there are 1016 randomly selected columns
+  for CTA and 1607 randomly selected columns annotated with 176 different labels in the CPA subset.
 
   <br/>
   Some examples of columns selected for the three challenges are shown in <i>Table 3</i>.
@@ -1113,7 +1110,17 @@ Following the cleansing steps, only attributes with a density of at least 25% ar
 </table>
 
 <span id="toc7"></span>
-<h2> 7. Baselines</h2>
+<h2> 7. SOTAB V2 DBpedia</h2>
+
+<p>
+  In order to also provide for the evaluation of table annotation systems that are speciallized in using terms form the <a href="https://www.dbpedia.org/resources/ontology/">DBpedia ontology</a>, we offer a variant of SOTAB V2 which uses terms from the DBpedia ontology for annotating tables.
+  We derive the annotations via a manually generaded mapping from schema.org terms to DBpedia terms. We provide training, validation and test sets labeled using DBpedia terms for CTA and CPA tasks. For CTA, we use 46 DBpedia types to annotate 85,561 columns for training, 731 columns for validation, and 681 columns for testing. For CPA, we use 49 DBpedia properties to
+  annotate 62,128 columns for training, 1020 columns for validation, and 904 columns for testing. A complete list of all DBpedia terms used as well as as the number of columns that are annotated using each term are found in this Excel file: <a href="https://data.dws.informatik.uni-mannheim.de/structureddata/sotab/v2/CTA_CPA label set DBpedia.xlsx">DBpedia CPA and CTA Labels.xlsx</a>
+ 
+</p>
+
+<span id="toc8"></span>
+<h2> 8. Baselines</h2>
 
 <p>
   To evaluate the usefulness of the benchmark created sets, we ran three baseline experiments. The first baseline method is a non-deep learning method that uses TF-IDF weighting to create features 
@@ -1121,12 +1128,12 @@ Following the cleansing steps, only attributes with a density of at least 25% ar
   and uses a Random Forest classifier to make predictions. The second baseline is a deep learning method called TURL [<a href="#toc14">4</a>] which uses a Transformer-based [<a href="#toc15">5</a>] architecture and is 
   pre-trained on relational tables using TinyBERT. In addition, TURL incorporates table context into its model. We fine-tune TURL for 50 epochs using a learning rate of 5e-5 and a batch size of 20. The last baseline method is DODUO [<a href="#toc16">7</a>] which fine-tunes BERT and 
   uses table serialization to incorporate table context. For the experiments the micro-F1 score is used to report the results of each baseline method and using both the Large training set and the Small training set. The results are summarized in <i>Table 4a</i> for CTA
-  and in <i>Table 4b</i> for CPA.
+  and in <i>Table 4b</i> for CPA. The results on the DBpedia sets are listed in <i>Table 4c</i>.
 </p>
 
 <div class="tg-wrap"><table id="tg-X7nck" class="tg">
-            <caption>Table 4a: Baseline Results for CTA</caption>
-
+<table id="tg-FFQ1F" class="tg">
+  <caption>Table 4a: Baseline Results for Schema.org CTA Task (micro-F1)</caption>
 <thead>
   <tr>
     <th></th>
@@ -1146,54 +1153,54 @@ Following the cleansing steps, only attributes with a density of at least 25% ar
 <tbody>
   <tr>
     <td class="tg-d459">Test (Full) </td>
-    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">58.58</span></td>
-    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">78.96</span></td>
-    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">84.82</span></td>
-    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">55.57</span></td>
-    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">72.16</span></td>
-    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">76.27</span></td>
+    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">69.09</span></td>
+    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">81.68</span></td>
+    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">86.60</span></td>
+    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">63.58</span></td>
+    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">75.36</span></td>
+    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">81.03</span></td>
     
   </tr>
   <tr>
     <td class="tg-lboi"> Test (Missing Values) </td>
-    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">60.47</span></td>
-    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">73.14</span></td>
-    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">83.28</span></td>
-    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">58.04</span></td>
-    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">66.98</span></td>
-    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">69.55</span></td>
+    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">66.15</span></td>
+    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">70.34</span></td>
+    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">88.21</span></td>
+    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">62.35</span></td>
+    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">65.01</span></td>
+    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">80.22</span></td>
     
   </tr>
   <tr>
     <td class="tg-d459"> Test (Format Heterogeneity) </td>
-    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">64.78</span></td>
-    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">90.14</span></td>
-    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">92.98</span></td>
-    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">62.35</span></td>
-    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">87.88</span></td>
-    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">85.95</span></td>
+    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">66.02</span></td>
+    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">87.82</span></td>
+    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">93.58</span></td>
+    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">64.10</span></td>
+    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">86.53</span></td>
+    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">93.24</span></td>
 
     
   </tr>
   <tr>
     <td class="tg-lboi">Test (Corner Cases)</td>
-    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">55.15</span></td>
-    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">73.59</span></td>
-    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">78.03</span></td>
-    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">51.97</span></td>
-    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">68.19</span></td>
-    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">74.00</span></td>
+    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">69.23</span></td>
+    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">78.60</span></td>
+    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">81.67</span></td>
+    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">61.53</span></td>
+    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">74.51</span></td>
+    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">76.36</span></td>
 
     
   </tr>
   <tr>
     <td class="tg-lboi">Test (Random Columns)</td>
-    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">58.72</span></td>
-    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">81.93</span></td>
-    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">87.12</span></td>
-    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">55.53</span></td>
-    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">74.11</span></td>
-    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">81.82</span></td>
+    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">70.27</span></td>
+    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">84.94</span></td>
+    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">87.13</span></td>
+    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">64.66</span></td>
+    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">76.67</span></td>
+    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">81.26</span></td>
 
     
   </tr>
@@ -1201,7 +1208,7 @@ Following the cleansing steps, only attributes with a density of at least 25% ar
 </table>
 					
 <table id="tg-FFQ1F" class="tg">
-  <caption>Table 4b: Baseline Results for CPA</caption>
+  <caption>Table 4b: Baseline Results for Schema.org CPA Task (micro-F1)</caption>
   <thead>
   <tr>
     <th></th>
@@ -1221,51 +1228,83 @@ Following the cleansing steps, only attributes with a density of at least 25% ar
 <tbody>
   <tr>
     <td class="tg-d459">Test (Full) </td>
-    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">44.80</span></td>
-    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">72.93</span></td>
-    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">79.96</span></td>
-    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">41.44</span></td>
-    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">66.30</span></td>
-    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">75.38</span></td>
+    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">57.00</span></td>
+    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">83.33</span></td>
+    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">90.21</span></td>
+    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">51.96</span></td>
+    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">75.17</span></td>
+    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">84.05</span></td>
   </tr>
   <tr>
     <td class="tg-lboi"> Test (Missing Values) </td>
-    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">44.59</span></td>
-    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">66.24</span></td>
-    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">78.27</span></td>
-    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">42.06</span></td>
-    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">59.97</span></td>
-    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">74.34</span></td>
+    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">53.48</span></td>
+    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">77.90</span></td>
+    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">90.55</span></td>
+    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">45.34</span></td>
+    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">67.05</span></td>
+    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">83.85</span></td>
   </tr>
   <tr>
     <td class="tg-d459"> Test (Format Heterogeneity) </td>
-    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">45.69</span></td>
-    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">77.15</span></td>
-    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">83.50</span></td>
-    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">43.69</span></td>
-    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">69.86</span></td>
-    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">77.38</span></td>
+    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">72.29</span></td>
+    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">87.83</span></td>
+    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">92.85</span></td>
+    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">67.56</span></td>
+    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">78.37</span></td>
+    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">84.17</span></td>
   </tr>
   <tr>
     <td class="tg-lboi">Test (Corner Cases)</td>
-    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">38.00</span></td>
-    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">62.54</span></td>
-    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">71.24</span></td>
-    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">35.39</span></td>
-    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">57.87</span></td>
-    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">66.73</span></td>
+    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">55.96</span></td>
+    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">76.14</span></td>
+    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">84.16</span></td>
+    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">50.76</span></td>
+    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">74.92</span></td>
+    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">82.50</span></td>
   </tr>
   <tr>
     <td class="tg-lboi">Test (Random Columns)</td>
-    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">46.46</span></td>
-    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">76.96</span></td>
-    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">82.25</span></td>
-    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">42.51</span></td>
-    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">69.81</span></td>
-    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">77.64</span></td>
+    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">56.37</span></td>
+    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">85.25</span></td>
+    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">91.15</span></td>
+    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">51.83</span></td>
+    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">76.22</span></td>
+    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">84.40</span></td>
   </tr>
 </tbody>
-</table></div>
+</table>
+
+<table id="tg-FFQ1F" class="tg">
+  <caption>Table 4c: Baseline Results for the DBpedia CTA and CPA Tasks (micro-F1)</caption>
+<thead>
+  <tr>
+    <th class="tg-mkpc"></th>
+    <th class="tg-ixdq">CTA</th>
+    <th class="tg-ixdq">CPA</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td class="tg-d459"> Random Forest </td>
+    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">68.86</span></td>
+    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">58.18</span></td> 
+  </tr>
+  <tr>
+    <td class="tg-lboi"> TURL </td>
+    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">76.65</span></td>
+    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">85.73</span></td>
+  </tr>
+  <tr>
+    <td class="tg-d459"> DODUO </td>
+    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">87.93</span></td>
+    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">93.39</span></td>
+  </tr>
+</tbody>
+</table>
+
+
+
+</div>
 
 <p>
   Test (Full) refers to the full test set that includes all annotated columns, while Test (Missing Values) refers to the subset of the full
@@ -1280,10 +1319,11 @@ Following the cleansing steps, only attributes with a density of at least 25% ar
   micro-F1 scores are reached for both baselines, while when evaluating on Test (Format Heterogeneity) both methods appear to achieve better performance
   than in other subsets. Additionally, training with less examples drops the F1 scores and this can be seen more in TURL. A more fine-grained evaluation
   and their results for each label in each task and each challenge can be found in the <a href="#toc8">Download</a> section. 
-  We list in <i>Table 5</i> the top 5 labels that reached the highest score in the overall test set and the top 5 labels that reached the lowest score for both CPA and CTA tasks in the overall test set.
+  We list in <i>Table 5</i> and <i>Table 6</i> the top 5 labels that reached the highest score in the overall test set and the top 5 labels that reached the lowest score for both CPA and CTA tasks in the overall test set for Schema.org sets and DBpedia sets respectively.
  </p>
 
  <div class="tg-wrap"><table id="tg-X7nck" class="tg">
+  <table id="tg-FFQ1F" class="tg">
   <caption>Table 5a. Top 5 best and 5 lowest F1 scores for labels in CTA for TURL using the Large training set</caption>
 
 <thead>
@@ -1300,34 +1340,34 @@ Following the cleansing steps, only attributes with a density of at least 25% ar
 </thead>
 <tbody>
   <tr>
-    <td>Action</td>
-    <td>98.94</td>
-    <td>MusicAlbum/name</td>
-    <td>47.36</td>
+    <td>ItemAvailability</td>
+    <td>100</td>
+    <td>CreativeWork/name</td>
+    <td>43.75</td>
   </tr>
   <tr>
     <td>GenderType</td>
-    <td>98.90</td>
-    <td>DeliveryMethod</td>
-    <td>46.42</td>
+    <td>100</td>
+    <td>Product/description</td>
+    <td>40.00</td>
   </tr>
   <tr>
-    <td>DayOfWeek</td>
-    <td>98.35</td>
-    <td>ProductModel</td>
-    <td>41.66</td>
+    <td>OfferItemCondition</td>
+    <td>100</td>
+    <td>Place/name</td>
+    <td>32.65</td>
   </tr>
   <tr>
-    <td>Boolean</td>
-    <td>97.24</td>
-    <td>MusicGroup</td>
-    <td>34.28</td>
+    <td>RestrictedDiet</td>
+    <td>100</td>
+    <td>Photograph</td>
+    <td>14.28</td>
   </tr>
   <tr>
-    <td>EventAttendanceModeEnumeration</td>
-    <td>97.16</td>
-    <td>CreativeWork/name</td>
-    <td>31.84</td>
+    <td>Mass</td>
+    <td>100</td>
+    <td>CreativeWork</td>
+    <td>0</td>
   </tr>
 </tbody>
 </table>
@@ -1348,40 +1388,142 @@ Following the cleansing steps, only attributes with a density of at least 25% ar
 </thead>
 <tbody>
   <tr>
-    <td>dayOfWeek</td>
-    <td>99.21</td>
-    <td>alternateName</td>
-    <td>20.00</td>
-  </tr>
-  <tr>
-    <td>knowsLanguage</td>
-    <td>98.70</td>
+    <td>gender</td>
+    <td>100</td>
     <td>productID</td>
-    <td>19.90</td>
+    <td>30.76</td>
   </tr>
   <tr>
-    <td>availability</td>
-    <td>98.16</td>
-    <td>workLocation</td>
-    <td>18.60</td>
+    <td>itemCondition</td>
+    <td>100</td>
+    <td>awayTeam</td>
+    <td>30.76</td>
   </tr>
   <tr>
-    <td >contactType</td>
-    <td>97.85</td>
-    <td>memberOf</td>
-    <td>11.02</td>
+    <td>isbn</td>
+    <td>100</td>
+    <td>homeTeam</td>
+    <td>26.66</td>
   </tr>
   <tr>
-    <td>interactionType</td>
-    <td >97.43</td>
-    <td >award</td>
-    <td>7.14</td>
+    <td >servesCuisine</td>
+    <td>100</td>
+    <td>performer</td>
+    <td>24.00</td>
+  </tr>
+  <tr>
+    <td>availableLanguage</td>
+    <td >100</td>
+    <td >brand</td>
+    <td>8.00</td>
   </tr>
 </tbody>
-</table></div>
+</table>
+</div>
 
-<span id="toc8"></span>
-<h2> 8. Download</h2>
+<div class="tg-wrap"><table id="tg-X7nck" class="tg">
+  <table id="tg-FFQ1F" class="tg">
+    <caption>Table 6a. Top 5 best and 5 lowest F1 scores for labels in CTA for TURL using the DBpedia sets</caption>
+
+    <thead>
+      <tr>
+          <th class="tg-mkpc" colspan="2">Top 5</th>
+          <th class="tg-mkpc" colspan="2">Lowest 5</th>
+        </tr>
+      <tr>
+          <td>Label</td>
+          <td>Overall F1</td>
+          <td>Label</td>
+          <td>Overall F1</td>
+        </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>https://dbpedia.org/ontology/Currency</td>
+        <td>100</td>
+        <td>https://dbpedia.org/ontology/Company</td>
+        <td>53.84</td>
+      </tr>
+      <tr>
+        <td>https://dbpedia.org/ontology/day</td>
+        <td>100</td>
+        <td>https://dbpedia.org/ontology/brand</td>
+        <td>52.17</td>
+      </tr>
+      <tr>
+        <td>https://dbpedia.org/ontology/List</td>
+        <td>100</td>
+        <td>https://dbpedia.org/ontology/WrittenWork</td>
+        <td>40.00</td>
+      </tr>
+      <tr>
+        <td>https://dbpedia.org/ontology/gender</td>
+        <td>100</td>
+        <td>https://dbpedia.org/ontology/address</td>
+        <td>36.36</td>
+      </tr>
+      <tr>
+        <td>https://dbpedia.org/ontology/date</td>
+        <td>97.29</td>
+        <td>https://dbpedia.org/ontology/Image</td>
+        <td>30.76</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <table id="tg-FFQ1F" class="tg">
+    <caption>Table 6b. Top 5 best and 5 lowest F1 scores for labels in CPA for TURL using the DBpedia sets</caption>
+
+    <thead>
+      <tr>
+          <th class="tg-mkpc" colspan="2">Top 5</th>
+          <th class="tg-mkpc" colspan="2">Lowest 5</th>
+        </tr>
+      <tr>
+          <td>Label</td>
+          <td>Overall F1</td>
+          <td>Label</td>
+          <td>Overall F1</td>
+        </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>https://dbpedia.org/ontology/isbn</td>
+        <td>100</td>
+        <td>https://dbpedia.org/ontology/category</td>
+        <td>62.50</td>
+      </tr>
+      <tr>
+        <td>https://dbpedia.org/ontology/day</td>
+        <td>100</td>
+        <td>https://dbpedia.org/ontology/title</td>
+        <td>61.11</td>
+      </tr>
+      <tr>
+        <td>https://dbpedia.org/ontology/gender</td>
+        <td>100</td>
+        <td>https://dbpedia.org/ontology/employer</td>
+        <td>47.99</td>
+      </tr>
+      <tr>
+        <td>https://dbpedia.org/ontology/cuisine</td>
+        <td>100</td>
+        <td>https://dbpedia.org/ontology/manufacturer</td>
+        <td>47.36</td>
+      </tr>
+      <tr>
+        <td>https://dbpedia.org/ontology/episodeNumber</td>
+        <td>100</td>
+        <td>https://dbpedia.org/ontology/brand</td>
+        <td>19.04</td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
+
+<span id="toc9"></span>
+<h2> 9. Download</h2>
 			
         <p>We offer the WDC SOTAB benchmark for public download and make the code for building the benchmark available on <a href="https://github.com/wbsg-uni-mannheim/wdc-sotab">github</a>. In the table below you will find download links for training, validation and testing splits for both tasks, CPA and CTA. Each zip file contains a folder with the tables
 		as well as a csv file containing the label annotations for each table. This file consists of three columns, (i) table name, (ii) column position in the table and (iii) associated CPA/CTA label for this column.
@@ -1425,19 +1567,19 @@ Following the cleansing steps, only attributes with a density of at least 25% ar
 
 
 						<tr>
-							<td>Column Property Annotation (CPA)</td>
+							<td>Schema.org Column Property Annotation (CPA)</td>
 							<td><a
-									href="https://data.dws.informatik.uni-mannheim.de/structureddata/sotab/CPA_Training.zip">CPA_Training.zip</a>
+									href="https://data.dws.informatik.uni-mannheim.de/structureddata/sotab/v2/CPA_Training_schemaorg.zip">CPA_Training.zip</a>
 								</td>
-							<td>1.2GB</td>
+							<td>1.05GB</td>
 							<td><a
-									href="https://data.dws.informatik.uni-mannheim.de/structureddata/sotab/CPA_Validation.zip">CPA_Validation.zip</a>
+									href="https://data.dws.informatik.uni-mannheim.de/structureddata/sotab/v2/CPA_Validation_schemaorg.zip">CPA_Validation.zip</a>
 							</td>
-							<td>200MB</td>
+							<td>37MB</td>
 							<td><a
-									href="https://data.dws.informatik.uni-mannheim.de/structureddata/sotab/CPA_Test.zip">CPA_Test.zip</a>
+									href="https://data.dws.informatik.uni-mannheim.de/structureddata/sotab/v2/CPA_test_schemaorg.zip">CPA_Test.zip</a>
 								</td>
-							<td>335MB</td>
+							<td>41.4MB</td>
 							<td><a
 									href="https://data.dws.informatik.uni-mannheim.de/structureddata/sotab/sample_cpa_table.json">CPA_sample_table</a>
 							</td>
@@ -1446,26 +1588,68 @@ Following the cleansing steps, only attributes with a density of at least 25% ar
               </td>
 						</tr>
 						<tr>
-    <td>Column Type Annotation (CTA)</td>
-    <td><a
-            href="https://data.dws.informatik.uni-mannheim.de/structureddata/sotab/CTA_Training.zip">CTA_Training.zip</a>
-        </td>
-	<td>1.2GB</td>
-    <td><a
-            href="https://data.dws.informatik.uni-mannheim.de/structureddata/sotab/CTA_Validation.zip">CTA_Validation.zip</a>
-    </td>
-	<td>170MB</td>
-    <td><a
-            href="https://data.dws.informatik.uni-mannheim.de/structureddata/sotab/CTA_Test.zip">CTA_Test.zip</a>
-        </td>
-	<td>300MB</td>
-    <td><a
-            href="https://data.dws.informatik.uni-mannheim.de/structureddata/sotab/sample_cta_table.json">CTA_sample_table</a>
-    </td>
-    <td><a
-            href="https://data.dws.informatik.uni-mannheim.de/structureddata/sotab/sample_cta_labels.json">CTA_sample_labels</a>
-    </td>
-</tr>
+              <td>Schema.org Column Type Annotation (CTA)</td>
+              <td><a
+                      href="https://data.dws.informatik.uni-mannheim.de/structureddata/sotab/v2/CTA_Training_schemaorg.zip">CTA_Training.zip</a>
+                  </td>
+            <td>1.45GB</td>
+              <td><a
+                      href="https://data.dws.informatik.uni-mannheim.de/structureddata/sotab/v2/CTA_Validation_schemaorg.zip">CTA_Validation.zip</a>
+              </td>
+            <td>36.6MB</td>
+              <td><a
+                      href="https://data.dws.informatik.uni-mannheim.de/structureddata/sotab/v2/CTA_Test_schemaorg.zip">CTA_Test.zip</a>
+                  </td>
+            <td>35.1MB</td>
+              <td><a
+                      href="https://data.dws.informatik.uni-mannheim.de/structureddata/sotab/sample_cta_table.json">CTA_sample_table</a>
+              </td>
+              <td><a
+                      href="https://data.dws.informatik.uni-mannheim.de/structureddata/sotab/sample_cta_labels.json">CTA_sample_labels</a>
+              </td>
+          </tr>
+          <tr>
+              <td>DBpedia Column Type Annotation (CTA)</td>
+              <td><a
+                      href="https://data.dws.informatik.uni-mannheim.de/structureddata/sotab/v2/CTA_training_dbpedia.zip">CTA_Training.zip</a>
+                  </td>
+            <td>1.16GB</td>
+              <td><a
+                      href="https://data.dws.informatik.uni-mannheim.de/structureddata/sotab/v2/CTA_validation_dbpedia.zip">CTA_Validation.zip</a>
+              </td>
+            <td>12.4MB</td>
+              <td><a
+                      href="https://data.dws.informatik.uni-mannheim.de/structureddata/sotab/v2/CTA_test_dbpedia.zip">CTA_Test.zip</a>
+                  </td>
+            <td>19.1MB</td>
+              <td><a
+                      href="https://data.dws.informatik.uni-mannheim.de/structureddata/sotab/sample_cta_table.json">CTA_sample_table</a>
+              </td>
+              <td><a
+                      href="https://data.dws.informatik.uni-mannheim.de/structureddata/sotab/sample_cta_labels.json">CTA_sample_labels</a>
+              </td>
+          </tr>
+          <tr>
+              <td>DBpedia Column Property Annotation (CPA)</td>
+              <td><a
+                      href="https://data.dws.informatik.uni-mannheim.de/structureddata/sotab/v2/CTA_training_dbpedia.zip">CTA_Training.zip</a>
+                  </td>
+            <td>811MB </td>
+              <td><a
+                      href="https://data.dws.informatik.uni-mannheim.de/structureddata/sotab/v2/CTA_validation_dbpedia.zip">CTA_Validation.zip</a>
+              </td>
+            <td>18.9MB</td>
+              <td><a
+                      href="https://data.dws.informatik.uni-mannheim.de/structureddata/v2/sotab/CTA_test_dbpedia.zip">CTA_Test.zip</a>
+                  </td>
+            <td>26MB</td>
+              <td><a
+                      href="https://data.dws.informatik.uni-mannheim.de/structureddata/sotab/sample_cta_table.json">CTA_sample_table</a>
+              </td>
+              <td><a
+                      href="https://data.dws.informatik.uni-mannheim.de/structureddata/sotab/sample_cta_labels.json">CTA_sample_labels</a>
+              </td>
+          </tr>
 					</tbody>
 				</table>
 
@@ -1481,25 +1665,32 @@ Following the cleansing steps, only attributes with a density of at least 25% ar
         <tr>
           <td><b>Detailed Baseline Results</b></td>
           <td>
-            <a href="https://data.dws.informatik.uni-mannheim.de/structureddata/sotab/Baseline Results.xlsx">Baseline Results.xlsx</a>
+            <a href="https://data.dws.informatik.uni-mannheim.de/structureddata/sotab/v2/Baseline Results.xlsx">Baseline Results.xlsx</a>
           </td>
-          <td>149 KB</td>
+          <td>30 KB</td>
         </tr>
         <tr>
-          <td><b>CTA and CPA Labels</b></td>
+          <td><b>Schema.org CTA and CPA Labels</b></td>
           <td>
-            <a href="https://data.dws.informatik.uni-mannheim.de/structureddata/sotab/CPA and CTA Labels.xlsx">CPA and CTA Labels.xlsx</a>
+            <a href="https://data.dws.informatik.uni-mannheim.de/structureddata/sotab/v2/CTA_CPA label set schemaorg.xlsx">Schema.org CPA and CTA Labels.xlsx</a>
           </td>
-          <td>25 KB</td>
+          <td>10 KB</td>
+        </tr>
+        <tr>
+          <td><b>DBpedia CTA and CPA Labels</b></td>
+          <td>
+            <a href="https://data.dws.informatik.uni-mannheim.de/structureddata/sotab/v2/CTA_CPA label set DBpedia.xlsx">DBpedia CPA and CTA Labels.xlsx</a>
+          </td>
+          <td>10 KB</td>
         </tr>
       </tbody>  
     </table>
   </p>
-				<span id="toc9"></span>
-				<h2>9. Other Table Annotation Benchmarks</h2>
+				<span id="toc10"></span>
+				<h2>10. Other Table Annotation Benchmarks</h2>
 
         <p>
-          There exist several other benchmark datasets for the CTA and CPA task. An overview of current results on these datasets is given at Papers with Code for Column Type Annotation, Column Property Annotation and Cell Entity Annotation.
+          There exist several other benchmark datasets for the CTA and CPA task. An overview of current results on these datasets is given at <a href="https://paperswithcode.com/task/table-annotation">Papers with Code</a> for Column Type Annotation, Column Property Annotation and Cell Entity Annotation.
           The two benchmarks that are most closely related to SOTAB are GitTables-SemTab [<a href="#toc16">6</a>] and Wikitables-TURL [<a href="#toc14">4</a>]. 
         </p>
 
@@ -1516,42 +1707,41 @@ Following the cleansing steps, only attributes with a density of at least 25% ar
           training, validation and test sets. Over 600,000 columns are annotated for CTA and over 60,000 column pairs for CPA. 
         </p>
 				
-				<span id="toc10"></span>
-				<h2> 10. References </h2>
+				<span id="toc11"></span>
+				<h2> 11. References </h2>
 
         <p>
           <span id="toc12"></span>
 
-          [1] K. Korini, R. Peeters,  C. Bizer, SOTAB: The WDC Schema.org Table Annotation Benchmark,  in: Semantic Web Challenge on Tabular Data to Knowledge Graph Matching
+          [1] K. Korini, R. Peeters,  C. Bizer, <a href="https://ceur-ws.org/Vol-3320/paper1.pdf">SOTAB: The WDC Schema.org Table Annotation Benchmark</a>. In Semantic Web Challenge on Tabular Data to Knowledge Graph Matching
           (SemTab), CEUR-WS.org, 2022. <br/>
 
-          [2] D. Ritze, O. Lehmberg, Y. Oulabi, C. Bizer, Profiling the Potential of Web Tables for
-          Augmenting Cross-domain Knowledge Bases, in: Proceedings of the 25th International
+          [2] D. Ritze, O. Lehmberg, Y. Oulabi, C. Bizer, <a href="https://dl.acm.org/doi/10.1145/2872427.2883017">Profiling the Potential of Web Tables for
+          Augmenting Cross-domain Knowledge Bases</a>. In Proceedings of the 25th International
           Conference on World Wide Web, 2016, pp. 251–261. <br/>
 
           <span id="toc13"></span>
-          [3] E. Rahm, P. A. Bernstein, A survey of approaches to automatic schema matching, The
+          [3] E. Rahm, P. A. Bernstein, <a href="https://dbs.uni-leipzig.de/file/VLDBJ-Dec2001.pdf">A Survey of Approaches to Automatic Schema Matching</a>. The
           VLDB Journal — The International Journal on Very Large Data Bases 10 (2001) 334–350. <br/>
 
           <span id="toc14"></span>
-          [4] X. Deng, H. Sun, A. Lees, Y. Wu, C. Yu, TURL: Table understanding through representation
-          learning, Proceedings of the VLDB Endowment 14 (2020) 307–319. <br/>
+          [4] X. Deng, H. Sun, A. Lees, Y. Wu, C. Yu, <a href="http://www.vldb.org/pvldb/vol14/p307-deng.pdf">TURL: Table Understanding Through Representation
+          Learning</a>. In Proceedings of the VLDB Endowment 14 (2020) 307–319. <br/>
 
           <span id="toc15"></span>
-          [5] A. Vaswani, N. Shazeer, N. Parmar, J. Uszkoreit, L. Jones, et al., Attention is All you Need,
-          in: Advances in Neural Information Processing Systems (NIPS 2017), volume 30, 2017. <br/>
+          [5] A. Vaswani, N. Shazeer, N. Parmar, J. Uszkoreit, L. Jones, et al., <a href="https://proceedings.neurips.cc/paper_files/paper/2017/file/3f5ee243547dee91fbd053c1c4a845aa-Paper.pdf">Attention is All you Need</a>.
+          In Advances in Neural Information Processing Systems (NIPS 2017), volume 30, 2017. <br/>
 
           <span id="toc16"></span>
-          [6] M. Hulsebos, Ç. Demiralp, P. Groth, GitTables: A Large-Scale Corpus of Relational Tables,
-          arXiv:2106.07258 (2022). <br/>
+          [6] M. Hulsebos, Ç. Demiralp, P. Groth, GitTables: <a href="https://dl.acm.org/doi/abs/10.1145/3588710">A Large-Scale Corpus of Relational Tables</a>. In Proceedings of the ACM on Management of Data, Volume 1,Issue 1, 2023, pp. 1–17. <br/>
 
           <span id="toc17"></span>
-          [7] Suhara, Y., Li, J., Li, Y., Zhang, D., Demiralp, Ç. et al. “Annotating columns 
-          with pre-trained language models.” In Proceedings of the 2022 International Conference on Management of Data, 2022, pp. 1493–1503
+          [7] Suhara, Y., Li, J., Li, Y., Zhang, D., Demiralp, Ç. et al., <a href="https://dl.acm.org/doi/abs/10.1145/3514221.3517906">Annotating Columns 
+          with Pre-trained Language Models</a>. In Proceedings of the 2022 International Conference on Management of Data, 2022, pp. 1493–1503
         </p>
 
-        <span id="toc11"></span>
-				<h2> 11. Feedback </h2>
+        <span id="toc12"></span>
+				<h2> 12. Feedback </h2>
         
         <p>Please send questions and feedback to the <a
 						href="http://groups.google.com/group/web-data-commons">Web Data
