@@ -127,7 +127,7 @@
 				},
 				{
 					"@type": "Person",
-					"name": "José Luis Garza Garza"
+					"name": "José Luis Garza"
 				}
 
 			],
@@ -151,13 +151,13 @@
 		<h1 style="font-size: 250%;">WDC-24 Gold Standard for Product Categorization</h1>
 	</div>
 	<div id="authors">
+		José Luis Garza
 		<a href="https://www.uni-mannheim.de/dws/people/researchers/phd-students/ralph-peeters/">Ralph Peeters</a><br>
-		<a href="http://dws.informatik.uni-mannheim.de/en/people/professors/prof-dr-christian-bizer/">Christian Bizer</a><br>
-		José Luis Garza Garza
+		<a href="http://dws.informatik.uni-mannheim.de/en/people/professors/prof-dr-christian-bizer/">Christian Bizer</a><br>	
 	</div>
 	<div id="content">
 		<p>
-            This page provides the WDC-24 Gold Standard for Product Categorization for public download. The gold standard contains over 17,000 manually labeled product offers from e-commerce websites. The offers are assigned to a non-hierarchical categorization schema of 24 product categories. We provided an overview of how we conducted our large-scale product categorization experiment using the latest version of WDC Products Corpus (2020) employing traditional Machine Learning and Transformer-based Deep Learning techniques. </p>
+            This page provides the WDC-24 Gold Standard for Product Categorization as well as a categorization of all product offers in the WDC PDC2020-C Products Corpus for public download. The gold standard consists of over 17,000 manually labeled product offers from e-commerce websites. The offers are assigned to a non-hierarchical categorization schema consisting of 24 product categories. The gold standard is a result of the master thesis of José Luis Garza. Below, José explains how he build the gold standard and used it for comparing different traditional as well as Transformer-based machine learning techniques on the task of product categorization. The best performing model (RoBERTa Base) is used afterwards to categorize all offers in the PDC2020-C Products Corpus. </p>
 		<h2>Contents</h2>
 		<ul>
 			<li class="toc-h2 toc-active">
@@ -170,10 +170,10 @@
 				<a href="http://webdatacommons.org/categorization/index.html#toc3"> 3. Gold Standard Statistics</a>
 			</li>
             <li class="toc-h2 toc-active">
-				<a href="http://webdatacommons.org/categorization/index.html#toc4"> 4. Experiments and Results</a>
+				<a href="http://webdatacommons.org/categorization/index.html#toc4"> 4. Benchmark Experiments and Results</a>
 			</li>
             <li class="toc-h2 toc-active">
-				<a href="http://webdatacommons.org/categorization/index.html#toc5"> 5. Corpus Categorization</a>
+				<a href="http://webdatacommons.org/categorization/index.html#toc5"> 5. Categorization of all Offers from PDC2020-C</a>
 			</li>
 			<li class="toc-h2 toc-active">
 				<a href="http://webdatacommons.org/categorization/index.html#toc6"> 6. Download </a>
@@ -406,7 +406,7 @@
 		  Dividing data into training, validation, and testing sets is crucial in building any Machine Learning model. This allows us to evaluate the model’s performance and ability to generalize to unseen data, mitigating the risk of overfitting. We followed an 80%-10%-10% approach for splitting our labeled Corpus, meaning that 80% of the data will be used for training, 10% for validation, and 10% for testing our models. Splitting the Corpus with this strategy guarantees that our data is prepared for our product categorization task. This step and the labeling strategies discussed in the previous section laid a solid foundation for successfully developing and validating our product categorization models. One thing we also considered is that we split the data by cluster, not by single offer, meaning that one cluster of products can appear in just one set.  We also provide this subset for download at the end of the page.
 		
 		  <p><span id="toc4"></span>
-		<h2>4. Experiments and Results</h2>
+		<h2>4. Benchmark Experiments and Results</h2>
 				 <p>This section represents the approach we followed to train and evaluate our selected models’ performance using the WDC-24 Gold Standard. We have a diverse range of models to analyze and gain a thorough understanding of their performance across their different architectures. This analysis will help us determine which model best suits our large-scale experiment using the latest WDC Product Corpus (2020). </p>
 
 
@@ -492,9 +492,9 @@
 				
 
 				<span id="toc5"></span>
-                <h2>5. Corpus Categorization</h2>
-                 <p> 
-				The results presented in Table 3 and Figure 1 illustrate the outcomes of our large-scale experiment using the RoBERTa Base model alongside the implementation of majority voting as a method of final product classification on the WDC Product Corpus.</p>        
+                <h2>5. Categorization of all Offers in the PDC2020-C Corpus</h2>
+                 <p>            We use the best performing model to categorize all 22 million offers in the <a href="https://webdatacommons.org/largescaleproductcorpus/wdc-products/#toc2">WDC PDC2020-C</a> product corpus.
+				The results presented in Table 3 and Figure 1 illustrate the outcomes of our large-scale experiment using the RoBERTa Base model alongside the implementation of majority voting as a method of final product classification on the WDC PDC2020-C Product Corpus.</p>        
 		
 				<head>
 					<meta charset="UTF-8">
