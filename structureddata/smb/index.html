@@ -269,7 +269,7 @@
 		SOTAB-SM was derived from the <a href="https://webdatacommons.org/structureddata/sotab/v2/">WDC Schema.org Table Annotation Benchmark (SOTAB)</a> [<a href="#toc7">10</a>]. 
 		The SOTAB-SM tables contain schema.org data that was extracted from the September 2020 version of the Common Crawl. 
 		SOTAB-SM offers a test set of 20 tables covering 16 schema.org classes with 1522 positive and negative correspondences. 
-		SOTAB-SM offers training and validation sets having the sizes. 
+		SOTAB-SM offers training and validation sets having three sizes. 
 		T2D-SM is based on the <a href="https://webdatacommons.org/webtables/goldstandardV2.html">T2Dv2 Gold Standard</a> for matching Web tables to the DBpedia knowledge graph. T2D-SM offers 178 Web-table/DBpedia-table pairs covering 28 different DBpedia classes and 421 correspondences between columns of Web and DBpedia tables. 
 		Two variants of the benchmark are offered: One variant without column headers (T2D-SM-NH) for evaluating purely instance-based schema matching methods and one variant with column headers (T2D-SM-WH) for comparing instance- and label-based schema matching methods. 
 		Both WDC SMB tasks provide fixed train, validation, and test sets with a strict division of tables across the splits. 
@@ -320,7 +320,7 @@
     <span id="toc3"></span>
     <h2>3 Benchmark Profiling</h2>
     <p> Table 1 provides statistics about the WDC SMB benchmark tasks. SOTAB-SM task is offered in three variants, 100-, 300-, and 500-tables with varying development set sizes. The largest variant of the SOTAB-SM task provides 29015 positive and negative correspondences from 500 tables across 16 Schema.org classes. T2D-SM consists of two variants, T2D-SM-WH which includes column headers in addition to column data and T2D-SM-NH which contains only column data and no column headers. T2D-SM provides 2642 total correspondences from 178 table pairs (356 tables) across 28 DBpedia classes. 
-	Table 2 shows detailed information of each variant and its splits for both tasks. The correspondences in SOTAB-SM consist of in-topic and cross-topic correspondences, i.e. the correspondences connect columns of table having the same topic as well as tables different topics (e.g. contain data belonging to different schema.org classes).
+	Table 2 shows detailed information of each variant and its splits for both tasks. The correspondences in SOTAB-SM consist of in-topic and cross-topic correspondences, i.e. the correspondences connect columns of table having the same topic as well as tables with different topics (e.g. contain data belonging to different schema.org classes).
 	From the 226 positive correspondences in the test set, 155 are cross-topic correspondences that connect columns containing names, publishing dates, durations, and rating values. 
 	The correspondences in the T2D-SM task connect columns of Web tables to tables that contain data originating from the DBpedia knowledge graph.
     </p>
@@ -656,7 +656,7 @@ We further evaluate the benchmark using the pre-trained transformer RoBERTa [<a 
 <p></p>
 <h3>4.2 Benchmark Results </h3>
 <p> Table 4 summarizes the results of the experiments for all variants of the two tasks. The larger development sets of SOTAB-SM are used only for the RoBERTa experiments. 
-GPT3.5 and GPT-4, using zero-shot prompts, exhibit significantly higher performance than the other models which do use the training for both T2D-SM variants. Interestingly, a fine-tuned RoBERTa model is able to beat other baselines including GPT-4 in SOTAB-SM using the largest development set of 100-Table. On thee other hand, the results in Table 4 for SOTAB-SM and T2D-SM-NH show how challenging WDC SMB is for instance-based schema matching approaches. SOTAB-SM is the most challenging task due to the variability of tables and the requirement to identify cross-topic correspondences. 
+GPT3.5 and GPT-4, using zero-shot prompts, exhibit significantly higher performance than the other models which do use the training data for both T2D-SM variants. Interestingly, a fine-tuned RoBERTa model is able to beat other baselines including GPT-4 in SOTAB-SM using the largest development set of 500-Table. On thee other hand, the results in Table 4 for SOTAB-SM and T2D-SM-NH show how challenging WDC SMB is for instance-based schema matching approaches. SOTAB-SM is the most challenging task due to the variability of tables and the requirement to identify cross-topic correspondences. 
 </p> 
 
 <div class="tg-wrap">
@@ -741,7 +741,7 @@ GPT3.5 and GPT-4, using zero-shot prompts, exhibit significantly higher performa
 <h2>5 Downloads</h2>
 
 <p>
-    We offer the WDC SMB benchmark for public download. In the subsections below you will find download links for each of the variants of the benchmark tasks. Each zip file contains training, validation, and test set folders with the tables alongside a csv file containing the ground truth matching correspondences for the split.
+    We offer the WDC SMB benchmark for public download. In the subsections below you will find download links for each of the variants of the benchmark tasks. Each zip file contains training, validation, and test set folders with the tables alongside a csv file containing the ground truth matching correspondences for the split. See example files for example values.
 </p>
 <p>
     The code used for the creation of the benchmark can be found on <a href="https://github.com/wbsg-uni-mannheim/wdc-smb">github</a>.
@@ -766,6 +766,8 @@ For SOTAB-SM, the tables are represented using the JSON format following SOTAB b
         <td><b>Variant</b></td>
         <td><b>File</b></td>
         <td><b>Size</b></td>
+	<td><b>Table file sample</b></v></td>
+	<td><b>Correspondence file sample</b></td>
     </tr>
     <tr>
         <td>100-Table</td>
@@ -773,18 +775,24 @@ For SOTAB-SM, the tables are represented using the JSON format following SOTAB b
         </td>
         <td>3.41MB
         </td>
+	<td><a href="https://github.com/wbsg-uni-mannheim/wdc-smb/raw/main/data/sotab_sm/sotab_sm_table_sample.json.gz">Table_Sample.json.gz</a></td>
+	<td><a href="https://github.com/wbsg-uni-mannheim/wdc-smb/raw/main/data/sotab_sm/sotab_sm_correspondence_sample.csv">Correspondence_Sample.csv</a></td>
     </tr><tr>
         <td>300-Table</td>
         <td><a href="https://github.com/wbsg-uni-mannheim/wdc-smb/raw/main/data/sotab_sm/sotab_sm_v300.zip">SOTAB_SM_V300.zip</a>
         </td>
         <td>6.76MB
         </td>
+	<td></td>
+	<td></td>
     </tr><tr>
         <td>500-Table</td>
         <td><a href="https://github.com/wbsg-uni-mannheim/wdc-smb/raw/main/data/sotab_sm/sotab_sm_v500.zip">SOTAB_SM_V500.zip</a>
         </td>
         <td>10.1MB
         </td>
+	<td></td>
+	<td></td>
     </tr></tbody>
 </table>
 
@@ -815,12 +823,16 @@ For SOTAB-SM, the tables are represented using the JSON format following SOTAB b
         </td>
         <td>1.59MB
         </td>
+	<td><a href="https://github.com/wbsg-uni-mannheim/wdc-smb/raw/main/data/t2d_sm/t2d_sm_wh_table_sample.csv">Table_Sample.json.gz</a></td>
+	<td><a href="https://github.com/wbsg-uni-mannheim/wdc-smb/raw/main/data/t2d_sm/t2d_sm_wh_correspondence_sample.csv">Correspondence_Sample.csv</a></td>
     </tr><tr>
         <td>T2D-SM-NH</td>
         <td><a href="https://github.com/wbsg-uni-mannheim/wdc-smb/raw/main/data/t2d_sm/t2d_sm_nh.zip">T2D_SM_NH.zip</a>
         </td>
         <td>1.57MB
         </td>
+	<td><a href="https://github.com/wbsg-uni-mannheim/wdc-smb/raw/main/data/t2d_sm/t2d_sm_nh_table_sample.csv">Table_Sample.csv</a></td>
+	<td><a href="https://github.com/wbsg-uni-mannheim/wdc-smb/raw/main/data/t2d_sm/t2d_sm_nh_correspondence_sample.csv">Correspondence_Sample.csv</a></td>
     </tr></tbody>
 </table>
 
