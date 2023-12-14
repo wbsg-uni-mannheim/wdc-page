@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<!-- saved from url=(0051)http://webdatacommons.org/categorization/index.html -->
+<html data-theme="light" style="color-scheme: light;"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>WDC-24 Gold Standard for Product Categorization</title>
+	<link rel="stylesheet" href="./WDC-24 Gold Standard for Product Categorization_files/style.css" type="text/css" media="screen">
+	
+	<style>
+		.tar {
+		text-align: right;
+		}
+		.rtable
+		{
+		float: right;
+		padding-left:10px;
+		}
+		.smalltable, .smalltable TD, .smalltable TH
+		{
+		font-size:9pt;
+		}
+		.tab {
+		overflow: hidden;
+		border: 1px solid #ccc;
+		background-color: #eaf3fa;
+		clear:both;
+		padding-left: 37px;
+		width:500px
+		}
+		.tab button {
+		background-color: inherit;
+		float: left;
+		border: none;
+		outline: none;
+		cursor: pointer;
+		padding: 15px 15px;
+		transition: 0.3s;
+		}
+		.tab button:hover {
+  		background-color: #ddd;
+		}
+		.tab button.active {
+  		background-color: #ccc;
+		}
+		.tabcontent {
+		display: none;
+		padding: 6px 12px;
+		border-top: none;
+		animation: fadeEffect 1s;
+		width:500px
+		}
+		.table-wrapper {
+		position:relative;
+		}
+		.table-scroll {
+		height:240px;
+		overflow:auto;
+		margin-top:-10px;
+		}
+		.show{
+		display:block;
+		}
+		.no-show{
+		display:none;
+		}
+		caption {
+		caption-side: bottom;
+		font-style: italic;
+		}
+		td[scope="mergedcol"] {
+		text-align: center;
+		}
+		hr {
+		width: 50%;
+		margin: 20px 0; /* This leaves 10px margin on left and right. If only right margin is needed try margin-right: 10px; */
+		}
+		@keyframes fadeEffect {
+			from {opacity: 0;}
+			to {opacity: 1;}
+		}
+	</style>
+
+
+	<script type="text/javascript" async="" src="./WDC-24 Gold Standard for Product Categorization_files/ga.js.download"></script><script type="text/javascript" src="./WDC-24 Gold Standard for Product Categorization_files/jsapi"></script>
+	<script type="text/javascript">
+		google.load('visualization', '1', {
+			packages: ['bar', 'line', 'corechart']
+		});
+	
+	</script><script type="text/javascript" charset="UTF-8" src="./WDC-24 Gold Standard for Product Categorization_files/loader.js.download"></script>
+	<script type="text/javascript" src="./WDC-24 Gold Standard for Product Categorization_files/jquery.min.js.download"></script>
+	<script type="text/javascript" src="./WDC-24 Gold Standard for Product Categorization_files/jquery.toc.min.js.download"></script>
+	<script type="text/javascript">
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-30248817-1']);
+		_gaq.push(['_trackPageview']);
+
+		(function () {
+			var ga = document.createElement('script');
+			ga.type = 'text/javascript';
+			ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0];
+			s.parentNode.insertBefore(ga, s);
+		})();
+	</script>
+	<script type="application/ld+json">
+		{
+			"@context": "http://schema.org/",
+			"@type": "Dataset",
+			"name": "Web Data Commons - Product Categorization Gold Standard",
+			"description": "WDC-24 Gold Standard for Product Categorization",
+			"url": "http://webdatacommons.org/largescaleproductcorpus/index.html",
+			"keywords": [
+				"training corpus",
+				"product corpus",
+				"large scale",
+                "product classification"
+			],
+			"creator": [{
+					"@type": "Person",
+					"url": "http://dws.informatik.uni-mannheim.de/en/people/professors/prof-dr-christian-bizer/",
+					"name": "Christian Bizer"
+				},
+				{
+					"@type": "Person",
+					"url": "https://www.uni-mannheim.de/dws/people/researchers/phd-students/ralph-peeters/"
+					"name": "Ralph Peeters"
+				},
+				{
+					"@type": "Person",
+					"name": "José Luis Garza Garza"
+				}
+
+			],
+			"distribution": [{
+				"@type": "DataDownload",
+				"fileFormat": [
+					"json"
+				],
+				"contentUrl": "https://data.dws.informatik.uni-mannheim.de/largescaleproductcorpus/data/offers.json.gz"
+			}],
+			"citation": [
+
+			]
+		}
+	</script>
+
+
+<body class="chakra-ui-light">
+	<div id="logo" style="text-align:right; background-color: white;">&nbsp;&nbsp;<a href="http://dws.informatik.uni-mannheim.de/"><img src="./WDC-24 Gold Standard for Product Categorization_files/ma-logo.gif" alt="University of Mannheim - Logo"></a></div>
+	<div id="header">
+		<h1 style="font-size: 250%;">WDC-24 Gold Standard for Product Categorization</h1>
+	</div>
+	<div id="authors">
+		José Luis Garza Garza<br>
+		<a href="https://www.uni-mannheim.de/dws/people/researchers/phd-students/ralph-peeters/">Ralph Peeters</a><br>
+		<a href="http://dws.informatik.uni-mannheim.de/en/people/professors/prof-dr-christian-bizer/">Christian Bizer</a>	
+	</div>
+	<div id="content">
+		<p>
+            This page provides the WDC-24 Gold Standard for Product Categorization as well as a categorization of all product offers in the WDC PDC2020-C Products Corpus for public download. The gold standard consists of over 17,000 manually labeled product offers from e-commerce websites. The offers are assigned to a non-hierarchical categorization schema consisting of 24 product categories. The gold standard is a result of the master thesis of José Luis Garza Garza. Below, José explains how he built the gold standard and used it for comparing the performance of different machine learning techniques on the product categorization task. The best performing model (RoBERTa Base) is used to categorize all offers in the PDC2020-C Products Corpus. </p>
+		<h2>Contents</h2>
+		<ul>
+			<li class="toc-h2 toc-active">
+				<a href="http://webdatacommons.org/largescaleproductcorpus/wdc-products/categorization/index.html#toc1"> 1. Introduction</a>
+			</li>
+			<li class="toc-h2 toc-active">
+				<a href="http://webdatacommons.org/largescaleproductcorpus/wdc-products/categorization/index.html#toc2"> 2. Gold Standard Creation</a>
+			</li>
+			<li class="toc-h2 toc-active">
+				<a href="http://webdatacommons.org/largescaleproductcorpus/wdc-products/categorization/index.html#toc3"> 3. Gold Standard Statistics</a>
+			</li>
+            <li class="toc-h2 toc-active">
+				<a href="http://webdatacommons.org/largescaleproductcorpus/wdc-products/categorization/index.html#toc4"> 4. Benchmark Experiments and Results</a>
+			</li>
+            <li class="toc-h2 toc-active">
+				<a href="http://webdatacommons.org/largescaleproductcorpus/wdc-products/categorization/index.html#toc5"> 5. Categorization of all Offers from PDC2020-C</a>
+			</li>
+			<li class="toc-h2 toc-active">
+				<a href="http://webdatacommons.org/largescaleproductcorpus/wdc-products/categorization/index.html#toc6"> 6. Download </a>
+			</li>
+			<li class="toc-h2 toc-active">
+				<a href="http://webdatacommons.org/largescaleproductcorpus/wdc-products/categorization/index.html#toc7"> 7. Reference </a>
+			</li>
+			<li class="toc-h2 toc-active">
+				<a href="http://webdatacommons.org/largescaleproductcorpus/wdc-products/categorization/index.html#toc8"> 8. Feedback </a>
+		</li></ul>
+
+		<span id="toc1"></span>
+		<h2>1. Introduction</h2>
+		<p> Product categorization is an important task in e-commerce, influencing several aspects, including search and recommendation systems, customer experience, and revenue generation. However, categorizing an enormous volume of products into a correct structure presents considerable challenges due to the inherent complexity and lack of labeled data. Product categorization comes with a unique series of challenges. Dealing with high variability and unstructured text data in product descriptions and with different vendors potentially describing the same product in varied ways, the ML model must identify and categorize products accurately regardless of these discrepancies. Additionally, multiclass classification problems with a high number of different product categories can significantly increase the complexity of the classification task.</p>
+        
+        <p>
+        Therefore, we focus on addressing these challenges. It involves developing a scalable and efficient Deep Learning models for product categorization that can handle the large volume and diversity of products, manages the variability in product descriptions, and outperform traditional Machine Learning methods. We will explore the application of transformer-based deep learning models, such as BERT and RoBERTa, for this task and develop a strategy for creating the WDC-24 Gold Standard. The goal is to accurately and consistently categorize the WDC Products Corpus using transformer-based models.  </p>
+        
+		<span id="toc2"></span>
+		<h2>2. Gold Standard Creation</h2>
+		<p>
+		To create a WDC-24 Gold Standard, we use a semi-automatic annotation strategy . This approach involves utilizing a baseline model in predicting category labels for products in the corpus, as mentioned in the previous section. The model’s outputs act as preliminary category assignments for these products. However, these initial labels should not be accepted without further review. The need for a verification process is paramount, as it ensures the validity of these categorization predictions. To that end, we introduce a manual verification process following the model’s prediction. In this process, we take a subset of clusters and verify whether the model’s predicted category aligns with the product descriptions.</p>
+			
+	<p>
+		First,we established a baseline model by following the experimental procedure, training, and testing data introduced in <a href="http://webdatacommons.org/categorization/index.html">WDC-25 Gold Standard for Product Categorization</a>. The experiment follows a non-hierarchical product categorization and a Logistic Regression with a One-vs-Rest approach, a widely used and easily comprehensible ML model. This technique is notably favorable for multiclass classification issues since it adapts to each category by fitting a separate model, treating it as a binary classification issue. Furthermore, this method is computationally efficient, which was crucial because of the large datasets we utilized in our task. </p>
+
+		<p>
+		After using the baseline model to learn to predict the product categories on the WDC Products Corpus, the application of majority voting is used as a post-processing technique for the classification results based on the underlying structure of the data. This approach reinforces the effectiveness of the model’s predictions, increasing confidence in the final category assignment. The WDC Products Corpus contains multiple products grouped into clusters based	on similarity. These clusters are derived from product co-occurrences across various e-commerce sites, which means the products within the same cluster are typical of the same category. However, due to the diversity of e-commerce offerings and their descriptions, certain products within the same cluster may have to be misclassified into different categories. By applying majority voting, we set a democratic rule within each cluster. The category predicted most frequently within a cluster will be deemed as the ’majority vote’ and assigned as the final category for all products within that cluster. This method allows leveraging the data’s inherent structure (clusters) to rectify any inconsistencies in the model’s predictions. This step improves the quality of our model’s output in two ways. Firstly, it reduces noise in the predicted categories, as the majority vote within each cluster overrules misclassifications. Secondly, by aligning the products’ category assignment with the underlying structure of the data, we ensure that our model’s outputs are theoretically sound and practical. 
+		</p>
+
+		<p>
+		 Our next step is to define a strategy for the manual verification. Our selection for this verification stage is not arbitrary. The focus is on clusters that have between 5 and 30 products per category, as these clusters are narrow enough and therefore are more likely to contain products that are indeed related. These clusters are a subset of those populated by the baseline model’s predictions. A result of this manual verification process is the unbalancing of the dataset. In the analysis and categorization of our data, several assumptions were made about the classification of certain products. These assumptions were necessary to create a unified structure of categories and to help in the interpretation and understanding of the data. Since some categories may have more correct predictions, the number of clusters in each category could vary significantly. To mitigate this imbalance issue and ensure the models are well-trained across all categories, we perform additional checks for more clusters from the minority classes. 
+		</p>
+		
+		<span id="toc3"></span>
+		<h2>3.Gold Standard Statistics</h2>
+		<p>
+		The WDC-24 Gold Standard has at least 70 clusters per category, contributing to a more balanced dataset that contains 2,620 unique clusters, 17,580 products, and an average cluster size of 6.67 products. Table 1 presents a complete overview of the product categories distribution within the WDC-24 Gold Standard after the manual verification. This analysis is useful	because it helps us understand the labeled corpus’s size and class distribution. It allows us to define the best sampling approach to create a good training, validation, and testing set for our task. The WDC-24 Gold Standard contains 24 categories, as the ’Not Found’ category from the original taxonomy was not included because of the low number of predicted labels.
+        
+		<table style="font-size: 13px;">
+			<thead>
+			  <tr>
+				<th>Category Label</th>
+				<th># Offers</th>
+				<th># Clusters</th>
+				<th>Avg Cluster Size</th>
+				<th>Max Cluster Size</th>
+			  </tr>
+			</thead>
+			<tbody>
+			  <tr>
+				<td>Home and Garden</td>
+				<td align="center">1,389</td>
+				<td align="center">181</td>
+				<td align="center">7.67</td>
+				<td align="center">25</td>
+			  </tr>
+			  <tr>
+				<td>Toys and Games</td>
+				<td align="center">1,318</td>
+				<td align="center">194</td>
+				<td align="center">6.79</td>
+				<td align="center">30</td>
+			  </tr>
+			  <tr>
+				<td>Computers and Accessories</td>
+				<td align="center">1,305</td>
+				<td align="center">161</td>
+				<td align="center">8.11</td>
+				<td align="center">25</td>
+			  </tr>
+			  <tr>
+				<td>Sports and Outdoors</td>
+				<td align="center">1,144</td>
+				<td align="center">172</td>
+				<td align="center">6.65</td>
+				<td align="center">22</td>
+			  </tr>
+			  <tr>
+				<td>Other Electronics</td>
+				<td align="center">915</td>
+				<td align="center">118</td>
+				<td align="center">7.75</td>
+				<td align="center">28</td>
+			  </tr>
+			  <tr>
+				<td>Shoes</td>
+				<td align="center">735</td>
+				<td align="center">122</td>
+				<td align="center">6.02</td>
+				<td align="center">13</td>
+			  </tr>
+			  <tr>
+				<td>Clothing</td>
+				<td align="center">733</td>
+				<td align="center">116</td>
+				<td align="center">6.32</td>
+				<td align="center">15</td>
+			  </tr>
+			  <tr>
+				<td>CDs and Vinyl</td>
+				<td align="center">716</td>
+				<td align="center">114</td>
+				<td align="center">6.28</td>
+				<td align="center">13</td>
+			  </tr>
+			  <tr>
+				<td>Cell Phones and Accessories</td>
+				<td align="center">694</td>
+				<td align="center">98</td>
+				<td align="center">7.08</td>
+				<td align="center">29</td>
+			  </tr>
+			  <tr>
+				<td>Automotive</td>
+				<td align="center">667</td>
+				<td align="center">92</td>
+				<td align="center">7.25</td>
+				<td align="center">21</td>
+			  </tr>
+			  <tr>
+				<td>Pet Supplies</td>
+				<td align="center">664</td>
+				<td align="center">99</td>
+				<td align="center">6.71</td>
+				<td align="center">20</td>
+			  </tr>
+			  <tr>
+				<td>Books</td>
+				<td align="center">654</td>
+				<td align="center">105</td>
+				<td align="center">6.23</td>
+				<td align="center">16</td>
+			  </tr>
+			  <tr>
+				<td>Jewelry</td>
+				<td align="center">642</td>
+				<td align="center">103</td>
+				<td align="center">6.23</td>
+				<td align="center">16</td>
+			  </tr>
+			  <tr>
+				<td>Office Products</td>
+				<td align="center">613</td>
+				<td align="center">98</td>
+				<td align="center">6.26</td>
+				<td align="center">11</td>
+			  </tr>
+			  <tr>
+				<td>Camera and Photo</td>
+				<td align="center">604</td>
+				<td align="center">82</td>
+				<td align="center">7.36</td>
+				<td align="center">20</td>
+			  </tr>
+			  <tr>
+				<td>Health and Beauty</td>
+				<td align="center">588</td>
+				<td align="center">99</td>
+				<td align="center">5.94</td>
+				<td align="center">11</td>
+			  </tr>
+			  <tr>
+				<td>Video Games</td>
+				<td align="center">583</td>
+				<td align="center">91</td>
+				<td align="center">6.41</td>
+				<td align="center">16</td>
+			  </tr>
+			  <tr>
+				<td>Movies and TV</td>
+				<td align="center">556</td>
+				<td align="center">90</td>
+				<td align="center">6.18</td>
+				<td align="center">16</td>
+			  </tr>
+			  <tr>
+				<td>Tools and Home Improvement</td>
+				<td align="center">555</td>
+				<td align="center">92</td>
+				<td align="center">6.03</td>
+				<td align="center">20</td>
+			  </tr>
+			  <tr>
+				<td>Musical Instruments</td>
+				<td align="center">546</td>
+				<td align="center">90</td>
+				<td align="center">6.07</td>
+				<td align="center">11</td>
+			  </tr>
+			  <tr>
+				<td>Grocery and Gourmet Food</td>
+				<td align="center">546</td>
+				<td align="center">90</td>
+				<td align="center">6.07</td>
+				<td align="center">14</td>
+			  </tr>
+			  <tr>
+				<td>Baby</td>
+				<td align="center">498</td>
+				<td align="center">72</td>
+				<td align="center">6.92</td>
+				<td align="center">22</td>
+			  </tr>
+			  <tr>
+				<td>Luggage and Travel Gear</td>
+				<td align="center">486</td>
+				<td align="center">82</td>
+				<td align="center">5.93</td>
+				<td align="center">19</td>
+			  </tr>
+			  <tr>
+				<td>Others</td>
+				<td align="center">429</td>
+				<td align="center">72</td>
+				<td align="center">5.96</td>
+				<td align="center">16</td>
+			  </tr>
+			  <tr>
+				<td><strong>Totals</strong></td>
+				<td align="center"><strong>17,580</strong></td>
+				<td align="center"><strong>2,633</strong></td>
+				<td align="center"><strong>6.67</strong></td>
+				<td align="center"><strong>-</strong></td>
+			  </tr>
+			</tbody>
+			<caption>Table 1: WDC-24 Gold Standard Statistics</caption>
+		  </table>
+		  
+		  Dividing data into training, validation, and testing sets is crucial in building any Machine Learning model. This allows us to evaluate the model’s performance and ability to generalize to unseen data, mitigating the risk of overfitting. We followed an 80%-10%-10% approach for splitting our labeled Corpus, meaning that 80% of the data will be used for training, 10% for validation, and 10% for testing our models. Splitting the Corpus with this strategy guarantees that our data is prepared for our product categorization task. This step and the labeling strategies discussed in the previous section laid a solid foundation for successfully developing and validating our product categorization models. One thing we also considered is that we split the data by cluster, not by single offer, meaning that one cluster of products can appear in just one set.  We also provide this subset for download at the end of the page.
+		
+		  <p><span id="toc4"></span>
+		<h2>4. Benchmark Experiments and Results</h2>
+				 <p>This section represents the approach we followed to train and evaluate our selected models’ performance using the WDC-24 Gold Standard. We have a diverse range of models to analyze and gain a thorough understanding of their performance across their different architectures. This analysis will help us determine which model best suits our large-scale experiment using the latest WDC Product Corpus (2020). </p>
+
+
+				 <ul>
+					<li><b>Traditional Machine Learning Model</b>
+					  <ul>
+						<p></p>
+						<li><b>Logistic Regression with One-vs-Rest Approach: </b> A grid search is performed to find the best combination of hyperparameters. The parameters being searched include the maximum features for TF-IDF, the regularization parameter (C), the solver algorithm, and the maximum iterations. After defining the hyperparameters for our grid search, we build a pipeline using a 5-fold cross-validation. We identified the model with the most suitable hyperparameters. The Logistic Regression Classifier performed best with a C value of 10, a ’newton-cg’ solver, and 500 iterations. Additionally, the TF-IDF Vectorizer only considered 50,000 features. The model configured with these hyperparameters is set as our final model. </li>
+					  </ul>
+					</li>
+				  </ul>
+
+
+				  <ul>
+					<li><b>Transformer-based Models</b>
+					<br><br><i><b>BERT Variants</b></i>  
+					<p>All three BERT models (Base Uncased, Large Uncased, and Base Multilingual Uncased) use the BERT Tokenizer, which employs the WordPiece tokenization algorithm. This algorithm breaks words into smaller, manageable subwords to handle out-of-vocabulary words more effectively. For the task of classification, these models use BertForSequenceClassification. With this groundwork established, we examined the distinct training configurations each model employed.</p>
+					<ul>
+						<li><b>BERT Base Uncased: </b>The model was trained for 10 epochs, meaning the entire dataset passes through the neural network ten times. The batch size for both training and evaluation is 64, meaning that 64 samples from the dataset are used at each step of the gradient update during training, and model performance is evaluated over batches of 64 samples during evaluation. The learning rate for this model is set to 5e-5, which determines how much the model changes in response to the estimated error each time the model weights are updated. The evaluation and saving of the model are performed at the end of each epoch, and the model that achieved the highest Micro F1 Score is loaded at the end of training.</li>
+						<li><b>BERT Large Uncased: </b>This model was trained for a total of 5 epochs due to its more extensive size and computational demands. The training and evaluation batch sizes are decreased to 16 to compensate for the larger model size. Despite the size differences, the learning rate is kept consistent with the BERT Base model at 5e-5. Evaluation, saving, and loading of the best model are handled similarly to the BERT Base model, with these actions occurring at the end of each epoch and the best model determined by the highest Micro F1 Score.</li>
+						<li><b>BERT Base Multilingual Uncased: </b>This model follows a similar training configuration to the previous two models. It is trained for 10 epochs, with training and evaluation batch sizes of 64. The learning rate is maintained at 5e-5, and the best model, decided by the highest Micro F1 Score, is loaded at the end of training. Evaluation and saving of the model are performed at the conclusion of each epoch. </li>
+					
+					</ul>
+					<br><i><b>RoBERTa Variants</b></i>  
+					<p>
+						Both RoBERTa models (Base and Large) used the Roberta Tokenizer, designed to construct tokenizers, handling all the preprocessing from raw text to input sequences. Like the BERT models, the RoBERTa models used a variant of the BERT sequence classification model, specifically, RobertaForSequenceClassification. The classification models are pre-trained transformer models with a single linear layer on top for classification. On the other hand, the XLM-RoBERTa model used the AutoTokenizer, which automatically determines and applies the appropriate tokenizer based on the model architecture. For the classification task, it employed the XLMRobertaForSequenceClassification, a model uniquely suited for handling XLM-RoBERTa's architecture. These models were each fine-tuned with their respective configurations, taking advantage of their designs' efficient tokenization and powerful sequence classification capabilities. With this groundwork, we next dig into the individual training configurations for each model.</p>
+					<ul>
+						<li><b>RoBERTa Base: </b> This model was trained throughout 10 epochs using a batch size 32 for training and evaluation phases. The learning rate was set at 5e-5 and the model that achieved the highest Micro F1 Score was loaded at the end of training.</li>
+						<li><b>RoBERTa Large: </b>Given its larger computational requirement, this model underwent a more limited training regimen of 5 epochs. However, it maintained the consistency of the learning rate at 5e-5, akin to the other models. The batch size was reduced to 16 for training and evaluation, likely to accommodate increased resource usage. As with the other models, the one achieving the highest Micro F1 Score was identified as the best and loaded at the end of training.</li>
+						<li><b>XML RoBERTa: </b>This model was trained for 10 epochs with a batch size of 32 for both training and evaluation, and a learning rate of 5e-5 was used. The highest Micro F1 Score was used as the determinant for the best model, which was then loaded at the end of training. </li>
+					
+					</ul>
+					</li>
+				  </ul>
+				 <p> The performance results for each model, after being trained with their respective configurations, are presented in Table 2.</p>
+				 <table style="font-size: 13px;">
+					<tr>
+						<th>Model</th>
+						<th>Micro F1-Score</th>
+						<th>Macro F1-Score</th>
+					</tr>
+					<tr>
+						<td>Logistic Regression with OvR</td>
+						<td align="center">0.85</td>
+						<td align="center">0.85</td>
+					</tr>
+					<tr>
+						<td>BERT Base Uncased</td>
+						<td align="center">0.88</td>
+						<td align="center">0.88</td>
+					</tr>
+					<tr>
+						<td>BERT Large Uncased</td>
+						<td align="center">0.88</td>
+						<td align="center">0.88</td>
+					</tr>
+					<tr>
+						<td>BERT Base Multilingual</td>
+						<td align="center">0.86</td>
+						<td align="center">0.85</td>
+					</tr>
+					<tr>
+						<td>RoBERTa Base</td>
+						<td align="center">0.88</td>
+						<td align="center">0.89</td>
+					</tr>
+					<tr>
+						<td>RoBERTa Large</td>
+						<td align="center">0.88</td>
+						<td align="center">0.88</td>
+					</tr>
+					<tr>
+						<td>XML-RoBERTa</td>
+						<td align="center">0.88</td>
+						<td align="center">0.87</td>
+					</tr>
+					<caption>Table 2: Results Comparison</caption>
+				</table>
+
+                 <p><b>Selection of the Best Performing Model</b></p>
+                 
+				<p>Factors such as model complexity, generalization capability, efficiency, and scalability play significant roles in making an informed decision. After analyzing the previous results, the RoBERTa Base  model is chosen as the preferred option. Occam's razor principle favors simpler models that can provide accurate predictions. RoBERTa Base has demonstrated excellent generalization across diverse categories, making it well-suited for the experiment. Additionally, it offers computational efficiency and scalability, ensuring optimal performance as the data volume increases. By considering these factors, the RoBERTa Base model emerges as the ideal choice for the large-scale experiment. </p>
+				
+
+				<span id="toc5"></span>
+                <h2>5. Categorization of all Offers in the PDC2020-C Corpus</h2>
+                 <p>            We use the best performing model to categorize all 22 million offers in the <a href="https://webdatacommons.org/largescaleproductcorpus/wdc-products/#toc2">WDC PDC2020-C</a> product corpus.
+				The results presented in Table 3 and Figure 1 illustrate the outcomes of our large-scale experiment using the RoBERTa Base model alongside the implementation of majority voting as a method of final product classification on the WDC PDC2020-C Product Corpus.</p>        
+		
+				<head>
+					<meta charset="UTF-8">
+					<style>
+					  .container {
+						display: flex;
+						gap: 20px;
+					  }
+				  
+					  .chart {
+						width: 570px;
+						height: 800px;
+					  }
+				  
+					  .slicer {
+  						width: 230px;
+ 						height: 100px;
+  						background-color: transparent;
+  						padding: 10px;
+ 						box-sizing: border-box;
+  						margin-top: -20px; /* Adjust the margin-top value as needed */
+						margin-left: 195px;
+					}
+					  table {
+						font-size: 13px;
+					  }
+					</style>
+				  </head>
+				  
+				  <body>
+					<div class="container">
+					  <table>
+						<tr>
+						  <th align="center">Category</th>
+						  <th align="center"># Offers</th>
+						  <th align="center"># Clusters</th>
+						  <th align="center">Avg Cluster Size</th>
+						  <th align="center">% Clusters &gt; 1 products</th>
+						</tr>
+						<tr>
+						  <td>Clothing</td>
+						  <td align="center">3,716,240</td>
+						  <td align="center">3,617,411</td>
+						  <td align="center">1.03</td>
+						  <td align="center">2.21</td>
+						</tr>
+						<tr>
+						  <td>Home and Garden</td>
+						  <td align="center">2,953,284</td>
+						  <td align="center">2,789,280</td>
+						  <td align="center">1.06</td>
+						  <td align="center">4.10</td>
+						</tr>
+						<tr>
+						  <td>Sports and Outdoors</td>
+						  <td align="center">1,884,730</td>
+						  <td align="center">1,779,077</td>
+						  <td align="center">1.06</td>
+						  <td align="center">4.01</td>
+						</tr>
+						<tr>
+						  <td>Office Products</td>
+						  <td align="center">1,336,911</td>
+						  <td align="center">1,266,785</td>
+						  <td align="center">1.06</td>
+						  <td align="center">3.64</td>
+						</tr>
+						<tr>
+						  <td>Jewelry</td>
+						  <td align="center">1,310,126</td>
+						  <td align="center">1,246,801</td>
+						  <td align="center">1.05</td>
+						  <td align="center">3.55</td>
+						</tr>
+						<tr>
+						  <td>Tools and Home Improvement</td>
+						  <td align="center">1,190,917</td>
+						  <td align="center">1,147,093</td>
+						  <td align="center">1.04</td>
+						  <td align="center">2.79</td>
+						</tr>
+						<tr>
+						  <td>Health and Beauty</td>
+						  <td align="center">1,048,407</td>
+						  <td align="center">904,705</td>
+						  <td align="center">1.16</td>
+						  <td align="center">9.27</td>
+						</tr>
+						<tr>
+						  <td>Automotive</td>
+						  <td align="center">937,906</td>
+						  <td align="center">886,365</td>
+						  <td align="center">1.06</td>
+						  <td align="center">4.40</td>
+						</tr>
+						<tr>
+						  <td>Toys and Games</td>
+						  <td align="center">925,174</td>
+						  <td align="center">845,964</td>
+						  <td align="center">1.09</td>
+						  <td align="center">4.61</td>
+						</tr>
+						<tr>
+						  <td>Books</td>
+						  <td align="center">866,078</td>
+						  <td align="center">802,832</td>
+						  <td align="center">1.08</td>
+						  <td align="center">5.85</td>
+						</tr>
+						<tr>
+						  <td>Shoes</td>
+						  <td align="center">817,529</td>
+						  <td align="center">777,374</td>
+						  <td align="center">1.05</td>
+						  <td align="center">3.36</td>
+						</tr>
+						<tr>
+						  <td>Grocery and Gourmet Food</td>
+						  <td align="center">799,108</td>
+						  <td align="center">724,006</td>
+						  <td align="center">1.10</td>
+						  <td align="center">7.71</td>
+						</tr>
+						<tr>
+						  <td>Other Electronics</td>
+						  <td align="center">605,783</td>
+						  <td align="center">557,814</td>
+						  <td align="center">1.09</td>
+						  <td align="center">5.25</td>
+						</tr>
+						<tr>
+						  <td>Computers and Accessories</td>
+						  <td align="center">609,701</td>
+						  <td align="center">533,220</td>
+						  <td align="center">1.14</td>
+						  <td align="center">7.79</td>
+						</tr>
+						<tr>
+						  <td>Pet Supplies</td>
+						  <td align="center">477,353</td>
+						  <td align="center">438,148</td>
+						  <td align="center">1.09</td>
+						  <td align="center">5.40</td>
+						</tr>
+						<tr>
+						  <td>Luggage and Travel Gear</td>
+						  <td align="center">434,211</td>
+						  <td align="center">417,249</td>
+						  <td align="center">1.04</td>
+						  <td align="center">3.11</td>
+						</tr>
+						<tr>
+						  <td>Musical Instruments</td>
+						  <td align="center">423,967</td>
+						  <td align="center">393,570</td>
+						  <td align="center">1.08</td>
+						  <td align="center">5.23</td>
+						</tr>
+						<tr>
+						  <td>Baby</td>
+						  <td align="center">354,002</td>
+						  <td align="center">332,050</td>
+						  <td align="center">1.07</td>
+						  <td align="center">4.84</td>
+						</tr>
+						<tr>
+						  <td>Cell Phones and Accessories</td>
+						  <td align="center">332,424</td>
+						  <td align="center">310,285</td>
+						  <td align="center">1.07</td>
+						  <td align="center">4.75</td>
+						</tr>
+						<tr>
+						  <td>CDs and Vinyl</td>
+						  <td align="center">315,851</td>
+						  <td align="center">289,000</td>
+						  <td align="center">1.09</td>
+						  <td align="center">6.53</td>
+						</tr>
+						<tr>
+						  <td>Camera and Photo</td>
+						  <td align="center">260,459</td>
+						  <td align="center">233,486</td>
+						  <td align="center">1.12</td>
+						  <td align="center">7.15</td>
+						</tr>
+						<tr>
+						  <td>Others</td>
+						  <td align="center">183,658</td>
+						  <td align="center">156,559</td>
+						  <td align="center">1.17</td>
+						  <td align="center">8.42</td>
+						</tr>
+						<tr>
+						  <td>Video Games</td>
+						  <td align="center">88,780</td>
+						  <td align="center">84,024</td>
+						  <td align="center">1.06</td>
+						  <td align="center">3.55</td>
+						</tr>
+						<tr>
+						  <td>Movies and TV</td>
+						  <td align="center">56,611</td>
+						  <td align="center">52,143</td>
+						  <td align="center">1.09</td>
+						  <td align="center">5.52</td>
+						</tr>
+						<tr>
+						  <td><strong>Totals</strong></td>
+						  <td align="center"><strong>21,929,210</strong></td>
+						  <td align="center"><strong>20,585,241</strong></td>
+						  <td align="center"><strong>1.06</strong></td>
+						  <td align="center"><strong>-</strong></td>
+						</tr>
+						<caption>Table 3: Large Scale Experiment Statistics</caption>
+					  </table>
+				  
+					  <div class="chart">
+						<svg id="dynamic_barchart"></svg>
+					  </div>
+					  <div class="slicer">
+						<label for="kpi-select"><b>Analysis by:</b></label>
+						<div>
+							<select id="kpi-select">
+							  <option value="offers">Offers</option>
+							  <option value="clusters">Clusters</option>
+							</select>
+						  </div>
+					  </div>
+					</div>
+					<script src="https://d3js.org/d3.v7.min.js"></script>
+				  <script src="./WDC-24 Gold Standard for Product Categorization_files/Barchart_Dynamic.js"></script>
+				
+				<p>
+					In order to verify the performance of the RoBERTa Base model on the whole corpus, we manually checked a sample of 10 offers per category (240 records), considering only products that contain information from the following three features: Title, Brand, and Description. Overall, the experiment has an accuracy of 72.04%.  However, the performance per class varies significantly across different categories, highlighting the strengths and potential improvement areas in the model’s predictive capability. Figure 2 shows the results per category in descending order.
+
+				</p>
+				
+
+				<div class="chart">
+					<svg id="largescale_experiment"></svg>
+				  </div>
+				  <script src="https://d3js.org/d3.v7.min.js"></script>
+				  <script src="./WDC-24 Gold Standard for Product Categorization_files/LargeScale_Experiment.js"></script>
+				
+				  <span id="toc6"></span>
+				<h2>6. Download</h2>
+                <p>
+					Below, we provide the WDC-24 Gold Standard for Product Categorization for public download. We further offer the training, validation, and testing set used for all the experiments.  As a result of running our best-performing model, RoBERTa base, on the WDC Product Corpus, we have created two separate output files. One file displays the results obtained using majority voting, including cluster ID and category labels. The other file presents the results without majority voting and provides the offer ID and their respective category label.
+                </p>
+                <table>
+						<tbody>
+							<tr>
+								<td><b>File</b></td>
+								<td><b>Size</b></td>
+								<td><b>Download</b></td>
+							</tr>
+
+							<tr>
+								<td>WDC-24 Gold Standard</td>
+								<td>11.7MB</td>
+								<td><a href="https://data.dws.informatik.uni-mannheim.de/largescaleproductcorpus/data/wdc-products/categorization/WDC_24_GoldStandard.csv">WDC_24_GoldStandard.csv</a></td>
+							</tr>
+
+
+							<tr>
+								<td>WDC-24 Gold Standard Training Set</td>
+								<td>9.3MB</td>
+								<td><a href="https://data.dws.informatik.uni-mannheim.de/largescaleproductcorpus/data/wdc-products/categorization/WDC_24_GoldStandard_TrainingSet.csv">WDC_24_GoldStandard_TrainingSet.csv</a></td>
+							</tr>
+                            <tr>
+								<td>WDC-24 Gold Standard Validation Set</td>
+								<td>1.1MB</td>
+								<td><a href="https://data.dws.informatik.uni-mannheim.de/largescaleproductcorpus/data/wdc-products/categorization/WDC_24_GoldStandard_ValidationSet.csv">WDC_24_GoldStandard_ValidationSet.csv</a></td>
+							</tr>
+                            <tr>
+								<td>WDC-24 Gold Standard Testing Set</td>
+								<td>1.2MB</td>
+								<td><a href="https://data.dws.informatik.uni-mannheim.de/largescaleproductcorpus/data/wdc-products/categorization/WDC_24_GoldStandard_TestingSet.csv">WDC_24_GoldStandard_TestingSet.csv</a></td>
+							</tr>
+                            <tr>
+								<td>Large Scale Experiment on WDC Product Corpus with Majority Voting Using RoBERTa Base Model</td>
+								<td>133.6MB</td>
+								<td><a href="https://data.dws.informatik.uni-mannheim.de/largescaleproductcorpus/data/wdc-products/categorization/WDC_Corpus_LargeScaleExperiment_MajorityVoting.json.gz">WDC_Corpus_LargeScaleExperiment_MajorityVoting.json.gz</a></td>
+							</tr>
+							<tr>
+								<td>Large Scale Experiment on WDC Product Corpus without Majority Voting Using RoBERTa Base Model</td>
+								<td> 82.8MB </td>
+								<td><a href="https://data.dws.informatik.uni-mannheim.de/largescaleproductcorpus/data/wdc-products/categorization/WDC_Corpus_LargeScaleExperiment_WithoutMajorityVoting.json.gz">WDC_Corpus_LargeScaleExperiment_WithoutMajorityVoting.json.gz</a></td>
+							</tr>
+                        </tbody>
+				</table>
+        
+                <span id="toc7"></span>
+				<h2>7. References</h2>
+			    <p>[1] Anna Primpeli, Ralph Peeters, and Christian Bizer. <a href="https://dl.acm.org/citation.cfm?id=3316609">The WDC Training Dataset and Gold Standard for Large-Scale Product Matching</a>. In Companion Proceedings of The 2019 World Wide Web Conference, WWW ’19, pages 381–386, New York, NY, USA, May 2019. Association for Computing Machinery</p>
+				
+				<p>[2] Ralph Peeters, Reng Chiz Der, and Christian Bizer. <a href="https://arxiv.org/abs/2301.09521">WDC Products: A Multi Dimensional Entity Matching Benchmark</a>.January 2023. arXiv:2301.09521[cs]
+				</p>
+                
+				<span id="toc8"></span>
+				<h2>8. Feedback</h2>
+				<p>Please send questions and feedback to the <a href="http://groups.google.com/group/web-data-commons">Web Data Commons Google Group</a>.<br><br>
+				More information about Web Data Commons is found <a href="http://webdatacommons.org/index.html">here</a>.</p>
+
+					<script type="text/javascript">
+						$('#toc').toc({
+							'selectors': 'h2', //elements to use as headings
+							'container': '#toccontent', //element to find all selectors in
+							'smoothScrolling': true, //enable or disable smooth scrolling on click
+							'prefix': 'toc', //prefix for anchor tags and class names
+							'highlightOnScroll': true, //add class to heading that is currently in focus
+							'highlightOffset': 100, //offset to trigger the next headline
+							'anchorName': function (i, heading, prefix) { //custom function for anchor name
+								return prefix + i;
+							}
+						});
+						$('[id*="link_"]').each(function () {
+							var element = $(this);
+							element.click(function (e) {
+								e.preventDefault();
+								var id = element.attr("id").split("_")[1];
+								element.parent().removeClass("show").addClass("no-show");
+								$('#charts_' + id).removeClass("no-show").addClass("show");
+							});
+						});
+						$('[id*="colapse_"]').each(function () {
+							var element = $(this);
+							element.click(function (e) {
+								e.preventDefault();
+								var id = element.attr("id").split("_")[1];
+								element.parent().removeClass("show").addClass("no-show");
+								$('#intro_' + id).removeClass("no-show").addClass("show");
+							});
+						});
+						document.getElementById("defaultOpen").click();
+					</script>
+
