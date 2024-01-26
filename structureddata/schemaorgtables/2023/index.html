@@ -176,8 +176,8 @@
 		
 					<p>The output of this first step are all entities of the current  class by host and their attributes down to the second attribute level. The following table shows  statistics after this first step for a selection of 4 Schema.org classes and
 					only considering hosts which provide data describing at least 3 entities  (i.e. the resulting table contains at least 3 rows) of the specific class (Table 1a) and considering all hosts (Table 1b).</p>
-					<div class="tg-wrap">
-						<table id="tg-eAU2I" class="tg">
+
+<div class="tg-wrap"><table id="tg-bdcGZ" class="tg">
 <caption>Table 1a: After attribute extraction - Minimum3</caption>
 <thead>
   <tr>
@@ -190,31 +190,35 @@
 <tbody>
   <tr>
     <td class="tg-d459">Product</td>
-    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">1,979,549</span></td>
-    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">773,214,632</span></td>
-    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">36</span></td>
+    <td class="tg-kyy7"></td>
+    <td class="tg-kyy7"></td>
+    <td class="tg-kyy7"></td>
   </tr>
   <tr>
     <td class="tg-lboi">Local Business</td>
-    <td class="tg-9wq8"><span style="font-weight:400;font-style:normal">369,260</span></td>
-    <td class="tg-9wq8"><span style="font-weight:400;font-style:normal">70,626,570</span></td>
-    <td class="tg-9wq8"><span style="font-weight:400;font-style:normal">20</span></td>
+    <td class="tg-9wq8">355,163</td>
+    <td class="tg-9wq8">58,106,645</td>
+    <td class="tg-9wq8">22</td>
   </tr>
   <tr>
     <td class="tg-d459">Hotel</td>
-    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">21,837</span></td>
-    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">9,317,089</span></td>
-    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">17</span></td>
+    <td class="tg-kyy7">19,735</td>
+    <td class="tg-kyy7">9,713,678</td>
+    <td class="tg-kyy7">24</td>
   </tr>
   <tr>
     <td class="tg-lboi">Movie</td>
-    <td class="tg-h2b0">7,227</td>
-    <td class="tg-9wq8"><span style="font-weight:400;font-style:normal">6,082,001</span></td>
-    <td class="tg-9wq8"><span style="font-weight:400;font-style:normal">85</span></td>
+    <td class="tg-9wq8">6,216</td>
+    <td class="tg-9wq8">5,021,142</td>
+    <td class="tg-9wq8">85</td>
   </tr>
 </tbody>
-<table id="tg-BNPY5" class="tg">
-  <caption>Table 1b: After attribute extraction - All</caption>
+</table></div>
+<script charset="utf-8">var TGSort=window.TGSort||function(n){"use strict";function r(n){return n?n.length:0}function t(n,t,e,o=0){for(e=r(n);o<e;++o)t(n[o],o)}function e(n){return n.split("").reverse().join("")}function o(n){var e=n[0];return t(n,function(n){for(;!n.startsWith(e);)e=e.substring(0,r(e)-1)}),r(e)}function u(n,r,e=[]){return t(n,function(n){r(n)&&e.push(n)}),e}var a=parseFloat;function i(n,r){return function(t){var e="";return t.replace(n,function(n,t,o){return e=t.replace(r,"")+"."+(o||"").substring(1)}),a(e)}}var s=i(/^(?:\s*)([+-]?(?:\d+)(?:,\d{3})*)(\.\d*)?$/g,/,/g),c=i(/^(?:\s*)([+-]?(?:\d+)(?:\.\d{3})*)(,\d*)?$/g,/\./g);function f(n){var t=a(n);return!isNaN(t)&&r(""+t)+1>=r(n)?t:NaN}function d(n){var e=[],o=n;return t([f,s,c],function(u){var a=[],i=[];t(n,function(n,r){r=u(n),a.push(r),r||i.push(n)}),r(i)<r(o)&&(o=i,e=a)}),r(u(o,function(n){return n==o[0]}))==r(o)?e:[]}function v(n){if("TABLE"==n.nodeName){for(var a=function(r){var e,o,u=[],a=[];return function n(r,e){e(r),t(r.childNodes,function(r){n(r,e)})}(n,function(n){"TR"==(o=n.nodeName)?(e=[],u.push(e),a.push(n)):"TD"!=o&&"TH"!=o||e.push(n)}),[u,a]}(),i=a[0],s=a[1],c=r(i),f=c>1&&r(i[0])<r(i[1])?1:0,v=f+1,p=i[f],h=r(p),l=[],g=[],N=[],m=v;m<c;++m){for(var T=0;T<h;++T){r(g)<h&&g.push([]);var C=i[m][T],L=C.textContent||C.innerText||"";g[T].push(L.trim())}N.push(m-v)}t(p,function(n,t){l[t]=0;var a=n.classList;a.add("tg-sort-header"),n.addEventListener("click",function(){var n=l[t];!function(){for(var n=0;n<h;++n){var r=p[n].classList;r.remove("tg-sort-asc"),r.remove("tg-sort-desc"),l[n]=0}}(),(n=1==n?-1:+!n)&&a.add(n>0?"tg-sort-asc":"tg-sort-desc"),l[t]=n;var i,f=g[t],m=function(r,t){return n*f[r].localeCompare(f[t])||n*(r-t)},T=function(n){var t=d(n);if(!r(t)){var u=o(n),a=o(n.map(e));t=d(n.map(function(n){return n.substring(u,r(n)-a)}))}return t}(f);(r(T)||r(T=r(u(i=f.map(Date.parse),isNaN))?[]:i))&&(m=function(r,t){var e=T[r],o=T[t],u=isNaN(e),a=isNaN(o);return u&&a?0:u?-n:a?n:e>o?n:e<o?-n:n*(r-t)});var C,L=N.slice();L.sort(m);for(var E=v;E<c;++E)(C=s[E].parentNode).removeChild(s[E]);for(E=v;E<c;++E)C.appendChild(s[v+L[E-v]])})})}}n.addEventListener("DOMContentLoaded",function(){for(var t=n.getElementsByClassName("tg"),e=0;e<r(t);++e)try{v(t[e])}catch(n){}})}(document)</script>
+
+
+<div class="tg-wrap"><table id="tg-4WXAk" class="tg">
+<caption>Table 1b: After attribute extraction - All</caption>
 <thead>
   <tr>
     <th class="tg-mkpc">Schema.org Class</th>
@@ -226,30 +230,31 @@
 <tbody>
   <tr>
     <td class="tg-d459">Product</td>
-    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">2,316,649</span></td>
-    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">773,663,989</span></td>
-    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">23</span></td>
+    <td class="tg-kyy7"></td>
+    <td class="tg-kyy7"></td>
+    <td class="tg-kyy7"></td>
   </tr>
   <tr>
     <td class="tg-lboi">Local Business</td>
-    <td class="tg-9wq8"><span style="font-weight:400;font-style:normal">650,792</span></td>
-    <td class="tg-9wq8"><span style="font-weight:400;font-style:normal">70,957,130</span></td>
-    <td class="tg-9wq8"><span style="font-weight:400;font-style:normal">4</span></td>
+    <td class="tg-9wq8">1,333,829</td>
+    <td class="tg-9wq8">59,194,676</td>
+    <td class="tg-9wq8">1</td>
   </tr>
   <tr>
     <td class="tg-d459">Hotel</td>
-    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">28,815</span></td>
-    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">9,326,421</span></td>
-    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">10</span></td>
+    <td class="tg-kyy7">24,944</td>
+    <td class="tg-kyy7">9,720,765</td>
+    <td class="tg-kyy7">15</td>
   </tr>
   <tr>
     <td class="tg-lboi">Movie</td>
-    <td class="tg-h2b0"><span style="font-weight:400;font-style:normal">8,407</span></td>
-    <td class="tg-9wq8"><span style="font-weight:400;font-style:normal">6,083,513</span></td>
-    <td class="tg-9wq8"><span style="font-weight:400;font-style:normal">55</span></td>
+    <td class="tg-9wq8">7,330</td>
+    <td class="tg-9wq8">5,022,586</td>
+    <td class="tg-9wq8">53</td>
   </tr>
 </tbody>
-</table>
+</table></div>
+<script charset="utf-8">var TGSort=window.TGSort||function(n){"use strict";function r(n){return n?n.length:0}function t(n,t,e,o=0){for(e=r(n);o<e;++o)t(n[o],o)}function e(n){return n.split("").reverse().join("")}function o(n){var e=n[0];return t(n,function(n){for(;!n.startsWith(e);)e=e.substring(0,r(e)-1)}),r(e)}function u(n,r,e=[]){return t(n,function(n){r(n)&&e.push(n)}),e}var a=parseFloat;function i(n,r){return function(t){var e="";return t.replace(n,function(n,t,o){return e=t.replace(r,"")+"."+(o||"").substring(1)}),a(e)}}var s=i(/^(?:\s*)([+-]?(?:\d+)(?:,\d{3})*)(\.\d*)?$/g,/,/g),c=i(/^(?:\s*)([+-]?(?:\d+)(?:\.\d{3})*)(,\d*)?$/g,/\./g);function f(n){var t=a(n);return!isNaN(t)&&r(""+t)+1>=r(n)?t:NaN}function d(n){var e=[],o=n;return t([f,s,c],function(u){var a=[],i=[];t(n,function(n,r){r=u(n),a.push(r),r||i.push(n)}),r(i)<r(o)&&(o=i,e=a)}),r(u(o,function(n){return n==o[0]}))==r(o)?e:[]}function v(n){if("TABLE"==n.nodeName){for(var a=function(r){var e,o,u=[],a=[];return function n(r,e){e(r),t(r.childNodes,function(r){n(r,e)})}(n,function(n){"TR"==(o=n.nodeName)?(e=[],u.push(e),a.push(n)):"TD"!=o&&"TH"!=o||e.push(n)}),[u,a]}(),i=a[0],s=a[1],c=r(i),f=c>1&&r(i[0])<r(i[1])?1:0,v=f+1,p=i[f],h=r(p),l=[],g=[],N=[],m=v;m<c;++m){for(var T=0;T<h;++T){r(g)<h&&g.push([]);var C=i[m][T],L=C.textContent||C.innerText||"";g[T].push(L.trim())}N.push(m-v)}t(p,function(n,t){l[t]=0;var a=n.classList;a.add("tg-sort-header"),n.addEventListener("click",function(){var n=l[t];!function(){for(var n=0;n<h;++n){var r=p[n].classList;r.remove("tg-sort-asc"),r.remove("tg-sort-desc"),l[n]=0}}(),(n=1==n?-1:+!n)&&a.add(n>0?"tg-sort-asc":"tg-sort-desc"),l[t]=n;var i,f=g[t],m=function(r,t){return n*f[r].localeCompare(f[t])||n*(r-t)},T=function(n){var t=d(n);if(!r(t)){var u=o(n),a=o(n.map(e));t=d(n.map(function(n){return n.substring(u,r(n)-a)}))}return t}(f);(r(T)||r(T=r(u(i=f.map(Date.parse),isNaN))?[]:i))&&(m=function(r,t){var e=T[r],o=T[t],u=isNaN(e),a=isNaN(o);return u&&a?0:u?-n:a?n:e>o?n:e<o?-n:n*(r-t)});var C,L=N.slice();L.sort(m);for(var E=v;E<c;++E)(C=s[E].parentNode).removeChild(s[E]);for(E=v;E<c;++E)C.appendChild(s[v+L[E-v]])})})}}n.addEventListener("DOMContentLoaded",function(){for(var t=n.getElementsByClassName("tg"),e=0;e<r(t);++e)try{v(t[e])}catch(n){}})}(document)</script>
 						
 <p><b>(ii) Removal of listing pages and sparse entities:</b> Some HTML pages are listing pages and contain short descriptions of entities that are described in more detail on other pages. We want to exclude such pages and focus on extracting these entities in an
 					attribute-rich form from detail-pages only. Furthermore, many pages provide detailed descriptions of one entity but also contain short descriptions of further entities  as part of navigation elements or advertisements. We want to
@@ -259,9 +264,9 @@
 					we apply a statistical outlier detection method based on the Mean Absolute Deviation (MAD). First, we concatenate the values of all attributes for each entity. We calculate the MAD across all entities value lengths on a webpage and extract all
 					entities that have value lengths greater than <i>median + 3*MAD</i>, i.e. positive outliers, and contain at least 3 attributes. The remaining entities are dismissed. If a webpage marking up multiple entities does not contain such outliers we outright dismiss its entities.
 					The following table shows the statistics after the listing page removal step.</p>
-					
-					<div class="tg-wrap"><table id="tg-X7nck" class="tg">
-            <caption>Table 2a: After listing and sparse removal - Minimum3</caption>
+            
+<div class="tg-wrap"><table id="tg-SuFae" class="tg">
+<caption>Table 2a: After listing and sparse removal - Minimum3</caption>
 <thead>
   <tr>
     <th class="tg-mkpc">Schema.org Class</th>
@@ -273,76 +278,85 @@
 <tbody>
   <tr>
     <td class="tg-d459">Product</td>
-    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">1,684,198</span></td>
-    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">254,742,850</span></td>
-    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">26</span></td>
+    <td class="tg-kyy7"></td>
+    <td class="tg-kyy7"></td>
+    <td class="tg-kyy7"></td>
   </tr>
   <tr>
     <td class="tg-lboi">Local Business</td>
-    <td class="tg-9wq8"><span style="font-weight:400;font-style:normal">228,969</span></td>
-    <td class="tg-9wq8"><span style="font-weight:400;font-style:normal">24,808,056</span></td>
-    <td class="tg-9wq8"><span style="font-weight:400;font-style:normal">17</span></td>
+    <td class="tg-9wq8">264,275</td>
+    <td class="tg-9wq8">27,364,960</td>
+    <td class="tg-9wq8">21</td>
   </tr>
   <tr>
     <td class="tg-d459">Hotel</td>
-    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">18,842</span></td>
-    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">2,338,072</span></td>
-    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">16</span></td>
+    <td class="tg-kyy7">16,980</td>
+    <td class="tg-kyy7">2,403,235</td>
+    <td class="tg-kyy7">22</td>
   </tr>
   <tr>
     <td class="tg-lboi">Movie</td>
-    <td class="tg-h2b0"><span style="font-weight:400;font-style:normal">5,916</span></td>
-    <td class="tg-9wq8"><span style="font-weight:400;font-style:normal">2,306,549</span></td>
-    <td class="tg-9wq8"><span style="font-weight:400;font-style:normal">70</span></td>
-  </tr>
-</tbody>
-</table>
-					
-<table id="tg-FFQ1F" class="tg">
-  <caption>Table 2b: After listing and sparse removal - All</caption>
-<thead>
-  <tr>
-    <th class="tg-mkpc">Schema.org Class</th>
-    <th class="tg-ixdq"># tables</th>
-    <th class="tg-ixdq"># rows</th>
-    <th class="tg-ixdq">median rows<br>per table</th>
-  </tr>
-</thead>
-<tbody>
-  <tr>
-    <td class="tg-d459">Product</td>
-    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">2,028,974</span></td>
-    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">255,196,436</span></td>
-    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">17</span></td>
-  </tr>
-  <tr>
-    <td class="tg-lboi">Local Business</td>
-    <td class="tg-9wq8"><span style="font-weight:400;font-style:normal">465,816</span></td>
-    <td class="tg-9wq8"><span style="font-weight:400;font-style:normal">25,075,042</span></td>
-    <td class="tg-9wq8"><span style="font-weight:400;font-style:normal">2</span></td>
-  </tr>
-  <tr>
-    <td class="tg-d459">Hotel</td>
-    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">25,528</span></td>
-    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">2,346,733</span></td>
-    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">9</span></td>
-  </tr>
-  <tr>
-    <td class="tg-lboi">Movie</td>
-    <td class="tg-h2b0"><span style="font-weight:400;font-style:normal">7,039</span></td>
-    <td class="tg-9wq8"><span style="font-weight:400;font-style:normal">2,307,950</span></td>
-    <td class="tg-9wq8"><span style="font-weight:400;font-style:normal">43</span></td>
+    <td class="tg-9wq8">4,978</td>
+    <td class="tg-9wq8">1,710,911</td>
+    <td class="tg-9wq8">68</td>
   </tr>
 </tbody>
 </table></div>
+<script charset="utf-8">var TGSort=window.TGSort||function(n){"use strict";function r(n){return n?n.length:0}function t(n,t,e,o=0){for(e=r(n);o<e;++o)t(n[o],o)}function e(n){return n.split("").reverse().join("")}function o(n){var e=n[0];return t(n,function(n){for(;!n.startsWith(e);)e=e.substring(0,r(e)-1)}),r(e)}function u(n,r,e=[]){return t(n,function(n){r(n)&&e.push(n)}),e}var a=parseFloat;function i(n,r){return function(t){var e="";return t.replace(n,function(n,t,o){return e=t.replace(r,"")+"."+(o||"").substring(1)}),a(e)}}var s=i(/^(?:\s*)([+-]?(?:\d+)(?:,\d{3})*)(\.\d*)?$/g,/,/g),c=i(/^(?:\s*)([+-]?(?:\d+)(?:\.\d{3})*)(,\d*)?$/g,/\./g);function f(n){var t=a(n);return!isNaN(t)&&r(""+t)+1>=r(n)?t:NaN}function d(n){var e=[],o=n;return t([f,s,c],function(u){var a=[],i=[];t(n,function(n,r){r=u(n),a.push(r),r||i.push(n)}),r(i)<r(o)&&(o=i,e=a)}),r(u(o,function(n){return n==o[0]}))==r(o)?e:[]}function v(n){if("TABLE"==n.nodeName){for(var a=function(r){var e,o,u=[],a=[];return function n(r,e){e(r),t(r.childNodes,function(r){n(r,e)})}(n,function(n){"TR"==(o=n.nodeName)?(e=[],u.push(e),a.push(n)):"TD"!=o&&"TH"!=o||e.push(n)}),[u,a]}(),i=a[0],s=a[1],c=r(i),f=c>1&&r(i[0])<r(i[1])?1:0,v=f+1,p=i[f],h=r(p),l=[],g=[],N=[],m=v;m<c;++m){for(var T=0;T<h;++T){r(g)<h&&g.push([]);var C=i[m][T],L=C.textContent||C.innerText||"";g[T].push(L.trim())}N.push(m-v)}t(p,function(n,t){l[t]=0;var a=n.classList;a.add("tg-sort-header"),n.addEventListener("click",function(){var n=l[t];!function(){for(var n=0;n<h;++n){var r=p[n].classList;r.remove("tg-sort-asc"),r.remove("tg-sort-desc"),l[n]=0}}(),(n=1==n?-1:+!n)&&a.add(n>0?"tg-sort-asc":"tg-sort-desc"),l[t]=n;var i,f=g[t],m=function(r,t){return n*f[r].localeCompare(f[t])||n*(r-t)},T=function(n){var t=d(n);if(!r(t)){var u=o(n),a=o(n.map(e));t=d(n.map(function(n){return n.substring(u,r(n)-a)}))}return t}(f);(r(T)||r(T=r(u(i=f.map(Date.parse),isNaN))?[]:i))&&(m=function(r,t){var e=T[r],o=T[t],u=isNaN(e),a=isNaN(o);return u&&a?0:u?-n:a?n:e>o?n:e<o?-n:n*(r-t)});var C,L=N.slice();L.sort(m);for(var E=v;E<c;++E)(C=s[E].parentNode).removeChild(s[E]);for(E=v;E<c;++E)C.appendChild(s[v+L[E-v]])})})}}n.addEventListener("DOMContentLoaded",function(){for(var t=n.getElementsByClassName("tg"),e=0;e<r(t);++e)try{v(t[e])}catch(n){}})}(document)</script>
+		
+
+
+
+<div class="tg-wrap"><table id="tg-laiqq" class="tg">
+<caption>Table 2b: After listing and sparse removal - All</caption>
+<thead>
+  <tr>
+    <th class="tg-mkpc">Schema.org Class</th>
+    <th class="tg-ixdq"># tables</th>
+    <th class="tg-ixdq"># rows</th>
+    <th class="tg-ixdq">median rows<br>per table</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td class="tg-d459">Product</td>
+    <td class="tg-kyy7"></td>
+    <td class="tg-kyy7"></td>
+    <td class="tg-kyy7"></td>
+  </tr>
+  <tr>
+    <td class="tg-lboi">Local Business</td>
+    <td class="tg-9wq8">1,067,647</td>
+    <td class="tg-9wq8">28,232,870</td>
+    <td class="tg-9wq8">1</td>
+  </tr>
+  <tr>
+    <td class="tg-d459">Hotel</td>
+    <td class="tg-kyy7">22,316</td>
+    <td class="tg-kyy7">2,410,403</td>
+    <td class="tg-kyy7">12</td>
+  </tr>
+  <tr>
+    <td class="tg-lboi">Movie</td>
+    <td class="tg-9wq8">5,992</td>
+    <td class="tg-9wq8">1,712,201</td>
+    <td class="tg-9wq8">39</td>
+  </tr>
+</tbody>
+</table></div>
+<script charset="utf-8">var TGSort=window.TGSort||function(n){"use strict";function r(n){return n?n.length:0}function t(n,t,e,o=0){for(e=r(n);o<e;++o)t(n[o],o)}function e(n){return n.split("").reverse().join("")}function o(n){var e=n[0];return t(n,function(n){for(;!n.startsWith(e);)e=e.substring(0,r(e)-1)}),r(e)}function u(n,r,e=[]){return t(n,function(n){r(n)&&e.push(n)}),e}var a=parseFloat;function i(n,r){return function(t){var e="";return t.replace(n,function(n,t,o){return e=t.replace(r,"")+"."+(o||"").substring(1)}),a(e)}}var s=i(/^(?:\s*)([+-]?(?:\d+)(?:,\d{3})*)(\.\d*)?$/g,/,/g),c=i(/^(?:\s*)([+-]?(?:\d+)(?:\.\d{3})*)(,\d*)?$/g,/\./g);function f(n){var t=a(n);return!isNaN(t)&&r(""+t)+1>=r(n)?t:NaN}function d(n){var e=[],o=n;return t([f,s,c],function(u){var a=[],i=[];t(n,function(n,r){r=u(n),a.push(r),r||i.push(n)}),r(i)<r(o)&&(o=i,e=a)}),r(u(o,function(n){return n==o[0]}))==r(o)?e:[]}function v(n){if("TABLE"==n.nodeName){for(var a=function(r){var e,o,u=[],a=[];return function n(r,e){e(r),t(r.childNodes,function(r){n(r,e)})}(n,function(n){"TR"==(o=n.nodeName)?(e=[],u.push(e),a.push(n)):"TD"!=o&&"TH"!=o||e.push(n)}),[u,a]}(),i=a[0],s=a[1],c=r(i),f=c>1&&r(i[0])<r(i[1])?1:0,v=f+1,p=i[f],h=r(p),l=[],g=[],N=[],m=v;m<c;++m){for(var T=0;T<h;++T){r(g)<h&&g.push([]);var C=i[m][T],L=C.textContent||C.innerText||"";g[T].push(L.trim())}N.push(m-v)}t(p,function(n,t){l[t]=0;var a=n.classList;a.add("tg-sort-header"),n.addEventListener("click",function(){var n=l[t];!function(){for(var n=0;n<h;++n){var r=p[n].classList;r.remove("tg-sort-asc"),r.remove("tg-sort-desc"),l[n]=0}}(),(n=1==n?-1:+!n)&&a.add(n>0?"tg-sort-asc":"tg-sort-desc"),l[t]=n;var i,f=g[t],m=function(r,t){return n*f[r].localeCompare(f[t])||n*(r-t)},T=function(n){var t=d(n);if(!r(t)){var u=o(n),a=o(n.map(e));t=d(n.map(function(n){return n.substring(u,r(n)-a)}))}return t}(f);(r(T)||r(T=r(u(i=f.map(Date.parse),isNaN))?[]:i))&&(m=function(r,t){var e=T[r],o=T[t],u=isNaN(e),a=isNaN(o);return u&&a?0:u?-n:a?n:e>o?n:e<o?-n:n*(r-t)});var C,L=N.slice();L.sort(m);for(var E=v;E<c;++E)(C=s[E].parentNode).removeChild(s[E]);for(E=v;E<c;++E)C.appendChild(s[v+L[E-v]])})})}}n.addEventListener("DOMContentLoaded",function(){for(var t=n.getElementsByClassName("tg"),e=0;e<r(t);++e)try{v(t[e])}catch(n){}})}(document)</script>
+
+
+
 <p><b>(iii) Content-based deduplication: </b>Following the listing page removal step, we apply content-based deduplication on all extracted entities. Since the same webpage can sometimes be reached using different links, content-based deduplication will eliminiate such duplicate entities as well as exactly matching entities from different webpages originating from the same host. The content-based deduplication is applied on all attributes with the exception of schema.org/url which is excluded for top and second-level attributes as it could potentially
 				  differ and hinder the deduplication result.</p>
 					 
            <p>After collecting all remaining entities after listing removal and deduplication for each host-table, we select those attributes with a density of at least 25% for the columns of the final table and dismiss any sparser attributes. The output of this step are the final tables
 					for each entity class and host, available for download on this page. The following table shows the final statistics after deduplication. Figure 1 illustrates what a final table looks like.</p>
 
-					<div class="tg-wrap"><table id="tg-DwXkI" class="tg">
-            <caption>Table 3a: After deduplication - Minimum3</caption>
+            
+<div class="tg-wrap"><table id="tg-46mgQ" class="tg">
+<caption>Table 3a: After deduplication - Minimum3</caption>
 <thead>
   <tr>
     <th class="tg-mkpc">Schema.org Class</th>
@@ -354,68 +368,73 @@
 <tbody>
   <tr>
     <td class="tg-d459">Product</td>
-    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">1,662,273</span></td>
-    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">231,263,727</span></td>
-    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">24</span></td>
+    <td class="tg-kyy7"></td>
+    <td class="tg-kyy7"></td>
+    <td class="tg-kyy7"></td>
   </tr>
   <tr>
     <td class="tg-lboi">Local Business</td>
-    <td class="tg-9wq8"><span style="font-weight:400;font-style:normal">50,606</span></td>
-    <td class="tg-9wq8"><span style="font-weight:400;font-style:normal">6,972,537</span></td>
-    <td class="tg-9wq8"><span style="font-weight:400;font-style:normal">14</span></td>
+    <td class="tg-9wq8">65,094</td>
+    <td class="tg-9wq8">7,190,390</td>
+    <td class="tg-9wq8">16</td>
   </tr>
   <tr>
     <td class="tg-d459">Hotel</td>
-    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">13,114</span></td>
-    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">1,670,157</span></td>
-    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">11</span></td>
+    <td class="tg-kyy7">8,979</td>
+    <td class="tg-kyy7">1,674,381</td>
+    <td class="tg-kyy7">13</td>
   </tr>
   <tr>
     <td class="tg-lboi">Movie</td>
-    <td class="tg-h2b0"><span style="font-weight:400;font-style:normal">5,788</span></td>
-    <td class="tg-9wq8"><span style="font-weight:400;font-style:normal">2,022,150</span></td>
-    <td class="tg-9wq8"><span style="font-weight:400;font-style:normal">68</span></td>
-  </tr>
-</tbody>
-</table>
-					
-<table id="tg-oejgf" class="tg">
-  <caption>Table 3b: After deduplication - All</caption>
-<thead>
-  <tr>
-    <th class="tg-mkpc">Schema.org Class</th>
-    <th class="tg-ixdq"># tables</th>
-    <th class="tg-ixdq"># rows</th>
-    <th class="tg-ixdq">median rows<br>per table</th>
-  </tr>
-</thead>
-<tbody>
-  <tr>
-    <td class="tg-d459">Product</td>
-    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">2,028,974</span></td>
-    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">231,742,974</span></td>
-    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">15</span></td>
-  </tr>
-  <tr>
-    <td class="tg-lboi">Local Business</td>
-    <td class="tg-9wq8"><span style="font-weight:400;font-style:normal">465,816</span></td>
-    <td class="tg-9wq8"><span style="font-weight:400;font-style:normal">7,410,544</span></td>
-    <td class="tg-9wq8"><span style="font-weight:400;font-style:normal">1</span></td>
-  </tr>
-  <tr>
-    <td class="tg-d459">Hotel</td>
-    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">25,528</span></td>
-    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">1,685,008</span></td>
-    <td class="tg-kyy7"><span style="font-weight:400;font-style:normal">3</span></td>
-  </tr>
-  <tr>
-    <td class="tg-lboi">Movie</td>
-    <td class="tg-h2b0"><span style="font-weight:400;font-style:normal">7,039</span></td>
-    <td class="tg-9wq8"><span style="font-weight:400;font-style:normal">2,023,635</span></td>
-    <td class="tg-9wq8"><span style="font-weight:400;font-style:normal">40</span></td>
+    <td class="tg-9wq8">4,854</td>
+    <td class="tg-9wq8">1,501,228</td>
+    <td class="tg-9wq8">65</td>
   </tr>
 </tbody>
 </table></div>
+<script charset="utf-8">var TGSort=window.TGSort||function(n){"use strict";function r(n){return n?n.length:0}function t(n,t,e,o=0){for(e=r(n);o<e;++o)t(n[o],o)}function e(n){return n.split("").reverse().join("")}function o(n){var e=n[0];return t(n,function(n){for(;!n.startsWith(e);)e=e.substring(0,r(e)-1)}),r(e)}function u(n,r,e=[]){return t(n,function(n){r(n)&&e.push(n)}),e}var a=parseFloat;function i(n,r){return function(t){var e="";return t.replace(n,function(n,t,o){return e=t.replace(r,"")+"."+(o||"").substring(1)}),a(e)}}var s=i(/^(?:\s*)([+-]?(?:\d+)(?:,\d{3})*)(\.\d*)?$/g,/,/g),c=i(/^(?:\s*)([+-]?(?:\d+)(?:\.\d{3})*)(,\d*)?$/g,/\./g);function f(n){var t=a(n);return!isNaN(t)&&r(""+t)+1>=r(n)?t:NaN}function d(n){var e=[],o=n;return t([f,s,c],function(u){var a=[],i=[];t(n,function(n,r){r=u(n),a.push(r),r||i.push(n)}),r(i)<r(o)&&(o=i,e=a)}),r(u(o,function(n){return n==o[0]}))==r(o)?e:[]}function v(n){if("TABLE"==n.nodeName){for(var a=function(r){var e,o,u=[],a=[];return function n(r,e){e(r),t(r.childNodes,function(r){n(r,e)})}(n,function(n){"TR"==(o=n.nodeName)?(e=[],u.push(e),a.push(n)):"TD"!=o&&"TH"!=o||e.push(n)}),[u,a]}(),i=a[0],s=a[1],c=r(i),f=c>1&&r(i[0])<r(i[1])?1:0,v=f+1,p=i[f],h=r(p),l=[],g=[],N=[],m=v;m<c;++m){for(var T=0;T<h;++T){r(g)<h&&g.push([]);var C=i[m][T],L=C.textContent||C.innerText||"";g[T].push(L.trim())}N.push(m-v)}t(p,function(n,t){l[t]=0;var a=n.classList;a.add("tg-sort-header"),n.addEventListener("click",function(){var n=l[t];!function(){for(var n=0;n<h;++n){var r=p[n].classList;r.remove("tg-sort-asc"),r.remove("tg-sort-desc"),l[n]=0}}(),(n=1==n?-1:+!n)&&a.add(n>0?"tg-sort-asc":"tg-sort-desc"),l[t]=n;var i,f=g[t],m=function(r,t){return n*f[r].localeCompare(f[t])||n*(r-t)},T=function(n){var t=d(n);if(!r(t)){var u=o(n),a=o(n.map(e));t=d(n.map(function(n){return n.substring(u,r(n)-a)}))}return t}(f);(r(T)||r(T=r(u(i=f.map(Date.parse),isNaN))?[]:i))&&(m=function(r,t){var e=T[r],o=T[t],u=isNaN(e),a=isNaN(o);return u&&a?0:u?-n:a?n:e>o?n:e<o?-n:n*(r-t)});var C,L=N.slice();L.sort(m);for(var E=v;E<c;++E)(C=s[E].parentNode).removeChild(s[E]);for(E=v;E<c;++E)C.appendChild(s[v+L[E-v]])})})}}n.addEventListener("DOMContentLoaded",function(){for(var t=n.getElementsByClassName("tg"),e=0;e<r(t);++e)try{v(t[e])}catch(n){}})}(document)</script>
+
+
+					
+  
+  <div class="tg-wrap"><table id="tg-ZVmve" class="tg">
+<caption>Table 3b: After deduplication - All</caption>
+<thead>
+  <tr>
+    <th class="tg-mkpc">Schema.org Class</th>
+    <th class="tg-ixdq"># tables</th>
+    <th class="tg-ixdq"># rows</th>
+    <th class="tg-ixdq">median rows<br>per table</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td class="tg-d459">Product</td>
+    <td class="tg-kyy7"></td>
+    <td class="tg-kyy7"></td>
+    <td class="tg-kyy7"></td>
+  </tr>
+  <tr>
+    <td class="tg-lboi">Local Business</td>
+    <td class="tg-9wq8">1,067,647</td>
+    <td class="tg-9wq8">8,223,359</td>
+    <td class="tg-9wq8">1</td>
+  </tr>
+  <tr>
+    <td class="tg-d459">Hotel</td>
+    <td class="tg-kyy7">22,316</td>
+    <td class="tg-kyy7">1,690,168</td>
+    <td class="tg-kyy7">2</td>
+  </tr>
+  <tr>
+    <td class="tg-lboi">Movie</td>
+    <td class="tg-9wq8">5,992</td>
+    <td class="tg-9wq8">1,502,600</td>
+    <td class="tg-9wq8">35</td>
+  </tr>
+</tbody>
+</table></div>
+<script charset="utf-8">var TGSort=window.TGSort||function(n){"use strict";function r(n){return n?n.length:0}function t(n,t,e,o=0){for(e=r(n);o<e;++o)t(n[o],o)}function e(n){return n.split("").reverse().join("")}function o(n){var e=n[0];return t(n,function(n){for(;!n.startsWith(e);)e=e.substring(0,r(e)-1)}),r(e)}function u(n,r,e=[]){return t(n,function(n){r(n)&&e.push(n)}),e}var a=parseFloat;function i(n,r){return function(t){var e="";return t.replace(n,function(n,t,o){return e=t.replace(r,"")+"."+(o||"").substring(1)}),a(e)}}var s=i(/^(?:\s*)([+-]?(?:\d+)(?:,\d{3})*)(\.\d*)?$/g,/,/g),c=i(/^(?:\s*)([+-]?(?:\d+)(?:\.\d{3})*)(,\d*)?$/g,/\./g);function f(n){var t=a(n);return!isNaN(t)&&r(""+t)+1>=r(n)?t:NaN}function d(n){var e=[],o=n;return t([f,s,c],function(u){var a=[],i=[];t(n,function(n,r){r=u(n),a.push(r),r||i.push(n)}),r(i)<r(o)&&(o=i,e=a)}),r(u(o,function(n){return n==o[0]}))==r(o)?e:[]}function v(n){if("TABLE"==n.nodeName){for(var a=function(r){var e,o,u=[],a=[];return function n(r,e){e(r),t(r.childNodes,function(r){n(r,e)})}(n,function(n){"TR"==(o=n.nodeName)?(e=[],u.push(e),a.push(n)):"TD"!=o&&"TH"!=o||e.push(n)}),[u,a]}(),i=a[0],s=a[1],c=r(i),f=c>1&&r(i[0])<r(i[1])?1:0,v=f+1,p=i[f],h=r(p),l=[],g=[],N=[],m=v;m<c;++m){for(var T=0;T<h;++T){r(g)<h&&g.push([]);var C=i[m][T],L=C.textContent||C.innerText||"";g[T].push(L.trim())}N.push(m-v)}t(p,function(n,t){l[t]=0;var a=n.classList;a.add("tg-sort-header"),n.addEventListener("click",function(){var n=l[t];!function(){for(var n=0;n<h;++n){var r=p[n].classList;r.remove("tg-sort-asc"),r.remove("tg-sort-desc"),l[n]=0}}(),(n=1==n?-1:+!n)&&a.add(n>0?"tg-sort-asc":"tg-sort-desc"),l[t]=n;var i,f=g[t],m=function(r,t){return n*f[r].localeCompare(f[t])||n*(r-t)},T=function(n){var t=d(n);if(!r(t)){var u=o(n),a=o(n.map(e));t=d(n.map(function(n){return n.substring(u,r(n)-a)}))}return t}(f);(r(T)||r(T=r(u(i=f.map(Date.parse),isNaN))?[]:i))&&(m=function(r,t){var e=T[r],o=T[t],u=isNaN(e),a=isNaN(o);return u&&a?0:u?-n:a?n:e>o?n:e<o?-n:n*(r-t)});var C,L=N.slice();L.sort(m);for(var E=v;E<c;++E)(C=s[E].parentNode).removeChild(s[E]);for(E=v;E<c;++E)C.appendChild(s[v+L[E-v]])})})}}n.addEventListener("DOMContentLoaded",function(){for(var t=n.getElementsByClassName("tg"),e=0;e<r(t);++e)try{v(t[e])}catch(n){}})}(document)</script>
 
 
 </li>
@@ -1248,11 +1267,11 @@
 <p>
 	Each website uses a specific subset of the terms that are defined by schema.org for a specific class, e.g. <a href="https://schema.org/Product">Product</a>. Thus, the resulting tables also contain different sets of  columns which are all subsets of the overall set of attributes that is used to describe entities of a specific class in the corpus. Table 5 shows the percentage of the top 100 tables which contain specific columns. The same information is available for the other two sets in the download section as <em>Column Distribution Statistics</em>.
 	Remember that only columns have a density of at least 25% are included into the tables. For accurate densities for every column
-	for specific tables, please consult the respective <em>Table Statistics</em> file in the download section.</p>
-	<div class="tg-wrap"><table id="tg-Njstd" class="tg">
-    <caption>
-    <a id="Tab5"></a>Table 5: Column occurrence within the top 100 tables of selected schema.org classes
-</caption>
+	for specific tables, please consult the respective <em>Table Statistics</em> file in the download section.</p>   
+                
+
+<div class="tg-wrap"><table id="tg-lvjB3" class="tg">
+<caption><a id="Tab5"></a>Table 5: Column occurrence within the top 100 tables of selected schema.org classes</caption>
 <thead>
   <tr>
     <th class="tg-zyik" colspan="2">Product</th>
@@ -1264,7 +1283,7 @@
 <tbody>
   <tr>
     <td class="tg-o939">column</td>
-    <td class="tg-ufyq">occurs in %<br>of tables</td>
+    <td class="tg-v5iz">occurs in %<br>of tables</td>
     <td class="tg-yy5h">column</td>
     <td class="tg-asv9">occurs in %<br>of tables</td>
     <td class="tg-yy5h">column</td>
@@ -1273,107 +1292,109 @@
     <td class="tg-asv9">occurs in %<br>of tables</td>
   </tr>
   <tr>
+    <td class="tg-lboi"></td>
+    <td class="tg-c3ow"></td>
     <td class="tg-lboi">name</td>
-    <td class="tg-baqh">99</td>
+    <td class="tg-9wq8">99</td>
     <td class="tg-lboi">name</td>
-    <td class="tg-9wq8">100</td>
+    <td class="tg-9wq8">98</td>
     <td class="tg-lboi">name</td>
-    <td class="tg-9wq8">100</td>
-    <td class="tg-lboi">name</td>
-    <td class="tg-9wq8">97</td>
+    <td class="tg-9wq8">95</td>
   </tr>
   <tr>
-    <td class="tg-d459">offers</td>
-    <td class="tg-dzk6">87</td>
+    <td class="tg-d459"></td>
+    <td class="tg-abip"></td>
     <td class="tg-d459">address</td>
-    <td class="tg-kyy7">92</td>
+    <td class="tg-kyy7">97</td>
     <td class="tg-d459">address</td>
-    <td class="tg-kyy7">91</td>
+    <td class="tg-kyy7">94</td>
     <td class="tg-d459">description</td>
-    <td class="tg-kyy7">86</td>
+    <td class="tg-kyy7">73</td>
   </tr>
   <tr>
-    <td class="tg-lboi">description</td>
-    <td class="tg-baqh">78</td>
+    <td class="tg-lboi"></td>
+    <td class="tg-c3ow"></td>
     <td class="tg-lboi">telephone</td>
-    <td class="tg-9wq8">68</td>
-    <td class="tg-lboi">aggregaterating</td>
-    <td class="tg-9wq8">75</td>
+    <td class="tg-9wq8">90</td>
+    <td class="tg-lboi">telephone</td>
+    <td class="tg-9wq8">79</td>
     <td class="tg-lboi">director</td>
-    <td class="tg-9wq8">85</td>
+    <td class="tg-9wq8">62</td>
   </tr>
   <tr>
-    <td class="tg-d459">brand</td>
-    <td class="tg-dzk6"><span style="font-weight:400;font-style:normal">62</span></td>
-    <td class="tg-d459">geo</td>
-    <td class="tg-kyy7">41</td>
-    <td class="tg-d459">pricerange</td>
-    <td class="tg-kyy7">62</td>
+    <td class="tg-d459"></td>
+    <td class="tg-abip"></td>
     <td class="tg-d459">aggregaterating</td>
-    <td class="tg-kyy7">68</td>
-  </tr>
-  <tr>
-    <td class="tg-lboi">sku</td>
-    <td class="tg-baqh">47</td>
-    <td class="tg-lboi">aggregaterating</td>
-    <td class="tg-9wq8">39</td>
-    <td class="tg-lboi">description</td>
-    <td class="tg-9wq8">58</td>
-    <td class="tg-lboi">actor</td>
-    <td class="tg-9wq8">61</td>
-  </tr>
-  <tr>
-    <td class="tg-d459">aggregaterating</td>
-    <td class="tg-dzk6"><span style="font-weight:400;font-style:normal">27</span></td>
+    <td class="tg-kyy7">18</td>
     <td class="tg-d459">description</td>
-    <td class="tg-kyy7">38</td>
-    <td class="tg-d459">starrating</td>
-    <td class="tg-kyy7">49</td>
+    <td class="tg-kyy7">48</td>
     <td class="tg-d459">datecreated</td>
-    <td class="tg-kyy7">52</td>
+    <td class="tg-kyy7">54</td>
   </tr>
   <tr>
-    <td class="tg-lboi">productid</td>
-    <td class="tg-baqh"><span style="font-weight:400;font-style:normal">20</span></td>
-    <td class="tg-lboi">url</td>
-    <td class="tg-9wq8">27</td>
+    <td class="tg-lboi"></td>
+    <td class="tg-c3ow"></td>
     <td class="tg-lboi">geo</td>
-    <td class="tg-9wq8">49</td>
-    <td class="tg-lboi">duration</td>
-    <td class="tg-9wq8">39</td>
+    <td class="tg-9wq8">16</td>
+    <td class="tg-lboi">pricerange</td>
+    <td class="tg-9wq8">47</td>
+    <td class="tg-lboi">aggregaterating</td>
+    <td class="tg-9wq8">37</td>
   </tr>
   <tr>
-    <td class="tg-d459">image</td>
-    <td class="tg-dzk6"><span style="font-weight:400;font-style:normal">16</span></td>
+    <td class="tg-d459"></td>
+    <td class="tg-abip"></td>
     <td class="tg-d459">pricerange</td>
-    <td class="tg-kyy7">22</td>
-    <td class="tg-d459">telephone</td>
-    <td class="tg-kyy7">33</td>
+    <td class="tg-kyy7">11</td>
+    <td class="tg-d459">geo</td>
+    <td class="tg-kyy7">43</td>
+    <td class="tg-d459">duration</td>
+    <td class="tg-kyy7">36</td>
+  </tr>
+  <tr>
+    <td class="tg-lboi"></td>
+    <td class="tg-c3ow"></td>
+    <td class="tg-lboi">email</td>
+    <td class="tg-9wq8">10</td>
+    <td class="tg-lboi">email</td>
+    <td class="tg-9wq8">34</td>
+    <td class="tg-lboi">actor</td>
+    <td class="tg-9wq8">36</td>
+  </tr>
+  <tr>
+    <td class="tg-d459"></td>
+    <td class="tg-abip"></td>
+    <td class="tg-d459">description</td>
+    <td class="tg-kyy7">10</td>
+    <td class="tg-d459">starrating</td>
+    <td class="tg-kyy7">24</td>
     <td class="tg-d459">genre</td>
-    <td class="tg-kyy7">33</td>
+    <td class="tg-kyy7">26</td>
   </tr>
   <tr>
-    <td class="tg-lboi">url</td>
-    <td class="tg-baqh"><span style="font-weight:400;font-style:normal">15</span></td>
-    <td class="tg-lboi">image</td>
-    <td class="tg-9wq8">14</td>
-    <td class="tg-lboi">checkintime</td>
-    <td class="tg-9wq8">28</td>
+    <td class="tg-lboi"></td>
+    <td class="tg-c3ow"></td>
+    <td class="tg-lboi">openinghoursspecification</td>
+    <td class="tg-9wq8">9</td>
+    <td class="tg-lboi">aggregaterating</td>
+    <td class="tg-9wq8">20</td>
     <td class="tg-lboi">datepublished</td>
-    <td class="tg-9wq8">28</td>
+    <td class="tg-9wq8">25</td>
   </tr>
   <tr>
-    <td class="tg-d459">mpn</td>
-    <td class="tg-dzk6"><span style="font-weight:400;font-style:normal">14</span></td>
-    <td class="tg-d459">review</td>
-    <td class="tg-kyy7">14</td>
-    <td class="tg-d459">reviews</td>
-    <td class="tg-kyy7">20</td>
+    <td class="tg-d459"></td>
+    <td class="tg-abip"></td>
+    <td class="tg-d459">url</td>
+    <td class="tg-kyy7">7</td>
     <td class="tg-d459">image</td>
-    <td class="tg-kyy7">20</td>
+    <td class="tg-kyy7">14</td>
+    <td class="tg-d459">image</td>
+    <td class="tg-kyy7">14</td>
   </tr>
 </tbody>
 </table></div>
+<script charset="utf-8">var TGSort=window.TGSort||function(n){"use strict";function r(n){return n?n.length:0}function t(n,t,e,o=0){for(e=r(n);o<e;++o)t(n[o],o)}function e(n){return n.split("").reverse().join("")}function o(n){var e=n[0];return t(n,function(n){for(;!n.startsWith(e);)e=e.substring(0,r(e)-1)}),r(e)}function u(n,r,e=[]){return t(n,function(n){r(n)&&e.push(n)}),e}var a=parseFloat;function i(n,r){return function(t){var e="";return t.replace(n,function(n,t,o){return e=t.replace(r,"")+"."+(o||"").substring(1)}),a(e)}}var s=i(/^(?:\s*)([+-]?(?:\d+)(?:,\d{3})*)(\.\d*)?$/g,/,/g),c=i(/^(?:\s*)([+-]?(?:\d+)(?:\.\d{3})*)(,\d*)?$/g,/\./g);function f(n){var t=a(n);return!isNaN(t)&&r(""+t)+1>=r(n)?t:NaN}function d(n){var e=[],o=n;return t([f,s,c],function(u){var a=[],i=[];t(n,function(n,r){r=u(n),a.push(r),r||i.push(n)}),r(i)<r(o)&&(o=i,e=a)}),r(u(o,function(n){return n==o[0]}))==r(o)?e:[]}function v(n){if("TABLE"==n.nodeName){for(var a=function(r){var e,o,u=[],a=[];return function n(r,e){e(r),t(r.childNodes,function(r){n(r,e)})}(n,function(n){"TR"==(o=n.nodeName)?(e=[],u.push(e),a.push(n)):"TD"!=o&&"TH"!=o||e.push(n)}),[u,a]}(),i=a[0],s=a[1],c=r(i),f=c>1&&r(i[0])<r(i[1])?1:0,v=f+1,p=i[f],h=r(p),l=[],g=[],N=[],m=v;m<c;++m){for(var T=0;T<h;++T){r(g)<h&&g.push([]);var C=i[m][T],L=C.textContent||C.innerText||"";g[T].push(L.trim())}N.push(m-v)}t(p,function(n,t){l[t]=0;var a=n.classList;a.add("tg-sort-header"),n.addEventListener("click",function(){var n=l[t];!function(){for(var n=0;n<h;++n){var r=p[n].classList;r.remove("tg-sort-asc"),r.remove("tg-sort-desc"),l[n]=0}}(),(n=1==n?-1:+!n)&&a.add(n>0?"tg-sort-asc":"tg-sort-desc"),l[t]=n;var i,f=g[t],m=function(r,t){return n*f[r].localeCompare(f[t])||n*(r-t)},T=function(n){var t=d(n);if(!r(t)){var u=o(n),a=o(n.map(e));t=d(n.map(function(n){return n.substring(u,r(n)-a)}))}return t}(f);(r(T)||r(T=r(u(i=f.map(Date.parse),isNaN))?[]:i))&&(m=function(r,t){var e=T[r],o=T[t],u=isNaN(e),a=isNaN(o);return u&&a?0:u?-n:a?n:e>o?n:e<o?-n:n*(r-t)});var C,L=N.slice();L.sort(m);for(var E=v;E<c;++E)(C=s[E].parentNode).removeChild(s[E]);for(E=v;E<c;++E)C.appendChild(s[v+L[E-v]])})})}}n.addEventListener("DOMContentLoaded",function(){for(var t=n.getElementsByClassName("tg"),e=0;e<r(t);++e)try{v(t[e])}catch(n){}})}(document)</script>
+
 		<h2></h2>
 		<span id="toc2.3"></span>
 		<h3 style="clear:both">2.3 Corpus schema, tips and examples</h3><br>
