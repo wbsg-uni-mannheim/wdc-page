@@ -158,7 +158,7 @@
             Recent shifts in the research domain underscore a transition from pre-trained language models (PLMs), such as BERT, to the cutting-edge capabilities of Large Language Models (LLMs) like OpenAI's GPT series. LLMs, 
             such as GPT-3.5 and GPT-4, represent a significant advancement in various applications of information extraction (see, e.g. <a href="#agrawal2022large">Agrawal et al. (2022)</a>, <a href="#brinkmann2023product">Brinkmann et al. (2023)</a>, <a href="#shyr2023identifying">Shyr et al. (2023)</a>), 
             requiring a minimal amount of labeled data to generalize across attribute-value pairs that have not been seen during training.
-            Furthermore, LLMs have been found to have the inherent ability perform complex data normalization tasks, ranging from basic wrangling to domain-specific operations (<a href="#jaimovitch2023can">Jaimovitch-López et al., 2023</a>). 
+            Furthermore, LLMs have been found to have the inherent ability to perform complex data normalization tasks, ranging from basic wrangling to domain-specific operations (<a href="#jaimovitch2023can">Jaimovitch-López et al., 2023</a>).
             
             <figure style="float: right; margin-left: 20px; width: 30%; max-width: 1600px;">
               <figcaption><b>Figure 1: Sample product title showcasing labeled attributes and their corresponding normalized values</b></figcaption>
@@ -199,7 +199,7 @@
                 <p>In light of the noisy nature of web data, we perform a series of cleansing and filtering steps upon creating the dataset. 
                     Initially, product offers that are missing titles, descriptions, or key-value pairs from specification tables are excluded. 
                     To reduce the presence of noisy text,
-                    products whose descriptions exceed 1000 characters are also discarded. 
+                    products whose descriptions exceed 1,000 characters are also discarded.
                     Furthermore, HTML and language tags are stripped from the titles and descriptions. 
                     We retain only product texts that are in English.</p>
                 <p>The WDC Product Data Corpus organizes offers into clusters of products. To gather a diverse set of unique attribute-value pairs, the key-value pairs from all offers within a product cluster are merged before annotation.
@@ -209,7 +209,7 @@
                     The selection of the most appropriate categories for the WD PAVE dataset involved ranking product offer categories by their average cluster sizes and conducting a manual review of the product texts to exclude noisy categories. 
                     Consequently, the categories chosen were "Computers And Accessories", "Jewelry", "Grocery And Gourmet Food", "Office Products", and "Home And Garden,".</p>
                 <p>To streamline the dataset, we analyzed and refined its attributes: Initially, we identified a range of attributes across all 
-                        categories, with each category having between 190 to 1475 unique attributes. We noted that some attributes were functionally 
+                        categories, with each category having between 190 to 1,475 unique attributes. We noted that some attributes were functionally
                         equivalent despite different names, and others were irrelevant noise. To manage this diversity and avoid disproportionate attribute 
                         loss across categories, we manually merged equivalent attributes and eliminated noise attributes.</p>
                 <p>To link product titles and descriptions with their respective attributes and values, 
@@ -276,7 +276,7 @@
             <tbody>
                 <tr>
                     <td>Number of Product Offers</td>
-                    <td>1420</td>
+                    <td>1,420</td>
                 </tr>
                 <tr>
                     <td>Number of Unique Categories</td>
@@ -308,7 +308,7 @@
                 </tr>
                 <tr>
                     <td>Number of annotated attribute-values</td>
-                    <td>24582</td>
+                    <td>24,582</td>
                 </tr>
                 <tr>
                     <td>Of which are n/a</td>
@@ -316,7 +316,7 @@
                 </tr>
                 <tr>
                     <td>Number of annotated attributes</td>
-                    <td>21904</td>
+                    <td>21,904</td>
                 </tr>
                 <tr>
                     <td>Of which are n/a</td>
@@ -324,7 +324,7 @@
                 </tr>
                 <tr>
                     <td>Number of Unique Values</td>
-                    <td>18743</td>
+                    <td>18,743</td>
                 </tr>
             </tbody>
         </table>
