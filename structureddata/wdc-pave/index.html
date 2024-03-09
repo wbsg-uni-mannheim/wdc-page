@@ -2,7 +2,7 @@
 <html>
 
 <head>
-	<title>Web Data Commons Product Attribute-Value Extraction Data (WDC PAVE)</title>
+	<title>Web Data Commons Product Attribute-Value Extraction Benchmark (WDC PAVE)</title>
 	<link rel='stylesheet' href='https://webdatacommons.org/style.css' type='text/css' media='screen' />
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<style>
@@ -118,7 +118,7 @@
 	<div id="logo" style="text-align:right; background-color: white;">&nbsp;&nbsp;<a href="http://dws.informatik.uni-mannheim.de"><img
 			 src="../../images/ma-logo.gif" alt="University of Mannheim - Logo"></a></div>
 	<div id="header">
-		<h1 style="font-size: 250%;">Web Data Commons Product Attribute-Value Extraction Data (WDC PAVE)</h1>
+		<h1 style="font-size: 250%;">Web Data Commons Product Attribute-Value Extraction Benchmark (WDC PAVE)</h1>
 	</div>
     <div id="authors">
         <a href="https://www.linkedin.com/in/nick-baumann-4b1158167/">Nick Baumann</a><br />
@@ -127,8 +127,7 @@
       </div>
 	<div id="content">
 		<p>
-            This page provides details on the <b>Web Data Commons Product Attribute-Value Extraction (WDC PAVE)</b> datasets. The datasets contain <b>1420 human annotated product offers</b>, selected from the <a href="https://webdatacommons.org/largescaleproductcorpus/index.html" target="_blank">Web Data Commons Large-Scale Product Matching (WDC LSPM)</a>, 
-            corpus featuring </b>24,582 annotated attribute-value pairs</b> in (i) their surface format and (ii) in normalized format.</p>
+        This page describes the <b>Web Data Commons Product Attribute-Value Extraction Benchmark (WDC PAVE)</b> for evaluating the performance of information extraction and data normalization methods. The benchmark consists of 1420 product offers that are annotated with 24,582 attribute-value pairs in (i) their surface format and (ii) in normalized format.
 
 		</p>
 		    <!-- Table of Contents -->
@@ -136,14 +135,13 @@
                 <h2>Contents</h2>
                 <ul>
                     <li><a href="#motivation">1. Motivation</a></li>
-                      <li><a href="#dataset_creation">2. Dataset Creation</a></li>
+                      <li><a href="#dataset_creation">2. Benchmark Creation</a></li>
                         <ul>
                             <li><a href="#wdc">2.1 Web Data Commons Large-Scale Product Matching Data</a></li>
                             <li><a href="#data_selection">2.2 Data Preprocessing and Selection</a></li>
                             <li><a href="#data_validation">2.3 Data Validation</a></li>
-                            <li><a href="#dataset_structure">2.4 Dataset Structure</a></li>
-                            <li><a href="#dataset_stats">2.5 Dataset Statistics</a></li>
-                            <li><a href="#normalized_dataset">2.6 Normalized Dataset</a></li>
+                            <li><a href="#dataset_stats">2.4 Benchmark Statistics</a></li>
+                            <li><a href="#normalized_dataset">2.5 Normalized Benchmark</a></li>
                         </ul>
                     <li><a href="#experiments">3. Baseline Experiments</a></li>
                     <li><a href="#download">3. Downlaod</a></li>
@@ -168,16 +166,16 @@
             Despite these advancements, one challenge persists: the scarcity of annotated product datasets for evaluating and refining attribute-value extraction techniques. 
             This gap hinders the development and testing of models capable of meeting the demands of e-commerce platforms.
 
-            Addressing this need, we introduce the Web Data Commons Product Attribute-Value Extraction (WDC PAVE) datasets. 
+            Addressing this need, we introduce the Web Data Commons Product Attribute-Value Extraction (WDC PAVE) benchmark. 
             The data comprises 1,420 human-annotated product offers, drawn from an array of 87 websites using the schema.org vocabulary, 
             featuring over 24,583 manually verified attribute-value pairs. 
             WDC PAVE is designed to support both extraction and normalization tasks, with annotations available for direct attribute-value extraction and for scenarios requiring normalization, 
             such as name expansion, string wrangling, unit of measurement normalization, and generalization. An example of this is showcased in Figure 1.
             
-            By making the WDC PAVE dataset publicly available, we aim to provide researchers with a new benchmark that supports the advancement of product attribute-value extraction techniques. </p>
+            By making the WDC PAVE benchmark publicly available, we aim to provide researchers with a new benchmark that supports the advancement of product attribute-value extraction techniques. </p>
 		</p>
 		<span id="dataset_creation"></span>
-		<h2>2. Dataset Creation</h2>
+		<h2>2. Benchmark Creation</h2>
 		<p>
             <section id="wdc">
                 <h3>2.1 Web Data Commons Large-Scale Product Matching Data</h3>
@@ -233,27 +231,9 @@
             <p>In a second round of annotation we added attributes that were previously missing in the data. For unclear attributes, we researched products online.</p>
         </section>
 
-        <section id="dataset_structure">
-            <h3>2.4 Dataset Structure</h3>
-            <p>The datasets are structured in the JSON Lines (JSONL) format, supplementing each product with a comprehensive set of attributes and values. Each entry in the dataset corresponds to a single product offer and includes several key fields:</p>
-            <ul>
-                <li><strong>id:</strong> The unique WDC product offer identifier.</li>
-                <li><strong>cluster_id:</strong> The WDC cluster identifier that groups offers referring to the same product.</li>
-                <li><strong>category:</strong> The product category.</li>
-                <li><strong>input_title:</strong> The product title as it appears on the source website.</li>
-                <li><strong>input_description:</strong> The product description as it appears on the source website.</li>
-                <li><strong>target_scores:</strong> A structured object detailing the annotated attributes of the product. Each attribute is associated with:
-                    <ul>
-                        <li><b>pid:</b> An array indicating whether the attribute value appears in the title (0) and/or description (1).</li>
-                    </ul>
-                </li>
-            </ul>
-        </section>
-    </section>
-
     <section id="dataset_stats">
-        <h3>2.5 Dataset Statistics</h3>
-        <p>Table 1 provides an overview of the WDC PAVE dataset. It consists of 1,420 unique product 
+        <h3>2.4 Benchmark Statistics</h3>
+        <p>Table 1 provides an overview of the WDC PAVE benchmark. It consists of 1,420 unique product 
             listings spread over five distinct categories, featuring a collective total of 70 different attributes.
             Table 2 further delineates the dataset by category: "Computers and Accessories" are described by 
             15 unique attributes, "Home And Garden" by 20, "Office Products" by 18, "Grocery And Gourmet Food" by 8, and "Jewelry" 
@@ -266,7 +246,7 @@
         <div style="display: flex; flex-wrap: wrap; gap: 0px;">
             <div style="flex: 1; min-width: 0px; margin-right: -500px; margin-left: 0px"> 
                 <table border="1">
-            <caption><b>Table 1: Properties of the WDC PAVE Dataset</b></caption>
+            <caption><b>Table 1: Properties of the WDC PAVE Benchmark</b></caption>
             <thead>
                 <tr>
                     <th>Property</th>
@@ -332,7 +312,7 @@
 
     <div style="flex: 1; min-width: 0px; margin-left: 0px; margin-right: 80px">
         <table border="1">
-            <caption><b>Table 2: Category-Specific Properties of the WDC PAVE Dataset</b></caption>
+            <caption><b>Table 2: Category-Specific Properties of the WDC PAVE Benchmark</b></caption>
             <thead>
                 <tr>
                     <th>Category</th>
@@ -805,7 +785,7 @@
           </table>
 
           <section id="normalized_dataset">
-            <h3>2.6 Normalized Dataset</h3>
+            <h3>2.5 Normalized Benchmark</h3>
             <p>
                 In order to test LLMs' capabilities of extracting and normalizing attribute values, we applied four kinds of custom normalizations.
                 These are summarized in Table 4. 
@@ -866,23 +846,24 @@
               <br>
               <tr>
                 <td>In our study, we assessed the efficiency of various prompt templates in extracting attribute-value pairs 
-                  from product descriptions within the WDC PAVE dataset, using GPT-3.5 and GPT-4. 
+                  from product descriptions within the WDC PAVE benchmark, using GPT-3.5 and GPT-4. 
                   Our experimental framework incorporates up to six chat message components, including a  
                   role description for the LLM, specifying its function and a target schema, represented in JSON format, to delineate the expected attribute-value pairs. 
                   Task instructions were explicitly defined, directing the extraction and normalization of 
                   attribute values from product titles and descriptions, utilizing a structured approach for input processing and output generation in JSON 
                   format. Our methodology also included demonstration tasks with semantically similar product offers from the training set to enhance the model's 
-                  learning, ensuring a comprehensive and rigorous evaluation of the prompt templates under zero-shot and few-shot scenarios. 
+                  learning, ensuring a comprehensive evaluation of the <a href="https://raw.githubusercontent.com/wbsg-uni-mannheim/wdc-pave/main/src/zero_shot_prompts_extraction.txt">prompt templates with example values</a> and <a href="https://raw.githubusercontent.com/wbsg-uni-mannheim/wdc-pave/main/src/few_shot_prompts_extraction.txt">prompt templates with example values and demonstrations</a>. 
                   For an in-depth explanation of our methodology, please refer to our <a href="https://arxiv.org/" target="_blank">paper</a>.
             
                   Table 5 shows the results for the extraction scenario: With the introduction of ten example values, both models demonstrate commendable F1-scores, 
                   approximately 80%. GPT-4 reaches a peak F1-score of 91% with ten demonstrations, 
                   marking a notable advancement over GPT-3.5. 
                   
-                  In scenarios involving attribute-value normalization, GPT-4 exhibites superior capabilities, benefiting from normalized example values and demonstrations, reaching an F1-Score of 91%, as shown in Table 6.
+                  In scenarios involving attribute-value normalization, GPT-4 exhibites superior capabilities, benefiting from <a href="https://raw.githubusercontent.com/wbsg-uni-mannheim/wdc-pave/main/src/zero_shot_prompts_normalization.txt">prompt templates containing normalized example values </a>and <a href="https://raw.githubusercontent.com/wbsg-uni-mannheim/wdc-pave/main/src/few_shot_prompts_normalization.txt">prompt templates containing normalized example values and demonstrations</a>, reaching an F1-Score of 91%, as shown in Table 6.
                   Detailed analysis of normalization operations shows that GPT-4's performs best in name expansion and string wrangling, achieving F1-scores as high as 98% and 95%, respectively. In line with prior research, normalization tasks that require reasoning
                   such as the generalization of attribute values or performing calculations, such as the unit of measurement normalization, are most challenging for both GPT-3.5 and GPT-4.
                 </td>
+                <br>
                   
                   <table border="1">
                     <caption><b>Table 5: F1-scores for the Extraction Scenario.</b></caption>
@@ -1032,11 +1013,30 @@
             <h2>3. Download</h2>
             <br>
             <tr>
-              <td>The WDC PAVE Datasets are available in our <a href="https://github.com/wbsg-uni-mannheim/wdc-pave" target="_blank">Github Repository</a> </td>
+              <td>The WDC PAVE Extraction Benchmark is available <a href="https://raw.githubusercontent.com/wbsg-uni-mannheim/wdc-pave/main/data/raw/wdc/final_target_scores.jsonl" target="_blank">here</a> </td> <br>
+              <td>The WDC PAVE Extraction and Normalization Benchmark is available <a href="https://raw.githubusercontent.com/wbsg-uni-mannheim/wdc-pave/main/data/raw/wdc_normalized/normalized_target_scores.jsonl" target="_blank">here</a> </td> <br>
+
+                <p>The datasets are structured in the JSON Lines (JSONL) format, supplementing each product with a set of attributes and values. Each entry in the dataset corresponds to a single product offer and includes several key fields:</p>
+                <ul>
+                    <li><strong>id:</strong> The unique WDC product offer identifier.</li>
+                    <li><strong>cluster_id:</strong> The WDC cluster identifier that groups offers referring to the same product.</li>
+                    <li><strong>category:</strong> The product category, e.g. "Computers and Accessories</li>
+                    <li><strong>input_title:</strong> The product title as it appears on the source website, e.g. "435952-B21 HP Xeon E5335 2.0GHz DL360 G5"</li>
+                    <li><strong>input_description:</strong> The product description as it appears on the source website, e.g. "Intel Xeon E5335 DL360 G5(2.0GHz/4-core/8MB-2x4MB/80W)Full Processor Option KitPart Number(s) Part# 435952-B21 Spare 437948-001 Assembly 437426-001"</li>
+                    <li><strong>target_scores:</strong> A structured object detailing the annotated attributes of the product. Each attribute is associated with:
+                        <ul>
+                            <li><b>pid:</b> An array indicating whether the attribute value appears in the title (0) and/or description (1).</li>
+                            <ul>
+                              - <b>Example for target_scores in extraction benchmark</b>: "target_scores": {"Generation": {"G5": {"pid": [0, 1], "score": 1}}, "Part Number": {"435952-B21": {"pid": [0, 1], "score": 1}}, "Product Type": {"Processor Option Kit": {"pid": [1], "score": 1}}, "Cache": {"8MB-2x4MB": {"pid": [1], "score": 1}}, "Processor Type": {"Xeon E5335": {"pid": [0], "score": 1}, "Intel Xeon E5335": {"pid": [1], "score": 1}}, "Processor Core": {"4-core": {"pid": [1], "score": 1}}, "Clock Speed": {"2.0GHz": {"pid": [0, 1], "score": 1}}, "Thermal Design Power": {"80W": {"pid": [1], "score": 1}}, "Processor Quantity": {"n/a": 1}, "Bus Speed": {"n/a": 1}, "Interface": {"n/a": 1}, "Manufacturer": {"HP": {"pid": [0], "score": 1}}, "Capacity": {"n/a": 1}, "Ports": {"n/a": 1}, "Rotational Speed": {"n/a": 1}} <br>
+                              - <b>Example for target_scores in normalized benchmark</b>: "target_scores": {"Generation": {"Generation 5": {"pid": [0, 1], "score": 1}}, "Part Number": {"435952B21": {"pid": [0, 1], "score": 1}}, "Product Type": {"Memory and Processing Upgrades": {"pid": [1], "score": 1}}, "Cache": {"8 Megabytes": {"pid": [1], "score": 1}}, "Processor Type": {"Intel Xeon Series": {"pid": [0, 1], "score": 1}}, "Processor Core": {"4": {"pid": [1], "score": 1}}, "Interface": {"n/a": 1}, "Manufacturer": {"Hewlett-Packard": {"pid": [0], "score": 1}}, "Capacity": {"n/a": 1}, "Ports": {"n/a": 1}, "Rotational Speed": {"n/a": 1}}
+                            </ul>
+                        </ul>
+                    </li>
+                </ul>
+            </section>
         </section>
-  
-      
-  
+        </section>
+
         <section id="references">
           <h2>4. References</h2>
           <p id="agrawal2022large">
