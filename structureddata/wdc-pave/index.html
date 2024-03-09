@@ -859,7 +859,7 @@
                   approximately 80%. GPT-4 reaches a peak F1-score of 91% with ten demonstrations, 
                   marking a notable advancement over GPT-3.5. 
                   
-                  In scenarios involving attribute-value normalization, GPT-4 exhibites superior capabilities, benefiting from <a href="https://raw.githubusercontent.com/wbsg-uni-mannheim/wdc-pave/main/src/zero_shot_prompts_normalization.txt">prompt templates containing normalized example values </a>and <a href="https://raw.githubusercontent.com/wbsg-uni-mannheim/wdc-pave/main/src/few_shot_prompts_normalization.txt">prompt templates containing normalized example values and demonstrations</a>, reaching an F1-Score of 91%, as shown in Table 6.
+                  In scenarios involving attribute-value normalization, GPT-4 exhibites superior capabilities, benefiting from <a href="https://raw.githubusercontent.com/wbsg-uni-mannheim/wdc-pave/main/src/zero_shot_prompts_normalization.txt">prompt templates containing normalized example values</a>, reaching an F1-Score of 86%, and <a href="https://raw.githubusercontent.com/wbsg-uni-mannheim/wdc-pave/main/src/few_shot_prompts_normalization.txt">prompt templates containing normalized example values and demonstrations</a>, reaching an F1-Score of 91%, as shown in Table 6.
                   Detailed analysis of normalization operations shows that GPT-4's performs best in name expansion and string wrangling, achieving F1-scores as high as 98% and 95%, respectively. In line with prior research, normalization tasks that require reasoning
                   such as the generalization of attribute values or performing calculations, such as the unit of measurement normalization, are most challenging for both GPT-3.5 and GPT-4.
                 </td>
@@ -1013,8 +1013,8 @@
             <h2>3. Download</h2>
             <br>
             <tr>
-              <td>The WDC PAVE Extraction Benchmark is available <a href="https://raw.githubusercontent.com/wbsg-uni-mannheim/wdc-pave/main/data/raw/wdc/final_target_scores.jsonl" target="_blank">here</a> </td> <br>
-              <td>The WDC PAVE Extraction and Normalization Benchmark is available <a href="https://raw.githubusercontent.com/wbsg-uni-mannheim/wdc-pave/main/data/raw/wdc_normalized/normalized_target_scores.jsonl" target="_blank">here</a> </td> <br>
+              <td>The WDC PAVE Extraction Benchmark is available <a href="https://raw.githubusercontent.com/wbsg-uni-mannheim/wdc-pave/main/data/raw/wdc/final_target_scores.jsonl" target="_blank">here</a></td><br>.
+              <td>The WDC PAVE Extraction and Normalization Benchmark is available <a href="https://raw.githubusercontent.com/wbsg-uni-mannheim/wdc-pave/main/data/raw/wdc_normalized/normalized_target_scores.jsonl" target="_blank">here</a></td><br>.
 
                 <p>The datasets are structured in the JSON Lines (JSONL) format, supplementing each product with a set of attributes and values. Each entry in the dataset corresponds to a single product offer and includes several key fields:</p>
                 <ul>
