@@ -1,24 +1,152 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WDC-PAVE</title>
-    <link rel="stylesheet" href="https://webdatacommons.org/style.css" type="text/css" media="screen"/>
+    <title>Web Data Commons Product Attribute-Value Extraction Benchmark (WDC PAVE)</title>
+    <link rel='stylesheet' href='https://webdatacommons.org/style.css' type='text/css' media='screen'/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <style>
+        .tar {
+            text-align: right;
+        }
+
+        .rtable {
+            float: right;
+            padding-left: 10px;
+        }
+
+        .smalltable, .smalltable TD, .smalltable TH {
+            font-size: 9pt;
+        }
+
+        .tab {
+            overflow: hidden;
+            border: 1px solid #ccc;
+            background-color: #eaf3fa;
+            clear: both;
+            padding-left: 37px;
+            width: 500px
+        }
+
+        .tab button {
+            background-color: inherit;
+            float: left;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            padding: 15px 15px;
+            transition: 0.3s;
+        }
+
+        .tab button:hover {
+            background-color: #ddd;
+        }
+
+        .tab button.active {
+            background-color: #ccc;
+        }
+
+        .tabcontent {
+            display: none;
+            padding: 6px 12px;
+            border-top: none;
+            animation: fadeEffect 1s;
+            width: 500px
+        }
+
+        .table-wrapper {
+            position: relative;
+        }
+
+        .table-scroll {
+            height: 240px;
+            overflow: auto;
+            margin-top: -10px;
+        }
+
+        .small-table {
+            max-width: 400px; /* Adjust the max-width of the second table */
+        }
+
+        .show {
+            display: block;
+        }
+
+        .no-show {
+            display: none;
+        }
+
+        caption {
+            caption-side: bottom;
+            font-style: italic;
+        }
+
+        td[scope="mergedcol"] {
+            text-align: center;
+        }
+
+        hr {
+            width: 50%;
+            margin: 20px 0; /* This leaves 10px margin on left and right. If only right margin is needed try margin-right: 10px; */
+        }
+
+        @keyframes fadeEffect {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+        google.load('visualization', '1', {
+            packages: ['bar', 'line', 'corechart']
+        });
+        google.setOnLoadCallback(drawOffersPerClassChart);
+        google.setOnLoadCallback(drawOffersPerClassChartEnglish);
+        google.setOnLoadCallback(drawOffersPerTLDChart);
+        google.setOnLoadCallback(drawCategDistributionGS);
+        google.setOnLoadCallback(drawCategDistributionCorpus);
+        google.setOnLoadCallback(drawTopProdPropsNov);
+        google.setOnLoadCallback(drawIDPropsNov);
+        google.setOnLoadCallback(drawStatsGS);
+        google.setOnLoadCallback(drawKVpairPerSpecTable);
+    </script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../jquery.toc.min.js"></script>
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-30248817-1']);
+        _gaq.push(['_trackPageview']);
+
+        (function () {
+            var ga = document.createElement('script');
+            ga.type = 'text/javascript';
+            ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
 </head>
+
 <body>
-  <div id="logo" style="text-align:right; background-color: white;">&nbsp;&nbsp;<a href="http://dws.informatik.uni-mannheim.de"><img
-    src="../../images/ma-logo.gif" alt="University of Mannheim - Logo"></a></div>
+<div id="logo" style="text-align:right; background-color: white;">&nbsp;&nbsp;<a
+        href="http://dws.informatik.uni-mannheim.de"><img
+        src="../../images/ma-logo.gif" alt="University of Mannheim - Logo"></a></div>
 <div id="header">
-  <br>
- <h1 style="font-size: 250%;">Web Data Commons Product Attribute-Value Extraction Data (WDC-PAVE)</h1>
- <br>
+    <h1 style="font-size: 250%;">Web Data Commons Product Attribute-Value Extraction Benchmark (WDC PAVE)</h1>
 </div>
 <div id="authors">
-  <a href="https://www.linkedin.com/in/nick-baumann-4b1158167/">Nick Baumann</a><br />
-  <a href="https://www.uni-mannheim.de/dws/people/researchers/phd-students/alexander-brinkmann/">Alexander Brinkmann</a><br />
-  <a href="http://dws.informatik.uni-mannheim.de/en/people/professors/prof-dr-christian-bizer/">Christian Bizer</a><br />
+    <a href="https://www.linkedin.com/in/nick-baumann-4b1158167/">Nick Baumann</a><br/>
+    <a href="https://www.uni-mannheim.de/dws/people/researchers/phd-students/alexander-brinkmann/">Alexander
+        Brinkmann</a><br/>
+    <a href="http://dws.informatik.uni-mannheim.de/en/people/professors/prof-dr-christian-bizer/">Christian
+        Bizer</a><br/>
 </div>
+<div id="content">
 
     <section>
         <p>This page provides the <b>Web Data Commons Product Attribute-Value Extraction (WDC-PAVE)</b> Datasets for public download. The datasets contains <b>1,420 human annotated product offers</b>, systematically selected from the <a href="https://webdatacommons.org/largescaleproductcorpus/index.html" target="_blank">Web Data Commons Product Matching Corpus</a>,
@@ -29,821 +157,1167 @@
 		<ul>
 			<li><strong>2024-07-03:</strong> The paper <a href="https://arxiv.org/pdf/2403.02130">Using LLMs for the Extraction and Normalization of Product Attribute Values</a> will be presented at <a href="https://conferences.sigappfr.org/adbis2024/">ADBIS 2024</a>.</li>
 		</ul>
-
+    
     <!-- Table of Contents -->
     <nav>
         <h2>Contents</h2>
         <ul>
             <li><a href="#motivation">1. Motivation</a></li>
-              <li><a href="#dataset_creation">2. Dataset Creation</a></li>
-                <ul>
-                    <li><a href="#wdc">2.1 Web Data Commons Large-Scale Product Matching Data</a></li>
-                    <li><a href="#data_selection">2.2 Data Preprocessing and Selection</a></li>
-                    <li><a href="#data_validation">2.3 Data Validation</a></li>
-                    <li><a href="#dataset_structure">2.4 Dataset Structure</a></li>
-                    <li><a href="#dataset_stats">2.5 Dataset Statistics</a></li>
-                    <li><a href="#normalized_dataset">2.6 Normalized Dataset</a></li>
-                </ul>
+            <li><a href="#dataset_creation">2. Benchmark Creation</a></li>
+            <ul>
+                <li><a href="#wdc">2.1 Web Data Commons Large-Scale Product Matching Data</a></li>
+                <li><a href="#data_selection">2.2 Data Preprocessing and Selection</a></li>
+                <li><a href="#data_validation">2.3 Data Validation</a></li>
+                <li><a href="#dataset_stats">2.4 Benchmark Statistics</a></li>
+                <li><a href="#normalized_dataset">2.5 Normalized Benchmark</a></li>
+            </ul>
+            <li><a href="#experiments">3. Baseline Experiments</a></li>
             <li><a href="#download">3. Downlaod</a></li>
             <li><a href="#references">4. References</a></li>
             </li>
         </ul>
     </nav>
-    
-    <section id="motivation">
-        <h2>1 Motivation</h2>
-        <figure style="float: right; margin-left: 20px; width: 30%; max-width: 1600px;">
-          <figcaption><b>Figure 1: Sample product title showcasing labeled attributes and their corresponding values</b></figcaption>
-          <img src="figures/sample_product.png" alt="Sample product title showcasing labeled attributes and their corresponding values" style="width: 100%; height: auto;">
-      </figure>
-        <p>
-            Extracting attribute-value pairs from product titles plays a vital role in applications such as demand prediction, recommendation engines, and analyzing product success, which depend on well-structured data. Despite product titles and descriptions being rich in detail, the scarcity and limitations of structured product data can hinder the effectiveness of these applications. 
-            Consequently, numerous scholars have endeavored to develop models for extracting product information that can identify informative attribute-value pairs from titles and descriptions. Figure 1 presents a sample listing for an oatmeal breakfast product and
-            demonstrates the outcome of applying attribute/value extraction to its title.
-            The trend in research is, as in many other domains, shifting from employing pre-trained language models (PLMs) like BERT towards leveraging Large Language Models (LLMs) such as ChatGPT for 
-            instruction. Large Language Models (LLMs) stand out because they minimally require, if any, extensive amounts of labeled training data and possess the ability to generalize across 
-            attribute-value pairs not seen during training. Furthermore, LLMs' capabilities may surpass PLMs in another domain: PLMs extract, by design, sequences of tokens forming attribute values. 
-            However, the raw extracted data often requires further processing to be fully usable in e-commerce contexts. 
-            This includes basic data wrangling tasks, such as removing special characters or conversion of measurements, as well as advanced operations requiring domain knowledge, such as generalizing product 
-            types to categories to ensure consistency and comparability across product listings. LLMs embody a vast repository of human knowledge, 
-            enabling them to perform complex data wrangling tasks with efficiency comparable to specialized systems. Their dual capacity to extract relevant information with minimal training data and simultaneously 
-            streamline the data wrangling process positions LLMs as ideal candidates for advancing product attribute value extraction methodologies.
-            However, the availability of reliable gold standards for evaluating these approaches is scarce. The WDC-PAVE dataset tries to address this challenge by providing a heterogeneous collection of 1420 product 
-            titles and descriptions from the <a href="https://webdatacommons.org/largescaleproductcorpus/index.html" target="_blank">WDC Product Matching Corpus</a>, 
-            meticulously annotated in accordance with stringent guidelines to guarantee the highest level of data consistency. 
-            By making the WDC-PAVE dataset publicly available, we aim to contribute to ongoing research in product attribute-value extraction using LLMs. 
-            Our results from various zero- and few-shot experiments with GPT-3.5 and GPT-4 demonstrate that the dataset exhibits high reliability, showcasing its potential to serve as a benchmark for both 
-            extract-only and extract-and-normalize tasks.
 
-    </section>
 
-    <section id="dataset_creation">
-        <h2>2. Dataset Creation</h2>
+    <span id="motivation"></span>
+    <h2>1. Motivation</h2>
+    <p> In the rapidly evolving e-commerce landscape, the extraction of attribute-value pairs from product titles and
+        descriptions is a necessity for faceted search and filtering, demand prediction, recommendation systems, and
+        product analysis (<a href="#jaimovitch2023can">Jaimovitch-López et al. (2023)</a>).
+        Recent shifts in the research domain underscore a transition from pre-trained language models (PLMs), such as
+        BERT, to the cutting-edge capabilities of Large Language Models (LLMs) like OpenAI's GPT series. LLMs,
+        such as GPT-3.5 and GPT-4, represent a significant advancement in various applications of information extraction
+        (see, e.g. <a href="#agrawal2022large">Agrawal et al. (2022)</a>, <a href="#brinkmann2023product">Brinkmann et
+            al. (2023)</a>, <a href="#shyr2023identifying">Shyr et al. (2023)</a>),
+        requiring a minimal amount of labeled data to generalize across attribute-value pairs that have not been seen
+        during training.
+        Furthermore, LLMs have been found to have the inherent ability to perform complex data normalization tasks,
+        ranging from basic wrangling to domain-specific operations (<a href="#jaimovitch2023can">Jaimovitch-López et
+            al., 2023</a>).
 
-        <section id="wdc">
-            <h3>2.1 Web Data Commons Large-Scale Product Matching Data</h3>
-            <p>The WDC initative harvests structured information from the Common Crawl, which
-                stands as the most extensive publicly accessible web corpus. The extracted data is
-                then made available for public download, aimed at assisting both researchers and
-                enterprises in leveraging the vast repository of data present on the Web. The <a href="https://webdatacommons.org/largescaleproductcorpus/index.html" target="_blank">WDC Product Matching Corpus</a>
-                comprises over 26 million product offers collected from approximately 79,000 websites. This corpus was initially developed for the purpose
-                of assessing product matching techniques, categorizing the offers into 16 million
-                product clusters. Each cluster consolidates offers pertaining to the same product by employing product identifiers for organization, a feature that proved beneficial for
-                our manual annotation of the WDC-PAVE dataset. Exploiting the cluster structure makes the resulting annotated dataset not only suitable for product attribute value extraction,
-                but also for product matching. Besides product titles, descriptions and product category annotations, about 17% of the corpus features the specification table content of
-                the product's website as a string, as well as key-value pairs that are extracted from
-                these tables using a table detection heuristic (<a href="https://dl.acm.org/doi/fullHtml/10.1145/3308560.3316609"><cite>Primpeli et al. 2019</cite></a>). 
-                These key-value pairs build the foundation for the WCD-PAVE dataset.  </p>
-        </section>
-        
-        <section id="data_selection">
-            <h3>2.2 Data Preprocessing and Selection</h3>
-            <p>In light of the noisy nature of web data, we perform a series of cleansing and filtering steps upon creating the dataset. 
-                These measures are designed to streamline the annotation process to the greatest extent feasible. 
-                Initially, product offers that are missing titles, descriptions, or key-value pairs from specification tables are excluded. In an effort to reduce the presence of noisy descriptions that are largely irrelevant for prodcut information, 
-                products whose descriptions exceed 1000 characters are also discarded. 
-                Furthermore, HTML and language tags are stripped from the titles and descriptions. 
-                We retain only product texts that are in English.</p>
-            <p>As previously mentioned, the WDC Product Data Corpus organizes offers into clusters of products. In an effort to amass a wide array of unique attribute-value pairs 
-                before proceeding with annotation, the key-value pairs from all offers within a cluster are consolidated. This enrichment process guarantees that attribute-values from all 
-                retailers are attributed to every individual product offer, ensuring the greatest coverage of attribute-values for each offer. 
-                In this context, product offers that belong to clusters with fewer than two domains or have a cluster size smaller than two are excluded from the dataset. 
-                This exclusion strategy is aimed at ensuring a diverse array of sources, thereby enhancing the richness of product information. 
-                The selection of the most appropriate categories for the WDC-AVE dataset involved ranking product offer categories by their average cluster sizes and conducting a manual review of the product texts to exclude noisy categories. 
-                Consequently, the categories chosen were "Computers And Accessories", "Jewelry", "Grocery And Gourmet Food", "Office Products", and "Home And Garden," as these were deemed to offer the most accurate and relevant data.</p>
-            <p>To streamline the dataset, we embarked on a process to analyze and refine its attributes. Initially, we identified a wide range of attributes across all 
-                    categories, with each category having between 190 to 1475 unique attributes. We noted that some attributes were functionally 
-                    equivalent despite different names, and others were irrelevant noise. To manage this diversity and avoid disproportionate attribute 
-                    loss across categories, we implemented a tailored filtering process. This process adjusted the attribute removal thresholds by category 
-                    based on their unique distributions, effectively reducing the attribute count to 41-169 per category. Subsequently, we manually merged 
-                    equivalent attributes and eliminated any left noise attributes.</p>
-            <p>To accurately link product titles and descriptions with their respective attributes and values, 
-                we employed a string-matching method. This process identified attribute-value pairs directly mentioned in 
-                the product text as 'positive pairs'. Conversely, pairs not found in the title or description were classified as 
-                'negative pairs'. To reduce the chance of overlooking valid matches due to textual variations, we adjusted for different 
-                phrasings of the same attribute-value pairs. This step was crucial for refining our focus to attributes most likely to be 
-                relevant, which we then annotated manually. Specifically, we eliminated attributes from manual review if they had a matching
-                 rate of less than 10% with the product text, streamlining the annotation process. </p>
-                
-            <p>In sampling the product offers, our methodology advanced beyond mere random selection by leveraging a targeted approach that accounted for both the main category and the 'Product Type' attribute, which is consistent across all five categories. By initially selecting a maximum of one offer from each product cluster to form a candidate offer pool, we effectively eliminated duplicates and preserved a wide range of attribute-value data. This process, followed by stratified sampling based on category and product type, significantly increased the diversity of product types in our dataset. Compared to random category-based sampling, our 
-                approach markedly improved the dataset's overall quality and relevance for attribute-value extraction tasks, ensuring a more varied representation 
-                of product types.</p>
-        </section>
-        
-        <section id="annotation_process">
-            <h3>2.3 Annotation Process</h3>
-            <p>To ensure precise and comprehensive annotation, a multi-step process was utilized. 
-              Initially, offers from each product category were standardized by supplementing missing category-specific attributes, making sure that every product offer 
-              is supplied with all applicable attributes from its respective category. String matching against product titles and descriptions using the existing category 
-              attribute-values facilitated the identification of potential values for these attributes. </p>
-            <p>Detailed guidelines were established to maintain consistency and quality in identifying attribute-value pairs. This included prioritizing complete spans over 
-              incomplete ones and assigning a single attribute type to each span, with special attention to prevent overlap among attribute values or with unrelated text segments. 
-              Efforts were made to annotate values concisely, including all relevant variations and expressions of values.</p>
-            <p>A custom annotation tool was developed to streamline the process, facilitating validation of attribute values with user input. This tool employed heuristic techniques 
-              to enhance annotation precision and efficiency, even for non-domain experts. It provided attribute names, suggested values (collected from all product offers of the respecitve cluster), 
-              and context through example values and descriptions, aiding in the accurate categorization of data. The tool's design allowed for iterative user validation, ensuring the accuracy of 
-              recorded values.</p>
-            <p>The process involved a second round of annotation to add attributes that were previously missing in the data, culminating in the annotation of 
-              21,904 annotated attribute-value pairs  across 1420 products. This extensive effort also included online research to verify uncertain items, ensuring the integrity of 
-              the dataset's annotations.</p>
-        </section>
-        
-        <section id="dataset_structure">
-            <h3>2.4 Dataset Structure</h3>
-            <p>The dataset is structured in the JSON Lines (JSONL) format, supplementing each product with a comprehensive set of attributes and values. This format enables the representation of complex data about products in a structured and accessible manner. Each entry in the dataset corresponds to a single product offer and includes several key fields:</p>
-            <ul>
-                <li><strong>id:</strong> The unique WDC product offer identifier.</li>
-                <li><strong>cluster_id:</strong> The WDC cluster identifier that groups offers referring to the same product.</li>
-                <li><strong>category:</strong> The product category.</li>
-                <li><strong>input_title:</strong> The product title as it appears on the source website.</li>
-                <li><strong>input_description:</strong> The product description as it appears on the source website.</li>
-                <li><strong>target_scores:</strong> A structured object detailing the annotated attributes of the product. Each attribute is associated with:
-                    <ul>
-                        <li><b>pid:</b> An array indicating whether the attribute value appears in the title (0) and/or description (1).</li>
-                    </ul>
-                </li>
-            </ul>
-        </section>
-    </section>
 
-    <section id="dataset_stats">
-        <h3>2.5 Dataset Statistics</h3>
-        <p>Table 1 provides an overview of the WDC-PAVE dataset, detailing that it consists of 1,420 unique product 
-            listings spread over five distinct categories, featuring a collective total of 70 different attributes across 
-            these sectors. Table 2 further delineates the dataset by category: "Computers and Accessories" are described by 
-            15 unique attributes, "Home And Garden" by 20, "Office Products" by 18, "Grocery And Gourmet Food" by 8, and "Jewelry" 
-            by 9. On average, each product has 6.51 attribute values correctly matched to its title or description. This average match 
-            rate ranges from a low of 5.18 in "Jewelry" to a high of 7.52 in "Home And Garden. Figure 2 illustrates the distribution of positive pairs across the five categories.
-            Moreover, the dataset exhibits several critical characteristics vital for product attribute value extraction tasks. 
-            Notably, the dataset features an average of 8.91 negative pairs per product, highlighting the challenge of distinguishing between 
-            relevant and irrelevant attribute values. The dataset's richness is also evident in the average number 
-            of unique values per attribute, recorded at 70.43, with a median of 41 and a maximum of 416 unique values for 
-            a single attribute, pointing to a wide variance in attribute specificity and the potential for complex attribute-value 
-            relationships. Table 3 summarizes the number of unique values and the share of negative pairs per attribute in further detail.</p>
-        <div style="display: flex; flex-wrap: wrap; gap: 0px;">
-            <div style="flex: 1; min-width: 0px; margin-right: -500px; margin-left: 0px"> 
-                <table border="1">
-            <caption><b>Table 1: Properties of the WDC-PAVE Dataset</b></caption>
-            <thead>
-                <tr>
-                    <th>Property</th>
-                    <th>Value</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Number of Product Offers</td>
-                    <td>1420</td>
-                </tr>
-                <tr>
-                    <td>Number of Unique Categories</td>
-                    <td>5</td>
-                </tr>
-                <tr>
-                    <td>Number of Unique Category-Attributes</td>
-                    <td>70</td>
-                </tr>
-                <tr>
-                    <td>Average Number of Positive Pairs per Product</td>
-                    <td>6.51</td>
-                </tr>
-                <tr>
-                    <td>Average Number of Negative Pairs per Product</td>
-                    <td>8.91</td>
-                </tr>
-                <tr>
-                    <td>Average Number of Unique Values per Attribute</td>
-                    <td>70.43</td>
-                </tr>
-                <tr>
-                    <td>Median Number of Unique Values per Attribute</td>
-                    <td>41</td>
-                </tr>
-                <tr>
-                    <td>Maximum Number of Unique Values per Attribute</td>
-                    <td>416</td>
-                </tr>
-                <tr>
-                    <td>Number of annotated attribute-values</td>
-                    <td>24582</td>
-                </tr>
-                <tr>
-                    <td>Of which are n/a</td>
-                    <td>12648</td>
-                </tr>
-                <tr>
-                    <td>Number of annotated attributes</td>
-                    <td>21904</td>
-                </tr>
-                <tr>
-                    <td>Of which are Positive</td>
-                    <td>42.26%</td>
-                </tr>
-                <tr>
-                    <td>Of which are Negative</td>
-                    <td>57.74%</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-   
 
-    <div style="flex: 1; min-width: 0px; margin-left: -100px; margin-right: 80px">
-        <table border="1">
-            <caption><b>Table 2: Category-Specific Properties</b></caption>
-            <thead>
-                <tr>
-                    <th>Category</th>
-                    <th>Number of Unique Source URLs</th>
-                    <th>Number of Unique Attributes</th>
-                    <th>Number of Product Offers</th>
-                    <th>Number of Annotated Attribute-Values</th>
-                    <th>Of which are Positive Pairs</th>
-                    <th>Of which are Negative Pairs</th>
-                    <th>Average WDC Product Cluster Size by Category</th>
-                    <th>Average Number of Positive Pairs Per Product Offer</th>
-                    <th>Average Number of Negative Pairs Per Product Offer</th>
-                    <th>Average Number of Unique Values per Attribute</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Home And Garden</td>
-                    <td>19</td>
-                    <td>20</td>
-                    <td>356</td>
-                    <td>7,854</td>
-                    <td>43.44%</td>
-                    <td>56.56%</td>
-                    <td>5.12</td>
-                    <td>7.52</td>
-                    <td>12.48</td>
-                    <td>74.25</td>
-                </tr>
-                <tr>
-                    <td>Computers And Accessories</td>
-                    <td>13</td>
-                    <td>15</td>
-                    <td>436</td>
-                    <td>7,492</td>
-                    <td>47.2%</td>
-                    <td>52.8%</td>
-                    <td>2.07</td>
-                    <td>5.92</td>
-                    <td>9.07</td>
-                    <td>69.33</td>
-                </tr>
-                <tr>
-                    <td>Grocery And Gourmet Food</td>
-                    <td>20</td>
-                    <td>8</td>
-                    <td>81</td>
-                    <td>814</td>
-                    <td>78.73%</td>
-                    <td>21.27%</td>
-                    <td>2.02</td>
-                    <td>5.85</td>
-                    <td>2.14</td>
-                    <td>47.12</td>
-                </tr>
-                <tr>
-                    <td>Office Products</td>
-                    <td>12</td>
-                    <td>18</td>
-                    <td>297</td>
-                    <td>5,942</td>
-                    <td>47.5%</td>
-                    <td>52.5%</td>
-                    <td>2.91</td>
-                    <td>7.49</td>
-                    <td>10.50</td>
-                    <td>90.89</td>
-                </tr>
-                <tr>
-                    <td>Jewelry</td>
-                    <td>23</td>
-                    <td>9</td>
-                    <td>250</td>
-                    <td>2,481</td>
-                    <td>61.51%</td>
-                    <td>38.49%</td>
-                    <td>2.01</td>
-                    <td>5.18</td>
-                    <td>3.82</td>
-                    <td>43.56</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-    </section>
-
-    <br>
-
-    <figure>
-        <figcaption><b>Figure 2: Distribution of Positive Pairs across Categories</b></figcaption>
-        <img src="figures/WDC_histogram_positive_attribute_counts.svg" alt="Distribution of Positive Pairs across Categories" style="width: 100%; max-width: 1600px; height: auto;">
+    <figure style="float: right; margin-left: 20px; width: 30%; max-width: 1600px;">
+        <figcaption><b>Figure 1: Sample product title showcasing labeled attributes and their corresponding normalized
+            values</b></figcaption>
+        <img src="figures/example_product.png"
+             alt="Sample product title showcasing labeled attributes and their corresponding normalized values"
+             style="width: 100%; height: auto;">
     </figure>
 
-    <head>
-      <style>
-          table.myTable th, table.myTable td {
-              padding: 5px; /* Adjust padding to reduce space */
-              height: 10px; /* Adjust height as needed */
-          }
-      </style>
-      </head>
-      <body>
-      <table border="1" style="width:50%;" class="myTable">
-            <caption><b>Table 3: Overview of Attributes</b></caption>
-        <thead>
-          <tr>
-            <th class="tg-rn0y"><span style="font-weight:normal">Category</span></th>
-            <th class="tg-rn0y"><span style="font-weight:normal">Attribute</span></th>
-            <th class="tg-rn0y"><span style="font-weight:normal">Unique Values Count</span></th>
-            <th class="tg-rn0y"><span style="font-weight:normal">Share of Negative Pairs</span></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td class="tg-rn0y" rowspan="15"><span style="font-weight:normal">Computers And Accessories</span></td>
-            <td class="tg-itl6"><span style="font-weight:normal">Manufacturer</span></td>
-            <td class="tg-as6v"><span style="font-weight:normal">31</span></td>
-            <td class="tg-as6v"><span style="font-weight:normal">2,37</span></td>
-          </tr>
-          <tr>
-            <td class="tg-itl6"><span style="font-weight:normal">Generation</span></td>
-            <td class="tg-as6v"><span style="font-weight:normal">38</span></td>
-            <td class="tg-as6v"><span style="font-weight:normal">51,05</span></td>
-          </tr>
-          <tr>
-            <td class="tg-itl6"><span style="font-weight:normal">Part Number</span></td>
-            <td class="tg-as6v"><span style="font-weight:normal">438</span></td>
-            <td class="tg-krfe"><span style="font-weight:normal">0,87</span></td>
-          </tr>
-          <tr>
-            <td class="tg-kvxc"><span style="font-weight:normal">Capacity</span></td>
-            <td class="tg-as6v"><span style="font-weight:normal">116</span></td>
-            <td class="tg-as6v"><span style="font-weight:normal">29,49</span></td>
-          </tr>
-          <tr>
-            <td class="tg-kvxc"><span style="font-weight:normal">Product Type</span></td>
-            <td class="tg-as6v"><span style="font-weight:normal">236</span></td>
-            <td class="tg-as6v"><span style="font-weight:normal">3,96</span></td>
-          </tr>
-          <tr>
-            <td class="tg-kvxc"><span style="font-weight:normal">Interface</span></td>
-            <td class="tg-as6v"><span style="font-weight:normal">62</span></td>
-            <td class="tg-as6v"><span style="font-weight:normal">28,64</span></td>
-          </tr>
-          <tr>
-            <td class="tg-kvxc"><span style="font-weight:normal">Cache</span></td>
-            <td class="tg-as6v"><span style="font-weight:normal">34</span></td>
-            <td class="tg-as6v"><span style="font-weight:normal">83,07</span></td>
-          </tr>
-          <tr>
-            <td class="tg-kvxc"><span style="font-weight:normal">Ports</span></td>
-            <td class="tg-as6v"><span style="font-weight:normal">21</span></td>
-            <td class="tg-as6v"><span style="font-weight:normal">68,73</span></td>
-          </tr>
-          <tr>
-            <td class="tg-kvxc"><span style="font-weight:normal">Processor Core</span></td>
-            <td class="tg-as6v"><span style="font-weight:normal">13</span></td>
-            <td class="tg-as6v"><span style="font-weight:normal">90,62</span></td>
-          </tr>
-          <tr>
-            <td class="tg-kvxc"><span style="font-weight:normal">Processor Type</span></td>
-            <td class="tg-as6v"><span style="font-weight:normal">77</span></td>
-            <td class="tg-as6v"><span style="font-weight:normal">77,02</span></td>
-          </tr>
-          <tr>
-            <td class="tg-kvxc"><span style="font-weight:normal">Processor Quantity</span></td>
-            <td class="tg-as6v"><span style="font-weight:normal">6</span></td>
-            <td class="tg-as6v"><span style="font-weight:normal">92,43</span></td>
-          </tr>
-          <tr>
-            <td class="tg-kvxc"><span style="font-weight:normal">Bus Speed</span></td>
-            <td class="tg-as6v"><span style="font-weight:normal">5</span></td>
-            <td class="tg-as6v"><span style="font-weight:normal">98,17</span></td>
-          </tr>
-          <tr>
-            <td class="tg-kvxc"><span style="font-weight:normal">Thermal Design Power</span></td>
-            <td class="tg-as6v"><span style="font-weight:normal">14</span></td>
-            <td class="tg-as6v"><span style="font-weight:normal">92,2</span></td>
-          </tr>
-          <tr>
-            <td class="tg-kvxc"><span style="font-weight:normal">Clock Speed</span></td>
-            <td class="tg-as6v"><span style="font-weight:normal">58</span></td>
-            <td class="tg-as6v"><span style="font-weight:normal">76,64</span></td>
-          </tr>
-          <tr>
-            <td class="tg-kvxc"><span style="font-weight:normal">Rotational Speed</span></td>
-            <td class="tg-as6v"><span style="font-weight:normal">12</span></td>
-            <td class="tg-as6v"><span style="font-weight:normal">56,39</span></td>
-          </tr>
-          <tr>
-            <td class="tg-rn0y" rowspan="20"><span style="font-weight:normal">Home And Garden</span></td>
-            <td class="tg-kvxc"><span style="font-weight:normal">Manufacturer</span></td>
-            <td class="tg-as6v"><span style="font-weight:normal">111</span></td>
-            <td class="tg-as6v"><span style="font-weight:normal">0</span></td>
-          </tr>
-          <tr>
-            <td class="tg-kvxc"><span style="font-weight:normal">Product Type</span></td>
-            <td class="tg-as6v"><span style="font-weight:normal">379</span></td>
-            <td class="tg-as6v"><span style="font-weight:normal">0</span></td>
-          </tr>
-          <tr>
-            <td class="tg-kvxc"><span style="font-weight:normal">Width</span></td>
-            <td class="tg-as6v"><span style="font-weight:normal">95</span></td>
-            <td class="tg-as6v"><span style="font-weight:normal">32,28</span></td>
-          </tr>
-          <tr>
-            <td class="tg-kvxc"><span style="font-weight:normal">Length</span></td>
-            <td class="tg-as6v"><span style="font-weight:normal">80</span></td>
-            <td class="tg-as6v"><span style="font-weight:normal">55,36</span></td>
-          </tr>
-          <tr>
-            <td class="tg-kvxc"><span style="font-weight:normal">Depth</span></td>
-            <td class="tg-as6v"><span style="font-weight:normal">48</span></td>
-            <td class="tg-as6v"><span style="font-weight:normal">74,59</span></td>
-          </tr>
-          <tr>
-            <td class="tg-kvxc"><span style="font-weight:normal">Gauge</span></td>
-            <td class="tg-as6v"><span style="font-weight:normal">10</span></td>
-            <td class="tg-as6v"><span style="font-weight:normal">75,14</span></td>
-          </tr>
-          <tr>
-            <td class="tg-kvxc"><span style="font-weight:normal">Material</span></td>
-            <td class="tg-as6v"><span style="font-weight:normal">131</span></td>
-            <td class="tg-as6v"><span style="font-weight:normal">12,64</span></td>
-          </tr>
-          <tr>
-            <td class="tg-kvxc"><span style="font-weight:normal">Stainless Steel Series</span></td>
-            <td class="tg-as6v"><span style="font-weight:normal">7</span></td>
-            <td class="tg-as6v"><span style="font-weight:normal">75,56</span></td>
-          </tr>
-          <tr>
-            <td class="tg-kvxc"><span style="font-weight:normal">Cooling</span></td>
-            <td class="tg-as6v"><span style="font-weight:normal">19</span></td>
-            <td class="tg-as6v"><span style="font-weight:normal">90,46</span></td>
-          </tr>
-          <tr>
-            <td class="tg-kvxc"><span style="font-weight:normal">Splash</span></td>
-            <td class="tg-as6v"><span style="font-weight:normal">34</span></td>
-            <td class="tg-as6v"><span style="font-weight:normal">77,78</span></td>
-          </tr>
-          <tr>
-            <td class="tg-kvxc"><span style="font-weight:normal">Shape</span></td>
-            <td class="tg-as6v"><span style="font-weight:normal">43</span></td>
-            <td class="tg-as6v"><span style="font-weight:normal">77,24</span></td>
-          </tr>
-          <tr>
-            <td class="tg-kvxc"><span style="font-weight:normal">Height</span></td>
-            <td class="tg-as6v"><span style="font-weight:normal">84</span></td>
-            <td class="tg-as6v"><span style="font-weight:normal">63,91</span></td>
-          </tr>
-          <tr>
-            <td class="tg-kvxc"><span style="font-weight:normal">Color</span></td>
-            <td class="tg-as6v"><span style="font-weight:normal">74</span></td>
-            <td class="tg-as6v"><span style="font-weight:normal">57,25</span></td>
-          </tr>
-          <tr>
-            <td class="tg-kvxc"><span style="font-weight:normal">Retail UPC</span></td>
-            <td class="tg-as6v"><span style="font-weight:normal">29</span></td>
-            <td class="tg-as6v"><span style="font-weight:normal">92,13</span></td>
-          </tr>
-          <tr>
-            <td class="tg-kvxc"><span style="font-weight:normal">Manufacturer Stock Number</span></td>
-            <td class="tg-as6v"><span style="font-weight:normal">332</span></td>
-            <td class="tg-as6v"><span style="font-weight:normal">9,32</span></td>
-          </tr>
-          <tr>
-            <td class="tg-kvxc"><span style="font-weight:normal">Heat</span></td>
-            <td class="tg-as6v"><span style="font-weight:normal">12</span></td>
-            <td class="tg-as6v"><span style="font-weight:normal">84,35</span></td>
-          </tr>
-          <tr>
-            <td class="tg-kvxc"><span style="font-weight:normal">Shelves</span></td>
-            <td class="tg-as6v"><span style="font-weight:normal">8</span></td>
-            <td class="tg-as6v"><span style="font-weight:normal">91,57</span></td>
-          </tr>
-          <tr>
-            <td class="tg-kvxc"><span style="font-weight:normal">Base</span></td>
-            <td class="tg-as6v"><span style="font-weight:normal">20</span></td>
-            <td class="tg-as6v"><span style="font-weight:normal">74,62</span></td>
-          </tr>
-          <tr>
-            <td class="tg-kvxc"><span style="font-weight:normal">Voltage</span></td>
-            <td class="tg-as6v"><span style="font-weight:normal">14</span></td>
-            <td class="tg-as6v"><span style="font-weight:normal">89,39</span></td>
-          </tr>
-          <tr>
-            <td class="tg-kvxc"><span style="font-weight:normal">Capacity</span></td>
-            <td class="tg-as6v"><span style="font-weight:normal">148</span></td>
-            <td class="tg-as6v"><span style="font-weight:normal">59,85</span></td>
-          </tr>
-          <tr>
-            <td class="tg-rn0y" rowspan="18"><span style="font-weight:normal">Office Products</span></td>
-            <td class="tg-kvxc"><span style="font-weight:normal">Product Type</span></td>
-            <td class="tg-as6v"><span style="font-weight:normal">373</span></td>
-            <td class="tg-as6v"><span style="font-weight:normal">0</span></td>
-          </tr>
-          <tr>
-            <td class="tg-kvxc"><span style="font-weight:normal">Brand</span></td>
-            <td class="tg-as6v"><span style="font-weight:normal">118</span></td>
-            <td class="tg-as6v"><span style="font-weight:normal">0,31</span></td>
-          </tr>
-          <tr>
-            <td class="tg-kvxc"><span style="font-weight:normal">Color(s)</span></td>
-            <td class="tg-as6v"><span style="font-weight:normal">118</span></td>
-            <td class="tg-as6v"><span style="font-weight:normal">9,28</span></td>
-          </tr>
-          <tr>
-            <td class="tg-kvxc"><span style="font-weight:normal">Retail UPC</span></td>
-            <td class="tg-as6v"><span style="font-weight:normal">136</span></td>
-            <td class="tg-as6v"><span style="font-weight:normal">54,55</span></td>
-          </tr>
-          <tr>
-            <td class="tg-kvxc"><span style="font-weight:normal">Manufacturer Stock Number</span></td>
-            <td class="tg-as6v"><span style="font-weight:normal">296</span></td>
-            <td class="tg-as6v"><span style="font-weight:normal">1,34</span></td>
-          </tr>
-          <tr>
-            <td class="tg-kvxc"><span style="font-weight:normal">Pack Quantity</span></td>
-            <td class="tg-as6v"><span style="font-weight:normal">189</span></td>
-            <td class="tg-as6v"><span style="font-weight:normal">33,78</span></td>
-          </tr>
-          <tr>
-            <td class="tg-kvxc"><span style="font-weight:normal">Material</span></td>
-            <td class="tg-as6v"><span style="font-weight:normal">158</span></td>
-            <td class="tg-as6v"><span style="font-weight:normal">27,34</span></td>
-          </tr>
-          <tr>
-            <td class="tg-kvxc"><span style="font-weight:normal">Width</span></td>
-            <td class="tg-as6v"><span style="font-weight:normal">117</span></td>
-            <td class="tg-as6v"><span style="font-weight:normal">34,95</span></td>
-          </tr>
-          <tr>
-            <td class="tg-kvxc"><span style="font-weight:normal">Height</span></td>
-            <td class="tg-as6v"><span style="font-weight:normal">99</span></td>
-            <td class="tg-as6v"><span style="font-weight:normal">46,25</span></td>
-          </tr>
-          <tr>
-            <td class="tg-kvxc"><span style="font-weight:normal">Mounting</span></td>
-            <td class="tg-as6v"><span style="font-weight:normal">30</span></td>
-            <td class="tg-as6v"><span style="font-weight:normal">88,82</span></td>
-          </tr>
-          <tr>
-            <td class="tg-kvxc"><span style="font-weight:normal">Length</span></td>
-            <td class="tg-as6v"><span style="font-weight:normal">30</span></td>
-            <td class="tg-as6v"><span style="font-weight:normal">89,97</span></td>
-          </tr>
-          <tr>
-            <td class="tg-kvxc"><span style="font-weight:normal">Binding</span></td>
-            <td class="tg-as6v"><span style="font-weight:normal">48</span></td>
-            <td class="tg-as6v"><span style="font-weight:normal">82,52</span></td>
-          </tr>
-          <tr>
-            <td class="tg-kvxc"><span style="font-weight:normal">Closure</span></td>
-            <td class="tg-as6v"><span style="font-weight:normal">23</span></td>
-            <td class="tg-as6v"><span style="font-weight:normal">87,66</span></td>
-          </tr>
-          <tr>
-            <td class="tg-kvxc"><span style="font-weight:normal">Depth</span></td>
-            <td class="tg-as6v"><span style="font-weight:normal">37</span></td>
-            <td class="tg-as6v"><span style="font-weight:normal">87,09</span></td>
-          </tr>
-          <tr>
-            <td class="tg-kvxc"><span style="font-weight:normal">Paper Weight</span></td>
-            <td class="tg-as6v"><span style="font-weight:normal">25</span></td>
-            <td class="tg-as6v"><span style="font-weight:normal">90,67</span></td>
-          </tr>
-          <tr>
-            <td class="tg-kvxc"><span style="font-weight:normal">Sheet Perforation</span></td>
-            <td class="tg-as6v"><span style="font-weight:normal">8</span></td>
-            <td class="tg-as6v"><span style="font-weight:normal">95,3</span></td>
-          </tr>
-          <tr>
-            <td class="tg-kvxc"><span style="font-weight:normal">Capacity</span></td>
-            <td class="tg-as6v"><span style="font-weight:normal">58</span></td>
-            <td class="tg-as6v"><span style="font-weight:normal">80,51</span></td>
-          </tr>
-          <tr>
-            <td class="tg-kvxc"><span style="font-weight:normal">Page Yield</span></td>
-            <td class="tg-as6v"><span style="font-weight:normal">21</span></td>
-            <td class="tg-as6v"><span style="font-weight:normal">92,74</span></td>
-          </tr>
-          <tr>
-            <td class="tg-rn0y" rowspan="8"><span style="font-weight:normal">Grocery And Gourmet Food</span></td>
-            <td class="tg-kvxc"><span style="font-weight:normal">Brand</span></td>
-            <td class="tg-as6v"><span style="font-weight:normal">51</span></td>
-            <td class="tg-as6v"><span style="font-weight:normal">0</span></td>
-          </tr>
-          <tr>
-            <td class="tg-kvxc"><span style="font-weight:normal">Product Type</span></td>
-            <td class="tg-as6v"><span style="font-weight:normal">95</span></td>
-            <td class="tg-as6v"><span style="font-weight:normal">0</span></td>
-          </tr>
-          <tr>
-            <td class="tg-kvxc"><span style="font-weight:normal">Packing Type</span></td>
-            <td class="tg-as6v"><span style="font-weight:normal">47</span></td>
-            <td class="tg-as6v"><span style="font-weight:normal">16,54</span></td>
-          </tr>
-          <tr>
-            <td class="tg-kvxc"><span style="font-weight:normal">Flavor</span></td>
-            <td class="tg-as6v"><span style="font-weight:normal">57</span></td>
-            <td class="tg-as6v"><span style="font-weight:normal">32,99</span></td>
-          </tr>
-          <tr>
-            <td class="tg-kvxc"><span style="font-weight:normal">Size/Weight</span></td>
-            <td class="tg-as6v"><span style="font-weight:normal">52</span></td>
-            <td class="tg-as6v"><span style="font-weight:normal">25,56</span></td>
-          </tr>
-          <tr>
-            <td class="tg-kvxc"><span style="font-weight:normal">Pack Quantity</span></td>
-            <td class="tg-as6v"><span style="font-weight:normal">44</span></td>
-            <td class="tg-as6v"><span style="font-weight:normal">29,89</span></td>
-          </tr>
-          <tr>
-            <td class="tg-kvxc"><span style="font-weight:normal">Manufacturer Stock Number</span></td>
-            <td class="tg-as6v"><span style="font-weight:normal">64</span></td>
-            <td class="tg-as6v"><span style="font-weight:normal">24,1</span></td>
-          </tr>
-          <tr>
-            <td class="tg-kvxc"><span style="font-weight:normal">Retail UPC</span></td>
-            <td class="tg-as6v"><span style="font-weight:normal">31</span></td>
-            <td class="tg-as6v"><span style="font-weight:normal">62,96</span></td>
-          </tr>
-          <tr>
-            <td class="tg-rn0y" rowspan="9"><span style="font-weight:normal">Jewelry</span></td>
-            <td class="tg-kvxc"><span style="font-weight:normal">Product Type</span></td>
-            <td class="tg-as6v"><span style="font-weight:normal">61</span></td>
-            <td class="tg-as6v"><span style="font-weight:normal">0</span></td>
-          </tr>
-          <tr>
-            <td class="tg-kvxc"><span style="font-weight:normal">Gender</span></td>
-            <td class="tg-as6v"><span style="font-weight:normal">7</span></td>
-            <td class="tg-as6v"><span style="font-weight:normal">39,57</span></td>
-          </tr>
-          <tr>
-            <td class="tg-kvxc"><span style="font-weight:normal">Stones Type</span></td>
-            <td class="tg-as6v"><span style="font-weight:normal">11</span></td>
-            <td class="tg-as6v"><span style="font-weight:normal">69,58</span></td>
-          </tr>
-          <tr>
-            <td class="tg-kvxc"><span style="font-weight:normal">Stone Shape</span></td>
-            <td class="tg-as6v"><span style="font-weight:normal">15</span></td>
-            <td class="tg-as6v"><span style="font-weight:normal">74,8</span></td>
-          </tr>
-          <tr>
-            <td class="tg-kvxc"><span style="font-weight:normal">Stones Setting</span></td>
-            <td class="tg-as6v"><span style="font-weight:normal">17</span></td>
-            <td class="tg-as6v"><span style="font-weight:normal">72,4</span></td>
-          </tr>
-          <tr>
-            <td class="tg-kvxc"><span style="font-weight:normal">Metal Type</span></td>
-            <td class="tg-as6v"><span style="font-weight:normal">29</span></td>
-            <td class="tg-as6v"><span style="font-weight:normal">15,04</span></td>
-          </tr>
-          <tr>
-            <td class="tg-kvxc"><span style="font-weight:normal">Stones Total Weight</span></td>
-            <td class="tg-as6v"><span style="font-weight:normal">6</span></td>
-            <td class="tg-as6v"><span style="font-weight:normal">95,6</span></td>
-          </tr>
-          <tr>
-            <td class="tg-kvxc"><span style="font-weight:normal">Brand</span></td>
-            <td class="tg-as6v"><span style="font-weight:normal">14</span></td>
-            <td class="tg-as6v"><span style="font-weight:normal">0</span></td>
-          </tr>
-          <tr>
-            <td class="tg-kvxc"><span style="font-weight:normal">Model Number</span></td>
-            <td class="tg-as6v"><span style="font-weight:normal">238</span></td>
-            <td class="tg-as6v"><span style="font-weight:normal">5,95</span></td>
-          </tr>
-        </tbody>
-        </table>
+    Despite these advancements, one challenge persists: the scarcity of annotated product datasets for evaluating and
+    refining attribute-value extraction techniques.
+    This gap hinders the development and testing of models capable of meeting the demands of e-commerce platforms.
 
-        <section id="normalized_dataset">
-          <h3>2.6 Normalized Dataset</h3>
-          <p>In order to test LLMs capabilities of extracting and normalizing attribute values, we applied eleven kinds of custom standardizations to 38 of the 70 attributes. These are summarized in Table 4. 
-            Name Expansion and Unit Expansion Tasks assess LLMs' ability to understand context and apply semantic knowledge to extend abbreviations or acronyms to their full forms, demonstrating their grasp of domain-specific language and conventions.
 
-        Name and Product Type Generalisation Tasks evaluate LLMs' capacity for abstract reasoning and category knowledge by generalizing specific names or products to their broader categories, indicating an understanding of hierarchical relationships within data.
+    Addressing this need, we introduce the Web Data Commons Product Attribute-Value Extraction (WDC PAVE) benchmark.
+    The data comprises 1,420 human-annotated product offers, drawn from an array of 87 websites using the schema.org
+    vocabulary,
+    featuring over 24,583 manually verified attribute-value pairs.
+    WDC PAVE is designed to support both extraction and normalization tasks, with annotations available for direct
+    attribute-value extraction and for scenarios requiring normalization,
+    such as name expansion, string wrangling, unit of measurement normalization, and generalization. An example of this
+    is showcased in Figure 1.
 
-        Unit Conversion and Numeric Standardization Tasks test LLMs' quantitative reasoning skills, requiring them to apply mathematical knowledge for unit conversions and to interpret numerical expressions into standardized numeric values, showcasing their ability to perform calculations and apply standard measures.
+    By making the WDC PAVE benchmark publicly available, we aim to provide researchers with a new benchmark that
+    supports the advancement of product attribute-value extraction techniques. </p>
+    </p>
+    <span id="dataset_creation"></span>
+    <h2>2. Benchmark Creation</h2>
+    <p>
+    <section id="wdc">
+        <h3>2.1 Web Data Commons Large-Scale Product Matching Data</h3>
+        <p>The WDC initative harvests structured information from the Common Crawl, which
+            stands as the most extensive publicly accessible web corpus. The extracted data is
+            then made available for public download, aimed at assisting both researchers and
+            enterprises in leveraging the vast repository of data present on the web. The <a
+                    href="https://webdatacommons.org/largescaleproductcorpus/index.html" target="_blank">Web Data
+                Commons Large-Scale Product Matching (WDC LSPM)</a>
+            corpus comprises over 26 million product offers collected from approximately 79,000 websites. The corpus was
+            initially developed for the purpose
+            of assessing product matching techniques, categorizing the offers into 16 million
+            product clusters. Each cluster consolidates offers pertaining to the same product by employing product
+            identifiers for organization.
+            Besides product titles, descriptions and product category annotations, about 17% of the corpus features HTML
+            specification table content of
+            the product's website, as well as key-value pairs that are extracted from
+            these tables using a table detection heuristic (<a href="#primpeli2019wdc">Primpeli et al. 2019</a>).
+            These key-value pairs build the foundation for the WCD PAVE datasets. </p>
+    </section>
 
-        Color Generalization Task gauges LLMs' understanding of color semantics, challenging them to simplify specific color descriptions into broad color categories, reflecting their ability to categorize and generalize based on color perception.
+    <section id="data_selection">
+        <h3>2.2 Data Preprocessing and Selection</h3>
+        <p>In light of the noisy nature of web data, we perform a series of cleansing and filtering steps upon creating
+            the dataset.
+            Initially, product offers that are missing titles, descriptions, or key-value pairs from specification
+            tables are excluded.
+            To reduce the presence of noisy text,
+            products whose descriptions exceed 1,000 characters are also discarded.
+            Furthermore, HTML and language tags are stripped from the titles and descriptions.
+            We retain only product texts that are in English.</p>
+        <p>The WDC Product Data Corpus organizes offers into clusters of products. To gather a diverse set of unique
+            attribute-value pairs, the key-value pairs from all offers within a product cluster are merged before
+            annotation.
+            This enrichment process guarantees that attribute-values from all
+            retailers are attributed to every product offer.
+            In this context, product offers that belong to clusters with fewer than two domains or have a cluster size
+            smaller than two are excluded from the dataset.
+            The selection of the most appropriate categories for the WD PAVE dataset involved ranking product offer
+            categories by their average cluster sizes and conducting a manual review of the product texts to exclude
+            noisy categories.
+            Consequently, the categories chosen were "Computers And Accessories", "Jewelry", "Grocery And Gourmet Food",
+            "Office Products", and "Home And Garden,".</p>
+        <p>To streamline the dataset, we analyzed and refined its attributes: Initially, we identified a range of
+            attributes across all
+            categories, with each category having between 190 to 1,475 unique attributes. We noted that some attributes
+            were functionally
+            equivalent despite different names, and others were irrelevant noise. To manage this diversity and avoid
+            disproportionate attribute
+            loss across categories, we manually merged equivalent attributes and eliminated noise attributes.</p>
+        <p>To link product titles and descriptions with their respective attributes and values,
+            we employed a string-matching method to identify attribute-value pairs directly mentioned in
+            the product text. To simplify the annotation, we eliminated attributes if they had a matching
+            rate of less than 10% with the product text, simplifying the annotation. </p>
 
-        Selective Identifier Parsing Task examines LLMs' pattern recognition capabilities, particularly their skill in extracting relevant information from strings of numbers or codes, highlighting their precision in identifying and parsing specific data patterns.
+        <p>Finally, we took a stratified sample by product category and the 'Product Type' attribute, which is
+            consistent across all categories.</p>
 
-        To Uppercase Task checks LLMs' ability to apply simple text transformations according to specified rules, such as converting brand names to uppercase, indicating a basic understanding of textual formatting guidelines.
 
-        Binary Classification Task tests LLMs' ability to categorize information into binary options, in this case, gender-based classification, showcasing their capacity for decision-making based on contextual cues.
-            Note that for the generalization tasks related to Product Type, Name, and Color, we created our own categories. Products were then manually classified into these designated groups. 
-          </p>
+        <section id="annotation_process">
+            <h3>2.3 Data Annotation</h3>
+            <p>Initially, offers from each product category were standardized by supplementing missing category-specific
+                attributes, making sure that every product offer
+                is supplied with all applicable attributes from its respective category. String matching against product
+                titles and descriptions using the existing category
+                attribute-values facilitated the identification of potential values for these attributes. </p>
+            <p>We established annotation guidelines for every single attribute, prioritizing complete spans over
+                incomplete ones and assigning a single attribute type to each span, with special attention to prevent
+                overlap among attribute values or with unrelated text segments.
+                We annotated attributes with all relevant variations and expressions of values.</p>
+            <p>For annotation, we used a custom annotation tool, employing heuristics
+                to enhance annotation results, even for non-domain experts. It provides attribute names, suggested
+                values (collected from all product offers of the respecitve cluster),
+                and context through example values and descriptions. The tool's design allows for iterative user
+                validation. Attributes, whose value could not be found in title or description were set to "n/a".</p>
+            <p>In a second round of annotation we added attributes that were previously missing in the data. For unclear
+                attributes, we researched products online.</p>
+        </section>
 
-          <head>
+
+        <section id="dataset_stats">
+            <h3>2.4 Benchmark Statistics</h3>
+            <p>Table 1 provides an overview of the WDC PAVE benchmark. It consists of 1,420 unique product
+                listings spread over five distinct categories, featuring a collective total of 70 different attributes.
+                Table 2 further delineates the dataset by category: "Computers and Accessories" are described by
+                15 unique attributes, "Home And Garden" by 20, "Office Products" by 18, "Grocery And Gourmet Food" by 8,
+                and "Jewelry"
+                by 9. On average, each product has 6.51 attribute values matched to its title or description. This
+                average
+                ranges from a low of 5.18 values in "Jewelry" to a high of 7.52 values in "Home And Garden".
+                Figure 2 illustrates the distribution of matching values across the five categories.
+                Notably, the dataset features an average of 8.91 n/a-values per product. The average number
+                of unique values per attribute is at 70.43, with a median of 41 and a maximum of 416 unique values for
+                a single attribute. Table 3 summarizes the number of unique values and the share of n/a-values per
+                attribute in further detail.</p>
+            <div style="display: flex; flex-wrap: wrap; gap: 0px;">
+                <div style="flex: 1; min-width: 0px; margin-right: -500px; margin-left: 0px">
+                    <table border="1">
+                        <caption><b>Table 1: Properties of the WDC PAVE Benchmark</b></caption>
+                        <thead>
+                        <tr>
+                            <th>Property</th>
+                            <th>Value</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>Number of Product Offers</td>
+                            <td>1,420</td>
+                        </tr>
+                        <tr>
+                            <td>Number of Unique Categories</td>
+                            <td>5</td>
+                        </tr>
+                        <tr>
+                            <td>Number of Unique Category-Attributes</td>
+                            <td>70</td>
+                        </tr>
+                        <tr>
+                            <td>Average Number of Values per Product</td>
+                            <td>6.51</td>
+                        </tr>
+                        <tr>
+                            <td>Average Number of n/a-Values per Product</td>
+                            <td>8.91</td>
+                        </tr>
+                        <tr>
+                            <td>Average Number of Unique Values per Attribute</td>
+                            <td>70.43</td>
+                        </tr>
+                        <tr>
+                            <td>Median Number of Unique Values per Attribute</td>
+                            <td>41</td>
+                        </tr>
+                        <tr>
+                            <td>Maximum Number of Unique Values per Attribute</td>
+                            <td>416</td>
+                        </tr>
+                        <tr>
+                            <td>Number of annotated attribute-values</td>
+                            <td>24,582</td>
+                        </tr>
+                        <tr>
+                            <td>Of which are n/a</td>
+                            <td>51.45%</td>
+                        </tr>
+                        <tr>
+                            <td>Number of annotated attributes</td>
+                            <td>21,904</td>
+                        </tr>
+                        <tr>
+                            <td>Of which are n/a</td>
+                            <td>57.74%</td>
+                        </tr>
+                        <tr>
+                            <td>Number of Unique Values</td>
+                            <td>5,565</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+
+                <div style="flex: 1; min-width: 0px; margin-left: 0px; margin-right: 80px">
+                    <table border="1">
+                        <caption><b>Table 2: Category-Specific Properties of the WDC PAVE Benchmark</b></caption>
+                        <thead>
+                        <tr>
+                            <th>Category</th>
+                            <th>Number of Unique Source URLs</th>
+                            <th>Number of Unique Attributes</th>
+                            <th>Number of Product Offers</th>
+                            <th>Number of Annotated Attribute-Values</th>
+                            <th>Number of Unique Values</th>
+                            <th>Of which have value</th>
+                            <th>Of which are n/a</th>
+                            <th>Average Number of Attribute-Value Pairs Per Product Offer</th>
+                            <th>Average Number of n/a-Values Per Product Offer</th>
+                            <th>Average Number of Unique Values per Attribute</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>Home And Garden</td>
+                            <td>19</td>
+                            <td>20</td>
+                            <td>356</td>
+                            <td>7,854</td>
+                            <td>1,680</td>
+                            <td>43.44%</td>
+                            <td>56.56%</td>
+                            <td>7.52</td>
+                            <td>12.48</td>
+                            <td>74.25</td>
+                        </tr>
+                        <tr>
+                            <td>Computers And Accessories</td>
+                            <td>13</td>
+                            <td>15</td>
+                            <td>436</td>
+                            <td>7,492</td>
+                            <td>1,161</td>
+                            <td>47.2%</td>
+                            <td>52.8%</td>
+                            <td>5.92</td>
+                            <td>9.07</td>
+                            <td>69.33</td>
+                        </tr>
+                        <tr>
+                            <td>Grocery And Gourmet Food</td>
+                            <td>20</td>
+                            <td>8</td>
+                            <td>81</td>
+                            <td>814</td>
+                            <td>441</td>
+                            <td>78.73%</td>
+                            <td>21.27%</td>
+                            <td>5.85</td>
+                            <td>2.14</td>
+                            <td>47.12</td>
+                        </tr>
+                        <tr>
+                            <td>Office Products</td>
+                            <td>12</td>
+                            <td>18</td>
+                            <td>297</td>
+                            <td>5,942</td>
+                            <td>1,885</td>
+                            <td>47.5%</td>
+                            <td>52.5%</td>
+                            <td>7.49</td>
+                            <td>10.50</td>
+                            <td>90.89</td>
+                        </tr>
+                        <tr>
+                            <td>Jewelry</td>
+                            <td>23</td>
+                            <td>9</td>
+                            <td>250</td>
+                            <td>2,481</td>
+                            <td>398</td>
+                            <td>61.51%</td>
+                            <td>38.49%</td>
+                            <td>5.18</td>
+                            <td>3.82</td>
+                            <td>43.56</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+        </section>
+
+        <br>
+
+        <figure>
+            <figcaption><b>Figure 2: Distribution of Values across Categories</b></figcaption>
+            <img src="figures/WDC_histogram_positive_attribute_counts.svg"
+                 alt="Distribution of Values across Categories" style="width: 100%; max-width: 1600px; height: auto;">
+        </figure>
+
+        <head>
             <style>
                 table.myTable th, table.myTable td {
                     padding: 5px; /* Adjust padding to reduce space */
                     height: 10px; /* Adjust height as needed */
                 }
             </style>
-            </head>
-            <body>
-            <table border="1" style="width:50%;" class="myTable">
-            <caption><b>Table 4: Overview of Attribute Value Normalization Tasks in WDC-PAVE</b></caption>
+        </head>
+        <body>
+        <table border="1" style="width:50%;" class="myTable">
+            <caption><b>Table 3: Overview of Attributes</b></caption>
             <thead>
-                <tr style="background-color: #EFEFEF;">
-                    <th>Task Description</th>
-                    <th>Expected Output</th>
-                    <th>Examples</th>
-                </tr>
+            <tr>
+                <th class="tg-rn0y"><span style="font-weight:normal">Category</span></th>
+                <th class="tg-rn0y"><span style="font-weight:normal">Attribute</span></th>
+                <th class="tg-rn0y"><span style="font-weight:normal">Unique Values Count</span></th>
+                <th class="tg-rn0y"><span style="font-weight:normal">Share of n/a-values</span></th>
+            </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>Name Expansion</td>
-                    <td>Full forms for abbreviated names</td>
-                    <td>"HP" → "Hewlett-Packard", <br> "G1" → "Generation 1"</td>
-                </tr>
-                <tr>
-                    <td>Name Generalisation</td>
-                    <td>Broader categories for types</td>
-                    <td>"Intel Xeon E7-4807" → "Intel Xeon Series", <br> "Opteron 8431" → "AMD Opteron/Piledriver Series"</td>
-                </tr>
-                <tr>
-                    <td>Product Type Generalisation</td>
-                    <td>Broader product categories</td>
-                    <td>"Notebook Filler Paper" → "Paper Products", <br> "Tumbler" → "Tableware"</td>
-                </tr>
-                <tr>
-                    <td>Unit Expansion</td>
-                    <td>Full form of units</td>
-                    <td>"2 GB" → "2 Gigabytes"</td>
-                </tr>
-                <tr>
-                    <td>Unit Conversion</td>
-                    <td>Standard units conversion (inch/ft/yd to cm, oz/lbs to g/kg)</td>
-                    <td>"7''" → "17.8 cm", <br> "164 ft" → "4998.7 cm" <br> "20-lb." → "9.06" (kg) <br> "0.31 oz" → "879" (g)</td>
-                </tr>
-                <tr>
-                    <td>Numeric Standardization</td>
-                    <td>Precise numeric values</td>
-                    <td>Dual Port → "2", <br> 10K → "10000"</td>
-                </tr>
-                <tr>
-                    <td>Color Generalization</td>
-                    <td>Broad color categories</td>
-                    <td>"Neon Lime Green" → "Green", <br> "Canary Yellow" → "Yellow"</td>
-                </tr>
-                <tr>
-                    <td>Selective Identifier Parsing</td>
-                    <td>Extracted Manufacturer Code</td>
-                    <td>"077511352508" → "77511"</td>
-                </tr>
-                <tr>
-                    <td>To Uppercase</td>
-                    <td>Brand names in uppercase</td>
-                    <td>"Starbucks" → "STARBUCKS"</td>
-                </tr>
-                <tr>
-                    <td>Binary Classification</td>
-                    <td>Gender-based classification</td>
-                    <td>"Gents" → "1", "Ladies" → "0"</td>
-                </tr>
+            <tr>
+                <td class="tg-rn0y" rowspan="15"><span style="font-weight:normal">Computers And Accessories</span></td>
+                <td class="tg-itl6"><span style="font-weight:normal">Manufacturer</span></td>
+                <td class="tg-as6v"><span style="font-weight:normal">31</span></td>
+                <td class="tg-as6v"><span style="font-weight:normal">2.37</span></td>
+            </tr>
+            <tr>
+                <td class="tg-itl6"><span style="font-weight:normal">Generation</span></td>
+                <td class="tg-as6v"><span style="font-weight:normal">38</span></td>
+                <td class="tg-as6v"><span style="font-weight:normal">51.05</span></td>
+            </tr>
+            <tr>
+                <td class="tg-itl6"><span style="font-weight:normal">Part Number</span></td>
+                <td class="tg-as6v"><span style="font-weight:normal">438</span></td>
+                <td class="tg-krfe"><span style="font-weight:normal">0.87</span></td>
+            </tr>
+            <tr>
+                <td class="tg-kvxc"><span style="font-weight:normal">Capacity</span></td>
+                <td class="tg-as6v"><span style="font-weight:normal">116</span></td>
+                <td class="tg-as6v"><span style="font-weight:normal">29.49</span></td>
+            </tr>
+            <tr>
+                <td class="tg-kvxc"><span style="font-weight:normal">Product Type</span></td>
+                <td class="tg-as6v"><span style="font-weight:normal">236</span></td>
+                <td class="tg-as6v"><span style="font-weight:normal">3.96</span></td>
+            </tr>
+            <tr>
+                <td class="tg-kvxc"><span style="font-weight:normal">Interface</span></td>
+                <td class="tg-as6v"><span style="font-weight:normal">62</span></td>
+                <td class="tg-as6v"><span style="font-weight:normal">28.64</span></td>
+            </tr>
+            <tr>
+                <td class="tg-kvxc"><span style="font-weight:normal">Cache</span></td>
+                <td class="tg-as6v"><span style="font-weight:normal">34</span></td>
+                <td class="tg-as6v"><span style="font-weight:normal">83.07</span></td>
+            </tr>
+            <tr>
+                <td class="tg-kvxc"><span style="font-weight:normal">Ports</span></td>
+                <td class="tg-as6v"><span style="font-weight:normal">21</span></td>
+                <td class="tg-as6v"><span style="font-weight:normal">68.73</span></td>
+            </tr>
+            <tr>
+                <td class="tg-kvxc"><span style="font-weight:normal">Processor Core</span></td>
+                <td class="tg-as6v"><span style="font-weight:normal">13</span></td>
+                <td class="tg-as6v"><span style="font-weight:normal">90.62</span></td>
+            </tr>
+            <tr>
+                <td class="tg-kvxc"><span style="font-weight:normal">Processor Type</span></td>
+                <td class="tg-as6v"><span style="font-weight:normal">77</span></td>
+                <td class="tg-as6v"><span style="font-weight:normal">77.02</span></td>
+            </tr>
+            <tr>
+                <td class="tg-kvxc"><span style="font-weight:normal">Processor Quantity</span></td>
+                <td class="tg-as6v"><span style="font-weight:normal">6</span></td>
+                <td class="tg-as6v"><span style="font-weight:normal">92.43</span></td>
+            </tr>
+            <tr>
+                <td class="tg-kvxc"><span style="font-weight:normal">Bus Speed</span></td>
+                <td class="tg-as6v"><span style="font-weight:normal">5</span></td>
+                <td class="tg-as6v"><span style="font-weight:normal">98.17</span></td>
+            </tr>
+            <tr>
+                <td class="tg-kvxc"><span style="font-weight:normal">Thermal Design Power</span></td>
+                <td class="tg-as6v"><span style="font-weight:normal">14</span></td>
+                <td class="tg-as6v"><span style="font-weight:normal">92.2</span></td>
+            </tr>
+            <tr>
+                <td class="tg-kvxc"><span style="font-weight:normal">Clock Speed</span></td>
+                <td class="tg-as6v"><span style="font-weight:normal">58</span></td>
+                <td class="tg-as6v"><span style="font-weight:normal">76.64</span></td>
+            </tr>
+            <tr>
+                <td class="tg-kvxc"><span style="font-weight:normal">Rotational Speed</span></td>
+                <td class="tg-as6v"><span style="font-weight:normal">12</span></td>
+                <td class="tg-as6v"><span style="font-weight:normal">56.39</span></td>
+            </tr>
+            <tr>
+                <td class="tg-rn0y" rowspan="20"><span style="font-weight:normal">Home And Garden</span></td>
+                <td class="tg-kvxc"><span style="font-weight:normal">Manufacturer</span></td>
+                <td class="tg-as6v"><span style="font-weight:normal">111</span></td>
+                <td class="tg-as6v"><span style="font-weight:normal">0</span></td>
+            </tr>
+            <tr>
+                <td class="tg-kvxc"><span style="font-weight:normal">Product Type</span></td>
+                <td class="tg-as6v"><span style="font-weight:normal">379</span></td>
+                <td class="tg-as6v"><span style="font-weight:normal">0</span></td>
+            </tr>
+            <tr>
+                <td class="tg-kvxc"><span style="font-weight:normal">Width</span></td>
+                <td class="tg-as6v"><span style="font-weight:normal">95</span></td>
+                <td class="tg-as6v"><span style="font-weight:normal">32.28</span></td>
+            </tr>
+            <tr>
+                <td class="tg-kvxc"><span style="font-weight:normal">Length</span></td>
+                <td class="tg-as6v"><span style="font-weight:normal">80</span></td>
+                <td class="tg-as6v"><span style="font-weight:normal">55.36</span></td>
+            </tr>
+            <tr>
+                <td class="tg-kvxc"><span style="font-weight:normal">Depth</span></td>
+                <td class="tg-as6v"><span style="font-weight:normal">48</span></td>
+                <td class="tg-as6v"><span style="font-weight:normal">74.59</span></td>
+            </tr>
+            <tr>
+                <td class="tg-kvxc"><span style="font-weight:normal">Gauge</span></td>
+                <td class="tg-as6v"><span style="font-weight:normal">10</span></td>
+                <td class="tg-as6v"><span style="font-weight:normal">75.14</span></td>
+            </tr>
+            <tr>
+                <td class="tg-kvxc"><span style="font-weight:normal">Material</span></td>
+                <td class="tg-as6v"><span style="font-weight:normal">131</span></td>
+                <td class="tg-as6v"><span style="font-weight:normal">12.64</span></td>
+            </tr>
+            <tr>
+                <td class="tg-kvxc"><span style="font-weight:normal">Stainless Steel Series</span></td>
+                <td class="tg-as6v"><span style="font-weight:normal">7</span></td>
+                <td class="tg-as6v"><span style="font-weight:normal">75.56</span></td>
+            </tr>
+            <tr>
+                <td class="tg-kvxc"><span style="font-weight:normal">Cooling</span></td>
+                <td class="tg-as6v"><span style="font-weight:normal">19</span></td>
+                <td class="tg-as6v"><span style="font-weight:normal">90.46</span></td>
+            </tr>
+            <tr>
+                <td class="tg-kvxc"><span style="font-weight:normal">Splash</span></td>
+                <td class="tg-as6v"><span style="font-weight:normal">34</span></td>
+                <td class="tg-as6v"><span style="font-weight:normal">77.78</span></td>
+            </tr>
+            <tr>
+                <td class="tg-kvxc"><span style="font-weight:normal">Shape</span></td>
+                <td class="tg-as6v"><span style="font-weight:normal">43</span></td>
+                <td class="tg-as6v"><span style="font-weight:normal">77.24</span></td>
+            </tr>
+            <tr>
+                <td class="tg-kvxc"><span style="font-weight:normal">Height</span></td>
+                <td class="tg-as6v"><span style="font-weight:normal">84</span></td>
+                <td class="tg-as6v"><span style="font-weight:normal">63.91</span></td>
+            </tr>
+            <tr>
+                <td class="tg-kvxc"><span style="font-weight:normal">Color</span></td>
+                <td class="tg-as6v"><span style="font-weight:normal">74</span></td>
+                <td class="tg-as6v"><span style="font-weight:normal">57.25</span></td>
+            </tr>
+            <tr>
+                <td class="tg-kvxc"><span style="font-weight:normal">Retail UPC</span></td>
+                <td class="tg-as6v"><span style="font-weight:normal">29</span></td>
+                <td class="tg-as6v"><span style="font-weight:normal">92.13</span></td>
+            </tr>
+            <tr>
+                <td class="tg-kvxc"><span style="font-weight:normal">Manufacturer Stock Number</span></td>
+                <td class="tg-as6v"><span style="font-weight:normal">332</span></td>
+                <td class="tg-as6v"><span style="font-weight:normal">9.32</span></td>
+            </tr>
+            <tr>
+                <td class="tg-kvxc"><span style="font-weight:normal">Heat</span></td>
+                <td class="tg-as6v"><span style="font-weight:normal">12</span></td>
+                <td class="tg-as6v"><span style="font-weight:normal">84.35</span></td>
+            </tr>
+            <tr>
+                <td class="tg-kvxc"><span style="font-weight:normal">Shelves</span></td>
+                <td class="tg-as6v"><span style="font-weight:normal">8</span></td>
+                <td class="tg-as6v"><span style="font-weight:normal">91.57</span></td>
+            </tr>
+            <tr>
+                <td class="tg-kvxc"><span style="font-weight:normal">Base</span></td>
+                <td class="tg-as6v"><span style="font-weight:normal">20</span></td>
+                <td class="tg-as6v"><span style="font-weight:normal">74.62</span></td>
+            </tr>
+            <tr>
+                <td class="tg-kvxc"><span style="font-weight:normal">Voltage</span></td>
+                <td class="tg-as6v"><span style="font-weight:normal">14</span></td>
+                <td class="tg-as6v"><span style="font-weight:normal">89.39</span></td>
+            </tr>
+            <tr>
+                <td class="tg-kvxc"><span style="font-weight:normal">Capacity</span></td>
+                <td class="tg-as6v"><span style="font-weight:normal">148</span></td>
+                <td class="tg-as6v"><span style="font-weight:normal">59.85</span></td>
+            </tr>
+            <tr>
+                <td class="tg-rn0y" rowspan="18"><span style="font-weight:normal">Office Products</span></td>
+                <td class="tg-kvxc"><span style="font-weight:normal">Product Type</span></td>
+                <td class="tg-as6v"><span style="font-weight:normal">373</span></td>
+                <td class="tg-as6v"><span style="font-weight:normal">0</span></td>
+            </tr>
+            <tr>
+                <td class="tg-kvxc"><span style="font-weight:normal">Brand</span></td>
+                <td class="tg-as6v"><span style="font-weight:normal">118</span></td>
+                <td class="tg-as6v"><span style="font-weight:normal">0.31</span></td>
+            </tr>
+            <tr>
+                <td class="tg-kvxc"><span style="font-weight:normal">Color(s)</span></td>
+                <td class="tg-as6v"><span style="font-weight:normal">118</span></td>
+                <td class="tg-as6v"><span style="font-weight:normal">9.28</span></td>
+            </tr>
+            <tr>
+                <td class="tg-kvxc"><span style="font-weight:normal">Retail UPC</span></td>
+                <td class="tg-as6v"><span style="font-weight:normal">136</span></td>
+                <td class="tg-as6v"><span style="font-weight:normal">54.55</span></td>
+            </tr>
+            <tr>
+                <td class="tg-kvxc"><span style="font-weight:normal">Manufacturer Stock Number</span></td>
+                <td class="tg-as6v"><span style="font-weight:normal">296</span></td>
+                <td class="tg-as6v"><span style="font-weight:normal">1.34</span></td>
+            </tr>
+            <tr>
+                <td class="tg-kvxc"><span style="font-weight:normal">Pack Quantity</span></td>
+                <td class="tg-as6v"><span style="font-weight:normal">189</span></td>
+                <td class="tg-as6v"><span style="font-weight:normal">33.78</span></td>
+            </tr>
+            <tr>
+                <td class="tg-kvxc"><span style="font-weight:normal">Material</span></td>
+                <td class="tg-as6v"><span style="font-weight:normal">158</span></td>
+                <td class="tg-as6v"><span style="font-weight:normal">27.34</span></td>
+            </tr>
+            <tr>
+                <td class="tg-kvxc"><span style="font-weight:normal">Width</span></td>
+                <td class="tg-as6v"><span style="font-weight:normal">117</span></td>
+                <td class="tg-as6v"><span style="font-weight:normal">34.95</span></td>
+            </tr>
+            <tr>
+                <td class="tg-kvxc"><span style="font-weight:normal">Height</span></td>
+                <td class="tg-as6v"><span style="font-weight:normal">99</span></td>
+                <td class="tg-as6v"><span style="font-weight:normal">46.25</span></td>
+            </tr>
+            <tr>
+                <td class="tg-kvxc"><span style="font-weight:normal">Mounting</span></td>
+                <td class="tg-as6v"><span style="font-weight:normal">30</span></td>
+                <td class="tg-as6v"><span style="font-weight:normal">88.82</span></td>
+            </tr>
+            <tr>
+                <td class="tg-kvxc"><span style="font-weight:normal">Length</span></td>
+                <td class="tg-as6v"><span style="font-weight:normal">30</span></td>
+                <td class="tg-as6v"><span style="font-weight:normal">89.97</span></td>
+            </tr>
+            <tr>
+                <td class="tg-kvxc"><span style="font-weight:normal">Binding</span></td>
+                <td class="tg-as6v"><span style="font-weight:normal">48</span></td>
+                <td class="tg-as6v"><span style="font-weight:normal">82.52</span></td>
+            </tr>
+            <tr>
+                <td class="tg-kvxc"><span style="font-weight:normal">Closure</span></td>
+                <td class="tg-as6v"><span style="font-weight:normal">23</span></td>
+                <td class="tg-as6v"><span style="font-weight:normal">87.66</span></td>
+            </tr>
+            <tr>
+                <td class="tg-kvxc"><span style="font-weight:normal">Depth</span></td>
+                <td class="tg-as6v"><span style="font-weight:normal">37</span></td>
+                <td class="tg-as6v"><span style="font-weight:normal">87.09</span></td>
+            </tr>
+            <tr>
+                <td class="tg-kvxc"><span style="font-weight:normal">Paper Weight</span></td>
+                <td class="tg-as6v"><span style="font-weight:normal">25</span></td>
+                <td class="tg-as6v"><span style="font-weight:normal">90.67</span></td>
+            </tr>
+            <tr>
+                <td class="tg-kvxc"><span style="font-weight:normal">Sheet Perforation</span></td>
+                <td class="tg-as6v"><span style="font-weight:normal">8</span></td>
+                <td class="tg-as6v"><span style="font-weight:normal">95.3</span></td>
+            </tr>
+            <tr>
+                <td class="tg-kvxc"><span style="font-weight:normal">Capacity</span></td>
+                <td class="tg-as6v"><span style="font-weight:normal">58</span></td>
+                <td class="tg-as6v"><span style="font-weight:normal">80.51</span></td>
+            </tr>
+            <tr>
+                <td class="tg-kvxc"><span style="font-weight:normal">Page Yield</span></td>
+                <td class="tg-as6v"><span style="font-weight:normal">21</span></td>
+                <td class="tg-as6v"><span style="font-weight:normal">92.74</span></td>
+            </tr>
+            <tr>
+                <td class="tg-rn0y" rowspan="8"><span style="font-weight:normal">Grocery And Gourmet Food</span></td>
+                <td class="tg-kvxc"><span style="font-weight:normal">Brand</span></td>
+                <td class="tg-as6v"><span style="font-weight:normal">51</span></td>
+                <td class="tg-as6v"><span style="font-weight:normal">0</span></td>
+            </tr>
+            <tr>
+                <td class="tg-kvxc"><span style="font-weight:normal">Product Type</span></td>
+                <td class="tg-as6v"><span style="font-weight:normal">95</span></td>
+                <td class="tg-as6v"><span style="font-weight:normal">0</span></td>
+            </tr>
+            <tr>
+                <td class="tg-kvxc"><span style="font-weight:normal">Packing Type</span></td>
+                <td class="tg-as6v"><span style="font-weight:normal">47</span></td>
+                <td class="tg-as6v"><span style="font-weight:normal">16.54</span></td>
+            </tr>
+            <tr>
+                <td class="tg-kvxc"><span style="font-weight:normal">Flavor</span></td>
+                <td class="tg-as6v"><span style="font-weight:normal">57</span></td>
+                <td class="tg-as6v"><span style="font-weight:normal">32.99</span></td>
+            </tr>
+            <tr>
+                <td class="tg-kvxc"><span style="font-weight:normal">Size/Weight</span></td>
+                <td class="tg-as6v"><span style="font-weight:normal">52</span></td>
+                <td class="tg-as6v"><span style="font-weight:normal">25.56</span></td>
+            </tr>
+            <tr>
+                <td class="tg-kvxc"><span style="font-weight:normal">Pack Quantity</span></td>
+                <td class="tg-as6v"><span style="font-weight:normal">44</span></td>
+                <td class="tg-as6v"><span style="font-weight:normal">29.89</span></td>
+            </tr>
+            <tr>
+                <td class="tg-kvxc"><span style="font-weight:normal">Manufacturer Stock Number</span></td>
+                <td class="tg-as6v"><span style="font-weight:normal">64</span></td>
+                <td class="tg-as6v"><span style="font-weight:normal">24.1</span></td>
+            </tr>
+            <tr>
+                <td class="tg-kvxc"><span style="font-weight:normal">Retail UPC</span></td>
+                <td class="tg-as6v"><span style="font-weight:normal">31</span></td>
+                <td class="tg-as6v"><span style="font-weight:normal">62.96</span></td>
+            </tr>
+            <tr>
+                <td class="tg-rn0y" rowspan="9"><span style="font-weight:normal">Jewelry</span></td>
+                <td class="tg-kvxc"><span style="font-weight:normal">Product Type</span></td>
+                <td class="tg-as6v"><span style="font-weight:normal">61</span></td>
+                <td class="tg-as6v"><span style="font-weight:normal">0</span></td>
+            </tr>
+            <tr>
+                <td class="tg-kvxc"><span style="font-weight:normal">Gender</span></td>
+                <td class="tg-as6v"><span style="font-weight:normal">7</span></td>
+                <td class="tg-as6v"><span style="font-weight:normal">39.57</span></td>
+            </tr>
+            <tr>
+                <td class="tg-kvxc"><span style="font-weight:normal">Stones Type</span></td>
+                <td class="tg-as6v"><span style="font-weight:normal">11</span></td>
+                <td class="tg-as6v"><span style="font-weight:normal">69.58</span></td>
+            </tr>
+            <tr>
+                <td class="tg-kvxc"><span style="font-weight:normal">Stone Shape</span></td>
+                <td class="tg-as6v"><span style="font-weight:normal">15</span></td>
+                <td class="tg-as6v"><span style="font-weight:normal">74.8</span></td>
+            </tr>
+            <tr>
+                <td class="tg-kvxc"><span style="font-weight:normal">Stones Setting</span></td>
+                <td class="tg-as6v"><span style="font-weight:normal">17</span></td>
+                <td class="tg-as6v"><span style="font-weight:normal">72.4</span></td>
+            </tr>
+            <tr>
+                <td class="tg-kvxc"><span style="font-weight:normal">Metal Type</span></td>
+                <td class="tg-as6v"><span style="font-weight:normal">29</span></td>
+                <td class="tg-as6v"><span style="font-weight:normal">15.04</span></td>
+            </tr>
+            <tr>
+                <td class="tg-kvxc"><span style="font-weight:normal">Stones Total Weight</span></td>
+                <td class="tg-as6v"><span style="font-weight:normal">6</span></td>
+                <td class="tg-as6v"><span style="font-weight:normal">95.6</span></td>
+            </tr>
+            <tr>
+                <td class="tg-kvxc"><span style="font-weight:normal">Brand</span></td>
+                <td class="tg-as6v"><span style="font-weight:normal">14</span></td>
+                <td class="tg-as6v"><span style="font-weight:normal">0</span></td>
+            </tr>
+            <tr>
+                <td class="tg-kvxc"><span style="font-weight:normal">Model Number</span></td>
+                <td class="tg-as6v"><span style="font-weight:normal">238</span></td>
+                <td class="tg-as6v"><span style="font-weight:normal">5.95</span></td>
+            </tr>
             </tbody>
         </table>
 
-        <section id="download">
-          <h2>3. Download</h2>
-          <br>
-          <tr>
-            <td>WDC-PAVE Gold Standard</td>
-            <td><a href="">wdc_pave.json</a></td>
-            <br>
-            <td>Normalized WDC-PAVE Gold Standard (normalized attributes only)</td>
-            <td><a href="">wdc_pave_normalized.json</a></td>
-          </tr>
-      </section>
+        <section id="normalized_dataset">
+            <h3>2.5 Normalized Benchmark</h3>
+            <p>
+                In order to test LLMs' capabilities of extracting and normalizing attribute values, we applied four
+                kinds of custom normalizations.
+                These are summarized in Table 4.
+                Among the 70 attributes in WDC PAVE, we identified 37 attributes suitable for normalization:
+                For the normalization of the attribute values, we identified the following four operations: name
+                expansion, generalisation, unit of measurement normalizations, and string wrangling.
+                Table 4 illustrates the normalization operations with examples for all attributes.
+                Each attribute that must be normalized is assigned to one of the normalization operations.
+                To normalize the attribute values of the 37 attributes, we implemented custom functions and afterwards
+                manually verified the normalized attribute values. Regarding the Product Type attribute, items within
+                the Computers and Accessories category
+                are divided into nine categories. Similarly, products related to Home and Garden are sorted into eleven
+                categories, Office Products into twelve, Grocery and Gourmet Foods into six, and Jewelry items into five
+                categories. Colors are divided into 13 color types, the Processor Type is divided into three series.
+                We make both the extracted attribute values and the extracted and normalized attribute values available
+                to enable the evaluation of both scenarios: (i) extraction and (ii) extraction with normalization.
+            </p>
 
-    
+            <table class="tg">
+                <caption><b>Table 4: Overview of Attribute Value Normalization Tasks in WDC PAVE</b></caption>
+                <thead>
+                <tr>
+                    <th class="tg-zv36">Task Description</th>
+                    <th class="tg-zv36">Category</th>
+                    <th class="tg-zv36">Attributes</th>
+                    <th class="tg-6v43">Goal</th>
+                    <th class="tg-zv36">Examples</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td class="tg-zv36">Name <br>Expansion</td>
+                    <td class="tg-c6of">Computers<br><br></td>
+                    <td class="tg-c6of">Manufacturer<br><br>Generation<br>Capacity, Cache</td>
+                    <td class="tg-ycr8">Expand Manufacturer Names if supplied in abbreviated format.<br><br>Expand
+                        technology generations, DDR memory versions, tape technology versions if supplied in abbreviated
+                        format.<br>Expand unit abbreviations.
+                    </td>
+                    <td class="tg-c6of">"HP" → "Hewlett-Packard" <br>"IBM" → "International Business Machines"<br>"G1" →
+                        "Generation 1" <br>"2 GB" → "2 Gigabytes"
+                    </td>
+                </tr>
+                <tr>
+                    <td class="tg-zv36">Generalisation</td>
+                    <td class="tg-c6of">All<br>Home &amp; Garden, Office Products<br><br><br>Computers</td>
+                    <td class="tg-c6of">Product Type<br><br>Color<br><br>Processor Type</td>
+                    <td class="tg-ycr8">Categorize the Product Type into broader product categories.<br><br>Categorize
+                        the Color into broader color categories.<br><br>Categorize the Processor Type into broader
+                        Processor Series
+                    </td>
+                    <td class="tg-c6of">"Oatmeal" → "Snacks and Breakfast"<br>"Sparkling Juices" → "Beverages"<br>"Neon
+                        Lime Green" → "Green"<br>"Canary" → "Yellow"<br>"Xeon E7440" $\rightarrow" "Intel Xeon Series"
+                    </td>
+                </tr>
+                <tr>
+                    <td class="tg-zv36">Unit of <br>Measurement<br>Normalization</td>
+                    <td class="tg-c6of">Home &amp; Garden, Office<br><br>Office<br>Grocery<br>Computers</td>
+                    <td class="tg-c6of">Dimensions<br><br>Paper Weight<br>Size/Weight<br>Rotational Speed</td>
+                    <td class="tg-ycr8">Convert and standardize dimensions (h,w,l,d) measurement to centimeters, rounded
+                        to one decimal place, without unit identifier.<br><br>Convert and standardize the Paper Weight
+                        to kg, rounded to two decimal places, without unit identifier.<br>Convert and standardize the
+                        Size/weight to g, rounded to full digits, without unit identifier.<br>Convert the Rotational
+                        Speed value to a single, full numeric value.
+                    </td>
+                    <td class="tg-c6of">"7"" → "17.8"<br>"164 ft" → "4998.7"<br>"20-lb." → "9.06"<br>"0.31 oz" →
+                        "879"<br>"10k" → "10000"
+                    </td>
+                </tr>
+                <tr>
+                    <td class="tg-zv36">String <br>Wrangling</td>
+                    <td class="tg-c6of">All<br>Computers<br><br>Office Products, Jewelry<br>Office Products, Grocery,
+                        Jewelry, Home &amp; Garden<br>Jewelry, Grocery
+                    </td>
+                    <td class="tg-c6of">Identifiers<br>Ports<br>Processor Core<br>Pack Quantity<br>Retail UPC<br>Brand
+                    </td>
+                    <td class="tg-ycr8">Remove non-alphanumeric chracters from identifiers.<br>Convert implied numbers
+                        to numeric equivalents.<br><br>Extract Pack Quantity as a single numeric value.<br>Extract the
+                        Manufacturer Code from the UPC (The Manufacturer Code is the 2-6 digit of the UPC)<br>Uppercase
+                        all Brand names.
+                    </td>
+                    <td class="tg-c6of">"CTW-4M(208)" → "CTW4M208"<br>"Dual Port" → "2"<br>"4-Core" → "4"<br>"50
+                        Sheets/Pad" → "50"<br>"036000291452" → "36000"<br>"Nestle" → "NESTLE"
+                    </td>
+                </tr>
+                </tbody>
+            </table>
 
-      <section id="references">
-        <h2>4. References</h2>
-        <p id="primpeli2019wdc">
-            Primpeli, Anna, Peeters, Ralph, and Bizer, Christian. (2019). <em>The WDC Training Dataset and Gold Standard for Large-Scale Product Matching</em>. In <strong>Companion Proceedings of The 2019 World Wide Web Conference</strong>, pages 381–386.
-        </p>
-    </section>
+            <section id="experiments">
+                <h2>3. Baseline Experiments</h2>
+                <br>
+                <tr>
+                    <td>In our study, we assessed the efficiency of various prompt templates in extracting
+                        attribute-value pairs
+                        from product descriptions within the WDC PAVE benchmark, using GPT-3.5 and GPT-4.
+                        Our experimental framework incorporates up to six chat message components, including a
+                        role description for the LLM, specifying its function and a target schema, represented in JSON
+                        format, to delineate the expected attribute-value pairs.
+                        Task instructions were explicitly defined, directing the extraction and normalization of
+                        attribute values from product titles and descriptions, utilizing a structured approach for input
+                        processing and output generation in JSON
+                        format. Our methodology also included demonstration tasks with semantically similar product
+                        offers from the training set to enhance the model's
+                        learning, ensuring a comprehensive evaluation of the <a
+                                href="https://raw.githubusercontent.com/wbsg-uni-mannheim/wdc-pave/main/src/zero_shot_prompts_extraction.txt">prompt
+                            templates with example values</a> and <a
+                                href="https://raw.githubusercontent.com/wbsg-uni-mannheim/wdc-pave/main/src/few_shot_prompts_extraction.txt">prompt
+                            templates with example values and demonstrations</a>.
+                        For an in-depth explanation of our methodology, please refer to our <a
+                                href="https://arxiv.org/abs/2403.02130" target="_blank">paper</a>.
 
-    <!-- Other Sections -->
-    <!--<button id="downloadButton">Download the Dataset</button>
-    <section id="download">
-        <h2>Download</h2>
-        <p>More information on how to download the dataset.</p>
-    </section> -->
-    <script src="script.js"></script>
-</body>
+                        Table 5 shows the results for the extraction scenario: With the introduction of ten example
+                        values, both models demonstrate commendable F1-scores,
+                        approximately 80%. GPT-4 reaches a peak F1-score of 91% with ten demonstrations,
+                        marking a notable advancement over GPT-3.5.
+
+                        In scenarios involving attribute-value normalization, GPT-4 exhibites superior capabilities,
+                        benefiting from <a
+                                href="https://raw.githubusercontent.com/wbsg-uni-mannheim/wdc-pave/main/src/zero_shot_prompts_normalization.txt">prompt
+                            templates containing normalized example values</a>, reaching an F1-Score of 86%, and <a
+                                href="https://raw.githubusercontent.com/wbsg-uni-mannheim/wdc-pave/main/src/few_shot_prompts_normalization.txt">prompt
+                            templates containing normalized example values and demonstrations</a>, reaching an F1-Score
+                        of 91%, as shown in Table 6.
+                        Detailed analysis of normalization operations shows that GPT-4's performs best in name expansion
+                        and string wrangling, achieving F1-scores as high as 98% and 95%, respectively. In line with
+                        prior research, normalization tasks that require reasoning
+                        such as the generalization of attribute values or performing calculations, such as the unit of
+                        measurement normalization, are most challenging for both GPT-3.5 and GPT-4.
+                    </td>
+                    <br>
+
+                    <table border="1">
+                        <caption><b>Table 5: F1-scores for the Extraction Scenario.</b></caption>
+                        <thead>
+                        <tr>
+                            <th></th>
+                            <th colspan="4">10 Example Values</th>
+                            <th colspan="3">10 Example Values + Demonstrations</th>
+                        </tr>
+                        <tr>
+                            <th>LLM</th>
+                            <th>0 val.</th>
+                            <th>3 val.</th>
+                            <th>5 val.</th>
+                            <th>10 val.</th>
+                            <th>3 dem.</th>
+                            <th>5 dem.</th>
+                            <th>10 dem.</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td><strong>GPT-3.5</strong></td>
+                            <td>70.61</td>
+                            <td>76.46</td>
+                            <td>77.06</td>
+                            <td>79.37</td>
+                            <td>87.17</td>
+                            <td>87.42</td>
+                            <td>87.91</td>
+                        </tr>
+                        <tr>
+                            <td><strong>GPT-4</strong></td>
+                            <td>74.40</td>
+                            <td>78.57</td>
+                            <td>78.96</td>
+                            <td><strong>80.70</strong></td>
+                            <td>88.94</td>
+                            <td>88.87</td>
+                            <td><strong>90.54</strong></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <br>
+                    <table border="1">
+                        <caption><b>Table 6: F1-scores for the extraction with normalization scenario.</b></caption>
+                        <thead>
+                        <tr>
+                            <th></th>
+                            <th colspan="4">Example Values</th>
+                            <th colspan="3">10 Example Values + Demonstrations</th>
+                        </tr>
+                        <tr>
+                            <th><strong>LLM</strong></th>
+                            <th>0-val</th>
+                            <th>3-val</th>
+                            <th>5-val</th>
+                            <th>10-val</th>
+                            <th>3-dem</th>
+                            <th>5-dem</th>
+                            <th>10-dem</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td><strong>GPT-3.5</strong></td>
+                            <td>68.86</td>
+                            <td>69.75</td>
+                            <td>69.91</td>
+                            <td>69.36</td>
+                            <td>85.45</td>
+                            <td>86.04</td>
+                            <td>84.49</td>
+                        </tr>
+                        <tr>
+                            <td><strong>GPT-4</strong></td>
+                            <td>74.19</td>
+                            <td>83.77</td>
+                            <td>84.90</td>
+                            <td><strong>85.60</strong></td>
+                            <td>91.18</td>
+                            <td>91.32</td>
+                            <td><strong>91.31</strong></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <br>
+                    <table border="1">
+                        <caption><b>Table 7: F1-scores by Normalization Operation.</b></caption>
+                        <thead>
+                        <tr>
+                            <th>Normalization Operation</th>
+                            <th colspan="3"><strong>GPT-3.5</strong></th>
+                            <th colspan="3"><strong>GPT-4</strong></th>
+                        </tr>
+                        <tr>
+                            <th></th>
+                            <th>0 val.</th>
+                            <th>10 val.</th>
+                            <th>10 val. 10 dem.</th>
+                            <th>0 val.</th>
+                            <th>10 val.</th>
+                            <th>10 val. 10 dem.</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td><strong>Name Expansion</strong></td>
+                            <td>41.61</td>
+                            <td>42.15</td>
+                            <td><strong>94.50</strong></td>
+                            <td>48.64</td>
+                            <td>96.50</td>
+                            <td><strong>98.27</strong></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Generalisation</strong></td>
+                            <td>75.27</td>
+                            <td>76.63</td>
+                            <td><strong>82.16</strong></td>
+                            <td>76.48</td>
+                            <td>79.82</td>
+                            <td><strong>88.56</strong></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Unit of Measurement Norm.</strong></td>
+                            <td>51.16</td>
+                            <td>47.64</td>
+                            <td><strong>76.24</strong></td>
+                            <td>61.76</td>
+                            <td>66.42</td>
+                            <td><strong>83.50</strong></td>
+                        </tr>
+                        <tr>
+                            <td><strong>String Wrangling</strong></td>
+                            <td>87.07</td>
+                            <td>83.78</td>
+                            <td><strong>93.37</strong></td>
+                            <td>92.41</td>
+                            <td>93.60</td>
+                            <td><strong>95.19</strong></td>
+                        </tr>
+                        </tbody>
+                    </table>
+
+                    <section id="download">
+                        <h2>3. Download</h2>
+                        <br>
+                        Below, the WDC PAVE Benchmarks are available for public download. Additionally, we provide our
+                        training and test splits for your reference. Note that we use the small training sets for
+                        example value and demonstration selection in our <a href="https://arxiv.org/abs/2403.02130"
+                                                                            target="_blank">paper</a>.
+                        <br>
+                        <table>
+                            <tbody>
+                            <tr>
+                                <td>
+
+
+                                    <table>
+                                        <tbody>
+                                        <tr>
+                                            <td><b>File</b></td>
+                                            <!--	     <td>25.4MB</td> -->
+                                            <td><b>Download</b></td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>WDC PAVE - Extraction Benchmark</td>
+                                            <!--	     <td>25.4MB</td> -->
+                                            <td>
+                                                <a href="https://raw.githubusercontent.com/wbsg-uni-mannheim/wdc-pave/main/data/raw/wdc/final_target_scores.jsonl">final_target_scores.jsonl</a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Full Training Set</td>
+                                            <!--	     <td>25.4MB</td> -->
+                                            <td>
+                                                <a href="https://raw.githubusercontent.com/wbsg-uni-mannheim/wdc-pave/main/data/processed_datasets/wdc/train_1.0.jsonl">train_1.0.jsonl
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Small Training Set</td>
+                                            <!--	     <td>25.4MB</td> -->
+                                            <td>
+                                                <a href="https://raw.githubusercontent.com/wbsg-uni-mannheim/wdc-pave/main/data/processed_datasets/wdc/train_0.2.jsonl">train_0.2.jsonl
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Test Set</td>
+                                            <!--	     <td>25.4MB</td> -->
+                                            <td>
+                                                <a href="https://raw.githubusercontent.com/wbsg-uni-mannheim/wdc-pave/main/data/processed_datasets/wdc/test.jsonl">test.jsonl
+                                            </td>
+                                        </tr>
+                                        <tr>
+
+                                        </tbody>
+                                    </table>
+                                </td>
+                                <td>
+                                    <table>
+
+                                        <tbody>
+                                        <tr>
+                                            <td><b>File</b></td>
+                                            <!--	     <td>25.4MB</td> -->
+                                            <td><b>Download</b></td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>WDC PAVE - Extraction and Normalization Benchmark</td>
+                                            <!--	     <td>25.4MB</td> -->
+                                            <td>
+                                                <a href="https://raw.githubusercontent.com/wbsg-uni-mannheim/wdc-pave/main/data/raw/wdc_normalized/normalized_target_scores.jsonl">normalized_target_scores.jsonl
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Full Training Set</td>
+                                            <!--	     <td>25.4MB</td> -->
+                                            <td>
+                                                <a href="https://raw.githubusercontent.com/wbsg-uni-mannheim/wdc-pave/main/data/processed_datasets/wdc/normalized/normalized_train_1.0.jsonl">normalized_train_1.0.jsonl
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Small Training Set</td>
+                                            <!--	     <td>25.4MB</td> -->
+                                            <td>
+                                                <a href="https://raw.githubusercontent.com/wbsg-uni-mannheim/wdc-pave/main/data/processed_datasets/wdc/normalized/normalized_train_0.2.jsonl">normalized_train_0.2.jsonl
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Test Set</td>
+                                            <!--	     <td>25.4MB</td> -->
+                                            <td>
+                                                <a href="https://raw.githubusercontent.com/wbsg-uni-mannheim/wdc-pave/main/data/processed_datasets/wdc/normalized/normalized_test.jsonl">normalized_test.jsonl
+                                            </td>
+                                        </tr>
+
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <p>The datasets are structured in the JSON Lines (JSONL) format, supplementing each product with
+                            a set of attributes and values. Each entry in the dataset corresponds to a single product
+                            offer and includes several key fields:</p>
+                        <ul>
+                            <li><strong>id:</strong> The unique WDC product offer identifier.</li>
+                            <li><strong>cluster_id:</strong> The WDC cluster identifier that groups offers referring to
+                                the same product.
+                            </li>
+                            <li><strong>category:</strong> The product category, e.g. "Computers and Accessories</li>
+                            <li><strong>input_title:</strong> The product title as it appears on the source website,
+                                e.g. "435952-B21 HP Xeon E5335 2.0GHz DL360 G5"
+                            </li>
+                            <li><strong>input_description:</strong> The product description as it appears on the source
+                                website, e.g. "Intel Xeon E5335 DL360 G5(2.0GHz/4-core/8MB-2x4MB/80W)Full Processor
+                                Option KitPart Number(s) Part# 435952-B21 Spare 437948-001 Assembly 437426-001"
+                            </li>
+                            <li><strong>target_scores:</strong> A structured object detailing the annotated attributes
+                                of the product. Each attribute is associated with:
+                                <ul>
+                                    <li><b>pid:</b> An array indicating whether the attribute value appears in the title
+                                        (0) and/or description (1).
+                                    </li>
+                                    <ul>
+                                        - <b>Example for target_scores in extraction benchmark</b>: "target_scores":
+                                        {"Generation": {"G5": {"pid": [0, 1], "score": 1}}, "Part Number":
+                                        {"435952-B21": {"pid": [0, 1], "score": 1}}, "Product Type": {"Processor Option
+                                        Kit": {"pid": [1], "score": 1}}, "Cache": {"8MB-2x4MB": {"pid": [1], "score":
+                                        1}}, "Processor Type": {"Xeon E5335": {"pid": [0], "score": 1}, "Intel Xeon
+                                        E5335": {"pid": [1], "score": 1}}, "Processor Core": {"4-core": {"pid": [1],
+                                        "score": 1}}, "Clock Speed": {"2.0GHz": {"pid": [0, 1], "score": 1}}, "Thermal
+                                        Design Power": {"80W": {"pid": [1], "score": 1}}, "Processor Quantity": {"n/a":
+                                        1}, "Bus Speed": {"n/a": 1}, "Interface": {"n/a": 1}, "Manufacturer": {"HP":
+                                        {"pid": [0], "score": 1}}, "Capacity": {"n/a": 1}, "Ports": {"n/a": 1},
+                                        "Rotational Speed": {"n/a": 1}} <br>
+                                        - <b>Example for target_scores in normalized benchmark</b>: "target_scores":
+                                        {"Generation": {"Generation 5": {"pid": [0, 1], "score": 1}}, "Part Number":
+                                        {"435952B21": {"pid": [0, 1], "score": 1}}, "Product Type": {"Memory and
+                                        Processing Upgrades": {"pid": [1], "score": 1}}, "Cache": {"8 Megabytes":
+                                        {"pid": [1], "score": 1}}, "Processor Type": {"Intel Xeon Series": {"pid": [0,
+                                        1], "score": 1}}, "Processor Core": {"4": {"pid": [1], "score": 1}},
+                                        "Interface": {"n/a": 1}, "Manufacturer": {"Hewlett-Packard": {"pid": [0],
+                                        "score": 1}}, "Capacity": {"n/a": 1}, "Ports": {"n/a": 1}, "Rotational Speed":
+                                        {"n/a": 1}}
+                                    </ul>
+                                </ul>
+                            </li>
+                        </ul>
+                    </section>
+            </section>
+        </section>
+
+
+        <section id="references">
+            <h2>4. References</h2>
+            <p id="agrawal2022large">
+                Agrawal, M., Hegselmann, S., Lang, H., et al. (2022). <em>Large language models are
+                few-shot clinical information extractors</em>. In: <strong>Proceedings of the 2022 Conference
+                on Empirical Methods in Natural Language Processing</strong>. pp. 1998–2022.
+            </p>
+            <p id="brinkmann2023product">
+                Brinkmann, A., Shraga, R., Bizer, C. (2023). <em>Product Attribute Value Extraction
+                using Large Language Models</em>. arXiv preprint arXiv:2310.12537.
+            </p>
+            <p id="jaimovitch2023can">
+                Jaimovitch-López, Gonzalo; Ferri, Cèsar; Hernández-Orallo, José; and others. (2023).
+                <em>Can language models automate data wrangling?</em>. In <strong>Machine Learning</strong>,
+                volume 112, number 6, pages 2053–2082. Springer.
+            </p>
+            <p id="primpeli2019wdc">
+                Primpeli, Anna, Peeters, Ralph, and Bizer, Christian. (2019). <em>The WDC Training Dataset and Gold
+                Standard for Large-Scale Product Matching</em>. In <strong>Companion Proceedings of The 2019 World Wide
+                Web Conference</strong>, pages 381–386.
+            </p>
+            <p id="shyr2023identifying">
+                Shyr, C., Hu, Y., Harris, P.A., et al. (2023). <em>Identifying and extracting rare disease
+                phenotypes with large language models</em>. arXiv preprint arXiv:2306.12656.
+            </p>
+        </section>
+
+        <script src="script.js"></script>
+        </body>
 </html>
-
-
-
-
