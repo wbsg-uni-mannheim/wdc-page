@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head><title>Schema.org Data Set Series - Release 2024</title>
+    <link rel='stylesheet' href='https://webdatacommons.org/style.css' type='text/css' media='screen'/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="/jquery.toc.min.js"></script>
+
+
+    <script type="text/javascript">
+
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-30248817-1']);
+        _gaq.push(['_trackPageview']);
+
+        (function () {
+            var ga = document.createElement('script');
+            ga.type = 'text/javascript';
+            ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(ga, s);
+        })();
+
+
+        function showhide(stats) {
+            var x = document.getElementById(stats);
+            if (x.style.display === "none") {
+                x.style.display = "block";
+            } else {
+                x.style.display = "none";
+            }
+        }
+
+        })
+        ;
+    </script>
+    <script>
+        let base_dir = "https://data.dws.informatik.uni-mannheim.de/structureddata/2024-12/quads/classspecific/"
+    </script>
+
+</head>
+<body>
+
+
+<a name='top'></a>
+<h1>Class-Specific Subsets of the Schema.org Data contained in the October 2024 Corpus</h1>
+<p>This page provides access to and statistics about class-specific subsets of the <a href="http://schema.org">Schema.org</a>
+    data contained in the <a href="http://webdatacommons.org/structureddata/2024-12/stats/stats.html">October 2024
+        version</a> of the <a href="http://webdatacommons.org/structureddata/">Web Data Commons Microdata and JSON-LD
+        corpus</a>.
+    The datasets are part of the <a href="/structureddata/schemaorg/">Web Data Commons Schema.org Data Set Series</a>
+</p>
+
+<h2>Introduction </h2>
+<p>
+    As many users are only interested in specific types of Schema.org data (like product data, event data, job postings,
+    or data describing local businesses), we have created class-specific subsets out of the complete and merged <a
+        href="http://webdatacommons.org/structureddata/2024-12/stats/stats.html">Microdata and JSON-LD corpora</a> for a
+    selection of <i>schema.org</i> classes.
+    The subsets contain all instances of a specific class of either formats as well as all other data that is found on
+    the webpages containing these instances. For example, a page containing data about a product might also contain
+    reviews and offers for this product; a page containing data about an event might also contain data about the
+    location of the event and the persons involved in the event.
+    The data is represented in <a href="http://www.w3.org/TR/n-quads/">N-Quads</a> format, meaning that the forth
+    element of each quad contains the URL of the webpage from which the data was extracted.
+    To facilitate the download and access to the class specific data, we provide the schema.org subsets in chunks. Each
+    chunk contains quads of specific pay-level-domains (PLDs), i.e. all quads of one PLD, e.g. yummly.com,
+    are organized within the same chunk file. Additionally, we provide lookup files containing the mappings between PLDs
+    and their corresponding chunks as well as csv files with PLD-specific statistics.
+    <br>
+
+</p>
+
+
+<p><b>Please note that: </b>
+<ul>
+    <li> the merged Microdata and JSON-LD corpora are not deduplicated, i.e. if a schema.org/Product entity is annotated
+        on the same page with both formats, it will appear twice on the merged Product schema.org subset.
+    </li>
+    <li> considering the general trend towards using 'https' more widely, the schema.org subsets of the 2024 extraction
+        contain entities annotated with both 'http' and 'https', e.g. http://schema.org/Product and
+        https://schema.org/Product.
+    </li>
+    <li>the data in the files is not disjunct. This means that whenever you combine two files you might end up with
+        duplicated quads, as one webpage can contain more than one class (e.g. schema.org/Product and schema.org/Offer).
+    </li>
+    <li>the data is only the tip of the iceberg. The <a href="http://commoncrawl.org/">CommonCrawl</a> covers only a
+        subset of all webpages that are offered by a specific website. Thus, only a subset of all data offered by a site
+        is contained in our corpus. If you need more instances of a specific class, you will need to crawl deeper into
+        the websites that we identified to contain specific types of Schema.org data.
+    </li>
+</ul>
+You are welcome to use the datasets and also to tell about your findings. If you find our datasets useful for your
+research, please cite the poster: <a
+        href="https://dl.acm.org/doi/abs/10.1145/3543873.3587331">The Web
+    Data Commons Schema.org Data Set Series</a> by <i>Alexander Brinkmann, Anna Primpeli and Christian Bizer</i> in
+Companion
+Proceedings of the <a
+        href="https://www2023.thewebconf.org/">
+    ACM Web Conference 2023 (WWW ’23 Companion)</a>, Austin, Texas, USA,
+April 2023.
+</p>
+
+<div>
+    <h2>Class-Specific Subsets of the Schema.org Data</h2>
+    <p>
+    <table style="width:1600px">
+        <tr>
+            <th>Schema.org Subset</a></th>
+            <th> General Stats</th>
+            <th>Related Classes</th>
+            <th>Size </br> (# Files)</th>
+            <th>Download (Sample)</th>
+            <th>PLD to File look-up </br> PLD Specific Stats</th>
+        </tr>
+    
+
+
+    </table>
+    </p>
+
+
+</div>
+
+</br>
+
+<p>
+    In case you are interested in a particular class or set of classes which is not listed above, please get in contact
+    with the WebDataCommons team via <a href="http://groups.google.com/group/web-data-commons">Mailing List</a> or our
+    <a href="https://groups.google.com/forum/?fromgroups#!forum/web-data-commons">Google Group</a>.
+</p>
+
+<h2>Conversion to Other Formats</h2>
+<p>
+    We provide the extracted data for download using a variation of the <a
+        href="http://www.w3.org/TR/n-quads/">N-Quads</a> format. For users who prefer other formats, we provide code
+    for converting the download files into CSV and JSON formats, which are supported by
+    a wide range of spreadsheet applications, relational databases and data mining frameworks like the python data
+    analysis library pandas. Please find further details on how to convert the download files to other formats on the <a
+        href="../../?#toc17">main page</a>.
+
+</p>
+
+<h2>Get the Code</h2>
+<p>
+    The jupyter notebooks used to create the schema.org subsets from the MD and JSON-LD corpus can be checked out from
+    our <a href="https://github.com/wbsg-uni-mannheim/SubsetCreatorJupyterNBs.git"> Git repository</a>.
+</p>
+
+
+<p>
+    The extraction of December 2024 was done with <a
+        href="https://github.com/Web-based-Systems-Group/WDCFramework">version 1.5 of the
+    extractor</a>. For more information about the framework and a detailed description how to run a own extraction visit
+    the <a href="http://webdatacommons.org/framework">framework page</a>.
+</p>
+
+<h2>Get Support</h2>
+<p></p>
+
+<p>Please send questions and feedback to the <a href="http://groups.google.com/group/web-data-commons">Web Data Commons
+    mailing list</a> or post them in our <a href="https://groups.google.com/forum/?fromgroups#!forum/web-data-commons">Web
+    Data Commons Google Group</a>.</p>
+</div>
+
+<script type="text/javascript">
+    $('#toc').toc({
+        'selectors': 'h2', //elements to use as headings
+        'container': '#toccontent', //element to find all selectors in
+        'smoothScrolling': true, //enable or disable smooth scrolling on click
+        'prefix': 'toc', //prefix for anchor tags and class names
+        'highlightOnScroll': true, //add class to heading that is currently in focus
+        'highlightOffset': 100, //offset to trigger the next headline
+        'anchorName': function (i, heading, prefix) { //custom function for anchor name
+            return prefix + i;
+        }
+    });
+
+</script>
+
+</body>
+</html>
